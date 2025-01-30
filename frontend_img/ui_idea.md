@@ -2,9 +2,9 @@
 
 ```
 +----------------------------+-----------------------------------------------------------------------+
-|[<,>,history][help][display]| [ocr, image processing, box]	   								         |
+|[<,>,history][help][display]| advance setting:[ocr, image processing, box]                          |
 |[open] [save] [sort_img]	 +-----------------------------------------------------------------------+
-|[select all] [unselect all] | // NAME: Config											 			 |
+|[select all, unselect all..]| // NAME: Config (a.k.a. advance setting)						         |
 +----------------------------+ // this depending if user click ocr, image processing	, or 		 |
 |Search Bar				     | // box taps.												 	 		 |
 +----------------------------+++---------------------------------------++----------------------------+
@@ -41,19 +41,79 @@
 |"img2" [rename, select,x...]||+---------------------------------------++---------------------------+|
 +-----------------------------+++--------------------------------------++---------------------------++
 
+[select all, unselect all..] = [
+    reset image,
+    activate image processing, 
+    activate ocr, 
+    activate dilate image, 
+    select all, 
+    unselect all,
+    ]
+
+Note that if user click "activate image processing" or "activate ocr" when there is no selected image,
+it will show the warning that there is no selected image.
+
+The OCR app will convert select all input image to the right rotation and Otsu Threshold automatically by default, 
+but user can undo this operation by click [select all] and [reset image].
+
 [rename, select,x...]
 1. [rename, select, copy, open, x]
 2. [select, copy, x] 
 * double or right click to rename file 
 * right click to delete file
 
-[save] 3 things
-1. image
-2. text 
-3. config 
-save input
-1. folder name 
+[open] = choose folder with image or image file.
 ```
+
+## save
+
+```
++
+| folder name : string
+| image format : [option]
+| text format : [option]
+| save_config : [option]
+| [ok, cancel]
+```
+
+[ save ] 3 things
+1.  image
+2.  text 
+3.  advance setting configulation
+
+save input
+1.  folder name 
+2.  image format (None means no image)
+3.  text format (None means no text)
+4.  is_save_config (bool)
+
+save image format
+-   output_folder/img_00.jpg 
+-   output_folder/img_01.jpg 
+-   output_folder/...
+-   output_folder/img_n.jpg
+
+save text format
+-   output_folder/img_00.txt
+-   output_folder/img_01.txt
+-   output_folder/...
+-   output_folder/img_n.txt
+
+save image and text format
+-   output_folder/img_00.jpg
+-   output_folder/img_00.txt 
+-   output_folder/img_01.jpg
+-   output_folder/img_01.txt 
+-   output_folder/...
+-   output_folder/img_n.jpg
+-   output_folder/img_n.txt
+
+save config format
+-   output_folder.json
+
+save config and other format
+-   output_folder.json
+-   output_folder/...
 
 ## Config ocr
 
@@ -84,7 +144,7 @@ save input
 ```
 
 
-## Config image process max feature
+## Config image process
 
 ```
 +----------------------------+
