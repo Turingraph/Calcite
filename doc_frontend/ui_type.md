@@ -60,8 +60,8 @@ output
 4.	Str_input
 
 input
--	names: string|None
--   exist_names: string[]
+-	update_value: string
+-	update_value: ()=>void
 
 ```
 +---------------+
