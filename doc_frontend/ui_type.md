@@ -15,11 +15,11 @@ output
 
 2.  State_option
 
-input < type >
+input
 -	title: string|None
 -	mode_title: string
--	ss_mode: type
--	setss_mode: useState hook < type >
+-	ss_mode: int
+-	setss_mode: useState hook < int >
 
 output
 

@@ -32,6 +32,9 @@
 10. download output
 -   1 days
 -   15/02/2025 - 15/02/2025
+11. History button
+-   2 days
+-   16/02/2025 - 17/02/2025
 
 Think to do after
 1.	Write `doc_user/` for non open source version

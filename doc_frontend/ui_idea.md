@@ -2,7 +2,7 @@
 
 ```
 +----------------------------+-----------------------------------------------------------------------+
-|[<,>,history][help][display]| advance setting:[ocr, image processing, box]                          |
+|[<,>,history][help][display]| advance setting:[setting, ocr, image processing, box]                 |
 |[open] [save] [sort_img]	 +-----------------------------------------------------------------------+
 |[select all, unselect all..]| // NAME: Config (a.k.a. advance setting)						         |
 +----------------------------+ // this depending if user click ocr, image processing	, or 		 |
@@ -63,17 +63,19 @@ but user can undo this operation by click [select all] and [reset image].
 * right click to delete file
 
 [open] = choose folder with image or image file.
+advance setting:[setting] = open setting.json file.
 ```
 
 ## save
 
 ```
-+
-| folder name : string
-| image format : [option]
-| text format : [option]
-| save_config : [option]
-| [ok, cancel]
++-------------------------+
+| folder name  : string	  |
+| image format : [option] |
+| text format  : [option] |
+| save_config  : [option] |
+| [ok, cancel]            |
++-------------------------+
 ```
 
 [ save ] 3 things
