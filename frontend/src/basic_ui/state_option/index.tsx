@@ -8,7 +8,7 @@ import state_option_type from "./type";
 export default function Str_input(
 {
     title=null,
-    option,
+    options,
     ss_option,
     setss_option
 }:state_option_type
@@ -17,7 +17,7 @@ export default function Str_input(
     if(title != null){
         jsx_title = <h1>{title}</h1>
     }
-    let jsx_option = option.map((i)=>{
+    let jsx_option = options.map((i)=>{
         return (<option value={i.value}>{i.key}</option>)
     })
     return (<>
