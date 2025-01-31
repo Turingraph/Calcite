@@ -1,7 +1,7 @@
-type state_button_type<type extends object>={
+type state_button_type<type>={
     title:string,
-    update_value:type,
-    update_func:React.Dispatch<React.SetStateAction<type>>
+    ss_input:type,
+    setss_input:React.Dispatch<React.SetStateAction<type>>
 }
 
 export default state_button_type;

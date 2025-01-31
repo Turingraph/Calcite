@@ -1,14 +1,14 @@
 import React, { JSX } from "react";
 import state_button_type from "./type";
 
-export default function State_button<type extends object>(
+export default function State_button<type>(
 {
     title,
-    update_value,
-    update_func
+    ss_input,
+    setss_input
 }:state_button_type<type>
 ){
     return (<>
-<button onClick={()=>{update_func(update_value)}}>{title}</button>
+<button onClick={()=>{setss_input(ss_input)}}>{title}</button>
 </>);
 }

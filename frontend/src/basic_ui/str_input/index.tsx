@@ -1,13 +1,13 @@
-import React, { JSX, useState } from "react";
+import React, { JSX, useState, useEffect } from "react";
 import str_input_type from "./type";
 
 export default function Str_input(
 {
-    update_value,
-    update_func,
+    ss_input,
+    setss_input
 }:str_input_type
 ){
     return (<>
-<input onChange={()=>{update_func}} value={String(update_value)}></input>
+<input onChange={()=>{setss_input(ss_input)}} value={ss_input}></input>
 </>);
 }
