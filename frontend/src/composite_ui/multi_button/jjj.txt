@@ -1,0 +1,43 @@
+import React from "react";
+import multi_button_type from "./type";
+import State_button from "../../basic_ui/state_button";
+
+export default function Multi_button(
+{
+    button_array,
+    select_button,
+    rgb_00 = 255,
+    rgb_01 = 255
+}:multi_button_type
+){
+    const [ssselect_button, setssselect_button] = useState
+    let jsx_output = button_array.map((i,index)=>{
+        let rgb_button = rgb_00;
+        if (typeof select_button == "number"){
+            if (index == select_button){
+                rgb_button = rgb_01
+            }
+        }
+        return <State_button 
+                    title={i.title}
+                    ss_effect={i.ss_effect}
+                    setss_effect={i.setss_effect}
+                    rgb = {rgb_button}
+                />
+    })
+    return <>{jsx_output}</>
+}
+
+
+//////////////////////////////////
+
+import state_button_type from "../../basic_ui/state_button/type"
+
+type multi_button_type = {
+    button_array:state_button_type<any>[],
+    select_button?:number|undefined,
+    rgb_00?:undefined|number|number[],
+    rgb_01?:undefined|number|number[]
+}
+
+export default multi_button_type;
