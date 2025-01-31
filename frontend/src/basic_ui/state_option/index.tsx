@@ -2,8 +2,8 @@ import React, { JSX, useState, useEffect } from "react";
 import state_option_type from "./type";
 import Str_to_h from "../../optional_input/str_to_h";
 
-//  https://stackoverflow.com/questions/3518002/
-//  how-can-i-set-the-default-value-for-an-html-select-element
+//  https://stackoverflow.com/questions/40209352/
+//  how-to-specify-optional-default-props-with-typescript-for-stateless-functiona
 
 export default function State_option(
 {

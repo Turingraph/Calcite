@@ -1,8 +1,8 @@
 export default function Str_to_str(
 {
-    title
+    title = undefined
 }:{
-    title:string|undefined
+    title?:string|undefined
 })
 {
     if(title != undefined){
