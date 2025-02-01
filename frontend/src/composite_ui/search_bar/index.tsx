@@ -2,20 +2,20 @@ import React, { JSX, useEffect, useState } from "react";
 import search_bar_type from "./type";
 import Str_input from "../../basic_ui/str_input";
 
-export default function Search_bar(
+export default function Search_bar<type extends {title:string}>(
 {
     title = undefined,
-    ss_array,
-    setss_show_array
-}:search_bar_type
+    array,
+    reading_array
+}:search_bar_type<type>
 ){
     const [ss_input, setss_input] = useState<string>("");
     useEffect(()=>{
         if (ss_input != "")
         {
             // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
-            let match_array = ss_array.filter((i) => i.includes(ss_input) == true)
-            setss_show_array(match_array);
+            let read_array = array.filter((i) => i.title.includes(ss_input) == true)
+            reading_array(read_array);
         }
     },[ss_input])
 

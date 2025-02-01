@@ -1,8 +1,8 @@
-type search_bar_type = {
-    title?:string|undefined,
-    ss_array:string[],
-    setss_show_array:React.Dispatch<
-    React.SetStateAction<string[]>
+type search_bar_type<type extends {title:string}> = {
+    title:string|undefined,
+    array:type[],
+    reading_array:React.Dispatch<
+    React.SetStateAction<type[]>
 >
 }
 
