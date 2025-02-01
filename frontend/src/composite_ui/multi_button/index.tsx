@@ -10,8 +10,7 @@ export default function Multi_button(
     let jsx_output = button_array.map((i)=>{
         return <State_button 
                     title={i.title}
-                    ss_effect={i.ss_effect}
-                    setss_effect={i.setss_effect}
+                    input_function={i.input_function}
                 />
     })
     return <>{jsx_output}</>
