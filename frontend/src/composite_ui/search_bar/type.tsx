@@ -1,4 +1,4 @@
-type search_bar_type<type extends {title:string}> = {
+type search_bar_t<type extends {title:string}> = {
     title:string|undefined,
     array:type[],
     reading_array:React.Dispatch<
@@ -6,4 +6,4 @@ type search_bar_type<type extends {title:string}> = {
 >
 }
 
-export default search_bar_type
+export default search_bar_t

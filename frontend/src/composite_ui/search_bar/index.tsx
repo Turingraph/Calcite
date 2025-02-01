@@ -1,13 +1,13 @@
 import React, { JSX, useEffect, useState } from "react";
-import search_bar_type from "./type";
+import search_bar_t from "./type";
 import Str_input from "../../basic_ui/str_input";
 
-export default function Search_bar<type extends {title:string}>(
+export default function Search_bar<t extends {title:string}>(
 {
     title = undefined,
     array,
     reading_array
-}:search_bar_type<type>
+}:search_bar_t<t>
 ){
     const [ss_input, setss_input] = useState<string>("");
     useEffect(()=>{
