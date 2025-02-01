@@ -1,7 +1,7 @@
 import React, {JSX} from "react";
 
 type color_ui_type = {
-    body:JSX.Element,
+    component:JSX.Element,
     rgb?:undefined|number|number[]
 }
 
