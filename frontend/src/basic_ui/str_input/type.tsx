@@ -1,7 +1,7 @@
 //  https://stackoverflow.com/questions/40209352/
 //  how-to-specify-optional-default-props-with-typescript-for-stateless-functiona
 
-type str_input_type = {
+type str_input_t = {
     title?:string|undefined,
     ss_input:string,
     setss_input:React.Dispatch<
@@ -9,4 +9,4 @@ type str_input_type = {
     >
 }
 
-export default str_input_type;
+export default str_input_t;

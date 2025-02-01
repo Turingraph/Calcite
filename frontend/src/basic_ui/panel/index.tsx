@@ -1,5 +1,5 @@
 import React from "react";
-import panel_type from "./type";
+import panel_t from "./type";
 
 export default function Panel(
 {
@@ -8,7 +8,7 @@ export default function Panel(
     y_scroll_bar = false,                  
     w  = undefined,                           
     h = undefined,                          
-}:panel_type
+}:panel_t
 ){
     return (<>{component}</>)
 }

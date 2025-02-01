@@ -1,5 +1,5 @@
 import React, { JSX, useState, useEffect } from "react";
-import str_input_type from "./type";
+import str_input_t from "./type";
 import Str_to_str from "../../optional_input/str_to_str";
 
 export default function Str_input(
@@ -7,7 +7,7 @@ export default function Str_input(
     title = undefined,
     ss_input,
     setss_input
-}:str_input_type
+}:str_input_t
 ){
     let str_placeholder = Str_to_str({title:title});
     return (<>
