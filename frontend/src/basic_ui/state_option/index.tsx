@@ -5,16 +5,16 @@ import Str_to_h from "../../optional_input/str_to_h";
 //  https://stackoverflow.com/questions/40209352/
 //  how-to-specify-optional-default-props-with-typescript-for-stateless-functiona
 
-export default function State_option(
+export default function State_option<type extends {title:string,id:number}> (
 {
     title = undefined,
     options,
     ss_option,
     setss_option
-}:state_option_type
+}:state_option_type<type>
 ){
     let jsx_option = options.map((i)=>{
-        return (<option value={i.value}>{i.key}</option>)
+        return (<option value={i.id}>{i.title}</option>)
     })
     return (<>
         <Str_to_h title={title}/>
