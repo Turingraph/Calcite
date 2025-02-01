@@ -7,5 +7,5 @@ export default function Color_ui({
     rgb=255
 }:color_ui_type
 ){
-    return <div style={{backgroundColor:Int_to_rgb({input:rgb})}}>{body}</div>
+    return <div style={{backgroundColor:Int_to_rgb({input:rgb})}}>{component}</div>
 }
