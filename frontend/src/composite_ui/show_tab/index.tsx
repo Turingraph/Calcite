@@ -6,14 +6,14 @@ import Int_to_rgb from "../../hex_rgb/int_to_rgb";
 
 export default function Show_tab(
 {
-    component_array,
+    components,
     button_titles
 }:show_tab_t
 ){
     const [ss_select, setss_select] = useState<number>(0);
     const normal_rgb = 255;
     const select_rgb = [255,0,0];
-    let button_array = button_titles.map((title,index)=>{
+    let buttons = button_titles.map((title,index)=>{
         let rgb:number|number[] = normal_rgb;
         if (index == ss_select){
             rgb = select_rgb;
@@ -25,7 +25,7 @@ export default function Show_tab(
         return <Color_ui component={jsx_body} rgb={rgb}/>
     })
     return <>
-        {button_array}
-        {component_array[ss_select]}
+        {buttons}
+        {components[ss_select]}
     </>
 }
