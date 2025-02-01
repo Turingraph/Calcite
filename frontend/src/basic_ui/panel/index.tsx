@@ -6,8 +6,8 @@ export default function Panel(
     component,                     
     x_scroll_bar = false,                  
     y_scroll_bar = false,                  
-    width  = undefined,                           
-    height = undefined,                          
+    w  = undefined,                           
+    h = undefined,                          
 }:panel_type
 ){
     return (<>{component}</>)
