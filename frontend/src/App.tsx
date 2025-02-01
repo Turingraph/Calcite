@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
-import State_button from './basic_ui/state_button';
+import State_button from '../prev_src/basic_ui/state_button';
 
 function App() {
   const [SS_Num, setSS_Num] = useState<number>(0);
