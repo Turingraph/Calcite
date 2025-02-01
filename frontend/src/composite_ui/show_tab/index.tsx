@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import show_tab_type from "./type";
+import show_tab_t from "./type";
 import State_button from "../../basic_ui/state_button";
 import Color_ui from "../../basic_ui/color_ui";
 import Int_to_rgb from "../../hex_rgb/int_to_rgb";
@@ -8,7 +8,7 @@ export default function Show_tab(
 {
     component_array,
     button_titles
-}:show_tab_type
+}:show_tab_t
 ){
     const [ss_select, setss_select] = useState<number>(0);
     const normal_rgb = 255;
