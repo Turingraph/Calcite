@@ -1,18 +1,15 @@
 import React, { JSX } from "react";
 import state_button_type from "./type";
 import Int_to_rgb from "../../hex_rgb/int_to_rgb";
-export default function State_button<type>(
+export default function State_button(
 {
     title,
-    ss_effect,
-    setss_effect,
-    rgb = [255, 255, 255]
-}:state_button_type<type>
+    input_function,
+}:state_button_type
 ){
+    // onMouseDown={()=>{setss_effect(ss_effect)}} 
     return (<>
-        <button 
-            onClick={()=>{setss_effect(ss_effect)}} 
-            style={{backgroundColor:Int_to_rgb({input:rgb})}}>
+        <button onClick={()=>{input_function}} >
             {title}
         </button>
     </>);
