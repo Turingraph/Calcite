@@ -11,3 +11,5 @@
 -   Purpose: contains type for more complicated but common parameter type.
 5.  `setting/`
 -   Purpose: contains type for user customized advanced setting e.g. OCR setting, image processing setting etc.
+
+Note that `_t` means `type`

@@ -104,6 +104,14 @@ class img_process_rgb(img_process):
 # The type of `self` and output type of `__init__` are not specified.
 ```
 
+17.	The name of function that return `JSX.Element` variable should start with capital letter
+-	Correct Example: `Search_bar`
+-	Wrong Example: `search_bar`
+-	Wrong Example: `searchbar`
+-	Wrong Example: `SearchBar`
+-	Wrong Example: `Searchbar`
+-	Wrong Example: `searchBar`
+
 # Naming Meaning
 
 Meaning
@@ -125,6 +133,10 @@ Meaning
 16. `title` = title of the output (e.g. output image file, OCR text file, Open CV image window etc.)
 17.	`w` = width
 18.	`h` = height
+19.	`obj` = object
+20.	`arr` = array
+21.	`num` = number
+22.	`_t` = type
 
 # Additional Learning Resource
 
