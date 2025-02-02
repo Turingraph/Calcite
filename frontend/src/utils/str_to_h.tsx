@@ -1,14 +1,14 @@
 import React from "react"
-import title_t from "../types/basic/title_t"
+import * as a from "../../src/type/alias"
 
 export default function Str_to_h(
 {
-    title = undefined
-}:title_t
+    opt_name = undefined
+}:a.opt_name_t
 ){
-    if (title != undefined)
+    if (opt_name != undefined)
     {
-        return (<h1>{title}</h1>)
+        return (<h1>{opt_name}</h1>)
     }
     return (<></>)
 }

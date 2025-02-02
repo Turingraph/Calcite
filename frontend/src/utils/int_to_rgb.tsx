@@ -1,8 +1,8 @@
-import input_t from "../types/basic/input_t";
+import * as a from "../../src/type/alias"
 
 function Int_to_hex({
-    input = 0           
-}:input_t<number>
+    value = 0           
+}:a.value_t<undefined|number>
 ){
     const HEX_ARR = [ 
         '0', '1', '2', '3', 
@@ -11,44 +11,44 @@ function Int_to_hex({
         'C', 'D', 'E', 'F'
     ]
     
-    if (input == undefined){
+    if (value == undefined){
         return "FF";
     }
-    if (input > 255){
-        input = 255;
+    if (value > 255){
+        value = 255;
     }
-    if (input < 0){
-        input = 0;
+    if (value < 0){
+        value = 0;
     }
-    return (HEX_ARR[input/16] + HEX_ARR[input%16]);
+    return (HEX_ARR[value/16] + HEX_ARR[value%16]);
 }
 
 export default function Int_to_rgb({
-    input
-}:input_t<undefined|number|number[]>
+    value
+}:a.value_t<undefined|number|number[]>
 ){
-if (input == undefined){return "#FFFFFF"}
-else if (typeof input === "number"){
-    return "#" + Int_to_hex({input:input})+"0000";
+if (value == undefined){return "#FFFFFF"}
+else if (typeof value === "number"){
+    return "#" + Int_to_hex({value:value})+"0000";
 }
-else if (Array.isArray(input) == true){
-    if (input.length == 0){
+else if (Array.isArray(value) == true){
+    if (value.length == 0){
         return "#FFFFFF"
     }
-    else if (input.length == 1){
-        return "#" + Int_to_hex({input:input[0]}) + Int_to_hex({input:input[0]}) + Int_to_hex({input:input[0]});
+    else if (value.length == 1){
+        return "#" + Int_to_hex({value:value[0]}) + Int_to_hex({value:value[0]}) + Int_to_hex({value:value[0]});
     }
-    else if (input.length == 0){
-        return "#" + Int_to_hex({input:input[0]})+Int_to_hex({input:input[1]})+"00";
+    else if (value.length == 0){
+        return "#" + Int_to_hex({value:value[0]})+Int_to_hex({value:value[1]})+"00";
     }
     else{
-        return "#" + Int_to_hex({input:input[0]})+Int_to_hex({input:input[1]}) + Int_to_hex({input:input[2]});
+        return "#" + Int_to_hex({value:value[0]})+Int_to_hex({value:value[1]}) + Int_to_hex({value:value[2]});
     }
 }
 else{
     // console.log("------------------------------------------------------------------------")
-    // console.log("Warning: Input is invalid.")
-    // console.log("Int_to_rgb({input}:{input?:undefined|number|number[]})");
+    // console.log("Warning: value is invalid.")
+    // console.log("Int_to_rgb({value}:{value?:undefined|number|number[]})");
     // console.log("reported by frontend/src/hex_rgb/int_to_rgb.tsx");
     // console.log("------------------------------------------------------------------------")
     return "#FFFFFF";

@@ -1,16 +1,16 @@
 import React from "react";
-import state_button_t from "../../types/components/ui/state_button_t";
-import State_button from "../../../src/components/ui/state_button";
+import * as a from "../../type/alias"
+import Click_button, {click_button_t} from "../ui/click_button";
 
 export default function Multi_button(
 {
     button_arr,
-}:{button_arr:state_button_t[]}
+}:{button_arr:click_button_t[]}
 ){
     let jsx_output = button_arr.map((i)=>{
-        return <State_button 
-                    title={i.title}
-                    input_func={i.input_func}
+        return <Click_button 
+                    name={i.name}
+                    event_func={i.event_func}
                 />
     })
     return <>{jsx_output}</>

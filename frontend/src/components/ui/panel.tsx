@@ -1,14 +1,18 @@
-import React from "react";
-import panel_t from "../../types/components/ui/panel_t";
+import React, {JSX} from "react";
 
 export default function Panel(
 {
-    component,                     
+    jsx_element,                     
     x_scroll_bar = false,                  
     y_scroll_bar = false,                  
     w  = undefined,                           
     h = undefined,                          
-}:panel_t
-){
-    return (<>{component}</>)
+}:{
+    jsx_element:JSX.Element,
+    x_scroll_bar?:boolean,
+    y_scroll_bar?:boolean,
+    w?:undefined|number,
+    h?:undefined|number,
+}){
+    return (<>{jsx_element}</>)
 }
