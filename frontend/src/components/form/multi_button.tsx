@@ -1,5 +1,4 @@
 import React from "react";
-import * as a from "../../type/alias"
 import Click_button, {click_button_t} from "../ui/click_button";
 
 export default function Multi_button(
