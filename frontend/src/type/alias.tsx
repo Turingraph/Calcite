@@ -31,6 +31,11 @@ export type obj_t = {
     select?:select
 }
 
+// It is recommended to use value_t to access variable by pointer
+// than use useState, for making writing code more easier.
+// https://stackoverflow.com/questions/42055039
+// /typescript-make-variable-act-as-pointer-to-another-variable
+
 export type use_state_t<t> = {
     ss:t,
     setss:React.Dispatch<
