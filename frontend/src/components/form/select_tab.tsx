@@ -9,16 +9,16 @@ export default function Select_tab(
     name_arr
 }:{
     jsx_elements:JSX.Element[]
-    name_arr:a.arr<a.name>
+    name_arr:a.name[]
 }
 ){
     const [ss_select, setss_select] = useState<number>(0);
-    const normal_rgb = 255;
-    const select_rgb = [255,0,0];
-    let buttons = name_arr.map((name,index)=>{
-        let rgb:number|number[] = normal_rgb;
+    const NORMAL_RGB = 255;
+    const SELECT_RGB = [255,0,0];
+    let button_arr = name_arr.map((name,index)=>{
+        let rgb:number|number[] = NORMAL_RGB;
         if (index == ss_select){
-            rgb = select_rgb;
+            rgb = SELECT_RGB;
         }
         let jsx_element = <State_button 
                     name={name}
@@ -27,7 +27,7 @@ export default function Select_tab(
         return <Color_ui jsx_element={jsx_element} rgb={rgb}/>
     })
     return <>
-        {buttons}
+        {button_arr}
         {jsx_elements[ss_select]}
     </>
 }
