@@ -8,20 +8,15 @@ export default function Str_input(
     input
 }:{
     opt_name:a.opt_name,
-    input:a.value_t<string>
+    input:a.use_state_t<string>
 }
 ){
-    const [ss_input, setss_input] = useState<string>(input.value)
-    useEffect(()=>{
-        input = {value:ss_input}
-    },[ss_input])
     let str_placeholder = Str_to_str({value:opt_name as a.value<string>});
     return (<>
         <input 
-            onChange={()=>{setss_input(input.value)}} 
-            value={input.value}
+            onChange={()=>{input.setss(input.ss)}} 
+            value={input.ss}
             placeholder={str_placeholder}>
-        
         </input>
     </>);
 }

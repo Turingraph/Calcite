@@ -5,18 +5,13 @@ export type input_multi_t = {
     input_num?:undefined|input_num_t|input_num_t[],
     input_str?:undefined|input_str_t|input_str_t[],
     option_name?:undefined|a.name
-    input_option?:undefined|input_option_t[]
+    input_option?:undefined|string[]
 }
 
 export type input_num_t = {
     opt_name?:a.opt_name,
     value:a.value<number>,
     show_value:a.value<string>
-}
-
-export type input_option_t = {
-    key:string,
-    value:number
 }
 
 export type input_str_t = {

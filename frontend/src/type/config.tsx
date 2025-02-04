@@ -18,10 +18,10 @@ export type config_img_t = {
 }
 
 export type config_ocr_t = {
-    psm: ui.input_option_t,
-    languages:ui.input_option_t[],
-    oem:ui.input_option_t,
+    psm: string[],
+    languages:string[][],
+    oem:string[],
     timeout:ui.input_num_t,
-    white_or_black_list:ui.input_option_t,
+    white_or_black_list:string[],
     search_characters:string
 }

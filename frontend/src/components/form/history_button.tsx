@@ -30,12 +30,12 @@ Reference
 */
 
 export default function History_button<t>({
-    history,
-}:{history:history<t>}
+    ptr_history,
+}:{ptr_history:history<t>}
 ){
-    const [ss_history, setss_history] = useState<history<t>>(history)
+    const [ss_history, setss_history] = useState<history<t>>(ptr_history)
     useEffect(()=>{
-        history = ss_history
+        ptr_history = ss_history
     },[ss_history])
     function prev_func(){
         if (ss_history?.components.prev != undefined){
