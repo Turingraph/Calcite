@@ -3,7 +3,7 @@ import * as a from "../../type/alias"
 import Click_button from "../ui/click_button";
 import Click_option from "./click_option";
 import Str_to_h from "../../utils/str_to_h";
-import { input_option_t } from "../../type/input";
+import Panel from "../ui/panel";
 
 export default function Multi_options(
     {
@@ -12,7 +12,13 @@ export default function Multi_options(
         available_opts,
         default_opt = 0,
         is_search_bar = false,
-        is_duplicate = false
+        is_duplicate = false,
+        shape = {
+            x_scroll_bar: false,
+            y_scroll_bar: false,
+            w:undefined,
+            h:undefined
+        }
     }:{
         opt_name?:a.opt_name
         exist_objs:a.use_state_t<number[]>,
@@ -20,6 +26,11 @@ export default function Multi_options(
         default_opt?:number
         is_search_bar?:boolean
         is_duplicate?:boolean
+        shape?:{x_scroll_bar?:boolean,
+            y_scroll_bar?:boolean,
+            w?:undefined|number,
+            h?:undefined|number,
+        }        
     }
 ){
     const [ss_create_mode, setss_create_mode] = useState<number>(default_opt)
@@ -35,6 +46,24 @@ export default function Multi_options(
         exist_objs.setss([default_opt])
         setss_create_mode(default_opt)
     }
+    function func_create(){
+        let update_exist_objs = exist_objs.ss
+        update_exist_objs.push(ss_create_mode)
+        exist_objs.setss(update_exist_objs)
+    }
+    function func_delete(index:number){
+        // https://stackoverflow.com/questions/15292278/
+        // how-do-i-remove-an-array-item-in-typescript
+        let update_exist_objs = exist_objs.ss
+        update_exist_objs.splice(index, 1);
+        exist_objs.setss(update_exist_objs)
+    }
+    let jsx_elements = exist_objs.ss.map((item,index)=>{
+        return <>
+            <Str_to_h opt_name={available_opts[item] as a.opt_name}/>
+            <Click_button name={"x" as a.name} func_event={(()=>{func_delete(index)}) as a.func_event}/>
+        </>
+    })
     return <>
         <Str_to_h opt_name={opt_name}/>
         <Click_option 
@@ -45,11 +74,18 @@ export default function Multi_options(
         />
         <Click_button 
             name={("Create "+available_opts[ss_create_mode]) as a.name}
-            func_event={(()=>{}) as a.func_event}
+            func_event={(()=>{func_create()}) as a.func_event}
         />
         <Click_button 
             name={("Reset") as a.name}
             func_event={(()=>{func_reset()}) as a.func_event}
+        />
+        <Panel
+            jsx_element={<>{jsx_elements}</>}
+            x_scroll_bar={shape.x_scroll_bar}
+            y_scroll_bar={shape.y_scroll_bar}
+            w={shape.w}
+            h={shape.h}
         />
     </>
 }

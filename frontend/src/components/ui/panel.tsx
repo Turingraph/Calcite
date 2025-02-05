@@ -1,5 +1,13 @@
 import React, {JSX} from "react";
 
+export type panel_t = {
+    jsx_element:JSX.Element,
+    x_scroll_bar?:boolean,
+    y_scroll_bar?:boolean,
+    w?:undefined|number,
+    h?:undefined|number,
+}
+
 export default function Panel(
 {
     jsx_element,                     
@@ -7,12 +15,6 @@ export default function Panel(
     y_scroll_bar = false,                  
     w  = undefined,                           
     h = undefined,                          
-}:{
-    jsx_element:JSX.Element,
-    x_scroll_bar?:boolean,
-    y_scroll_bar?:boolean,
-    w?:undefined|number,
-    h?:undefined|number,
-}){
+}:panel_t){
     return (<>{jsx_element}</>)
 }
