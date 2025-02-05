@@ -20,18 +20,6 @@ output
 [<, >, history]
 ```
 
-7.	Mult_options ???
-
-Component
--   Mult_sbutton
--	State_option
-
-```
-+---------------------------------------+
-|title [option 0 [x]][add option, reset]|
-+---------------------------------------+
-```
-
 8.	Obj_input ???
 
 Components
