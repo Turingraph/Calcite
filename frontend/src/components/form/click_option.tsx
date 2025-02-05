@@ -1,4 +1,4 @@
-import React, { JSX, useState, useEffect } from "react";
+import React, {useState} from "react";
 import * as a from "../../type/alias"
 import Str_to_h from "../../utils/str_to_h";
 import { input_option_t } from "../../type/input";

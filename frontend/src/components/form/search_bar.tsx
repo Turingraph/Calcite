@@ -1,4 +1,4 @@
-import React, { JSX, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import * as a from "../../type/alias"
 import Str_input from "../ui/str_input";
 

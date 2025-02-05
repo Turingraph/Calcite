@@ -1,4 +1,4 @@
-import React, { JSX } from "react";
+import React from "react";
 import * as a from "../../type/alias"
 
 export type click_button_t = {

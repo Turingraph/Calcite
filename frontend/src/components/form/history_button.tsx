@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import * as a from "../../type/alias";
 import { history } from "../../type/history";
 import Click_button from "../ui/click_button";
