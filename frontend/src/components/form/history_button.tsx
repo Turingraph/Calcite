@@ -1,7 +1,8 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import * as a from "../../type/alias";
-import { history } from "../../type/history";
 import Click_button from "../ui/click_button";
+import Click_option from "./click_option";
+
 
 /*
 any = any type
@@ -31,28 +32,45 @@ Reference
 
 export default function History_button<t>({
     history,
-}:{history:a.use_state_t<history<t>>}
+}:{history:a.use_state_t<a.history<t>>}
 ){
+    const [ss_mode, setss_mode] = useState<number>(history.ss.current)
+    useEffect(()=>{
+        history.setss(({
+            arr:history.ss.arr,
+            commit: history.ss.commit,
+            current: ss_mode,
+        }) as unknown as a.history<t>)
+    },[ss_mode])
     function prev_func(){
-        if (history.ss?.components.prev != undefined){
+        if (history.ss.current - 1 >= 0){
             history.setss(({
-                    components: history.ss?.components.prev,
-                    length: history.ss
-                }) as unknown as history<t>)
+                    arr:history.ss.arr,
+                    commit: history.ss.commit,
+                    current: history.ss.current - 1,
+                }) as unknown as a.history<t>)
         }
     }
     function next_func(){
-        if (history.ss?.components.next != undefined){
+        if (history.ss.current + 1 <= history.ss.arr.length){
             history.setss(({
-                    components: history.ss?.components.next,
-                    length: history.ss
-                }) as unknown as history<t>)
+                arr:history.ss.arr,
+                commit: history.ss.commit,
+                current: history.ss.current + 1,
+                }) as unknown as a.history<t>)
         }
     }
     let jsx_prev_button = <Click_button name={"=>" as a.name} func_event={(()=>{prev_func()}) as a.func_event}/>
     let jsx_next_button = <Click_button name={"=>" as a.name} func_event={(()=>{next_func()}) as a.func_event}/>
+    let jsx_history_button = <Click_option
+        opt_name={"Open History" as a.opt_name}
+        available_opts={history.ss.commit}
+        ss_mode={{ss:ss_mode, setss:setss_mode} as a.use_state_t<number>}
+        is_search_bar={true}
+    />
     return <>
         {jsx_prev_button}
         {jsx_next_button}
+        {jsx_history_button}
     </>
 }

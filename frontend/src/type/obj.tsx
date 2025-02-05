@@ -1,5 +1,4 @@
 import * as a from "./alias"
-import { history } from "./history"
 
 export type user_t = {
     name:a.name,
@@ -16,7 +15,7 @@ export type img_t = {
     img:a.img,
     original?:a.img,
     dilate?:a.img,
-    history?:history<a.img>,
+    history?:a.history<a.img>,
     ocr_text?: string,
     osd?: string
 }

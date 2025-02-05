@@ -9,17 +9,6 @@ output
 [rename, select, copy, optional, x]
 ```
 
-6.	History_button ???
-
-Component
--   Mult_sbutton
-
-output
-
-```
-[<, >, history]
-```
-
 8.	Obj_input ???
 
 Components
