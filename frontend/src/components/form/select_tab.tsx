@@ -22,7 +22,7 @@ export default function Select_tab(
         }
         let jsx_element = <State_button 
                     name={name}
-                    event_func={(()=>setss_select(index)) as a.event_func}
+                    func_event={(()=>setss_select(index)) as a.func_event}
                 />
         return <Color_ui jsx_element={jsx_element} rgb={rgb}/>
     })

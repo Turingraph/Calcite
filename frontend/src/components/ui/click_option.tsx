@@ -49,8 +49,8 @@ export default function Click_option(
 }){
     // https://stackoverflow.com/questions/40676343/
     // typescript-input-onchange-event-target-value
-    const handle_event = (e: React.ChangeEvent<HTMLSelectElement >) => {
-        ss_option.setss(+e.target.value)}
+    const handle_event = ((e: React.ChangeEvent<HTMLSelectElement >) => {
+        ss_option.setss(+e.target.value)}) as a.handle_event<HTMLSelectElement>
     let jsx_option = options.map((item, index)=>{
         return (<option value={index}>{item}</option>)
     })

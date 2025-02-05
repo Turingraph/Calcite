@@ -30,31 +30,27 @@ Reference
 */
 
 export default function History_button<t>({
-    ptr_history,
-}:{ptr_history:history<t>}
+    history,
+}:{history:a.use_state_t<history<t>>}
 ){
-    const [ss_history, setss_history] = useState<history<t>>(ptr_history)
-    useEffect(()=>{
-        ptr_history = ss_history
-    },[ss_history])
     function prev_func(){
-        if (ss_history?.components.prev != undefined){
-            setss_history(({
-                    components: ss_history?.components.prev,
-                    length: ss_history
+        if (history.ss?.components.prev != undefined){
+            history.setss(({
+                    components: history.ss?.components.prev,
+                    length: history.ss
                 }) as unknown as history<t>)
         }
     }
     function next_func(){
-        if (ss_history?.components.next != undefined){
-            setss_history(({
-                    components: ss_history?.components.next,
-                    length: ss_history
+        if (history.ss?.components.next != undefined){
+            history.setss(({
+                    components: history.ss?.components.next,
+                    length: history.ss
                 }) as unknown as history<t>)
         }
     }
-    let jsx_prev_button = <Click_button name={"=>" as a.name} event_func={(()=>{prev_func()}) as a.event_func}/>
-    let jsx_next_button = <Click_button name={"=>" as a.name} event_func={(()=>{next_func()}) as a.event_func}/>
+    let jsx_prev_button = <Click_button name={"=>" as a.name} func_event={(()=>{prev_func()}) as a.func_event}/>
+    let jsx_next_button = <Click_button name={"=>" as a.name} func_event={(()=>{next_func()}) as a.func_event}/>
     return <>
         {jsx_prev_button}
         {jsx_next_button}

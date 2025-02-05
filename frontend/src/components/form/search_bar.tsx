@@ -6,16 +6,16 @@ export default function Search_bar<t extends {name:a.name}>(
 {
     opt_name = undefined,
     read_only_arr,
-    ss_search_arr
+    search_arr
 }:{
     opt_name:a.opt_name,
     read_only_arr:t[],
-    ss_search_arr:a.use_state_t<t[]>
+    search_arr:a.use_state_t<t[]>
 }){
     const [ss_search_text, setss_search_text] = useState<string>("")
     useEffect(()=>{
         // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/arr/filter
-        ss_search_arr.setss(read_only_arr.filter(
+        search_arr.setss(read_only_arr.filter(
             (i) => {i.name.includes(ss_search_text) == true}
             ))
     },[ss_search_text])

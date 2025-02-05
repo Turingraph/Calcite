@@ -9,7 +9,7 @@ export default function Multi_button(
     let jsx_output = button_arr.map((i)=>{
         return <Click_button 
                     name={i.name}
-                    event_func={i.event_func}
+                    func_event={i.func_event}
                 />
     })
     return <>{jsx_output}</>

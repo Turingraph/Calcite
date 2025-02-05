@@ -9,7 +9,10 @@ export type logo = name|img|undefined   // logo of button
 export type value<t> = nominal<t>
 export type select = nominal<boolean>
 export type img = nominal<File> // image
-export type event_func = nominal<()=>void>
+export type func_event = nominal<()=>void>
+export type handle_event<input_mode> = nominal<
+    (e:React.ChangeEvent<input_mode>)=>void
+>
 
 export type name_t = {
     name:name
