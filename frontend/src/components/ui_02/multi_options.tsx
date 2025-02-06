@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import * as a from "../../type/alias"
 import Click_button from "../ui_00/click_button";
-import Click_option from "../ui_01/click_option";
+import Input_option from "../ui_01/input_option";
 import Str_to_h from "../../utils/str_to_h";
 import Panel from "../ui_00/panel";
 
@@ -66,7 +66,7 @@ export default function Multi_options(
     })
     return <>
         <Str_to_h opt_name={opt_name}/>
-        <Click_option 
+        <Input_option 
             opt_name={"Select Mode" as a.opt_name} 
             available_opts={available_opts} 
             ss_mode={{ss:ss_create_mode, setss:setss_create_mode} as a.use_state_t<number>}

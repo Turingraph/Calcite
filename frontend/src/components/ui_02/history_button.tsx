@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import * as a from "../../type/alias";
 import Click_button from "../ui_00/click_button";
-import Click_option from "../ui_01/click_option";
+import Input_option from "../ui_01/input_option";
 
 
 /*
@@ -62,7 +62,7 @@ export default function History_button<t>({
     }
     let jsx_prev_button = <Click_button name={"=>" as a.name} func_event={(()=>{prev_func()}) as a.func_event}/>
     let jsx_next_button = <Click_button name={"=>" as a.name} func_event={(()=>{next_func()}) as a.func_event}/>
-    let jsx_history_button = <Click_option
+    let jsx_history_button = <Input_option
         opt_name={"Open History" as a.opt_name}
         available_opts={history.ss.commit}
         ss_mode={{ss:ss_mode, setss:setss_mode} as a.use_state_t<number>}

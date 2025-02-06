@@ -1,3 +1,5 @@
+Suppose that there were very advance alien civilization try to modify every human and every sentient being on Earth to become General Modified Species for welfare biology related purpose, how would human government react to that without know anythings about the alien and their intention ?
+
 # Basic UI
 
 1.  State_button

@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import * as a from "../../type/alias"
 import Str_to_h from "../../utils/str_to_h";
-import { input_option_t } from "../../type/input";
+import { option_mode_t, input_option_t } from "../../type/input";
 import Search_bar from "./search_bar";
 
 //  https://stackoverflow.com/questions/40209352/
@@ -39,19 +39,14 @@ render(<App />, document.getElementById('root'));
 */
 
 
-export default function Click_option(
+export default function Input_option(
 {
     opt_name = undefined,
     available_opts,
     ss_mode,
     is_search_bar = false
-}:{
-    opt_name?:a.opt_name
-    available_opts:string[]
-    ss_mode:a.use_state_t<number>
-    is_search_bar?:boolean
-}){
-    const [ss_show_opts, setss_show_opts] = useState<input_option_t[]>(()=>{
+}:input_option_t){
+    const [ss_show_opts, setss_show_opts] = useState<option_mode_t[]>(()=>{
         return available_opts.map((item, index)=>{ return {name:item as a.name, value:index}})
     })
     // https://stackoverflow.com/questions/40676343/
@@ -65,14 +60,14 @@ export default function Click_option(
     })
     let jsx_search_bar = <></>
     if (is_search_bar===true){
-        jsx_search_bar= <Search_bar<input_option_t, "name">
+        jsx_search_bar= <Search_bar<option_mode_t, "name">
             opt_name={undefined as a.opt_name}
-            read_only_arr={available_opts.map((item,index)=>{return {name:item,value:index} as input_option_t})}
+            read_only_arr={available_opts.map((item,index)=>{return {name:item,value:index} as option_mode_t})}
             search_arr={
                 {
                     ss:ss_show_opts, 
                     setss:setss_show_opts
-                } as a.use_state_t<input_option_t[]>}
+                } as a.use_state_t<option_mode_t[]>}
             property = "name"
         />
     }
