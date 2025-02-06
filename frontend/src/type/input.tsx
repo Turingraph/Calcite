@@ -9,14 +9,14 @@ export type input_multi_t = {
 }
 
 export type input_num_t = {
-    opt_name?:a.opt_name,
-    value:a.value<number>,
-    show_value:a.value<string>
+    opt_name:a.opt_name,
+    input:a.use_state_t<number>
+    default_input:number
 }
 
 export type input_str_t = {
-    opt_name?:a.opt_name,
-    value:a.value<string>
+    opt_name:a.opt_name,
+    input:a.use_state_t<string>
 }
 
 export type input_option_t = {

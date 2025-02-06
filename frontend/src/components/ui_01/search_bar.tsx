@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import * as a from "../../type/alias"
-import Str_input from "../ui_00/str_input";
+import Input_str from "../ui_00/input_str";
 
 // How to make function accept prop based on property
 // https://www.freecodecamp.org/news/typescript-generics-with-functional-react-components/
@@ -27,7 +27,7 @@ export default function Search_bar<t extends object, k extends keyof t>(
     },[ss_search_text])
     
     return (<>
-        <Str_input
+        <Input_str
             opt_name={opt_name}
             input = {{
                 ss: ss_search_text,
