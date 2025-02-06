@@ -4,6 +4,7 @@ import { input_multi_t, input_num_t } from "../../type/input";
 import Str_to_h from "../../utils/str_to_h";
 import Input_str from "../ui_00/input_str";
 import Input_num from "../ui_01/input_num";
+import Input_option from "../ui_01/input_option";
 
 export default function Input_multi({
     opt_name    ,
@@ -31,9 +32,20 @@ export default function Input_multi({
             />
         })
     }
+    if (input_option != undefined){
+        jsx_input_option = input_option.map((item)=>{
+            return <Input_option
+                opt_name={item.opt_name}
+                available_opts={item.available_opts}
+                ss_mode={item.ss_mode}
+                is_search_bar={item.is_search_bar}
+            />
+        })
+    }
     return <>
         <Str_to_h opt_name={opt_name as a.opt_name}/>
         {jsx_input_num}
         {jsx_input_str}
+        {jsx_input_option}
     </>
 }
