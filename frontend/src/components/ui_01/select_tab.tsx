@@ -1,6 +1,6 @@
 import React, {useState, JSX} from "react";
 import * as a from "../../type/alias"
-import State_button from "../ui_00/click_button";
+import Click_button from "../ui_00/click_button";
 import Color_ui from "../ui_00/color_ui";
 
 export default function Select_tab(
@@ -20,7 +20,7 @@ export default function Select_tab(
         if (index == ss_select){
             rgb = SELECT_RGB;
         }
-        let jsx_element = <State_button 
+        let jsx_element = <Click_button 
                     name={name}
                     func_event={(()=>setss_select(index)) as a.func_event}
                 />
