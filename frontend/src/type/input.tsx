@@ -4,7 +4,7 @@ export type input_multi_t = {
     opt_name?:a.opt_name,
     input_num?:undefined|input_num_t[],
     input_str?:undefined|input_str_t[],
-    input_option?:undefined|input_option_t[]
+    input_opt?:undefined|input_opt_t[]
 }
 
 export type input_num_t = {
@@ -18,12 +18,12 @@ export type input_str_t = {
     input:a.use_state_t<string>
 }
 
-export type option_mode_t = {
+export type opt_mode_t = {
     name:a.name,
     value:number
 }
 
-export type input_option_t = {
+export type input_opt_t = {
     opt_name?:a.opt_name
     available_opts:string[]
     ss_mode:a.use_state_t<number>
