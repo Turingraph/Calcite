@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
-import State_button from './components/ui/click_button';
+import State_button from './components/ui_00/click_button';
 
 function App() {
   const [SS_Num, setSS_Num] = useState<number>(0);

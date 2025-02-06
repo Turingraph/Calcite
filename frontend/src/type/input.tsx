@@ -2,10 +2,10 @@ import * as a from "./alias"
 
 export type input_multi_t = {
     opt_name?:a.opt_name,
-    input_num?:undefined|input_num_t|input_num_t[],
-    input_str?:undefined|input_str_t|input_str_t[],
-    option_name?:undefined|a.name
-    input_option?:undefined|string[]|input_option_t[]
+    input_num?:undefined|input_num_t[],
+    input_str?:undefined|input_str_t[],
+    option_name?:undefined|a.name[]
+    input_option?:undefined|string[][]|input_option_t[][]
 }
 
 export type input_num_t = {

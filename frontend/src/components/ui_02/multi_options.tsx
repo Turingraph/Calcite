@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from "react";
 import * as a from "../../type/alias"
-import Click_button from "../ui/click_button";
-import Click_option from "./click_option";
+import Click_button from "../ui_00/click_button";
+import Click_option from "../ui_01/click_option";
 import Str_to_h from "../../utils/str_to_h";
-import Panel from "../ui/panel";
+import Panel from "../ui_00/panel";
 
 export default function Multi_options(
     {

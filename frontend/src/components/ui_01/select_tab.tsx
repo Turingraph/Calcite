@@ -1,7 +1,7 @@
 import React, {useState, JSX} from "react";
 import * as a from "../../type/alias"
-import State_button from "../ui/click_button";
-import Color_ui from "../ui/color_ui";
+import State_button from "../ui_00/click_button";
+import Color_ui from "../ui_00/color_ui";
 
 export default function Select_tab(
 {
