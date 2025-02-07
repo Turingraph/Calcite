@@ -1,13 +1,14 @@
 import React from "react";
 import * as a from "../../type/alias"
 import Str_to_str from "../../utils/str_to_str";
-import { input_str_t } from "../../type/input";
+import { input_t } from "../../type/input";
 
 export default function Input_str(
 {
     opt_name = undefined,
-    input
-}:input_str_t
+    input,
+    default_input = undefined
+}:input_t<string>
 ){
     // https://www.geeksforgeeks.org/how-to-handle-input-forms-with-usestate-hook-in-react/
     let str_placeholder = Str_to_str({value:opt_name as a.value<string>});

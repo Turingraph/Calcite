@@ -15,6 +15,7 @@ export type history<t> = {
     current:number
 }
 export type func_event = nominal<()=>void>
+export type func_convert<t_input, t_output> = nominal<(value:t_input)=>t_output>
 export type handle_event<input_mode> = nominal<
     (e:React.ChangeEvent<input_mode>)=>void
 >
@@ -39,4 +40,11 @@ export type use_state_t<t> = {
     setss:React.Dispatch<
         React.SetStateAction<t>
     >
+}
+
+// https://stackoverflow.com/questions/49752151/
+// typescript-keyof-returning-specific-type
+
+export type key_of_t<t, v> = keyof {
+    [p in keyof t as t[p] extends v? p: never]: any
 }

@@ -2,20 +2,17 @@ import * as a from "./alias"
 
 export type input_multi_t = {
     opt_name?:a.opt_name,
-    input_num?:undefined|input_num_t[],
-    input_str?:undefined|input_str_t[],
+    input_str?:undefined|input_t<string|number>[],
     input_opt?:undefined|input_opt_t[]
 }
 
-export type input_num_t = {
-    opt_name:a.opt_name,
-    input:a.use_state_t<number>
-    default_input:number
-}
+// https://stackoverflow.com/questions/61862235/
+// default-value-for-typescript-type-alias
 
-export type input_str_t = {
+export type input_t<t> = {
     opt_name:a.opt_name,
-    input:a.use_state_t<string>
+    input:a.use_state_t<t>
+    default_input?:undefined|t
 }
 
 export type opt_mode_t = {

@@ -1,6 +1,19 @@
 import React, { JSX } from "react";
 
-export default function Opt_to_jsx<t>({
+export function Opt_to_jsx<t>({
+    arr = undefined,
+    jsx_element
+}:{
+    arr?:t
+    jsx_element:(t:t)=>JSX.Element
+}){
+    if(arr != undefined){
+        return jsx_element(arr)
+    }
+    return [<></>]
+}
+
+export function Opt_to_jsx_arr<t>({
     arr = undefined,
     jsx_element
 }:{
