@@ -1,6 +1,6 @@
 import React from "react";
 import * as a from "../../type/alias"
-import Str_to_str from "../../utils/str_to_str";
+import {Str_to_str} from "../../utils/convert";
 import { input_t } from "../../type/input";
 
 export default function Input_str(

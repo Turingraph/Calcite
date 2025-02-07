@@ -4,7 +4,7 @@ import * as a from "../../type/alias"
 import Panel from "../ui_00/panel";
 import Input_form from "../ui_01/input_form";
 import { input_t } from "../../type/input";
-import Str_to_h from "../../utils/str_to_h";
+import {Str_to_h} from "../../utils/convert";
 import { func_set_input_arr } from "../../utils/handle";
 import Input_opt from "../ui_01/input_opt";
 

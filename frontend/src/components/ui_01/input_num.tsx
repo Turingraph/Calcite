@@ -2,7 +2,7 @@ import React , {useState} from "react";
 import * as a from "../../type/alias"
 import Input_str from "../ui_00/input_str";
 import Click_button from "../ui_00/click_button";
-import Str_to_h from "../../utils/str_to_h";
+import {Str_to_h} from "../../utils/convert";
 import { input_t } from "../../type/input";
 
 export default function Input_num({

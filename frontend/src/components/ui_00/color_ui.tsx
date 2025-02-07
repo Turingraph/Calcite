@@ -1,5 +1,5 @@
 import React, {JSX} from "react";
-import Int_to_rgb from "../../utils/int_to_rgb";
+import {Int_to_rgb} from "../../utils/convert";
 
 export default function Color_ui({
     jsx_element,

@@ -1,11 +1,8 @@
 import React from "react";
 import * as a from "../../type/alias";
-import { input_opt_t, input_t, input_multi_t } from "../../type/input";
-import Str_to_h from "../../utils/str_to_h";
-import Input_str from "../ui_00/input_str";
-import Input_num from "../ui_01/input_num";
+import {input_t, input_multi_t } from "../../type/input";
+import {Str_to_h, Opt_to_jsx_arr} from "../../utils/convert";
 import Input_opt from "../ui_01/input_opt";
-import {Opt_to_jsx_arr} from "../../utils/opt_to_jsx";
 import Input_form from "../ui_01/input_form"
 
 export default function Input_multi({

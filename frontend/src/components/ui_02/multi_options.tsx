@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import * as a from "../../type/alias"
 import Click_button from "../ui_00/click_button";
 import Input_opt from "../ui_01/input_opt";
-import Str_to_h from "../../utils/str_to_h";
+import {Str_to_h} from "../../utils/convert";
 import Panel from "../ui_00/panel";
 
 export default function Multi_opts(

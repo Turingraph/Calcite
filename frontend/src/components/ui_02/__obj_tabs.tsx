@@ -1,8 +1,7 @@
 import React, {useState, JSX} from "react";
 import Click_button, {click_button_t} from "../ui_00/click_button";
 import * as a from "../../type/alias";
-import Opt_to_jsx from "../../utils/opt_to_jsx";
-import Str_to_h from "../../utils/str_to_h";
+import {Str_to_h, Opt_to_jsx_arr} from "../../utils/convert";
 import Get_unknown_prob from "../../utils/handle";
 
 export default function Obj_tabs<
