@@ -3,7 +3,7 @@ import Click_button, {click_button_t} from "../ui_00/click_button";
 import * as a from "../../type/alias";
 import Opt_to_jsx from "../../utils/opt_to_jsx";
 import Str_to_h from "../../utils/str_to_h";
-import Get_unknown_prob from "../../utils/get_unknown_prob";
+import Get_unknown_prob from "../../utils/handle";
 
 export default function Obj_tabs<
     t extends unknown, 

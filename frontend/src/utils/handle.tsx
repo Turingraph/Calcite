@@ -28,3 +28,12 @@ export default function Get_unknown_prob({
     }
     return undefined
 }
+
+export function func_set_input_arr<t>(
+        index:number, 
+        input_arr:a.use_state_t<t[]>, 
+        update_input:t){
+    let update_arr = input_arr.ss
+    update_arr[index]  = update_input
+    input_arr.setss(update_arr)
+}

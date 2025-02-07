@@ -1,6 +1,6 @@
 import React from "react";
 import * as a from "../../type/alias";
-import { input_opt_t, input_t } from "../../type/input";
+import { input_opt_t, input_t, input_multi_t } from "../../type/input";
 import Str_to_h from "../../utils/str_to_h";
 import Input_str from "../ui_00/input_str";
 import Input_num from "../ui_01/input_num";
@@ -12,11 +12,7 @@ export default function Input_multi({
     opt_name,
     input_str,
     input_opt
-}:{
-    opt_name:a.opt_name
-    input_str:undefined|input_t<string|number>[]
-    input_opt:undefined|input_opt_t[]
-}){
+}:input_multi_t){
     let jsx_input_opt = Opt_to_jsx_arr({arr:input_opt, jsx_element:Input_opt})
     let jsx_input_str = <></>
     let let_input_str:input_t<string|number>[] = []

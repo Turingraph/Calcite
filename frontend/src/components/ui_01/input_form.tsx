@@ -6,8 +6,10 @@ import Str_to_h from "../../utils/str_to_h";
 import { input_t } from "../../type/input";
 
 export default function Input_form({
+    opt_name = undefined,
     arr,
 }:{
+    opt_name?:a.opt_name|undefined
     arr:input_t<string|number>[]
 }){
     const [ss_texts, setss_texts] = useState<string[]>(arr.map((item)=>{return item.input.ss.toString()}))
@@ -58,17 +60,18 @@ export default function Input_form({
         </>
     })
     return <>
+        <Str_to_h opt_name={opt_name}/>
         {jsx_elements}
         <Click_button
-            name={"Apply Change" as a.name}
+            name={"apply change" as a.name}
             func_event={(()=>{func_set_ok()}) as a.func_event}
         />
         <Click_button
-            name={"Cancel Change" as a.name}
+            name={"cancel change" as a.name}
             func_event={(()=>{func_set_cancel()}) as a.func_event}
         />
         <Click_button
-            name={"Reset All" as a.name}
+            name={"reset all" as a.name}
             func_event={(()=>{func_set_default()}) as a.func_event}
         />
     </>
