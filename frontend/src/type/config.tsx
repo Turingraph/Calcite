@@ -21,7 +21,7 @@ export type config_ocr_t = {
     psm: string[],
     languages:string[]|ui.input_opt_t[],
     oem:string[],
-    timeout:ui.input_num_t,
+    timeout:ui.input_t<number>,
     white_or_black_list:string[],
     search_characters:string
 }

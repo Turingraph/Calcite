@@ -3,56 +3,57 @@ import * as a from "../../type/alias"
 import Click_button from "../ui_00/click_button";
 import Input_str from "../ui_00/input_str";
 import Str_to_h from "../../utils/str_to_h";
-
-// https://www.geeksforgeeks.org/
-// how-to-create-conditional-types-in-typescript/
-// export type num_or_str_t<t> = t extends {
-//     typeof : number | string
-// } ? t : "Invalid Type Error: Tye should only be number or string\nfrom frontend/src/components/ui_01/input_form.tsx"
-
-export type input_form_t<t> = {
-    opt_name:a.opt_name
-    real_input:a.use_state_t<t>
-    show_input:a.use_state_t<string>
-    default_input:t
-}
-
-export type input_form_str = input_form_t<string|number>
+import { input_t } from "../../type/input";
 
 export default function Input_form({
     arr,
 }:{
-    arr:input_form_str[],
+    arr:input_t<string|number>[]
 }){
+    const [ss_texts, setss_texts] = useState<string[]>(arr.map((item)=>{return item.input.ss.toString()}))
     // https://stackoverflow.com/questions/64452484/
     // how-can-i-safely-access-caught-error-properties-in-typescript
+    function func_update_texts(index:number, update_input:string){
+        let update_texts = ss_texts
+        update_texts[index]  = update_input
+        setss_texts(update_texts)
+    }
+    function func_default(item:input_t<string|number>){
+        return item.default_input?item.default_input:0
+    }
     function func_set_default(){
-        arr.map((item)=>{
-            item.real_input.setss(item.default_input)
-            item.show_input.setss(item.default_input.toString())
+        arr.map((item, index)=>{
+            item.input.setss(func_default(item))
+            func_update_texts(index,func_default(item).toString())
         })
     }
     function func_set_ok(){
-        arr.map((item)=>{
-            let let_input:typeof item.default_input;
+        arr.map((item, index)=>{
+            const item_t = typeof item.default_input;
+            let let_input:typeof item_t;
             try{
-                typeof item.default_input === "number"
-                ?let_input = Number(item.show_input.ss) as typeof item.default_input
-                :let_input = item.show_input.ss as typeof item.default_input
+                typeof item_t === "number"
+                ?let_input = Number(ss_texts[index]) as typeof item_t
+                :let_input = ss_texts[index] as typeof item_t
             }
             catch{
-                let_input = item.default_input as typeof item.default_input
+                let_input = item.default_input as typeof item_t
             }
-            item.real_input.setss(let_input as typeof item.default_input)
-            item.show_input.setss(let_input.toString())
+            item.input.setss(let_input as typeof item_t)
+            func_update_texts(index, let_input.toString())
         })
     }
-    let jsx_elements = arr.map((item)=>{
+    function func_set_cancel(){
+        arr.map((item, index)=>{
+            func_update_texts(index, item.input.ss.toString())
+        })
+    }
+    let jsx_elements = arr.map((item,index)=>{
         return <>
         <Str_to_h opt_name={item.opt_name}/>
         <Input_str
             opt_name={undefined}
-            input={{ss:item.show_input.ss, setss:item.show_input.setss} as a.use_state_t<string>}
+            input={{ ss: ss_texts, setss: ((e:string) => { func_update_texts(index, e); }) } as unknown as a.use_state_t<string>}
         />
         </>
     })
@@ -64,7 +65,7 @@ export default function Input_form({
         />
         <Click_button
             name={"Cancel Change" as a.name}
-            func_event={(()=>{func_set_default()}) as a.func_event}
+            func_event={(()=>{func_set_cancel()}) as a.func_event}
         />
         <Click_button
             name={"Reset All" as a.name}
