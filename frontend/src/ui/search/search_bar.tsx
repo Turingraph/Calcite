@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import * as a from "../../type/alias"
-import Input_str from "../ui_00/input_str";
+import Input_str from "../input/input_str";
 
 // How to make function accept prop based on property
 // https://www.freecodecamp.org/news/typescript-generics-with-functional-react-components/

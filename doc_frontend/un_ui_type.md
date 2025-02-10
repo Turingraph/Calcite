@@ -8,15 +8,3 @@ output
 ```
 [rename, select, copy, optional, x]
 ```
-
-9.	filter list
-
-Components
--	Mult_sbutton
--	Str_input
-
-```
-+------------------------------------------------------------------------+
-| list : [1, 2, ..., n] | first second last len scalar [activate, reset] |
-+------------------------------------------------------------------------+
-```

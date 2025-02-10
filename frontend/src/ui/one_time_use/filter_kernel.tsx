@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from "react";
-import Click_button from "../ui_00/click_button";
+import Click_button from "../button/click_button";
 import * as a from "../../type/alias"
-import Panel from "../ui_00/panel";
-import Input_form from "../ui_01/input_form";
+import Panel from "../asset/panel";
+import Input_form from "../input/input_form";
 import { input_t } from "../../type/input";
 import {Str_to_h} from "../../utils/convert";
 import { func_set_input_arr } from "../../utils/handle";
-import Input_opt from "../ui_01/input_opt";
+import Input_opt from "../search/input_opt";
 
 // img_process/kernel_2d.py/def sharp_kernel_2d
 

@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from "react";
 import * as a from "../../type/alias"
-import Click_button from "../ui_00/click_button";
-import Input_opt from "../ui_01/input_opt";
+import Click_button from "../button/click_button";
+import Input_opt from "./input_opt";
 import {Str_to_h} from "../../utils/convert";
-import Panel from "../ui_00/panel";
+import Panel from "../asset/panel";
 
-export default function Multi_opts(
+export default function Factory_opts(
     {
         opt_name = undefined as a.opt_name,
         exist_objs,
@@ -47,14 +47,14 @@ export default function Multi_opts(
         setss_create_mode(default_opt)
     }
     function func_create(){
-        let update_exist_objs = exist_objs.ss
+        let update_exist_objs = [...exist_objs.ss]
         update_exist_objs.push(ss_create_mode)
         exist_objs.setss(update_exist_objs)
     }
     function func_delete(index:number){
         // https://stackoverflow.com/questions/15292278/
         // how-do-i-remove-an-array-item-in-typescript
-        let update_exist_objs = exist_objs.ss
+        let update_exist_objs = [...exist_objs.ss]
         update_exist_objs.splice(index, 1);
         exist_objs.setss(update_exist_objs)
     }

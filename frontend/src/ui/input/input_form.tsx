@@ -1,7 +1,7 @@
 import React , {useState} from "react";
 import * as a from "../../type/alias"
-import Click_button from "../ui_00/click_button";
-import Input_str from "../ui_00/input_str";
+import Click_button from "../button/click_button";
+import Input_str from "./input_str";
 import {Str_to_h} from "../../utils/convert";
 import { input_t } from "../../type/input";
 
@@ -16,7 +16,7 @@ export default function Input_form({
     // https://stackoverflow.com/questions/64452484/
     // how-can-i-safely-access-caught-error-properties-in-typescript
     function func_update_texts(index:number, update_input:string){
-        let update_texts = ss_texts
+        let update_texts = [...ss_texts]
         update_texts[index]  = update_input
         setss_texts(update_texts)
     }
