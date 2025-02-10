@@ -1,8 +1,7 @@
 import React, {useEffect, useState} from "react";
 import * as a from "../../type/alias";
 import Click_button from "./click_button";
-import Input_opt from "./input_opt";
-
+import Input_opt from "../search/input_opt";
 
 /*
 any = any type
@@ -30,7 +29,7 @@ Reference
 *   https://stackoverflow.com/questions/51439843/unknown-vs-any
 */
 
-export default function History_button<t>({
+export default function History_buttons<t>({
     history,
 }:{history:a.use_state_t<a.history<t>>}
 ){
