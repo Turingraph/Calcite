@@ -11,31 +11,33 @@ import Input_form from "../components/input/input_form";
 import { input_t } from "../type/input";
 import Combine_input from "../components/input/combine_input";
 import { input_opt_t } from "../type/input";
+import { default_ocr } from "../data/config";
 
 export default function Config_ocr({
     //
 }:{
     //
 }){
-    const [ss_psm, setss_psm] = useState<number>(1)
-    const [ss_oem, setss_oem] = useState<number>(3)
-    const [ss_languages, setss_languages] = useState<number[]>([1])
-    const [ss_time_out, setss_time_out] = useState<number>(0)
-    
+    const [ss_psm, setss_psm] = useState<number>(default_ocr.psm)
+    const [ss_oem, setss_oem] = useState<number>(default_ocr.oem)
+    const [ss_languages, setss_languages] = useState<number[]>(default_ocr.languages)
+    const [ss_time_out, setss_time_out] = useState<number>(default_ocr.time_out)
+    const [ss_filter_char, setss_filter_char] = useState<string>(default_ocr.filter_char)
+    const [ss_filter_mode, setss_filter_mode] = useState<number>(default_ocr.filter_mode)
 
-    let config_psm:input_opt_t = {
+    let interface_psm:input_opt_t = {
             opt_name: "Page Segmentation Mode (PSM)" as a.opt_name,
             available_opts: psm_opts,
             ss_mode: {ss:ss_psm, setss:setss_psm},
             is_search_bar: false
     }
-    let config_oem:input_opt_t = {
+    let interface_oem:input_opt_t = {
         opt_name: "OCR Engine Mode (OEM)" as a.opt_name,
         available_opts: oem_opts,
         ss_mode: {ss:ss_oem, setss:setss_oem},
         is_search_bar: false
     }
-    let config_lang = <Factory_opts
+    let interface_lang = <Factory_opts
     opt_name={"Select Language" as a.opt_name}
     exist_objs={{ss:ss_languages, setss:setss_languages}}
     available_opts={language_opts}
@@ -43,18 +45,32 @@ export default function Config_ocr({
     is_search_bar={true}
     is_duplicate={false}
     />
-    let config_time_out:input_t<string|number> = {
+    let interface_time_out:input_t<string|number> = {
         opt_name:"Time out (second)" as a.opt_name,
         input:{ss:ss_time_out, setss:setss_time_out} as a.use_state_t<number|string>,
         default_input:0
     }
-    let config_ocr = <Combine_input
+    let interface_filter_char = <Combine_input
+        opt_name={"Filter Character" as a.opt_name}
+        input_str={[{
+            opt_name:"selected character" as a.opt_name,
+            input:{ss:ss_filter_char, setss:setss_filter_char} as a.use_state_t<number|string>
+            }]}
+        input_opt={[{
+            opt_name:"mode" as a.opt_name,
+            available_opts:["select those text", "avoid those text"],
+            ss_mode:{ss:ss_filter_mode, setss:setss_filter_mode},
+            is_search_bar:false
+        }]}
+    />
+    let interface_ocr = <Combine_input
         opt_name={"OCR Setting" as a.opt_name}
-        input_str={[config_time_out]}
-        input_opt={[config_psm, config_oem]}
+        input_str={[interface_time_out]}
+        input_opt={[interface_psm, interface_oem]}
     />
     return <>
-        {config_lang}
-        {config_ocr}
+        {interface_lang}
+        {interface_filter_char}
+        {interface_ocr}
     </>
 }
