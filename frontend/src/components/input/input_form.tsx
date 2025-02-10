@@ -8,9 +8,11 @@ import { input_t } from "../../type/input";
 export default function Input_form({
     opt_name = undefined,
     arr,
+    func_activate = (()=>{}) as a.func_event
 }:{
     opt_name?:a.opt_name|undefined
     arr:input_t<string|number>[]
+    func_activate?:a.func_event
 }){
     const [ss_texts, setss_texts] = useState<string[]>(arr.map((item)=>{return item.input.ss.toString()}))
     // https://stackoverflow.com/questions/64452484/
@@ -44,6 +46,7 @@ export default function Input_form({
             item.input.setss(let_input as typeof item_t)
             func_update_texts(index, let_input.toString())
         })
+        func_activate()
     }
     function func_set_cancel(){
         arr.map((item, index)=>{

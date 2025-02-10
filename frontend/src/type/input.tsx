@@ -4,6 +4,7 @@ export type combine_input_t = {
     opt_name?:a.opt_name,
     input_str?:undefined|input_t<string|number>[],
     input_opt?:undefined|input_opt_t[]
+    func_activate?:a.func_event
 }
 
 // https://stackoverflow.com/questions/61862235/

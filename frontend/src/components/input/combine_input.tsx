@@ -8,7 +8,8 @@ import Input_form from "./input_form";
 export default function Combine_input({
     opt_name,
     input_str,
-    input_opt
+    input_opt,
+    func_activate
 }:combine_input_t){
     let jsx_input_opt = Opt_to_jsx_arr({arr:input_opt, jsx_element:Input_opt})
     let jsx_input_str = <></>
@@ -23,6 +24,7 @@ export default function Combine_input({
         })
         jsx_input_str = <Input_form
             arr = {let_input_str}
+            func_activate={func_activate}
         />
     }
     return <>
