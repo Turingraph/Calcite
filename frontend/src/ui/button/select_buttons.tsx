@@ -3,7 +3,7 @@ import * as a from "../../type/alias"
 import Click_button from "./click_button";
 import Color_ui from "../asset/color_ui";
 
-export default function Select_tabs(
+export default function Select_buttons(
 {
     jsx_elements,
     name_arr
