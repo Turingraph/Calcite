@@ -5,7 +5,7 @@ import Input_str from "../input/input_str";
 import { func_update_arr } from "../../utils/handle";
 import { Str_to_h } from "../../utils/convert";
 
-export default function Obj_tabs<t extends {"name":a.name}>({
+export default function Obj_tabs<t extends {name:a.name}>({
     obj_arr,
     index,
     jsx_additional = undefined, 
