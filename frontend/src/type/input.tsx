@@ -1,6 +1,6 @@
 import * as a from "./alias"
 
-export type input_multi_t = {
+export type combine_input_t = {
     opt_name?:a.opt_name,
     input_str?:undefined|input_t<string|number>[],
     input_opt?:undefined|input_opt_t[]

@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import * as a from "../../type/alias"
 import Click_button from "../button/click_button";
-import Input_opt from "./input_opt";
+import Input_opt from "../search/input_opt";
 import {Str_to_h} from "../../utils/convert";
 import Panel from "../asset/panel";
 

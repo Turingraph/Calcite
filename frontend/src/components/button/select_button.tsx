@@ -1,9 +1,9 @@
 import React, {JSX, useState} from "react";
 import * as a from "../../type/alias";
 import { func_update_arr } from "../../utils/handle";
-import Click_button from "../button/click_button";
+import Click_button from "./click_button";
 
-export default function Select_objs<t extends {select:a.select}>({
+export default function Select_button<t extends {select:a.select}>({
     arr,
     index
 }:{
