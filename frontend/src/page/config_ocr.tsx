@@ -5,7 +5,7 @@ import Select_tabs from "../components/button/select_tabs";
 import * as a from '../type/alias'
 import Input_opt from "../components/search/input_opt";
 import Factory_opts from "../components/factory/factory_opts";
-import { language_opts, psm_opts, oem_opts } from "../data/config";
+import { language_opts, psm_opts, oem_opts } from "../data/constant";
 import Input_str from "../components/input/input_str";
 import Input_form from "../components/input/input_form";
 import { input_t } from "../type/input";

@@ -8,11 +8,13 @@ import { input_t } from "../../type/input";
 export default function Input_form({
     opt_name = undefined,
     arr,
-    func_activate = (()=>{}) as a.func_event
+    func_activate = (()=>{}) as a.func_event,
+    is_undo = false
 }:{
     opt_name?:a.opt_name|undefined
     arr:input_t<string|number>[]
     func_activate?:a.func_event
+    is_undo?:boolean
 }){
     const [ss_texts, setss_texts] = useState<string[]>(arr.map((item)=>{return item.input.ss.toString()}))
     // https://stackoverflow.com/questions/64452484/
@@ -69,10 +71,10 @@ export default function Input_form({
             name={"apply change" as a.name}
             func_event={(()=>{func_set_ok()}) as a.func_event}
         />
-        <Click_button
+        {is_undo ? <Click_button
             name={"cancel change" as a.name}
             func_event={(()=>{func_set_cancel()}) as a.func_event}
-        />
+        /> : <></>}
         <Click_button
             name={"reset all" as a.name}
             func_event={(()=>{func_set_default()}) as a.func_event}

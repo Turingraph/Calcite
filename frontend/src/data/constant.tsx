@@ -1,3 +1,5 @@
+import * as a from '../type/alias'
+
 export const language_opts:string[] = ['eng', 'osd']
 export const psm_opts:string[] = [
     '--psm 1  (Default Mode + OSD)',
@@ -20,10 +22,10 @@ export const oem_opts:string[] = [
     '--oem 4  (Default, based on what is available)',
 ]
 
-export const img_process_button:string[] = [
+export const img_process_button_name:a.name[] = [
     "gray",
     "remove noice",
     "thin font",
     "thick font",
     "invert image"
-]
+].map((item)=>{return item as a.name})
