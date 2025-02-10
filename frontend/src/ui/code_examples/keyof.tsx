@@ -30,4 +30,10 @@ export function Summary<t extends object, k extends keyof t, j>({
     </div>
   );
 }
-  
+
+type eee = {
+  name:string,
+  age:number
+}
+
+Summary
