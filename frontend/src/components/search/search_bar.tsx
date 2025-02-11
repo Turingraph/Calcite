@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import * as a from "../../type/alias"
 import Input_str from "../input/input_str";
+import { opt_mode_t } from "../../type/input";
 
 // How to make function accept prop based on property
 // https://www.freecodecamp.org/news/typescript-generics-with-functional-react-components/
@@ -15,15 +16,21 @@ export default function Search_bar<t extends object, k extends keyof t>(
 }:{
     opt_name:a.opt_name,
     read_only_arr:t[],
-    search_arr:a.use_state_t<t[]>
+    search_arr:a.use_state_t<(opt_mode_t|undefined)[]>
     property:k
 }){
     const [ss_search_text, setss_search_text] = useState<string>("")
     useEffect(()=>{
         // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/arr/filter
-        search_arr.setss(read_only_arr.filter(
-            (i) => {(i[property] as string).includes(ss_search_text) == true}
-            ))
+        let update_search_text = read_only_arr.map((item,index) => {
+                if ((item[property] as string).includes(ss_search_text) == true){
+                    return {
+                        name:item[property] as string as a.name,
+                        value:index
+                    }
+                }
+            })
+        search_arr.setss(update_search_text)
     },[ss_search_text])
     
     return (<>

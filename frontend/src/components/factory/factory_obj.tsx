@@ -12,7 +12,7 @@ export default function Factory_obj<t extends {name:a.name}>({
 }:{
     obj_arr:a.use_state_t<t[]>
     index:number
-    jsx_additional?:({arr, index}:{arr:a.use_state_t<t[]>,index:number})=>JSX.Element|undefined
+    jsx_additional?:JSX.Element|undefined
 }){
     const [ss_ui_mode, setss_ui_mode] = useState<"normal"|"rename"|"delete">("normal")
     const [ss_name, setss_name] = useState<string>(obj_arr.ss[index].name as string)
@@ -37,7 +37,7 @@ export default function Factory_obj<t extends {name:a.name}>({
             name={"copy" as a.name}
             func_event={(()=>{func_copy(index)}) as a.func_event}
         />
-        {jsx_additional ? jsx_additional({arr:obj_arr,index:index}) : <></>}
+        {jsx_additional ? jsx_additional : <></>}
         <Click_button
             name={"x" as a.name}
             func_event={(()=>{setss_ui_mode("delete")}) as a.func_event}

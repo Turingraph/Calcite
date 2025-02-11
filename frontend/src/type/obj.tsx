@@ -2,7 +2,7 @@ import * as a from "./alias"
 
 export type user_t = {
     name:a.name,
-    select?:a.select,
+    select:a.select,
     password:string,
     first_date?:undefined|Date,
     last_date?:undefined|Date,
@@ -11,7 +11,7 @@ export type user_t = {
 
 export type img_t = {
     name:a.name,
-    select?:a.select,
+    select:a.select,
     img:a.img,
     original?:a.img,
     dilate?:a.img,
@@ -22,7 +22,7 @@ export type img_t = {
 
 export type box_t = {
     name:a.name,
-    select?:a.select,
+    select:a.select,
     min_x?:undefined|number,
     min_y?:undefined|number,
     min_w?:undefined|number,
