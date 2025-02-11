@@ -4,9 +4,11 @@ import { func_update_arr } from "../../utils/handle";
 import Click_button from "./click_button";
 
 export default function Select_button<t extends {select:a.select}>({
+    name = "select" as a.name,
     arr,
     index
 }:{
+    name?:a.name
     arr:a.use_state_t<t[]>,
     index:number
 }){
@@ -19,7 +21,7 @@ export default function Select_button<t extends {select:a.select}>({
     }
     return <>
     <Click_button 
-        name={"select" as a.name} 
+        name={name as a.name} 
         func_event={(()=>{func_select(index)}) as a.func_event}
     />
     </>
