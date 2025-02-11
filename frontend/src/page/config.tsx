@@ -12,13 +12,15 @@ export default function Main_page({
     let config_name = [
         "OCR" as a.name,
         "Image Processing" as a.name,
-        "Bounding Boxes" as a.name,
+        "Dilate Image Processing" as a.name,
+        "Bounding Box" as a.name,
     ]
     let config_tabs = <Select_tabs
         name_arr={config_name}
         jsx_elements={[
             <Config_ocr/>,
-            <Config_img/>
+            <Config_img/>,
+            <Config_img/>,
         ]}
     />
     let config = <><h1>Advance Setting</h1>{config_tabs}</>

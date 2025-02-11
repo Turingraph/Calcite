@@ -19,7 +19,7 @@ import {
     default_img_crop_03,
     //default_img_zoom 
 } from '../data/config'
-import { func_update_arr } from '../utils/handle'
+import Click_button, { click_button_t } from '../components/button/click_button'
 
 export default function Config_img({
     //
@@ -60,7 +60,8 @@ export default function Config_img({
     const [ss_crop_02, setss_crop_02] = useState<number|undefined>(default_img_crop_02)
     const [ss_crop_03, setss_crop_03] = useState<number|undefined>(default_img_crop_03)
 
-    //const [ss_zoom, setss_zoom] = useState<number>(default_img_zoom)
+    const [ss_reset, setss_reset] = useState<boolean>(false)
+    const [ss_default_dilate, setss_default_dilate] = useState<boolean>(false)
 
     let interface_thresh:combine_input_t = {
         opt_name:"threshold" as a.opt_name,
@@ -352,6 +353,11 @@ export default function Config_img({
             }
         ]
     }
+    let button_reset = <Click_button
+        name={"reset image" as a.name}
+        func_event={(()=>{setss_reset(true)}) as a.func_event}
+        />
+    
     let jsx_arr = Opt_to_jsx_arr({arr:[
         interface_rotate,
         interface_thresh,
@@ -364,5 +370,5 @@ export default function Config_img({
         interface_crop
     ],jsx_element:Combine_input})
     
-    return <>{jsx_arr}</>
+    return <>{jsx_arr}{button_reset}</>
 }
