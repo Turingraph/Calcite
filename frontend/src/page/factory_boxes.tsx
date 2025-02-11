@@ -6,6 +6,8 @@ import Select_button from "../components/button/select_button";
 import { opt_mode_t } from "../type/input";
 import Search_bar from "../components/search/search_bar";
 import Panel from "../components/asset/panel";
+import Combine_input from "../components/input/combine_input";
+import { combine_input_t } from "../type/input";
 
 export default function Factory_boxes({
     //
@@ -25,6 +27,16 @@ export default function Factory_boxes({
     />
     let jsx_boxes = ss_boxes_filter.map((item,index)=>{
         if (item != undefined){
+        // I will add input form later for each box.
+        // let interface_box:combine_input_t = {
+        //     opt_name:"attribute of box" as a.opt_name,
+        //     input_str:[
+        //         {
+        //             opt_name:"r" as a.opt_name,
+        //             input:{{ss:}}
+        //         }
+        //     ]
+        // }
         return <><Factory_obj
             obj_arr={{ss:ss_boxes, setss:setss_boxes}}
             index={item.index}
