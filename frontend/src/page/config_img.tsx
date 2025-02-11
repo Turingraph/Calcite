@@ -11,7 +11,8 @@ import {
     default_img_erode,
     default_img_opening,
     default_img_thresh,
-    default_img_thresh_adp
+    default_img_thresh_adp,
+    default_img_rotate
 } from '../data/config'
 
 
@@ -47,6 +48,8 @@ export default function Config_img({
     const [ss_blur_ksize, setss_blur_ksize] = useState<number>(default_img_blur.ksize)
     const [ss_blur_effect, setss_blur_effect] = useState<number>(default_img_blur.effect)
     const [ss_blur_opt, setss_blur_opt] = useState<number>(default_img_blur.opt)
+
+    const [ss_rotate, setss_rotate] = useState<number>(default_img_rotate)
 
     let interface_thresh:combine_input_t = {
         opt_name:"threshold" as a.opt_name,
@@ -289,7 +292,20 @@ export default function Config_img({
             }
         ]
     }
+    let interface_rotate:combine_input_t = {
+        opt_name:"rotate" as a.opt_name,
+        input_str:[{
+            opt_name:undefined as a.opt_name,
+            input:{
+                ss:ss_rotate,
+                setss:setss_rotate
+            } as a.use_state_t<number|string>,
+            default_input:default_img_rotate
+        }],
+        input_opt:undefined
+    }
     let jsx_arr = Opt_to_jsx_arr({arr:[
+        interface_rotate,
         interface_thresh,
         interface_thresh_adp,
         interface_erode,

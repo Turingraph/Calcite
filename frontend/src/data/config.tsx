@@ -26,6 +26,8 @@ export const default_img_blur = {
     opt:0
 }
 
+export const default_img_rotate = 0
+
 export const default_ocr = {
     psm:1,
     oem:3,
