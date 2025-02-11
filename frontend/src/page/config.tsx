@@ -3,6 +3,7 @@ import Select_tabs from "../components/button/select_tabs";
 import * as a from '../type/alias'
 import Config_ocr from "./config_ocr";
 import Config_img from "./config_img";
+import Config_boxes from "./config_boxes";
 
 export default function Main_page({
     //
@@ -12,7 +13,6 @@ export default function Main_page({
     let config_name = [
         "OCR" as a.name,
         "Image Processing" as a.name,
-        "Dilate Image Processing" as a.name,
         "Bounding Box" as a.name,
     ]
     let config_tabs = <Select_tabs
@@ -20,7 +20,7 @@ export default function Main_page({
         jsx_elements={[
             <Config_ocr/>,
             <Config_img/>,
-            <Config_img/>,
+            <Config_boxes/>
         ]}
     />
     let config = <><h1>Advance Setting</h1>{config_tabs}</>

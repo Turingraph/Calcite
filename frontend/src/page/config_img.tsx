@@ -4,7 +4,7 @@ import Combine_input from '../components/input/combine_input'
 import { combine_input_t } from '../type/input'
 import { Opt_to_jsx_arr } from '../utils/convert'
 import { default_img } from '../data/config'
-import Click_button from '../components/button/click_button'
+import Click_button, {click_button_t} from '../components/button/click_button'
 import { Int_to_255 } from '../utils/convert'
 
 export default function Config_img({
@@ -352,12 +352,30 @@ export default function Config_img({
             }
         ]
     }
-    let button_reset = <Click_button
-        name={"reset image" as a.name}
-        func_event={(()=>{setss_reset(true)}) as a.func_event}
-        />
+    let interface_button_arr:click_button_t[]=[
+        {
+            name:"reset image" as a.name,
+            func_event:(()=>{setss_reset(true)}) as a.func_event
+        },
+        {
+            name:"gray image" as a.name,
+            func_event:(()=>{}) as a.func_event
+        },
+        {
+            name:"remove noice" as a.name,
+            func_event:(()=>{}) as a.func_event
+        },
+        {
+            name:"thin font" as a.name,
+            func_event:(()=>{}) as a.func_event
+        },
+        {
+            name:"thick font" as a.name,
+            func_event:(()=>{}) as a.func_event
+        },
+    ]
     
-    let jsx_arr = Opt_to_jsx_arr({arr:[
+    let jsx_input_arr = Opt_to_jsx_arr({arr:[
         interface_rotate,
         interface_thresh,
         interface_thresh_adp,
@@ -368,6 +386,11 @@ export default function Config_img({
         interface_blur,
         interface_crop
     ],jsx_element:Combine_input})
+
+    let jsx_button_arr = Opt_to_jsx_arr({
+        arr:interface_button_arr,
+        jsx_element:Click_button
+    })
     
-    return <>{jsx_arr}{button_reset}</>
+    return <>{jsx_input_arr}{jsx_button_arr}</>
 }
