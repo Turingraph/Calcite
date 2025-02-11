@@ -16,7 +16,8 @@ import {
     default_img_crop_00,
     default_img_crop_01,    
     default_img_crop_02,
-    default_img_crop_03,    
+    default_img_crop_03,
+    //default_img_zoom 
 } from '../data/config'
 import { func_update_arr } from '../utils/handle'
 
@@ -58,6 +59,9 @@ export default function Config_img({
     const [ss_crop_01, setss_crop_01] = useState<number>(default_img_crop_01)
     const [ss_crop_02, setss_crop_02] = useState<number|undefined>(default_img_crop_02)
     const [ss_crop_03, setss_crop_03] = useState<number|undefined>(default_img_crop_03)
+
+    //const [ss_zoom, setss_zoom] = useState<number>(default_img_zoom)
+
     let interface_thresh:combine_input_t = {
         opt_name:"threshold" as a.opt_name,
         input_str:[
@@ -356,7 +360,8 @@ export default function Config_img({
         interface_opening,
         interface_canny,
         interface_dilate,
-        interface_blur
+        interface_blur,
+        interface_crop
     ],jsx_element:Combine_input})
     
     return <>{jsx_arr}</>

@@ -33,6 +33,8 @@ export const default_img_crop_01:number = 0
 export const default_img_crop_02:number|undefined = undefined
 export const default_img_crop_03:number|undefined = undefined
 
+export const default_img_zoom:number = 1
+
 export const default_ocr = {
     psm:1,
     oem:3,
