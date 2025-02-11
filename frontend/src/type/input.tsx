@@ -19,7 +19,7 @@ export type input_t<t> = {
 
 export type opt_mode_t = {
     name:a.name,
-    value:number
+    index:number
 }
 
 export type input_opt_t = {

@@ -78,7 +78,7 @@ export default function Factory_img({
                     ss:ss_img_arr, 
                     setss:setss_img_arr
                 }}
-                index={item.value}
+                index={item.index}
                 jsx_additional={
                     <>
                     <Select_button 
@@ -86,7 +86,7 @@ export default function Factory_img({
                         ss:ss_img_arr, 
                         setss:setss_img_arr
                     }}
-                    index={item.value}
+                    index={item.index}
                     />
                     </>
                 }

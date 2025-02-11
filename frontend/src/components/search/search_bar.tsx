@@ -26,7 +26,7 @@ export default function Search_bar<t extends object, k extends keyof t>(
                 if ((item[property] as string).includes(ss_search_text) == true){
                     return {
                         name:item[property] as string as a.name,
-                        value:index
+                        index:index
                     }
                 }
             })
