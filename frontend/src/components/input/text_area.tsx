@@ -6,8 +6,7 @@ import {Str_to_str} from "../../utils/convert";
 export default function Text_area(
 {
     opt_name = undefined,
-    input,
-    default_input = undefined
+    input
 }:input_t<string>
 ){
     // http://www.w3schools.com/Tags/tryit.asp?filename=tryhtml_textarea

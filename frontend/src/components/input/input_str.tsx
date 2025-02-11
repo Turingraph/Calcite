@@ -6,8 +6,7 @@ import { input_t } from "../../type/input";
 export default function Input_str(
 {
     opt_name = undefined,
-    input,
-    default_input = undefined
+    input
 }:input_t<string>
 ){
     // https://www.geeksforgeeks.org/how-to-handle-input-forms-with-usestate-hook-in-react/
