@@ -1,24 +1,10 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import * as a from '../type/alias'
 import { img_process_button_name } from '../data/constant'
 import Combine_input from '../components/input/combine_input'
 import { combine_input_t } from '../type/input'
 import { Opt_to_jsx_arr } from '../utils/convert'
-import { 
-    default_img_blur,
-    default_img_canny,
-    default_img_dilate,
-    default_img_erode,
-    default_img_opening,
-    default_img_thresh,
-    default_img_thresh_adp,
-    default_img_rotate,
-    default_img_crop_00,
-    default_img_crop_01,    
-    default_img_crop_02,
-    default_img_crop_03,
-    //default_img_zoom 
-} from '../data/config'
+import { default_img } from '../data/config'
 import Click_button, { click_button_t } from '../components/button/click_button'
 
 export default function Config_img({
@@ -26,42 +12,45 @@ export default function Config_img({
 }:{
     //
 }){
-    const [ss_thresh_px, setss_thresh_px] = useState<number>(default_img_thresh.px)
-    const [ss_thresh_is_otsu, setss_thresh_is_otsu] = useState<number>(default_img_thresh.is_otsu)
-    const [ss_thresh_mode, setss_thresh_mode] = useState<number>(default_img_thresh.mode)
-    const [ss_thresh_maxval, setss_thresh_maxval] = useState<number>(default_img_thresh.maxval)
+    const [ss_thresh_px, setss_thresh_px] = useState<number>(default_img.thresh.px)
+    const [ss_thresh_is_otsu, setss_thresh_is_otsu] = useState<number>(default_img.thresh.is_otsu)
+    const [ss_thresh_mode, setss_thresh_mode] = useState<number>(default_img.thresh.mode)
+    const [ss_thresh_maxval, setss_thresh_maxval] = useState<number>(default_img.thresh.maxval)
 
-    const [ss_thresh_adp_is_otsu, setss_thresh_adp_is_otsu] = useState<number>(default_img_thresh_adp.is_otsu)
-    const [ss_thresh_adp_ksize, setss_thresh_adp_ksize] = useState<number>(default_img_thresh_adp.ksize)
-    const [ss_thresh_adp_constant, setss_thresh_adp_constant] = useState<number>(default_img_thresh_adp.constant)
-    const [ss_thresh_adp_mode, setss_thresh_adp_mode] = useState<number>(default_img_thresh_adp.mode)
-    const [ss_thresh_gauss_mode, setss_thresh_gauss_mode] = useState<number>(default_img_thresh_adp.gauss_mode)
-    const [ss_thresh_adp_maxval, setss_thresh_adp_maxval] = useState<number>(default_img_thresh_adp.maxval)
+    const [ss_thresh_adp_is_otsu, setss_thresh_adp_is_otsu] = useState<number>(default_img.thresh_adp.is_otsu)
+    const [ss_thresh_adp_ksize, setss_thresh_adp_ksize] = useState<number>(default_img.thresh_adp.ksize)
+    const [ss_thresh_adp_constant, setss_thresh_adp_constant] = useState<number>(default_img.thresh_adp.constant)
+    const [ss_thresh_adp_mode, setss_thresh_adp_mode] = useState<number>(default_img.thresh_adp.mode)
+    const [ss_thresh_gauss_mode, setss_thresh_gauss_mode] = useState<number>(default_img.thresh_adp.gauss_mode)
+    const [ss_thresh_adp_maxval, setss_thresh_adp_maxval] = useState<number>(default_img.thresh_adp.maxval)
 
-    const [ss_erode_row, setss_erode_row] = useState<number>(default_img_erode.r)
-    const [ss_erode_col, setss_erode_col] = useState<number>(default_img_erode.c)
+    const [ss_erode_row, setss_erode_row] = useState<number>(default_img.erode.r)
+    const [ss_erode_col, setss_erode_col] = useState<number>(default_img.erode.c)
 
-    const [ss_opening_row, setss_opening_row] = useState<number>(default_img_opening.r)
-    const [ss_opening_col, setss_opening_col] = useState<number>(default_img_opening.c)
+    const [ss_opening_row, setss_opening_row] = useState<number>(default_img.opening.r)
+    const [ss_opening_col, setss_opening_col] = useState<number>(default_img.opening.c)
 
-    const [ss_canny_c1, setss_canny_c1] = useState<number>(default_img_canny.c1)
-    const [ss_canny_c2, setss_canny_c2] = useState<number>(default_img_canny.c2)
+    const [ss_canny_c1, setss_canny_c1] = useState<number>(default_img.canny.c1)
+    const [ss_canny_c2, setss_canny_c2] = useState<number>(default_img.canny.c2)
 
-    const [ss_dilate_row, setss_dilate_row] = useState<number>(default_img_dilate.r)
-    const [ss_dilate_col, setss_dilate_col] = useState<number>(default_img_dilate.c)
+    const [ss_dilate_row, setss_dilate_row] = useState<number>(default_img.dilate.r)
+    const [ss_dilate_col, setss_dilate_col] = useState<number>(default_img.dilate.c)
 
-    const [ss_blur_ksize, setss_blur_ksize] = useState<number>(default_img_blur.ksize)
-    const [ss_blur_effect, setss_blur_effect] = useState<number>(default_img_blur.effect)
-    const [ss_blur_opt, setss_blur_opt] = useState<number>(default_img_blur.opt)
+    const [ss_blur_ksize, setss_blur_ksize] = useState<number>(default_img.blur.ksize)
+    const [ss_blur_effect, setss_blur_effect] = useState<number>(default_img.blur.effect)
+    const [ss_blur_opt, setss_blur_opt] = useState<number>(default_img.blur.opt)
 
-    const [ss_rotate, setss_rotate] = useState<number>(default_img_rotate)
-    const [ss_crop_00, setss_crop_00] = useState<number>(default_img_crop_00)
-    const [ss_crop_01, setss_crop_01] = useState<number>(default_img_crop_01)
-    const [ss_crop_02, setss_crop_02] = useState<number|undefined>(default_img_crop_02)
-    const [ss_crop_03, setss_crop_03] = useState<number|undefined>(default_img_crop_03)
+    const [ss_rotate, setss_rotate] = useState<number>(default_img.rotate)
+    const [ss_crop_00, setss_crop_00] = useState<number>(default_img.crop.x_00)
+    const [ss_crop_01, setss_crop_01] = useState<number>(default_img.crop.x_01)
+    const [ss_crop_02, setss_crop_02] = useState<number|undefined>(default_img.crop.x_02)
+    const [ss_crop_03, setss_crop_03] = useState<number|undefined>(default_img.crop.x_03)
 
     const [ss_reset, setss_reset] = useState<boolean>(false)
-    const [ss_default_dilate, setss_default_dilate] = useState<boolean>(false)
+
+    useEffect(()=>{
+        setss_reset(false)
+    },[ss_reset])
 
     let interface_thresh:combine_input_t = {
         opt_name:"threshold" as a.opt_name,
@@ -72,7 +61,7 @@ export default function Config_img({
                     ss:ss_thresh_px,
                     setss:setss_thresh_px
                 } as a.use_state_t<number|string>,
-                default_input:1
+                default_input:default_img.thresh.px
             },
             {
                 opt_name:"maximum pixel value" as a.opt_name,
@@ -80,7 +69,7 @@ export default function Config_img({
                     ss:ss_thresh_maxval,
                     setss:setss_thresh_maxval
                 } as a.use_state_t<number|string>,
-                default_input:255
+                default_input:default_img.thresh.maxval
             }
         ],
         input_opt:[
@@ -122,7 +111,7 @@ export default function Config_img({
                     ss:ss_thresh_adp_ksize,
                     setss:setss_thresh_adp_ksize
                 } as a.use_state_t<number|string>,
-                default_input:11
+                default_input:default_img.thresh_adp.ksize
             },
             {
                 opt_name:"Constant" as a.opt_name,
@@ -130,7 +119,7 @@ export default function Config_img({
                     ss:ss_thresh_adp_constant,
                     setss:setss_thresh_adp_constant
                 } as a.use_state_t<number|string>,
-                default_input:2
+                default_input:default_img.thresh_adp.constant
             },
             {
                 opt_name:"maximum pixel value" as a.opt_name,
@@ -138,7 +127,7 @@ export default function Config_img({
                     ss:ss_thresh_adp_maxval,
                     setss:setss_thresh_adp_maxval
                 } as a.use_state_t<number|string>,
-                default_input:255
+                default_input:default_img.thresh_adp.maxval
             }
         ],
         input_opt:[
@@ -192,7 +181,7 @@ export default function Config_img({
                     ss:ss_erode_row,
                     setss:setss_erode_row
                 } as a.use_state_t<number|string>,
-                default_input:1
+                default_input:default_img.erode.r
             },
             {
                 opt_name:"col" as a.opt_name,
@@ -200,7 +189,7 @@ export default function Config_img({
                     ss:ss_erode_col,
                     setss:setss_erode_col
                 } as a.use_state_t<number|string>,
-                default_input:1
+                default_input:default_img.erode.c
             }
         ],
         input_opt:undefined
@@ -214,7 +203,7 @@ export default function Config_img({
                     ss:ss_opening_row,
                     setss:setss_opening_row
                 } as a.use_state_t<number|string>,
-                default_input:1
+                default_input:default_img.opening.r
             },
             {
                 opt_name:"col" as a.opt_name,
@@ -222,7 +211,7 @@ export default function Config_img({
                     ss:ss_opening_col,
                     setss:setss_opening_col
                 } as a.use_state_t<number|string>,
-                default_input:1
+                default_input:default_img.opening.c
             }
         ],
         input_opt:undefined
@@ -236,7 +225,7 @@ export default function Config_img({
                     ss:ss_canny_c1,
                     setss:setss_canny_c1
                 } as a.use_state_t<number|string>,
-                default_input:1
+                default_input:default_img.canny.c1
             },
             {
                 opt_name:"second constant" as a.opt_name,
@@ -244,7 +233,7 @@ export default function Config_img({
                     ss:ss_canny_c2,
                     setss:setss_canny_c2
                 } as a.use_state_t<number|string>,
-                default_input:1
+                default_input:default_img.canny.c2
             }
         ],
         input_opt:undefined
@@ -258,7 +247,7 @@ export default function Config_img({
                     ss:ss_dilate_row,
                     setss:setss_dilate_row
                 } as a.use_state_t<number|string>,
-                default_input:1
+                default_input:default_img.dilate.r
             },
             {
                 opt_name:"col" as a.opt_name,
@@ -266,7 +255,7 @@ export default function Config_img({
                     ss:ss_dilate_col,
                     setss:setss_dilate_col
                 } as a.use_state_t<number|string>,
-                default_input:1
+                default_input:default_img.dilate.c
             }
         ],
         input_opt:undefined
@@ -280,7 +269,7 @@ export default function Config_img({
                     ss:ss_blur_ksize,
                     setss:setss_blur_ksize
                 } as a.use_state_t<number|string>,
-                default_input:11
+                default_input:default_img.blur.ksize
             },
             {
                 opt_name:"effect" as a.opt_name,
@@ -288,7 +277,7 @@ export default function Config_img({
                     ss:ss_blur_effect,
                     setss:setss_blur_effect
                 } as a.use_state_t<number|string>,
-                default_input:2
+                default_input:default_img.blur.effect
             },
         ],
         input_opt:[
@@ -312,7 +301,7 @@ export default function Config_img({
                 ss:ss_rotate,
                 setss:setss_rotate
             } as a.use_state_t<number|string>,
-            default_input:default_img_rotate
+            default_input:default_img.rotate
         }],
         input_opt:undefined
     }
@@ -325,7 +314,7 @@ export default function Config_img({
                     ss:ss_crop_00,
                     setss:setss_crop_00
                 } as a.use_state_t<string|number>,
-                default_input:default_img_crop_00
+                default_input:default_img.crop.x_00
             },
             {
                 opt_name:"x_01" as a.opt_name,
@@ -333,7 +322,7 @@ export default function Config_img({
                     ss:ss_crop_01,
                     setss:setss_crop_01
                 } as a.use_state_t<string|number>,
-                default_input:default_img_crop_01
+                default_input:default_img.crop.x_01
             },
             {
                 opt_name:"x_02" as a.opt_name,
@@ -341,7 +330,7 @@ export default function Config_img({
                     ss:ss_crop_02,
                     setss:setss_crop_02
                 } as a.use_state_t<string|number>,
-                default_input:default_img_crop_02
+                default_input:default_img.crop.x_02
             },
             {
                 opt_name:"x_03" as a.opt_name,
@@ -349,7 +338,7 @@ export default function Config_img({
                     ss:ss_crop_03,
                     setss:setss_crop_03
                 } as a.use_state_t<string|number>,
-                default_input:default_img_crop_03
+                default_input:default_img.crop.x_03
             }
         ]
     }
