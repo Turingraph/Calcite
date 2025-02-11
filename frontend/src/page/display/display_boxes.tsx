@@ -1,13 +1,13 @@
 import React, {useState} from "react";
-import * as a from "../type/alias"
-import { box_t } from "../type/obj";
-import Factory_obj from "../components/factory/factory_obj";
-import Select_button from "../components/button/select_button";
-import { opt_mode_t } from "../type/input";
-import Search_bar from "../components/search/search_bar";
-import Panel from "../components/asset/panel";
-import Combine_input from "../components/input/combine_input";
-import { combine_input_t } from "../type/input";
+import * as a from "../../type/alias"
+import { box_t } from "../../type/obj";
+import Factory_obj from "../../components/factory/factory_obj";
+import Select_button from "../../components/button/select_button";
+import { opt_mode_t } from "../../type/input";
+import Search_bar from "../../components/search/search_bar";
+import Panel from "../../components/asset/panel";
+import Combine_input from "../../components/input/combine_input";
+import { combine_input_t } from "../../type/input";
 
 export default function Factory_boxes({
     //

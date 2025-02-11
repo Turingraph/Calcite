@@ -1,17 +1,17 @@
 import React, {useState} from "react";
-import History_buttons from "../components/button/history_buttons";
-import Click_button from "../components/button/click_button";
-import Select_tabs from "../components/button/select_tabs";
-import * as a from '../type/alias'
-import Input_opt from "../components/search/input_opt";
-import Factory_opts from "../components/factory/factory_opts";
-import { language_opts, psm_opts, oem_opts } from "../data/constant";
-import Input_str from "../components/input/input_str";
-import Input_form from "../components/input/input_form";
-import { input_t } from "../type/input";
-import Combine_input from "../components/input/combine_input";
-import { input_opt_t } from "../type/input";
-import { default_ocr } from "../data/config";
+import History_buttons from "../../components/button/history_buttons";
+import Click_button from "../../components/button/click_button";
+import Select_tabs from "../../components/button/select_tabs";
+import * as a from '../../type/alias'
+import Input_opt from "../../components/search/input_opt";
+import Factory_opts from "../../components/factory/factory_opts";
+import { language_opts, psm_opts, oem_opts } from "../../data/constant";
+import Input_str from "../../components/input/input_str";
+import Input_form from "../../components/input/input_form";
+import { input_t } from "../../type/input";
+import Combine_input from "../../components/input/combine_input";
+import { input_opt_t } from "../../type/input";
+import { default_ocr } from "../../data/config";
 
 export default function Config_ocr({
     //

@@ -1,16 +1,16 @@
 import React, {useEffect, useState} from "react";
-import * as a from "../type/alias"
-import Factory_obj from "../components/factory/factory_obj";
-import Select_button from "../components/button/select_button";
-import History_buttons from "../components/button/history_buttons";
-import Click_button, {click_button_t} from "../components/button/click_button";
-import { Opt_to_jsx_arr } from "../utils/convert";
-import Search_bar from "../components/search/search_bar";
-import Panel from "../components/asset/panel";
-import { img_t } from "../type/obj";
-import { opt_mode_t } from "../type/input";
+import * as a from "../../type/alias"
+import Factory_obj from "../../components/factory/factory_obj";
+import Select_button from "../../components/button/select_button";
+import History_buttons from "../../components/button/history_buttons";
+import Click_button, {click_button_t} from "../../components/button/click_button";
+import { Opt_to_jsx_arr } from "../../utils/convert";
+import Search_bar from "../../components/search/search_bar";
+import Panel from "../../components/asset/panel";
+import { img_t } from "../../type/obj";
+import { opt_mode_t } from "../../type/input";
 
-export default function Factory_img({
+export default function Page_multi_imgs({
     //
 }:{
     //

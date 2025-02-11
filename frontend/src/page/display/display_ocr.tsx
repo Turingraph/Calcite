@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react'
-import * as a from '../type/alias'
-import Text_area from '../components/input/text_area'
-import { Str_to_h } from '../utils/convert'
-import Panel from '../components/asset/panel'
+import * as a from '../../type/alias'
+import Text_area from '../../components/input/text_area'
+import { Str_to_h } from '../../utils/convert'
+import Panel from '../../components/asset/panel'
 
 export default function Display_ocr({
     //

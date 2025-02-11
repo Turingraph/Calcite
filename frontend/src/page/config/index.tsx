@@ -1,11 +1,11 @@
 import React, {useState} from "react";
-import Select_tabs from "../components/button/select_tabs";
-import * as a from '../type/alias'
+import Select_tabs from "../../components/button/select_tabs";
+import * as a from '../../type/alias'
 import Config_ocr from "./config_ocr";
 import Config_img from "./config_img";
 import Config_boxes from "./config_boxes";
 
-export default function Main_page({
+export default function Page_config({
     //
 }:{
     //

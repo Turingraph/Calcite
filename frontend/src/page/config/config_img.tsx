@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react'
-import * as a from '../type/alias'
-import Combine_input from '../components/input/combine_input'
-import { combine_input_t } from '../type/input'
-import { Opt_to_jsx_arr } from '../utils/convert'
-import { default_img } from '../data/config'
-import Click_button, {click_button_t} from '../components/button/click_button'
-import { Int_to_255 } from '../utils/convert'
+import * as a from '../../type/alias'
+import Combine_input from '../../components/input/combine_input'
+import { combine_input_t } from '../../type/input'
+import { Opt_to_jsx_arr } from '../../utils/convert'
+import { default_img } from '../../data/config'
+import Click_button, {click_button_t} from '../../components/button/click_button'
+import { Int_to_255 } from '../../utils/convert'
 
 export default function Config_img({
     //

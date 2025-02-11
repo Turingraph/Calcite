@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import * as a from '../type/alias'
-import { default_box } from "../data/config";
-import Combine_input from "../components/input/combine_input";
-import { combine_input_t } from "../type/input";
-import { Int_to_255 } from "../utils/convert";
-import { Opt_to_jsx_arr } from "../utils/convert";
+import * as a from '../../type/alias'
+import { default_box } from "../../data/config";
+import Combine_input from "../../components/input/combine_input";
+import { combine_input_t } from "../../type/input";
+import { Int_to_255 } from "../../utils/convert";
+import { Opt_to_jsx_arr } from "../../utils/convert";
 
 export default function Config_boxes({
     //
