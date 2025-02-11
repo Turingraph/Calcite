@@ -15,7 +15,7 @@ export default function Page_config({
         "Image Processing" as a.name,
         "Bounding Box" as a.name,
     ]
-    let config_tabs = <Select_tabs
+    let config_tab = <Select_tabs
         name_arr={config_name}
         jsx_elements={[
             <Config_ocr/>,
@@ -23,8 +23,8 @@ export default function Page_config({
             <Config_boxes/>
         ]}
     />
-    let config = <><h1>Advance Setting</h1>{config_tabs}</>
+    let config = <><h1>Advance Setting</h1>{config_tab}</>
     return <>
-    
+        {config}
     </>
 }

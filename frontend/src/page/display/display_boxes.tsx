@@ -9,7 +9,7 @@ import Panel from "../../components/asset/panel";
 import Combine_input from "../../components/input/combine_input";
 import { combine_input_t } from "../../type/input";
 
-export default function Factory_boxes({
+export default function Display_boxes({
     //
 }:{
     //
