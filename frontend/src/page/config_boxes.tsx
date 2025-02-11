@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import * as a from '../type/alias'
 import { default_box } from "../data/config";
 import Combine_input from "../components/input/combine_input";
 import { combine_input_t } from "../type/input";
-import { func_update_arr } from "../utils/handle";
+import { Int_to_255 } from "../utils/convert";
 import { Opt_to_jsx_arr } from "../utils/convert";
 
 export default function Config_boxes({
@@ -28,13 +28,28 @@ export default function Config_boxes({
     const [ss_search_char, setss_search_char] = useState<string>(default_box.box_around_char.search_char)
     const [ss_search_char_mode, setss_search_char_mode] = useState<number>(default_box.box_around_char.mode)
 
-    const [ss_r_00, setss_r_00] = useState<number>(default_box.color_00.r)
-    const [ss_g_00, setss_g_00] = useState<number>(default_box.color_00.g)
-    const [ss_b_00, setss_b_00] = useState<number>(default_box.color_00.b)
-    const [ss_r_01, setss_r_01] = useState<number>(default_box.color_01.r)
-    const [ss_g_01, setss_g_01] = useState<number>(default_box.color_01.g)
-    const [ss_b_01, setss_b_01] = useState<number>(default_box.color_01.b)
+    const [ss_r_00, setss_r_00] = useState<number>(Int_to_255(default_box.color_00.r))
+    const [ss_g_00, setss_g_00] = useState<number>(Int_to_255(default_box.color_00.g))
+    const [ss_b_00, setss_b_00] = useState<number>(Int_to_255(default_box.color_00.b))
+    const [ss_r_01, setss_r_01] = useState<number>(Int_to_255(default_box.color_01.r))
+    const [ss_g_01, setss_g_01] = useState<number>(Int_to_255(default_box.color_01.g))
+    const [ss_b_01, setss_b_01] = useState<number>(Int_to_255(default_box.color_01.b))
 
+    useEffect(()=>{
+        setss_r_00(Int_to_255(ss_r_00))
+        setss_g_00(Int_to_255(ss_g_00))
+        setss_b_00(Int_to_255(ss_b_00))
+        setss_r_01(Int_to_255(ss_r_01))
+        setss_g_01(Int_to_255(ss_g_01))
+        setss_b_01(Int_to_255(ss_b_01))
+    },[
+        ss_r_00,
+        ss_g_00,
+        ss_b_00,
+        ss_r_01,
+        ss_g_01,
+        ss_b_01,
+    ])
     let interface_rect:combine_input_t = {
         opt_name:"Create Box with this condition" as a.opt_name,
         input_str:[

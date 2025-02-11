@@ -1,7 +1,23 @@
 import * as a from "../../src/type/alias"
 import React, { JSX } from "react";
 
-function Int_to_hex({
+export function Int_to_size(value:number, maxval:number){
+    if (value > maxval){
+        return 255
+    }
+    else if(value < 0){
+        return 0
+    }
+    else{
+        return value 
+    }
+}
+
+export function Int_to_255(value:number){
+    return Int_to_size(value,255)
+}
+
+export function Int_to_hex({
     value = 0           
 }:a.value_t<undefined|number>
 ){

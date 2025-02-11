@@ -1,28 +1,28 @@
 import React, {useEffect, useState} from 'react'
 import * as a from '../type/alias'
-import { img_process_button_name } from '../data/constant'
 import Combine_input from '../components/input/combine_input'
 import { combine_input_t } from '../type/input'
 import { Opt_to_jsx_arr } from '../utils/convert'
 import { default_img } from '../data/config'
-import Click_button, { click_button_t } from '../components/button/click_button'
+import Click_button from '../components/button/click_button'
+import { Int_to_255 } from '../utils/convert'
 
 export default function Config_img({
     //
 }:{
     //
 }){
-    const [ss_thresh_px, setss_thresh_px] = useState<number>(default_img.thresh.px)
+    const [ss_thresh_px, setss_thresh_px] = useState<number>(Int_to_255(default_img.thresh.px))
     const [ss_thresh_is_otsu, setss_thresh_is_otsu] = useState<number>(default_img.thresh.is_otsu)
     const [ss_thresh_mode, setss_thresh_mode] = useState<number>(default_img.thresh.mode)
-    const [ss_thresh_maxval, setss_thresh_maxval] = useState<number>(default_img.thresh.maxval)
+    const [ss_thresh_maxval, setss_thresh_maxval] = useState<number>(Int_to_255(default_img.thresh.maxval))
 
     const [ss_thresh_adp_is_otsu, setss_thresh_adp_is_otsu] = useState<number>(default_img.thresh_adp.is_otsu)
     const [ss_thresh_adp_ksize, setss_thresh_adp_ksize] = useState<number>(default_img.thresh_adp.ksize)
     const [ss_thresh_adp_constant, setss_thresh_adp_constant] = useState<number>(default_img.thresh_adp.constant)
     const [ss_thresh_adp_mode, setss_thresh_adp_mode] = useState<number>(default_img.thresh_adp.mode)
     const [ss_thresh_gauss_mode, setss_thresh_gauss_mode] = useState<number>(default_img.thresh_adp.gauss_mode)
-    const [ss_thresh_adp_maxval, setss_thresh_adp_maxval] = useState<number>(default_img.thresh_adp.maxval)
+    const [ss_thresh_adp_maxval, setss_thresh_adp_maxval] = useState<number>(Int_to_255(default_img.thresh_adp.maxval))
 
     const [ss_erode_row, setss_erode_row] = useState<number>(default_img.erode.r)
     const [ss_erode_col, setss_erode_col] = useState<number>(default_img.erode.c)
@@ -51,6 +51,16 @@ export default function Config_img({
     useEffect(()=>{
         setss_reset(false)
     },[ss_reset])
+
+    useEffect(()=>{
+        setss_thresh_px(Int_to_255(ss_thresh_px))
+        setss_thresh_maxval(Int_to_255(ss_thresh_maxval))
+        setss_thresh_adp_maxval(Int_to_255(ss_thresh_adp_maxval))
+    },[
+        ss_thresh_px,
+        ss_thresh_maxval,
+        ss_thresh_adp_maxval
+    ])
 
     let interface_thresh:combine_input_t = {
         opt_name:"threshold" as a.opt_name,
