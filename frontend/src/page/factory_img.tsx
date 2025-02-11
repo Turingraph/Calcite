@@ -8,7 +8,6 @@ import { Opt_to_jsx_arr } from "../utils/convert";
 import Search_bar from "../components/search/search_bar";
 import Panel from "../components/asset/panel";
 import { img_t } from "../type/obj";
-import { func_update_arr } from "../utils/handle";
 import { opt_mode_t } from "../type/input";
 
 export default function Factory_img({
@@ -97,6 +96,6 @@ export default function Factory_img({
     return <>
         {jsx_button_arr}
         {jsx_search_img}
-        {jsx_img_arr}
+        <Panel jsx_element={<>{jsx_img_arr}</>}/>
     </>
 }
