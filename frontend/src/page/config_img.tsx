@@ -294,9 +294,9 @@ export default function Config_img({
         ]
     }
     let interface_rotate:combine_input_t = {
-        opt_name:"rotate" as a.opt_name,
+        opt_name:undefined as a.opt_name,
         input_str:[{
-            opt_name:undefined as a.opt_name,
+            opt_name:"rotate" as a.opt_name,
             input:{
                 ss:ss_rotate,
                 setss:setss_rotate

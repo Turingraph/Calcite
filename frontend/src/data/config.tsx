@@ -28,8 +28,8 @@ export const default_img = {
     crop:{
         x_00:0,
         x_01:0,
-        x_02:0,
-        x_03:0,
+        x_02:undefined,
+        x_03:undefined,
     },
     zoom:1
 }
@@ -41,4 +41,36 @@ export const default_ocr = {
     time_out:0,
     filter_char:"",
     filter_mode:0
+}
+
+export const default_box = {
+    rect:{
+        min_w:0,
+        max_w:undefined,
+        min_h:0,
+        max_h:undefined,
+        min_x:0,
+        max_x:undefined,
+        min_y:0,
+        max_y:undefined,
+    },
+    sort_mode:0,
+    box_around_text:{
+        search_text:"",
+        mode:0,
+    },
+    box_around_char:{
+        search_char:"",
+        mode:0
+    },
+    color_00:{
+        r:0,
+        g:0,
+        b:255
+    },
+    color_01:{
+        r:255,
+        g:0,
+        b:0
+    }
 }
