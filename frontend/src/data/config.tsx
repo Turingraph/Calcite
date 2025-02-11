@@ -28,6 +28,11 @@ export const default_img_blur = {
 
 export const default_img_rotate = 0
 
+export const default_img_crop_00:number = 0
+export const default_img_crop_01:number = 0
+export const default_img_crop_02:number|undefined = undefined
+export const default_img_crop_03:number|undefined = undefined
+
 export const default_ocr = {
     psm:1,
     oem:3,

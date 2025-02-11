@@ -12,9 +12,13 @@ import {
     default_img_opening,
     default_img_thresh,
     default_img_thresh_adp,
-    default_img_rotate
+    default_img_rotate,
+    default_img_crop_00,
+    default_img_crop_01,    
+    default_img_crop_02,
+    default_img_crop_03,    
 } from '../data/config'
-
+import { func_update_arr } from '../utils/handle'
 
 export default function Config_img({
     //
@@ -50,7 +54,10 @@ export default function Config_img({
     const [ss_blur_opt, setss_blur_opt] = useState<number>(default_img_blur.opt)
 
     const [ss_rotate, setss_rotate] = useState<number>(default_img_rotate)
-
+    const [ss_crop_00, setss_crop_00] = useState<number>(default_img_crop_00)
+    const [ss_crop_01, setss_crop_01] = useState<number>(default_img_crop_01)
+    const [ss_crop_02, setss_crop_02] = useState<number|undefined>(default_img_crop_02)
+    const [ss_crop_03, setss_crop_03] = useState<number|undefined>(default_img_crop_03)
     let interface_thresh:combine_input_t = {
         opt_name:"threshold" as a.opt_name,
         input_str:[
@@ -303,6 +310,43 @@ export default function Config_img({
             default_input:default_img_rotate
         }],
         input_opt:undefined
+    }
+    let interface_crop:combine_input_t = {
+        opt_name:"crop" as a.opt_name,
+        input_str:[
+            {
+                opt_name:"x_00" as a.opt_name,
+                input:{
+                    ss:ss_crop_00,
+                    setss:setss_crop_00
+                } as a.use_state_t<string|number>,
+                default_input:default_img_crop_00
+            },
+            {
+                opt_name:"x_01" as a.opt_name,
+                input:{
+                    ss:ss_crop_01,
+                    setss:setss_crop_01
+                } as a.use_state_t<string|number>,
+                default_input:default_img_crop_01
+            },
+            {
+                opt_name:"x_02" as a.opt_name,
+                input:{
+                    ss:ss_crop_02,
+                    setss:setss_crop_02
+                } as a.use_state_t<string|number>,
+                default_input:default_img_crop_02
+            },
+            {
+                opt_name:"x_03" as a.opt_name,
+                input:{
+                    ss:ss_crop_03,
+                    setss:setss_crop_03
+                } as a.use_state_t<string|number>,
+                default_input:default_img_crop_03
+            }
+        ]
     }
     let jsx_arr = Opt_to_jsx_arr({arr:[
         interface_rotate,
