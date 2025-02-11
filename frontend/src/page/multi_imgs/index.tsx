@@ -20,43 +20,43 @@ export default function Page_multi_imgs({
     let button_arr:click_button_t[] = [
         {
             name:"open folder" as a.name,
-            func_event:(()=>{}) as a.func_event
+            func_event:(()=>undefined) as a.func_event
         },
         {
             name:"open image" as a.name,
-            func_event:(()=>{}) as a.func_event
+            func_event:(()=>undefined) as a.func_event
         },
         {
             name:"save" as a.name,
-            func_event:(()=>{}) as a.func_event
+            func_event:(()=>undefined) as a.func_event
         },
         {
             name:"reset image" as a.name,
-            func_event:(()=>{}) as a.func_event
+            func_event:(()=>undefined) as a.func_event
         },
         {
             name:"activate image processing" as a.name,
-            func_event:(()=>{}) as a.func_event
+            func_event:(()=>undefined) as a.func_event
         },
         {
             name:"activate ocr" as a.name,
-            func_event:(()=>{}) as a.func_event
+            func_event:(()=>undefined) as a.func_event
         },
         {
             name:"activate dilate image processing" as a.name,
-            func_event:(()=>{}) as a.func_event
+            func_event:(()=>undefined) as a.func_event
         },
         {
             name:"select all images" as a.name,
-            func_event:(()=>{}) as a.func_event
+            func_event:(()=>undefined) as a.func_event
         },
         {
             name:"unselect all image" as a.name,
-            func_event:(()=>{}) as a.func_event
+            func_event:(()=>undefined) as a.func_event
         },
         {
             name:"help" as a.name,
-            func_event:(()=>{}) as a.func_event
+            func_event:(()=>undefined) as a.func_event
         },
     ]
     let jsx_button_arr = Opt_to_jsx_arr({arr:button_arr,jsx_element:Click_button})

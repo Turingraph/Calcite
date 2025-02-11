@@ -10,7 +10,7 @@ export default function Get_unknown_prob({
     unknown_obj,
     property,
     type,
-    func_event = (()=>{}) as a.func_event
+    func_event = (()=>undefined) as a.func_event
 }:{
     unknown_obj:unknown
     property:string,

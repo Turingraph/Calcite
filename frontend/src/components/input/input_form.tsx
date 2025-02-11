@@ -8,7 +8,7 @@ import { input_t } from "../../type/input";
 export default function Input_form({
     opt_name = undefined,
     arr,
-    func_activate = (()=>{}) as a.func_event,
+    func_activate = (()=>undefined) as a.func_event,
     is_undo = false
 }:{
     opt_name?:a.opt_name|undefined

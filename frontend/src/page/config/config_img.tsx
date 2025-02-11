@@ -359,19 +359,19 @@ export default function Config_img({
         },
         {
             name:"gray image" as a.name,
-            func_event:(()=>{}) as a.func_event
+            func_event:(()=>undefined) as a.func_event
         },
         {
             name:"remove noice" as a.name,
-            func_event:(()=>{}) as a.func_event
+            func_event:(()=>undefined) as a.func_event
         },
         {
             name:"thin font" as a.name,
-            func_event:(()=>{}) as a.func_event
+            func_event:(()=>undefined) as a.func_event
         },
         {
             name:"thick font" as a.name,
-            func_event:(()=>{}) as a.func_event
+            func_event:(()=>undefined) as a.func_event
         },
     ]
     
