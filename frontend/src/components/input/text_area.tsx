@@ -10,6 +10,7 @@ export default function Text_area(
     default_input = undefined
 }:input_t<string>
 ){
+    // http://www.w3schools.com/Tags/tryit.asp?filename=tryhtml_textarea
     // https://www.geeksforgeeks.org/how-to-handle-input-forms-with-usestate-hook-in-react/
     let str_placeholder = Str_to_str({value:opt_name as a.value<string>});
     const handle_event = ((e: React.ChangeEvent<HTMLTextAreaElement>) => {
