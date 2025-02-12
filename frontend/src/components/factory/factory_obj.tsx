@@ -1,9 +1,9 @@
-import React, {JSX, useState} from "react";
+import React, {JSX, useState, useEffect} from "react";
 import * as a from "../../type/alias";
 import Click_button from "../button/click_button";
 import Input_str from "../input/input_str";
 import { Str_to_h } from "../../utils/convert";
-import { func_delete_arr, func_update_item } from '../../utils/crud_arr'
+import { func_delete_arr, func_update_item, func_copy_item } from '../../utils/crud_arr'
 
 export default function Factory_obj<t extends {name:a.name}>({
     obj_arr,
@@ -16,18 +16,11 @@ export default function Factory_obj<t extends {name:a.name}>({
 }){
     const [ss_ui_mode, setss_ui_mode] = useState<"normal"|"rename"|"delete">("normal")
     const [ss_name, setss_name] = useState<string>(obj_arr.ss[index].name as string)
-
+    useEffect(()=>{
+        setss_ui_mode("normal")
+    },[obj_arr.ss])
     let jsx_element = <></>
     if (ss_ui_mode === "normal"){
-        // https://stackoverflow.com/questions/586182/
-        // how-to-insert-an-item-into-an-array-at-a-specific-index
-        function func_copy(index:number){
-            let update_input = [...obj_arr.ss]
-            let new_obj = obj_arr.ss[index]
-            update_input.splice(index + 1, 0, new_obj)
-            obj_arr.setss(update_input)
-            setss_ui_mode("normal")
-        }
         jsx_element = <>
         <Click_button
             name={"rename" as a.name}
@@ -35,7 +28,7 @@ export default function Factory_obj<t extends {name:a.name}>({
         />
         <Click_button
             name={"copy" as a.name}
-            func_event={(()=>{func_copy(index)}) as a.func_event}
+            func_event={(()=>{func_copy_item(index,obj_arr)}) as a.func_event}
         />
         {jsx_additional ? jsx_additional : <></>}
         <Click_button
@@ -49,7 +42,6 @@ export default function Factory_obj<t extends {name:a.name}>({
             let update_input = obj_arr.ss[index]
             update_input.name = ss_name as a.name
             func_update_item(index, obj_arr, update_input)
-            setss_ui_mode("normal")
         }
         jsx_element = <>
         <Input_str
@@ -65,10 +57,7 @@ export default function Factory_obj<t extends {name:a.name}>({
         // how-do-i-remove-an-array-item-in-typescript
         jsx_element = <>
             <Str_to_h opt_name={"Do you want to delete this ?" as a.opt_name}/>
-            <Click_button name={"yes" as a.name} func_event={(()=>{
-                setss_ui_mode("normal")
-                func_delete_arr(index, obj_arr)
-            }) as a.func_event}/>
+            <Click_button name={"yes" as a.name} func_event={(()=>{func_delete_arr(index, obj_arr)}) as a.func_event}/>
             <Click_button name={"no" as a.name}  func_event={(()=>{setss_ui_mode("normal")}) as a.func_event}/>
         </>
     }

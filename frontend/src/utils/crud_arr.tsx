@@ -2,11 +2,22 @@ import * as a from "../type/alias";
 
 export function func_update_item<t>(
         index:number, 
-        input_arr:a.use_state_t<t[]>, 
+        arr:a.use_state_t<t[]>, 
         update_input:t){
-    let update_arr = [...input_arr.ss]
+    let update_arr = [...arr.ss]
     update_arr[index]  = update_input
-    input_arr.setss(update_arr)
+    arr.setss(update_arr)
+}
+
+// https://stackoverflow.com/questions/586182/
+export function func_copy_item<t>(
+    index:number,
+    arr:a.use_state_t<t[]>
+){
+    let update_arr = [...arr.ss]
+    let new_obj = arr.ss[index]
+    update_arr.splice(index + 1, 0, new_obj)
+    arr.setss(update_arr)
 }
 
 export function func_update_arr<t>(
