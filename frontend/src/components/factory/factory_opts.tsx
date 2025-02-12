@@ -3,7 +3,7 @@ import * as a from "../../type/alias"
 import Click_button from "../button/click_button";
 import Input_opt from "../search/input_opt";
 import {Str_to_h} from "../../utils/convert";
-import { func_create_obj, func_delete_obj } from "../../utils/crud_arr";
+import { func_create_obj, func_delete_obj } from '../../utils/crud_arr'
 import Panel from "../asset/panel";
 
 export default function Factory_opts(

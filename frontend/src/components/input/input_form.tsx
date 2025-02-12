@@ -4,7 +4,7 @@ import Click_button from "../button/click_button";
 import Input_str from "./input_str";
 import {Str_to_h} from "../../utils/convert";
 import { input_t } from "../../type/input";
-import { func_update_item, func_handle_type } from "../../utils/handle";
+import { func_update_item, func_handle_type } from "../../utils/crud_arr";
 
 export default function Input_form({
     opt_name = undefined,

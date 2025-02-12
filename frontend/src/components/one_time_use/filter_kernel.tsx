@@ -5,7 +5,7 @@ import Panel from "../asset/panel";
 import Input_form from "../input/input_form";
 import { input_t } from "../../type/input";
 import {Str_to_h} from "../../utils/convert";
-import { func_update_item } from "../../utils/handle";
+import { func_update_item } from "../../utils/crud_arr";
 import Input_opt from "../search/input_opt";
 
 // img_process/kernel_2d.py/def sharp_kernel_2d

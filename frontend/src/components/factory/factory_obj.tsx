@@ -2,9 +2,8 @@ import React, {JSX, useState} from "react";
 import * as a from "../../type/alias";
 import Click_button from "../button/click_button";
 import Input_str from "../input/input_str";
-import { func_update_item } from "../../utils/handle";
 import { Str_to_h } from "../../utils/convert";
-import { func_delete_obj } from "../../utils/crud_arr";
+import { func_delete_obj, func_update_item } from '../../utils/crud_arr'
 
 export default function Factory_obj<t extends {name:a.name}>({
     obj_arr,
