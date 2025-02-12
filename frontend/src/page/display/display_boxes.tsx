@@ -28,6 +28,38 @@ export default function Display_boxes({
     />
     let jsx_boxes = ss_boxes_filter.map((item,index)=>{
         if (item != undefined){
+        let interface_box = {
+            opt_name:"attribute of box" as a.opt_name,
+            input_str:[
+                {
+                    opt_name:"r" as a.opt_name,
+                    input:{
+                        ss:ss_boxes,
+                        setss:setss_boxes
+                    },
+                    index:item.index,
+                    key:"r"
+                },
+                {
+                    opt_name:"g" as a.opt_name,
+                    input:{
+                        ss:ss_boxes,
+                        setss:setss_boxes
+                    },
+                    index:item.index,
+                    key:"g"
+                },
+                {
+                    opt_name:"b" as a.opt_name,
+                    input:{
+                        ss:ss_boxes,
+                        setss:setss_boxes
+                    },
+                    index:item.index,
+                    key:"b"
+                }
+            ]
+        }
         // let interface_box:combine_input_t = {
         //     opt_name:"attribute of box" as a.opt_name,
         //     input_str:[
