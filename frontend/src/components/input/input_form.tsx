@@ -5,7 +5,6 @@ import Input_str from "./input_str";
 import {Str_to_h} from "../../utils/convert";
 import { input_t } from "../../type/input";
 import { func_update_item, func_handle_type } from "../../utils/handle";
-import Set_button from "../button/set_button";
 
 export default function Input_form({
     opt_name = undefined,
@@ -26,36 +25,29 @@ export default function Input_form({
     }
     return 0})
     function func_set_default(){
-        arr.map((item, index)=>{
-            item.input.setss(default_arr[index])
-            func_update_item(
-                index,
-                {ss:ss_texts, setss:setss_texts},
-                default_arr[index].toString())
-        })
+        ss_arr.map((item, index)=>{item.setss(default_arr[index])})
+        setss_texts(default_arr as string[])
     }
     function func_set_ok(){
-        arr.map((item, index)=>{
-            const item_t = typeof item.default_input;
+        ss_arr.map((item, index)=>{
+            const item_t = typeof default_arr[index];
             let let_input = func_handle_type(
-                item.default_input as typeof item_t,
+                default_arr[index] as typeof item_t,
                 ss_texts[index]
             )
-            item.input.setss(let_input)
-            func_update_item(
-                index, 
-                {ss:ss_texts, setss:setss_texts},
-                let_input.toString())
+            item.setss(let_input)
         })
+        let update_text = ss_arr.map((item)=>{
+            return item.ss as string
+        })
+        setss_texts(update_text)
         func_activate()
     }
     function func_set_cancel(){
-        arr.map((item, index)=>{
-            func_update_item(
-                index, 
-                {ss:ss_texts, setss:setss_texts},
-                item.input.ss.toString())
+        let update_text = ss_arr.map((item)=>{
+            return item.ss as string
         })
+        setss_texts(update_text)
     }
     let jsx_elements = arr.map((item,index)=>{
         return <>
