@@ -4,6 +4,7 @@ import Click_button from "../button/click_button";
 import Input_str from "../input/input_str";
 import { func_update_item } from "../../utils/handle";
 import { Str_to_h } from "../../utils/convert";
+import { func_delete_obj } from "../../utils/crud_arr";
 
 export default function Factory_obj<t extends {name:a.name}>({
     obj_arr,
@@ -63,15 +64,12 @@ export default function Factory_obj<t extends {name:a.name}>({
     if (ss_ui_mode === "delete"){
         // https://stackoverflow.com/questions/15292278/
         // how-do-i-remove-an-array-item-in-typescript
-        function func_delete(){
-            setss_ui_mode("normal")
-            let update_input = [...obj_arr.ss]
-            update_input.splice(index, 1)
-            obj_arr.setss(update_input)
-        }
         jsx_element = <>
             <Str_to_h opt_name={"Do you want to delete this ?" as a.opt_name}/>
-            <Click_button name={"yes" as a.name} func_event={(()=>{func_delete()}) as a.func_event}/>
+            <Click_button name={"yes" as a.name} func_event={(()=>{
+                setss_ui_mode("normal")
+                func_delete_obj(index, obj_arr)
+            }) as a.func_event}/>
             <Click_button name={"no" as a.name}  func_event={(()=>{setss_ui_mode("normal")}) as a.func_event}/>
         </>
     }
