@@ -19,16 +19,19 @@ export default function Input_form({
     is_undo?:boolean
 }){
     const [ss_texts, setss_texts] = useState<string[]>(arr.map((item)=>{return item.input.ss.toString()}))
-    function func_default(item:input_t<string|number>){
-        return item.default_input?item.default_input:0
+    let ss_arr = arr.map((item)=>{return item.input})
+    let default_arr = arr.map((item)=>{
+    if (item.default_input != undefined){
+        return item.default_input
     }
+    return 0})
     function func_set_default(){
         arr.map((item, index)=>{
-            item.input.setss(func_default(item))
+            item.input.setss(default_arr[index])
             func_update_item(
                 index,
                 {ss:ss_texts, setss:setss_texts},
-                func_default(item).toString())
+                default_arr[index].toString())
         })
     }
     function func_set_ok(){
