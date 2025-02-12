@@ -58,7 +58,7 @@ export default function Factory_opts(
         update_exist_objs.splice(index, 1);
         exist_objs.setss(update_exist_objs)
     }
-    let jsx_elements = exist_objs.ss.map((item,index)=>{
+    let jsx_arr = exist_objs.ss.map((item,index)=>{
         return <>
             <Str_to_h opt_name={available_opts[item] as a.opt_name}/>
             <Click_button name={"x" as a.name} func_event={(()=>{func_delete(index)}) as a.func_event}/>
@@ -81,7 +81,7 @@ export default function Factory_opts(
             func_event={(()=>{func_reset()}) as a.func_event}
         />
         <Panel
-            jsx_element={<>{jsx_elements}</>}
+            jsx_element={<>{jsx_arr}</>}
             x_scroll_bar={shape.x_scroll_bar}
             y_scroll_bar={shape.y_scroll_bar}
             w={shape.w}
