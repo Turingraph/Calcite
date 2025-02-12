@@ -3,6 +3,7 @@ import * as a from "../../type/alias"
 import Click_button from "../button/click_button";
 import Input_opt from "../search/input_opt";
 import {Str_to_h} from "../../utils/convert";
+import { func_create_obj } from "../../utils/crud_arr";
 import Panel from "../asset/panel";
 
 export default function Factory_opts(
@@ -46,11 +47,6 @@ export default function Factory_opts(
         exist_objs.setss([default_opt])
         setss_create_mode(default_opt)
     }
-    function func_create(){
-        let update_exist_objs = [...exist_objs.ss]
-        update_exist_objs.push(ss_create_mode)
-        exist_objs.setss(update_exist_objs)
-    }
     function func_delete(index:number){
         // https://stackoverflow.com/questions/15292278/
         // how-do-i-remove-an-array-item-in-typescript
@@ -74,7 +70,7 @@ export default function Factory_opts(
         />
         <Click_button 
             name={("Create "+available_opts[ss_create_mode]) as a.name}
-            func_event={(()=>{func_create()}) as a.func_event}
+            func_event={(()=>{func_create_obj(ss_create_mode,exist_objs)}) as a.func_event}
         />
         <Click_button 
             name={("Reset") as a.name}
