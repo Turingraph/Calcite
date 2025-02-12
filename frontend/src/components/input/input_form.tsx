@@ -4,6 +4,7 @@ import Click_button from "../button/click_button";
 import Input_str from "./input_str";
 import {Str_to_h} from "../../utils/convert";
 import { input_t } from "../../type/input";
+import { func_update_arr } from "../../utils/handle";
 
 export default function Input_form({
     opt_name = undefined,
@@ -17,20 +18,16 @@ export default function Input_form({
     is_undo?:boolean
 }){
     const [ss_texts, setss_texts] = useState<string[]>(arr.map((item)=>{return item.input.ss.toString()}))
-    // https://stackoverflow.com/questions/64452484/
-    // how-can-i-safely-access-caught-error-properties-in-typescript
-    function func_update_texts(index:number, update_input:string){
-        let update_texts = [...ss_texts]
-        update_texts[index]  = update_input
-        setss_texts(update_texts)
-    }
     function func_default(item:input_t<string|number>){
         return item.default_input?item.default_input:0
     }
     function func_set_default(){
         arr.map((item, index)=>{
             item.input.setss(func_default(item))
-            func_update_texts(index,func_default(item).toString())
+            func_update_arr(
+                index,
+                {ss:ss_texts, setss:setss_texts},
+                func_default(item).toString())
         })
     }
     function func_set_ok(){
@@ -46,13 +43,19 @@ export default function Input_form({
                 let_input = item.default_input as typeof item_t
             }
             item.input.setss(let_input as typeof item_t)
-            func_update_texts(index, let_input.toString())
+            func_update_arr(
+                index, 
+                {ss:ss_texts, setss:setss_texts},
+                let_input.toString())
         })
         func_activate()
     }
     function func_set_cancel(){
         arr.map((item, index)=>{
-            func_update_texts(index, item.input.ss.toString())
+            func_update_arr(
+                index, 
+                {ss:ss_texts, setss:setss_texts},
+                item.input.ss.toString())
         })
     }
     let jsx_elements = arr.map((item,index)=>{
@@ -60,7 +63,11 @@ export default function Input_form({
         <Str_to_h opt_name={item.opt_name}/>
         <Input_str
             opt_name={undefined}
-            input={{ ss: ss_texts, setss: ((e:string) => { func_update_texts(index, e); }) } as unknown as a.use_state_t<string>}
+            input={{ 
+                ss: ss_texts, 
+                setss: ((e:string) => {
+                    func_update_arr(index, {ss:ss_texts, setss:setss_texts}, e);
+                })} as unknown as a.use_state_t<string>}
         />
         </>
     })

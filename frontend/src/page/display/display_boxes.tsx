@@ -16,6 +16,7 @@ export default function Display_boxes({
 }){
     const [ss_boxes, setss_boxes] = useState<box_t[]>([])
     const [ss_boxes_filter, setss_boxes_filter] = useState<(opt_mode_t|undefined)[]>([])
+    const [ss_p, setss_p] = useState<string|number>(0)
     let jsx_search_bar = <Search_bar
         opt_name={"Search boxes" as a.opt_name}
         read_only_arr={ss_boxes}
@@ -27,13 +28,15 @@ export default function Display_boxes({
     />
     let jsx_boxes = ss_boxes_filter.map((item,index)=>{
         if (item != undefined){
-        // I will add input form later for each box.
         // let interface_box:combine_input_t = {
         //     opt_name:"attribute of box" as a.opt_name,
         //     input_str:[
         //         {
         //             opt_name:"r" as a.opt_name,
-        //             input:{{ss:}}
+        //             input:{
+        //                 opt_name:undefined as a.opt_name,
+        //                 input:{ss:ss_p, setss:setss_p}},
+        //             input_opt
         //         }
         //     ]
         // }
