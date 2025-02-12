@@ -4,7 +4,7 @@ import Click_button from "../button/click_button";
 import Input_str from "./input_str";
 import {Str_to_h} from "../../utils/convert";
 import { input_t } from "../../type/input";
-import { func_update_arr } from "../../utils/handle";
+import { func_update_item } from "../../utils/handle";
 
 export default function Input_form({
     opt_name = undefined,
@@ -24,7 +24,7 @@ export default function Input_form({
     function func_set_default(){
         arr.map((item, index)=>{
             item.input.setss(func_default(item))
-            func_update_arr(
+            func_update_item(
                 index,
                 {ss:ss_texts, setss:setss_texts},
                 func_default(item).toString())
@@ -43,7 +43,7 @@ export default function Input_form({
                 let_input = item.default_input as typeof item_t
             }
             item.input.setss(let_input as typeof item_t)
-            func_update_arr(
+            func_update_item(
                 index, 
                 {ss:ss_texts, setss:setss_texts},
                 let_input.toString())
@@ -52,7 +52,7 @@ export default function Input_form({
     }
     function func_set_cancel(){
         arr.map((item, index)=>{
-            func_update_arr(
+            func_update_item(
                 index, 
                 {ss:ss_texts, setss:setss_texts},
                 item.input.ss.toString())
@@ -66,7 +66,7 @@ export default function Input_form({
             input={{ 
                 ss: ss_texts, 
                 setss: ((e:string) => {
-                    func_update_arr(index, {ss:ss_texts, setss:setss_texts}, e);
+                    func_update_item(index, {ss:ss_texts, setss:setss_texts}, e);
                 })} as unknown as a.use_state_t<string>}
         />
         </>

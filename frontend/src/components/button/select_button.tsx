@@ -1,6 +1,6 @@
 import React, {JSX, useState} from "react";
 import * as a from "../../type/alias";
-import { func_update_arr } from "../../utils/handle";
+import { func_update_item } from "../../utils/handle";
 import Click_button from "./click_button";
 
 export default function Select_button<t extends {select:a.select}>({
@@ -17,7 +17,7 @@ export default function Select_button<t extends {select:a.select}>({
         update_input.select
             ?update_input.select = false as a.select 
             :update_input.select = true as a.select
-        func_update_arr(index, arr, update_input)
+        func_update_item(index, arr, update_input)
     }
     return <>
     <Click_button 

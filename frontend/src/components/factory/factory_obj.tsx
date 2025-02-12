@@ -2,7 +2,7 @@ import React, {JSX, useState} from "react";
 import * as a from "../../type/alias";
 import Click_button from "../button/click_button";
 import Input_str from "../input/input_str";
-import { func_update_arr } from "../../utils/handle";
+import { func_update_item } from "../../utils/handle";
 import { Str_to_h } from "../../utils/convert";
 
 export default function Factory_obj<t extends {name:a.name}>({
@@ -48,7 +48,7 @@ export default function Factory_obj<t extends {name:a.name}>({
         function func_rename(index:number){
             let update_input = obj_arr.ss[index]
             update_input.name = ss_name as a.name
-            func_update_arr(index, obj_arr, update_input)
+            func_update_item(index, obj_arr, update_input)
             setss_ui_mode("normal")
         }
         jsx_element = <>

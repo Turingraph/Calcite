@@ -29,11 +29,40 @@ export default function Get_unknown_prob({
     return undefined
 }
 
-export function func_update_arr<t>(
+export function func_update_item<t>(
         index:number, 
         input_arr:a.use_state_t<t[]>, 
         update_input:t){
     let update_arr = [...input_arr.ss]
     update_arr[index]  = update_input
     input_arr.setss(update_arr)
+}
+
+export function func_update_arr<t>(
+        arr:a.use_state_t<t>[],
+        func_event:(e:t)=>void,
+        input:t[]
+    ){
+    arr.map((item, index)=>{
+        item.setss(input[index])
+        func_event(input[index])
+    })
+}
+
+export function func_handle_type<
+            t extends "string" | "number" |
+             "bigint" |"boolean" | "symbol" | 
+             "undefined" | "object" | "function",u>(
+        default_input:t,
+        input:t|u
+){
+    const const_t = typeof default_input
+    let let_output:typeof const_t;
+    try{
+        let_output = input as t
+    }
+    catch{
+        let_output = default_input
+    }
+    return let_output
 }
