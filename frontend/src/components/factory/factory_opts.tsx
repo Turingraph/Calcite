@@ -3,7 +3,7 @@ import * as a from "../../type/alias"
 import Click_button from "../button/click_button";
 import Input_opt from "../search/input_opt";
 import {Str_to_h} from "../../utils/convert";
-import { func_create_obj, func_delete_obj } from '../../utils/crud_arr'
+import { func_push_arr, func_delete_arr } from '../../utils/crud_arr'
 import Panel from "../asset/panel";
 
 export default function Factory_opts(
@@ -51,7 +51,7 @@ export default function Factory_opts(
         return <>
             <Str_to_h opt_name={available_opts[item] as a.opt_name}/>
             <Click_button name={"x" as a.name} func_event={(()=>{
-                func_delete_obj(index, exist_objs)
+                func_delete_arr(index, exist_objs)
             }) as a.func_event}/>
         </>
     })
@@ -65,7 +65,7 @@ export default function Factory_opts(
         />
         <Click_button 
             name={("Create "+available_opts[ss_create_mode]) as a.name}
-            func_event={(()=>{func_create_obj(ss_create_mode,exist_objs)}) as a.func_event}
+            func_event={(()=>{func_push_arr(ss_create_mode,exist_objs)}) as a.func_event}
         />
         <Click_button 
             name={("Reset") as a.name}
