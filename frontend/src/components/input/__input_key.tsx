@@ -3,7 +3,7 @@ import * as a from "../../type/alias"
 import Click_button from "../button/click_button";
 import Input_str from "./input_str";
 import {Str_to_h} from "../../utils/convert";
-import { input_t } from "../../type/input";
+import { input_uit } from "../../type/input_ui";
 import { func_update_item } from "../../utils/crud_arr";
 
 export default function Input_form({
@@ -13,12 +13,12 @@ export default function Input_form({
     is_undo = false
 }:{
     opt_name?:a.opt_name|undefined
-    arr:input_t<string|number>[]
+    arr:input_uit<string|number>[]
     func_activate?:a.func_event
     is_undo?:boolean
 }){
     const [ss_texts, setss_texts] = useState<string[]>(arr.map((item)=>{return item.input.ss.toString()}))
-    function func_default(item:input_t<string|number>){
+    function func_default(item:input_uit<string|number>){
         return item.default_input?item.default_input:0
     }
     function func_set_default(){

@@ -3,7 +3,7 @@ import Click_button from "../button/click_button";
 import * as a from "../../type/alias"
 import Panel from "../asset/panel";
 import Input_form from "../input/input_form";
-import { input_t } from "../../type/input";
+import { input_uit } from "../../type/input_ui";
 import {Str_to_h} from "../../utils/convert";
 import { func_update_item } from "../../utils/crud_arr";
 import Input_opt from "../search/input_opt";
@@ -83,7 +83,7 @@ export default function Filter_kernel({
     ss_mode,
     ss_kernel
 }:{
-    ss_list:input_t<number[]>
+    ss_list:input_uit<number[]>
     ss_mode:a.use_state_t<number>
     ss_kernel:a.use_state_t<number[][]>
 }){
@@ -108,7 +108,7 @@ export default function Filter_kernel({
     useEffect(()=>{
         ss_mode.ss === 1 ? setss_first(func_sharp_center(ss_list.input.ss)) : (()=>{})
     },[ss_kernel.ss])
-    let let_arr:input_t<number>[] = [
+    let let_arr:input_uit<number>[] = [
         {
             opt_name:"first item" as a.opt_name,
             input:{
@@ -161,7 +161,7 @@ export default function Filter_kernel({
             },
             default_input:ss_list.default_input
         }
-    })) as unknown as input_t<string|number>[]}
+    })) as unknown as input_uit<string|number>[]}
 />
     function func_set_kernel(){
         if (ss_mode.ss ===0){
@@ -181,7 +181,7 @@ export default function Filter_kernel({
         <Str_to_h opt_name={"Filter Kernel" as a.opt_name}/>
         <Input_form
             opt_name={"Create Filter Kernel List" as a.opt_name}
-            arr={let_arr as unknown as input_t<number|string>[]}
+            arr={let_arr as unknown as input_uit<number|string>[]}
         />
         <Panel jsx_element={jsx_lists}/>
         <Input_opt

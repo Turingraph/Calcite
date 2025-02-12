@@ -8,9 +8,9 @@ import Factory_opts from "../../components/factory/factory_opts";
 import { language_opts, psm_opts, oem_opts } from "../../data/constant";
 import Input_str from "../../components/input/input_str";
 import Input_form from "../../components/input/input_form";
-import { input_t } from "../../type/input";
+import { input_uit } from "../../type/input_ui";
 import Combine_input from "../../components/input/combine_input";
-import { input_opt_t } from "../../type/input";
+import { input_opt_uit } from "../../type/input_ui";
 import { default_ocr } from "../../data/config";
 
 export default function Config_ocr({
@@ -25,13 +25,13 @@ export default function Config_ocr({
     const [ss_filter_char, setss_filter_char] = useState<string>(default_ocr.filter_char)
     const [ss_filter_mode, setss_filter_mode] = useState<number>(default_ocr.filter_mode)
 
-    let interface_psm:input_opt_t = {
+    let interface_psm:input_opt_uit = {
             opt_name: "Page Segmentation Mode (PSM)" as a.opt_name,
             available_opts: psm_opts,
             ss_mode: {ss:ss_psm, setss:setss_psm},
             is_search_bar: false
     }
-    let interface_oem:input_opt_t = {
+    let interface_oem:input_opt_uit = {
         opt_name: "OCR Engine Mode (OEM)" as a.opt_name,
         available_opts: oem_opts,
         ss_mode: {ss:ss_oem, setss:setss_oem},
@@ -39,13 +39,13 @@ export default function Config_ocr({
     }
     let interface_lang = <Factory_opts
     opt_name={"Select Language" as a.opt_name}
-    exist_objs={{ss:ss_languages, setss:setss_languages}}
+    arr={{ss:ss_languages, setss:setss_languages}}
     available_opts={language_opts}
     default_opt={0}
     is_search_bar={true}
     is_duplicate={false}
     />
-    let interface_time_out:input_t<string|number> = {
+    let interface_time_out:input_uit<string|number> = {
         opt_name:"Time out (second)" as a.opt_name,
         input:{ss:ss_time_out, setss:setss_time_out} as a.use_state_t<number|string>,
         default_input:0

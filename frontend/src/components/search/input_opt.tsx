@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import * as a from "../../type/alias"
 import {Str_to_h} from "../../utils/convert";
-import { opt_mode_t, input_opt_t } from "../../type/input";
+import { opt_mode_uit, input_opt_uit } from "../../type/input_ui";
 import Search_bar from "./search_bar";
 
 //  https://stackoverflow.com/questions/40209352/
@@ -45,8 +45,8 @@ export default function Input_opt(
     available_opts,
     ss_mode,
     is_search_bar = false
-}:input_opt_t){
-    const [ss_show_opts, setss_show_opts] = useState<(opt_mode_t|undefined)[]>(()=>{
+}:input_opt_uit){
+    const [ss_show_opts, setss_show_opts] = useState<(opt_mode_uit|undefined)[]>(()=>{
         return available_opts.map((item, index)=>{ return {name:item as a.name, index:index}})
     })
     // https://stackoverflow.com/questions/40676343/
@@ -63,15 +63,15 @@ export default function Input_opt(
     })
     let jsx_search_bar = <></>
     if (is_search_bar===true){
-        jsx_search_bar= <Search_bar<opt_mode_t, "name">
+        jsx_search_bar= <Search_bar<opt_mode_uit, "name">
             opt_name={undefined as a.opt_name}
-            read_only_arr={available_opts.map((item,index)=>{return {name:item,index:index} as opt_mode_t})}
-            search_arr={
+            read_only_arr={available_opts.map((item,index)=>{return {name:item,index:index} as opt_mode_uit})}
+            select_arr={
                 {
                     ss:ss_show_opts, 
                     setss:setss_show_opts
                 }}
-            property = "name"
+            key = "name"
         />
     }
     return (<>

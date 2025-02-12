@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import * as a from '../../type/alias'
 import Combine_input from '../../components/input/combine_input'
-import { combine_input_t } from '../../type/input'
+import { combine_input_uit } from '../../type/input_ui'
 import { Opt_to_jsx_arr } from '../../utils/convert'
 import { default_img } from '../../data/config'
 import Click_button, {click_button_t} from '../../components/button/click_button'
@@ -62,7 +62,7 @@ export default function Config_img({
         ss_thresh_adp_maxval
     ])
 
-    let interface_thresh:combine_input_t = {
+    let interface_thresh:combine_input_uit = {
         opt_name:"threshold" as a.opt_name,
         input_str:[
             {
@@ -112,7 +112,7 @@ export default function Config_img({
             }
         ]
     }
-    let interface_thresh_adp:combine_input_t = {
+    let interface_thresh_adp:combine_input_uit = {
         opt_name:"adaptive threshold" as a.opt_name,
         input_str:[
             {
@@ -182,7 +182,7 @@ export default function Config_img({
             }
         ]
     }
-    let interface_erode:combine_input_t = {
+    let interface_erode:combine_input_uit = {
         opt_name:"erode" as a.opt_name,
         input_str:[
             {
@@ -204,7 +204,7 @@ export default function Config_img({
         ],
         input_opt:undefined
     }
-    let interface_opening:combine_input_t = {
+    let interface_opening:combine_input_uit = {
         opt_name:"opening" as a.opt_name,
         input_str:[
             {
@@ -226,7 +226,7 @@ export default function Config_img({
         ],
         input_opt:undefined
     }
-    let interface_canny:combine_input_t = {
+    let interface_canny:combine_input_uit = {
         opt_name:"canny" as a.opt_name,
         input_str:[
             {
@@ -248,7 +248,7 @@ export default function Config_img({
         ],
         input_opt:undefined
     }
-    let interface_dilate:combine_input_t = {
+    let interface_dilate:combine_input_uit = {
         opt_name:"dilate" as a.opt_name,
         input_str:[
             {
@@ -270,7 +270,7 @@ export default function Config_img({
         ],
         input_opt:undefined
     }
-    let interface_blur:combine_input_t = {
+    let interface_blur:combine_input_uit = {
         opt_name:"blur" as a.opt_name,
         input_str:[
             {
@@ -303,7 +303,7 @@ export default function Config_img({
             }
         ]
     }
-    let interface_rotate:combine_input_t = {
+    let interface_rotate:combine_input_uit = {
         opt_name:undefined as a.opt_name,
         input_str:[{
             opt_name:"rotate" as a.opt_name,
@@ -315,7 +315,7 @@ export default function Config_img({
         }],
         input_opt:undefined
     }
-    let interface_crop:combine_input_t = {
+    let interface_crop:combine_input_uit = {
         opt_name:"crop" as a.opt_name,
         input_str:[
             {

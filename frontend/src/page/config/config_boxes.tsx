@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import * as a from '../../type/alias'
 import { default_box } from "../../data/config";
 import Combine_input from "../../components/input/combine_input";
-import { combine_input_t } from "../../type/input";
+import { combine_input_uit } from "../../type/input_ui";
 import { Int_to_255 } from "../../utils/convert";
 import { Opt_to_jsx_arr } from "../../utils/convert";
 
@@ -50,7 +50,7 @@ export default function Config_boxes({
         ss_g_01,
         ss_b_01,
     ])
-    let interface_rect:combine_input_t = {
+    let interface_rect:combine_input_uit = {
         opt_name:"Create Box with this condition" as a.opt_name,
         input_str:[
             {
@@ -96,7 +96,7 @@ export default function Config_boxes({
         ],
         input_opt:undefined
     }
-    let interface_sort_mode:combine_input_t = {
+    let interface_sort_mode:combine_input_uit = {
         opt_name:undefined as a.opt_name,
         input_str:[{
             opt_name:"Box Sorting Mode" as a.opt_name,
@@ -104,7 +104,7 @@ export default function Config_boxes({
             default_input:default_box.sort_mode
         }]
     }
-    let interface_search_text:combine_input_t = {
+    let interface_search_text:combine_input_uit = {
         opt_name:"Filte Text" as a.opt_name,
         input_str:[{
             opt_name:"selected text" as a.opt_name,
@@ -118,7 +118,7 @@ export default function Config_boxes({
             is_search_bar:false
         }]
     }
-    let interface_search_char:combine_input_t = {
+    let interface_search_char:combine_input_uit = {
         opt_name:"Filte char" as a.opt_name,
         input_str:[{
             opt_name:"selected character" as a.opt_name,
@@ -132,7 +132,7 @@ export default function Config_boxes({
             is_search_bar:false
         }]
     }
-    let interface_color_00:combine_input_t = {
+    let interface_color_00:combine_input_uit = {
         opt_name:"Color of First Rectangle" as a.opt_name,
         input_str:[
             {
@@ -159,7 +159,7 @@ export default function Config_boxes({
         ],
         input_opt:undefined
     }
-    let interface_color_01:combine_input_t = {
+    let interface_color_01:combine_input_uit = {
         opt_name:"Color of Last Rectangle" as a.opt_name,
         input_str:[
             {

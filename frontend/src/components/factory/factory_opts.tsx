@@ -9,7 +9,7 @@ import Panel from "../asset/panel";
 export default function Factory_opts(
     {
         opt_name = undefined as a.opt_name,
-        exist_objs,
+        arr,
         available_opts,
         default_opt = 0,
         is_search_bar = false,
@@ -22,7 +22,7 @@ export default function Factory_opts(
         }
     }:{
         opt_name?:a.opt_name
-        exist_objs:a.use_state_t<number[]>,
+        arr:a.use_state_t<number[]>,
         available_opts:string[]
         default_opt?:number
         is_search_bar?:boolean
@@ -39,19 +39,19 @@ export default function Factory_opts(
         if (is_duplicate === false){
             // https://stackoverflow.com/questions/36829184/
             // how-can-i-convert-a-set-to-an-array-in-typescript
-            let update_exist_objs = new Set(exist_objs.ss);
-            exist_objs.setss(Array.from(update_exist_objs))
+            let update_arr = new Set(arr.ss);
+            arr.setss(Array.from(update_arr))
         }
-    },[exist_objs.ss])
+    },[arr.ss])
     function func_reset(){
-        exist_objs.setss([default_opt])
+        arr.setss([default_opt])
         setss_create_mode(default_opt)
     }
-    let jsx_arr = exist_objs.ss.map((item,index)=>{
+    let jsx_arr = arr.ss.map((item,index)=>{
         return <>
             <Str_to_h opt_name={available_opts[item] as a.opt_name}/>
             <Click_button name={"x" as a.name} func_event={(()=>{
-                func_delete_arr(index, exist_objs)
+                func_delete_arr(index, arr)
             }) as a.func_event}/>
         </>
     })
@@ -65,7 +65,7 @@ export default function Factory_opts(
         />
         <Click_button 
             name={("Create "+available_opts[ss_create_mode]) as a.name}
-            func_event={(()=>{func_push_arr(ss_create_mode,exist_objs)}) as a.func_event}
+            func_event={(()=>{func_push_arr(ss_create_mode,arr)}) as a.func_event}
         />
         <Click_button 
             name={("Reset") as a.name}

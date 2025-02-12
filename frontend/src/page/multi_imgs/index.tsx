@@ -8,7 +8,7 @@ import { Opt_to_jsx_arr } from "../../utils/convert";
 import Search_bar from "../../components/search/search_bar";
 import Panel from "../../components/asset/panel";
 import { img_t } from "../../type/obj";
-import { opt_mode_t } from "../../type/input";
+import { opt_mode_uit } from "../../type/input_ui";
 
 export default function Page_multi_imgs({
     //
@@ -16,7 +16,7 @@ export default function Page_multi_imgs({
     //
 }){
     const [ss_img_arr, setss_img_arr] = useState<img_t[]>([])
-    const [ss_img_filter, setss_img_filter] = useState<(opt_mode_t|undefined)[]>([])
+    const [ss_img_filter, setss_img_filter] = useState<(opt_mode_uit|undefined)[]>([])
     let button_arr:click_button_t[] = [
         {
             name:"open folder" as a.name,
@@ -63,17 +63,17 @@ export default function Page_multi_imgs({
     let jsx_search_img = <Search_bar
         opt_name={"Search image" as a.opt_name}
         read_only_arr={ss_img_arr}
-        search_arr={{
+        select_arr={{
             ss:ss_img_filter, 
             setss:setss_img_filter
         }}
-        property={"name"}
+        key={"name"}
     />
     let jsx_img_arr = ss_img_filter.map((item, index)=>{
         if(item != undefined){
             return <>
                 <Factory_obj
-                obj_arr={{
+                arr={{
                     ss:ss_img_arr, 
                     setss:setss_img_arr
                 }}

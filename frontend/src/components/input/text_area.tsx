@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from "react";
 import * as a from "../../type/alias"
-import { input_t } from "../../type/input";
+import { input_uit } from "../../type/input_ui";
 import {Str_to_str} from "../../utils/convert";
 
 export default function Text_area(
 {
     opt_name = undefined,
     input
-}:input_t<string>
+}:input_uit<string>
 ){
     // http://www.w3schools.com/Tags/tryit.asp?filename=tryhtml_textarea
     // https://www.geeksforgeeks.org/how-to-handle-input-forms-with-usestate-hook-in-react/
