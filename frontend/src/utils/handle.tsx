@@ -46,3 +46,9 @@ export function func_handle_type<
     }
     return let_output
 }
+
+// https://stackoverflow.com/questions/53807517/
+// how-to-test-if-two-types-are-exactly-the-same
+export type equal_type<T, U> =
+    (<G>() => G extends T ? 1 : 2) extends
+    (<G>() => G extends U ? 1 : 2) ? 1 : 0;

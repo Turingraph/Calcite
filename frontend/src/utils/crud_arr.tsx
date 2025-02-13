@@ -46,12 +46,6 @@ export function func_delete_arr<t>(index:number,arr:a.use_state_t<t[]>){
     arr.setss(update_arr)
 }
 
-// https://stackoverflow.com/questions/53807517/
-// how-to-test-if-two-types-are-exactly-the-same
-export type IfEquals<T, U> =
-    (<G>() => G extends T ? 1 : 2) extends
-    (<G>() => G extends U ? 1 : 2) ? 1 : 0;
-
 export function func_edit_arr<
     t extends object, 
     k extends keyof t,
@@ -65,6 +59,5 @@ export function func_edit_arr<
         if (typeof (update_arr[index][key]) === typeof input){
             update_arr[index][key] = input
         }
-        // Type 'k' is not assignable to type 't[k]'.
         arr.setss(update_arr)
     }
