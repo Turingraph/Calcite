@@ -2,12 +2,11 @@ import React, {useState} from "react";
 import * as a from "../../type/alias"
 import { box_t } from "../../type/obj";
 import Factory_obj from "../../components/factory/factory_obj";
-import Select_button from "../../components/button/select_button";
+import Select_button from "../../components/factory/select_button";
 import { opt_mode_uit } from "../../type/input_ui";
 import Search_bar from "../../components/search/search_bar";
 import Panel from "../../components/asset/panel";
-import Combine_input from "../../components/input/combine_input";
-import { combine_input_uit } from "../../type/input_ui";
+import Input_item_key from "../../components/factory/input_item_key";
 
 export default function Display_boxes({
     //
@@ -17,6 +16,10 @@ export default function Display_boxes({
     const [ss_boxes, setss_boxes] = useState<box_t[]>([])
     const [ss_boxes_filter, setss_boxes_filter] = useState<(opt_mode_uit|undefined)[]>([])
     const [ss_p, setss_p] = useState<string|number>(0)
+    const boxes_key = [
+        "r",
+        ""
+    ]
     let jsx_search_bar = <Search_bar
         opt_name={"Search boxes" as a.opt_name}
         read_only_arr={ss_boxes}

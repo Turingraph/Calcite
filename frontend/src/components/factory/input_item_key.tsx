@@ -9,6 +9,17 @@ import { func_update_item } from "../../utils/crud_arr";
 import { func_update_item_key } from "../../utils/crud_arr";
 import { func_handle_type } from "../../utils/handle";
 
+export type input_item_key_uit<
+t extends object,
+k extends keyof t> = {
+    opt_name:a.opt_name
+    arr:a.use_state_t<t[]>,
+    this_item:number,
+    default_key_values:(string|number)[]
+    keys:k[]
+    is_undo:boolean
+}
+
 export default function Input_item_key<
     t extends object,
     k extends keyof t>({
@@ -18,14 +29,7 @@ export default function Input_item_key<
         default_key_values,                
         keys  ,  
         is_undo
-}:{
-    opt_name:a.opt_name
-    arr:a.use_state_t<t[]>,
-    this_item:number,
-    default_key_values:(string|number)[]
-    keys:k[]
-    is_undo:boolean
-}){
+}:input_item_key_uit<t,k>){
     const [ss_texts, setss_texts] = useState<string[]>(
         arr.ss.map((item)=>{
             return item as unknown as string
