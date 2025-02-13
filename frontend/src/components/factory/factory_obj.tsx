@@ -3,7 +3,10 @@ import * as a from "../../type/alias";
 import Click_button from "../button/click_button";
 import Input_str from "../input/input_str";
 import { Str_to_h } from "../../utils/convert";
-import { func_delete_arr, func_update_item, func_copy_item } from '../../utils/crud_arr'
+import { func_delete_arr, 
+    func_update_item, 
+    func_copy_item,
+    func_edit_arr } from '../../utils/crud_arr'
 
 export default function Factory_obj<t extends {name:a.name}>({
     arr,
@@ -38,17 +41,19 @@ export default function Factory_obj<t extends {name:a.name}>({
         </>
     }
     if (ss_ui_mode === "rename"){
-        function func_rename(index:number){
-            let update_input = arr.ss[index]
-            update_input.name = ss_name as a.name
-            func_update_item(index, arr, update_input)
-        }
         jsx_element = <>
         <Input_str
             opt_name={"rename" as a.opt_name}
             input={{ss:ss_name, setss:setss_name}}
         />
-        <Click_button name={"yes" as a.name} func_event={(()=>{func_rename(index)}) as a.func_event}/>
+        <Click_button name={"yes" as a.name} func_event={(()=>{
+            func_edit_arr(
+                index,
+                arr,
+                'name',
+                ss_name as t['name']
+            )
+        }) as a.func_event}/>
         <Click_button name={"no" as a.name}  func_event={(()=>{setss_ui_mode("normal")}) as a.func_event}/>
         </>
     }
