@@ -22,7 +22,8 @@ export type img_t = {
 
 export type box_t = {
     name:a.name,
-    select:a.select,
+    view:boolean,
+    ocr:boolean,
     min_x?:undefined|number,
     min_y?:undefined|number,
     min_w?:undefined|number,
@@ -35,3 +36,17 @@ export type box_t = {
     g?:undefined|number,
     b?:undefined|number,
 }
+
+export const boxes_input_key = [
+    "min_x",
+    "min_y",
+    "min_w",
+    "min_h",
+    "max_x",
+    "max_y",
+    "max_w",
+    "max_h",
+    "r",
+    "g",
+    "b",
+]

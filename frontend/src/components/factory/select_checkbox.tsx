@@ -1,7 +1,7 @@
 import React from "react";
 import * as a from "../../type/alias";
 import { func_update_item } from "../../utils/crud_arr";
-import Click_button from "../button/click_button";
+// import { select_button_t } from "./select_button";
 
 export type select_button_t<
     t extends object,
@@ -12,7 +12,7 @@ export type select_button_t<
         key:k
 }
 
-export default function Select_button<
+export default function Select_checkbox<
     t extends object,
     k extends keyof t>({
     name = "select" as a.name,
@@ -20,7 +20,7 @@ export default function Select_button<
     index,
     key
 }:select_button_t<t,k>){
-    function func_select(index:number){
+    function func_click(){
         let update_input = arr.ss[index]
         if (update_input[key] === true){
             update_input[key] = false as t[k]
@@ -30,10 +30,15 @@ export default function Select_button<
         }
         func_update_item(index, arr, update_input)
     }
+    const handle_click = () => func_click()
+    // https://stackoverflow.com/questions/56356900/
+    // way-to-determine-checkbox-checked-in-react-usestate
     return <>
-    <Click_button 
-        name={name as a.name} 
-        func_event={(()=>{func_select(index)}) as a.func_event}
+    <input 
+        type="checkbox" 
+        onClick={handle_click}
+        checked={arr.ss[index][key] as unknown as boolean}
     />
+    <label>{name}</label>
     </>
 }

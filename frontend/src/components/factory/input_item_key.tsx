@@ -2,9 +2,7 @@ import React , {useState} from "react";
 import * as a from "../../type/alias"
 import Click_button from "../button/click_button";
 import Input_str from "../input/input_str";
-import Input_form from "../input/input_form";
 import {Str_to_h} from "../../utils/convert";
-import { input_uit } from "../../type/input_ui";
 import { func_update_item } from "../../utils/crud_arr";
 import { func_update_item_key } from "../../utils/crud_arr";
 import { func_handle_type } from "../../utils/handle";
