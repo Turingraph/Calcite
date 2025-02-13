@@ -40,13 +40,13 @@ export function func_push_arr<t>(
     arr.setss(update_arr)
 }
 
-export function func_delete_arr<t>(index:number,arr:a.use_state_t<t[]>){
+export function func_delete_item<t>(index:number,arr:a.use_state_t<t[]>){
     let update_arr = [...arr.ss]
     update_arr.splice(index, 1)
     arr.setss(update_arr)
 }
 
-export function func_edit_arr<
+export function func_update_item_key<
     t extends object, 
     k extends keyof t,
     v extends t[k]>(
@@ -56,8 +56,25 @@ export function func_edit_arr<
         input:v
     ){
         let update_arr = [...arr.ss]
-        if (typeof (update_arr[index][key]) === typeof input){
-            update_arr[index][key] = input
-        }
+        update_arr[index][key] = input
         arr.setss(update_arr)
+    }
+
+export function func_update_item_keys<
+    t extends object,
+    k extends keyof t,
+    v extends t[k]>(
+        this_item:number,
+        arr:a.use_state_t<t[]>,
+        keys:k[],
+        input:v[]
+    ){
+        keys.map((item, index)=>{
+            func_update_item_key(
+                this_item,
+                arr,
+                item,
+                input[index]
+            )
+        })
     }

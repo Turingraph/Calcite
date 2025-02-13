@@ -3,7 +3,7 @@ import * as a from "../../type/alias"
 import Click_button from "../button/click_button";
 import Input_opt from "../search/input_opt";
 import {Str_to_h} from "../../utils/convert";
-import { func_push_arr, func_delete_arr } from '../../utils/crud_arr'
+import { func_push_arr, func_delete_item } from '../../utils/crud_arr'
 import Panel from "../asset/panel";
 
 export default function Factory_opts(
@@ -50,8 +50,8 @@ export default function Factory_opts(
     let jsx_arr = arr.ss.map((item,index)=>{
         return <>
             <Str_to_h opt_name={available_opts[item] as a.opt_name}/>
-            <Click_button name={"x" as a.name} func_event={(()=>{
-                func_delete_arr(index, arr)
+            <Click_button name={"delete" as a.name} func_event={(()=>{
+                func_delete_item(index, arr)
             }) as a.func_event}/>
         </>
     })

@@ -1,7 +1,7 @@
 import React, {JSX, useState} from "react";
 import * as a from "../../type/alias";
 import { func_update_item } from "../../utils/crud_arr";
-import Click_button from "./click_button";
+import Click_button from "../button/click_button";
 
 export default function Select_button<t extends {select:a.select}>({
     name = "select" as a.name,
