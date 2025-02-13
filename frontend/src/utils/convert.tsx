@@ -1,9 +1,23 @@
 import * as a from "../../src/type/alias"
 import React, { JSX } from "react";
 
+export function Int_to_ksize(n:number){
+    if(Math.floor(n) < 3){
+        return 3
+    }
+    else{
+        if (Math.floor(n) % 2 == 1){
+            return Math.floor(n)
+        }
+        else{
+            return Math.floor(n) + 1
+        }
+    }
+}
+
 export function Int_to_size(value:number, maxval:number){
     if (value > maxval){
-        return 255
+        return maxval
     }
     else if(value < 0){
         return 0

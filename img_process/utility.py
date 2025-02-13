@@ -4,7 +4,7 @@ import numpy as np
 def invert_img(img: np.ndarray) -> np.ndarray:
     return cv2.bitwise_not(src=img)
 
-def u_odd(n: int) -> int:
+def get_ksize(n: int) -> int:
     n = int(n)
     if n < 3:
         return 3

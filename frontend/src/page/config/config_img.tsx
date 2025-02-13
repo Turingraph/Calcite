@@ -2,10 +2,12 @@ import React, {useEffect, useState} from 'react'
 import * as a from '../../type/alias'
 import Combine_input from '../../components/input/combine_input'
 import { combine_input_uit } from '../../type/input_ui'
-import { Opt_to_jsx_arr } from '../../utils/convert'
+import { 
+    Opt_to_jsx_arr,
+    Int_to_255,
+    Int_to_ksize } from '../../utils/convert'
 import { default_img } from '../../data/config'
 import Click_button, {click_button_t} from '../../components/button/click_button'
-import { Int_to_255 } from '../../utils/convert'
 
 export default function Config_img({
     //
@@ -30,14 +32,14 @@ export default function Config_img({
     const [ss_opening_row, setss_opening_row] = useState<number>(default_img.opening.r)
     const [ss_opening_col, setss_opening_col] = useState<number>(default_img.opening.c)
 
+    const [ss_canny_c0, setss_canny_c0] = useState<number>(default_img.canny.c0)
     const [ss_canny_c1, setss_canny_c1] = useState<number>(default_img.canny.c1)
-    const [ss_canny_c2, setss_canny_c2] = useState<number>(default_img.canny.c2)
 
     const [ss_dilate_row, setss_dilate_row] = useState<number>(default_img.dilate.r)
     const [ss_dilate_col, setss_dilate_col] = useState<number>(default_img.dilate.c)
 
-    const [ss_blur_ksize, setss_blur_ksize] = useState<number>(default_img.blur.ksize)
-    const [ss_blur_effect, setss_blur_effect] = useState<number>(default_img.blur.effect)
+    const [ss_blur_c0, setss_blur_c0] = useState<number>(default_img.blur.c0)
+    const [ss_blur_c1, setss_blur_c1] = useState<number>(default_img.blur.c1)
     const [ss_blur_opt, setss_blur_opt] = useState<number>(default_img.blur.opt)
 
     const [ss_rotate, setss_rotate] = useState<number>(default_img.rotate)
@@ -60,6 +62,28 @@ export default function Config_img({
         ss_thresh_px,
         ss_thresh_maxval,
         ss_thresh_adp_maxval
+    ])
+
+    useEffect(()=>{
+        setss_thresh_adp_ksize(Int_to_ksize(ss_thresh_adp_ksize))
+        setss_blur_c0(Int_to_ksize(ss_blur_c0))
+        setss_blur_c1(Int_to_ksize(ss_blur_c1))
+        setss_dilate_col (Int_to_ksize(ss_dilate_col )) 
+        setss_dilate_row (Int_to_ksize(ss_dilate_row ))
+        setss_erode_col  (Int_to_ksize(ss_erode_col  ))
+        setss_erode_row  (Int_to_ksize(ss_erode_row  ))
+        setss_opening_col(Int_to_ksize(ss_opening_col))
+        setss_opening_row(Int_to_ksize(ss_opening_row))
+    },[
+        ss_thresh_adp_ksize,
+        ss_blur_c0,
+        ss_blur_c1,
+        ss_dilate_col,
+        ss_dilate_row,
+        ss_erode_col,
+        ss_erode_row,
+        ss_opening_col,
+        ss_opening_row
     ])
 
     let interface_thresh:combine_input_uit = {
@@ -232,18 +256,18 @@ export default function Config_img({
             {
                 opt_name:"first constant" as a.opt_name,
                 input:{
-                    ss:ss_canny_c1,
-                    setss:setss_canny_c1
+                    ss:ss_canny_c0,
+                    setss:setss_canny_c0
                 } as a.use_state_t<number|string>,
-                default_input:default_img.canny.c1
+                default_input:default_img.canny.c0
             },
             {
                 opt_name:"second constant" as a.opt_name,
                 input:{
-                    ss:ss_canny_c2,
-                    setss:setss_canny_c2
+                    ss:ss_canny_c1,
+                    setss:setss_canny_c1
                 } as a.use_state_t<number|string>,
-                default_input:default_img.canny.c2
+                default_input:default_img.canny.c1
             }
         ],
         input_opt:undefined
@@ -274,20 +298,30 @@ export default function Config_img({
         opt_name:"blur" as a.opt_name,
         input_str:[
             {
-                opt_name:"Size of Kernel" as a.opt_name,
+                opt_name:(() => {
+                    if (ss_blur_opt === 2){
+                        return "Size of Kernel"
+                    }
+                    return "Width of Kernel"
+                }) as unknown as a.opt_name,
                 input:{
-                    ss:ss_blur_ksize,
-                    setss:setss_blur_ksize
+                    ss:ss_blur_c0,
+                    setss:setss_blur_c0
                 } as a.use_state_t<number|string>,
-                default_input:default_img.blur.ksize
+                default_input:default_img.blur.c0
             },
             {
-                opt_name:"effect" as a.opt_name,
+                opt_name:(() => {
+                    if (ss_blur_opt === 2){
+                        return "Effect"
+                    }
+                    return "Height of Kernel"
+                }) as unknown as a.opt_name,
                 input:{
-                    ss:ss_blur_effect,
-                    setss:setss_blur_effect
+                    ss:ss_blur_c1,
+                    setss:setss_blur_c1
                 } as a.use_state_t<number|string>,
-                default_input:default_img.blur.effect
+                default_input:default_img.blur.c1
             },
         ],
         input_opt:[

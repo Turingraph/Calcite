@@ -1,6 +1,6 @@
 import cv2
 import numpy as np
-from img_process.utility import set_px, u_odd, gray_img
+from img_process.utility import set_px, get_ksize, gray_img
 from utility.utility import get_options
 
 message = """
@@ -114,7 +114,7 @@ class threshold_adapt:
         maxval: int = 255,
     ):
         self.method = method
-        self.ksize = u_odd(n=ksize)
+        self.ksize = get_ksize(n=ksize)
         self.constant = constant
         self.maxval = set_px(n=maxval)
         self.adaptive_method = get_options(

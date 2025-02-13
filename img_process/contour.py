@@ -1,6 +1,6 @@
 import cv2
 import numpy as np
-from img_process.utility import u_odd
+from img_process.utility import get_ksize
 from utility.utility import get_options
 from img_process.threshold import threshold
 
@@ -18,7 +18,7 @@ def contour_img(
     kernel: np.ndarray = np.ones(shape=(2, 30)),
     ksize: int = 9,
 ) -> np.ndarray:
-    ksize = u_odd(n=ksize)
+    ksize = get_ksize(n=ksize)
     img = cv2.GaussianBlur(src=img, ksize=(ksize, ksize), sigmaX=0)
     transformation = threshold(
         method=cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU, 

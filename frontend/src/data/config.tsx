@@ -17,11 +17,11 @@ export const default_img = {
     },
     erode:{r:1,c:1},
     opening:{r:1,c:1},
-    canny:{c1:1,c2:1},
+    canny:{c0:1,c1:1},
     dilate:{r:1,c:1},
     blur:{
-        ksize:15,
-        effect:75,
+        c0:15,
+        c1:15,
         opt:0
     },
     rotate:0,
