@@ -8,11 +8,7 @@ import Search_bar from "../../components/search/search_bar";
 import Panel from "../../components/asset/panel";
 import Input_item_key, {input_item_key_uit} from "../../components/factory/input_item_key";
 
-export default function Display_boxes({
-    //
-}:{
-    //
-}){
+export default function Display_boxes(){
     const [ss_boxes, setss_boxes] = useState<box_t[]>([])
     const [ss_boxes_filter, setss_boxes_filter] = useState<(opt_mode_uit|undefined)[]>([])
 

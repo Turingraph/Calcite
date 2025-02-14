@@ -5,11 +5,7 @@ import Display_img from './display_img';
 import Display_ocr from './display_ocr';
 import Display_boxes from './display_boxes';
 
-export default function Page_display({
-    //
-}:{
-    //
-}){
+export default function Page_display(){
     const RIGHT_NAME = [
         "OCR" as a.name,
         "Boxes" as a.name,

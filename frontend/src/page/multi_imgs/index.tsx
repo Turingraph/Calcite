@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import * as a from "../../type/alias"
 import Factory_obj from "../../components/factory/factory_obj";
 import Click_button, {click_button_t} from "../../components/button/click_button";
@@ -9,11 +9,7 @@ import { img_t } from "../../type/obj";
 import { opt_mode_uit } from "../../type/input_ui";
 import Select_button from "../../components/factory/select_button";
 
-export default function Page_multi_imgs({
-    //
-}:{
-    //
-}){
+export default function Page_multi_imgs(){
     const [ss_img_arr, setss_img_arr] = useState<img_t[]>([])
     const [ss_img_filter, setss_img_filter] = useState<(opt_mode_uit|undefined)[]>([])
     const BUTTON_ARR:click_button_t[] = [

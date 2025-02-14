@@ -5,11 +5,7 @@ import Click_button from '../../components/button/click_button'
 import { Opt_to_jsx_arr } from '../../utils/convert'
 import Panel from '../../components/asset/panel'
 
-export default function Display_img({
-    //
-}:{
-    //
-}){
+export default function Display_img(){
         const INTERFACE_BUTTON_ARR:click_button_t[]=[
             {
                 name:"+" as a.name,

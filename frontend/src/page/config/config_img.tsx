@@ -9,11 +9,7 @@ import {
 import { DEFAULT_IMG } from '../../data/config'
 import Click_button, {click_button_t} from '../../components/button/click_button'
 
-export default function Config_img({
-    //
-}:{
-    //
-}){
+export default function Config_img(){
     const [ss_thresh_px, setss_thresh_px] = useState<number>(Int_to_255(DEFAULT_IMG.thresh.px))
     const [ss_thresh_is_otsu, setss_thresh_is_otsu] = useState<number>(DEFAULT_IMG.thresh.is_otsu)
     const [ss_thresh_mode, setss_thresh_mode] = useState<number>(DEFAULT_IMG.thresh.mode)

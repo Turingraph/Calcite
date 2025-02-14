@@ -6,11 +6,7 @@ import { combine_input_uit } from "../../type/input_ui";
 import { Int_to_255 } from "../../utils/convert";
 import { Opt_to_jsx_arr } from "../../utils/convert";
 
-export default function Config_boxes({
-    //
-}:{
-    //
-}){
+export default function Config_boxes(){
     const [ss_min_w, setss_min_w] = useState<number>(DEFAULT_BOX.rect.min_w)
     const [ss_min_h, setss_min_h] = useState<number>(DEFAULT_BOX.rect.min_h)
     const [ss_min_x, setss_min_x] = useState<number>(DEFAULT_BOX.rect.min_x)

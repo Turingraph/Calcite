@@ -5,11 +5,7 @@ import Config_ocr from "./config_ocr";
 import Config_img from "./config_img";
 import Config_boxes from "./config_boxes";
 
-export default function Page_config({
-    //
-}:{
-    //
-}){
+export default function Page_config(){
     const CONFIG_NAME = [
         "OCR" as a.name,
         "Image Processing" as a.name,

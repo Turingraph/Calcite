@@ -4,11 +4,7 @@ import Text_area from '../../components/input/text_area'
 import { Str_to_h } from '../../utils/convert'
 import Panel from '../../components/asset/panel'
 
-export default function Display_ocr({
-    //
-}:{
-    //
-}){
+export default function Display_ocr(){
     const [ss_osd_orient, setss_osd_orient] = useState<number>(0)
     const [ss_osd_rotate, setss_osd_rotate] = useState<number>(0)
     const [ss_osd_orient_conf, setss_osd_orient_conf] = useState<number>(0)

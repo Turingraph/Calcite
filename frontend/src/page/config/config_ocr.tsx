@@ -13,11 +13,7 @@ import Combine_input from "../../components/input/combine_input";
 import { input_opt_uit } from "../../type/input_ui";
 import { DEFAULT_OCR } from "../../data/config";
 
-export default function Config_ocr({
-    //
-}:{
-    //
-}){
+export default function Config_ocr(){
     const [ss_psm, setss_psm] = useState<number>(DEFAULT_OCR.psm)
     const [ss_oem, setss_oem] = useState<number>(DEFAULT_OCR.oem)
     const [ss_languages, setss_languages] = useState<number[]>(DEFAULT_OCR.languages.map((item)=>{return item}))
