@@ -23,9 +23,7 @@ export default function Input_form({
     const [ss_texts, setss_texts] = useState<string[]>(arr.map((item)=>{return item.input.ss.toString()}))
     const [ss_update, setss_update] = useState<0|1>(0)
     useEffect(()=>{
-        console.log("---------------------------------------------------------------------")
         const UPDATE_TEXT = SS_ARR.map((item)=>{
-            console.log(item.ss)
             return item.ss as string
         })
         setss_texts(UPDATE_TEXT)

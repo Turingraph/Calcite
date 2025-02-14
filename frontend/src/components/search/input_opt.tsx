@@ -34,15 +34,15 @@ export default function Input_opt(
     })
     let jsx_search_bar = <></>
     if (is_search_bar===true){
-        jsx_search_bar= <Search_bar<opt_mode_uit, "name">
+        jsx_search_bar= <Search_bar
             opt_name={undefined as a.opt_name}
-            read_only_arr={available_opts.map((item,index)=>{return {name:item,index:index} as opt_mode_uit})}
-            select_arr={
-                {
+            read_only_arr={
+                available_opts.map((item,index)=>{return {name:item,index:index} as opt_mode_uit})}
+            select_arr={{
                     ss:ss_show_opts, 
                     setss:setss_show_opts
                 }}
-            key = "name"
+            attr = {"name"}
         />
     }
     return (<>

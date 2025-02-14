@@ -46,31 +46,31 @@ export function func_delete_item<t>(index:number,arr:a.use_state_t<t[]>){
     arr.setss(UPDATE_ARR)
 }
 
-export function func_update_item_key<
+export function func_update_item_attr<
     t extends object, 
     k extends keyof t,
     v extends t[k]>(
         index:number,
         arr:a.use_state_t<t[]>,
-        key:k,
+        attr:k,
         input:v
     ){
         const UPDATE_ARR = [...arr.ss]
-        UPDATE_ARR[index][key] = input
+        UPDATE_ARR[index][attr] = input
         arr.setss(UPDATE_ARR)
     }
 
-export function func_update_item_keys<
+export function func_update_item_attrs<
     t extends object,
     k extends keyof t,
     v extends t[k]>(
         this_item:number,
         arr:a.use_state_t<t[]>,
-        keys:k[],
+        attrs:k[],
         input:v[]
     ){
-        keys.map((item, index)=>{
-            func_update_item_key(
+        attrs.map((item, index)=>{
+            func_update_item_attr(
                 this_item,
                 arr,
                 item,

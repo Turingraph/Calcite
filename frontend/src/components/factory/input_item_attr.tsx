@@ -4,42 +4,42 @@ import Click_button from "../button/click_button";
 import Input_str from "../input/input_str";
 import {Str_to_h} from "../../utils/convert";
 import { func_update_item } from "../../utils/crud_arr";
-import { func_update_item_key } from "../../utils/crud_arr";
+import { func_update_item_attr } from "../../utils/crud_arr";
 import { func_handle_num_type } from "../../utils/handle";
 
-export type input_item_key_uit<
+export type input_item_attr_uit<
 t extends object,
 k extends keyof t> = {
     opt_name:a.opt_name
     arr:a.use_state_t<t[]>,
     this_item:number,
-    default_key_values:(string|number)[]
-    keys:k[]
+    default_attr_values:(string|number)[]
+    attrs:k[]
     is_undo?:boolean
 }
 
-export default function Input_item_key<
+export default function Input_item_attr<
     t extends object,
     k extends keyof t>({
         opt_name,       
         arr  ,   
         this_item,
-        default_key_values,                
-        keys  ,  
+        default_attr_values,                
+        attrs  ,  
         is_undo = false
-}:input_item_key_uit<t,k>){
+}:input_item_attr_uit<t,k>){
     const [ss_texts, setss_texts] = useState<string[]>(
         arr.ss.map((item)=>{
             return item as unknown as string
         })
     )
-    function func_set_item_key(input_arr:t[k][]){
-        keys.map((item, index)=>{
+    function func_set_item_attr(input_arr:t[k][]){
+        attrs.map((item, index)=>{
             let let_input = (input_arr[index]) as t[k]
-            if (typeof arr.ss[index][keys[index]] === 'number'){
-                if (typeof default_key_values[index] === 'number'){
+            if (typeof arr.ss[index][attrs[index]] === 'number'){
+                if (typeof default_attr_values[index] === 'number'){
                     let_input = func_handle_num_type(
-                        default_key_values[index],
+                        default_attr_values[index],
                         let_input as string
                     ) as unknown as t[k]
                 }
@@ -50,7 +50,7 @@ export default function Input_item_key<
                     ) as unknown as t[k]
                 }
             }
-            func_update_item_key(
+            func_update_item_attr(
                 this_item,
                 arr,
                 item,
@@ -59,7 +59,7 @@ export default function Input_item_key<
         })
         setss_texts(input_arr as unknown as string[])
     }
-    const JSX_INPUT = keys.map((item,index)=>{
+    const JSX_INPUT = attrs.map((item,index)=>{
         return <>
             <Input_str
                 opt_name={item as a.opt_name}
@@ -77,7 +77,7 @@ export default function Input_item_key<
         </>
     })
     function func_set_cancel(){
-        const UPDATE_TEXTS = keys.map((item)=>{
+        const UPDATE_TEXTS = attrs.map((item)=>{
             return arr.ss[this_item][item] as string
         })
         setss_texts(UPDATE_TEXTS)
@@ -87,7 +87,7 @@ export default function Input_item_key<
     {JSX_INPUT}
     <Click_button
         name={"apply change" as a.name}
-        func_event={(()=>{func_set_item_key(ss_texts as unknown as t[k][])}) as a.func_event}
+        func_event={(()=>{func_set_item_attr(ss_texts as unknown as t[k][])}) as a.func_event}
     />
     {is_undo ? <Click_button
         name={"cancel change" as a.name}
@@ -95,7 +95,7 @@ export default function Input_item_key<
     /> : <></>}
     <Click_button
         name={"reset all" as a.name}
-        func_event={(()=>{func_set_item_key(default_key_values as unknown as t[k][])}) as a.func_event}
+        func_event={(()=>{func_set_item_attr(default_attr_values as unknown as t[k][])}) as a.func_event}
     />
     </>
 }

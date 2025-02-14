@@ -17,7 +17,7 @@ const DEFAULT_INPUT:(string|number)[] = [
 const OPT_MEDIA_ARR = ["3B1B", "Khan anademy", "Brilliant", "Shoulder of Giant", "Learn by Doing"]
 const OPT_LEVEL = ["Beginner", "Elementary", "Intermediate", "Advance", "Genius"]
 
-export function Test_combine_input(){
+export function Test_input_form(){
     const [ss_i, setss_i] = useState<number>(DEFAULT_INPUT[0] as number)
     const [ss_j, setss_j] = useState<number>(DEFAULT_INPUT[1] as number)
     const [ss_k, setss_k] = useState<number>(DEFAULT_INPUT[2] as number)

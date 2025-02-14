@@ -6,7 +6,7 @@ import { Str_to_h } from "../../utils/convert";
 import { func_delete_item, 
     func_update_item, 
     func_copy_item,
-    func_update_item_key } from '../../utils/crud_arr'
+    func_update_item_attr } from '../../utils/crud_arr'
 
 export default function Factory_obj<t extends {name:a.name}>({
     arr,
@@ -46,7 +46,7 @@ export default function Factory_obj<t extends {name:a.name}>({
             input={{ss:ss_name, setss:setss_name}}
         />
         <Click_button name={"yes" as a.name} func_event={(()=>{
-            func_update_item_key(
+            func_update_item_attr(
                 index,
                 arr,
                 'name',

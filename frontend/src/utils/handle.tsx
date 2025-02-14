@@ -64,13 +64,13 @@ export type equal_type<T, U> =
     (<G>() => G extends T ? 1 : 2) extends
     (<G>() => G extends U ? 1 : 2) ? 1 : 0;
 
-export function func_get_keys<t extends object>(obj:t){
+export function func_get_attrs<t extends object>(obj:t){
     return [a as keyof typeof obj]
 }
 
-export function func_check_key<t extends object>(obj:t, key:string){
-    const ARR = func_get_keys(obj) as string[]
-    if (ARR.includes(key)){
+export function func_check_attr<t extends object>(obj:t, attr:string){
+    const ARR = func_get_attrs(obj) as string[]
+    if (ARR.includes(attr)){
         return true
     }
     else{

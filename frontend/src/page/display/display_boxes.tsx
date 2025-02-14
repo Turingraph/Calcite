@@ -1,12 +1,12 @@
 import React, {useState} from "react";
 import * as a from "../../type/alias"
-import { box_t, BOXES_INPUT_KEY, BOXES_DEFAULT_INPUT, boxes_input_key_t } from "../../type/obj";
+import { box_t, BOXES_INPUT_ATTR, BOXES_DEFAULT_INPUT, boxes_input_attr_t } from "../../type/obj";
 import Factory_obj from "../../components/factory/factory_obj";
 import Select_checkbox from "../../components/factory/select_checkbox";
 import { opt_mode_uit } from "../../type/input_ui";
 import Search_bar from "../../components/search/search_bar";
 import Panel from "../../components/asset/panel";
-import Input_item_key, {input_item_key_uit} from "../../components/factory/input_item_key";
+import Input_item_attr, {input_item_attr_uit} from "../../components/factory/input_item_attr";
 
 export default function Display_boxes(){
     const [ss_boxes, setss_boxes] = useState<box_t[]>([])
@@ -19,16 +19,16 @@ export default function Display_boxes(){
             ss:ss_boxes_filter,
             setss:setss_boxes_filter
         }}
-        key={"name"}
+        attr={"name"}
     />
     const JSX_BOXES = ss_boxes_filter.map((item,index)=>{
         if (item != undefined){
-        const INTERFACE_BOX:input_item_key_uit<box_t, boxes_input_key_t> = {
+        const INTERFACE_BOX:input_item_attr_uit<box_t, boxes_input_attr_t> = {
             opt_name:"attribute of box" as a.opt_name,
             arr:{ss:ss_boxes, setss:setss_boxes},
             this_item:item.index,
-            default_key_values:BOXES_DEFAULT_INPUT as (string|number)[],
-            keys:BOXES_INPUT_KEY as boxes_input_key_t[],
+            default_attr_values:BOXES_DEFAULT_INPUT as (string|number)[],
+            attrs:BOXES_INPUT_ATTR as boxes_input_attr_t[],
         }
         return <><Factory_obj
             arr={{ss:ss_boxes, setss:setss_boxes}}
@@ -38,15 +38,15 @@ export default function Display_boxes(){
                     name={"view" as a.name}
                     arr={{ss:ss_boxes, setss:setss_boxes}}
                     index={item.index}
-                    key={"view"}
+                    attr={"view"}
                 />
                 <Select_checkbox
                     name={"ocr" as a.name}
                     arr={{ss:ss_boxes, setss:setss_boxes}}
                     index={item.index}
-                    key={"ocr"}
+                    attr={"ocr"}
                 />
-                {Input_item_key(INTERFACE_BOX)}
+                {Input_item_attr(INTERFACE_BOX)}
             </>}
         /></>}
     })

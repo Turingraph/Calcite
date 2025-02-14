@@ -62,7 +62,7 @@ export default function Page_multi_imgs(){
             ss:ss_img_filter, 
             setss:setss_img_filter
         }}
-        key={"name"}
+        attr={"name"}
     />
     const JSX_IMG_ARR = ss_img_filter.map((item, index)=>{
         if(item != undefined){
@@ -81,7 +81,7 @@ export default function Page_multi_imgs(){
                         setss:setss_img_arr
                     }}
                     index={item.index}
-                    key={"select"}
+                    attr={"select"}
                     />
                     </>
                 }
