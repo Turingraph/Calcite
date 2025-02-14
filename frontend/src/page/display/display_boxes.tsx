@@ -16,7 +16,7 @@ export default function Display_boxes({
     const [ss_boxes, setss_boxes] = useState<box_t[]>([])
     const [ss_boxes_filter, setss_boxes_filter] = useState<(opt_mode_uit|undefined)[]>([])
 
-    let jsx_search_bar = <Search_bar
+    const JSX_SEARCH_BAR = <Search_bar
         opt_name={"Search boxes" as a.opt_name}
         read_only_arr={ss_boxes}
         select_arr={{
@@ -25,9 +25,9 @@ export default function Display_boxes({
         }}
         key={"name"}
     />
-    let jsx_boxes = ss_boxes_filter.map((item,index)=>{
+    const JSX_BOXES = ss_boxes_filter.map((item,index)=>{
         if (item != undefined){
-        let interface_box:input_item_key_uit<box_t, boxes_input_key_t> = {
+        const INTERFACE_BOX:input_item_key_uit<box_t, boxes_input_key_t> = {
             opt_name:"attribute of box" as a.opt_name,
             arr:{ss:ss_boxes, setss:setss_boxes},
             this_item:item.index,
@@ -50,12 +50,12 @@ export default function Display_boxes({
                     index={item.index}
                     key={"ocr"}
                 />
-                {Input_item_key(interface_box)}
+                {Input_item_key(INTERFACE_BOX)}
             </>}
         /></>}
     })
     return <>
-        {jsx_search_bar}
-        <Panel jsx_element = {<>{jsx_boxes}</>}/>
+        {JSX_SEARCH_BAR}
+        <Panel jsx_element = {<>{JSX_BOXES}</>}/>
     </>
 }

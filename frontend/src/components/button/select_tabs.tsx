@@ -16,15 +16,14 @@ export default function Select_tabs(
     const NORMAL_RGB = 255;
     const SELECT_RGB = [255,0,0];
     const BUTTON_ARR = name_arr.map((name,index)=>{
-        let rgb:number|number[] = NORMAL_RGB;
-        if (index == ss_select){
-            rgb = SELECT_RGB;
-        }
         const JSX_ELEMENT = <Click_button 
                     name={name}
                     func_event={(()=>setss_select(index)) as a.func_event}
                 />
-        return <Color_ui jsx_element={JSX_ELEMENT} rgb={rgb}/>
+        return <Color_ui 
+            jsx_element={JSX_ELEMENT} 
+            rgb={index == ss_select ? SELECT_RGB : NORMAL_RGB}
+            />
     })
     return <>
         {BUTTON_ARR}

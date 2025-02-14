@@ -25,19 +25,19 @@ export default function Config_ocr({
     const [ss_filter_char, setss_filter_char] = useState<string>(DEFAULT_OCR.filter_char)
     const [ss_filter_mode, setss_filter_mode] = useState<number>(DEFAULT_OCR.filter_mode)
 
-    let interface_psm:input_opt_uit = {
+    const INTERFACE_PSM:input_opt_uit = {
             opt_name: "Page Segmentation Mode (PSM)" as a.opt_name,
             available_opts: PSM_OPTS,
             ss_mode: {ss:ss_psm, setss:setss_psm},
             is_search_bar: false
     }
-    let interface_oem:input_opt_uit = {
+    const INTERFACE_OEM:input_opt_uit = {
         opt_name: "OCR Engine Mode (OEM)" as a.opt_name,
         available_opts: OEM_OPTS,
         ss_mode: {ss:ss_oem, setss:setss_oem},
         is_search_bar: false
     }
-    let interface_lang = <Factory_opts
+    const INTERFACE_LANG = <Factory_opts
     opt_name={"Select Language" as a.opt_name}
     arr={{ss:ss_languages, setss:setss_languages}}
     available_opts={LANGUAGE_OPTS}
@@ -45,12 +45,12 @@ export default function Config_ocr({
     is_search_bar={true}
     is_duplicate={false}
     />
-    let interface_time_out:input_uit<string|number> = {
+    const INTERFACE_TIME_OUT:input_uit<string|number> = {
         opt_name:"Time out (second)" as a.opt_name,
         input:{ss:ss_time_out, setss:setss_time_out} as a.use_state_t<number|string>,
         default_input:0
     }
-    let interface_filter_char = <Combine_input
+    const INTERFACE_FILTER_CHAR = <Combine_input
         opt_name={"Filter Character" as a.opt_name}
         input_str={[{
             opt_name:"selected character" as a.opt_name,
@@ -63,14 +63,14 @@ export default function Config_ocr({
             is_search_bar:false
         }]}
     />
-    let interface_ocr = <Combine_input
+    const INTERFACE_OCR = <Combine_input
         opt_name={"OCR Setting" as a.opt_name}
-        input_str={[interface_time_out]}
-        input_opt={[interface_psm, interface_oem]}
+        input_str={[INTERFACE_TIME_OUT]}
+        input_opt={[INTERFACE_PSM, INTERFACE_OEM]}
     />
     return <>
-        {interface_lang}
-        {interface_filter_char}
-        {interface_ocr}
+        {INTERFACE_LANG}
+        {INTERFACE_FILTER_CHAR}
+        {INTERFACE_OCR}
     </>
 }

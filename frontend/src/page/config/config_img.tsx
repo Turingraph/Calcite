@@ -86,7 +86,7 @@ export default function Config_img({
         ss_opening_row
     ])
 
-    let interface_thresh:combine_input_uit = {
+    const INTERFACE_THRESH:combine_input_uit = {
         opt_name:"threshold" as a.opt_name,
         input_str:[
             {
@@ -136,7 +136,7 @@ export default function Config_img({
             }
         ]
     }
-    let interface_thresh_adp:combine_input_uit = {
+    const INTERFACE_THRESH_ADP:combine_input_uit = {
         opt_name:"adaptive threshold" as a.opt_name,
         input_str:[
             {
@@ -206,7 +206,7 @@ export default function Config_img({
             }
         ]
     }
-    let interface_erode:combine_input_uit = {
+    const INTERFACE_ERODE:combine_input_uit = {
         opt_name:"erode" as a.opt_name,
         input_str:[
             {
@@ -228,7 +228,7 @@ export default function Config_img({
         ],
         input_opt:undefined
     }
-    let interface_opening:combine_input_uit = {
+    const INTERFACE_OPENING:combine_input_uit = {
         opt_name:"opening" as a.opt_name,
         input_str:[
             {
@@ -250,7 +250,7 @@ export default function Config_img({
         ],
         input_opt:undefined
     }
-    let interface_canny:combine_input_uit = {
+    const INTERFACE_CANNY:combine_input_uit = {
         opt_name:"canny" as a.opt_name,
         input_str:[
             {
@@ -272,7 +272,7 @@ export default function Config_img({
         ],
         input_opt:undefined
     }
-    let interface_dilate:combine_input_uit = {
+    const INTERFACE_DILATE:combine_input_uit = {
         opt_name:"dilate" as a.opt_name,
         input_str:[
             {
@@ -294,7 +294,7 @@ export default function Config_img({
         ],
         input_opt:undefined
     }
-    let interface_blur:combine_input_uit = {
+    const INTERFACE_BLUR:combine_input_uit = {
         opt_name:"blur" as a.opt_name,
         input_str:[
             {
@@ -337,7 +337,7 @@ export default function Config_img({
             }
         ]
     }
-    let interface_rotate:combine_input_uit = {
+    const INTERFACE_ROTATE:combine_input_uit = {
         opt_name:undefined as a.opt_name,
         input_str:[{
             opt_name:"rotate" as a.opt_name,
@@ -349,7 +349,7 @@ export default function Config_img({
         }],
         input_opt:undefined
     }
-    let interface_crop:combine_input_uit = {
+    const INTERFACE_CROP:combine_input_uit = {
         opt_name:"crop" as a.opt_name,
         input_str:[
             {
@@ -386,7 +386,7 @@ export default function Config_img({
             }
         ]
     }
-    let interface_button_arr:click_button_t[]=[
+    const INTERFACE_BUTTON_ARR:click_button_t[]=[
         {
             name:"reset image" as a.name,
             func_event:(()=>{setss_reset(true)}) as a.func_event
@@ -409,22 +409,22 @@ export default function Config_img({
         },
     ]
     
-    let jsx_input_arr = Opt_to_jsx_arr({arr:[
-        interface_rotate,
-        interface_thresh,
-        interface_thresh_adp,
-        interface_erode,
-        interface_opening,
-        interface_canny,
-        interface_dilate,
-        interface_blur,
-        interface_crop
+    const JSX_INPUT_ARR = Opt_to_jsx_arr({arr:[
+        INTERFACE_ROTATE,
+        INTERFACE_THRESH,
+        INTERFACE_THRESH_ADP,
+        INTERFACE_ERODE,
+        INTERFACE_OPENING,
+        INTERFACE_CANNY,
+        INTERFACE_DILATE,
+        INTERFACE_BLUR,
+        INTERFACE_CROP
     ],jsx_element:Combine_input})
 
-    let jsx_button_arr = Opt_to_jsx_arr({
-        arr:interface_button_arr,
+    const JSX_BUTTON_ARR = Opt_to_jsx_arr({
+        arr:INTERFACE_BUTTON_ARR,
         jsx_element:Click_button
     })
     
-    return <>{jsx_input_arr}{jsx_button_arr}</>
+    return <>{JSX_INPUT_ARR}{JSX_BUTTON_ARR}</>
 }
