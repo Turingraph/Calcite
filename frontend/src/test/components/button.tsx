@@ -41,8 +41,6 @@ export function Test_history_button(){
             current:OPT_NAME.length - 1
         }
     )
-
-    
     return <>
         <History_buttons 
         history={{ss:ss_history, setss:setss_history}}/>

@@ -5,6 +5,7 @@ import { combine_input_uit, input_uit, input_opt_uit } from "../../type/input_ui
 import Input_form, {input_form_t} from "../../components/input/input_form";
 import Input_str from "../../components/input/input_str";
 import Input_opt from "../../components/search/input_opt";
+import Text_area from "../../components/input/text_area";
 
 const DEFAULT_INPUT:(string|number)[] = [
     0.0001,
@@ -96,6 +97,16 @@ export function Test_input_str(){
     const [ss_song, setss_song] = useState<string>("R.I.P. Duolingo")
     return <>
         <Input_str
+            opt_name={"What is your favorite songs ?" as a.opt_name}
+            input={{ss:ss_song, setss:setss_song}}
+        />
+    </>
+}
+
+export function Test_text_area(){
+    const [ss_song, setss_song] = useState<string>("R.I.P. Duolingo")
+    return <>
+        <Text_area
             opt_name={"What is your favorite songs ?" as a.opt_name}
             input={{ss:ss_song, setss:setss_song}}
         />
