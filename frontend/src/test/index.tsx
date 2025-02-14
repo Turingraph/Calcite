@@ -3,9 +3,10 @@ import {
     Test_combine_input,
     Test_input_str} from "./components/input";
 import { Test_input_opt, Test_search_bar } from "./components/search";
+import { Test_select_tabs } from "./components/button";
 
 export default function Test(){
     return <>
-    <Test_combine_input/>
+    <Test_select_tabs/>
     </>
 }

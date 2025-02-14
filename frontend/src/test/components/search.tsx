@@ -3,37 +3,7 @@ import * as a from '../../type/alias'
 import Input_opt from "../../components/search/input_opt";
 import Search_bar from "../../components/search/search_bar";
 import { opt_mode_uit } from "../../type/input_ui";
-
-const OPT_NAME = [
-    "Gauss",
-    "Newton",
-    "Nujabes",
-    "Islamic",
-    "Python",
-    "Alien",
-    "Green Day",
-    "Radiohead",
-    "The Beatle",
-    "Abbey Road",
-    "7 Bridges of Konigsberg",
-    "Jojo",
-    "Senku",
-    "Matrix Space",
-    "Topological Space",
-    "Tao",
-    "Rabbit",
-    "Ant",
-    "Wild Life Animal Welfare",
-    "Vegan",
-    "Vector Space",
-    "Ok Computer",
-    "Tomcat",
-    "Willwood",
-    "Chonny Jash",
-    "Kiminonawa",
-    "Che Che",
-    "Cha Cha"
-]
+import { OPT_NAME } from "../utils/constant";
 
 export function Test_input_opt(){
     const [ss_name, setss_name] = useState<number>(0)
