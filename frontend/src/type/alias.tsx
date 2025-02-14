@@ -39,7 +39,7 @@ export type use_state_t<t> = {
     ss:t,
     setss:React.Dispatch<
         React.SetStateAction<t>
-    >|((e:t)=>{})
+    >|((e:t)=>void)
 }
 
 // https://stackoverflow.com/questions/49752151/
