@@ -13,6 +13,6 @@ import {
 
 export default function Test(){
     return <>
-    <Test_factory_obj/>
+    <Test_factory_opts/>
     </>
 }

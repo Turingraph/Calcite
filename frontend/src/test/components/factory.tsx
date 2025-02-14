@@ -28,8 +28,13 @@ export function Test_factory_obj(){
 }
 
 export function Test_factory_opts(){
-    return <>
-    </>
+    const [ss_arr, setss_arr] = useState<number[]>([0])
+    const AVAILABLE_OPTS = CHARACTERS.map((item)=>{return item.name}) as string[]
+    return <Factory_opts 
+        opt_name={"List" as a.opt_name}
+        arr={{ss:ss_arr, setss:setss_arr}}
+        available_opts={AVAILABLE_OPTS}
+        />
 }
 
 export function Test_input_item_attr(){

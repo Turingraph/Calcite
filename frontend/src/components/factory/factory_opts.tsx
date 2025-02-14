@@ -13,7 +13,7 @@ export default function Factory_opts(
         available_opts,
         default_opt = 0,
         is_search_bar = false,
-        is_duplicate = false,
+        is_duplicate = true,
         shape = {
             x_scroll_bar: false,
             y_scroll_bar: false,
