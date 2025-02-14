@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import './App.css';
-import State_button from './components/button/click_button';
 import Page from './page';
-import Test from './test';
+import Test_config from './test/page/config';
 
 function App() {
-  return (
-    <Test/>
-  );
+  return (<>
+    <Test_config/>
+  </>);
 }
 
 export default App;
