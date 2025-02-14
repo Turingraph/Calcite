@@ -5,6 +5,6 @@ import {
 
 export default function Test(){
     return <>
-    <Test_input_str/>
+    <Test_combine_input/>
     </>
 }

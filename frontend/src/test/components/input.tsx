@@ -54,6 +54,8 @@ export function Test_combine_input(){
                 default_input:DEFAULT_INPUT[4]
             }
         ],
+        is_undo:true,
+        // func_activate:(()=>{alert("Alexander Hamilton")}) as a.func_event
     }
 
     const JSX_INPUT_FORM = Input_form(INTERFACE_INPUT_FORM)

@@ -29,23 +29,34 @@ export default function Get_unknown_prob({
     return undefined
 }
 
-export function func_handle_type<
-            t extends "string" | "number" |
-             "bigint" |"boolean" | "symbol" | 
-             "undefined" | "object" | "function",u>(
-        default_input:t,
-        input:t|u
+
+export function func_handle_num_type(
+        default_input:number,
+        input:string
 ){
-    const CONST_T = typeof default_input
-    let let_output:typeof CONST_T;
-    try{
-        let_output = input as t
+    if(!Number.isNaN(Number(input))){
+        return Number(input)
     }
-    catch{
-        let_output = default_input
-    }
-    return let_output
+    return default_input
 }
+
+// export function func_handle_type<
+//             t extends "string" | "number" |
+//              "bigint" |"boolean" | "symbol" | 
+//              "undefined" | "object" | "function",u>(
+//         default_input:t,
+//         input:t|u
+// ){
+//     const CONST_T = typeof default_input
+//     let let_output:typeof CONST_T;
+//     try{
+//         let_output = input as t
+//     }
+//     catch{
+//         let_output = default_input
+//     }
+//     return let_output
+// }
 
 // https://stackoverflow.com/questions/53807517/
 // how-to-test-if-two-types-are-exactly-the-same

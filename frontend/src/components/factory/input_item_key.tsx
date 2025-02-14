@@ -5,7 +5,7 @@ import Input_str from "../input/input_str";
 import {Str_to_h} from "../../utils/convert";
 import { func_update_item } from "../../utils/crud_arr";
 import { func_update_item_key } from "../../utils/crud_arr";
-import { func_handle_type } from "../../utils/handle";
+import { func_handle_num_type } from "../../utils/handle";
 
 export type input_item_key_uit<
 t extends object,
@@ -38,15 +38,15 @@ export default function Input_item_key<
             let let_input = (input_arr[index]) as t[k]
             if (typeof arr.ss[index][keys[index]] === 'number'){
                 if (typeof default_key_values[index] === 'number'){
-                    let_input = func_handle_type(
-                        default_key_values[index] as unknown as "number",
-                        let_input
+                    let_input = func_handle_num_type(
+                        default_key_values[index],
+                        let_input as string
                     ) as unknown as t[k]
                 }
                 else{
-                    let_input = func_handle_type(
-                        0 as unknown as "number",
-                        let_input
+                    let_input = func_handle_num_type(
+                        0,
+                        let_input as string
                     ) as unknown as t[k]
                 }
             }
