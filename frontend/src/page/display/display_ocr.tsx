@@ -15,7 +15,7 @@ export default function Display_ocr({
     const [ss_osd_script, setss_osd_script] = useState<number>(0)
     const [ss_osd_script_conf, setss_osd_script_conf] = useState<number>(0)
     const [ss_ocr, setss_ocr] = useState<string>("")
-    let jsx_osd = <>
+    const JSX_OSD = <>
         <Str_to_h opt_name={"Orientation and Script report" as a.opt_name}/>
         <Str_to_h opt_name={"Orient: " + ss_osd_orient as a.opt_name} />
         <Str_to_h opt_name={"Rotate: " + ss_osd_rotate as a.opt_name} />
@@ -23,11 +23,11 @@ export default function Display_ocr({
         <Str_to_h opt_name={"Script: " + ss_osd_script as a.opt_name} />
         <Str_to_h opt_name={"Script Score: " + ss_osd_script_conf as a.opt_name} />
     </>
-    let jsx_ocr = <>
+    const JSX_OCR = <>
         <Panel jsx_element={<Text_area
             opt_name={"OCR output" as a.opt_name}
             input={{ss:ss_ocr, setss:setss_ocr}}
         />}/>
     </>
-    return <>{jsx_osd}{jsx_ocr}</>
+    return <>{JSX_OSD}{JSX_OCR}</>
 }

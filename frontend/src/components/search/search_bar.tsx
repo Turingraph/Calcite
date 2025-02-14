@@ -22,7 +22,7 @@ export default function Search_bar<t extends object, k extends keyof t>(
     const [ss_search_text, setss_search_text] = useState<string>("")
     useEffect(()=>{
         // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/arr/filter
-        let update_search_text = read_only_arr.map((item,index) => {
+        const UPDATE_SEARCH_TEXT = read_only_arr.map((item,index) => {
                 if ((item[key] as string).includes(ss_search_text) == true){
                     return {
                         name:item[key] as string as a.name,
@@ -30,7 +30,7 @@ export default function Search_bar<t extends object, k extends keyof t>(
                     }
                 }
             })
-        select_arr.setss(update_search_text)
+        select_arr.setss(UPDATE_SEARCH_TEXT)
     },[ss_search_text])
     
     return (<>

@@ -12,7 +12,7 @@ export default function Combine_input({
     func_activate,
     is_undo = false
 }:combine_input_uit){
-    let jsx_input_opt = Opt_to_jsx_arr({arr:input_opt, jsx_element:Input_opt})
+    const JAX_INPUT_OPT = Opt_to_jsx_arr({arr:input_opt, jsx_element:Input_opt})
     let jsx_input_str = <></>
     let let_input_str:input_uit<string|number>[] = []
     if (input_str !== undefined){
@@ -31,7 +31,7 @@ export default function Combine_input({
     }
     return <>
         <Str_to_h opt_name={opt_name as a.opt_name}/>
-        {jsx_input_opt}
+        {JAX_INPUT_OPT}
         {jsx_input_str}
     </>
 }

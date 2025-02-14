@@ -10,7 +10,7 @@ export default function Display_img({
 }:{
     //
 }){
-        let interface_button_arr:click_button_t[]=[
+        const INTERFACE_BUTTON_ARR:click_button_t[]=[
             {
                 name:"+" as a.name,
                 func_event:(()=>undefined) as a.func_event
@@ -36,12 +36,12 @@ export default function Display_img({
                 func_event:(()=>undefined) as a.func_event
             },
         ]
-    let jsx_button_arr = Opt_to_jsx_arr({
-        arr:interface_button_arr,
+    const JSX_BUTTON_ARR = Opt_to_jsx_arr({
+        arr:INTERFACE_BUTTON_ARR,
         jsx_element:Click_button
     })
     return <>
-        {jsx_button_arr}
+        {JSX_BUTTON_ARR}
         <Panel jsx_element={<h1>I will insert the image later.</h1>}/>
     </>
 }

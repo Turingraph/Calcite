@@ -36,8 +36,8 @@ export function func_handle_type<
         default_input:t,
         input:t|u
 ){
-    const const_t = typeof default_input
-    let let_output:typeof const_t;
+    const CONST_T = typeof default_input
+    let let_output:typeof CONST_T;
     try{
         let_output = input as t
     }
@@ -58,8 +58,8 @@ export function func_get_keys<t extends object>(obj:t){
 }
 
 export function func_check_key<t extends object>(obj:t, key:string){
-    let arr = func_get_keys(obj) as string[]
-    if (arr.includes(key)){
+    const ARR = func_get_keys(obj) as string[]
+    if (ARR.includes(key)){
         return true
     }
     else{

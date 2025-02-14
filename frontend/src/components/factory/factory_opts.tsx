@@ -39,15 +39,15 @@ export default function Factory_opts(
         if (is_duplicate === false){
             // https://stackoverflow.com/questions/36829184/
             // how-can-i-convert-a-set-to-an-array-in-typescript
-            let update_arr = new Set(arr.ss);
-            arr.setss(Array.from(update_arr))
+            const UPDATE_ARR = new Set(arr.ss);
+            arr.setss(Array.from(UPDATE_ARR))
         }
     },[arr.ss])
     function func_reset(){
         arr.setss([default_opt])
         setss_create_mode(default_opt)
     }
-    let jsx_arr = arr.ss.map((item,index)=>{
+    const JSX_ARR = arr.ss.map((item,index)=>{
         return <>
             <Str_to_h opt_name={available_opts[item] as a.opt_name}/>
             <Click_button name={"delete" as a.name} func_event={(()=>{
@@ -72,7 +72,7 @@ export default function Factory_opts(
             func_event={(()=>{func_reset()}) as a.func_event}
         />
         <Panel
-            jsx_element={<>{jsx_arr}</>}
+            jsx_element={<>{JSX_ARR}</>}
             x_scroll_bar={shape.x_scroll_bar}
             y_scroll_bar={shape.y_scroll_bar}
             w={shape.w}

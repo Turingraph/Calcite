@@ -15,14 +15,14 @@ export function Summary<t extends object, k extends keyof t, j>({
   property:k
   input:j
 }) {
-  const value = data[property] as string;
+  const VALUE = data[property] as string;
   data[property] = input;
 
   return (
     <div>
       {(typeof property === "string") ? (
         <p>
-          {property}: {value}{" "}
+          {property}: {VALUE}{" "}
         </p>
       ) : (
         ""

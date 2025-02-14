@@ -42,39 +42,39 @@ export function s_times_vector(s:number,vec:number[]){
 }
 
 export function func_rect_kernel(arr:number[], center_px:number){
-    let ksize = arr.length * 2 + 1
-    let kernel = np_one(ksize, ksize)
+    const KSIZE = arr.length * 2 + 1
+    const KERNEL = np_one(KSIZE, KSIZE)
     for(let i = 0; i < arr.length; i++){
-        let j = ksize - i - 1
-        s_times_vector(arr[i],kernel[i])
-        s_times_vector(arr[i],kernel[j])
+        let j = KSIZE - i - 1
+        s_times_vector(arr[i],KERNEL[i])
+        s_times_vector(arr[i],KERNEL[j])
         for(let q = 0; q < i; q++){
-            let p = ksize - q - 1
-            kernel[i][q] = arr[q]
-            kernel[i][p] = arr[q]
-            kernel[j][q] = arr[q]
-            kernel[j][p] = arr[q]
+            let p = KSIZE - q - 1
+            KERNEL[i][q] = arr[q]
+            KERNEL[i][p] = arr[q]
+            KERNEL[j][q] = arr[q]
+            KERNEL[j][p] = arr[q]
         }
     }
     for(let i = 0; i < arr.length; i++){
-        let j = ksize - i - 1
-        kernel[arr.length][i] = arr[i]
-        kernel[arr.length][j] = arr[i]
+        let j = KSIZE - i - 1
+        KERNEL[arr.length][i] = arr[i]
+        KERNEL[arr.length][j] = arr[i]
     }
-    kernel[arr.length][arr.length] = center_px
-    return kernel
+    KERNEL[arr.length][arr.length] = center_px
+    return KERNEL
 }
 
 export function func_line_kernel(arr:number[], is_x:boolean, center_px:number){
-    let ksize = arr.length * 2 + 1
-    let kernel = np_one(ksize, ksize)
+    let KSIZE = arr.length * 2 + 1
+    let KERNEL = np_one(KSIZE, KSIZE)
     for(let i = 0; i < arr.length; i++){
         for(let q = 0; q < i; q++){
-            is_x ? kernel[i][q] = arr[i] : kernel[q][i] = arr[i]
+            is_x ? KERNEL[i][q] = arr[i] : KERNEL[q][i] = arr[i]
         }
     }
-    kernel[arr.length][arr.length] = center_px
-    return kernel
+    KERNEL[arr.length][arr.length] = center_px
+    return KERNEL
 }
 
 
@@ -93,11 +93,11 @@ export default function Filter_kernel({
     const [ss_len, setss_len] = useState<number>(1)
     const [ss_scalar, setss_scalar] = useState<number>(1)
     useEffect(()=>{
-        let update_arr:number[] = []
+        const UPDATE_ARR:number[] = []
         for(let i = 1; i <= ss_len; i++){
-            update_arr.push(ss_second + (ss_last - ss_second) * (i/ss_len))
+            UPDATE_ARR.push(ss_second + (ss_last - ss_second) * (i/ss_len))
         }
-        ss_list.input.setss(update_arr.map((item)=>{return ss_scalar * item}))
+        ss_list.input.setss(UPDATE_ARR.map((item)=>{return ss_scalar * item}))
     },[
         ss_first,
         ss_second,
@@ -108,7 +108,7 @@ export default function Filter_kernel({
     useEffect(()=>{
         ss_mode.ss === 1 ? setss_first(func_sharp_center(ss_list.input.ss)) : (()=>{})
     },[ss_kernel.ss])
-    let let_arr:input_uit<number>[] = [
+    const LET_ARR:input_uit<number>[] = [
         {
             opt_name:"first item" as a.opt_name,
             input:{
@@ -150,7 +150,7 @@ export default function Filter_kernel({
             default_input:1
         },
     ] 
-    let jsx_lists = <Input_form
+    const JSX_LISTS = <Input_form
     opt_name={"Modify Filter Kernel List Manually" as a.opt_name}
     arr={(ss_list.input.ss.map((item,index)=>{
         return {
@@ -181,9 +181,9 @@ export default function Filter_kernel({
         <Str_to_h opt_name={"Filter Kernel" as a.opt_name}/>
         <Input_form
             opt_name={"Create Filter Kernel List" as a.opt_name}
-            arr={let_arr as unknown as input_uit<number|string>[]}
+            arr={LET_ARR as unknown as input_uit<number|string>[]}
         />
-        <Panel jsx_element={jsx_lists}/>
+        <Panel jsx_element={JSX_LISTS}/>
         <Input_opt
             opt_name={"Kernel Mode" as a.opt_name}
             available_opts={[

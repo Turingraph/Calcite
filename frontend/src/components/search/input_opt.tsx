@@ -55,7 +55,7 @@ export default function Input_opt(
         ss_mode.setss(+e.target.value)
     }) as a.handle_event<HTMLSelectElement>
     
-    let jsx_opts = ss_show_opts.map((item)=>{
+    const JSX_OPTS = ss_show_opts.map((item)=>{
         if(item != undefined){
             return (<option value={item.index}>{item.name}</option>)
         }
@@ -78,7 +78,7 @@ export default function Input_opt(
         <Str_to_h opt_name={opt_name}/>
         {jsx_search_bar}
         <select value={ss_mode.ss} onChange={(e)=>handle_event(e)}>
-            {jsx_opts}
+            {JSX_OPTS}
         </select>
     </>);
 }

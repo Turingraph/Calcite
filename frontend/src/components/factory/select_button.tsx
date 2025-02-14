@@ -21,14 +21,14 @@ export default function Select_button<
     key
 }:select_button_t<t,k>){
     function func_select(index:number){
-        let update_input = arr.ss[index]
-        if (update_input[key] === true){
-            update_input[key] = false as t[k]
+        const UPDATE_INPUT = arr.ss[index]
+        if (UPDATE_INPUT[key] === true){
+            UPDATE_INPUT[key] = false as t[k]
         }
         else{
-            update_input[key] = true as t[k]
+            UPDATE_INPUT[key] = true as t[k]
         }
-        func_update_item(index, arr, update_input)
+        func_update_item(index, arr, UPDATE_INPUT)
     }
     return <>
     <Click_button 

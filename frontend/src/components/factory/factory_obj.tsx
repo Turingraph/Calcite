@@ -22,9 +22,8 @@ export default function Factory_obj<t extends {name:a.name}>({
     useEffect(()=>{
         setss_ui_mode("normal")
     },[arr.ss])
-    let jsx_element = <></>
     if (ss_ui_mode === "normal"){
-        jsx_element = <>
+        return <>
         <Click_button
             name={"rename" as a.name}
             func_event={(()=>{setss_ui_mode("rename")}) as a.func_event}
@@ -41,7 +40,7 @@ export default function Factory_obj<t extends {name:a.name}>({
         </>
     }
     if (ss_ui_mode === "rename"){
-        jsx_element = <>
+        return <>
         <Input_str
             opt_name={"rename" as a.opt_name}
             input={{ss:ss_name, setss:setss_name}}
@@ -60,11 +59,10 @@ export default function Factory_obj<t extends {name:a.name}>({
     if (ss_ui_mode === "delete"){
         // https://stackoverflow.com/questions/15292278/
         // how-do-i-remove-an-array-item-in-typescript
-        jsx_element = <>
+        return <>
             <Str_to_h opt_name={"Do you want to delete this ?" as a.opt_name}/>
             <Click_button name={"yes" as a.name} func_event={(()=>{func_delete_item(index, arr)}) as a.func_event}/>
             <Click_button name={"no" as a.name}  func_event={(()=>{setss_ui_mode("normal")}) as a.func_event}/>
         </>
     }
-    return jsx_element
 }

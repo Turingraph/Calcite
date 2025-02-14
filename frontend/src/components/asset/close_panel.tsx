@@ -14,9 +14,9 @@ export default function Close_panel({
     name:a.name
 }){
     const [ss_open_ui, setss_open_ui] = useState<boolean>(false)
-    let jsx_button_on = <Click_button name={"open " + name as a.name} func_event={(()=>{setss_open_ui(true)}) as a.func_event}/>
-    let jsx_button_off= <Click_button name={"close " + name as a.name} func_event={(()=>{setss_open_ui(true)}) as a.func_event}/>
-    let jsx_panel = <>
+    const JSX_BUTTON_ON = <Click_button name={"open " + name as a.name} func_event={(()=>{setss_open_ui(true)}) as a.func_event}/>
+    const JSX_BUTTON_OFF= <Click_button name={"close " + name as a.name} func_event={(()=>{setss_open_ui(false)}) as a.func_event}/>
+    const JSX_PANEL = <>
     <Panel
         jsx_element={jsx_element}
         x_scroll_bar={x_scroll_bar}
@@ -27,9 +27,9 @@ export default function Close_panel({
     </>
     if (ss_open_ui === true){
         return <>
-            {jsx_button_off}
-            {jsx_panel}
+            {JSX_BUTTON_OFF}
+            {JSX_PANEL}
         </>
     }
-    return <>{jsx_button_on}</>
+    return <>{JSX_BUTTON_ON}</>
 }

@@ -19,38 +19,38 @@ export default function Input_form({
     is_undo?:boolean
 }){
     const [ss_texts, setss_texts] = useState<string[]>(arr.map((item)=>{return item.input.ss.toString()}))
-    let ss_arr = arr.map((item)=>{return item.input})
-    let default_arr = arr.map((item)=>{
+    const SS_ARR = arr.map((item)=>{return item.input})
+    const DEFAULT_ARR = arr.map((item)=>{
     if (item.default_input != undefined){
         return item.default_input
     }
     return 0})
     function func_set_default(){
-        ss_arr.map((item, index)=>{item.setss(default_arr[index])})
-        setss_texts(default_arr as string[])
+        SS_ARR.map((item, index)=>{item.setss(DEFAULT_ARR[index])})
+        setss_texts(DEFAULT_ARR as string[])
     }
     function func_set_ok(){
-        ss_arr.map((item, index)=>{
-            const item_t = typeof default_arr[index];
-            let let_input = func_handle_type(
-                default_arr[index] as typeof item_t,
+        SS_ARR.map((item, index)=>{
+            const ITEM_T = typeof DEFAULT_ARR[index];
+            const CONST_INPUT = func_handle_type(
+                DEFAULT_ARR[index] as typeof ITEM_T,
                 ss_texts[index]
             )
-            item.setss(let_input)
+            item.setss(CONST_INPUT)
         })
-        let update_text = ss_arr.map((item)=>{
+        const UPDATE_TEXT = SS_ARR.map((item)=>{
             return item.ss as string
         })
-        setss_texts(update_text)
+        setss_texts(UPDATE_TEXT)
         func_activate()
     }
     function func_set_cancel(){
-        let update_text = ss_arr.map((item)=>{
+        const UPDATE_TEXT = SS_ARR.map((item)=>{
             return item.ss as string
         })
-        setss_texts(update_text)
+        setss_texts(UPDATE_TEXT)
     }
-    let jsx_elements = arr.map((item,index)=>{
+    const JSX_ELEMENTS = arr.map((item,index)=>{
         return <>
         <Str_to_h opt_name={item.opt_name}/>
         <Input_str
@@ -65,7 +65,7 @@ export default function Input_form({
     })
     return <>
         <Str_to_h opt_name={opt_name}/>
-        {jsx_elements}
+        {JSX_ELEMENTS}
         <Click_button
             name={"apply change" as a.name}
             func_event={(()=>{func_set_ok()}) as a.func_event}

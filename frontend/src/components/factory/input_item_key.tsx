@@ -59,7 +59,7 @@ export default function Input_item_key<
         })
         setss_texts(input_arr as unknown as string[])
     }
-    let jsx_inputs = keys.map((item,index)=>{
+    const JSX_INPUT = keys.map((item,index)=>{
         return <>
             <Input_str
                 opt_name={item as a.opt_name}
@@ -77,14 +77,14 @@ export default function Input_item_key<
         </>
     })
     function func_set_cancel(){
-        let update_text = keys.map((item)=>{
+        const UPDATE_TEXTS = keys.map((item)=>{
             return arr.ss[this_item][item] as string
         })
-        setss_texts(update_text)
+        setss_texts(UPDATE_TEXTS)
     }
     return <>
     <Str_to_h opt_name={opt_name}/>
-    {jsx_inputs}
+    {JSX_INPUT}
     <Click_button
         name={"apply change" as a.name}
         func_event={(()=>{func_set_item_key(ss_texts as unknown as t[k][])}) as a.func_event}

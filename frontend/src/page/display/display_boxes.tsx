@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import * as a from "../../type/alias"
-import { box_t, boxes_input_key, boxes_default_input, boxes_input_key_t } from "../../type/obj";
+import { box_t, BOXES_INPUT_KEY, BOXES_DEFAULT_INPUT, boxes_input_key_t } from "../../type/obj";
 import Factory_obj from "../../components/factory/factory_obj";
 import Select_checkbox from "../../components/factory/select_checkbox";
 import { opt_mode_uit } from "../../type/input_ui";
@@ -31,8 +31,8 @@ export default function Display_boxes({
             opt_name:"attribute of box" as a.opt_name,
             arr:{ss:ss_boxes, setss:setss_boxes},
             this_item:item.index,
-            default_key_values:boxes_default_input as (string|number)[],
-            keys:boxes_input_key as boxes_input_key_t[],
+            default_key_values:BOXES_DEFAULT_INPUT as (string|number)[],
+            keys:BOXES_INPUT_KEY as boxes_input_key_t[],
         }
         return <><Factory_obj
             arr={{ss:ss_boxes, setss:setss_boxes}}

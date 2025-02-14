@@ -10,21 +10,21 @@ export default function Page_config({
 }:{
     //
 }){
-    let config_name = [
+    const CONFIG_NAME = [
         "OCR" as a.name,
         "Image Processing" as a.name,
         "Bounding Box" as a.name,
     ]
-    let config_tab = <Select_tabs
-        name_arr={config_name}
+    const CONFIG_TAB = <Select_tabs
+        name_arr={CONFIG_NAME}
         jsx_elements={[
             <Config_ocr/>,
             <Config_img/>,
             <Config_boxes/>
         ]}
     />
-    let config = <><h1>Advance Setting</h1>{config_tab}</>
+    const CONFIG = <><h1>Advance Setting</h1>{CONFIG_TAB}</>
     return <>
-        {config}
+        {CONFIG}
     </>
 }

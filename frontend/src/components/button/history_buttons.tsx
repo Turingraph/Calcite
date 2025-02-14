@@ -33,17 +33,17 @@ export default function History_buttons<t>({
                 }) as unknown as a.history<t>)
         }
     }
-    let jsx_prev_button = <Click_button name={"=>" as a.name} func_event={(()=>{prev_func()}) as a.func_event}/>
-    let jsx_next_button = <Click_button name={"=>" as a.name} func_event={(()=>{next_func()}) as a.func_event}/>
-    let jsx_history_button = <Input_opt
+    const JSX_PREV_BUTTON = <Click_button name={"=>" as a.name} func_event={(()=>{prev_func()}) as a.func_event}/>
+    const JSX_NEXT_BUTTON = <Click_button name={"=>" as a.name} func_event={(()=>{next_func()}) as a.func_event}/>
+    const JSX_HISTORY_BUTTON = <Input_opt
         opt_name={"Open History" as a.opt_name}
         available_opts={history.ss.commit}
         ss_mode={{ss:ss_mode, setss:setss_mode} as a.use_state_t<number>}
         is_search_bar={true}
     />
     return <>
-        {jsx_prev_button}
-        {jsx_next_button}
-        {jsx_history_button}
+        {JSX_PREV_BUTTON}
+        {JSX_NEXT_BUTTON}
+        {JSX_HISTORY_BUTTON}
     </>
 }

@@ -5,42 +5,42 @@ import Select_tabs from "../../components/button/select_tabs";
 import * as a from '../../type/alias'
 import Input_opt from "../../components/search/input_opt";
 import Factory_opts from "../../components/factory/factory_opts";
-import { language_opts, psm_opts, oem_opts } from "../../data/constant";
+import { LANGUAGE_OPTS, PSM_OPTS, OEM_OPTS } from "../../data/constant";
 import Input_str from "../../components/input/input_str";
 import Input_form from "../../components/input/input_form";
 import { input_uit } from "../../type/input_ui";
 import Combine_input from "../../components/input/combine_input";
 import { input_opt_uit } from "../../type/input_ui";
-import { default_ocr } from "../../data/config";
+import { DEFAULT_OCR } from "../../data/config";
 
 export default function Config_ocr({
     //
 }:{
     //
 }){
-    const [ss_psm, setss_psm] = useState<number>(default_ocr.psm)
-    const [ss_oem, setss_oem] = useState<number>(default_ocr.oem)
-    const [ss_languages, setss_languages] = useState<number[]>(default_ocr.languages)
-    const [ss_time_out, setss_time_out] = useState<number>(default_ocr.time_out)
-    const [ss_filter_char, setss_filter_char] = useState<string>(default_ocr.filter_char)
-    const [ss_filter_mode, setss_filter_mode] = useState<number>(default_ocr.filter_mode)
+    const [ss_psm, setss_psm] = useState<number>(DEFAULT_OCR.psm)
+    const [ss_oem, setss_oem] = useState<number>(DEFAULT_OCR.oem)
+    const [ss_languages, setss_languages] = useState<number[]>(DEFAULT_OCR.languages)
+    const [ss_time_out, setss_time_out] = useState<number>(DEFAULT_OCR.time_out)
+    const [ss_filter_char, setss_filter_char] = useState<string>(DEFAULT_OCR.filter_char)
+    const [ss_filter_mode, setss_filter_mode] = useState<number>(DEFAULT_OCR.filter_mode)
 
     let interface_psm:input_opt_uit = {
             opt_name: "Page Segmentation Mode (PSM)" as a.opt_name,
-            available_opts: psm_opts,
+            available_opts: PSM_OPTS,
             ss_mode: {ss:ss_psm, setss:setss_psm},
             is_search_bar: false
     }
     let interface_oem:input_opt_uit = {
         opt_name: "OCR Engine Mode (OEM)" as a.opt_name,
-        available_opts: oem_opts,
+        available_opts: OEM_OPTS,
         ss_mode: {ss:ss_oem, setss:setss_oem},
         is_search_bar: false
     }
     let interface_lang = <Factory_opts
     opt_name={"Select Language" as a.opt_name}
     arr={{ss:ss_languages, setss:setss_languages}}
-    available_opts={language_opts}
+    available_opts={LANGUAGE_OPTS}
     default_opt={0}
     is_search_bar={true}
     is_duplicate={false}

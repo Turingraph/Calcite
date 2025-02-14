@@ -10,21 +10,21 @@ export default function Page_display({
 }:{
     //
 }){
-    let right_name = [
+    const RIGHT_NAME = [
         "OCR" as a.name,
         "Boxes" as a.name,
     ]
-    let right_tab = <Select_tabs
-        name_arr={right_name}
+    const RIGHT_TAB = <Select_tabs
+        name_arr={RIGHT_NAME}
         jsx_elements={[
             <Display_ocr/>,
             <Display_boxes/>
         ]}
     />
-    let right_ui = <><h1>Advance Setting</h1>{right_tab}</>
+    const RIGHT_UI = <><h1>Advance Setting</h1>{RIGHT_TAB}</>
 
     return <>
     <Display_img/>
-    {right_ui}
+    {RIGHT_UI}
     </>
 }

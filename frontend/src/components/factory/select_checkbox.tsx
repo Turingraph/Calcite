@@ -21,22 +21,22 @@ export default function Select_checkbox<
     key
 }:select_button_t<t,k>){
     function func_click(){
-        let update_input = arr.ss[index]
-        if (update_input[key] === true){
-            update_input[key] = false as t[k]
+        const UPDATE_INPUT = arr.ss[index]
+        if (UPDATE_INPUT[key] === true){
+            UPDATE_INPUT[key] = false as t[k]
         }
         else{
-            update_input[key] = true as t[k]
+            UPDATE_INPUT[key] = true as t[k]
         }
-        func_update_item(index, arr, update_input)
+        func_update_item(index, arr, UPDATE_INPUT)
     }
-    const handle_click = () => func_click()
+    const HANDLE_CLICK = () => func_click()
     // https://stackoverflow.com/questions/56356900/
     // way-to-determine-checkbox-checked-in-react-usestate
     return <>
     <input 
         type="checkbox" 
-        onClick={handle_click}
+        onClick={HANDLE_CLICK}
         checked={arr.ss[index][key] as unknown as boolean}
     />
     <label>{name}</label>

@@ -37,7 +37,7 @@ export type box_t = {
     b?:undefined|number,
 }
 
-export const boxes_input_key = [
+export const BOXES_INPUT_KEY = [
     "min_x",
     "min_y",
     "min_w",
@@ -63,7 +63,7 @@ export type boxes_input_key_t = "min_x"|
     "g"|
     "b"
 
-export const boxes_default_input = [
+export const BOXES_DEFAULT_INPUT = [
     0,
     0,
     0,

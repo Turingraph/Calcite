@@ -1,6 +1,6 @@
-import { language_opts } from "./constant"
+import { LANGUAGE_OPTS } from "./constant"
 
-export const default_img = {
+export const DEFAULT_IMG = {
     thresh:{
         px:1,
         is_otsu:0,
@@ -34,7 +34,7 @@ export const default_img = {
     zoom:1
 }
 
-export const default_ocr = {
+export const DEFAULT_OCR = {
     psm:1,
     oem:3,
     languages:[1],
@@ -43,7 +43,7 @@ export const default_ocr = {
     filter_mode:0
 }
 
-export const default_box = {
+export const DEFAULT_BOX = {
     rect:{
         min_w:0,
         max_w:undefined,

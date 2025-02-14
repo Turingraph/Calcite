@@ -4,9 +4,9 @@ export function func_update_item<t>(
         index:number, 
         arr:a.use_state_t<t[]>, 
         update_input:t){
-    let update_arr = [...arr.ss]
-    update_arr[index]  = update_input
-    arr.setss(update_arr)
+    const UPDATE_ARR = [...arr.ss]
+    UPDATE_ARR[index]  = update_input
+    arr.setss(UPDATE_ARR)
 }
 
 // https://stackoverflow.com/questions/586182/
@@ -14,13 +14,13 @@ export function func_copy_item<t>(
     index:number,
     arr:a.use_state_t<t[]>
 ){
-    let update_arr = [...arr.ss]
-    let new_obj = arr.ss[index]
-    update_arr.splice(index + 1, 0, new_obj)
-    arr.setss(update_arr)
+    const UPDATE_ARR = [...arr.ss]
+    const NEW_OBJ = arr.ss[index]
+    UPDATE_ARR.splice(index + 1, 0, NEW_OBJ)
+    arr.setss(UPDATE_ARR)
 }
 
-export function func_update_arr<t>(
+export function func_UPDATE_ARR<t>(
         arr:a.use_state_t<t>[],
         func_event:(e:t)=>void,
         input:t[]
@@ -35,15 +35,15 @@ export function func_push_arr<t>(
     input:t,
     arr:a.use_state_t<t[]>
 ){
-    let update_arr = [...arr.ss]
-    update_arr.push(input)
-    arr.setss(update_arr)
+    const UPDATE_ARR = [...arr.ss]
+    UPDATE_ARR.push(input)
+    arr.setss(UPDATE_ARR)
 }
 
 export function func_delete_item<t>(index:number,arr:a.use_state_t<t[]>){
-    let update_arr = [...arr.ss]
-    update_arr.splice(index, 1)
-    arr.setss(update_arr)
+    const UPDATE_ARR = [...arr.ss]
+    UPDATE_ARR.splice(index, 1)
+    arr.setss(UPDATE_ARR)
 }
 
 export function func_update_item_key<
@@ -55,9 +55,9 @@ export function func_update_item_key<
         key:k,
         input:v
     ){
-        let update_arr = [...arr.ss]
-        update_arr[index][key] = input
-        arr.setss(update_arr)
+        const UPDATE_ARR = [...arr.ss]
+        UPDATE_ARR[index][key] = input
+        arr.setss(UPDATE_ARR)
     }
 
 export function func_update_item_keys<

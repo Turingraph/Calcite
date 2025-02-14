@@ -1,6 +1,13 @@
 import * as a from "../../src/type/alias"
 import React, { JSX } from "react";
 
+export const HEX_ARR = [ 
+    '0', '1', '2', '3', 
+    '4', '5', '6', '7', 
+    '8', '9', 'A', 'B', 
+    'C', 'D', 'E', 'F'
+]
+
 export function Int_to_ksize(n:number){
     if(Math.floor(n) < 3){
         return 3
@@ -34,14 +41,7 @@ export function Int_to_255(value:number){
 export function Int_to_hex({
     value = 0           
 }:a.value_t<undefined|number>
-){
-    const HEX_ARR = [ 
-        '0', '1', '2', '3', 
-        '4', '5', '6', '7', 
-        '8', '9', 'A', 'B', 
-        'C', 'D', 'E', 'F'
-    ]
-    
+){  
     if (value == undefined){
         return "FF";
     }
