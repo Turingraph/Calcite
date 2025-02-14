@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import Select_tabs from "../../components/button/select_tabs";
 import * as a from '../../type/alias'
 import Config_ocr from "./config_ocr";

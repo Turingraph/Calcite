@@ -13,7 +13,7 @@ export default function Click_button(
 }:click_button_t
 ){
     return (<>
-        <button onClick={()=>{func_event}} >
+        <button onClick={func_event} >
             {name}
         </button>
     </>);
