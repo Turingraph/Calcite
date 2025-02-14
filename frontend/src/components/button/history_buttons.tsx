@@ -16,7 +16,7 @@ export default function History_buttons<t>({
         }) as unknown as a.history<t>)
     },[ss_mode])
     function prev_func(){
-        if (history.ss.current - 1 >= 0){
+        if (history.ss.current - 1 > 0){
             history.setss(({
                     arr:history.ss.arr,
                     commit: history.ss.commit,
@@ -25,7 +25,7 @@ export default function History_buttons<t>({
         }
     }
     function next_func(){
-        if (history.ss.current + 1 <= history.ss.arr.length){
+        if (history.ss.current + 1 < history.ss.arr.length){
             history.setss(({
                 arr:history.ss.arr,
                 commit: history.ss.commit,
@@ -33,7 +33,7 @@ export default function History_buttons<t>({
                 }) as unknown as a.history<t>)
         }
     }
-    const JSX_PREV_BUTTON = <Click_button name={"=>" as a.name} func_event={(()=>{prev_func()}) as a.func_event}/>
+    const JSX_PREV_BUTTON = <Click_button name={"<=" as a.name} func_event={(()=>{prev_func()}) as a.func_event}/>
     const JSX_NEXT_BUTTON = <Click_button name={"=>" as a.name} func_event={(()=>{next_func()}) as a.func_event}/>
     const JSX_HISTORY_BUTTON = <Input_opt
         opt_name={"Open History" as a.opt_name}
