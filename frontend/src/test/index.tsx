@@ -9,8 +9,7 @@ import {
     Test_factory_obj,
     Test_factory_opts,
     Test_input_item_attr,
-    Test_select_button,
-    Test_select_checkbox} from "./components/factory";
+    Test_select_button} from "./components/factory";
 
 export default function Test(){
     return <>
