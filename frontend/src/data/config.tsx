@@ -1,4 +1,4 @@
-import { LANGUAGE_OPTS } from "./constant"
+// https://youtu.be/6M9aZzm-kEc?si=8wFqvYF_idrCxkVx
 
 export const DEFAULT_IMG = {
     thresh:{
@@ -32,7 +32,7 @@ export const DEFAULT_IMG = {
         x_03:undefined,
     },
     zoom:1
-}
+} as const
 
 export const DEFAULT_OCR = {
     psm:1,
@@ -41,7 +41,7 @@ export const DEFAULT_OCR = {
     time_out:0,
     filter_char:"",
     filter_mode:0
-}
+} as const
 
 export const DEFAULT_BOX = {
     rect:{
@@ -73,4 +73,4 @@ export const DEFAULT_BOX = {
         g:0,
         b:0
     }
-}
+} as const

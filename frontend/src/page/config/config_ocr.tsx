@@ -20,7 +20,7 @@ export default function Config_ocr({
 }){
     const [ss_psm, setss_psm] = useState<number>(DEFAULT_OCR.psm)
     const [ss_oem, setss_oem] = useState<number>(DEFAULT_OCR.oem)
-    const [ss_languages, setss_languages] = useState<number[]>(DEFAULT_OCR.languages)
+    const [ss_languages, setss_languages] = useState<number[]>(DEFAULT_OCR.languages.map((item)=>{return item}))
     const [ss_time_out, setss_time_out] = useState<number>(DEFAULT_OCR.time_out)
     const [ss_filter_char, setss_filter_char] = useState<string>(DEFAULT_OCR.filter_char)
     const [ss_filter_mode, setss_filter_mode] = useState<number>(DEFAULT_OCR.filter_mode)
