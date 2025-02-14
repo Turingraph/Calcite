@@ -62,7 +62,7 @@ export default function Input_form({
                 setss: ((e:string) => {
                     func_update_item(index, {ss:ss_texts, setss:setss_texts}, e);
                 }),
-            index: index
+            index: 0
             } as unknown as a.use_state_t<string>}
         />
         </>

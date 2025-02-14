@@ -3,6 +3,7 @@ import * as a from '../../type/alias'
 import Combine_input from "../../components/input/combine_input";
 import { combine_input_uit } from "../../type/input_ui";
 import Input_form, {input_form_t} from "../../components/input/input_form";
+import Input_str from "../../components/input/input_str";
 
 const DEFAULT_INPUT:(string|number)[] = [
     0.0001,
@@ -15,7 +16,7 @@ const DEFAULT_INPUT:(string|number)[] = [
 const OPT_MEDIA_ARR = ["3B1B", "Khan anademy", "Brilliant", "Shoulder of Giant", "Learn by Doing"]
 const OPT_LEVEL = ["Beginner", "Elementary", "Intermediate", "Advance", "Genius"]
 
-export default function Test_input(){
+export function Test_combine_input(){
     const [ss_i, setss_i] = useState<number>(DEFAULT_INPUT[0] as number)
     const [ss_j, setss_j] = useState<number>(DEFAULT_INPUT[1] as number)
     const [ss_k, setss_k] = useState<number>(DEFAULT_INPUT[2] as number)
@@ -59,5 +60,15 @@ export default function Test_input(){
 
     return <>
     {JSX_INPUT_FORM}
+    </>
+}
+
+export function Test_input_str(){
+    const [ss_song, setss_song] = useState<string>("R.I.P. Duolingo")
+    return <>
+        <Input_str
+            opt_name={"What is your favorite songs ?" as a.opt_name}
+            input={{ss:ss_song, setss:setss_song}}
+        />
     </>
 }
