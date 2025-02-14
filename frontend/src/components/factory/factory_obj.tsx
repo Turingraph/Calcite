@@ -24,6 +24,7 @@ export default function Factory_obj<t extends {name:a.name}>({
     },[arr.ss])
     if (ss_ui_mode === "normal"){
         return <>
+        <Str_to_h opt_name={arr.ss[index].name}/>
         <Click_button
             name={"rename" as a.name}
             func_event={(()=>{setss_ui_mode("rename")}) as a.func_event}
@@ -41,6 +42,7 @@ export default function Factory_obj<t extends {name:a.name}>({
     }
     if (ss_ui_mode === "rename"){
         return <>
+        <Str_to_h opt_name={"rename " + arr.ss[index].name + " as ?" as a.name}/>
         <Input_str
             opt_name={"rename" as a.opt_name}
             input={{ss:ss_name, setss:setss_name}}
@@ -60,7 +62,7 @@ export default function Factory_obj<t extends {name:a.name}>({
         // https://stackoverflow.com/questions/15292278/
         // how-do-i-remove-an-array-item-in-typescript
         return <>
-            <Str_to_h opt_name={"Do you want to delete this ?" as a.opt_name}/>
+            <Str_to_h opt_name={"Do you want to delete \"" + arr.ss[index].name + "\"" as a.opt_name}/>
             <Click_button name={"yes" as a.name} func_event={(()=>{func_delete_item(index, arr)}) as a.func_event}/>
             <Click_button name={"no" as a.name}  func_event={(()=>{setss_ui_mode("normal")}) as a.func_event}/>
         </>

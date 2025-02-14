@@ -1,3 +1,4 @@
+import * as a from "../../type/alias"
 
 export const OPT_NAME = [
     "Gauss",
@@ -29,3 +30,10 @@ export const OPT_NAME = [
     "Che Che",
     "Cha Cha"
 ]
+
+export type character_t = {
+    name:a.name,
+    age:number,
+    skill:string,
+    is_male:boolean
+}
