@@ -7,17 +7,19 @@ import { input_uit } from "../../type/input_ui";
 import { func_update_item } from "../../utils/crud_arr";
 import { func_handle_type } from "../../utils/handle";
 
+export type input_form_t = {
+    opt_name?:a.opt_name|undefined
+    arr:input_uit<string|number>[]
+    func_activate?:a.func_event
+    is_undo?:boolean
+}
+
 export default function Input_form({
     opt_name = undefined,
     arr,
     func_activate = (()=>undefined) as a.func_event,
     is_undo = false
-}:{
-    opt_name?:a.opt_name|undefined
-    arr:input_uit<string|number>[]
-    func_activate?:a.func_event
-    is_undo?:boolean
-}){
+}:input_form_t){
     const [ss_texts, setss_texts] = useState<string[]>(arr.map((item)=>{return item.input.ss.toString()}))
     const SS_ARR = arr.map((item)=>{return item.input})
     const DEFAULT_ARR = arr.map((item)=>{
@@ -59,7 +61,9 @@ export default function Input_form({
                 ss: ss_texts, 
                 setss: ((e:string) => {
                     func_update_item(index, {ss:ss_texts, setss:setss_texts}, e);
-                })} as unknown as a.use_state_t<string>}
+                }),
+            index: index
+            } as unknown as a.use_state_t<string>}
         />
         </>
     })

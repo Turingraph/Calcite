@@ -14,7 +14,8 @@ export type combine_input_uit = {
 export type input_uit<t> = {
     opt_name:a.opt_name,
     input:a.use_state_t<t>
-    default_input?:undefined|t
+    default_input?:undefined|t,
+    index?:number|undefined
 }
 
 export type opt_mode_uit = {

@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import './App.css';
 import Page from './page';
-import Test_config from './test/page/config';
+import Test from './test';
 
 function App() {
   return (<>
-    <Test_config/>
+    <Test/>
   </>);
 }
 
