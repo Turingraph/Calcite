@@ -8,7 +8,7 @@ import Click_button from '../components/button/click_button'
 
 export default function Page(){
     return <>
-    <Close_panel name={"advanced setting" as a.name} jsx_element={<Page_config/>}/>
+    <Close_panel name={"advanced setting" as a.name} jsx_element={<h1>Jojo</h1>}/>
     <Page_multi_imgs/>
     <Page_display/>=
     </>

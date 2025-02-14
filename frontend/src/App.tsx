@@ -5,7 +5,6 @@ import Page from './page';
 import Test from './test';
 
 function App() {
-  const [SS_Num, setSS_Num] = useState<number>(0);
   return (
     <Test/>
   );
