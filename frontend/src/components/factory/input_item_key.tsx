@@ -15,7 +15,7 @@ k extends keyof t> = {
     this_item:number,
     default_key_values:(string|number)[]
     keys:k[]
-    is_undo:boolean
+    is_undo?:boolean
 }
 
 export default function Input_item_key<
@@ -26,7 +26,7 @@ export default function Input_item_key<
         this_item,
         default_key_values,                
         keys  ,  
-        is_undo
+        is_undo = false
 }:input_item_key_uit<t,k>){
     const [ss_texts, setss_texts] = useState<string[]>(
         arr.ss.map((item)=>{

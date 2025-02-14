@@ -50,3 +50,29 @@ export const boxes_input_key = [
     "g",
     "b",
 ]
+
+export type boxes_input_key_t = "min_x"|
+    "min_y"|
+    "min_w"|
+    "min_h"|
+    "max_x"|
+    "max_y"|
+    "max_w"|
+    "max_h"|
+    "r"|
+    "g"|
+    "b"
+
+export const boxes_default_input = [
+    0,
+    0,
+    0,
+    0,
+    200,
+    200,
+    200,
+    200,
+    250,
+    0,
+    0,
+]
