@@ -4,6 +4,7 @@ import Combine_input from "../../components/input/combine_input";
 import { combine_input_uit } from "../../type/input_ui";
 import Input_form, {input_form_t} from "../../components/input/input_form";
 import Input_str from "../../components/input/input_str";
+import Input_opt from "../../components/search/input_opt";
 
 const DEFAULT_INPUT:(string|number)[] = [
     0.0001,
