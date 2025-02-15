@@ -1,4 +1,5 @@
 import * as a from "../type/alias";
+import { opt_mode_uit } from "../type/input_ui";
 
 // Any, Unknown, Never
 // https://youtu.be/kWmUNChlzVw?si=DwNwPVm6KJG4nIco
@@ -76,4 +77,46 @@ export function func_check_attr<t extends object>(obj:t, attr:string){
     else{
         return false
     }
+}
+
+export function func_get_create_mode(
+    arr:number[]){
+        const UPDATE_ARR = [... arr]
+        // https://stackoverflow.com/questions/21687907/
+        // typescript-sorting-an-array
+        UPDATE_ARR.sort((n1,n2) => n1 - n2)
+        let y = 0
+        for(const i in UPDATE_ARR){
+            if(y == Number(i)){
+                y += 1
+            }
+            else{
+                return y
+            }
+        }
+        return y
+    }
+
+export function func_exclude_arr<t>(arr_all:t[], arr_exclude:t[]){
+    return arr_all.map((item)=>{
+        if(arr_exclude.map(
+            (item)=>{return JSON.stringify(item)}
+            ).includes(JSON.stringify(item)) === false
+        ){
+            return item
+        }
+    }).filter((item)=> item != undefined) as t[]
+}
+
+export function func_access_optmode(index:number|undefined, arr:opt_mode_uit[]){
+    if(index === undefined){
+        return undefined
+    }
+    for(let i = 0; i < arr.length; i++){
+        const item = arr[i]
+        if (index == item.index){
+            return item
+        }
+    }
+    return undefined
 }

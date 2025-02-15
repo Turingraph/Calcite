@@ -25,7 +25,7 @@ export type opt_mode_uit = {
 
 export type input_opt_uit = {
     opt_name?:a.opt_name
-    available_opts:string[]
+    available_opts:string[]|opt_mode_uit[]
     ss_mode:a.use_state_t<number>
     is_search_bar?:boolean
 }

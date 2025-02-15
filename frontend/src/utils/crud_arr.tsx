@@ -20,7 +20,7 @@ export function func_copy_item<t>(
     arr.setss(UPDATE_ARR)
 }
 
-export function func_UPDATE_ARR<t>(
+export function func_update_arr<t>(
         arr:a.use_state_t<t>[],
         func_event:(e:t)=>void,
         input:t[]
@@ -78,3 +78,19 @@ export function func_update_item_attrs<
             )
         })
     }
+
+
+export function func_sort_arrattr<t extends object, k extends keyof t>(
+    arr:t[],
+    attr:k
+){
+    // https://stackoverflow.com/questions/21687907/
+    // typescript-sorting-an-array
+
+    // https://stackoverflow.com/questions/26871106/
+    // check-if-all-elements-in-array-are-strings
+    if (arr.every(i => typeof i === "number")){
+        return arr.sort((n0, n1) => n0[attr] - n1[attr])
+    }
+    return arr
+}

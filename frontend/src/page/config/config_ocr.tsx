@@ -35,11 +35,9 @@ export default function Config_ocr(){
     }
     const INTERFACE_LANG = <Factory_opts
     opt_name={"Select Language" as a.opt_name}
-    arr={{ss:ss_languages, setss:setss_languages}}
+    exist_opts={{ss:ss_languages, setss:setss_languages}}
     available_opts={LANGUAGE_OPTS}
-    default_opt={0}
     is_search_bar={true}
-    is_duplicate={false}
     />
     const INTERFACE_TIME_OUT:input_uit<string|number> = {
         opt_name:"Time out (second)" as a.opt_name,

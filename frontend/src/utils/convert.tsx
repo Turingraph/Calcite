@@ -1,5 +1,6 @@
 import * as a from "../../src/type/alias"
 import React, { JSX } from "react";
+import { opt_mode_uit } from "../type/input_ui";
 
 export const HEX_ARR = [ 
     '0', '1', '2', '3', 
@@ -69,7 +70,7 @@ else if (Array.isArray(value) == true){
     else if (value.length == 1){
         return "#" + Int_to_hex({value:value[0]}) + Int_to_hex({value:value[0]}) + Int_to_hex({value:value[0]});
     }
-    else if (value.length == 0){
+    else if (value.length == 2){
         return "#" + Int_to_hex({value:value[0]})+Int_to_hex({value:value[1]})+"00";
     }
     else{
@@ -148,4 +149,34 @@ export function Str_to_str({value}:a.value_t<string>){
         return ""
     }
     return value
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+export function Strarr_to_optmode(arr:string[]){
+    return arr.map((item, index)=>{
+        return {
+            name:item as a.name,
+            index:index
+        } as opt_mode_uit
+    })
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+export function Numarr_to_strarr(numarr:number[], strarr:string[]){
+    return numarr.map((item)=>{
+        return strarr[item]
+    })
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+export function Item_to_index<t>(arr:t[],item:t){
+    for(let i = 0; i < arr.length; i++){
+        if(arr[i] === item){
+            return i
+        }
+    }
+    return undefined
 }

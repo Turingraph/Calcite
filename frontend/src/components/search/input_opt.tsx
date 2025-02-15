@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import * as a from "../../type/alias"
 import {Str_to_h} from "../../utils/convert";
 import { opt_mode_uit, input_opt_uit } from "../../type/input_ui";
@@ -17,13 +17,36 @@ export default function Input_opt(
     ss_mode,
     is_search_bar = false
 }:input_opt_uit){
+
+    // https://developer.mozilla.org/en-US/docs/Web/
+    // JavaScript/Reference/Global_Objects/Array/every
+
+    // https://stackoverflow.com/questions/23130292/
+    // test-for-array-of-string-type-in-typescript
+
     const [ss_show_opts, setss_show_opts] = useState<(opt_mode_uit|undefined)[]>(()=>{
-        return available_opts.map((item, index)=>{ return {name:item as a.name, index:index}})
+        if(available_opts.every(item => typeof item === "string")){
+            return available_opts.map((item, index)=>{ return {name:item as a.name, index:index}})
+        }
+        else{
+            return available_opts
+        }
+    })
+    useEffect(()=>{
+        setss_show_opts(()=>{
+            if(available_opts.every(item => typeof item === "string")){
+                return available_opts.map((item, index)=>{ return {name:item as a.name, index:index}})
+            }
+            else{
+                return available_opts
+            }
+        })
     })
     // https://stackoverflow.com/questions/40676343/
     // typescript-input-onchange-event-target-value
     const handle_event = ((e: React.ChangeEvent<HTMLSelectElement >) => {
         ss_mode.setss(+e.target.value)
+        console.log("input_opt mode ", +e.target.value)
     }) as a.handle_event<HTMLSelectElement>
     
     const JSX_OPTS = ss_show_opts.map((item)=>{

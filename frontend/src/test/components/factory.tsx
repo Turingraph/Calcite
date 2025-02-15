@@ -32,7 +32,7 @@ export function Test_factory_opts(){
     const AVAILABLE_OPTS = CHARACTERS.map((item)=>{return item.name}) as string[]
     return <Factory_opts 
         opt_name={"List" as a.opt_name}
-        arr={{ss:ss_arr, setss:setss_arr}}
+        exist_opts={{ss:ss_arr, setss:setss_arr}}
         available_opts={AVAILABLE_OPTS}
         />
 }
