@@ -30,6 +30,23 @@ export function func_default_newobj_index(available_opts:opt_mode_uit[], length:
     return undefined
 }
 
+// export function func_update_opt_index(
+//     max:number, index:number, func:((e:number)=>number)|undefined){
+//     let y:number;
+//     if(index === max){
+//         y = 0
+//     }
+//     else{
+//         y = index+1
+//     }
+//     if(func === undefined){
+//         return y
+//     }
+//     else{
+//         return func(y)
+//     }
+// }
+
 export default function Factory_opts(
     {
         opt_name = undefined as a.opt_name,
@@ -63,27 +80,32 @@ export default function Factory_opts(
     useEffect(()=>{
         setss_available_opts(func_exclude_opt(available_opts, exist_opts.ss))
     },[exist_opts.ss])
-    console.log("-----------------------------------------------------------------------")
-    console.log("ss_newobj_index",ss_newobj_index)
-    console.log("ss_available_opts",ss_available_opts)
-    console.log("exist_opts.ss",exist_opts.ss)
     const DEFAULT_OPT = exist_opts.ss[0]
     function func_reset(){
         exist_opts.setss([DEFAULT_OPT])
+        // setss_newobj_index(func_update_opt_index(available_opts.length - 1, DEFAULT_OPT, undefined))
+        if(DEFAULT_OPT === available_opts.length - 1){
+            setss_newobj_index(0)
+        }
+        else{
+            setss_newobj_index(DEFAULT_OPT+1)
+        }
     }
-    // There is the issue with func_push_exist_opts
+
     function func_push_exist_opts(){
-        if(ss_newobj_index){
+        if(ss_newobj_index !== undefined){
             const INPUT = func_access_optmode(
                 ss_newobj_index,
                 ss_available_opts,
             )
             if(INPUT !== undefined){
-                func_push_arr(INPUT.index, exist_opts)
                 const NEXT_INDEX = Item_to_index(ss_available_opts, INPUT)
-                // console.log("NEXT_INDEX",NEXT_INDEX)
+                func_push_arr(INPUT.index, exist_opts)
                 if(NEXT_INDEX !== undefined){
-                    if(NEXT_INDEX === available_opts.length - 1){
+                    if(ss_available_opts.length <= 1){
+                        setss_newobj_index(undefined)
+                    }
+                    else if(NEXT_INDEX === ss_available_opts.length - 1){
                         setss_newobj_index(func_default_newobj_index(ss_available_opts, 0))
                     }
                     else{
@@ -94,6 +116,9 @@ export default function Factory_opts(
         }
     }
     function func_delete_exist_opts(index:number){
+        if(ss_newobj_index === undefined){
+            setss_newobj_index(exist_opts.ss[index])
+        }
         func_delete_item(index, exist_opts)
     }
     const JSX_ARR = exist_opts.ss.map((item,index)=>{
