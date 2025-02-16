@@ -52,7 +52,6 @@ export default function Factory_opts(
         opt_name = undefined as a.opt_name,
         exist_opts,
         available_opts,
-        is_search_bar = false,
         shape = {
             x_scroll_bar: false,
             y_scroll_bar: false,
@@ -135,7 +134,7 @@ export default function Factory_opts(
             opt_name={"Select Mode" as a.opt_name} 
             available_opts={ss_available_opts} 
             ss_mode={{ss:ss_newobj_index, setss:setss_newobj_index} as a.use_state_t<number>}
-            is_search_bar={is_search_bar}
+            is_search_bar={false}
         />
         <Click_button 
             name={(
