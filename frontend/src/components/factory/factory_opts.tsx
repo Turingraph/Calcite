@@ -21,7 +21,7 @@ export function func_exclude_opt(available_opts:string[], exist_opts:number[]){
     return func_exclude_arr(CONST_AVAILABLE_OPTS, CONST_EXIST_OPTS) as opt_mode_uit[]
 }
 
-export function func_default_create_mode(available_opts:opt_mode_uit[], length:number){
+export function func_default_newobj_index(available_opts:opt_mode_uit[], length:number){
     const ARR = [...available_opts]
     func_sort_arrattr(ARR, "index")
     if (ARR.length > length){
@@ -57,14 +57,14 @@ export default function Factory_opts(
     const [ss_available_opts, setss_available_opts] = useState<opt_mode_uit[]>(
         func_exclude_opt(available_opts, exist_opts.ss)
     )
-    const [ss_create_mode, setss_create_mode] = useState<number|undefined>(
-        func_default_create_mode(ss_available_opts, 0)
+    const [ss_newobj_index, setss_newobj_index] = useState<number|undefined>(
+        func_default_newobj_index(ss_available_opts, 0)
     )
     useEffect(()=>{
         setss_available_opts(func_exclude_opt(available_opts, exist_opts.ss))
     },[exist_opts.ss])
     console.log("-----------------------------------------------------------------------")
-    console.log("ss_create_mode",ss_create_mode)
+    console.log("ss_newobj_index",ss_newobj_index)
     console.log("ss_available_opts",ss_available_opts)
     console.log("exist_opts.ss",exist_opts.ss)
     const DEFAULT_OPT = exist_opts.ss[0]
@@ -73,9 +73,9 @@ export default function Factory_opts(
     }
     // There is the issue with func_push_exist_opts
     function func_push_exist_opts(){
-        if(ss_create_mode){
+        if(ss_newobj_index){
             const INPUT = func_access_optmode(
-                ss_create_mode,
+                ss_newobj_index,
                 ss_available_opts,
             )
             if(INPUT !== undefined){
@@ -84,10 +84,10 @@ export default function Factory_opts(
                 // console.log("NEXT_INDEX",NEXT_INDEX)
                 if(NEXT_INDEX !== undefined){
                     if(NEXT_INDEX === available_opts.length - 1){
-                        setss_create_mode(func_default_create_mode(ss_available_opts, 0))
+                        setss_newobj_index(func_default_newobj_index(ss_available_opts, 0))
                     }
                     else{
-                        setss_create_mode(func_default_create_mode(ss_available_opts, NEXT_INDEX+1))
+                        setss_newobj_index(func_default_newobj_index(ss_available_opts, NEXT_INDEX+1))
                     }
                 }
             }
@@ -109,16 +109,16 @@ export default function Factory_opts(
         <Input_opt 
             opt_name={"Select Mode" as a.opt_name} 
             available_opts={ss_available_opts} 
-            ss_mode={{ss:ss_create_mode, setss:setss_create_mode} as a.use_state_t<number>}
+            ss_mode={{ss:ss_newobj_index, setss:setss_newobj_index} as a.use_state_t<number>}
             is_search_bar={is_search_bar}
         />
         <Click_button 
             name={(
                 func_access_optmode(
-                    ss_create_mode,
+                    ss_newobj_index,
                     ss_available_opts,
                 ) ? "Create "+(func_access_optmode(
-                    ss_create_mode,
+                    ss_newobj_index,
                     ss_available_opts,
                 ))?.name
                 : "Unable to create new option"
