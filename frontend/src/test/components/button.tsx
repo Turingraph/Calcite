@@ -4,7 +4,7 @@ import Click_button from "../../components/button/click_button";
 import Select_tabs from "../../components/button/select_tabs";
 import { OPT_NAME } from "../utils/constant";
 import History_buttons from "../../components/button/history_buttons";
-import { opt_mode_uit } from "../../type/input_ui";
+import { opt_mode_uit } from "../../components/search/type";
 
 // const DATA_ARR:opt_mode_uit[] = OPT_NAME.map((item,index)=>{
 //     return {name:item as a.name, index:1/(index+1)}

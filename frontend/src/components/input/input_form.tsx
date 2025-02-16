@@ -3,13 +3,12 @@ import * as a from "../../type/alias"
 import Click_button from "../button/click_button";
 import Input_str from "./input_str";
 import {Str_to_h} from "../../utils/convert";
-import { input_uit } from "../../type/input_ui";
 import { func_update_item } from "../../utils/crud_arr";
 import { func_handle_num_type } from "../../utils/handle";
 
 export type input_form_t = {
     opt_name?:a.opt_name|undefined
-    arr:input_uit<string|number>[]
+    arr:a.use_state_uit<string|number>[]
     func_activate?:a.func_event
     is_undo?:boolean
 }
@@ -20,29 +19,24 @@ export default function Input_form({
     func_activate = (()=>undefined) as a.func_event,
     is_undo = false
 }:input_form_t){
-    const [ss_texts, setss_texts] = useState<string[]>(arr.map((item)=>{return item.input.ss.toString()}))
+    const [ss_texts, setss_texts] = useState<string[]>(arr.map((item)=>{return item.ss.toString()}))
     const [ss_update, setss_update] = useState<0|1>(0)
     useEffect(()=>{
-        const UPDATE_TEXT = SS_ARR.map((item)=>{
+        const UPDATE_TEXT = arr.map((item)=>{
             return item.ss as string
         })
         setss_texts(UPDATE_TEXT)
         setss_update(0)
     }, [ss_update])
-    const SS_ARR = arr.map((item)=>{return item.input})
-    const DEFAULT_ARR = arr.map((item)=>{
-    if (item.default_input != undefined){
-        return item.default_input
-    }
-    return 0})
+    const DEFAULT_ARR = arr.map((item)=>{return item.ss})
     function func_set_default(){
-        SS_ARR.map((item, index)=>{item.setss(DEFAULT_ARR[index])})
+        arr.map((item, index)=>{item.setss(DEFAULT_ARR[index])})
         setss_texts(DEFAULT_ARR as string[])
     }
     function func_set_ok(){
         // https://www.geeksforgeeks.org/
         // how-to-resolve-usestate-set-method-is-not-reflecting-change-immediately/
-        SS_ARR.map((item, index)=>{
+        arr.map((item, index)=>{
             if(typeof DEFAULT_ARR[index] === "number" && typeof item.ss === "number"){
                 const CONST_INPUT = func_handle_num_type(
                     DEFAULT_ARR[index],
@@ -58,7 +52,7 @@ export default function Input_form({
         func_activate()
     }
     function func_set_cancel(){
-        const UPDATE_TEXT = SS_ARR.map((item)=>{
+        const UPDATE_TEXT = arr.map((item)=>{
             return item.ss as string
         })
         setss_texts(UPDATE_TEXT)

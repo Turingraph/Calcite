@@ -6,7 +6,7 @@ import { Opt_to_jsx_arr } from "../../utils/convert";
 import Search_bar from "../../components/search/search_bar";
 import Panel from "../../components/asset/panel";
 import { img_t } from "../../type/obj";
-import { opt_mode_uit } from "../../type/input_ui";
+import { opt_mode_uit } from "../../components/search/type";
 import Select_button from "../../components/factory/select_button";
 
 export default function Page_multi_imgs(){

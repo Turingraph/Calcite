@@ -5,7 +5,7 @@ import Input_opt from "../search/input_opt";
 import {Str_to_h} from "../../utils/convert";
 import { func_push_arr, func_delete_item } from '../../utils/crud_arr'
 import Panel from "../asset/panel";
-import { input_opt_uit, opt_mode_uit } from "../../type/input_ui";
+import { input_opt_uit, opt_mode_uit } from "../search/type";
 import { func_get_create_mode } from "../../utils/handle";
 
 export default function Fac_opts(

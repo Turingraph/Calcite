@@ -1,9 +1,17 @@
 import React from "react";
 import * as a from "../../type/alias";
-import {input_uit, combine_input_uit } from "../../type/input_ui";
+import { input_opt_uit } from "../search/type";
 import {Str_to_h, Opt_to_jsx_arr} from "../../utils/convert";
 import Input_opt from "../search/input_opt";
 import Input_form from "./input_form";
+
+export type combine_input_uit = {
+    opt_name?:a.opt_name,
+    input_str?:undefined|a.use_state_uit<string|number>[],
+    input_opt?:undefined|input_opt_uit[]
+    func_activate?:a.func_event,
+    is_undo?:boolean
+}
 
 export default function Combine_input({
     opt_name,
@@ -14,13 +22,13 @@ export default function Combine_input({
 }:combine_input_uit){
     const JAX_INPUT_OPT = Opt_to_jsx_arr({arr:input_opt, jsx_element:Input_opt})
     let jsx_input_str = <></>
-    let let_input_str:input_uit<string|number>[] = []
+    let let_input_str:a.use_state_uit<string|number>[] = []
     if (input_str !== undefined){
-        let_input_str = input_str.map((item)=>{
+        let_input_str = input_str.map((item:a.use_state_uit<string|number>)=>{
             return {
                 opt_name:item.opt_name,
-                input:item.input,
-                default_input:item.default_input
+                ss:item.ss,
+                setss:item.setss
             }
         })
         jsx_input_str = <Input_form

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import * as a from '../../type/alias'
 import { DEFAULT_BOX } from "../../data/config";
 import Combine_input from "../../components/input/combine_input";
-import { combine_input_uit } from "../../type/input_ui";
+import { combine_input_uit } from "../../components/input/combine_input";
 import { Int_to_255 } from "../../utils/convert";
 import { Opt_to_jsx_arr } from "../../utils/convert";
 
@@ -51,44 +51,44 @@ export default function Config_boxes(){
         input_str:[
             {
                 opt_name:"min width" as a.opt_name,
-                input:{ss:ss_min_w, setss:setss_min_w} as a.use_state_t<string|number>,
-                default_input:DEFAULT_BOX.rect.min_w
-            },
+                ss:ss_min_w,
+                setss:setss_min_w
+            } as a.use_state_uit<string|number>,
             {
                 opt_name:"max width" as a.opt_name,
-                input:{ss:ss_max_w, setss:setss_max_w} as a.use_state_t<string|number>,
-                default_input:DEFAULT_BOX.rect.max_w
-            },
+                ss:ss_max_w, 
+                setss:setss_max_w
+            } as a.use_state_uit<string|number>,
             {
                 opt_name:"min height" as a.opt_name,
-                input:{ss:ss_min_h, setss:setss_min_h} as a.use_state_t<string|number>,
-                default_input:DEFAULT_BOX.rect.min_h
-            },
+                ss:ss_min_h,
+                setss:setss_min_h
+            } as a.use_state_uit<string|number>,
             {
                 opt_name:"max height" as a.opt_name,
-                input:{ss:ss_max_h, setss:setss_max_h} as a.use_state_t<string|number>,
-                default_input:DEFAULT_BOX.rect.max_h
-            },
+                ss:ss_max_h, 
+                setss:setss_max_h
+            } as a.use_state_uit<string|number>,
             {
                 opt_name:"min x" as a.opt_name,
-                input:{ss:ss_min_x, setss:setss_min_x} as a.use_state_t<string|number>,
-                default_input:DEFAULT_BOX.rect.min_x
-            },
+                ss:ss_min_x,
+                setss:setss_min_x
+            } as a.use_state_uit<string|number>,
             {
                 opt_name:"max x" as a.opt_name,
-                input:{ss:ss_max_x, setss:setss_max_x} as a.use_state_t<string|number>,
-                default_input:DEFAULT_BOX.rect.max_x
-            },
+                ss:ss_max_x, 
+                setss:setss_max_x
+            } as a.use_state_uit<string|number>,
             {
                 opt_name:"min y" as a.opt_name,
-                input:{ss:ss_min_y, setss:setss_min_y} as a.use_state_t<string|number>,
-                default_input:DEFAULT_BOX.rect.min_y
-            },
+                ss:ss_min_y, 
+                setss:setss_min_y
+            } as a.use_state_uit<string|number>,
             {
                 opt_name:"max y" as a.opt_name,
-                input:{ss:ss_max_y, setss:setss_max_y} as a.use_state_t<string|number>,
-                default_input:DEFAULT_BOX.rect.max_y
-            },
+                ss:ss_max_y, 
+                setss:setss_max_y
+            } as a.use_state_uit<string|number>,
         ],
         input_opt:undefined
     }
@@ -96,17 +96,14 @@ export default function Config_boxes(){
         opt_name:undefined as a.opt_name,
         input_str:[{
             opt_name:"Box Sorting Mode" as a.opt_name,
-            input:{ss:ss_sort_mode, setss:setss_sort_mode} as a.use_state_t<string|number>,
-            default_input:DEFAULT_BOX.sort_mode
-        }]
+            ss:ss_sort_mode, setss:setss_sort_mode} as a.use_state_uit<string|number>,
+        ]
     }
     const INTERFACE_SEARCH_TEXT:combine_input_uit = {
         opt_name:"Filte Text" as a.opt_name,
         input_str:[{
             opt_name:"selected text" as a.opt_name,
-            input:{ss:ss_search_text, setss:setss_search_text} as a.use_state_t<string|number>,
-            default_input:DEFAULT_BOX.box_around_text.search_text
-        }],
+            ss:ss_search_text, setss:setss_search_text} as a.use_state_uit<string|number>],
         input_opt:[{
             opt_name:"mode" as a.opt_name,
             available_opts:["select those text", "avoid those text"],
@@ -118,9 +115,8 @@ export default function Config_boxes(){
         opt_name:"Filte char" as a.opt_name,
         input_str:[{
             opt_name:"selected character" as a.opt_name,
-            input:{ss:ss_search_char, setss:setss_search_char} as a.use_state_t<string|number>,
-            default_input:DEFAULT_BOX.box_around_char.search_char
-        }],
+            ss:ss_search_char, setss:setss_search_char} as a.use_state_uit<string|number>,
+            ],
         input_opt:[{
             opt_name:"mode" as a.opt_name,
             available_opts:["select those char", "avoid those char"],
@@ -133,25 +129,16 @@ export default function Config_boxes(){
         input_str:[
             {
                 opt_name:"r" as a.opt_name,
-                input:{
                     ss:ss_r_00, setss:setss_r_00
-                } as a.use_state_t<string|number>,
-                default_input:DEFAULT_BOX.color_00.r
-            },
+                } as a.use_state_uit<string|number>,
             {
                 opt_name:"g" as a.opt_name,
-                input:{
                     ss:ss_g_00, setss:setss_g_00
-                } as a.use_state_t<string|number>,
-                default_input:DEFAULT_BOX.color_00.g
-            },
+                } as a.use_state_uit<string|number>,
             {
                 opt_name:"b" as a.opt_name,
-                input:{
                     ss:ss_b_00, setss:setss_b_00
-                } as a.use_state_t<string|number>,
-                default_input:DEFAULT_BOX.color_00.b
-            }
+                } as a.use_state_uit<string|number>
         ],
         input_opt:undefined
     }
@@ -160,25 +147,16 @@ export default function Config_boxes(){
         input_str:[
             {
                 opt_name:"r" as a.opt_name,
-                input:{
                     ss:ss_r_01, setss:setss_r_01
-                } as a.use_state_t<string|number>,
-                default_input:DEFAULT_BOX.color_01.r
-            },
+                } as a.use_state_uit<string|number>,
             {
                 opt_name:"g" as a.opt_name,
-                input:{
                     ss:ss_g_01, setss:setss_g_01
-                } as a.use_state_t<string|number>,
-                default_input:DEFAULT_BOX.color_01.g
-            },
+                } as a.use_state_uit<string|number>,
             {
                 opt_name:"b" as a.opt_name,
-                input:{
                     ss:ss_b_01, setss:setss_b_01
-                } as a.use_state_t<string|number>,
-                default_input:DEFAULT_BOX.color_01.b
-            }
+                } as a.use_state_uit<string|number>,
         ],
         input_opt:undefined
     }

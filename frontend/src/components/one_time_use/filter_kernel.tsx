@@ -3,7 +3,6 @@ import Click_button from "../button/click_button";
 import * as a from "../../type/alias"
 import Panel from "../asset/panel";
 import Input_form from "../input/input_form";
-import { input_uit } from "../../type/input_ui";
 import {Str_to_h} from "../../utils/convert";
 import { func_update_item } from "../../utils/crud_arr";
 import Input_opt from "../search/input_opt";
@@ -83,7 +82,7 @@ export default function Filter_kernel({
     ss_mode,
     ss_kernel
 }:{
-    ss_list:input_uit<number[]>
+    ss_list:a.use_state_uit<number[]>
     ss_mode:a.use_state_t<number>
     ss_kernel:a.use_state_t<number[][]>
 }){
@@ -97,7 +96,7 @@ export default function Filter_kernel({
         for(let i = 1; i <= ss_len; i++){
             UPDATE_ARR.push(ss_second + (ss_last - ss_second) * (i/ss_len))
         }
-        ss_list.input.setss(UPDATE_ARR.map((item)=>{return ss_scalar * item}))
+        ss_list.setss(UPDATE_ARR.map((item)=>{return ss_scalar * item}))
     },[
         ss_first,
         ss_second,
@@ -106,82 +105,67 @@ export default function Filter_kernel({
         ss_scalar
     ])
     useEffect(()=>{
-        ss_mode.ss === 1 ? setss_first(func_sharp_center(ss_list.input.ss)) : (()=>{})
+        ss_mode.ss === 1 ? setss_first(func_sharp_center(ss_list.ss)) : (()=>undefined)
     },[ss_kernel.ss])
-    const LET_ARR:input_uit<number>[] = [
+    const LET_ARR:a.use_state_uit<number>[] = [
         {
             opt_name:"first item" as a.opt_name,
-            input:{
-                ss:ss_first,
-                setss:setss_first
-            },
-            default_input:1
+            ss:ss_first,
+            setss:setss_first
         },
         {
             opt_name:"second item" as a.opt_name,
-            input:{
-                ss:ss_second,
-                setss:setss_second
-            },
-            default_input:1
+            ss:ss_second,
+            setss:setss_second
         },
         {
             opt_name:"last item" as a.opt_name,
-            input:{
-                ss:ss_last,
-                setss:setss_last
-            },
-            default_input:1
+            ss:ss_last,
+            setss:setss_last
         },
         {
             opt_name:"length of list" as a.opt_name,
-            input:{
-                ss:ss_len,
-                setss:setss_len
-            },
-            default_input:1
+            ss:ss_len,
+            setss:setss_len
         },
         {
             opt_name:"scalar" as a.opt_name,
-            input:{
-                ss:ss_scalar,
-                setss:setss_scalar
-            },
-            default_input:1
+            ss:ss_scalar,
+            setss:setss_scalar
         },
     ] 
     const JSX_LISTS = <Input_form
     opt_name={"Modify Filter Kernel List Manually" as a.opt_name}
-    arr={(ss_list.input.ss.map((item,index)=>{
+    arr={(ss_list.ss.map((item,index)=>{
         return {
             opt_name:ss_list.opt_name,
-            input:{
-                ss:ss_list.input.ss,
-                setss:((e:number)=>{func_update_item<number>(index,ss_list.input,e)})
-            },
-            default_input:ss_list.default_input
+            ss:ss_list.ss,
+            setss:((e:number)=>{func_update_item<number>(
+                index,
+                {ss:ss_list.ss, setss:ss_list.setss},
+                e)})
         }
-    })) as unknown as input_uit<string|number>[]}
+    })) as unknown as a.use_state_uit<string|number>[]}
 />
     function func_set_kernel(){
         if (ss_mode.ss ===0){
-            ss_kernel.setss(func_rect_kernel(ss_list.input.ss, ss_first))
+            ss_kernel.setss(func_rect_kernel(ss_list.ss, ss_first))
         }
         if (ss_mode.ss ===1){
-            ss_kernel.setss(func_rect_kernel(ss_list.input.ss, func_sharp_center(ss_list.input.ss)))
+            ss_kernel.setss(func_rect_kernel(ss_list.ss, func_sharp_center(ss_list.ss)))
         }
         if (ss_mode.ss ===2){
-            ss_kernel.setss(func_line_kernel(ss_list.input.ss, true, ss_first))
+            ss_kernel.setss(func_line_kernel(ss_list.ss, true, ss_first))
         }
         if (ss_mode.ss ===3){
-            ss_kernel.setss(func_line_kernel(ss_list.input.ss, false, ss_first))
+            ss_kernel.setss(func_line_kernel(ss_list.ss, false, ss_first))
         }
     }
     return <>
         <Str_to_h opt_name={"Filter Kernel" as a.opt_name}/>
         <Input_form
             opt_name={"Create Filter Kernel List" as a.opt_name}
-            arr={LET_ARR as unknown as input_uit<number|string>[]}
+            arr={LET_ARR as unknown as a.use_state_uit<number|string>[]}
         />
         <Panel jsx_element={JSX_LISTS}/>
         <Input_opt

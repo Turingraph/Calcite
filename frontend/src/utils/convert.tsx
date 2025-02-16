@@ -1,6 +1,6 @@
 import * as a from "../../src/type/alias"
 import React, { JSX } from "react";
-import { opt_mode_uit } from "../type/input_ui";
+import { opt_mode_uit } from "../components/search/type";
 
 export const HEX_ARR = [ 
     '0', '1', '2', '3', 

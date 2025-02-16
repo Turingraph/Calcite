@@ -3,7 +3,7 @@ import * as a from "../../type/alias"
 import { box_t, BOXES_INPUT_ATTR, BOXES_DEFAULT_INPUT, boxes_input_attr_t } from "../../type/obj";
 import Factory_obj from "../../components/factory/factory_obj";
 import Select_checkbox from "../../components/factory/select_checkbox";
-import { opt_mode_uit } from "../../type/input_ui";
+import { opt_mode_uit } from "../../components/search/type";
 import Search_bar from "../../components/search/search_bar";
 import Panel from "../../components/asset/panel";
 import Input_item_attr, {input_item_attr_uit} from "../../components/factory/input_item_attr";

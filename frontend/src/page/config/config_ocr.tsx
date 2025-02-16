@@ -8,9 +8,8 @@ import Factory_opts from "../../components/factory/factory_opts";
 import { LANGUAGE_OPTS, PSM_OPTS, OEM_OPTS } from "../../data/constant";
 import Input_str from "../../components/input/input_str";
 import Input_form from "../../components/input/input_form";
-import { input_uit } from "../../type/input_ui";
-import Combine_input from "../../components/input/combine_input";
-import { input_opt_uit } from "../../type/input_ui";
+import Combine_input, {combine_input_uit} from "../../components/input/combine_input";
+import { input_opt_uit } from "../../components/search/type";;
 import { DEFAULT_OCR } from "../../data/config";
 
 export default function Config_ocr(){
@@ -39,17 +38,17 @@ export default function Config_ocr(){
     available_opts={LANGUAGE_OPTS}
     is_search_bar={true}
     />
-    const INTERFACE_TIME_OUT:input_uit<string|number> = {
+    const INTERFACE_TIME_OUT:a.use_state_uit<string|number> = {
         opt_name:"Time out (second)" as a.opt_name,
-        input:{ss:ss_time_out, setss:setss_time_out} as a.use_state_t<number|string>,
-        default_input:0
-    }
+        ss:ss_time_out, setss:setss_time_out} as a.use_state_uit<number|string>
     const INTERFACE_FILTER_CHAR = <Combine_input
         opt_name={"Filter Character" as a.opt_name}
         input_str={[{
             opt_name:"selected character" as a.opt_name,
-            input:{ss:ss_filter_char, setss:setss_filter_char} as a.use_state_t<number|string>
-            }]}
+            ss:ss_filter_char, 
+            setss:setss_filter_char
+            } as a.use_state_uit<number|string>
+            ]}
         input_opt={[{
             opt_name:"mode" as a.opt_name,
             available_opts:["select those text", "avoid those text"],

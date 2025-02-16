@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import * as a from '../../type/alias'
 import Input_opt from "../../components/search/input_opt";
 import Search_bar from "../../components/search/search_bar";
-import { opt_mode_uit } from "../../type/input_ui";
+import { opt_mode_uit } from "../../components/search/type";
 import { OPT_NAME } from "../utils/constant";
 
 export function Test_input_opt(){

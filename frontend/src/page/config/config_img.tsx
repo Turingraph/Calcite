@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import * as a from '../../type/alias'
 import Combine_input from '../../components/input/combine_input'
-import { combine_input_uit } from '../../type/input_ui'
+import { combine_input_uit } from '../../components/input/combine_input'
 import { 
     Opt_to_jsx_arr,
     Int_to_255,
@@ -87,20 +87,14 @@ export default function Config_img(){
         input_str:[
             {
                 opt_name:"pixel value" as a.opt_name,
-                input:{
                     ss:ss_thresh_px,
                     setss:setss_thresh_px
-                } as a.use_state_t<number|string>,
-                default_input:DEFAULT_IMG.thresh.px
-            },
+                } as a.use_state_uit<number|string>,
             {
                 opt_name:"maximum pixel value" as a.opt_name,
-                input:{
                     ss:ss_thresh_maxval,
                     setss:setss_thresh_maxval
-                } as a.use_state_t<number|string>,
-                default_input:DEFAULT_IMG.thresh.maxval
-            }
+                } as a.use_state_uit<number|string>,
         ],
         input_opt:[
             {
@@ -137,28 +131,20 @@ export default function Config_img(){
         input_str:[
             {
                 opt_name:"Size of Kernel" as a.opt_name,
-                input:{
                     ss:ss_thresh_adp_ksize,
                     setss:setss_thresh_adp_ksize
-                } as a.use_state_t<number|string>,
-                default_input:DEFAULT_IMG.thresh_adp.ksize
-            },
+                } as a.use_state_uit<number|string>,
             {
                 opt_name:"Constant" as a.opt_name,
-                input:{
                     ss:ss_thresh_adp_constant,
                     setss:setss_thresh_adp_constant
-                } as a.use_state_t<number|string>,
-                default_input:DEFAULT_IMG.thresh_adp.constant
-            },
+                } as a.use_state_uit<number|string>,
             {
                 opt_name:"maximum pixel value" as a.opt_name,
-                input:{
+
                     ss:ss_thresh_adp_maxval,
                     setss:setss_thresh_adp_maxval
-                } as a.use_state_t<number|string>,
-                default_input:DEFAULT_IMG.thresh_adp.maxval
-            }
+                } as a.use_state_uit<number|string>,
         ],
         input_opt:[
             {
@@ -207,20 +193,16 @@ export default function Config_img(){
         input_str:[
             {
                 opt_name:"row" as a.opt_name,
-                input:{
+
                     ss:ss_erode_row,
                     setss:setss_erode_row
-                } as a.use_state_t<number|string>,
-                default_input:DEFAULT_IMG.erode.r
-            },
+                } as a.use_state_uit<number|string>,
             {
                 opt_name:"col" as a.opt_name,
-                input:{
+
                     ss:ss_erode_col,
                     setss:setss_erode_col
-                } as a.use_state_t<number|string>,
-                default_input:DEFAULT_IMG.erode.c
-            }
+                } as a.use_state_uit<number|string>,
         ],
         input_opt:undefined
     }
@@ -229,20 +211,16 @@ export default function Config_img(){
         input_str:[
             {
                 opt_name:"row" as a.opt_name,
-                input:{
+
                     ss:ss_opening_row,
                     setss:setss_opening_row
-                } as a.use_state_t<number|string>,
-                default_input:DEFAULT_IMG.opening.r
-            },
+                } as a.use_state_uit<number|string>,
             {
                 opt_name:"col" as a.opt_name,
-                input:{
+
                     ss:ss_opening_col,
                     setss:setss_opening_col
-                } as a.use_state_t<number|string>,
-                default_input:DEFAULT_IMG.opening.c
-            }
+                } as a.use_state_uit<number|string>,
         ],
         input_opt:undefined
     }
@@ -251,20 +229,16 @@ export default function Config_img(){
         input_str:[
             {
                 opt_name:"first constant" as a.opt_name,
-                input:{
+
                     ss:ss_canny_c0,
                     setss:setss_canny_c0
-                } as a.use_state_t<number|string>,
-                default_input:DEFAULT_IMG.canny.c0
-            },
+                } as a.use_state_uit<number|string>,
             {
                 opt_name:"second constant" as a.opt_name,
-                input:{
+
                     ss:ss_canny_c1,
                     setss:setss_canny_c1
-                } as a.use_state_t<number|string>,
-                default_input:DEFAULT_IMG.canny.c1
-            }
+                } as a.use_state_uit<number|string>,
         ],
         input_opt:undefined
     }
@@ -273,20 +247,16 @@ export default function Config_img(){
         input_str:[
             {
                 opt_name:"row" as a.opt_name,
-                input:{
+
                     ss:ss_dilate_row,
                     setss:setss_dilate_row
-                } as a.use_state_t<number|string>,
-                default_input:DEFAULT_IMG.dilate.r
-            },
+                } as a.use_state_uit<number|string>,
             {
                 opt_name:"col" as a.opt_name,
-                input:{
+
                     ss:ss_dilate_col,
                     setss:setss_dilate_col
-                } as a.use_state_t<number|string>,
-                default_input:DEFAULT_IMG.dilate.c
-            }
+                } as a.use_state_uit<number|string>,
         ],
         input_opt:undefined
     }
@@ -300,12 +270,10 @@ export default function Config_img(){
                     }
                     return "Width of Kernel"
                 }) as unknown as a.opt_name,
-                input:{
+
                     ss:ss_blur_c0,
                     setss:setss_blur_c0
-                } as a.use_state_t<number|string>,
-                default_input:DEFAULT_IMG.blur.c0
-            },
+                } as a.use_state_uit<number|string>,
             {
                 opt_name:(() => {
                     if (ss_blur_opt === 2){
@@ -313,12 +281,10 @@ export default function Config_img(){
                     }
                     return "Height of Kernel"
                 }) as unknown as a.opt_name,
-                input:{
+
                     ss:ss_blur_c1,
                     setss:setss_blur_c1
-                } as a.use_state_t<number|string>,
-                default_input:DEFAULT_IMG.blur.c1
-            },
+                } as a.use_state_uit<number|string>,
         ],
         input_opt:[
             {
@@ -337,12 +303,11 @@ export default function Config_img(){
         opt_name:undefined as a.opt_name,
         input_str:[{
             opt_name:"rotate" as a.opt_name,
-            input:{
+
                 ss:ss_rotate,
                 setss:setss_rotate
-            } as a.use_state_t<number|string>,
-            default_input:DEFAULT_IMG.rotate
-        }],
+            } as a.use_state_uit<number|string>,
+            ],
         input_opt:undefined
     }
     const INTERFACE_CROP:combine_input_uit = {
@@ -350,36 +315,29 @@ export default function Config_img(){
         input_str:[
             {
                 opt_name:"x_00" as a.opt_name,
-                input:{
+
                     ss:ss_crop_00,
                     setss:setss_crop_00
-                } as a.use_state_t<string|number>,
-                default_input:DEFAULT_IMG.crop.x_00
-            },
+                } as a.use_state_uit<string|number>,
             {
                 opt_name:"x_01" as a.opt_name,
-                input:{
+
                     ss:ss_crop_01,
                     setss:setss_crop_01
-                } as a.use_state_t<string|number>,
-                default_input:DEFAULT_IMG.crop.x_01
-            },
+                } as a.use_state_uit<string|number>,
             {
                 opt_name:"x_02" as a.opt_name,
-                input:{
+
                     ss:ss_crop_02,
                     setss:setss_crop_02
-                } as a.use_state_t<string|number>,
-                default_input:DEFAULT_IMG.crop.x_02
-            },
+                } as a.use_state_uit<string|number>,
+
             {
                 opt_name:"x_03" as a.opt_name,
-                input:{
+
                     ss:ss_crop_03,
                     setss:setss_crop_03
-                } as a.use_state_t<string|number>,
-                default_input:DEFAULT_IMG.crop.x_03
-            }
+                } as a.use_state_uit<string|number>,
         ]
     }
     const INTERFACE_BUTTON_ARR:click_button_t[]=[

@@ -1,7 +1,6 @@
 import React from "react";
 import * as a from "../../type/alias";
 import { func_update_item } from "../../utils/crud_arr";
-// import { select_button_t } from "./select_button";
 
 export type select_button_t<
     t extends object,

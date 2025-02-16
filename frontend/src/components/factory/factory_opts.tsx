@@ -5,7 +5,7 @@ import Input_opt from "../search/input_opt";
 import {Numarr_to_strarr, Str_to_h} from "../../utils/convert";
 import { func_push_arr, func_delete_item, func_sort_arrattr } from '../../utils/crud_arr'
 import Panel from "../asset/panel";
-import { input_opt_uit, opt_mode_uit } from "../../type/input_ui";
+import { opt_mode_uit } from "../search/type";
 import { Strarr_to_optmode } from "../../utils/convert";
 import { func_exclude_arr, func_access_optmode } from "../../utils/handle";
 import { Item_to_index } from "../../utils/convert";

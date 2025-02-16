@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import * as a from "../../type/alias"
 import {Str_to_h} from "../../utils/convert";
-import { opt_mode_uit, input_opt_uit } from "../../type/input_ui";
+import { opt_mode_uit, input_opt_uit } from "./type"
 import Search_bar from "./search_bar";
 
 //  https://stackoverflow.com/questions/40209352/

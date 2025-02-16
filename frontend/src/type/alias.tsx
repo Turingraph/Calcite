@@ -42,6 +42,14 @@ export type use_state_t<t> = {
     >|((e:t)=>void)
 }
 
+export type use_state_uit<t> = {
+    opt_name:opt_name,
+    ss:t,
+    setss:React.Dispatch<
+        React.SetStateAction<t>
+    >|((e:t)=>void)
+}
+
 // https://stackoverflow.com/questions/49752151/
 // typescript-keyof-returning-specific-type
 

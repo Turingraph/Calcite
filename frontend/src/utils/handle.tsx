@@ -1,5 +1,5 @@
 import * as a from "../type/alias";
-import { opt_mode_uit } from "../type/input_ui";
+import { opt_mode_uit } from "../components/search/type";
 
 // Any, Unknown, Never
 // https://youtu.be/kWmUNChlzVw?si=DwNwPVm6KJG4nIco
