@@ -2,13 +2,11 @@ import React, {useEffect, useState} from "react";
 import * as a from "../../type/alias"
 import Click_button from "../button/click_button";
 import Input_opt from "../search/input_opt";
-import {Numarr_to_strarr, Str_to_h} from "../../utils/convert";
+import {Strarr_to_optmode, Str_to_h, Item_to_index} from "../../utils/convert";
 import { func_push_arr, func_delete_item, func_sort_arrattr } from '../../utils/crud_arr'
 import Panel from "../asset/panel";
 import { opt_mode_uit } from "../search/type";
-import { Strarr_to_optmode } from "../../utils/convert";
 import { func_exclude_arr, func_access_optmode } from "../../utils/handle";
-import { Item_to_index } from "../../utils/convert";
 
 export function func_exclude_opt(available_opts:string[], exist_opts:number[]){
     const CONST_AVAILABLE_OPTS = func_sort_arrattr(Strarr_to_optmode(available_opts), "index")
@@ -76,18 +74,18 @@ export default function Factory_opts(
     const [ss_newobj_index, setss_newobj_index] = useState<number|undefined>(
         func_default_newobj_index(ss_available_opts, 0)
     )
+    const [ss_DEFAULT_OPT, setss_DEFAULT_OPT] = useState<number>(exist_opts.ss[0])
     useEffect(()=>{
         setss_available_opts(func_exclude_opt(available_opts, exist_opts.ss))
     },[exist_opts.ss])
-    const DEFAULT_OPT = exist_opts.ss[0]
     function func_reset(){
-        exist_opts.setss([DEFAULT_OPT])
+        exist_opts.setss([ss_DEFAULT_OPT])
         // setss_newobj_index(func_update_opt_index(available_opts.length - 1, DEFAULT_OPT, undefined))
-        if(DEFAULT_OPT === available_opts.length - 1){
+        if(ss_DEFAULT_OPT === available_opts.length - 1){
             setss_newobj_index(0)
         }
         else{
-            setss_newobj_index(DEFAULT_OPT+1)
+            setss_newobj_index(ss_DEFAULT_OPT+1)
         }
     }
 

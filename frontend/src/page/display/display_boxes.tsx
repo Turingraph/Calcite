@@ -27,7 +27,6 @@ export default function Display_boxes(){
             opt_name:"attribute of box" as a.opt_name,
             arr:{ss:ss_boxes, setss:setss_boxes},
             this_item:item.index,
-            default_attr_values:BOXES_DEFAULT_INPUT as (string|number)[],
             attrs:BOXES_INPUT_ATTR as boxes_input_attr_t[],
         }
         return <><Factory_obj

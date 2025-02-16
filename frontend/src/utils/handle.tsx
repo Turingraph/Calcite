@@ -120,3 +120,8 @@ export function func_access_optmode(index:number|undefined, arr:opt_mode_uit[]){
     }
     return undefined
 }
+
+export function func_identity<t>(x:t){
+    const Y = x
+    return Y
+}

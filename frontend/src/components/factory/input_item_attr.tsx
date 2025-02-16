@@ -13,7 +13,6 @@ k extends keyof t> = {
     opt_name:a.opt_name
     arr:a.use_state_t<t[]>,
     this_item:number,
-    default_attr_values:(string|number)[]
     attrs:k[]
     is_undo?:boolean
 }
@@ -23,11 +22,14 @@ export default function Input_item_attr<
     k extends keyof t>({
         opt_name,       
         arr  ,   
-        this_item,
-        default_attr_values,                
+        this_item,              
         attrs  ,  
         is_undo = false
 }:input_item_attr_uit<t,k>){
+    const [ss_DEFAULT_ARR, setss_DEFAULT_ARR] = useState<any[]>(
+        attrs.map((item, index)=>{
+            return arr.ss[index][item]
+        }))
     const [ss_texts, setss_texts] = useState<string[]>(
         arr.ss.map((item)=>{
             return item as unknown as string
@@ -37,9 +39,9 @@ export default function Input_item_attr<
         attrs.map((item, index)=>{
             let let_input = (input_arr[index]) as t[k]
             if (typeof arr.ss[index][attrs[index]] === 'number'){
-                if (typeof default_attr_values[index] === 'number'){
+                if (typeof ss_DEFAULT_ARR[index] === 'number'){
                     let_input = func_handle_num_type(
-                        default_attr_values[index],
+                        ss_DEFAULT_ARR[index],
                         let_input as string
                     ) as unknown as t[k]
                 }
@@ -95,7 +97,7 @@ export default function Input_item_attr<
     /> : <></>}
     <Click_button
         name={"reset all" as a.name}
-        func_event={(()=>{func_set_item_attr(default_attr_values as unknown as t[k][])}) as a.func_event}
+        func_event={(()=>{func_set_item_attr(ss_DEFAULT_ARR as unknown as t[k][])}) as a.func_event}
     />
     </>
 }

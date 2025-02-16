@@ -19,6 +19,12 @@ export default function Input_form({
     func_activate = (()=>undefined) as a.func_event,
     is_undo = false
 }:input_form_t){
+    const [ss_DEFAULT_ARR, setss_DEFAULT_ARR] = useState<(string|number)[]>(arr.map((item)=>{
+        if(typeof item.ss == "number"){
+            return item.ss as number
+        }
+        return item.ss.toString()
+    }))
     const [ss_texts, setss_texts] = useState<string[]>(arr.map((item)=>{return item.ss.toString()}))
     const [ss_update, setss_update] = useState<0|1>(0)
     useEffect(()=>{
@@ -28,18 +34,17 @@ export default function Input_form({
         setss_texts(UPDATE_TEXT)
         setss_update(0)
     }, [ss_update])
-    const DEFAULT_ARR = arr.map((item)=>{return item.ss})
     function func_set_default(){
-        arr.map((item, index)=>{item.setss(DEFAULT_ARR[index])})
-        setss_texts(DEFAULT_ARR as string[])
+        arr.map((item, index)=>{item.setss(ss_DEFAULT_ARR[index])})
+        setss_texts(ss_DEFAULT_ARR as string[])
     }
     function func_set_ok(){
         // https://www.geeksforgeeks.org/
         // how-to-resolve-usestate-set-method-is-not-reflecting-change-immediately/
         arr.map((item, index)=>{
-            if(typeof DEFAULT_ARR[index] === "number" && typeof item.ss === "number"){
+            if(typeof ss_DEFAULT_ARR[index] === "number" && typeof item.ss === "number"){
                 const CONST_INPUT = func_handle_num_type(
-                    DEFAULT_ARR[index],
+                    ss_DEFAULT_ARR[index],
                     ss_texts[index]
                 )
                 item.setss(CONST_INPUT)
