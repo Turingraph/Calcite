@@ -23,7 +23,7 @@ export default function Display_boxes(){
     />
     const JSX_BOXES = ss_boxes_filter.map((item,index)=>{
         if (item != undefined){
-        const INTERFACE_BOX:input_item_attr_uit<box_t, boxes_input_attr_t> = {
+        const INTERFACE_BOX:input_item_attr_uit<box_t> = {
             opt_name:"attribute of box" as a.opt_name,
             arr:{ss:ss_boxes, setss:setss_boxes},
             this_item:item.index,

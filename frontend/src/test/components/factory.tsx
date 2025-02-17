@@ -43,12 +43,12 @@ export function Test_input_item_attr(){
         ss:ss_arr,
         setss:setss_arr
     }
-    const INTERFACE_ITEM_ATTR:input_item_attr_uit<character_t, "skill">[] = ss_arr.map((item,index)=>{
+    const INTERFACE_ITEM_ATTR:input_item_attr_uit<character_t>[] = ss_arr.map((item,index)=>{
         return {
             opt_name:item.name as a.opt_name,
             arr:INTERFACE_USE_STATE,
             this_item:index,
-            attrs:["skill"],
+            attrs:["skill", "name"],
             is_undo:false
         }
     })
@@ -62,6 +62,7 @@ export function Test_input_item_attr(){
     //         />
     // })
     return <>
+    <h1>SAKAMOTO PUNCH !</h1>
     </>
 }
 
