@@ -1,6 +1,12 @@
 import * as a from "../type/alias";
 
-export function func_update_item<t>(
+/*
+Rule of every function in this file.
+1.  It should begin with `method_`
+2.  It should takes array or a.use_state_t<t[]> as it's input
+*/
+
+export function method_update_item<t>(
         index:number, 
         arr:a.use_state_t<t[]>, 
         update_input:t){
@@ -10,7 +16,7 @@ export function func_update_item<t>(
 }
 
 // https://stackoverflow.com/questions/586182/
-export function func_copy_item<t>(
+export function method_copy_item<t>(
     index:number,
     arr:a.use_state_t<t[]>
 ){
@@ -20,7 +26,7 @@ export function func_copy_item<t>(
     arr.setss(UPDATE_ARR)
 }
 
-export function func_update_arr<t>(
+export function method_update_arr<t>(
         arr:a.use_state_t<t>[],
         func_event:(e:t)=>void,
         input:t[]
@@ -31,7 +37,7 @@ export function func_update_arr<t>(
     })
 }
 
-export function func_push_arr<t>(
+export function method_push_arr<t>(
     input:t,
     arr:a.use_state_t<t[]>
 ){
@@ -40,13 +46,13 @@ export function func_push_arr<t>(
     arr.setss(UPDATE_ARR)
 }
 
-export function func_delete_item<t>(index:number,arr:a.use_state_t<t[]>){
+export function method_delete_item<t>(index:number,arr:a.use_state_t<t[]>){
     const UPDATE_ARR = [...arr.ss]
     UPDATE_ARR.splice(index, 1)
     arr.setss(UPDATE_ARR)
 }
 
-export function func_update_item_attr<
+export function method_update_item_attr<
     t extends object, 
     k extends keyof t,
     v extends t[k]>(
@@ -60,7 +66,7 @@ export function func_update_item_attr<
         arr.setss(UPDATE_ARR)
     }
 
-export function func_update_item_attrs<
+export function method_update_item_attrs<
     t extends object,
     k extends keyof t,
     v extends t[k]>(
@@ -70,7 +76,7 @@ export function func_update_item_attrs<
         input:v[]
     ){
         attrs.map((item, index)=>{
-            func_update_item_attr(
+            method_update_item_attr(
                 this_item,
                 arr,
                 item,
@@ -80,7 +86,7 @@ export function func_update_item_attrs<
     }
 
 
-export function func_sort_arrattr<t extends object, k extends keyof t>(
+export function method_sort_arrattr<t extends object, k extends keyof t>(
     arr:t[],
     attr:k
 ){
@@ -90,7 +96,25 @@ export function func_sort_arrattr<t extends object, k extends keyof t>(
     // https://stackoverflow.com/questions/26871106/
     // check-if-all-elements-in-array-are-strings
     if (arr.every(i => typeof i === "number")){
-        return arr.sort((n0, n1) => n0[attr] - n1[attr])
+        return arr.sort((n0, n1) => n0[attr] > n1[attr] ? -1 : 1)
     }
     return arr
+}
+
+export function method_sort_arr<t>(arr:t[]){
+    // https://stackoverflow.com/questions/40472548/
+    // typescript-sort-strings-descending
+    
+    return arr.sort((n0, n1) => n0 > n1 ? -1 : 1)
+}
+
+export function method_exclude_arr<t>(arr_all:t[], arr_exclude:t[]){
+    return arr_all.map((item)=>{
+        if(arr_exclude.map(
+            (item)=>{return JSON.stringify(item)}
+            ).includes(JSON.stringify(item)) === false
+        ){
+            return item
+        }
+    }).filter((item)=> item != undefined) as t[]
 }

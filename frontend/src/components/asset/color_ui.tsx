@@ -1,5 +1,5 @@
 import React, {JSX} from "react";
-import {Int_to_rgb} from "../../utils/convert";
+import {Num_to_rgb} from "../../utils/convert";
 
 export default function Color_ui({
     jsx_element,
@@ -8,5 +8,5 @@ export default function Color_ui({
     jsx_element:JSX.Element,
     rgb?:number|number[]
 }){
-    return <div style={{backgroundColor:Int_to_rgb({value:rgb})}}>{jsx_element}</div>
+    return <div style={{backgroundColor:Num_to_rgb(rgb)}}>{jsx_element}</div>
 }

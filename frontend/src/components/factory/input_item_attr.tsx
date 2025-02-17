@@ -2,10 +2,9 @@ import React , {useState} from "react";
 import * as a from "../../type/alias"
 import Click_button from "../button/click_button";
 import Input_str from "../input/input_str";
-import {Str_to_h} from "../../utils/convert";
-import { func_update_item } from "../../utils/crud_arr";
-import { func_update_item_attr } from "../../utils/crud_arr";
-import { func_handle_num_type } from "../../utils/handle";
+import {Str_to_h, Str_to_default_num} from "../../utils/convert";
+import { method_update_item } from "../../utils/arr_method";
+import { method_update_item_attr } from "../../utils/arr_method";
 
 export type input_item_attr_uit<
 t extends object,
@@ -26,7 +25,7 @@ export default function Input_item_attr<
         attrs  ,  
         is_undo = false
 }:input_item_attr_uit<t,k>){
-    const [ss_DEFAULT_ARR, setss_DEFAULT_ARR] = useState<any[]>(
+    const [ss_DEFAULT_ARR, setss_DEFAULT_ARR] = useState<unknown[]>(
         attrs.map((item, index)=>{
             return arr.ss[index][item]
         }))
@@ -40,19 +39,19 @@ export default function Input_item_attr<
             let let_input = (input_arr[index]) as t[k]
             if (typeof arr.ss[index][attrs[index]] === 'number'){
                 if (typeof ss_DEFAULT_ARR[index] === 'number'){
-                    let_input = func_handle_num_type(
+                    let_input = Str_to_default_num(
                         ss_DEFAULT_ARR[index],
                         let_input as string
                     ) as unknown as t[k]
                 }
                 else{
-                    let_input = func_handle_num_type(
+                    let_input = Str_to_default_num(
                         0,
                         let_input as string
                     ) as unknown as t[k]
                 }
             }
-            func_update_item_attr(
+            method_update_item_attr(
                 this_item,
                 arr,
                 item,
@@ -68,7 +67,7 @@ export default function Input_item_attr<
                 input={{
                     ss:ss_texts,
                     setss:((e:string) =>{
-                        func_update_item(
+                        method_update_item(
                             index,
                             {ss:ss_texts, setss:setss_texts},
                             e

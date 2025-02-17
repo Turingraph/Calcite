@@ -1,13 +1,19 @@
 import * as a from "../type/alias";
 import { opt_mode_uit } from "../components/search/type";
 
+/*
+Rule of every function in this file.
+1.  It should begin with `handle_`
+2.  It should be only used for check type.
+*/
+
 // Any, Unknown, Never
 // https://youtu.be/kWmUNChlzVw?si=DwNwPVm6KJG4nIco
 
 // https://www.reddit.com/r/typescript/comments/s1rdbp/
 // how_to_check_that_an_unknown_object_has_a/
 
-export default function Get_unknown_prob({
+export default function handle_get_unknown({
     unknown_obj,
     property,
     type,
@@ -30,85 +36,29 @@ export default function Get_unknown_prob({
     return undefined
 }
 
-
-export function func_handle_num_type(
-        default_input:number,
-        input:string
-){
-    if(!Number.isNaN(Number(input))){
-        return Number(input)
-    }
-    return default_input
-}
-
-// export function func_handle_type<
-//             t extends "string" | "number" |
-//              "bigint" |"boolean" | "symbol" | 
-//              "undefined" | "object" | "function",u>(
-//         default_input:t,
-//         input:t|u
-// ){
-//     const CONST_T = typeof default_input
-//     let let_output:typeof CONST_T;
-//     try{
-//         let_output = input as t
-//     }
-//     catch{
-//         let_output = default_input
-//     }
-//     return let_output
-// }
-
-// https://stackoverflow.com/questions/53807517/
-// how-to-test-if-two-types-are-exactly-the-same
-export type equal_type<T, U> =
-    (<G>() => G extends T ? 1 : 2) extends
-    (<G>() => G extends U ? 1 : 2) ? 1 : 0;
-
-export function func_get_attrs<t extends object>(obj:t){
-    return [a as keyof typeof obj]
-}
-
-export function func_check_attr<t extends object>(obj:t, attr:string){
-    const ARR = func_get_attrs(obj) as string[]
-    if (ARR.includes(attr)){
-        return true
-    }
-    else{
-        return false
-    }
-}
-
-export function func_get_create_mode(
-    arr:number[]){
-        const UPDATE_ARR = [... arr]
-        // https://stackoverflow.com/questions/21687907/
-        // typescript-sorting-an-array
-        UPDATE_ARR.sort((n1,n2) => n1 - n2)
-        let y = 0
-        for(const i in UPDATE_ARR){
-            if(y == Number(i)){
-                y += 1
-            }
-            else{
-                return y
-            }
+export function handle_get_finite_id(arr:number[], max:number){
+    const UPDATE_ARR = [... arr]
+    // https://stackoverflow.com/questions/21687907/
+    // typescript-sorting-an-array
+    UPDATE_ARR.sort((n0, n1) => n0 > n1 ? -1 : 1)
+    let y = 0
+    let i = 0
+    while(i < UPDATE_ARR.length){
+        if(y == Number(i)){
+            y += 1
+            i += 1
         }
-        return y
-    }
-
-export function func_exclude_arr<t>(arr_all:t[], arr_exclude:t[]){
-    return arr_all.map((item)=>{
-        if(arr_exclude.map(
-            (item)=>{return JSON.stringify(item)}
-            ).includes(JSON.stringify(item)) === false
-        ){
-            return item
+        else{
+            i = UPDATE_ARR.length
         }
-    }).filter((item)=> item != undefined) as t[]
+    }
+    if (y >= max){
+        return undefined
+    }
+    return y
 }
 
-export function func_access_optmode(index:number|undefined, arr:opt_mode_uit[]){
+export function handle_access_optmode(index:number|undefined, arr:opt_mode_uit[]){
     if(index === undefined){
         return undefined
     }
@@ -121,7 +71,7 @@ export function func_access_optmode(index:number|undefined, arr:opt_mode_uit[]){
     return undefined
 }
 
-export function func_identity<t>(x:t){
+export function handle_identity<t>(x:t){
     const Y = x
     return Y
 }

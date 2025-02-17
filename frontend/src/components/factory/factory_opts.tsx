@@ -3,25 +3,25 @@ import * as a from "../../type/alias"
 import Click_button from "../button/click_button";
 import Input_opt from "../search/input_opt";
 import {Strarr_to_optmode, Str_to_h, Item_to_index} from "../../utils/convert";
-import { func_push_arr, func_delete_item, func_sort_arrattr } from '../../utils/crud_arr'
+import { method_exclude_arr, method_push_arr, method_delete_item, method_sort_arrattr } from '../../utils/arr_method'
 import Panel from "../asset/panel";
 import { opt_mode_uit } from "../search/type";
-import { func_exclude_arr, func_access_optmode } from "../../utils/handle";
+import { handle_access_optmode } from "../../utils/handle";
 
 export function func_exclude_opt(available_opts:string[], exist_opts:number[]){
-    const CONST_AVAILABLE_OPTS = func_sort_arrattr(Strarr_to_optmode(available_opts), "index")
-    const CONST_EXIST_OPTS = func_sort_arrattr(exist_opts.map((item)=>{
+    const CONST_AVAILABLE_OPTS = method_sort_arrattr(Strarr_to_optmode(available_opts), "index")
+    const CONST_EXIST_OPTS = method_sort_arrattr(exist_opts.map((item)=>{
         return {
             name:available_opts[item] as a.name,
             index:item
         } as opt_mode_uit
     }),"index")
-    return func_exclude_arr(CONST_AVAILABLE_OPTS, CONST_EXIST_OPTS) as opt_mode_uit[]
+    return method_exclude_arr(CONST_AVAILABLE_OPTS, CONST_EXIST_OPTS) as opt_mode_uit[]
 }
 
 export function func_default_newobj_index(available_opts:opt_mode_uit[], length:number){
     const ARR = [...available_opts]
-    func_sort_arrattr(ARR, "index")
+    method_sort_arrattr(ARR, "index")
     if (ARR.length > length){
         return ARR[length].index
     }
@@ -91,13 +91,13 @@ export default function Factory_opts(
 
     function func_push_exist_opts(){
         if(ss_newobj_index !== undefined){
-            const INPUT = func_access_optmode(
+            const INPUT = handle_access_optmode(
                 ss_newobj_index,
                 ss_available_opts,
             )
             if(INPUT !== undefined){
                 const NEXT_INDEX = Item_to_index(ss_available_opts, INPUT)
-                func_push_arr(INPUT.index, exist_opts)
+                method_push_arr(INPUT.index, exist_opts)
                 if(NEXT_INDEX !== undefined){
                     if(ss_available_opts.length <= 1){
                         setss_newobj_index(undefined)
@@ -116,7 +116,7 @@ export default function Factory_opts(
         if(ss_newobj_index === undefined){
             setss_newobj_index(exist_opts.ss[index])
         }
-        func_delete_item(index, exist_opts)
+        method_delete_item(index, exist_opts)
     }
     const JSX_ARR = exist_opts.ss.map((item,index)=>{
         return <>
@@ -136,10 +136,10 @@ export default function Factory_opts(
         />
         <Click_button 
             name={(
-                func_access_optmode(
+                handle_access_optmode(
                     ss_newobj_index,
                     ss_available_opts,
-                ) ? "Create "+(func_access_optmode(
+                ) ? "Create "+(handle_access_optmode(
                     ss_newobj_index,
                     ss_available_opts,
                 ))?.name

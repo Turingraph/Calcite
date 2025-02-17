@@ -2,9 +2,8 @@ import React , {useEffect, useState} from "react";
 import * as a from "../../type/alias"
 import Click_button from "../button/click_button";
 import Input_str from "./input_str";
-import {Str_to_h} from "../../utils/convert";
-import { func_update_item } from "../../utils/crud_arr";
-import { func_handle_num_type } from "../../utils/handle";
+import {Str_to_h, Str_to_default_num} from "../../utils/convert";
+import { method_update_item } from "../../utils/arr_method";
 
 export type input_form_t = {
     opt_name?:a.opt_name|undefined
@@ -43,7 +42,7 @@ export default function Input_form({
         // how-to-resolve-usestate-set-method-is-not-reflecting-change-immediately/
         arr.map((item, index)=>{
             if(typeof ss_DEFAULT_ARR[index] === "number" && typeof item.ss === "number"){
-                const CONST_INPUT = func_handle_num_type(
+                const CONST_INPUT = Str_to_default_num(
                     ss_DEFAULT_ARR[index],
                     ss_texts[index]
                 )
@@ -70,7 +69,7 @@ export default function Input_form({
             input={{ 
                 ss: ss_texts, 
                 setss: ((e:string) => {
-                    func_update_item(
+                    method_update_item(
                         index, 
                         {ss:ss_texts, setss:setss_texts}, 
                         e);

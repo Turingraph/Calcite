@@ -3,7 +3,7 @@ import * as a from '../../type/alias'
 import { DEFAULT_BOX } from "../../data/config";
 import Combine_input from "../../components/input/combine_input";
 import { combine_input_uit } from "../../components/input/combine_input";
-import { Int_to_255 } from "../../utils/convert";
+import { Num_to_255 } from "../../utils/convert";
 import { Opt_to_jsx_arr } from "../../utils/convert";
 
 export default function Config_boxes(){
@@ -24,20 +24,20 @@ export default function Config_boxes(){
     const [ss_search_char, setss_search_char] = useState<string>(DEFAULT_BOX.box_around_char.search_char)
     const [ss_search_char_mode, setss_search_char_mode] = useState<number>(DEFAULT_BOX.box_around_char.mode)
 
-    const [ss_r_00, setss_r_00] = useState<number>(Int_to_255(DEFAULT_BOX.color_00.r))
-    const [ss_g_00, setss_g_00] = useState<number>(Int_to_255(DEFAULT_BOX.color_00.g))
-    const [ss_b_00, setss_b_00] = useState<number>(Int_to_255(DEFAULT_BOX.color_00.b))
-    const [ss_r_01, setss_r_01] = useState<number>(Int_to_255(DEFAULT_BOX.color_01.r))
-    const [ss_g_01, setss_g_01] = useState<number>(Int_to_255(DEFAULT_BOX.color_01.g))
-    const [ss_b_01, setss_b_01] = useState<number>(Int_to_255(DEFAULT_BOX.color_01.b))
+    const [ss_r_00, setss_r_00] = useState<number>(Num_to_255(DEFAULT_BOX.color_00.r))
+    const [ss_g_00, setss_g_00] = useState<number>(Num_to_255(DEFAULT_BOX.color_00.g))
+    const [ss_b_00, setss_b_00] = useState<number>(Num_to_255(DEFAULT_BOX.color_00.b))
+    const [ss_r_01, setss_r_01] = useState<number>(Num_to_255(DEFAULT_BOX.color_01.r))
+    const [ss_g_01, setss_g_01] = useState<number>(Num_to_255(DEFAULT_BOX.color_01.g))
+    const [ss_b_01, setss_b_01] = useState<number>(Num_to_255(DEFAULT_BOX.color_01.b))
 
     useEffect(()=>{
-        setss_r_00(Int_to_255(ss_r_00))
-        setss_g_00(Int_to_255(ss_g_00))
-        setss_b_00(Int_to_255(ss_b_00))
-        setss_r_01(Int_to_255(ss_r_01))
-        setss_g_01(Int_to_255(ss_g_01))
-        setss_b_01(Int_to_255(ss_b_01))
+        setss_r_00(Num_to_255(ss_r_00))
+        setss_g_00(Num_to_255(ss_g_00))
+        setss_b_00(Num_to_255(ss_b_00))
+        setss_r_01(Num_to_255(ss_r_01))
+        setss_g_01(Num_to_255(ss_g_01))
+        setss_b_01(Num_to_255(ss_b_01))
     },[
         ss_r_00,
         ss_g_00,

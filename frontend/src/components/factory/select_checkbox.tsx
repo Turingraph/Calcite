@@ -1,6 +1,6 @@
 import React from "react";
 import * as a from "../../type/alias";
-import { func_update_item } from "../../utils/crud_arr";
+import { method_update_item } from "../../utils/arr_method";
 
 export type select_button_t<
     t extends object,
@@ -27,7 +27,7 @@ export default function Select_checkbox<
         else{
             UPDATE_INPUT[attr] = true as t[k]
         }
-        func_update_item(index, arr, UPDATE_INPUT)
+        method_update_item(index, arr, UPDATE_INPUT)
     }
     const HANDLE_CLICK = () => func_click()
     // https://stackoverflow.com/questions/56356900/

@@ -1,6 +1,6 @@
 import React from "react";
 import * as a from "../../type/alias";
-import { func_update_item } from "../../utils/crud_arr";
+import { method_update_item } from "../../utils/arr_method";
 import Click_button from "../button/click_button";
 
 export type select_button_t<
@@ -28,7 +28,7 @@ export default function Select_button<
         else{
             UPDATE_INPUT[attr] = true as t[k]
         }
-        func_update_item(index, arr, UPDATE_INPUT)
+        method_update_item(index, arr, UPDATE_INPUT)
     }
     return <>
     <Click_button 

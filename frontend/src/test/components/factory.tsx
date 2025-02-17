@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import * as a from '../../type/alias'
 import Factory_obj from "../../components/factory/factory_obj";
 import Factory_opts from "../../components/factory/factory_opts";
-import Input_item_attr from "../../components/factory/input_item_attr";
+import Input_item_attr, { input_item_attr_uit } from "../../components/factory/input_item_attr";
 import Select_button from "../../components/factory/select_button";
 import Select_checkbox from "../../components/factory/select_checkbox";
 import { character_t } from "../utils/constant";
@@ -38,6 +38,29 @@ export function Test_factory_opts(){
 }
 
 export function Test_input_item_attr(){
+    const [ss_arr, setss_arr] = useState<character_t[]>(CHARACTERS)
+    const INTERFACE_USE_STATE:a.use_state_t<character_t[]> = {
+        ss:ss_arr,
+        setss:setss_arr
+    }
+    const INTERFACE_ITEM_ATTR:input_item_attr_uit<character_t, "skill">[] = ss_arr.map((item,index)=>{
+        return {
+            opt_name:item.name as a.opt_name,
+            arr:INTERFACE_USE_STATE,
+            this_item:index,
+            attrs:["skill"],
+            is_undo:false
+        }
+    })
+    // const JSX_ELEMENTS = ss_arr.map((item,index)=>{
+    //     return <Input_item_attr
+    //         opt_name={item.name}
+    //         arr={INTERFACE_USE_STATE}
+    //         this_item={index}
+    //         attr={"skill"}
+    //         is_undo={false}
+    //         />
+    // })
     return <>
     </>
 }

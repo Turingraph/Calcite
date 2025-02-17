@@ -4,7 +4,7 @@ import * as a from "../../type/alias"
 import Panel from "../asset/panel";
 import Input_form from "../input/input_form";
 import {Str_to_h} from "../../utils/convert";
-import { func_update_item } from "../../utils/crud_arr";
+import { method_update_item } from "../../utils/arr_method";
 import Input_opt from "../search/input_opt";
 
 // img_process/kernel_2d.py/def sharp_kernel_2d
@@ -140,7 +140,7 @@ export default function Filter_kernel({
         return {
             opt_name:ss_list.opt_name,
             ss:ss_list.ss,
-            setss:((e:number)=>{func_update_item<number>(
+            setss:((e:number)=>{method_update_item<number>(
                 index,
                 {ss:ss_list.ss, setss:ss_list.setss},
                 e)})

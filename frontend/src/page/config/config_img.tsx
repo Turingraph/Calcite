@@ -4,23 +4,23 @@ import Combine_input from '../../components/input/combine_input'
 import { combine_input_uit } from '../../components/input/combine_input'
 import { 
     Opt_to_jsx_arr,
-    Int_to_255,
-    Int_to_ksize } from '../../utils/convert'
+    Num_to_255,
+    Num_to_ksize } from '../../utils/convert'
 import { DEFAULT_IMG } from '../../data/config'
 import Click_button, {click_button_t} from '../../components/button/click_button'
 
 export default function Config_img(){
-    const [ss_thresh_px, setss_thresh_px] = useState<number>(Int_to_255(DEFAULT_IMG.thresh.px))
+    const [ss_thresh_px, setss_thresh_px] = useState<number>(Num_to_255(DEFAULT_IMG.thresh.px))
     const [ss_thresh_is_otsu, setss_thresh_is_otsu] = useState<number>(DEFAULT_IMG.thresh.is_otsu)
     const [ss_thresh_mode, setss_thresh_mode] = useState<number>(DEFAULT_IMG.thresh.mode)
-    const [ss_thresh_maxval, setss_thresh_maxval] = useState<number>(Int_to_255(DEFAULT_IMG.thresh.maxval))
+    const [ss_thresh_maxval, setss_thresh_maxval] = useState<number>(Num_to_255(DEFAULT_IMG.thresh.maxval))
 
     const [ss_thresh_adp_is_otsu, setss_thresh_adp_is_otsu] = useState<number>(DEFAULT_IMG.thresh_adp.is_otsu)
     const [ss_thresh_adp_ksize, setss_thresh_adp_ksize] = useState<number>(DEFAULT_IMG.thresh_adp.ksize)
     const [ss_thresh_adp_constant, setss_thresh_adp_constant] = useState<number>(DEFAULT_IMG.thresh_adp.constant)
     const [ss_thresh_adp_mode, setss_thresh_adp_mode] = useState<number>(DEFAULT_IMG.thresh_adp.mode)
     const [ss_thresh_gauss_mode, setss_thresh_gauss_mode] = useState<number>(DEFAULT_IMG.thresh_adp.gauss_mode)
-    const [ss_thresh_adp_maxval, setss_thresh_adp_maxval] = useState<number>(Int_to_255(DEFAULT_IMG.thresh_adp.maxval))
+    const [ss_thresh_adp_maxval, setss_thresh_adp_maxval] = useState<number>(Num_to_255(DEFAULT_IMG.thresh_adp.maxval))
 
     const [ss_erode_row, setss_erode_row] = useState<number>(DEFAULT_IMG.erode.r)
     const [ss_erode_col, setss_erode_col] = useState<number>(DEFAULT_IMG.erode.c)
@@ -51,9 +51,9 @@ export default function Config_img(){
     },[ss_reset])
 
     useEffect(()=>{
-        setss_thresh_px(Int_to_255(ss_thresh_px))
-        setss_thresh_maxval(Int_to_255(ss_thresh_maxval))
-        setss_thresh_adp_maxval(Int_to_255(ss_thresh_adp_maxval))
+        setss_thresh_px(Num_to_255(ss_thresh_px))
+        setss_thresh_maxval(Num_to_255(ss_thresh_maxval))
+        setss_thresh_adp_maxval(Num_to_255(ss_thresh_adp_maxval))
     },[
         ss_thresh_px,
         ss_thresh_maxval,
@@ -61,15 +61,15 @@ export default function Config_img(){
     ])
 
     useEffect(()=>{
-        setss_thresh_adp_ksize(Int_to_ksize(ss_thresh_adp_ksize))
-        setss_blur_c0(Int_to_ksize(ss_blur_c0))
-        setss_blur_c1(Int_to_ksize(ss_blur_c1))
-        setss_dilate_col (Int_to_ksize(ss_dilate_col )) 
-        setss_dilate_row (Int_to_ksize(ss_dilate_row ))
-        setss_erode_col  (Int_to_ksize(ss_erode_col  ))
-        setss_erode_row  (Int_to_ksize(ss_erode_row  ))
-        setss_opening_col(Int_to_ksize(ss_opening_col))
-        setss_opening_row(Int_to_ksize(ss_opening_row))
+        setss_thresh_adp_ksize(Num_to_ksize(ss_thresh_adp_ksize))
+        setss_blur_c0(Num_to_ksize(ss_blur_c0))
+        setss_blur_c1(Num_to_ksize(ss_blur_c1))
+        setss_dilate_col (Num_to_ksize(ss_dilate_col )) 
+        setss_dilate_row (Num_to_ksize(ss_dilate_row ))
+        setss_erode_col  (Num_to_ksize(ss_erode_col  ))
+        setss_erode_row  (Num_to_ksize(ss_erode_row  ))
+        setss_opening_col(Num_to_ksize(ss_opening_col))
+        setss_opening_row(Num_to_ksize(ss_opening_row))
     },[
         ss_thresh_adp_ksize,
         ss_blur_c0,

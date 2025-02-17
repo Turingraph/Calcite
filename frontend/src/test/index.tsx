@@ -13,6 +13,6 @@ import {
 
 export default function Test(){
     return <>
-    <Test_combine_input/>
+    <Test_input_item_attr/>
     </>
 }
