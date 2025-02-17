@@ -3,7 +3,7 @@ import * as a from '../../type/alias'
 import { DEFAULT_BOX } from "../../data/config";
 import Combine_input from "../../components/input/combine_input";
 import { combine_input_uit } from "../../components/input/combine_input";
-import { Num_to_255 } from "../../utils/convert";
+import { Num_to_255, Num_to_size } from "../../utils/convert";
 import { Opt_to_jsx_arr } from "../../utils/convert";
 
 export default function Config_boxes(){
@@ -11,10 +11,10 @@ export default function Config_boxes(){
     const [ss_min_h, setss_min_h] = useState<number>(DEFAULT_BOX.rect.min_h)
     const [ss_min_x, setss_min_x] = useState<number>(DEFAULT_BOX.rect.min_x)
     const [ss_min_y, setss_min_y] = useState<number>(DEFAULT_BOX.rect.min_y)
-    const [ss_max_w, setss_max_w] = useState<number|undefined>(DEFAULT_BOX.rect.max_w)
-    const [ss_max_h, setss_max_h] = useState<number|undefined>(DEFAULT_BOX.rect.max_h)
-    const [ss_max_x, setss_max_x] = useState<number|undefined>(DEFAULT_BOX.rect.max_x)
-    const [ss_max_y, setss_max_y] = useState<number|undefined>(DEFAULT_BOX.rect.max_y)
+    const [ss_max_w, setss_max_w] = useState<number>(Num_to_size(DEFAULT_BOX.rect.max_w, 1000))
+    const [ss_max_h, setss_max_h] = useState<number>(Num_to_size(DEFAULT_BOX.rect.max_h, 1000))
+    const [ss_max_x, setss_max_x] = useState<number>(Num_to_size(DEFAULT_BOX.rect.max_x, 1000))
+    const [ss_max_y, setss_max_y] = useState<number>(Num_to_size(DEFAULT_BOX.rect.max_y, 1000))
 
     const [ss_sort_mode, setss_sort_mode] = useState<number>(DEFAULT_BOX.sort_mode)
 
@@ -38,6 +38,10 @@ export default function Config_boxes(){
         setss_r_01(Num_to_255(ss_r_01))
         setss_g_01(Num_to_255(ss_g_01))
         setss_b_01(Num_to_255(ss_b_01))
+        setss_max_w(Num_to_size(ss_max_w, 1000))
+        setss_max_h(Num_to_size(ss_max_h, 1000))
+        setss_max_x(Num_to_size(ss_max_x, 1000))
+        setss_max_y(Num_to_size(ss_max_y, 1000))
     },[
         ss_r_00,
         ss_g_00,
@@ -45,6 +49,10 @@ export default function Config_boxes(){
         ss_r_01,
         ss_g_01,
         ss_b_01,
+        ss_max_w,
+        ss_max_h,
+        ss_max_x,
+        ss_max_y,
     ])
     const INTERFACE_RECT:combine_input_uit = {
         opt_name:"Create Box with this condition" as a.opt_name,

@@ -29,11 +29,14 @@ export function Num_to_ksize(input:number){
     }
 }
 
-export function Num_to_size(input:number, maxval:number){
-    if (input > maxval){
+export function Num_to_size(input:number|undefined, maxval:number){
+    if (input === undefined){
         return maxval
     }
-    else if(input < 0){
+    else if (input > maxval){
+        return maxval
+    }
+    else if (input < 0){
         return 0
     }
     else{
