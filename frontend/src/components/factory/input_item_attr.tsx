@@ -3,7 +3,7 @@ import * as a from "../../type/alias"
 import Click_button from "../button/click_button";
 import Input_str from "../input/input_str";
 import {Str_to_h, Str_to_default_num} from "../../utils/convert";
-import { method_update_item, method_update_item_attr, method_exclude_arr } from "../../utils/arr_method";
+import { method_update_item, method_update_item_attr, method_include_arr } from "../../utils/arr_method";
 
 export type input_item_attr_uit<t extends object> = {
     opt_name:a.opt_name
@@ -11,6 +11,17 @@ export type input_item_attr_uit<t extends object> = {
     this_item:number,
     attrs:string[]
     is_undo?:boolean
+}
+
+export function func_get_attr<t extends object>(item:t, attrs:string[]){
+    // https://www.geeksforgeeks.org/typescript-array-keys-method/
+    const CONST_ITEM : { [key: string]: any } = item
+    const ARR_ALL = Object.keys(CONST_ITEM).map((item)=>{return item as string})
+    const CONST_ATTR = method_include_arr(
+        ARR_ALL,
+        attrs, 
+    ) as (keyof typeof CONST_ITEM)[]
+    return CONST_ATTR
 }
 
 export default function Input_item_attr<
@@ -21,24 +32,22 @@ export default function Input_item_attr<
         attrs  ,  
         is_undo = false
 }:input_item_attr_uit<t>){
-    const [ss_DEFAULT_ARR, setss_DEFAULT_ARR] = useState<unknown[]>(
-        attrs.map((item, index)=>{
-            return CONST_ITEM[item]
-        }))
-    const [ss_texts, setss_texts] = useState<string[]>(
-        arr.ss.map((item)=>{
-            return item as unknown as string
-        })
-    )
-    const TYPE = typeof arr.ss[this_item]
+    const [ss_DEFAULT_ARR, setss_DEFAULT_ARR] = useState<unknown[]>(()=>{
+        const CONST_ATTR = func_get_attr(arr.ss[this_item], attrs)
+        return CONST_ATTR.map((item, index)=>{
+            return (arr.ss[this_item] as { [key: string]: any })[item]
+        })})
+
+    const [ss_texts, setss_texts] = useState<string[]>(()=>{
+        const CONST_ATTR = func_get_attr(arr.ss[this_item], attrs)
+        return CONST_ATTR.map((item, index)=>{
+            return (arr.ss[this_item] as { [key: string]: any })[item]
+        })})
+
     // https://stackoverflow.com/questions/57438198/
     // typescript-element-implicitly-has-an-any-type-because-expression-of-type-st
     const CONST_ITEM : { [key: string]: any } = arr.ss[this_item]
-    // https://www.geeksforgeeks.org/typescript-array-keys-method/
-    const CONST_ATTR = method_exclude_arr(
-        attrs, 
-        Object.keys(CONST_ITEM)
-    ) as (keyof typeof CONST_ITEM)[]
+    const CONST_ATTR = func_get_attr(arr.ss[this_item], attrs)
     function func_set_item_attr(input_arr:string[]){
         CONST_ATTR.map((item, index)=>{
             let let_input:number|string = (input_arr[index])
@@ -65,12 +74,12 @@ export default function Input_item_attr<
         })
         setss_texts(input_arr as unknown as string[])
     }
-    const JSX_INPUT = attrs.map((item,index)=>{
+    const JSX_INPUT = CONST_ATTR.map((item,index)=>{
         return <>
             <Input_str
                 opt_name={item as a.opt_name}
                 input={{
-                    ss:ss_texts,
+                    ss:ss_texts[index],
                     setss:((e:string) =>{
                         method_update_item(
                             index,
@@ -83,7 +92,7 @@ export default function Input_item_attr<
         </>
     })
     function func_set_cancel(){
-        const UPDATE_TEXTS = attrs.map((item)=>{
+        const UPDATE_TEXTS = CONST_ATTR.map((item)=>{
             return CONST_ITEM[item] as string
         })
         setss_texts(UPDATE_TEXTS)

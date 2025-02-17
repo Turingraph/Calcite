@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, JSX} from "react";
 import * as a from '../../type/alias'
 import Factory_obj from "../../components/factory/factory_obj";
 import Factory_opts from "../../components/factory/factory_opts";
@@ -43,26 +43,18 @@ export function Test_input_item_attr(){
         ss:ss_arr,
         setss:setss_arr
     }
-    const INTERFACE_ITEM_ATTR:input_item_attr_uit<character_t>[] = ss_arr.map((item,index)=>{
-        return {
+    const JSX_ELEMENTS:JSX.Element[] = ss_arr.map((item,index)=>{
+        const INTERFACE_ITEM_ATTR:input_item_attr_uit<character_t> = {
             opt_name:item.name as a.opt_name,
             arr:INTERFACE_USE_STATE,
             this_item:index,
-            attrs:["skill", "name"],
+            attrs:["name","skill"],
             is_undo:false
         }
+        return Input_item_attr(INTERFACE_ITEM_ATTR)
     })
-    // const JSX_ELEMENTS = ss_arr.map((item,index)=>{
-    //     return <Input_item_attr
-    //         opt_name={item.name}
-    //         arr={INTERFACE_USE_STATE}
-    //         this_item={index}
-    //         attr={"skill"}
-    //         is_undo={false}
-    //         />
-    // })
     return <>
-    <h1>SAKAMOTO PUNCH !</h1>
+        {JSX_ELEMENTS}
     </>
 }
 
