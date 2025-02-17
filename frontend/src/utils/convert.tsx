@@ -108,8 +108,10 @@ export function Opt_to_jsx_arr<t>({
     jsx_element:(t:t)=>JSX.Element
 }){
     if(arr != undefined){
-        return arr.map((item)=>{
-            return jsx_element(item)
+        return arr.map((item,index)=>{
+            return <div key={index}>
+                {jsx_element(item)}
+                </div>
         })
     }
     return [<></>]

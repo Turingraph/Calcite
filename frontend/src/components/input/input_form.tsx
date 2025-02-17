@@ -62,7 +62,9 @@ export default function Input_form({
         setss_texts(UPDATE_TEXT)
     }
     const JSX_ELEMENTS = arr.map((item,index)=>{
-        return <>
+        // https://stackoverflow.com/questions/28329382/
+        // understanding-unique-keys-for-array-children-in-react-js
+        return <div key={index}>
         <Str_to_h opt_name={item.opt_name}/>
         <Input_str
             opt_name={undefined}
@@ -77,7 +79,7 @@ export default function Input_form({
             } as unknown as a.use_state_t<string>}
             index = {index}
         />
-        </>
+        </div>
     })
     return <>
         <Str_to_h opt_name={opt_name}/>

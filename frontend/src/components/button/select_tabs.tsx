@@ -20,10 +20,11 @@ export default function Select_tabs(
                     name={name}
                     func_event={(()=>setss_select(index)) as a.func_event}
                 />
-        return <Color_ui 
+        return <div key={index}>
+            <Color_ui 
             jsx_element={JSX_ELEMENT} 
             rgb={index == ss_select ? SELECT_RGB : NORMAL_RGB}
-            />
+            /></div>
     })
     return <>
         {BUTTON_ARR}

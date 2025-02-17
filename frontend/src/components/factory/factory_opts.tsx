@@ -119,12 +119,12 @@ export default function Factory_opts(
         method_delete_item(index, exist_opts)
     }
     const JSX_ARR = exist_opts.ss.map((item,index)=>{
-        return <>
+        return <div key={index}>
             <Str_to_h opt_name={available_opts[item] as a.opt_name}/>
             <Click_button name={"delete" as a.name} func_event={(()=>{
                 func_delete_exist_opts(index)
             }) as a.func_event}/>
-        </>
+        </div>
     })
     return <>
         <Str_to_h opt_name={opt_name}/>

@@ -33,6 +33,6 @@ export function Test_search_bar(){
         read_only_arr={OPT_NAME.map((item)=>{return{name:item}})}
         select_arr={{ss:ss_name, setss:setss_name}}
         attr={"name"}/>
-        {ss_name.map((item)=>{return <h1>{item?item.name:""}</h1>})}
+        {ss_name.map((item,index)=>{return <h1 key={index}>{item?item.name:""}</h1>})}
     </>
 }

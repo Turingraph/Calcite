@@ -49,9 +49,9 @@ export default function Input_opt(
         console.log("input_opt mode ", +e.target.value)
     }) as a.handle_event<HTMLSelectElement>
     
-    const JSX_OPTS = ss_show_opts.map((item)=>{
+    const JSX_OPTS = ss_show_opts.map((item,index)=>{
         if(item != undefined){
-            return (<option value={item.index}>{item.name}</option>)
+            return (<option key={index} value={item.index}>{item.name}</option>)
         }
         return <></>
     })

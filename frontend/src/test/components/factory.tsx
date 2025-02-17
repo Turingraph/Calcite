@@ -11,7 +11,7 @@ import { CHARACTERS } from "../utils/constant";
 export function Test_factory_obj(){
     const [ss_arr, setss_arr] = useState<character_t[]>(CHARACTERS)
     const JSX_ARR = ss_arr.map((item,index)=>{
-        return <Factory_obj 
+        return <div key={index}><Factory_obj 
             arr = {{ss:ss_arr, setss:setss_arr}}
             index={index}
             jsx_additional={<Select_checkbox
@@ -20,7 +20,7 @@ export function Test_factory_obj(){
                 index={index}
                 attr={"is_male"}
             />}
-            />
+            /></div>
     })
     return <>
     {JSX_ARR}
@@ -51,7 +51,7 @@ export function Test_input_item_attr(){
             attrs:["name","skill"],
             is_undo:false
         }
-        return Input_item_attr(INTERFACE_ITEM_ATTR)
+        return <div key={index}>{Input_item_attr(INTERFACE_ITEM_ATTR)}</div>
     })
     return <>
         {JSX_ELEMENTS}
@@ -61,7 +61,7 @@ export function Test_input_item_attr(){
 export function Test_select_button(){
     const [ss_arr, setss_arr] = useState<character_t[]>(CHARACTERS)
     const JSX_ARR = ss_arr.map((item, index)=>{
-        return <>
+        return <div key={index}>
         <h1>Name: {item.name}</h1>
         <h1>Gander: {item.is_male ? "Male" : "Female"}</h1>
         <Select_checkbox
@@ -70,7 +70,7 @@ export function Test_select_button(){
             index={index}
             attr={"is_male"}
             />
-        </>
+        </div>
     })
     return <>
     {JSX_ARR}

@@ -74,8 +74,8 @@ export default function Input_item_attr<
         })
         setss_texts(input_arr as unknown as string[])
     }
-    const JSX_INPUT = CONST_ATTR.map((item,index)=>{
-        return <>
+    const JSX_INPUTS = CONST_ATTR.map((item,index)=>{
+        return <div key={index}>
             <Input_str
                 opt_name={item as a.opt_name}
                 input={{
@@ -89,7 +89,7 @@ export default function Input_item_attr<
                     )
                 } as unknown as a.use_state_t<string>}
             />
-        </>
+        </div>
     })
     function func_set_cancel(){
         const UPDATE_TEXTS = CONST_ATTR.map((item)=>{
@@ -99,7 +99,7 @@ export default function Input_item_attr<
     }
     return <>
     <Str_to_h opt_name={opt_name}/>
-    {JSX_INPUT}
+    {JSX_INPUTS}
     <Click_button
         name={"apply change" as a.name}
         func_event={(()=>{func_set_item_attr(ss_texts as typeof CONST_ITEM[number][])}) as a.func_event}
