@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import * as a from '../../type/alias'
-import Text_area from '../../components/input/text_area'
+import Input_str from '../../components/input/input_str'
 import { Str_to_h } from '../../utils/convert'
 import Panel from '../../components/asset/panel'
 
@@ -20,9 +20,10 @@ export default function Display_ocr(){
         <Str_to_h opt_name={"Script Score: " + ss_osd_script_conf as a.opt_name} />
     </>
     const JSX_OCR = <>
-        <Panel jsx_element={<Text_area
+        <Panel jsx_element={<Input_str
             opt_name={"OCR output" as a.opt_name}
             input={{ss:ss_ocr, setss:setss_ocr}}
+            ui_mode={"text_area"}
         />}/>
     </>
     return <>{JSX_OSD}{JSX_OCR}</>

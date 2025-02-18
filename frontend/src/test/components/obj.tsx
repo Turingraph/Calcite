@@ -1,20 +1,19 @@
 import React, {useState, JSX} from "react";
 import * as a from '../../type/alias'
-import Factory_obj from "../../components/factory/factory_obj";
-import Factory_opts from "../../components/factory/factory_opts";
-import Input_item_attr, { input_item_attr_uit } from "../../components/factory/input_item_attr";
-import Select_button from "../../components/factory/select_button";
-import Select_checkbox from "../../components/factory/select_checkbox";
+import Obj_self from "../../components/obj/obj_self";
+import Opt_exist_arr from "../../components/opt/opt_exist_arr";
+import Obj_str, { obj_str_uit } from "../../components/obj/obj_str";
+import Obj_bool from "../../components/obj/obj_bool";
 import { character_t } from "../utils/constant";
 import { CHARACTERS } from "../utils/constant";
 
-export function Test_factory_obj(){
+export function Test_obj_self(){
     const [ss_arr, setss_arr] = useState<character_t[]>(CHARACTERS)
     const JSX_ARR = ss_arr.map((item,index)=>{
-        return <div key={index}><Factory_obj 
+        return <div key={index}><Obj_self 
             arr = {{ss:ss_arr, setss:setss_arr}}
             index={index}
-            jsx_additional={<Select_checkbox
+            jsx_additional={<Obj_bool
                 name={"rule64" as a.name}
                 arr={{ss:ss_arr, setss:setss_arr}}
                 index={index}
@@ -27,44 +26,34 @@ export function Test_factory_obj(){
     </>
 }
 
-export function Test_factory_opts(){
-    const [ss_arr, setss_arr] = useState<number[]>([0])
-    const AVAILABLE_OPTS = CHARACTERS.map((item)=>{return item.name}) as string[]
-    return <Factory_opts 
-        opt_name={"List" as a.opt_name}
-        exist_opts={{ss:ss_arr, setss:setss_arr}}
-        available_opts={AVAILABLE_OPTS}
-        />
-}
-
-export function Test_input_item_attr(){
+export function Test_obj_str(){
     const [ss_arr, setss_arr] = useState<character_t[]>(CHARACTERS)
     const INTERFACE_USE_STATE:a.use_state_t<character_t[]> = {
         ss:ss_arr,
         setss:setss_arr
     }
     const JSX_ELEMENTS:JSX.Element[] = ss_arr.map((item,index)=>{
-        const INTERFACE_ITEM_ATTR:input_item_attr_uit<character_t> = {
+        const INTERFACE_OBJ_STR:obj_str_uit<character_t> = {
             opt_name:item.name as a.opt_name,
             arr:INTERFACE_USE_STATE,
             this_item:index,
             attrs:["name","skill"],
             is_undo:false
         }
-        return <div key={index}>{Input_item_attr(INTERFACE_ITEM_ATTR)}</div>
+        return <div key={index}>{Obj_str(INTERFACE_OBJ_STR)}</div>
     })
     return <>
         {JSX_ELEMENTS}
     </>
 }
 
-export function Test_select_button(){
+export function Test_obj_bool(){
     const [ss_arr, setss_arr] = useState<character_t[]>(CHARACTERS)
     const JSX_ARR = ss_arr.map((item, index)=>{
         return <div key={index}>
         <h1>Name: {item.name}</h1>
         <h1>Gander: {item.is_male ? "Male" : "Female"}</h1>
-        <Select_checkbox
+        <Obj_bool
             name={"rule64" as a.name}
             arr={{ss:ss_arr, setss:setss_arr}}
             index={index}

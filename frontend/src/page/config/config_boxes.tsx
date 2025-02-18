@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import * as a from '../../type/alias'
 import { DEFAULT_BOX } from "../../data/config";
-import Combine_input from "../../components/input/combine_input";
-import { combine_input_uit } from "../../components/input/combine_input";
+import Input_combine from "../../components/input/input_combine";
+import { input_combine_uit } from "../../components/input/input_combine";
 import { Num_to_255, Num_to_size } from "../../utils/convert";
 import { Opt_to_jsx_arr } from "../../utils/convert";
 
@@ -54,7 +54,7 @@ export default function Config_boxes(){
         ss_max_x,
         ss_max_y,
     ])
-    const INTERFACE_RECT:combine_input_uit = {
+    const INTERFACE_RECT:input_combine_uit = {
         opt_name:"Create Box with this condition" as a.opt_name,
         input_str:[
             {
@@ -100,14 +100,14 @@ export default function Config_boxes(){
         ],
         input_opt:undefined
     }
-    const INTERFACE_SORT_MODE:combine_input_uit = {
+    const INTERFACE_SORT_MODE:input_combine_uit = {
         opt_name:undefined as a.opt_name,
         input_str:[{
             opt_name:"Box Sorting Mode" as a.opt_name,
             ss:ss_sort_mode, setss:setss_sort_mode} as a.use_state_uit<string|number>,
         ]
     }
-    const INTERFACE_SEARCH_TEXT:combine_input_uit = {
+    const INTERFACE_SEARCH_TEXT:input_combine_uit = {
         opt_name:"Filte Text" as a.opt_name,
         input_str:[{
             opt_name:"selected text" as a.opt_name,
@@ -119,7 +119,7 @@ export default function Config_boxes(){
             is_search_bar:false
         }]
     }
-    const INTERFACE_SEARCH_CHAR:combine_input_uit = {
+    const INTERFACE_SEARCH_CHAR:input_combine_uit = {
         opt_name:"Filte char" as a.opt_name,
         input_str:[{
             opt_name:"selected character" as a.opt_name,
@@ -132,7 +132,7 @@ export default function Config_boxes(){
             is_search_bar:false
         }]
     }
-    const INTERFACE_COLOR_00:combine_input_uit = {
+    const INTERFACE_COLOR_00:input_combine_uit = {
         opt_name:"Color of First Rectangle" as a.opt_name,
         input_str:[
             {
@@ -150,7 +150,7 @@ export default function Config_boxes(){
         ],
         input_opt:undefined
     }
-    const INTERFACE_COLOR_01:combine_input_uit = {
+    const INTERFACE_COLOR_01:input_combine_uit = {
         opt_name:"Color of Last Rectangle" as a.opt_name,
         input_str:[
             {
@@ -175,6 +175,6 @@ export default function Config_boxes(){
         INTERFACE_SEARCH_CHAR,
         INTERFACE_COLOR_00,
         INTERFACE_COLOR_01
-    ],jsx_element:Combine_input})
+    ],jsx_element:Input_combine})
     return <>{JSX_ARR}</>
 }

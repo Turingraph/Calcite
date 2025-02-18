@@ -1,11 +1,11 @@
 import React , {useState} from "react";
 import * as a from "../../type/alias"
-import Click_button from "../button/click_button";
+import Button_click from "../button/button_click";
 import Input_str from "../input/input_str";
 import {Str_to_h, Str_to_default_num} from "../../utils/convert";
 import { method_update_item, method_update_item_attr, method_include_arr } from "../../utils/arr_method";
 
-export type input_item_attr_uit<t extends object> = {
+export type obj_str_uit<t extends object> = {
     opt_name:a.opt_name
     arr:a.use_state_t<t[]>,
     this_item:number,
@@ -24,14 +24,14 @@ export function func_get_attr<t extends object>(item:t, attrs:string[]){
     return CONST_ATTR
 }
 
-export default function Input_item_attr<
+export default function Obj_str<
     t extends object>({
         opt_name,       
         arr  ,   
         this_item,              
         attrs  ,  
         is_undo = false
-}:input_item_attr_uit<t>){
+}:obj_str_uit<t>){
     const [ss_DEFAULT_ARR, setss_DEFAULT_ARR] = useState<unknown[]>(()=>{
         const CONST_ATTR = func_get_attr(arr.ss[this_item], attrs)
         return CONST_ATTR.map((item, index)=>{
@@ -100,15 +100,15 @@ export default function Input_item_attr<
     return <>
     <Str_to_h opt_name={opt_name}/>
     {JSX_INPUTS}
-    <Click_button
+    <Button_click
         name={"apply change" as a.name}
         func_event={(()=>{func_set_item_attr(ss_texts as typeof CONST_ITEM[number][])}) as a.func_event}
     />
-    {is_undo ? <Click_button
+    {is_undo ? <Button_click
         name={"cancel change" as a.name}
         func_event={(()=>{func_set_cancel()}) as a.func_event}
     /> : <></>}
-    <Click_button
+    <Button_click
         name={"reset all" as a.name}
         func_event={(()=>{func_set_item_attr(ss_DEFAULT_ARR as typeof CONST_ITEM[number][])}) as a.func_event}
     />

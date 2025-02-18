@@ -1,5 +1,5 @@
 import React from "react";
-import Select_tabs from "../../components/button/select_tabs";
+import Button_tabs from "../../components/button/button_tabs";
 import * as a from '../../type/alias'
 import Config_ocr from "./config_ocr";
 import Config_img from "./config_img";
@@ -11,7 +11,7 @@ export default function Page_config(){
         "Image Processing" as a.name,
         "Bounding Box" as a.name,
     ]
-    const CONFIG_TAB = <Select_tabs
+    const CONFIG_TAB = <Button_tabs
         name_arr={CONFIG_NAME}
         jsx_elements={[
             <Config_ocr/>,

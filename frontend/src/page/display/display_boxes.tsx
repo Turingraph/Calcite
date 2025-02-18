@@ -1,12 +1,12 @@
 import React, {useState} from "react";
 import * as a from "../../type/alias"
 import { box_t, BOXES_INPUT_ATTR, BOXES_DEFAULT_INPUT, boxes_input_attr_t } from "../../type/obj";
-import Factory_obj from "../../components/factory/factory_obj";
-import Select_checkbox from "../../components/factory/select_checkbox";
-import { opt_mode_uit } from "../../components/search/type";
-import Search_bar from "../../components/search/search_bar";
+import Obj_self from "../../components/obj/obj_self";
+import Obj_bool from "../../components/obj/obj_bool";
+import { opt_mode_uit } from "../../components/opt/type";
+import Search_bar from "../../components/opt/search_bar";
 import Panel from "../../components/asset/panel";
-import Input_item_attr, {input_item_attr_uit} from "../../components/factory/input_item_attr";
+import Obj_str, {obj_str_uit} from "../../components/obj/obj_str";
 
 export default function Display_boxes(){
     const [ss_boxes, setss_boxes] = useState<box_t[]>([])
@@ -23,29 +23,31 @@ export default function Display_boxes(){
     />
     const JSX_BOXES = ss_boxes_filter.map((item,index)=>{
         if (item != undefined){
-        const INTERFACE_BOX:input_item_attr_uit<box_t> = {
+        const INTERFACE_BOX:obj_str_uit<box_t> = {
             opt_name:"attribute of box" as a.opt_name,
             arr:{ss:ss_boxes, setss:setss_boxes},
             this_item:item.index,
             attrs:BOXES_INPUT_ATTR as boxes_input_attr_t[],
         }
-        return <><Factory_obj
+        return <><Obj_self
             arr={{ss:ss_boxes, setss:setss_boxes}}
             index={item.index}
             jsx_additional={<>
-                <Select_checkbox
+                <Obj_bool
                     name={"view" as a.name}
                     arr={{ss:ss_boxes, setss:setss_boxes}}
                     index={item.index}
                     attr={"view"}
+                    ui_mode={"checkbox"}
                 />
-                <Select_checkbox
+                <Obj_bool
                     name={"ocr" as a.name}
                     arr={{ss:ss_boxes, setss:setss_boxes}}
                     index={item.index}
                     attr={"ocr"}
+                    ui_mode={"checkbox"}
                 />
-                {Input_item_attr(INTERFACE_BOX)}
+                {Obj_str(INTERFACE_BOX)}
             </>}
         /></>}
     })

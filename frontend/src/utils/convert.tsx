@@ -1,6 +1,7 @@
 import * as a from "../../src/type/alias"
 import React, { JSX } from "react";
-import { opt_mode_uit } from "../components/search/type";
+import { opt_mode_uit } from "../components/opt/type";
+import { button_click_t } from "../components/button/button_click";
 
 /*
 Rule of every function in this file.
@@ -101,11 +102,10 @@ export function Opt_to_jsx<t>({
 }
 
 export function Opt_to_jsx_arr<t>({
-    arr = undefined,
-    jsx_element
-}:{
-    arr?:undefined|t[]
-    jsx_element:(t:t)=>JSX.Element
+    arr = undefined, jsx_element
+}: {
+    arr?: undefined | t[];
+    jsx_element: (t: t) => JSX.Element;
 }){
     if(arr != undefined){
         return arr.map((item,index)=>{

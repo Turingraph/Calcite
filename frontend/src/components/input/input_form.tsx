@@ -1,6 +1,6 @@
 import React , {useEffect, useState} from "react";
 import * as a from "../../type/alias"
-import Click_button from "../button/click_button";
+import Button_click from "../button/button_click";
 import Input_str from "./input_str";
 import {Str_to_h, Str_to_default_num} from "../../utils/convert";
 import { method_update_item } from "../../utils/arr_method";
@@ -84,15 +84,15 @@ export default function Input_form({
     return <>
         <Str_to_h opt_name={opt_name}/>
         {JSX_ELEMENTS}
-        <Click_button
+        <Button_click
             name={"apply change" as a.name}
             func_event={(()=>{func_set_ok()}) as a.func_event}
         />
-        {is_undo ? <Click_button
+        {is_undo ? <Button_click
             name={"cancel change" as a.name}
             func_event={(()=>{func_set_cancel()}) as a.func_event}
         /> : <></>}
-        <Click_button
+        <Button_click
             name={"reset all" as a.name}
             func_event={(()=>{func_set_default()}) as a.func_event}
         />

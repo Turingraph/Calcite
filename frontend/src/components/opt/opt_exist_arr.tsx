@@ -1,14 +1,18 @@
 import React, {useEffect, useState} from "react";
 import * as a from "../../type/alias"
-import Click_button from "../button/click_button";
-import Input_opt from "../search/input_opt";
+import Button_click from "../button/button_click";
+import Opt_input from "./opt_input";
 import {Strarr_to_optmode, Str_to_h, Item_to_index} from "../../utils/convert";
-import { method_exclude_arr, method_push_arr, method_delete_item, method_sort_arrattr } from '../../utils/arr_method'
+import { method_exclude_arr, method_push_arr, method_delete_item, method_sort_arrattr, method_unique_arr} from '../../utils/arr_method'
 import Panel from "../asset/panel";
-import { opt_mode_uit } from "../search/type";
+import { opt_mode_uit } from "./type";
 import { handle_access_optmode } from "../../utils/handle";
 
 export function func_exclude_opt(available_opts:string[], exist_opts:number[]){
+    // https://stackoverflow.com/questions/36829184/
+    // how-can-i-convert-a-set-to-an-array-in-typescript
+    available_opts  = method_unique_arr(available_opts)
+    exist_opts      = method_unique_arr(exist_opts)
     const CONST_AVAILABLE_OPTS = method_sort_arrattr(Strarr_to_optmode(available_opts), "index")
     const CONST_EXIST_OPTS = method_sort_arrattr(exist_opts.map((item)=>{
         return {
@@ -45,7 +49,7 @@ export function func_default_newobj_index(available_opts:opt_mode_uit[], length:
 //     }
 // }
 
-export default function Factory_opts(
+export default function Opt_exist_arr(
     {
         opt_name = undefined as a.opt_name,
         exist_opts,
@@ -80,7 +84,6 @@ export default function Factory_opts(
     },[exist_opts.ss])
     function func_reset(){
         exist_opts.setss([ss_DEFAULT_OPT])
-        // setss_newobj_index(func_update_opt_index(available_opts.length - 1, DEFAULT_OPT, undefined))
         if(ss_DEFAULT_OPT === available_opts.length - 1){
             setss_newobj_index(0)
         }
@@ -88,7 +91,6 @@ export default function Factory_opts(
             setss_newobj_index(ss_DEFAULT_OPT+1)
         }
     }
-
     function func_push_exist_opts(){
         if(ss_newobj_index !== undefined){
             const INPUT = handle_access_optmode(
@@ -121,20 +123,20 @@ export default function Factory_opts(
     const JSX_ARR = exist_opts.ss.map((item,index)=>{
         return <div key={index}>
             <Str_to_h opt_name={available_opts[item] as a.opt_name}/>
-            <Click_button name={"delete" as a.name} func_event={(()=>{
+            <Button_click name={"delete" as a.name} func_event={(()=>{
                 func_delete_exist_opts(index)
             }) as a.func_event}/>
         </div>
     })
     return <>
         <Str_to_h opt_name={opt_name}/>
-        <Input_opt 
+        <Opt_input 
             opt_name={"Select Mode" as a.opt_name} 
             available_opts={ss_available_opts} 
             ss_mode={{ss:ss_newobj_index, setss:setss_newobj_index} as a.use_state_t<number>}
             is_search_bar={false}
         />
-        <Click_button 
+        <Button_click 
             name={(
                 handle_access_optmode(
                     ss_newobj_index,
@@ -147,7 +149,7 @@ export default function Factory_opts(
             ) as a.name}
             func_event={(()=>{func_push_exist_opts()}) as a.func_event}
         />
-        <Click_button 
+        <Button_click 
             name={("Reset") as a.name}
             func_event={(()=>{func_reset()}) as a.func_event}
         />

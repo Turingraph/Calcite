@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from 'react'
 import * as a from '../../type/alias'
-import Combine_input from '../../components/input/combine_input'
-import { combine_input_uit } from '../../components/input/combine_input'
+import Input_combine from '../../components/input/input_combine'
+import { input_combine_uit } from '../../components/input/input_combine'
 import { 
     Opt_to_jsx_arr,
     Num_to_255,
     Num_to_ksize } from '../../utils/convert'
 import { DEFAULT_IMG } from '../../data/config'
-import Click_button, {click_button_t} from '../../components/button/click_button'
+import Button_click, {button_click_t} from '../../components/button/button_click'
 
 export default function Config_img(){
     const [ss_thresh_px, setss_thresh_px] = useState<number>(Num_to_255(DEFAULT_IMG.thresh.px))
@@ -82,7 +82,7 @@ export default function Config_img(){
         ss_opening_row
     ])
 
-    const INTERFACE_THRESH:combine_input_uit = {
+    const INTERFACE_THRESH:input_combine_uit = {
         opt_name:"threshold" as a.opt_name,
         input_str:[
             {
@@ -126,7 +126,7 @@ export default function Config_img(){
             }
         ]
     }
-    const INTERFACE_THRESH_ADP:combine_input_uit = {
+    const INTERFACE_THRESH_ADP:input_combine_uit = {
         opt_name:"adaptive threshold" as a.opt_name,
         input_str:[
             {
@@ -188,7 +188,7 @@ export default function Config_img(){
             }
         ]
     }
-    const INTERFACE_ERODE:combine_input_uit = {
+    const INTERFACE_ERODE:input_combine_uit = {
         opt_name:"erode" as a.opt_name,
         input_str:[
             {
@@ -206,7 +206,7 @@ export default function Config_img(){
         ],
         input_opt:undefined
     }
-    const INTERFACE_OPENING:combine_input_uit = {
+    const INTERFACE_OPENING:input_combine_uit = {
         opt_name:"opening" as a.opt_name,
         input_str:[
             {
@@ -224,7 +224,7 @@ export default function Config_img(){
         ],
         input_opt:undefined
     }
-    const INTERFACE_CANNY:combine_input_uit = {
+    const INTERFACE_CANNY:input_combine_uit = {
         opt_name:"canny" as a.opt_name,
         input_str:[
             {
@@ -242,7 +242,7 @@ export default function Config_img(){
         ],
         input_opt:undefined
     }
-    const INTERFACE_DILATE:combine_input_uit = {
+    const INTERFACE_DILATE:input_combine_uit = {
         opt_name:"dilate" as a.opt_name,
         input_str:[
             {
@@ -260,7 +260,7 @@ export default function Config_img(){
         ],
         input_opt:undefined
     }
-    const INTERFACE_BLUR:combine_input_uit = {
+    const INTERFACE_BLUR:input_combine_uit = {
         opt_name:"blur" as a.opt_name,
         input_str:[
             {
@@ -299,7 +299,7 @@ export default function Config_img(){
             }
         ]
     }
-    const INTERFACE_ROTATE:combine_input_uit = {
+    const INTERFACE_ROTATE:input_combine_uit = {
         opt_name:undefined as a.opt_name,
         input_str:[{
             opt_name:"rotate" as a.opt_name,
@@ -310,7 +310,7 @@ export default function Config_img(){
             ],
         input_opt:undefined
     }
-    const INTERFACE_CROP:combine_input_uit = {
+    const INTERFACE_CROP:input_combine_uit = {
         opt_name:"crop" as a.opt_name,
         input_str:[
             {
@@ -340,7 +340,7 @@ export default function Config_img(){
                 } as a.use_state_uit<string|number>,
         ]
     }
-    const INTERFACE_BUTTON_ARR:click_button_t[]=[
+    const INTERFACE_BUTTON_ARR:button_click_t[]=[
         {
             name:"reset image" as a.name,
             func_event:(()=>{setss_reset(true)}) as a.func_event
@@ -373,11 +373,11 @@ export default function Config_img(){
         INTERFACE_DILATE,
         INTERFACE_BLUR,
         INTERFACE_CROP
-    ],jsx_element:Combine_input})
+    ],jsx_element:Input_combine})
 
     const JSX_BUTTON_ARR = Opt_to_jsx_arr({
         arr:INTERFACE_BUTTON_ARR,
-        jsx_element:Click_button
+        jsx_element:Button_click
     })
     
     return <>{JSX_INPUT_ARR}{JSX_BUTTON_ARR}</>

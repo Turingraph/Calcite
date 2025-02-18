@@ -1,26 +1,25 @@
 import React from "react";
 
 import { 
-    Test_click_button,  // FINISH
-    Test_select_tabs,   // FINISH
-    Test_history_button // Maximum update depth exceeded.
+    Test_button_click,  // FINISH
+    Test_button_tabs,   // FINISH
+    Test_button_history // Maximum update depth exceeded.
 } from "./components/button";
 
 import { 
-    Test_factory_obj,       // You provided a `checked` prop to a form field without an `onChange` handler.
-    Test_factory_opts,      // FINISH
-    Test_input_item_attr,   // FINISH
-    Test_select_button      // You provided a `checked` prop to a form field without an `onChange` handler. 
-} from "./components/factory";
+    Test_obj_self,       // You provided a `checked` prop to a form field without an `onChange` handler.
+    Test_obj_str,        // FINISH
+    Test_obj_bool      // You provided a `checked` prop to a form field without an `onChange` handler. 
+} from "./components/obj";
 
 import {
-    Test_combine_input, // Maximum update depth exceeded.
+    Test_input_combine, // Maximum update depth exceeded.
     Test_input_str,     // FINISH
-    Test_text_area      // FINISH
 } from "./components/input";
 
 import { 
-    Test_input_opt,     // Maximum update depth exceeded.
+    Test_opt_exist_arr,  // FINISH
+    Test_opt_input,     // Maximum update depth exceeded.
     Test_search_bar     // FINISH
 } from "./components/search";
 
@@ -49,6 +48,6 @@ import Page from "../page";
 
 export default function Test(){
     return <>
-    <Test_search_bar/>
+    <Test_button_history/>
     </>
 }

@@ -1,12 +1,10 @@
 import React, {useState} from "react";
 import * as a from '../../type/alias'
-import Combine_input from "../../components/input/combine_input";
-import { combine_input_uit } from "../../components/input/combine_input";
-import { input_opt_uit } from "../../components/search/type";
+import Input_combine from "../../components/input/input_combine";
+import { input_combine_uit } from "../../components/input/input_combine";
+import { opt_input_uit } from "../../components/opt/type";
 import Input_form, {input_form_t} from "../../components/input/input_form";
 import Input_str from "../../components/input/input_str";
-import Input_opt from "../../components/search/input_opt";
-import Text_area from "../../components/input/text_area";
 
 const DEFAULT_INPUT:(string|number)[] = [
     0.0001,
@@ -19,7 +17,7 @@ const DEFAULT_INPUT:(string|number)[] = [
 const OPT_MEDIA_ARR = ["3B1B", "Khan anademy", "Brilliant", "Shoulder of Giant", "Learn by Doing"]
 const OPT_LEVEL = ["Beginner", "Elementary", "Intermediate", "Advance", "Genius"]
 
-export function Test_combine_input(){
+export function Test_input_combine(){
     const [ss_i, setss_i] = useState<number>(DEFAULT_INPUT[0] as number)
     const [ss_j, setss_j] = useState<number>(DEFAULT_INPUT[1] as number)
     const [ss_k, setss_k] = useState<number>(DEFAULT_INPUT[2] as number)
@@ -55,7 +53,7 @@ export function Test_combine_input(){
 
     const JSX_INPUT_FORM = Input_form(INTERFACE_INPUT_FORM)
 
-    const INTERFACE_OPT_UIT:input_opt_uit[] = [
+    const INTERFACE_OPT_UIT:opt_input_uit[] = [
         {
             opt_name:"media" as a.opt_name,
             available_opts:OPT_MEDIA_ARR,
@@ -69,14 +67,14 @@ export function Test_combine_input(){
             is_search_bar:false
         }
     ]
-    const INTERFACE_COMBINE_INPUT:combine_input_uit = {
+    const INTERFACE_COMBINE_INPUT:input_combine_uit = {
         opt_name:"Vector Space" as a.opt_name,
         input_str:INTERFACE_INPUT_UIT,
         input_opt:INTERFACE_OPT_UIT,
         func_activate:(()=>{console.log("Liminal Vector Space")}) as a.func_event
     }
 
-    const JSX_COMBINE_INPUT = Combine_input(INTERFACE_COMBINE_INPUT)
+    const JSX_COMBINE_INPUT = Input_combine(INTERFACE_COMBINE_INPUT)
 
     return <>
     {/* {JSX_INPUT_FORM} */}
@@ -88,16 +86,6 @@ export function Test_input_str(){
     const [ss_song, setss_song] = useState<string>("R.I.P. Duolingo")
     return <>
         <Input_str
-            opt_name={"What is your favorite songs ?" as a.opt_name}
-            input={{ss:ss_song, setss:setss_song}}
-        />
-    </>
-}
-
-export function Test_text_area(){
-    const [ss_song, setss_song] = useState<string>("R.I.P. Duolingo")
-    return <>
-        <Text_area
             opt_name={"What is your favorite songs ?" as a.opt_name}
             input={{ss:ss_song, setss:setss_song}}
         />

@@ -1,9 +1,9 @@
 import React, {useState, JSX} from "react";
 import * as a from "../../type/alias"
-import Click_button from "./click_button";
+import Button_click from "./button_click";
 import Color_ui from "../asset/color_ui";
 
-export default function Select_tabs(
+export default function Button_tabs(
 {
     jsx_elements,
     name_arr
@@ -16,7 +16,7 @@ export default function Select_tabs(
     const NORMAL_RGB = 255;
     const SELECT_RGB = [255,0,0];
     const BUTTON_ARR = name_arr.map((name,index)=>{
-        const JSX_ELEMENT = <Click_button 
+        const JSX_ELEMENT = <Button_click 
                     name={name}
                     func_event={(()=>setss_select(index)) as a.func_event}
                 />

@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from "react";
-import Click_button from "../button/click_button";
+import Button_click from "../button/button_click";
 import * as a from "../../type/alias"
 import Panel from "../asset/panel";
 import Input_form from "../input/input_form";
 import {Str_to_h} from "../../utils/convert";
 import { method_update_item } from "../../utils/arr_method";
-import Input_opt from "../search/input_opt";
+import Opt_input from "../opt/opt_input";
 
 // img_process/kernel_2d.py/def sharp_kernel_2d
 
@@ -168,7 +168,7 @@ export default function Filter_kernel({
             arr={LET_ARR as unknown as a.use_state_uit<number|string>[]}
         />
         <Panel jsx_element={JSX_LISTS}/>
-        <Input_opt
+        <Opt_input
             opt_name={"Kernel Mode" as a.opt_name}
             available_opts={[
                 "rectangle",
@@ -180,7 +180,7 @@ export default function Filter_kernel({
             ss_mode={ss_mode}
             is_search_bar={false}
         />
-        <Click_button
+        <Button_click
             name={"Apply Kernel" as a.name}
             func_event={(()=>{func_set_kernel}) as a.func_event}
         />

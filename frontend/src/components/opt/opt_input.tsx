@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import * as a from "../../type/alias"
 import {Str_to_h} from "../../utils/convert";
-import { opt_mode_uit, input_opt_uit } from "./type"
+import { opt_mode_uit, opt_input_uit } from "./type"
 import Search_bar from "./search_bar";
 
 //  https://stackoverflow.com/questions/40209352/
@@ -10,13 +10,13 @@ import Search_bar from "./search_bar";
 // https://stackoverflow.com/questions/
 // 58114855/handling-select-opts-in-react-hooks
 
-export default function Input_opt(
+export default function Opt_input(
 {
     opt_name = undefined,
     available_opts,
     ss_mode,
     is_search_bar = false
-}:input_opt_uit){
+}:opt_input_uit){
 
     // https://developer.mozilla.org/en-US/docs/Web/
     // JavaScript/Reference/Global_Objects/Array/every

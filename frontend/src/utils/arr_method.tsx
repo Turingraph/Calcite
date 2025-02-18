@@ -131,3 +131,9 @@ export function method_include_arr<t>(arr_all:t[], arr_include:t[]){
         }
     }).filter((item)=> item != undefined) as t[]
 }
+
+export function method_unique_arr<t>(arr:t[]){
+    // https://stackoverflow.com/questions/36829184/
+    // how-can-i-convert-a-set-to-an-array-in-typescript
+    return Array.from(new Set(arr))
+}

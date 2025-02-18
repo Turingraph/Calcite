@@ -1,15 +1,27 @@
 import React, {useState} from "react";
 import * as a from '../../type/alias'
-import Input_opt from "../../components/search/input_opt";
-import Search_bar from "../../components/search/search_bar";
-import { opt_mode_uit } from "../../components/search/type";
+import Opt_input from "../../components/opt/opt_input";
+import Search_bar from "../../components/opt/search_bar";
+import { opt_mode_uit } from "../../components/opt/type";
 import { OPT_NAME } from "../utils/constant";
+import { CHARACTERS } from "../utils/constant";
+import Opt_exist_arr from "../../components/opt/opt_exist_arr";
 
-export function Test_input_opt(){
+export function Test_opt_exist_arr(){
+    const [ss_arr, setss_arr] = useState<number[]>([0])
+    const AVAILABLE_OPTS = CHARACTERS.map((item)=>{return item.name}) as string[]
+    return <Opt_exist_arr 
+        opt_name={"List" as a.opt_name}
+        exist_opts={{ss:ss_arr, setss:setss_arr}}
+        available_opts={AVAILABLE_OPTS}
+        />
+}
+
+export function Test_opt_input(){
     const [ss_name, setss_name] = useState<number>(0)
 
     return <>
-    <Input_opt
+    <Opt_input
         opt_name={"Your name is " + OPT_NAME[ss_name] as a.opt_name}
         available_opts={OPT_NAME}
         ss_mode={{ss:ss_name, setss:setss_name}}

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import * as a from '../../type/alias'
-import Select_tabs from "../../components/button/select_tabs";
+import Button_tabs from "../../components/button/button_tabs";
 import Display_img from './display_img';
 import Display_ocr from './display_ocr';
 import Display_boxes from './display_boxes';
@@ -10,7 +10,7 @@ export default function Page_display(){
         "OCR" as a.name,
         "Boxes" as a.name,
     ]
-    const RIGHT_TAB = <Select_tabs
+    const RIGHT_TAB = <Button_tabs
         name_arr={RIGHT_NAME}
         jsx_elements={[
             <Display_ocr/>,

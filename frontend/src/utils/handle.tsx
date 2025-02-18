@@ -1,5 +1,5 @@
 import * as a from "../type/alias";
-import { opt_mode_uit } from "../components/search/type";
+import { opt_mode_uit } from "../components/opt/type";
 
 /*
 Rule of every function in this file.

@@ -1,16 +1,16 @@
 import React from "react";
 import * as a from "../../type/alias"
 
-export type click_button_t = {
+export type button_click_t = {
     name?:a.name,
     func_event:a.func_event
 }
 
-export default function Click_button(
+export default function Button_click(
 {
     name = "button" as a.name,
     func_event,
-}:click_button_t
+}:button_click_t
 ){
     return (<>
         <button onClick={func_event} >

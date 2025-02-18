@@ -5,7 +5,7 @@ export type opt_mode_uit = {
     index:number
 }
 
-export type input_opt_uit = {
+export type opt_input_uit = {
     opt_name?:a.opt_name
     available_opts:string[]|opt_mode_uit[]
     ss_mode:a.use_state_t<number>
