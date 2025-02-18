@@ -13,13 +13,13 @@ import {
 } from "./components/obj";
 
 import {
-    Test_input_combine, // Maximum update depth exceeded.
+    Test_input_combine, // FINISH
     Test_input_str,     // FINISH
 } from "./components/input";
 
 import { 
-    Test_opt_exist_arr,  // FINISH
-    Test_opt_input,     // Maximum update depth exceeded.
+    Test_opt_exist_arr, // FINISH
+    Test_opt_input,     // FINISH
     Test_search_bar     // FINISH
 } from "./components/search";
 
@@ -48,6 +48,6 @@ import Page from "../page";
 
 export default function Test(){
     return <>
-    <Test_button_history/>
+    <Test_input_combine/>
     </>
 }

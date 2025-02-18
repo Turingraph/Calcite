@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useState, JSX} from "react";
 import * as a from "../../type/alias"
 import {Str_to_h} from "../../utils/convert";
 import { opt_mode_uit, opt_input_uit } from "./type"
@@ -36,15 +36,13 @@ export default function Opt_input(
     // typescript-input-onchange-event-target-value
     const handle_event = ((e: React.ChangeEvent<HTMLSelectElement >) => {
         ss_mode.setss(+e.target.value)
-        console.log("input_opt mode ", +e.target.value)
     }) as a.handle_event<HTMLSelectElement>
     
     const JSX_OPTS = ss_show_opts.map((item,index)=>{
         if(item != undefined){
             return (<option key={index} value={item.index}>{item.name}</option>)
         }
-        return <></>
-    })
+    }) as JSX.Element[]
     let jsx_search_bar = <></>
     if (is_search_bar===true){
         jsx_search_bar= <Search_bar
