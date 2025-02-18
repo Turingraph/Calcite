@@ -1,4 +1,4 @@
-import * as a from "../../type/alias"
+import * as a from "../type/alias"
 
 export const OPT_NAME = [
     "Gauss",

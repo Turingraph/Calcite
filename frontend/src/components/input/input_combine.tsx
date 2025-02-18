@@ -1,7 +1,7 @@
 import React from "react";
 import * as a from "../../type/alias";
 import { opt_input_uit } from "../opt/type";
-import {Str_to_h, Opt_to_jsx_arr} from "../../utils/convert";
+import {Str_to_h, Opt_to_jsx_arr} from "../../function/convert";
 import Opt_input from "../opt/opt_input";
 import Input_form from "./input_form";
 

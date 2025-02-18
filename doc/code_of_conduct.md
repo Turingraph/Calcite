@@ -137,6 +137,9 @@ Meaning
 20.	`arr` = array
 21.	`num` = number
 22.	`_t` = type
+23. `_uit` = user interface (ui) type
+24. `opt` = option or optional
+25. `attr` = attribute, use instead of `key` in order to prevent naming conflict. (https://legacy.reactjs.org/warnings/special-props.html)
 
 # Additional Learning Resource
 

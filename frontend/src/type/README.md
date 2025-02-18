@@ -1,15 +1,9 @@
 # Folder struction of `frontend/src/types/`.
 
-`frontend/src/types/` compose of 4 sub folders.
-1.  `basic/`
--   Purpose: contains basic input parameter type.
-2.  `components/`
--   Purpose: contains type for `components/`
-3.  `data/`
--   Purpose: store user's data e.g. images, the drawing of box on the image, do-undo related data etc.
-4.  `input/`
--   Purpose: contains type for more complicated but common parameter type.
-5.  `setting/`
--   Purpose: contains type for user customized advanced setting e.g. OCR setting, image processing setting etc.
-
-Note that `_t` means `type`
+`frontend/src/types/` compose of 3 files.
+1.  `alias.tsx`
+-   Purpose: Contains basic type e.g. `a.name`, `a.opt_name`, `a.func_event` etc in order to make it easier to create prop with consistent name.
+2.  `config.tsx`
+-   Purpose: Contain configuration type for image processing and ocr setting.
+3.  `obj.tsx`
+-   Purpose: Contain object type image and box object.

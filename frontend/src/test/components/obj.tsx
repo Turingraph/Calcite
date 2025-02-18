@@ -4,8 +4,8 @@ import Obj_self from "../../components/obj/obj_self";
 import Opt_exist_arr from "../../components/opt/opt_exist_arr";
 import Obj_str, { obj_str_uit } from "../../components/obj/obj_str";
 import Obj_bool from "../../components/obj/obj_bool";
-import { character_t } from "../utils/constant";
-import { CHARACTERS } from "../utils/constant";
+import { character_t } from "../constant";
+import { CHARACTERS } from "../constant";
 
 export function Test_obj_self(){
     const [ss_arr, setss_arr] = useState<character_t[]>(CHARACTERS)

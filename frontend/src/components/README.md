@@ -1,3 +1,14 @@
 # What is `components/` ?
 
-`components/` is the
+`components/` contains UI sub folders
+1.  `asset/`
+-   Purpose: for CSS and image UI logo.
+2.  `button/`
+3.  `input/`
+-   Purpose: allow user to insert text input in our app.
+4.  `obj/` ("object")
+-   Purpose: allow the user to change the attribute of the objects e.g. Image object, box object etc.
+5.  `one_time_use/`
+-   Purpose: for UI components that use once in our project.
+6.  `opt/` ("option")
+-   Purpose: for `HTML <option> Tag` based UI and the other related UI e.g. `search_bar.tsx` which help user search options.

@@ -8,23 +8,27 @@ which use the same medium size folder structure from this video
 
 List of the folders in `frontend/src/`
 1.	`assets/`
--	Purpose: Contains CSS file, image, logo image and other non-coding components in our project.
+-	Purpose: Contains only CSS file, image, logo image and other non-coding components in our project.
 2.	`components/`
 -	Purpose: Contains reuseable UI components.
--	1st sub folder: `components/form/`: UI components that are made by `components/ui/`
--	2nd sub folder: `components/ui/`: UI components that are only made by React.
 3.	`context/`
 -	Purpose: Contains `context` ( https://react.dev/learn/passing-data-deeply-with-context )
 4.	`data/`
--	Purpose: Contains constant variable and JSON files.
-5.	`hooks/`
+-	Purpose: Contains only constant variable and JSON files.
+5.	`function/`
+-	Purpose: Contains reusable function based files. 
+6.	`hooks/`
 -	Purpose: Contains React Hook.
-6.	`pages/`
--	Purpose: Contains UI page that are made by `components/`, each page use one sub folder inside `pages/`.
-7.	`type/s`
--	Purpose: Contains Type in Typescript
-8.	`utils/` (utility)
--	Purpose: Contains other useful files. 
+7.	`pages/`
+-	Purpose: Contains only UI page that are made by `components/`.
+8.	`test/`
+-	Purpose: Check if our Typescript frontend files work as expected.
+9.	`tutorial`
+-	The purpose of this folder is to demonstrate Typescript and Javascript Tutorial with coding examples.
+10.	`type/`
+-	Purpose: Contains Type in Typescript.
+11.	`utils`
+-	Purpose: Contains other files.
 
 The reason to do this is because 
 -	categorizing files to different concern make it easier to code.

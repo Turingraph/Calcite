@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import * as a from '../../type/alias'
 import Button_click from "../../components/button/button_click";
 import Button_tabs from "../../components/button/button_tabs";
-import { OPT_NAME } from "../utils/constant";
+import { OPT_NAME } from "../constant";
 import Button_history from "../../components/button/button_history";
 import { opt_mode_uit } from "../../components/opt/type";
 

@@ -1,3 +1,7 @@
+# Note that
+
+Our UXUI design for OCR App is not finished. It might be simplified in the future.
+
 # ui (image setting)
 
 ```

@@ -3,8 +3,8 @@ import * as a from '../../type/alias'
 import Opt_input from "../../components/opt/opt_input";
 import Search_bar from "../../components/opt/search_bar";
 import { opt_mode_uit } from "../../components/opt/type";
-import { OPT_NAME } from "../utils/constant";
-import { CHARACTERS } from "../utils/constant";
+import { OPT_NAME } from "../constant";
+import { CHARACTERS } from "../constant";
 import Opt_exist_arr from "../../components/opt/opt_exist_arr";
 
 export function Test_opt_exist_arr(){

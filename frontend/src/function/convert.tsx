@@ -1,4 +1,4 @@
-import * as a from "../../src/type/alias"
+import * as a from "../type/alias"
 import React, { JSX } from "react";
 import { opt_mode_uit } from "../components/opt/type";
 import { button_click_t } from "../components/button/button_click";

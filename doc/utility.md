@@ -58,3 +58,18 @@ Reference
 
 Reference
 *   https://stackoverflow.com/questions/5862233/commit-changes-only-in-one-directory-in-git
+
+# What is Open Closed Principle and why it is important for coding project ?
+
+-   It is the coding guidance concept where it is recommended to code, such that programmer can
+  add new feature to the code without modifying the existing code, 
+  in order to avoid wasting time on rewrite the code and make unexpected bugs.
+-   The likely consequences of poor Open Closed code are Shotgun Surgery smell and Divergent Change smells.
+
+You can learn more about Open Closed Principle and related concepts in this URL list.
+1.  Open Closed Principle
+-   https://www.freecodecamp.org/news/open-closed-principle-solid-architecture-concept-explained/
+2.  Shotgun Surgery
+-   https://refactoring.guru/smells/shotgun-surgery
+3.  Divergent Change 
+-   https://refactoring.guru/smells/divergent-change

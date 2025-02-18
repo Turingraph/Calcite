@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import * as a from '../../type/alias'
 import Input_str from '../../components/input/input_str'
-import { Str_to_h } from '../../utils/convert'
+import { Str_to_h } from '../../function/convert'
 import Panel from '../../components/asset/panel'
 
 export default function Display_ocr(){

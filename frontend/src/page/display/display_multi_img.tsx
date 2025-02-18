@@ -2,14 +2,14 @@ import React, {useState} from "react";
 import * as a from "../../type/alias"
 import Obj_self from "../../components/obj/obj_self";
 import Button_click, {button_click_t} from "../../components/button/button_click";
-import { Opt_to_jsx_arr } from "../../utils/convert";
+import { Opt_to_jsx_arr } from "../../function/convert";
 import Search_bar from "../../components/opt/search_bar";
 import Panel from "../../components/asset/panel";
 import { img_t } from "../../type/obj";
 import { opt_mode_uit } from "../../components/opt/type";
 import Obj_bool from "../../components/obj/obj_bool";
 
-export default function Page_multi_imgs(){
+export default function Display_multi_imgs(){
     const [ss_img_arr, setss_img_arr] = useState<img_t[]>([])
     const [ss_img_filter, setss_img_filter] = useState<(opt_mode_uit|undefined)[]>([])
     const BUTTON_ARR:button_click_t[] = [

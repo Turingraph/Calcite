@@ -5,8 +5,8 @@ import { input_combine_uit } from '../../components/input/input_combine'
 import { 
     Opt_to_jsx_arr,
     Num_to_255,
-    Num_to_ksize } from '../../utils/convert'
-import { DEFAULT_IMG } from '../../data/config'
+    Num_to_ksize } from '../../function/convert'
+import { DEFAULT_IMG } from '../../data/default_config'
 import Button_click, {button_click_t} from '../../components/button/button_click'
 
 export default function Config_img(){

@@ -3,8 +3,8 @@ import Button_click from "../button/button_click";
 import * as a from "../../type/alias"
 import Panel from "../asset/panel";
 import Input_form from "../input/input_form";
-import {Str_to_h} from "../../utils/convert";
-import { method_update_item } from "../../utils/arr_method";
+import {Str_to_h} from "../../function/convert";
+import { method_update_item } from "../../function/arr_method";
 import Opt_input from "../opt/opt_input";
 
 // img_process/kernel_2d.py/def sharp_kernel_2d

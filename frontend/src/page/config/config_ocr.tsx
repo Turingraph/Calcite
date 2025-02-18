@@ -10,7 +10,7 @@ import Input_str from "../../components/input/input_str";
 import Input_form from "../../components/input/input_form";
 import Input_combine, {input_combine_uit} from "../../components/input/input_combine";
 import { opt_input_uit } from "../../components/opt/type";;
-import { DEFAULT_OCR } from "../../data/config";
+import { DEFAULT_OCR } from "../../data/default_config";
 
 export default function Config_ocr(){
     const [ss_psm, setss_psm] = useState<number>(DEFAULT_OCR.psm)

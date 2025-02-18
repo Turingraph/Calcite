@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import * as a from '../../type/alias'
-import { DEFAULT_BOX } from "../../data/config";
+import { DEFAULT_BOX } from "../../data/default_config";
 import Input_combine from "../../components/input/input_combine";
 import { input_combine_uit } from "../../components/input/input_combine";
-import { Num_to_255, Num_to_size } from "../../utils/convert";
-import { Opt_to_jsx_arr } from "../../utils/convert";
+import { Num_to_255, Num_to_size } from "../../function/convert";
+import { Opt_to_jsx_arr } from "../../function/convert";
 
 export default function Config_boxes(){
     const [ss_min_w, setss_min_w] = useState<number>(DEFAULT_BOX.rect.min_w)

@@ -1,6 +1,6 @@
 import React, {useEffect} from "react";
 import * as a from "../../type/alias"
-import {Str_to_str} from "../../utils/convert";
+import {Str_to_str} from "../../function/convert";
 
 export default function Input_str(
 {
