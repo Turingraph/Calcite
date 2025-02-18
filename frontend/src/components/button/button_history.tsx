@@ -38,7 +38,7 @@ export default function Button_history<t>({
     const JSX_PREV_BUTTON = <Button_click name={"<=" as a.name} func_event={(()=>{prev_func()}) as a.func_event}/>
     const JSX_NEXT_BUTTON = <Button_click name={"=>" as a.name} func_event={(()=>{next_func()}) as a.func_event}/>
     const JSX_HISTORY_BUTTON = <Opt_input
-        opt_name={"Open History" as a.opt_name}
+        opt_name={"History" as a.opt_name}
         available_opts={history.ss.commit}
         ss_mode={{ss:ss_mode, setss:setss_mode} as a.use_state_t<number>}
         is_search_bar={true}
