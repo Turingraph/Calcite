@@ -6,6 +6,7 @@ import { opt_mode_uit } from "../../components/opt/type";
 import { OPT_NAME } from "../constant";
 import { CHARACTERS } from "../constant";
 import Opt_exist_arr from "../../components/opt/opt_exist_arr";
+import Panel from "../../components/asset/panel";
 
 export function Test_opt_exist_arr(){
     const [ss_arr, setss_arr] = useState<number[]>([0])
@@ -39,12 +40,13 @@ export function Test_search_bar(){
             }
         })
     )
+    const JSX_ELEMENT = ss_name.map((item,index)=>{return <h1 key={index}>{item?item.name:""}</h1>})
     return <>
         <Search_bar 
         opt_name={"Your name" as a.opt_name}
         read_only_arr={OPT_NAME.map((item)=>{return{name:item}})}
         select_arr={{ss:ss_name, setss:setss_name}}
         attr={"name"}/>
-        {ss_name.map((item,index)=>{return <h1 key={index}>{item?item.name:""}</h1>})}
+        <Panel jsx_element={<>{JSX_ELEMENT}</>}/>
     </>
 }

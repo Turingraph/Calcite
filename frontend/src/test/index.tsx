@@ -48,6 +48,6 @@ import Page from "../page";
 
 export default function Test(){
     return <>
-    <Test_input_combine/>
+    <Test_search_bar/>
     </>
 }
