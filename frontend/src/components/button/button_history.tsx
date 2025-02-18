@@ -22,6 +22,7 @@ export default function Button_history<t>({
                     commit: history.ss.commit,
                     current: history.ss.current - 1,
                 }) as unknown as a.history<t>)
+            setss_mode(history.ss.current - 1)
         }
     }
     function next_func(){
@@ -31,6 +32,7 @@ export default function Button_history<t>({
                 commit: history.ss.commit,
                 current: history.ss.current + 1,
                 }) as unknown as a.history<t>)
+                setss_mode(history.ss.current + 1)
         }
     }
     const JSX_PREV_BUTTON = <Button_click name={"<=" as a.name} func_event={(()=>{prev_func()}) as a.func_event}/>

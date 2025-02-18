@@ -32,16 +32,6 @@ export default function Opt_input(
             return available_opts
         }
     })
-    useEffect(()=>{
-        setss_show_opts(()=>{
-            if(available_opts.every(item => typeof item === "string")){
-                return available_opts.map((item, index)=>{ return {name:item as a.name, index:index}})
-            }
-            else{
-                return available_opts
-            }
-        })
-    })
     // https://stackoverflow.com/questions/40676343/
     // typescript-input-onchange-event-target-value
     const handle_event = ((e: React.ChangeEvent<HTMLSelectElement >) => {
