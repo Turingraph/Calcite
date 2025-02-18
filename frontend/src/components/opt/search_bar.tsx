@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import * as a from "../../type/alias"
 import Input_str from "../input/input_str";
 import { opt_mode_uit } from "./type";
-import { Str_to_h } from "../../function/convert";
+import { Str_to_h } from "../../utils/convert";
 
 // How to make function accept prop based on attr
 // https://www.freecodecamp.org/news/typescript-generics-with-functional-react-components/

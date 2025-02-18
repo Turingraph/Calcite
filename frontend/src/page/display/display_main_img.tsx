@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import * as a from '../../type/alias'
 import { button_click_t } from '../../components/button/button_click'
 import Button_click from '../../components/button/button_click'
-import { Opt_to_jsx_arr } from '../../function/convert'
+import { Opt_to_jsx_arr } from '../../utils/convert'
 import Panel from '../../components/asset/panel'
 
 export default function Display_main_img(){

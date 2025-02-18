@@ -25,9 +25,7 @@ List of the folders in `frontend/src/`
 -	Purpose: Check if our Typescript frontend files work as expected.
 9.	`tutorial`
 -	The purpose of this folder is to demonstrate Typescript and Javascript Tutorial with coding examples.
-10.	`type/`
--	Purpose: Contains Type in Typescript.
-11.	`utils`
+10.	`utils`
 -	Purpose: Contains other files.
 
 The reason to do this is because 

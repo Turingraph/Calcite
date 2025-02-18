@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import * as a from "../../type/alias"
-import {Str_to_h} from "../../function/convert";
+import {Str_to_h} from "../../utils/convert";
 import { opt_mode_uit, opt_input_uit } from "./type"
 import Search_bar from "./search_bar";
 

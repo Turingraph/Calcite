@@ -2,12 +2,12 @@ import React, {JSX, useState, useEffect} from "react";
 import * as a from "../../type/alias";
 import Button_click, {button_click_t} from "../button/button_click";
 import Input_str from "../input/input_str";
-import { Str_to_h } from "../../function/convert";
+import { Str_to_h } from "../../utils/convert";
 import { method_delete_item, 
     method_update_item, 
     method_copy_item,
-    method_update_item_attr } from '../../function/arr_method'
-import { Opt_to_jsx_arr } from "../../function/convert";
+    method_update_item_attr } from '../../utils/arr_method'
+import { Opt_to_jsx_arr } from "../../utils/convert";
 
 export default function Obj_self<t extends {name:a.name}>({
     arr,

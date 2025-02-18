@@ -2,11 +2,11 @@ import React, {useEffect, useState} from "react";
 import * as a from "../../type/alias"
 import Button_click from "../button/button_click";
 import Opt_input from "./opt_input";
-import {Strarr_to_optmode, Str_to_h, Item_to_index} from "../../function/convert";
-import { method_exclude_arr, method_push_arr, method_delete_item, method_sort_arrattr, method_unique_arr} from '../../function/arr_method'
+import {Strarr_to_optmode, Str_to_h, Item_to_index} from "../../utils/convert";
+import { method_exclude_arr, method_push_arr, method_delete_item, method_sort_arrattr, method_unique_arr} from '../../utils/arr_method'
 import Panel from "../asset/panel";
 import { opt_mode_uit } from "./type";
-import { handle_access_optmode } from "../../function/utils";
+import { handle_access_optmode } from "../../utils/utils";
 
 export function func_exclude_opt(available_opts:string[], exist_opts:number[]){
     // https://stackoverflow.com/questions/36829184/

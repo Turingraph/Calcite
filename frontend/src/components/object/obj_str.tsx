@@ -2,8 +2,8 @@ import React , {useState} from "react";
 import * as a from "../../type/alias"
 import Button_click from "../button/button_click";
 import Input_str from "../input/input_str";
-import {Str_to_h, Str_to_default_num} from "../../function/convert";
-import { method_update_item, method_update_item_attr, method_include_arr } from "../../function/arr_method";
+import {Str_to_h, Str_to_default_num} from "../../utils/convert";
+import { method_update_item, method_update_item_attr, method_include_arr } from "../../utils/arr_method";
 
 export type obj_str_uit<t extends object> = {
     opt_name:a.opt_name

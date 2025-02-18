@@ -1,6 +1,6 @@
 import React from "react";
 import * as a from "../../type/alias";
-import { method_update_item } from "../../function/arr_method";
+import { method_update_item } from "../../utils/arr_method";
 import Button_click from "../button/button_click";
 
 export type obj_bool_uit<
