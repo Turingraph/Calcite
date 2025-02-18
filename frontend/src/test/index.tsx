@@ -7,7 +7,7 @@ import {
 } from "./components/button";
 
 import { 
-    Test_obj_self,       // You provided a `checked` prop to a form field without an `onChange` handler.
+    Test_obj_self,       // FINISH
     Test_obj_str,        // FINISH
     Test_obj_bool        // FINISH
 } from "./components/obj";
@@ -48,6 +48,6 @@ import Page from "../page";
 
 export default function Test(){
     return <>
-    <Test_obj_bool/>
+    <Test_obj_self/>
     </>
 }

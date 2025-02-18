@@ -10,7 +10,7 @@ export type obj_str_uit<t extends object> = {
     arr:a.use_state_t<t[]>,
     this_item:number,
     attrs:string[]
-    is_undo?:boolean
+    is_undo?:boolean,
 }
 
 export function func_get_attr<t extends object>(item:t, attrs:string[]){

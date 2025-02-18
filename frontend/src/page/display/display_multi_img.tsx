@@ -12,6 +12,8 @@ import Obj_bool from "../../components/obj/obj_bool";
 export default function Display_multi_imgs(){
     const [ss_img_arr, setss_img_arr] = useState<img_t[]>([])
     const [ss_img_filter, setss_img_filter] = useState<(opt_mode_uit|undefined)[]>([])
+    const [ss_select, setss_select] = useState<number|undefined>(undefined)
+    
     const BUTTON_ARR:button_click_t[] = [
         {
             name:"open folder" as a.name,
@@ -72,7 +74,8 @@ export default function Display_multi_imgs(){
                     ss:ss_img_arr, 
                     setss:setss_img_arr
                 }}
-                index={item.index}
+                ss_select={{ss:ss_select, setss:setss_select}}
+                this_item={item.index}
                 jsx_additional={
                     <>
                     <Obj_bool 
@@ -80,7 +83,7 @@ export default function Display_multi_imgs(){
                         ss:ss_img_arr, 
                         setss:setss_img_arr
                     }}
-                    index={item.index}
+                    this_item={item.index}
                     attr={"select"}
                     />
                     </>

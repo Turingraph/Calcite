@@ -7,19 +7,66 @@ import Obj_bool from "../../components/obj/obj_bool";
 import { character_t } from "../constant";
 import { CHARACTERS } from "../constant";
 import Panel from "../../components/asset/panel";
+import { Str_to_h } from "../../utils/convert";
+
+// export function Test_obj_self(){
+//     const [ss_arr, setss_arr] = useState<character_t[]>(CHARACTERS)
+//     const [ss_select, setss_select] = useState<number|undefined>(undefined)
+//     const JSX_ARR = ss_arr.map((item,index)=>{
+//         return <div key={index}>
+//             <Str_to_h opt_name={item.name}/>
+//             <Obj_self 
+//             arr = {{ss:ss_arr, setss:setss_arr}}
+//             this_item={index}
+//             ss_select={{ss:ss_select, setss:setss_select}}
+//             jsx_additional={<>
+//             <Obj_bool
+//                 name={"rule64" as a.name}
+//                 arr={{ss:ss_arr, setss:setss_arr}}
+//                 this_item={index}
+//                 attr={"is_male"}
+//                 ui_mode={"checkbox"}
+//             />
+//             </>}
+//             /></div>
+//     })
+//     return <>
+//     {JSX_ARR}
+//     </>
+// }
+
 
 export function Test_obj_self(){
     const [ss_arr, setss_arr] = useState<character_t[]>(CHARACTERS)
+    const [ss_select, setss_select] = useState<number|undefined>(undefined)
+    const INTERFACE_USE_STATE:a.use_state_t<character_t[]> = {
+        ss:ss_arr,
+        setss:setss_arr
+    }
     const JSX_ARR = ss_arr.map((item,index)=>{
-        return <div key={index}><Obj_self 
+        const INTERFACE_OBJ_STR:obj_str_uit<character_t> = {
+            opt_name:item.name as a.opt_name,
+            arr:INTERFACE_USE_STATE,
+            this_item:index,
+            attrs:["skill"],
+            is_undo:false
+        }
+        return <div key={index}>
+            <Str_to_h opt_name={item.name}/>
+            <Obj_self 
             arr = {{ss:ss_arr, setss:setss_arr}}
-            index={index}
-            jsx_additional={<Obj_bool
+            this_item={index}
+            ss_select={{ss:ss_select, setss:setss_select}}
+            jsx_additional={<>
+            {/* <Obj_bool
                 name={"rule64" as a.name}
                 arr={{ss:ss_arr, setss:setss_arr}}
-                index={index}
+                this_item={index}
                 attr={"is_male"}
-            />}
+                ui_mode={"checkbox"}
+            /> */}
+            {Obj_str(INTERFACE_OBJ_STR)}
+            </>}
             /></div>
     })
     return <>
@@ -59,8 +106,9 @@ export function Test_obj_bool(){
         <Obj_bool
             name={"rule64" as a.name}
             arr={{ss:ss_arr, setss:setss_arr}}
-            index={index}
+            this_item={index}
             attr={"is_male"}
+            ui_mode={"checkbox"}
             />
         </div>
     })

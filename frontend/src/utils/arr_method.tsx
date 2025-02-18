@@ -16,7 +16,19 @@ export function method_update_item<t>(
 }
 
 // https://stackoverflow.com/questions/586182/
+// https://medium.com/analytics-vidhya/
+// 3-ways-to-copy-by-value-any-composite-data-type-in-javascript-ca3c730e4d2f
 export function method_copy_item<t>(
+    index:number,
+    arr:a.use_state_t<t[]>
+){
+    const UPDATE_ARR = [...arr.ss]
+    const NEW_OBJ = JSON.parse(JSON.stringify(arr.ss[index]))
+    UPDATE_ARR.splice(index + 1, 0, NEW_OBJ)
+    arr.setss(UPDATE_ARR)
+}
+
+export function method_copy_ptr_item<t>(
     index:number,
     arr:a.use_state_t<t[]>
 ){
