@@ -76,6 +76,7 @@ export default function Obj_str<
     }
     const JSX_INPUTS = CONST_ATTR.map((item,index)=>{
         return <div key={index}>
+            <Str_to_h opt_name={item as a.opt_name}/>
             <Input_str
                 opt_name={item as a.opt_name}
                 input={{

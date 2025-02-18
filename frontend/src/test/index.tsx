@@ -9,7 +9,7 @@ import {
 import { 
     Test_obj_self,       // You provided a `checked` prop to a form field without an `onChange` handler.
     Test_obj_str,        // FINISH
-    Test_obj_bool      // You provided a `checked` prop to a form field without an `onChange` handler. 
+    Test_obj_bool        // FINISH
 } from "./components/obj";
 
 import {
@@ -48,6 +48,6 @@ import Page from "../page";
 
 export default function Test(){
     return <>
-    <Test_search_bar/>
+    <Test_obj_bool/>
     </>
 }

@@ -6,6 +6,7 @@ import Obj_str, { obj_str_uit } from "../../components/obj/obj_str";
 import Obj_bool from "../../components/obj/obj_bool";
 import { character_t } from "../constant";
 import { CHARACTERS } from "../constant";
+import Panel from "../../components/asset/panel";
 
 export function Test_obj_self(){
     const [ss_arr, setss_arr] = useState<character_t[]>(CHARACTERS)
@@ -43,7 +44,9 @@ export function Test_obj_str(){
         return <div key={index}>{Obj_str(INTERFACE_OBJ_STR)}</div>
     })
     return <>
+    <Panel jsx_element={<>
         {JSX_ELEMENTS}
+    </>}/>
     </>
 }
 
@@ -62,6 +65,8 @@ export function Test_obj_bool(){
         </div>
     })
     return <>
-    {JSX_ARR}
+    <Panel jsx_element={<>
+        {JSX_ARR}
+    </>}/>
     </>
 }

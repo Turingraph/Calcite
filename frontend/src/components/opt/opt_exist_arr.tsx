@@ -32,23 +32,6 @@ export function func_default_newobj_index(available_opts:opt_mode_uit[], length:
     return undefined
 }
 
-// export function func_update_opt_index(
-//     max:number, index:number, func:((e:number)=>number)|undefined){
-//     let y:number;
-//     if(index === max){
-//         y = 0
-//     }
-//     else{
-//         y = index+1
-//     }
-//     if(func === undefined){
-//         return y
-//     }
-//     else{
-//         return func(y)
-//     }
-// }
-
 export default function Opt_exist_arr(
     {
         opt_name = undefined as a.opt_name,
