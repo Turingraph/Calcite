@@ -43,7 +43,7 @@ export default function Input_form({
         arr.map((item, index)=>{
             if(typeof ss_DEFAULT_ARR[index] === "number" && typeof item.ss === "number"){
                 const CONST_INPUT = Str_to_default_num(
-                    ss_DEFAULT_ARR[index],
+                    ss_DEFAULT_ARR[index] as number,
                     ss_texts[index]
                 )
                 item.setss(CONST_INPUT)

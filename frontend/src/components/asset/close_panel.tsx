@@ -14,14 +14,6 @@ export default function Close_panel({
     name:a.name
 }){
     const [ss_open_ui, setss_open_ui] = useState<boolean>(false)
-    useEffect(()=>{
-        // if (ss_open_ui === false){
-        //     alert("Nujabes")
-        // }
-        // else{
-        //     alert("Shing02")
-        // }
-    },[ss_open_ui])
     const JSX_BUTTON_ON = <Button_click name={"open " + name as a.name} func_event={(()=>{setss_open_ui(true)}) as a.func_event}/>
     const JSX_BUTTON_OFF= <Button_click name={"close " + name as a.name} func_event={(()=>{setss_open_ui(false)}) as a.func_event}/>
     const JSX_PANEL = <>

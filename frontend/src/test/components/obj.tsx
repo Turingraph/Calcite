@@ -8,6 +8,7 @@ import { character_t } from "../constant";
 import { CHARACTERS } from "../constant";
 import Panel from "../../components/asset/panel";
 import { Str_to_h } from "../../utils/convert";
+import Test_usestate from "../../components/one_time_use/test_usestate";
 
 // export function Test_obj_self(){
 //     const [ss_arr, setss_arr] = useState<character_t[]>(CHARACTERS)

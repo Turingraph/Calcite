@@ -73,3 +73,8 @@ export type char_t = '!'|'"'|'#'|'$'|
 // export type partial_unknown<t> = {
 //     [k in keyof t]?: unknown;
 //   };
+
+export type ui_mode_t = {
+    select:use_state_t<number|undefined>,
+    ui_mode:use_state_t<"normal"|"rename"|"delete">
+}

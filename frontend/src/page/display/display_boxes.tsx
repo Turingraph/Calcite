@@ -10,7 +10,7 @@ import Obj_str, {obj_str_uit} from "../../components/obj/obj_str";
 
 export default function Display_boxes(){
     const [ss_boxes, setss_boxes] = useState<box_t[]>([])
-    const [ss_boxes_filter, setss_boxes_filter] = useState<(opt_mode_uit|undefined)[]>([])
+    const [ss_boxes_filter, setss_boxes_filter] = useState<opt_mode_uit[]>([])
     const [ss_select, setss_select] = useState<number|undefined>(undefined)
     const JSX_SEARCH_BAR = <Search_bar
         opt_name={"Search boxes" as a.opt_name}

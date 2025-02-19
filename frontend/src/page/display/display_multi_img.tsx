@@ -11,7 +11,7 @@ import Obj_bool from "../../components/obj/obj_bool";
 
 export default function Display_multi_imgs(){
     const [ss_img_arr, setss_img_arr] = useState<img_t[]>([])
-    const [ss_img_filter, setss_img_filter] = useState<(opt_mode_uit|undefined)[]>([])
+    const [ss_img_filter, setss_img_filter] = useState<opt_mode_uit[]>([])
     const [ss_select, setss_select] = useState<number|undefined>(undefined)
     
     const BUTTON_ARR:button_click_t[] = [

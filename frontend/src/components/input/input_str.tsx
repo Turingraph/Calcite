@@ -9,7 +9,7 @@ export default function Input_str(
     index = undefined,
     ui_mode = "input"
 }:{
-    opt_name:a.opt_name,
+    opt_name?:a.opt_name,
     input:a.use_state_t<string>,
     index?:number|undefined,
     ui_mode?:"input"|"text_area"

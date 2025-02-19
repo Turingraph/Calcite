@@ -6,7 +6,7 @@ import {Str_to_h, Str_to_default_num} from "../../utils/convert";
 import { method_update_item, method_update_item_attr, method_include_arr } from "../../utils/arr_method";
 
 export type obj_str_uit<t extends object> = {
-    opt_name:a.opt_name
+    opt_name?:a.opt_name
     arr:a.use_state_t<t[]>,
     this_item:number,
     attrs:string[]
@@ -26,7 +26,7 @@ export function func_get_attr<t extends object>(item:t, attrs:string[]){
 
 export default function Obj_str<
     t extends object>({
-        opt_name,       
+        opt_name = undefined,       
         arr  ,   
         this_item,              
         attrs  ,  
@@ -54,7 +54,7 @@ export default function Obj_str<
             if (typeof CONST_ITEM[item] === 'number'){
                 if (typeof ss_DEFAULT_ARR[index] === 'number'){
                     let_input = Str_to_default_num(
-                        ss_DEFAULT_ARR[index],
+                        ss_DEFAULT_ARR[index] as number,
                         let_input as string
                     ) as number
                 }

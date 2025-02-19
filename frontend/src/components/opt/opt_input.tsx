@@ -10,6 +10,16 @@ import Search_bar from "./search_bar";
 // https://stackoverflow.com/questions/
 // 58114855/handling-select-opts-in-react-hooks
 
+function func_init(available_opts:opt_mode_uit[]|string[]){
+    if(typeof available_opts[0] === "string"){
+        return available_opts.map(
+            (item, index)=>{ 
+                return {name:item as a.name, index:index} as opt_mode_uit
+        })
+    }
+    return available_opts
+}
+
 export default function Opt_input(
 {
     opt_name = undefined,
@@ -24,14 +34,9 @@ export default function Opt_input(
     // https://stackoverflow.com/questions/23130292/
     // test-for-array-of-string-type-in-typescript
 
-    const [ss_show_opts, setss_show_opts] = useState<(opt_mode_uit|undefined)[]>(()=>{
-        if(available_opts.every(item => typeof item === "string")){
-            return available_opts.map((item, index)=>{ return {name:item as a.name, index:index}})
-        }
-        else{
-            return available_opts
-        }
-    })
+    const [ss_show_opts, setss_show_opts] = useState<opt_mode_uit[]>(
+        func_init(available_opts) as opt_mode_uit[]
+    )
     // https://stackoverflow.com/questions/40676343/
     // typescript-input-onchange-event-target-value
     const handle_event = ((e: React.ChangeEvent<HTMLSelectElement >) => {
@@ -61,7 +66,7 @@ export default function Opt_input(
             select_arr={{
                     ss:ss_show_opts, 
                     setss:setss_show_opts
-                }}
+                } as a.use_state_t<opt_mode_uit[]>}
             attr = {"name"}
         />
     }

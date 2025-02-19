@@ -18,9 +18,9 @@ export default function Search_bar<t extends object, k extends keyof t>(
     select_arr,
     attr
 }:{
-    opt_name:a.opt_name,
+    opt_name?:a.opt_name,
     read_only_arr:t[],
-    select_arr:a.use_state_t<(opt_mode_uit|undefined)[]>
+    select_arr:a.use_state_t<opt_mode_uit[]>
     attr:k
 }){
     const [ss_search_text, setss_search_text] = useState<string>("")
@@ -33,7 +33,7 @@ export default function Search_bar<t extends object, k extends keyof t>(
                         index:index
                     }
                 }
-            })
+            }) as opt_mode_uit[]
         select_arr.setss(UPDATE_SEARCH_TEXT)
     },[ss_search_text])
 

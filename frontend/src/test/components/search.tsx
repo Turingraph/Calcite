@@ -32,7 +32,7 @@ export function Test_opt_input(){
 }
 
 export function Test_search_bar(){
-    const [ss_name, setss_name] = useState<(opt_mode_uit|undefined)[]>(
+    const [ss_name, setss_name] = useState<opt_mode_uit[]>(
         OPT_NAME.map((item,index)=>{
             return {
                 name:item as a.name,
