@@ -6,7 +6,6 @@ import { Str_to_h } from "../../utils/convert";
 import { method_delete_item, 
     method_copy_item,
     method_update_item_attr } from '../../utils/arr_method'
-import { Opt_to_jsx_arr } from "../../utils/convert";
 
 export default function Obj_self<t extends {name:a.name}>({
     arr,
@@ -52,65 +51,53 @@ export default function Obj_self<t extends {name:a.name}>({
         func_reset()
     }
     if (ss_ui_mode === "normal"){
-        const INTERFACE_BUTTON:button_click_t[]= [
-            {
-                name:"rename" as a.name,
-                func_event:(()=>{func_select("rename")}) as a.func_event
-            },
-            {
-                name:"copy" as a.name,
-                func_event:(()=>{method_copy_item(this_item,arr)}) as a.func_event
-            },
-            {
-                name:"x" as a.name,
-                func_event:(()=>{func_select("delete")}) as a.func_event
-            }
-        ]
-        const JSX_BUTTONS = Opt_to_jsx_arr({arr:INTERFACE_BUTTON, jsx_element:Button_click})
         return <>
-        {JSX_BUTTONS}
+            <Button_click
+                name={"rename" as a.name}
+                func_event={(()=>{func_select("rename")}) as a.func_event}
+            />
+            <Button_click
+                name={"copy" as a.name}
+                func_event={(()=>{method_copy_item(this_item,arr)}) as a.func_event}
+            />
+            <Button_click
+                name={"x" as a.name}
+                func_event={(()=>{func_select("delete")}) as a.func_event}
+            />
         {jsx_additional}
         </>
     }
     else if (ss_ui_mode === "rename" && ss_select.ss === this_item){
-        const INTERFACE_BUTTON:button_click_t[] = [
-            {
-                name:"yes" as a.name,
-                func_event:(()=>{func_rename()}) as a.func_event
-            },
-            {
-                name:"no" as a.name,
-                func_event:(()=>{func_reset()}) as a.func_event
-            }
-        ]
-        const JSX_BUTTONS = Opt_to_jsx_arr({arr:INTERFACE_BUTTON, jsx_element:Button_click})
         return <>
         <Str_to_h opt_name={"rename " + ss_name + " as ?" as a.name}/>
         <Input_str
             opt_name={"rename" as a.opt_name}
             input={{ss:ss_name, setss:setss_name}}
         />
-        {JSX_BUTTONS}
+            <Button_click
+                name={"yes" as a.name}
+                func_event={(()=>{func_rename()}) as a.func_event}
+            />
+            <Button_click
+                name={"no" as a.name}
+                func_event={(()=>{func_reset()}) as a.func_event}
+            />
         {jsx_additional}
         </>
     }
     else if (ss_ui_mode === "delete" && ss_select.ss === this_item){
         // https://stackoverflow.com/questions/15292278/
         // how-do-i-remove-an-array-item-in-typescript
-        const INTERFACE_BUTTON:button_click_t[] = [
-            {
-                name:"yes" as a.name,
-                func_event:(()=>{func_delete()}) as a.func_event
-            },
-            {
-                name:"no" as a.name,
-                func_event:(()=>{func_reset()}) as a.func_event
-            }
-        ]
-        const JSX_BUTTONS = Opt_to_jsx_arr({arr:INTERFACE_BUTTON, jsx_element:Button_click})
         return <>
             <Str_to_h opt_name={"Do you want to delete \"" + arr.ss[this_item].name + "\"" as a.opt_name}/>
-            {JSX_BUTTONS}
+            <Button_click
+                name={"yes" as a.name}
+                func_event={(()=>{func_delete()}) as a.func_event}
+            />
+            <Button_click
+                name={"no" as a.name}
+                func_event={(()=>{func_reset()}) as a.func_event}
+            />
             {jsx_additional}
         </>
     }

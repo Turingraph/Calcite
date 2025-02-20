@@ -1,7 +1,7 @@
 import React from "react";
 import * as a from "../../type/alias";
 import { opt_input_uit } from "../opt/type";
-import {Str_to_h, Opt_to_jsx_arr} from "../../utils/convert";
+import {Str_to_h} from "../../utils/convert";
 import Opt_input from "../opt/opt_input";
 import Input_form from "./input_form";
 
@@ -20,7 +20,17 @@ export default function Input_combine({
     func_activate,
     is_undo = false
 }:input_combine_uit){
-    const JAX_INPUT_OPT = Opt_to_jsx_arr({arr:input_opt, jsx_element:Opt_input})
+    let jsx_input_opt = [<></>]
+    if (input_opt !== undefined){
+        jsx_input_opt = input_opt.map((item:opt_input_uit)=>{
+            return <Opt_input
+                opt_name={item.opt_name}
+                available_opts={item.available_opts}
+                ss_mode={item.ss_mode}
+                is_search_bar={item.is_search_bar}
+                />
+        })
+    }
     let jsx_input_str = <></>
     let let_input_str:a.use_state_uit<string|number>[] = []
     if (input_str !== undefined){
@@ -39,7 +49,7 @@ export default function Input_combine({
     }
     return <>
         <Str_to_h opt_name={opt_name as a.opt_name}/>
-        {JAX_INPUT_OPT}
+        {jsx_input_opt}
         {jsx_input_str}
     </>
 }

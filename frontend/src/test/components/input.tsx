@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, JSX} from "react";
 import * as a from '../../type/alias'
 import Input_combine from "../../components/input/input_combine";
 import { input_combine_uit } from "../../components/input/input_combine";
@@ -26,7 +26,7 @@ export function Test_input_combine(){
     const [ss_level, setss_level] = useState<number>(0)
     const [ss_scientist, setss_scientist] = useState<string>(DEFAULT_INPUT[4] as string)
 
-    const INTERFACE_INPUT_UIT:a.use_state_uit<string|number>[]=[
+    const INTERFACE_INPUT_UIT_ARR:a.use_state_uit<string|number>[]=[
         {
             opt_name:"Vector's 1st value" as a.opt_name,
             ss:ss_i, setss:setss_i} as a.use_state_uit<string|number>,
@@ -44,16 +44,14 @@ export function Test_input_combine(){
             ss:ss_scientist, setss:setss_scientist} as a.use_state_uit<string|number>,
     ]
 
-    const INTERFACE_INPUT_FORM:input_form_t = {
-        opt_name:"4D Vector made by " + ss_scientist as a.opt_name,
-        arr:INTERFACE_INPUT_UIT,
-        is_undo:true,
-        func_activate:(()=>{alert("Alexander Hamilton")}) as a.func_event
-    }
+    const JSX_INPUT_FORM:JSX.Element = <Input_form
+        opt_name={"Vector Space" as a.opt_name}
+        arr={INTERFACE_INPUT_UIT_ARR}
+        func_activate = {(()=>{alert("Alexander Hamilton")}) as a.func_event}
+        is_undo={true}
+    />
 
-    const JSX_INPUT_FORM = Input_form(INTERFACE_INPUT_FORM)
-
-    const INTERFACE_OPT_UIT:opt_input_uit[] = [
+    const INTERFACE_OPT_UIT_ARR:opt_input_uit[] = [
         {
             opt_name:"media" as a.opt_name,
             available_opts:OPT_MEDIA_ARR,
@@ -67,14 +65,12 @@ export function Test_input_combine(){
             is_search_bar:false
         }
     ]
-    const INTERFACE_COMBINE_INPUT:input_combine_uit = {
-        opt_name:"Vector Space" as a.opt_name,
-        input_str:INTERFACE_INPUT_UIT,
-        input_opt:INTERFACE_OPT_UIT,
-        func_activate:(()=>{console.log("Liminal Vector Space")}) as a.func_event
-    }
-
-    const JSX_COMBINE_INPUT = Input_combine(INTERFACE_COMBINE_INPUT)
+    const JSX_COMBINE_INPUT:JSX.Element = <Input_combine
+        opt_name={"Vector Space" as a.opt_name}
+        input_str={INTERFACE_INPUT_UIT_ARR}
+        input_opt={INTERFACE_OPT_UIT_ARR}
+        func_activate={(()=>{console.log("Liminal Vector Space")}) as a.func_event}
+        />
 
     return <>
     {/* {JSX_INPUT_FORM} */}

@@ -10,7 +10,7 @@ export default function Test_usestate<t extends object>({
     input?:number
 }){
     const [ss, setss] = useState<number>(input)
-    return <div >
+    return <><div >
     <h1>{ss}</h1>
     <Button_click name={"add" as a.name}
     func_event={(()=>{setss((prev)=>prev+1)}) as a.func_event}
@@ -19,4 +19,5 @@ export default function Test_usestate<t extends object>({
     func_event={(()=>{setss((prev)=>prev+0)}) as a.func_event}
     />
     </div>
+    </>
 }

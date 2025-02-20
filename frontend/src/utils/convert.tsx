@@ -88,34 +88,44 @@ export function Num_to_rgb(input:undefined|number|number[]){
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-export function Opt_to_jsx<t>({
-    arr = undefined,
-    jsx_element
-}:{
-    arr?:t
-    jsx_element:(t:t)=>JSX.Element
-}){
-    if(arr != undefined){
-        return jsx_element(arr)
-    }
-    return [<></>]
-}
+/*
+THIS WAS THE MISTAKE FUNCTION
 
-export function Opt_to_jsx_arr<t>({
-    arr = undefined, jsx_element
-}: {
-    arr?: undefined | t[];
-    jsx_element: (t: t) => JSX.Element;
-}){
-    if(arr != undefined){
-        return arr.map((item,index)=>{
-            return <div key={index}>
-                {jsx_element(item)}
-                </div>
-        })
-    }
-    return [<></>]
-}
+The reason is because given that 
+
+RULES OF HOOK
+1.  Only call Hooks at the top level 
+2.  Only call Hooks from React functions 
+    (function that contains hook should 
+    begin with big letter, or custom hook)
+
+The JSX Element update everytime the Hook is updated.
+
+REFERENCE
+-   https://react.dev/reference/rules/rules-of-hooks
+
+Implies that when the Hook is updated, the {jsx_element(item)} does not updated.
+If {jsx_element(item)} contains hook, this cause Error.
+
+On the other hands when the Hook is updated, every <JSX_Element .../> updated,
+which prevent error
+*/
+
+// export function Opt_to_jsx_arr<t>({
+//     arr = undefined, jsx_element
+// }: {
+//     arr?: undefined | t[];
+//     jsx_element: (t: t) => JSX.Element;
+// }){
+//     if(arr != undefined){
+//         return arr.map((item,index)=>{
+//             return <div key={index}>
+//                 {jsx_element(item)}
+//                 </div>
+//         })
+//     }
+//     return [<></>]
+// }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

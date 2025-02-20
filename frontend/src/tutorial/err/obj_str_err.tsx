@@ -1,7 +1,7 @@
 import React, {useState} from "react"
 
 /*
-RULE OF HOOK
+RULES OF HOOK
 1.  Only call Hooks at the top level 
 2.  Only call Hooks from React functions 
     (function that contains hook should 
