@@ -8,7 +8,14 @@ import { character_t } from "../constant";
 import { CHARACTERS } from "../constant";
 import Panel from "../../components/asset/panel";
 import { Str_to_h } from "../../utils/convert";
-import Test_usestate from "../../components/one_time_use/test_usestate";
+import Test_usestate from "../../tutorial/utils/test_usestate";
+import Opt_input from "../../components/opt/opt_input";
+import { Test_opt_input } from "./opt";
+import { OPT_NAME } from "../constant";
+import Button_click from "../../components/button/button_click";
+import { method_delete_item, method_push_arr } from "../../utils/arr_method";
+import { Test_opt_exist_arr } from "./opt";
+import Obj_str_err from "../../tutorial/error/obj_str_err";
 
 // export function Test_obj_self(){
 //     const [ss_arr, setss_arr] = useState<character_t[]>(CHARACTERS)
@@ -40,6 +47,10 @@ import Test_usestate from "../../components/one_time_use/test_usestate";
 export function Test_obj_self(){
     const [ss_arr, setss_arr] = useState<character_t[]>(CHARACTERS)
     const [ss_select, setss_select] = useState<number|undefined>(undefined)
+    const [ss_name, setss_name] = useState<number>(0)
+    const [ss_arrn, setss_arrn] = useState<number[]>([0])
+    const AVAILABLE_OPTS = CHARACTERS.map((item)=>{return item.name}) as string[]
+
     const INTERFACE_USE_STATE:a.use_state_t<character_t[]> = {
         ss:ss_arr,
         setss:setss_arr
@@ -59,6 +70,12 @@ export function Test_obj_self(){
             this_item={index}
             ss_select={{ss:ss_select, setss:setss_select}}
             jsx_additional={<>
+            {/* <Opt_input
+                opt_name={"Your name is " + OPT_NAME[ss_name] as a.opt_name}
+                available_opts={OPT_NAME}
+                ss_mode={{ss:ss_name, setss:setss_name}}
+                is_search_bar = {true}
+            /> */}
             {/* <Obj_bool
                 name={"rule64" as a.name}
                 arr={{ss:ss_arr, setss:setss_arr}}
@@ -66,7 +83,13 @@ export function Test_obj_self(){
                 attr={"is_male"}
                 ui_mode={"checkbox"}
             /> */}
-            {Obj_str(INTERFACE_OBJ_STR)}
+            {/* {Obj_str(INTERFACE_OBJ_STR)} */}
+            {/* <Opt_exist_arr 
+                    opt_name={"List" as a.opt_name}
+                    exist_opts={{ss:ss_arrn, setss:setss_arrn}}
+                    available_opts={AVAILABLE_OPTS}
+                    /> */}
+            {/* <Test_usestate input={index}/> */}
             </>}
             /></div>
     })
@@ -86,12 +109,26 @@ export function Test_obj_str(){
             opt_name:item.name as a.opt_name,
             arr:INTERFACE_USE_STATE,
             this_item:index,
-            attrs:["name","skill"],
+            attrs:["skill"],
             is_undo:false
         }
-        return <div key={index}>{Obj_str(INTERFACE_OBJ_STR)}</div>
+        return <div key={index}>
+            {/* {item.name} */}
+            {Obj_str(INTERFACE_OBJ_STR)}
+            {/* <Test_usestate arr={INTERFACE_USE_STATE}/> */}
+        </div>
     })
     return <>
+    <Button_click
+        name={"delete" as a.name}
+        func_event={(()=>{method_delete_item(0, {ss:ss_arr, setss:setss_arr})}) as a.func_event}
+    />
+    <Button_click
+        name={"create" as a.name}
+        func_event={(()=>{method_push_arr(
+            ss_arr[0], 
+            {ss:ss_arr, setss:setss_arr})}) as a.func_event}
+    />
     <Panel jsx_element={<>
         {JSX_ELEMENTS}
     </>}/>
@@ -114,6 +151,16 @@ export function Test_obj_bool(){
         </div>
     })
     return <>
+    <Button_click
+        name={"delete" as a.name}
+        func_event={(()=>{method_delete_item(0, {ss:ss_arr, setss:setss_arr})}) as a.func_event}
+    />
+    <Button_click
+        name={"create" as a.name}
+        func_event={(()=>{method_push_arr(
+            ss_arr[0], 
+            {ss:ss_arr, setss:setss_arr})}) as a.func_event}
+    />
     <Panel jsx_element={<>
         {JSX_ARR}
     </>}/>

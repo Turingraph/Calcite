@@ -21,7 +21,7 @@ import {
     Test_opt_exist_arr, // FINISH
     Test_opt_input,     // FINISH
     Test_search_bar     // FINISH
-} from "./components/search";
+} from "./components/opt";
 
 /*
 How to solve `Each child in a list should have a unique "key" prop.` ?
@@ -48,6 +48,6 @@ import Page from "../page";
 
 export default function Test(){
     return <>
-    <Test_obj_self/>
+    <Test_obj_str/>
     </>
 }
