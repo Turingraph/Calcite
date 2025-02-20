@@ -1,4 +1,4 @@
-import React , {useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import * as a from "../../type/alias"
 import Button_click from "../button/button_click";
 import Input_str from "./input_str";
@@ -19,7 +19,7 @@ export default function Input_form({
     is_undo = false
 }:input_form_t){
     const [ss_DEFAULT_ARR, setss_DEFAULT_ARR] = useState<(string|number)[]>(arr.map((item)=>{
-        if(typeof item.ss == "number"){
+        if(typeof item.ss === "number"){
             return item.ss as number
         }
         return item.ss.toString()

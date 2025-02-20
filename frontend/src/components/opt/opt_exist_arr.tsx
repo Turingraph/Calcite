@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import * as a from "../../type/alias"
 import Button_click from "../button/button_click";
 import Opt_input from "./opt_input";

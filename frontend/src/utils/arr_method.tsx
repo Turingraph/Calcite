@@ -107,7 +107,8 @@ export function method_sort_arrattr<t extends object, k extends keyof t>(
 
     // https://stackoverflow.com/questions/26871106/
     // check-if-all-elements-in-array-are-strings
-    if (arr.every(i => typeof i === "number")){
+    if (arr.every(i => typeof i === "number"))
+    {
         return arr.sort((n0, n1) => n0[attr] > n1[attr] ? -1 : 1)
     }
     return arr
@@ -125,11 +126,11 @@ export function method_exclude_arr<t>(arr_all:t[], arr_exclude:t[]){
         const CONST_ARR_EXLUDE = arr_exclude.map(
             (item)=>{return JSON.stringify(item)}
             )
-        if(CONST_ARR_EXLUDE.includes(JSON.stringify(item)) === false
-        ){
+        if(CONST_ARR_EXLUDE.includes(JSON.stringify(item)) === false)
+        {
             return item
         }
-    }).filter((item)=> item != undefined) as t[]
+    }).filter((item)=> item !== undefined) as t[]
 }
 
 export function method_include_arr<t>(arr_all:t[], arr_include:t[]){
@@ -137,11 +138,11 @@ export function method_include_arr<t>(arr_all:t[], arr_include:t[]){
         const CONST_ARR_INLUDE = arr_include.map(
             (item)=>{return JSON.stringify(item)}
             )
-        if(CONST_ARR_INLUDE.includes(JSON.stringify(item)) === true
-        ){
+        if(CONST_ARR_INLUDE.includes(JSON.stringify(item)) === true)
+        {
             return item
         }
-    }).filter((item)=> item != undefined) as t[]
+    }).filter((item)=> item !== undefined) as t[]
 }
 
 export function method_unique_arr<t>(arr:t[]){

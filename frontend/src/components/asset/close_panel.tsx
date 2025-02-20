@@ -1,4 +1,4 @@
-import React, {JSX, useEffect, useState} from "react";
+import {useState} from "react";
 import Panel, {panel_t} from "./panel";
 import Button_click from "../button/button_click";
 import * as a from "../../type/alias"

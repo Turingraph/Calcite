@@ -1,4 +1,4 @@
-import React , {useState} from "react";
+import {useState} from "react";
 import * as a from "../../type/alias"
 import Button_click from "../button/button_click";
 import Input_str from "../input/input_str";

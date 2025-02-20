@@ -44,7 +44,7 @@ export function handle_get_finite_id(arr:number[], max:number){
     let y = 0
     let i = 0
     while(i < UPDATE_ARR.length){
-        if(y == Number(i)){
+        if(y === Number(i)){
             y += 1
             i += 1
         }
@@ -64,7 +64,7 @@ export function handle_access_optmode(index:number|undefined, arr:opt_mode_uit[]
     }
     for(let i = 0; i < arr.length; i++){
         const item = arr[i]
-        if (index == item.index){
+        if (index === item.index){
             return item
         }
     }

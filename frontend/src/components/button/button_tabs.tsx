@@ -1,4 +1,4 @@
-import React, {useState, JSX} from "react";
+import {useState, JSX} from "react";
 import * as a from "../../type/alias"
 import Button_click from "./button_click";
 import Color_ui from "../asset/color_ui";
@@ -23,7 +23,7 @@ export default function Button_tabs(
         return <div key={index}>
             <Color_ui 
             jsx_element={JSX_ELEMENT} 
-            rgb={index == ss_select ? SELECT_RGB : NORMAL_RGB}
+            rgb={index === ss_select ? SELECT_RGB : NORMAL_RGB}
             /></div>
     })
     return <>

@@ -1,6 +1,5 @@
-import React, { useState, Component } from 'react';
+import { useState} from 'react';
 import { render } from 'react-dom';
-import Hello from './Hello';
 import './style.css';
 
 //  https://stackoverflow.com/questions/40209352/

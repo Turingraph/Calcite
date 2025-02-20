@@ -1,5 +1,3 @@
-import React from "react";
-
 import { 
     Test_button_click,  // FINISH
     Test_button_tabs,   // FINISH
@@ -31,6 +29,6 @@ How to solve `Each child in a list should have a unique "key" prop.` ?
 
 export default function Test(){
     return <>
-    <Test_obj_str/>
+    <Test_button_tabs/>
     </>
 }

@@ -1,6 +1,6 @@
-import React, {JSX, useState, useEffect} from "react";
+import {JSX, useState, useEffect} from "react";
 import * as a from "../../type/alias";
-import Button_click, {button_click_t} from "../button/button_click";
+import Button_click from "../button/button_click";
 import Input_str from "../input/input_str";
 import { Str_to_h } from "../../utils/convert";
 import { method_delete_item, 

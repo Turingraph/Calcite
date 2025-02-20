@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React from "react";
 import * as a from "../../type/alias"
 import {Str_to_str} from "../../utils/convert";
 
@@ -25,7 +25,7 @@ export default function Input_str(
         <input 
             type = "text"
             onChange={(e)=>HANDLE_INPUT(e)} 
-            value={index != undefined ? input.ss[index] : input.ss}
+            value={index !== undefined ? input.ss[index] : input.ss}
             placeholder={STR_PLACEHOLDER}>
         </input>
     </>
@@ -33,7 +33,7 @@ export default function Input_str(
         jsx_element = <>
         <textarea
             onChange={(e)=>HANDLE_TEXT_AREA(e)} 
-            value={index != undefined ? input.ss[index] : input.ss}
+            value={index !== undefined ? input.ss[index] : input.ss}
             placeholder={STR_PLACEHOLDER}>
         </textarea>
     </>

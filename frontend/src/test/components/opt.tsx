@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import {useState} from "react";
 import * as a from '../../type/alias'
 import Opt_input from "../../components/opt/opt_input";
 import Search_bar from "../../components/opt/search_bar";

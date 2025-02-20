@@ -1,4 +1,3 @@
-import React from "react";
 import * as a from '../../type/alias'
 import Close_panel from "../../components/asset/close_panel";
 

@@ -1,7 +1,5 @@
 import * as a from "../type/alias"
-import React, { JSX } from "react";
 import { opt_mode_uit } from "../components/opt/type";
-import { button_click_t } from "../components/button/button_click";
 
 /*
 Rule of every function in this file.
@@ -21,7 +19,7 @@ export function Num_to_ksize(input:number){
         return 3
     }
     else{
-        if (Math.floor(input) % 2 == 1){
+        if (Math.floor(input) % 2 === 1){
             return Math.floor(input)
         }
         else{
@@ -49,8 +47,8 @@ export function Num_to_255(input:number){
     return Num_to_size(input,255)
 }
 
-export function Num_to_hex(input = 0){  
-    if (input == undefined){
+export function Num_to_hex(input:number|undefined = 0){  
+    if (input === undefined){
         return "FF";
     }
     if (input > 255){
@@ -63,18 +61,18 @@ export function Num_to_hex(input = 0){
 }
 
 export function Num_to_rgb(input:undefined|number|number[]){
-    if (input == undefined){return "#FFFFFF"}
+    if (input === undefined){return "#FFFFFF"}
     else if (typeof input === "number"){
         return "#" + Num_to_hex(input)+"0000";
     }
-    else if (Array.isArray(input) == true){
-        if (input.length == 0){
+    else if (Array.isArray(input) === true){
+        if (input.length === 0){
             return "#FFFFFF"
         }
-        else if (input.length == 1){
+        else if (input.length === 1){
             return "#" + Num_to_hex(input[0]) + Num_to_hex(input[0]) + Num_to_hex(input[0]);
         }
-        else if (input.length == 2){
+        else if (input.length === 2){
             return "#" + Num_to_hex(input[0])+Num_to_hex(input[1])+"00";
         }
         else{
@@ -134,7 +132,7 @@ export function Str_to_h(
     opt_name = undefined
 }:a.opt_name_t
 ){
-    if (opt_name != undefined)
+    if (opt_name !== undefined)
     {
         return (<h1>{opt_name}</h1>)
     }
@@ -142,15 +140,6 @@ export function Str_to_h(
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-export function Str_to_num(input:string){
-    const REGEXP = /[a-zA-Z]/g;
-    if (/^\d+$/.test(input) == false){
-        // console.log("Warning: Input should contains only number.")
-        return 0;
-    }
-    return Number(input)
-}
 
 export function Str_to_default_num(
     default_input:number,
@@ -165,7 +154,7 @@ return default_input
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 export function Str_to_str(input:string){
-    if (input == undefined){
+    if (input === undefined){
         return ""
     }
     return input

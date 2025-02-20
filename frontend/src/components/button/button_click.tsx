@@ -1,4 +1,3 @@
-import React from "react";
 import * as a from "../../type/alias"
 
 export type button_click_t = {

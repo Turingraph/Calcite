@@ -44,7 +44,7 @@ export default function Opt_input(
     }) as a.handle_event<HTMLSelectElement>
     
     const JSX_OPTS = ss_show_opts.map((item,index)=>{
-        if(item != undefined){
+        if(item !== undefined){
             return (<option key={index} value={item.index}>{item.name}</option>)
         }
     }) as JSX.Element[]

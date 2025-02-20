@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import * as a from "../../type/alias";
 import { method_update_item } from "../../utils/arr_method";
 import Button_click from "../button/button_click";

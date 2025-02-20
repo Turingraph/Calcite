@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import Button_click from "../button/button_click";
 import * as a from "../../type/alias"
 import Panel from "../asset/panel";

@@ -1,4 +1,4 @@
-import React, {JSX} from "react";
+import {JSX} from "react";
 
 export type panel_t = {
     jsx_element:JSX.Element,
