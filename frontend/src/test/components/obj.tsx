@@ -9,6 +9,7 @@ import PANEL from "../../components/asset/panel";
 import { STR_TO_H } from "../../utils/convert";
 import BUTTON_CLICK from "../../components/button/button_click";
 import { method_delete_item, method_push_arr } from "../../utils/arr_method";
+import { handle_copy } from "../../utils/utils";
 
 function func_delete_arr<t>(arr:a.use_state_t<t[]>){
     if(arr.ss.length > 1){
@@ -18,7 +19,7 @@ function func_delete_arr<t>(arr:a.use_state_t<t[]>){
 function func_create_arr<t>(arr:a.use_state_t<t[]>){
     if(arr.ss.length > 0){
         method_push_arr(
-            JSON.parse(JSON.stringify(arr.ss[0])),
+            handle_copy(arr.ss[0]),
             arr)
     }
 }

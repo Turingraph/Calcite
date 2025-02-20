@@ -75,3 +75,11 @@ export function handle_identity<t>(x:t){
     const Y = x
     return Y
 }
+
+// https://stackoverflow.com/questions/586182/
+// https://medium.com/analytics-vidhya/
+// 3-ways-to-copy-by-value-any-composite-data-type-in-javascript-ca3c730e4d2f
+
+export function handle_copy<t>(input:t){
+    return JSON.parse(JSON.stringify(input))
+}
