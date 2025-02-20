@@ -8,7 +8,7 @@ export type panel_t = {
     h?:undefined|number,
 }
 
-export default function Panel(
+export default function PANEL(
 {
     jsx_element,                     
     x_scroll_bar = false,                  

@@ -1,9 +1,9 @@
 import {useState} from "react";
-import Panel, {panel_t} from "./panel";
-import Button_click from "../button/button_click";
+import PANEL, {panel_t} from "./panel";
+import BUTTON_CLICK from "../button/button_click";
 import * as a from "../../type/alias"
 
-export default function Close_panel({
+export default function CLOSE_PANEL({
     name,
     jsx_element,                     
     x_scroll_bar = false,                  
@@ -14,10 +14,10 @@ export default function Close_panel({
     name:a.name
 }){
     const [ss_open_ui, setss_open_ui] = useState<boolean>(false)
-    const JSX_BUTTON_ON = <Button_click name={"open " + name as a.name} func_event={(()=>{setss_open_ui(true)}) as a.func_event}/>
-    const JSX_BUTTON_OFF= <Button_click name={"close " + name as a.name} func_event={(()=>{setss_open_ui(false)}) as a.func_event}/>
+    const JSX_BUTTON_ON = <BUTTON_CLICK name={"open " + name as a.name} func_event={(()=>{setss_open_ui(true)}) as a.func_event}/>
+    const JSX_BUTTON_OFF= <BUTTON_CLICK name={"close " + name as a.name} func_event={(()=>{setss_open_ui(false)}) as a.func_event}/>
     const JSX_PANEL = <>
-    <Panel
+    <PANEL
         jsx_element={jsx_element}
         x_scroll_bar={x_scroll_bar}
         y_scroll_bar={y_scroll_bar}

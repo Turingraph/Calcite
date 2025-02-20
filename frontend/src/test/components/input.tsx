@@ -1,9 +1,9 @@
 import React, {useState, JSX} from "react";
 import * as a from '../../type/alias'
-import Input_combine from "../../components/input/input_combine";
+import INPUT_COMBINE from "../../components/input/input_combine";
 import { opt_input_uit } from "../../components/opt/type";
-import Input_form from "../../components/input/input_form";
-import Input_str from "../../components/input/input_str";
+import INPUT_FORM from "../../components/input/input_form";
+import INPUT_STR from "../../components/input/input_str";
 
 const DEFAULT_INPUT:(string|number)[] = [
     0.0001,
@@ -16,7 +16,7 @@ const DEFAULT_INPUT:(string|number)[] = [
 const OPT_MEDIA_ARR = ["3B1B", "Khan anademy", "Brilliant", "Shoulder of Giant", "Learn by Doing"]
 const OPT_LEVEL = ["Beginner", "Elementary", "Intermediate", "Advance", "Genius"]
 
-export function Test_input_combine(){
+export function TEST_INPUT_COMBINE(){
     const [ss_i, setss_i] = useState<number>(DEFAULT_INPUT[0] as number)
     const [ss_j, setss_j] = useState<number>(DEFAULT_INPUT[1] as number)
     const [ss_k, setss_k] = useState<number>(DEFAULT_INPUT[2] as number)
@@ -43,7 +43,7 @@ export function Test_input_combine(){
             ss:ss_scientist, setss:setss_scientist} as a.use_state_uit<string|number>,
     ]
 
-    const JSX_INPUT_FORM:JSX.Element = <Input_form
+    const JSX_INPUT_FORM:JSX.Element = <INPUT_FORM
         opt_name={"Vector Space" as a.opt_name}
         arr={INTERFACE_INPUT_UIT_ARR}
         func_activate = {(()=>{alert("Alexander Hamilton")}) as a.func_event}
@@ -64,7 +64,7 @@ export function Test_input_combine(){
             is_search_bar:false
         }
     ]
-    const JSX_COMBINE_INPUT:JSX.Element = <Input_combine
+    const JSX_COMBINE_INPUT:JSX.Element = <INPUT_COMBINE
         opt_name={"Vector Space" as a.opt_name}
         input_str={INTERFACE_INPUT_UIT_ARR}
         input_opt={INTERFACE_OPT_UIT_ARR}
@@ -77,10 +77,10 @@ export function Test_input_combine(){
     </>
 }
 
-export function Test_input_str(){
+export function TEST_INPUT_STR(){
     const [ss_song, setss_song] = useState<string>("R.I.P. Duolingo")
     return <>
-        <Input_str
+        <INPUT_STR
             opt_name={"What is your favorite songs ?" as a.opt_name}
             input={{ss:ss_song, setss:setss_song}}
         />

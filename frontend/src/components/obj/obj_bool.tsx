@@ -1,6 +1,6 @@
 import * as a from "../../type/alias";
 import { method_update_item } from "../../utils/arr_method";
-import Button_click from "../button/button_click";
+import BUTTON_CLICK from "../button/button_click";
 
 export type obj_bool_uit<
     t extends object,
@@ -12,7 +12,7 @@ export type obj_bool_uit<
         ui_mode?:"button"|"checkbox"
 }
 
-export default function Obj_bool<
+export default function OBJ_BOOL<
     t extends object,
     k extends keyof t>({
     name = "select" as a.name,
@@ -33,7 +33,7 @@ export default function Obj_bool<
     }
     const HANDLE = ((e:any)=>{func_select()})
     let jsx_element = <>
-    <Button_click 
+    <BUTTON_CLICK 
         name={name as a.name} 
         func_event={HANDLE as a.func_event}
     />

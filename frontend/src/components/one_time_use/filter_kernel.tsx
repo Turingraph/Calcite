@@ -1,11 +1,11 @@
 import {useEffect, useState} from "react";
-import Button_click from "../button/button_click";
+import BUTTON_CLICK from "../button/button_click";
 import * as a from "../../type/alias"
-import Panel from "../asset/panel";
-import Input_form from "../input/input_form";
-import {Str_to_h} from "../../utils/convert";
+import PANEL from "../asset/panel";
+import INPUT_FORM from "../input/input_form";
+import {STR_TO_H} from "../../utils/convert";
 import { method_update_item } from "../../utils/arr_method";
-import Opt_input from "../opt/opt_input";
+import OPT_INPUT from "../opt/opt_input";
 
 // img_process/kernel_2d.py/def sharp_kernel_2d
 
@@ -77,7 +77,7 @@ export function func_line_kernel(arr:number[], is_x:boolean, center_px:number){
 }
 
 
-export default function Filter_kernel({
+export default function FILTER_KERNEL({
     ss_list,
     ss_mode,
     ss_kernel
@@ -134,7 +134,7 @@ export default function Filter_kernel({
             setss:setss_scalar
         },
     ] 
-    const JSX_LISTS = <Input_form
+    const JSX_LISTS = <INPUT_FORM
     opt_name={"Modify Filter Kernel List Manually" as a.opt_name}
     arr={(ss_list.ss.map((item,index)=>{
         return {
@@ -162,13 +162,13 @@ export default function Filter_kernel({
         }
     }
     return <>
-        <Str_to_h opt_name={"Filter Kernel" as a.opt_name}/>
-        <Input_form
+        <STR_TO_H opt_name={"Filter Kernel" as a.opt_name}/>
+        <INPUT_FORM
             opt_name={"Create Filter Kernel List" as a.opt_name}
             arr={LET_ARR as unknown as a.use_state_uit<number|string>[]}
         />
-        <Panel jsx_element={JSX_LISTS}/>
-        <Opt_input
+        <PANEL jsx_element={JSX_LISTS}/>
+        <OPT_INPUT
             opt_name={"Kernel Mode" as a.opt_name}
             available_opts={[
                 "rectangle",
@@ -180,7 +180,7 @@ export default function Filter_kernel({
             ss_mode={ss_mode}
             is_search_bar={false}
         />
-        <Button_click
+        <BUTTON_CLICK
             name={"Apply Kernel" as a.name}
             func_event={(()=>{func_set_kernel}) as a.func_event}
         />

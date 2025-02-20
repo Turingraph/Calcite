@@ -1,8 +1,8 @@
 import React from "react";
 import * as a from "../../type/alias"
-import {Str_to_str} from "../../utils/convert";
+import {str_to_str} from "../../utils/convert";
 
-export default function Input_str(
+export default function INPUT_STR(
 {
     opt_name = undefined,
     input,
@@ -16,7 +16,7 @@ export default function Input_str(
 }
 ){
     // https://www.geeksforgeeks.org/how-to-handle-input-forms-with-usestate-hook-in-react/
-    const STR_PLACEHOLDER = Str_to_str(opt_name as string);
+    const STR_PLACEHOLDER = str_to_str(opt_name as string);
     const HANDLE_INPUT = ((e: React.ChangeEvent<HTMLInputElement>) => {
             input.setss(e.target.value)}) as a.handle_event<HTMLInputElement>
     const HANDLE_TEXT_AREA = ((e: React.ChangeEvent<HTMLTextAreaElement>) => {

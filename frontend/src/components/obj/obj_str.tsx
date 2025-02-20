@@ -1,8 +1,8 @@
 import {useState} from "react";
 import * as a from "../../type/alias"
-import Button_click from "../button/button_click";
-import Input_str from "../input/input_str";
-import {Str_to_h, Str_to_default_num} from "../../utils/convert";
+import BUTTON_CLICK from "../button/button_click";
+import INPUT_STR from "../input/input_str";
+import {STR_TO_H, str_to_default_num} from "../../utils/convert";
 import { method_update_item, method_update_item_attr, method_include_arr } from "../../utils/arr_method";
 
 export type obj_str_uit<t extends object> = {
@@ -24,7 +24,7 @@ export function func_get_attr<t extends object>(item:t, attrs:string[]){
     return CONST_ATTR
 }
 
-export default function Obj_str<
+export default function OBJ_STR<
     t extends object>({
         opt_name = undefined,       
         arr  ,   
@@ -53,13 +53,13 @@ export default function Obj_str<
             let let_input:number|string = (input_arr[index])
             if (typeof CONST_ITEM[item] === 'number'){
                 if (typeof ss_DEFAULT_ARR[index] === 'number'){
-                    let_input = Str_to_default_num(
+                    let_input = str_to_default_num(
                         ss_DEFAULT_ARR[index] as number,
                         let_input as string
                     ) as number
                 }
                 else{
-                    let_input = Str_to_default_num(
+                    let_input = str_to_default_num(
                         0,
                         let_input as string
                     ) as number
@@ -76,8 +76,8 @@ export default function Obj_str<
     }
     const JSX_INPUTS = CONST_ATTR.map((item,index)=>{
         return <div key={index}>
-            <Str_to_h opt_name={item as a.opt_name}/>
-            <Input_str
+            <STR_TO_H opt_name={item as a.opt_name}/>
+            <INPUT_STR
                 opt_name={item as a.opt_name}
                 input={{
                     ss:ss_texts[index],
@@ -99,17 +99,17 @@ export default function Obj_str<
         setss_texts(UPDATE_TEXTS)
     }
     return <>
-    <Str_to_h opt_name={opt_name}/>
+    <STR_TO_H opt_name={opt_name}/>
     {JSX_INPUTS}
-    <Button_click
+    <BUTTON_CLICK
         name={"apply change" as a.name}
         func_event={(()=>{func_set_item_attr(ss_texts as typeof CONST_ITEM[number][])}) as a.func_event}
     />
-    {is_undo ? <Button_click
+    {is_undo ? <BUTTON_CLICK
         name={"cancel change" as a.name}
         func_event={(()=>{func_set_cancel()}) as a.func_event}
     /> : <></>}
-    <Button_click
+    <BUTTON_CLICK
         name={"reset all" as a.name}
         func_event={(()=>{func_set_item_attr(ss_DEFAULT_ARR as typeof CONST_ITEM[number][])}) as a.func_event}
     />

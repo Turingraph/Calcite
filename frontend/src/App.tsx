@@ -1,5 +1,5 @@
 import './App.css';
-import Test from './test';
+import TEST from './test';
 
 function App() {
   // return (
@@ -21,7 +21,7 @@ function App() {
   //   </div>
   // );
   return <>
-  <Test/>
+  <TEST/>
   </>
 }
 

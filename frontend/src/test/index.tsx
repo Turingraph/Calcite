@@ -1,24 +1,24 @@
 import { 
-    Test_button_click,  // FINISH
-    Test_button_tabs,   // FINISH
-    Test_button_history // FINISH
+    TEST_BUTTON_CLICK,  // FINISH
+    TEST_BUTTON_TABS,   // FINISH
+    TEST_BUTTON_HISTORY // FINISH
 } from "./components/button";
 
 import { 
-    Test_obj_self,       // FINISH
-    Test_obj_str,        // FINISH
-    Test_obj_bool        // FINISH
+    TEST_OBJ_SELF,       // FINISH
+    TEST_OBJ_STR,        // FINISH
+    TEST_OBJ_BOOL        // FINISH
 } from "./components/obj";
 
 import {
-    Test_input_combine, // FINISH
-    Test_input_str,     // FINISH
+    TEST_INPUT_COMBINE, // FINISH
+    TEST_INPUT_STR,     // FINISH
 } from "./components/input";
 
 import { 
-    Test_opt_exist_arr, // FINISH
-    Test_opt_input,     // FINISH
-    Test_search_bar     // FINISH
+    TEST_OPT_EXIST_ARR, // FINISH
+    TEST_OPT_INPUT,     // FINISH
+    TEST_SEARCH_BAR     // FINISH
 } from "./components/opt";
 
 /*
@@ -27,8 +27,8 @@ How to solve `Each child in a list should have a unique "key" prop.` ?
     understanding-unique-keys-for-array-children-in-react-js
 */
 
-export default function Test(){
+export default function TEST(){
     return <>
-    <Test_button_tabs/>
+    <TEST_BUTTON_TABS/>
     </>
 }

@@ -1,9 +1,9 @@
 import React from "react";
 import * as a from "../../type/alias";
 import { opt_input_uit } from "../opt/type";
-import {Str_to_h} from "../../utils/convert";
-import Opt_input from "../opt/opt_input";
-import Input_form from "./input_form";
+import {STR_TO_H} from "../../utils/convert";
+import OPT_INPUT from "../opt/opt_input";
+import INPUT_FORM from "./input_form";
 
 export type input_combine_uit = {
     opt_name?:a.opt_name,
@@ -13,7 +13,7 @@ export type input_combine_uit = {
     is_undo?:boolean
 }
 
-export default function Input_combine({
+export default function INPUT_COMBINE({
     opt_name,
     input_str,
     input_opt,
@@ -23,7 +23,7 @@ export default function Input_combine({
     let jsx_input_opt = [<></>]
     if (input_opt !== undefined){
         jsx_input_opt = input_opt.map((item:opt_input_uit)=>{
-            return <Opt_input
+            return <OPT_INPUT
                 opt_name={item.opt_name}
                 available_opts={item.available_opts}
                 ss_mode={item.ss_mode}
@@ -41,14 +41,14 @@ export default function Input_combine({
                 setss:item.setss
             }
         })
-        jsx_input_str = <Input_form
+        jsx_input_str = <INPUT_FORM
             arr = {let_input_str}
             func_activate={func_activate}
             is_undo={is_undo}
         />
     }
     return <>
-        <Str_to_h opt_name={opt_name as a.opt_name}/>
+        <STR_TO_H opt_name={opt_name as a.opt_name}/>
         {jsx_input_opt}
         {jsx_input_str}
     </>

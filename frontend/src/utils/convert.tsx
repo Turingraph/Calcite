@@ -14,7 +14,7 @@ export const HEX_ARR = [
     'C', 'D', 'E', 'F'
 ]
 
-export function Num_to_ksize(input:number){
+export function num_to_ksize(input:number){
     if(Math.floor(input) < 3){
         return 3
     }
@@ -28,7 +28,7 @@ export function Num_to_ksize(input:number){
     }
 }
 
-export function Num_to_size(input:number|undefined, maxval:number){
+export function num_to_size(input:number|undefined, maxval:number){
     if (input === undefined){
         return maxval
     }
@@ -43,11 +43,11 @@ export function Num_to_size(input:number|undefined, maxval:number){
     }
 }
 
-export function Num_to_255(input:number){
-    return Num_to_size(input,255)
+export function num_to_255(input:number){
+    return num_to_size(input,255)
 }
 
-export function Num_to_hex(input:number|undefined = 0){  
+export function num_to_hex(input:number|undefined = 0){  
     if (input === undefined){
         return "FF";
     }
@@ -60,23 +60,23 @@ export function Num_to_hex(input:number|undefined = 0){
     return (HEX_ARR[input/16] + HEX_ARR[input%16]);
 }
 
-export function Num_to_rgb(input:undefined|number|number[]){
+export function num_to_rgb(input:undefined|number|number[]){
     if (input === undefined){return "#FFFFFF"}
     else if (typeof input === "number"){
-        return "#" + Num_to_hex(input)+"0000";
+        return "#" + num_to_hex(input)+"0000";
     }
     else if (Array.isArray(input) === true){
         if (input.length === 0){
             return "#FFFFFF"
         }
         else if (input.length === 1){
-            return "#" + Num_to_hex(input[0]) + Num_to_hex(input[0]) + Num_to_hex(input[0]);
+            return "#" + num_to_hex(input[0]) + num_to_hex(input[0]) + num_to_hex(input[0]);
         }
         else if (input.length === 2){
-            return "#" + Num_to_hex(input[0])+Num_to_hex(input[1])+"00";
+            return "#" + num_to_hex(input[0])+num_to_hex(input[1])+"00";
         }
         else{
-            return "#" + Num_to_hex(input[0])+Num_to_hex(input[1]) + Num_to_hex(input[2]);
+            return "#" + num_to_hex(input[0])+num_to_hex(input[1]) + num_to_hex(input[2]);
         }
     }
     else{
@@ -109,7 +109,7 @@ On the other hands when the Hook is updated, every <JSX_Element .../> updated,
 which prevent error
 */
 
-// export function Opt_to_jsx_arr<t>({
+// export function OPT_TO_JSX_ARR<t>({
 //     arr = undefined, jsx_element
 // }: {
 //     arr?: undefined | t[];
@@ -127,7 +127,7 @@ which prevent error
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-export function Str_to_h(
+export function STR_TO_H(
 {
     opt_name = undefined
 }:a.opt_name_t
@@ -141,7 +141,7 @@ export function Str_to_h(
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-export function Str_to_default_num(
+export function str_to_default_num(
     default_input:number,
     input:string
 ){
@@ -153,7 +153,7 @@ return default_input
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-export function Str_to_str(input:string){
+export function str_to_str(input:string|a.name|a.opt_name){
     if (input === undefined){
         return ""
     }
@@ -162,7 +162,7 @@ export function Str_to_str(input:string){
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-export function Strarr_to_optmode(arr:string[]){
+export function strarr_to_optmode(arr:string[]){
     return arr.map((item, index)=>{
         return {
             name:item as a.name,
@@ -173,7 +173,7 @@ export function Strarr_to_optmode(arr:string[]){
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-export function Numarr_to_strarr(numarr:number[], strarr:string[]){
+export function numarr_to_strarr(numarr:number[], strarr:string[]){
     return numarr.map((item)=>{
         return strarr[item]
     })
@@ -181,7 +181,7 @@ export function Numarr_to_strarr(numarr:number[], strarr:string[]){
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-export function Item_to_index<t>(arr:t[],item:t){
+export function item_to_index<t>(arr:t[],item:t){
     for(let i = 0; i < arr.length; i++){
         if(arr[i] === item){
             return i

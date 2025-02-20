@@ -1,13 +1,13 @@
 import {JSX, useState, useEffect} from "react";
 import * as a from "../../type/alias";
-import Button_click from "../button/button_click";
-import Input_str from "../input/input_str";
-import { Str_to_h } from "../../utils/convert";
+import BUTTON_CLICK from "../button/button_click";
+import INPUT_STR from "../input/input_str";
+import { STR_TO_H } from "../../utils/convert";
 import { method_delete_item, 
     method_copy_item,
     method_update_item_attr } from '../../utils/arr_method'
 
-export default function Obj_self<t extends {name:a.name}>({
+export default function OBJ_SELF<t extends {name:a.name}>({
     arr,
     this_item,
     ss_select,
@@ -52,15 +52,15 @@ export default function Obj_self<t extends {name:a.name}>({
     }
     if (ss_ui_mode === "normal"){
         return <>
-            <Button_click
+            <BUTTON_CLICK
                 name={"rename" as a.name}
                 func_event={(()=>{func_select("rename")}) as a.func_event}
             />
-            <Button_click
+            <BUTTON_CLICK
                 name={"copy" as a.name}
                 func_event={(()=>{method_copy_item(this_item,arr)}) as a.func_event}
             />
-            <Button_click
+            <BUTTON_CLICK
                 name={"x" as a.name}
                 func_event={(()=>{func_select("delete")}) as a.func_event}
             />
@@ -69,16 +69,16 @@ export default function Obj_self<t extends {name:a.name}>({
     }
     else if (ss_ui_mode === "rename" && ss_select.ss === this_item){
         return <>
-        <Str_to_h opt_name={"rename " + ss_name + " as ?" as a.name}/>
-        <Input_str
+        <STR_TO_H opt_name={"rename " + ss_name + " as ?" as a.name}/>
+        <INPUT_STR
             opt_name={"rename" as a.opt_name}
             input={{ss:ss_name, setss:setss_name}}
         />
-            <Button_click
+            <BUTTON_CLICK
                 name={"yes" as a.name}
                 func_event={(()=>{func_rename()}) as a.func_event}
             />
-            <Button_click
+            <BUTTON_CLICK
                 name={"no" as a.name}
                 func_event={(()=>{func_reset()}) as a.func_event}
             />
@@ -89,12 +89,12 @@ export default function Obj_self<t extends {name:a.name}>({
         // https://stackoverflow.com/questions/15292278/
         // how-do-i-remove-an-array-item-in-typescript
         return <>
-            <Str_to_h opt_name={"Do you want to delete \"" + arr.ss[this_item].name + "\"" as a.opt_name}/>
-            <Button_click
+            <STR_TO_H opt_name={"Do you want to delete \"" + arr.ss[this_item].name + "\"" as a.opt_name}/>
+            <BUTTON_CLICK
                 name={"yes" as a.name}
                 func_event={(()=>{func_delete()}) as a.func_event}
             />
-            <Button_click
+            <BUTTON_CLICK
                 name={"no" as a.name}
                 func_event={(()=>{func_reset()}) as a.func_event}
             />

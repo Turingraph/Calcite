@@ -15,12 +15,12 @@ REFERENCE
 How does this not violate Rule of Hook ?
 
 ```
-export function Test_obj_str_01(){
+export function TEST_01(){
     const [ss_arr, setss_arr] = useState<character_t[]>(CHARACTERS)
     const JSX_ELEMENTS:JSX.Element[] = ss_arr.map((item,index)=>{
         return <div key={index}>
-            {Obj_str_ctrl()} // Error
-            <Obj_str_ctrl_00/>          // works as expected
+            {DONT_USE_HOOK_IN_FUNC_00()} // error
+            <DONT_USE_HOOK_IN_FUNC_00/>          // works as expected
         </div>
     })
     return <>
@@ -34,11 +34,11 @@ export function Test_obj_str_01(){
 Given that React update the UI (all JSX.Element) everytime when the Hook is updated,
 
 It is implies that
--   <Obj_str_ctrl_00/> is updated, thus it does not violate React
--   {Obj_str_ctrl()} is not updated when the hook is updated.
+-   <DONT_USE_HOOK_IN_FUNC_00/> is updated, thus it does not violate React
+-   {DONT_USE_HOOK_IN_FUNC_00()} is not updated when the hook is updated.
 */
 
-export function Obj_str_ctrl_00<t>(){
+export function DONT_USE_HOOK_IN_FUNC_00<t>(){
     const [ss_texts, setss_texts] = useState<string>("")
     return <>
     <p>Hello</p>
@@ -49,11 +49,11 @@ export function Obj_str_ctrl_00<t>(){
 How does this not violate Rule of Hook ?
 
 ```
-export function Test_obj_str_01(){
+export function TEST_01(){
     const [ss_arr, setss_arr] = useState<character_t[]>(CHARACTERS)
     const JSX_ELEMENTS:JSX.Element[] = ss_arr.map((item,index)=>{
         return <div key={index}>
-            <Obj_str_ctrl_01 arr={ss_arr}/>  // works as expected
+            <DONT_USE_HOOK_IN_FUNC_01 arr={ss_arr}/>  // works as expected
         </div>
     })
     return <>
@@ -68,7 +68,7 @@ This JSX components does not have hook and receive the input arr which
 updated everytime when ss_arr is updated, thus it works as expected.
 */
 
-export function Obj_str_ctrl_01<t>({
+export function DONT_USE_HOOK_IN_FUNC_01<t>({
     arr
 }:{
     arr:t[]
@@ -82,12 +82,12 @@ export function Obj_str_ctrl_01<t>({
 How does this violate Rule of Hook ?
 
 ```
-export function Test_obj_str_01(){
+export function TEST_01(){
     const [ss_arr, setss_arr] = useState<character_t[]>(CHARACTERS)
     const JSX_ELEMENTS:JSX.Element[] = ss_arr.map((item,index)=>{
         return <div key={index}>
-            {Obj_str_err({arr:ss_arr})}  // Error
-            <Obj_str_err arr={ss_arr}/>  // works as expected
+            {DONT_USE_HOOK_IN_FUNC_02({arr:ss_arr})}  // error
+            <DONT_USE_HOOK_IN_FUNC_02 arr={ss_arr}/>  // works as expected
         </div>
     })
     return <>
@@ -98,12 +98,12 @@ export function Test_obj_str_01(){
 }
 ```
 
-{Obj_str_err({arr:ss_arr})} cause error because of the same reason why 
-{Obj_str_ctrl()} cause error.
+{DONT_USE_HOOK_IN_FUNC_02({arr:ss_arr})} cause error because of the same reason why 
+{DONT_USE_HOOK_IN_FUNC_00()} cause error.
 */
 
 
-export function Obj_str_err<t>({
+export function DONT_USE_HOOK_IN_FUNC_02<t>({
     arr
 }:{
     arr:t[]
@@ -118,4 +118,8 @@ export function Obj_str_err<t>({
 LESSON
 
 Always call JSX Element with Hook as JSX Element, not as Function.
+
+NOTE THAT 
+-   We discover the bugs when try to test 
+    `src/components/obj/obj_str.tsx` in `src/test/obj.tsx/`
 */

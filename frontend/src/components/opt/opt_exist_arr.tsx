@@ -1,19 +1,19 @@
 import {useEffect, useState} from "react";
 import * as a from "../../type/alias"
-import Button_click from "../button/button_click";
-import Opt_input from "./opt_input";
-import {Strarr_to_optmode, Str_to_h, Item_to_index} from "../../utils/convert";
+import BUTTON_CLICK from "../button/button_click";
+import OPT_INPUT from "./opt_input";
+import {strarr_to_optmode, STR_TO_H, item_to_index} from "../../utils/convert";
 import { method_exclude_arr, method_push_arr, method_delete_item, method_sort_arrattr, method_unique_arr} from '../../utils/arr_method'
-import Panel from "../asset/panel";
+import PANEL from "../asset/panel";
 import { opt_mode_uit } from "./type";
 import { handle_access_optmode } from "../../utils/utils";
 
-export function func_exclude_opt(available_opts:string[], exist_opts:number[]){
+function func_exclude_opt(available_opts:string[], exist_opts:number[]){
     // https://stackoverflow.com/questions/36829184/
     // how-can-i-convert-a-set-to-an-array-in-typescript
     available_opts  = method_unique_arr(available_opts)
     exist_opts      = method_unique_arr(exist_opts)
-    const CONST_AVAILABLE_OPTS = method_sort_arrattr(Strarr_to_optmode(available_opts), "index")
+    const CONST_AVAILABLE_OPTS = method_sort_arrattr(strarr_to_optmode(available_opts), "index")
     const CONST_EXIST_OPTS = method_sort_arrattr(exist_opts.map((item)=>{
         return {
             name:available_opts[item] as a.name,
@@ -23,7 +23,7 @@ export function func_exclude_opt(available_opts:string[], exist_opts:number[]){
     return method_exclude_arr(CONST_AVAILABLE_OPTS, CONST_EXIST_OPTS) as opt_mode_uit[]
 }
 
-export function func_default_newobj_index(available_opts:opt_mode_uit[], length:number){
+function func_default_newobj_index(available_opts:opt_mode_uit[], length:number){
     const ARR = [...available_opts]
     method_sort_arrattr(ARR, "index")
     if (ARR.length > length){
@@ -32,7 +32,7 @@ export function func_default_newobj_index(available_opts:opt_mode_uit[], length:
     return undefined
 }
 
-export default function Opt_exist_arr(
+export default function OPT_EXIST_ARR(
     {
         opt_name = undefined as a.opt_name,
         exist_opts,
@@ -82,7 +82,7 @@ export default function Opt_exist_arr(
                 ss_available_opts,
             )
             if(INPUT !== undefined){
-                const NEXT_INDEX = Item_to_index(ss_available_opts, INPUT)
+                const NEXT_INDEX = item_to_index(ss_available_opts, INPUT)
                 method_push_arr(INPUT.index, exist_opts)
                 if(NEXT_INDEX !== undefined){
                     if(ss_available_opts.length <= 1){
@@ -106,21 +106,21 @@ export default function Opt_exist_arr(
     }
     const JSX_ARR = exist_opts.ss.map((item,index)=>{
         return <div key={index}>
-            <Str_to_h opt_name={available_opts[item] as a.opt_name}/>
-            <Button_click name={"delete" as a.name} func_event={(()=>{
+            <STR_TO_H opt_name={available_opts[item] as a.opt_name}/>
+            <BUTTON_CLICK name={"delete" as a.name} func_event={(()=>{
                 func_delete_exist_opts(index)
             }) as a.func_event}/>
         </div>
     })
     return <>
-        <Str_to_h opt_name={opt_name}/>
-        <Opt_input 
+        <STR_TO_H opt_name={opt_name}/>
+        <OPT_INPUT 
             opt_name={"Select Mode" as a.opt_name} 
             available_opts={ss_available_opts} 
             ss_mode={{ss:ss_newobj_index, setss:setss_newobj_index} as a.use_state_t<number>}
             is_search_bar={is_search_bar}
         />
-        <Button_click 
+        <BUTTON_CLICK 
             name={(
                 handle_access_optmode(
                     ss_newobj_index,
@@ -133,11 +133,11 @@ export default function Opt_exist_arr(
             ) as a.name}
             func_event={(()=>{func_push_exist_opts()}) as a.func_event}
         />
-        <Button_click 
+        <BUTTON_CLICK 
             name={("Reset") as a.name}
             func_event={(()=>{func_reset()}) as a.func_event}
         />
-        <Panel
+        <PANEL
             jsx_element={<>{JSX_ARR}</>}
             x_scroll_bar={shape.x_scroll_bar}
             y_scroll_bar={shape.y_scroll_bar}

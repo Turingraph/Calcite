@@ -1,9 +1,9 @@
 import * as a from '../../type/alias'
-import Close_panel from "../../components/asset/close_panel";
+import CLOSE_PANEL from "../../components/asset/close_panel";
 
-export function Test_close_panel(){
+export function TEST_CLOSE_PANEL(){
     return <>
-    <Close_panel 
+    <CLOSE_PANEL 
         name={"Jotaro" as a.name} 
         jsx_element={<h1>Star Platinum</h1>}
     />

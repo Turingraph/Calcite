@@ -1,8 +1,8 @@
 import {useEffect, useState} from "react";
 import * as a from "../../type/alias"
-import Button_click from "../button/button_click";
-import Input_str from "./input_str";
-import {Str_to_h, Str_to_default_num} from "../../utils/convert";
+import BUTTON_CLICK from "../button/button_click";
+import INPUT_STR from "./input_str";
+import {STR_TO_H, str_to_default_num} from "../../utils/convert";
 import { method_update_item } from "../../utils/arr_method";
 
 export type input_form_t = {
@@ -12,7 +12,7 @@ export type input_form_t = {
     is_undo?:boolean
 }
 
-export default function Input_form({
+export default function INPUT_FORM({
     opt_name = undefined,
     arr,
     func_activate = (()=>undefined) as a.func_event,
@@ -42,7 +42,7 @@ export default function Input_form({
         // how-to-resolve-usestate-set-method-is-not-reflecting-change-immediately/
         arr.map((item, index)=>{
             if(typeof ss_DEFAULT_ARR[index] === "number" && typeof item.ss === "number"){
-                const CONST_INPUT = Str_to_default_num(
+                const CONST_INPUT = str_to_default_num(
                     ss_DEFAULT_ARR[index] as number,
                     ss_texts[index]
                 )
@@ -65,8 +65,8 @@ export default function Input_form({
         // https://stackoverflow.com/questions/28329382/
         // understanding-unique-keys-for-array-children-in-react-js
         return <div key={index}>
-        <Str_to_h opt_name={item.opt_name}/>
-        <Input_str
+        <STR_TO_H opt_name={item.opt_name}/>
+        <INPUT_STR
             opt_name={undefined}
             input={{ 
                 ss: ss_texts, 
@@ -82,17 +82,17 @@ export default function Input_form({
         </div>
     })
     return <>
-        <Str_to_h opt_name={opt_name}/>
+        <STR_TO_H opt_name={opt_name}/>
         {JSX_ELEMENTS}
-        <Button_click
+        <BUTTON_CLICK
             name={"apply change" as a.name}
             func_event={(()=>{func_set_ok()}) as a.func_event}
         />
-        {is_undo ? <Button_click
+        {is_undo ? <BUTTON_CLICK
             name={"cancel change" as a.name}
             func_event={(()=>{func_set_cancel()}) as a.func_event}
         /> : <></>}
-        <Button_click
+        <BUTTON_CLICK
             name={"reset all" as a.name}
             func_event={(()=>{func_set_default()}) as a.func_event}
         />

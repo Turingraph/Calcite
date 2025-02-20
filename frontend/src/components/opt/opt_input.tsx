@@ -1,8 +1,8 @@
 import React, { useState, JSX} from "react";
 import * as a from "../../type/alias"
-import {Str_to_h} from "../../utils/convert";
+import {STR_TO_H} from "../../utils/convert";
 import { opt_mode_uit, opt_input_uit } from "./type"
-import Search_bar from "./search_bar";
+import SEARCH_BAR from "./search_bar";
 
 //  https://stackoverflow.com/questions/40209352/
 //  how-to-specify-optal-default-props-with-typescript-for-stateless-functiona
@@ -20,7 +20,7 @@ function func_init(available_opts:opt_mode_uit[]|string[]){
     return available_opts
 }
 
-export default function Opt_input(
+export default function OPT_INPUT(
 {
     opt_name = undefined,
     available_opts,
@@ -50,7 +50,7 @@ export default function Opt_input(
     }) as JSX.Element[]
     let jsx_search_bar = <></>
     if (is_search_bar===true){
-        jsx_search_bar= <Search_bar
+        jsx_search_bar= <SEARCH_BAR
             opt_name={undefined as a.opt_name}
             read_only_arr={
                 available_opts.map((item,index)=>{
@@ -71,7 +71,7 @@ export default function Opt_input(
         />
     }
     return (<>
-        <Str_to_h opt_name={opt_name}/>
+        <STR_TO_H opt_name={opt_name}/>
         {jsx_search_bar}
         <select value={ss_mode.ss} onChange={(e)=>handle_event(e)}>
             {JSX_OPTS}

@@ -5,7 +5,7 @@ export type button_click_t = {
     func_event:a.func_event
 }
 
-export default function Button_click(
+export default function BUTTON_CLICK(
 {
     name = "button" as a.name,
     func_event,

@@ -4,7 +4,7 @@
 // https://stackoverflow.com/questions/76755226/
 // include-information-about-the-values-type-in-keyof-type
 
-export function Summary<t extends object, k extends keyof t, j>({
+export function SUMMARY<t extends object, k extends keyof t, j>({
   data,
   property,
   input
@@ -33,5 +33,3 @@ type eee = {
   name:string,
   age:number
 }
-
-Summary

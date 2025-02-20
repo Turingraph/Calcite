@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import * as a from "../../type/alias"
-import Input_str from "../input/input_str";
+import INPUT_STR from "../input/input_str";
 import { opt_mode_uit } from "./type";
 
 // How to make function accept prop based on attr
@@ -10,7 +10,7 @@ import { opt_mode_uit } from "./type";
 // Do not use `ref` and `key` as prop name.
 // https://legacy.reactjs.org/warnings/special-props.html
 
-export default function Search_bar<t extends object, k extends keyof t>(
+export default function SEARCH_BAR<t extends object, k extends keyof t>(
 {
     opt_name = undefined,
     read_only_arr,
@@ -37,7 +37,7 @@ export default function Search_bar<t extends object, k extends keyof t>(
     },[ss_search_text])
 
     return (<>
-        <Input_str
+        <INPUT_STR
             opt_name={opt_name}
             input = {{
                 ss: ss_search_text,

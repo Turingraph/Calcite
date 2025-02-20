@@ -1,9 +1,9 @@
 import {useEffect, useState} from "react";
 import * as a from "../../type/alias";
-import Button_click from "./button_click";
-import Opt_input from "../opt/opt_input";
+import BUTTON_CLICK from "./button_click";
+import OPT_INPUT from "../opt/opt_input";
 
-export default function Button_history<t>({
+export default function BUTTON_HISTORY<t>({
     history,
 }:{history:a.use_state_t<a.history<t>>}
 ){
@@ -35,9 +35,9 @@ export default function Button_history<t>({
                 setss_mode(history.ss.current + 1)
         }
     }
-    const JSX_PREV_BUTTON = <Button_click name={"<=" as a.name} func_event={(()=>{prev_func()}) as a.func_event}/>
-    const JSX_NEXT_BUTTON = <Button_click name={"=>" as a.name} func_event={(()=>{next_func()}) as a.func_event}/>
-    const JSX_HISTORY_BUTTON = <Opt_input
+    const JSX_PREV_BUTTON = <BUTTON_CLICK name={"<=" as a.name} func_event={(()=>{prev_func()}) as a.func_event}/>
+    const JSX_NEXT_BUTTON = <BUTTON_CLICK name={"=>" as a.name} func_event={(()=>{next_func()}) as a.func_event}/>
+    const JSX_HISTORY_BUTTON = <OPT_INPUT
         opt_name={"History" as a.opt_name}
         available_opts={history.ss.commit}
         ss_mode={{ss:ss_mode, setss:setss_mode} as a.use_state_t<number>}

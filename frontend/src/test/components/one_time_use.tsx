@@ -1,6 +1,6 @@
 
 
-export function Test_one_time_use(){
+export function TEST_ONE_TIME_USE(){
     return <>
     </>
 }
