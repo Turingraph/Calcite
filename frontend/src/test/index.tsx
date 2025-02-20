@@ -21,6 +21,8 @@ import {
     TEST_SEARCH_BAR     // FINISH
 } from "./components/opt";
 
+import TUTORIAL_USEREDUCER from "../tutorial/react_tutorial/tutorial_usereducer";
+
 /*
 How to solve `Each child in a list should have a unique "key" prop.` ?
 *   https://stackoverflow.com/questions/28329382/
@@ -29,6 +31,6 @@ How to solve `Each child in a list should have a unique "key" prop.` ?
 
 export default function TEST(){
     return <>
-    <TEST_OPT_EXIST_ARR/>
+    <TUTORIAL_USEREDUCER/>
     </>
 }

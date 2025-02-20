@@ -2,7 +2,7 @@ import {useState} from "react";
 import * as a from "../../type/alias"
 import BUTTON_CLICK from "../../components/button/button_click";
 
-export default function USESTATE<t extends object>({
+export default function TUTORIAL_USESTATE<t extends object>({
 }:{
 }){
     const [ss, setss] = useState<number>(0)
