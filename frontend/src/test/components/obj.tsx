@@ -15,7 +15,7 @@ import { OPT_NAME } from "../constant";
 import Button_click from "../../components/button/button_click";
 import { method_delete_item, method_push_arr } from "../../utils/arr_method";
 import { Test_opt_exist_arr } from "./opt";
-import Obj_str_err from "../../tutorial/error/obj_str_err";
+import {Obj_str_ctrl_00, Obj_str_ctrl_01, Obj_str_err} from "../../tutorial/err/obj_str_err";
 
 // export function Test_obj_self(){
 //     const [ss_arr, setss_arr] = useState<character_t[]>(CHARACTERS)
@@ -89,7 +89,7 @@ export function Test_obj_self(){
                     exist_opts={{ss:ss_arrn, setss:setss_arrn}}
                     available_opts={AVAILABLE_OPTS}
                     /> */}
-            {/* <Test_usestate input={index}/> */}
+            {/* <Obj_str_ctrl arr={ss_arr}/> */}
             </>}
             /></div>
     })
@@ -100,34 +100,98 @@ export function Test_obj_self(){
 
 export function Test_obj_str(){
     const [ss_arr, setss_arr] = useState<character_t[]>(CHARACTERS)
+    function func_delete_arr(){
+        if(ss_arr.length > 1){
+            method_delete_item(0, {ss:ss_arr, setss:setss_arr})
+        }
+    }
+    function func_create_arr(){
+        if(ss_arr.length > 0){
+            method_push_arr(
+                ss_arr[0], 
+                {ss:ss_arr, setss:setss_arr})
+        }
+    }
     const INTERFACE_USE_STATE:a.use_state_t<character_t[]> = {
         ss:ss_arr,
         setss:setss_arr
     }
     const JSX_ELEMENTS:JSX.Element[] = ss_arr.map((item,index)=>{
-        const INTERFACE_OBJ_STR:obj_str_uit<character_t> = {
-            opt_name:item.name as a.opt_name,
-            arr:INTERFACE_USE_STATE,
-            this_item:index,
-            attrs:["skill"],
-            is_undo:false
-        }
         return <div key={index}>
-            {/* {item.name} */}
-            {Obj_str(INTERFACE_OBJ_STR)}
-            {/* <Test_usestate arr={INTERFACE_USE_STATE}/> */}
+            <Obj_str
+                opt_name={item.name as a.opt_name}
+                arr={INTERFACE_USE_STATE}
+                this_item={index}
+                attrs={["skill"]}
+                is_undo={false}
+                />
         </div>
     })
     return <>
     <Button_click
         name={"delete" as a.name}
-        func_event={(()=>{method_delete_item(0, {ss:ss_arr, setss:setss_arr})}) as a.func_event}
+        func_event={(()=>{func_delete_arr()}) as a.func_event}
     />
     <Button_click
         name={"create" as a.name}
-        func_event={(()=>{method_push_arr(
-            ss_arr[0], 
-            {ss:ss_arr, setss:setss_arr})}) as a.func_event}
+        func_event={(()=>{func_create_arr()}) as a.func_event}
+    />
+    <Panel jsx_element={<>
+        {JSX_ELEMENTS}
+    </>}/>
+    </>
+}
+
+export function Test_obj_str_01(){
+    const [ss_arr, setss_arr] = useState<character_t[]>(CHARACTERS)
+    function func_delete_arr(){
+        if(ss_arr.length > 1){
+            method_delete_item(0, {ss:ss_arr, setss:setss_arr})
+        }
+    }
+    function func_create_arr(){
+        if(ss_arr.length > 1){
+            method_push_arr(
+                ss_arr[0], 
+                {ss:ss_arr, setss:setss_arr})
+        }
+    }
+    const JSX_ELEMENTS:JSX.Element[] = ss_arr.map((item,index)=>{
+        return <div key={index}>
+            {/* {Obj_str_ctrl_00()} 
+                Error
+                Have Hook
+            */}
+            {/* {Obj_str_ctrl_01({arr:ss_arr})} 
+                Not Error
+                No Hook
+            */}
+            {/* {Obj_str_err({arr:ss_arr})} 
+                Error
+                Have Hook
+            */}
+            {/* <Obj_str_ctrl_00/> 
+                Not Error
+                Have Hook
+            */}
+            {/* <Obj_str_ctrl_01 arr={ss_arr}/> 
+                Not Error
+                No Hook
+            */}
+            {/* <Obj_str_err arr={ss_arr}/> 
+                Not Error
+                Have Hook
+            */}
+        </div>
+    })
+    return <>
+    <Button_click
+        name={"delete" as a.name}
+        func_event={(()=>{func_delete_arr()}) as a.func_event}
+    />
+    <Button_click
+        name={"create" as a.name}
+        func_event={(()=>{func_create_arr()}) as a.func_event}
     />
     <Panel jsx_element={<>
         {JSX_ELEMENTS}
