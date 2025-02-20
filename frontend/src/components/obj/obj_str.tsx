@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import * as a from "../../type/alias"
 import BUTTON_CLICK from "../button/button_click";
 import INPUT_STR from "../input/input_str";
@@ -13,7 +13,7 @@ export type obj_str_uit<t extends object> = {
     is_undo?:boolean,
 }
 
-export function func_get_attr<t extends object>(item:t, attrs:string[]){
+function func_get_attr<t extends object>(item:t, attrs:string[]){
     // https://www.geeksforgeeks.org/typescript-array-keys-method/
     const CONST_ITEM : { [key: string]: any } = item
     const ARR_ALL = Object.keys(CONST_ITEM).map((item)=>{return item as string})
@@ -24,6 +24,13 @@ export function func_get_attr<t extends object>(item:t, attrs:string[]){
     return CONST_ATTR
 }
 
+function func_set_default<t extends object>(arr:t[], this_item:number, attrs:string[]){
+    const CONST_ATTR = func_get_attr(arr[this_item], attrs)
+    return CONST_ATTR.map((item)=>{
+        return (arr[this_item] as { [key: string]: any })[item]
+    }) as t[]
+}
+
 export default function OBJ_STR<
     t extends object>({
         opt_name = undefined,       
@@ -32,17 +39,21 @@ export default function OBJ_STR<
         attrs  ,  
         is_undo = false
 }:obj_str_uit<t>){
-    const [ss_DEFAULT_ARR, setss_DEFAULT_ARR] = useState<unknown[]>(()=>{
-        const CONST_ATTR = func_get_attr(arr.ss[this_item], attrs)
-        return CONST_ATTR.map((item, index)=>{
-            return (arr.ss[this_item] as { [key: string]: any })[item]
-        })})
+    const [ss_default_arr, setss_default_arr] = useState<unknown[]>(
+        func_set_default(arr.ss, this_item, attrs)
+    )
 
-    const [ss_texts, setss_texts] = useState<string[]>(()=>{
-        const CONST_ATTR = func_get_attr(arr.ss[this_item], attrs)
-        return CONST_ATTR.map((item, index)=>{
-            return (arr.ss[this_item] as { [key: string]: any })[item]
-        })})
+    const [ss_texts, setss_texts] = useState<string[]>(
+        func_set_default(arr.ss, this_item, attrs) as unknown as string[]
+    )
+
+    useEffect(()=>{
+        setss_texts(func_set_default(arr.ss, this_item, attrs) as unknown as string[])
+    }, [arr.ss])
+
+    useEffect(()=>{
+        setss_default_arr(func_set_default(arr.ss, this_item, attrs))
+    },[ss_texts, arr.ss])
 
     // https://stackoverflow.com/questions/57438198/
     // typescript-element-implicitly-has-an-any-type-because-expression-of-type-st
@@ -52,9 +63,9 @@ export default function OBJ_STR<
         CONST_ATTR.map((item, index)=>{
             let let_input:number|string = (input_arr[index])
             if (typeof CONST_ITEM[item] === 'number'){
-                if (typeof ss_DEFAULT_ARR[index] === 'number'){
+                if (typeof ss_default_arr[index] === 'number'){
                     let_input = str_to_default_num(
-                        ss_DEFAULT_ARR[index] as number,
+                        ss_default_arr[index] as number,
                         let_input as string
                     ) as number
                 }
@@ -111,7 +122,7 @@ export default function OBJ_STR<
     /> : <></>}
     <BUTTON_CLICK
         name={"reset all" as a.name}
-        func_event={(()=>{func_set_item_attr(ss_DEFAULT_ARR as typeof CONST_ITEM[number][])}) as a.func_event}
+        func_event={(()=>{func_set_item_attr(ss_default_arr as typeof CONST_ITEM[number][])}) as a.func_event}
     />
     </>
 }

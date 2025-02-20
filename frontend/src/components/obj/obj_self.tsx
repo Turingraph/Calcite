@@ -27,7 +27,6 @@ export default function OBJ_SELF<t extends {name:a.name}>({
     })
     useEffect(()=>{
         setss_name(arr.ss[this_item].name as string)
-        console.log(arr.ss)
     },[arr.ss])
     function func_reset(){
         ss_select.setss(undefined)

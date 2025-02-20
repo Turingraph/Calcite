@@ -51,7 +51,9 @@ export function TEST_OBJ_SELF(){
                 is_undo={false}
             />
             </>}
-            /></div>
+            />
+            <hr/>
+            </div>
     })
     return <>
     {JSX_ARR}
@@ -69,6 +71,7 @@ export function TEST_OBJ_STR(){
                 attrs={["skill"]}
                 is_undo={false}
                 />
+            <hr/>
         </div>
     })
     return <>
@@ -144,6 +147,7 @@ export function TEST_OBJ_BOOL(){
             attr={"is_male"}
             ui_mode={"checkbox"}
             />
+            <hr/>
         </div>
     })
     return <>

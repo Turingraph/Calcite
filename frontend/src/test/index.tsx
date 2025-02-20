@@ -1,12 +1,12 @@
 import { 
-    TEST_BUTTON_CLICK,  // FINISH
-    TEST_BUTTON_TABS,   // FINISH
-    TEST_BUTTON_HISTORY // FINISH
+    TEST_BUTTON_CLICK,  // OK
+    TEST_BUTTON_TABS,   // OK
+    TEST_BUTTON_HISTORY // OK
 } from "./components/button";
 
 import { 
-    TEST_OBJ_SELF,       // FINISH
-    TEST_OBJ_STR,        // FINISH
+    TEST_OBJ_SELF,       // OK
+    TEST_OBJ_STR,        // OK
     TEST_OBJ_BOOL        // FINISH
 } from "./components/obj";
 
@@ -29,6 +29,6 @@ How to solve `Each child in a list should have a unique "key" prop.` ?
 
 export default function TEST(){
     return <>
-    <TEST_BUTTON_TABS/>
+    <TEST_OPT_EXIST_ARR/>
     </>
 }
