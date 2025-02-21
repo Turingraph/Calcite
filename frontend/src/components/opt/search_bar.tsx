@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import * as a from "../../type/alias"
 import INPUT_STR from "../input/input_str";
 import { opt_mode_uit } from "./type";
@@ -24,15 +24,18 @@ export default function SEARCH_BAR<t extends object, k extends keyof t>(
     attr:k
 }){
     const [ss_search_text, setss_search_text] = useState<string>("")
+    const ss_read_only_arr = useRef(read_only_arr)
+    const ss_attr = useRef(attr)
     useEffect(()=>{
         // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/arr/filter
-        const UPDATE_SEARCH_TEXT = read_only_arr.map((item,index) => {
-                if ((item[attr] as string).includes(ss_search_text) === true){
+        const UPDATE_SEARCH_TEXT = ss_read_only_arr.current.map((item,index) => {
+                if ((item[ss_attr.current] as string).includes(ss_search_text) === true){
                     return {
-                        name:item[attr] as string as a.name,
+                        name:item[ss_attr.current] as string as a.name,
                         index:index
                     }
                 }
+                return undefined
             }) as opt_mode_uit[]
         select_arr.setss(UPDATE_SEARCH_TEXT)
     },[ss_search_text])
