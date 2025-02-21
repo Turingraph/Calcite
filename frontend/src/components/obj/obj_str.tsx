@@ -99,7 +99,7 @@ export default function OBJ_STR<
     const CONST_ATTR = func_get_attr(arr.ss[this_item], attrs)
     const COPY_ARR = [...arr.ss]
     function func_set_item_attr(input_arr:string[]){
-        CONST_ATTR.map((item, index)=>{
+        CONST_ATTR.forEach((item, index)=>{
             let let_input:number|string = (input_arr[index])
             if (typeof CONST_ITEM[item] === 'number'){
                 if (typeof ss_default_arr[index] === 'number'){
@@ -121,7 +121,6 @@ export default function OBJ_STR<
                 item as typeof CONST_ITEM[number],
                 let_input
             )
-            return item
         })
         setss_texts({
             arr: COPY_ARR, this_item: this_item, attrs: attrs,

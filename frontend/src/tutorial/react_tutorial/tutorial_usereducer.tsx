@@ -71,7 +71,7 @@ function reducer_today(ss_today: date_t, action: time_machine_t) {
         action.unit)
 }
 
-export default function TUTORIAL_USEREDUCER() {
+function TUTORIAL_USEREDUCER() {
   const [ss_today, setss_today] = useReducer(reducer_today, {day:0, month:0, year:0} as date_t);
 
   return (

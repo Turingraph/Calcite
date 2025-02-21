@@ -38,7 +38,7 @@ It is implies that
 -   {DONT_USE_HOOK_IN_FUNC_00()} is not updated when the hook is updated.
 */
 
-export function DONT_USE_HOOK_IN_FUNC_00<t>(){
+function DONT_USE_HOOK_IN_FUNC_00<t>(){
     const [ss_texts, setss_texts] = useState<string>("")
     return <>
     <p>Hello</p>
@@ -68,7 +68,7 @@ This JSX components does not have hook and receive the input arr which
 updated everytime when ss_arr is updated, thus it works as expected.
 */
 
-export function DONT_USE_HOOK_IN_FUNC_01<t>({
+function DONT_USE_HOOK_IN_FUNC_01<t>({
     arr
 }:{
     arr:t[]
@@ -102,8 +102,7 @@ export function TEST_01(){
 {DONT_USE_HOOK_IN_FUNC_00()} cause error.
 */
 
-
-export function DONT_USE_HOOK_IN_FUNC_02<t>({
+function DONT_USE_HOOK_IN_FUNC_02<t>({
     arr
 }:{
     arr:t[]
