@@ -73,6 +73,8 @@ export default function OBJ_STR<
         func_set_default(arr.ss, this_item, attrs) as unknown as string[]
     )
 
+    // https://react.dev/reference/react/useLayoutEffect
+    
     useLayoutEffect(()=>{
         const COPY_ARR = [...arr.ss]
         setss_texts({
