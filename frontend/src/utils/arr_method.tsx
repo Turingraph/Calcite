@@ -123,6 +123,10 @@ export function method_sort_arr<t>(arr:t[]){
     return arr.sort((n0, n1) => n0 > n1 ? -1 : 1)
 }
 
+export function method_no_undefined<t>(arr:t[]){
+    return arr.filter((item)=> item !== undefined) as t[]
+}
+
 export function method_exclude_arr<t>(arr_all:t[], arr_exclude:t[]){
     const CONST_ARR_EXLUDE = arr_exclude.map((item)=>{
         return JSON.stringify(item)

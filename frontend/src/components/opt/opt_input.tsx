@@ -1,4 +1,4 @@
-import React, { useState, JSX} from "react";
+import React, { useState, useEffect, JSX} from "react";
 import * as a from "../../type/alias"
 import {STR_TO_H} from "../../utils/convert";
 import { opt_mode_uit, opt_input_uit } from "./type"
@@ -37,6 +37,9 @@ export default function OPT_INPUT(
     const [ss_show_opts, setss_show_opts] = useState<opt_mode_uit[]>(
         func_init(available_opts) as opt_mode_uit[]
     )
+    useEffect(()=>{
+        setss_show_opts(func_init(available_opts) as opt_mode_uit[])
+    }, [available_opts])
     // https://stackoverflow.com/questions/40676343/
     // typescript-input-onchange-event-target-value
     const handle_event = ((e: React.ChangeEvent<HTMLSelectElement >) => {
@@ -47,6 +50,7 @@ export default function OPT_INPUT(
         if(item !== undefined){
             return (<option key={index} value={item.index}>{item.name}</option>)
         }
+        return undefined
     }) as JSX.Element[]
     let jsx_search_bar = <></>
     if (is_search_bar===true){

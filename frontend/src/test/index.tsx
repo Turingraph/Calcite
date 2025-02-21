@@ -16,13 +16,13 @@ import {
 } from "./components/input";
 
 import {
-    TEST_OPT_EXIST_ARR, // FINISH
-    TEST_OPT_INPUT,     // -
-    TEST_SEARCH_BAR     // -
+    TEST_OPT_EXIST_ARR, // OK
+    TEST_OPT_INPUT,     // OK
+    TEST_SEARCH_BAR     // OK
 } from "./components/opt";
 
 export default function TEST(){
     return <>
-    <TEST_INPUT_COMBINE/>
+    <TEST_SEARCH_BAR/>
     </>
 }
