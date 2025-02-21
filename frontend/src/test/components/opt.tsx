@@ -15,6 +15,7 @@ export function TEST_OPT_EXIST_ARR(){
         opt_name={"List" as a.opt_name}
         exist_opts={{ss:ss_arr, setss:setss_arr}}
         available_opts={AVAILABLE_OPTS}
+        is_search_bar={true}
         />
 }
 
@@ -23,7 +24,7 @@ export function TEST_OPT_INPUT(){
 
     return <>
     <OPT_INPUT
-        opt_name={"Your name is " + OPT_NAME[ss_name] as a.opt_name}
+        opt_name={"Your name is " + OPT_NAME[ss_name] as a.opt_name }
         available_opts={OPT_NAME}
         ss_mode={{ss:ss_name, setss:setss_name}}
         is_search_bar = {true}

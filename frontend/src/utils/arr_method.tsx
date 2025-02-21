@@ -123,6 +123,8 @@ export function method_sort_arr<t>(arr:t[]){
     return arr.sort((n0, n1) => n0 > n1 ? -1 : 1)
 }
 
+// https://stackoverflow.com/questions/70926558/
+// filter-wont-filter-undefined
 export function method_no_undefined<t>(arr:t[]){
     return arr.filter((item)=> item !== undefined) as t[]
 }

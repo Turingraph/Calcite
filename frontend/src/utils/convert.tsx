@@ -130,7 +130,9 @@ which prevent error
 export function STR_TO_H(
 {
     opt_name = undefined
-}:a.opt_name_t
+}:{
+    opt_name:a.opt_name
+}
 ){
     if (opt_name !== undefined)
     {

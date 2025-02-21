@@ -19,17 +19,6 @@ export type handle_event<input_mode> = nominal<
     (e:React.ChangeEvent<input_mode>)=>void
 >
 
-export type opt_name_t = {
-    opt_name:opt_name
-}
-
-// https://stackoverflow.com/questions/42055039
-// /typescript-make-variable-act-as-pointer-to-another-variable
-
-export type value_t<t> = {
-    value:t
-}
-
 export type use_state_t<t> = {
     ss:t,
     setss:React.Dispatch<

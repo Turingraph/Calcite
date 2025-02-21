@@ -4,6 +4,7 @@ import {STR_TO_H} from "../../utils/convert";
 import { opt_mode_uit, opt_input_uit } from "./type"
 import SEARCH_BAR from "./search_bar";
 import "./index.css"
+import { method_no_undefined } from "../../utils/arr_method";
 
 //  https://stackoverflow.com/questions/40209352/
 //  how-to-specify-optal-default-props-with-typescript-for-stateless-functiona
@@ -39,20 +40,27 @@ export default function OPT_INPUT(
         func_init(available_opts) as opt_mode_uit[]
     )
     useEffect(()=>{
-        setss_show_opts(func_init(available_opts) as opt_mode_uit[])
-    }, [available_opts])
+        let i = 0
+        while(i < ss_show_opts.length){
+            if(ss_show_opts[i] !== undefined){
+                ss_mode.setss(i)
+                i = ss_show_opts.length
+            }
+            i+=1
+        }
+    },[ss_show_opts, ss_mode])
     // https://stackoverflow.com/questions/40676343/
     // typescript-input-onchange-event-target-value
     const handle_event = ((e: React.ChangeEvent<HTMLSelectElement >) => {
         ss_mode.setss(+e.target.value)
     }) as a.handle_event<HTMLSelectElement>
     
-    const JSX_OPTS = ss_show_opts.map((item,index)=>{
+    const JSX_OPTS = method_no_undefined(ss_show_opts.map((item,index)=>{
         if(item !== undefined){
             return (<option key={index} value={item.index}>{item.name}</option>)
         }
         return undefined
-    }) as JSX.Element[]
+    })) as JSX.Element[]
     let jsx_search_bar = <></>
     if (is_search_bar===true){
         jsx_search_bar= <SEARCH_BAR
