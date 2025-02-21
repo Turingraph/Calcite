@@ -52,7 +52,8 @@ export type attr_of_t<t, v> = keyof {
     [p in keyof t as t[p] extends v? p: never]: any
 }
 
-// https://stackoverflow.com/questions/42678891/typescript-character-type
+// https://stackoverflow.com/questions/42678891/
+// typescript-character-type
 export type char_t = '!'|'"'|'#'|'$'|
     '%'|'&'|"'"|'('|')'|'*'|'+'|','|
     '-'|'.'|'/'|'0'|'1'|'2'|'3'|'4'|

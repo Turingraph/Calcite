@@ -31,6 +31,6 @@ How to solve `Each child in a list should have a unique "key" prop.` ?
 
 export default function TEST(){
     return <>
-    <TUTORIAL_USEREDUCER/>
+    <TEST_OBJ_SELF/>
     </>
 }

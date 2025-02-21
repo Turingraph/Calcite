@@ -76,3 +76,9 @@ export const BOXES_DEFAULT_INPUT = [
     0,
     0,
 ]
+
+export type arr_attr_t<t extends object> = {
+    arr:t[], 
+    this_item:number, 
+    attrs:string[]
+}

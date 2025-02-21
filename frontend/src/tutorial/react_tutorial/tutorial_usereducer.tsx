@@ -63,16 +63,16 @@ function func_update_time(time:date_t, size:number, unit:"day"|"month"|"year"|"r
     }
 }
 
-function reducer(ss_today: date_t, action: time_machine_t) {
-    let you_cant_modify_the_hook_directly = handle_copy(ss_today)
+function reducer_today(ss_today: date_t, action: time_machine_t) {
+    const YOU_CANT_MODIFY_THE_HOOK_DIRECTLY = handle_copy(ss_today)
     return func_update_time(
-        you_cant_modify_the_hook_directly, 
+        YOU_CANT_MODIFY_THE_HOOK_DIRECTLY, 
         action.size, 
         action.unit)
 }
 
 export default function TUTORIAL_USEREDUCER() {
-  const [ss_today, setss_today] = useReducer(reducer, {day:0, month:0, year:0});
+  const [ss_today, setss_today] = useReducer(reducer_today, {day:0, month:0, year:0} as date_t);
 
   return (
     <>
