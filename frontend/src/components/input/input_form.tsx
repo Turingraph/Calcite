@@ -4,6 +4,7 @@ import BUTTON_CLICK from "../button/button_click";
 import INPUT_STR from "./input_str";
 import {STR_TO_H, str_to_default_num} from "../../utils/convert";
 import { method_update_item } from "../../utils/arr_method";
+import "./index.css"
 
 export type input_form_t = {
     opt_name?:a.opt_name|undefined

@@ -1,6 +1,7 @@
 import * as a from "../../type/alias";
 import { method_update_item } from "../../utils/arr_method";
 import BUTTON_CLICK from "../button/button_click";
+import "./index.css"
 
 export type obj_bool_uit<
     t extends object,

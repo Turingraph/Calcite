@@ -2,6 +2,7 @@ import {useState} from "react";
 import PANEL, {panel_t} from "./panel";
 import BUTTON_CLICK from "../button/button_click";
 import * as a from "../../type/alias"
+import "./index.css"
 
 export default function CLOSE_PANEL({
     name,

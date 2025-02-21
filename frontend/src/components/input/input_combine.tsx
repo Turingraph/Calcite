@@ -4,6 +4,7 @@ import { opt_input_uit } from "../opt/type";
 import {STR_TO_H} from "../../utils/convert";
 import OPT_INPUT from "../opt/opt_input";
 import INPUT_FORM from "./input_form";
+import "./index.css"
 
 export type input_combine_uit = {
     opt_name?:a.opt_name,

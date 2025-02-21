@@ -2,6 +2,7 @@ import {useEffect, useState} from "react";
 import * as a from "../../type/alias";
 import BUTTON_CLICK from "./button_click";
 import OPT_INPUT from "../opt/opt_input";
+import "./index.css"
 
 export default function BUTTON_HISTORY<t>({
     history,

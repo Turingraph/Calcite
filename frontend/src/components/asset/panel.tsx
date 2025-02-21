@@ -1,4 +1,5 @@
 import {JSX} from "react";
+import "./index.css"
 
 export type panel_t = {
     jsx_element:JSX.Element,

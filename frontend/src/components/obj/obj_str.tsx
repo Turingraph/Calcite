@@ -5,6 +5,7 @@ import INPUT_STR from "../input/input_str";
 import {STR_TO_H, str_to_default_num} from "../../utils/convert";
 import { method_update_item, method_update_item_attr, method_include_arr } from "../../utils/arr_method";
 import { arr_attr_t } from "../../type/obj";
+import "./index.css"
 
 export type obj_str_uit<t extends object> = {
     opt_name?:a.opt_name

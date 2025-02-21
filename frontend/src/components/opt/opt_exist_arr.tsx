@@ -7,6 +7,7 @@ import { method_exclude_arr, method_push_arr, method_delete_item, method_sort_ar
 import PANEL from "../asset/panel";
 import { opt_mode_uit } from "./type";
 import { handle_access_optmode } from "../../utils/utils";
+import "./index.css"
 
 function func_exclude_opt(available_opts:string[], exist_opts:number[]){
     // https://stackoverflow.com/questions/36829184/

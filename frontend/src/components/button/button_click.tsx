@@ -1,4 +1,5 @@
 import * as a from "../../type/alias"
+import "./index.css"
 
 export type button_click_t = {
     name?:a.name,

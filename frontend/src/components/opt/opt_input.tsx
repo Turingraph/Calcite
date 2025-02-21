@@ -3,6 +3,7 @@ import * as a from "../../type/alias"
 import {STR_TO_H} from "../../utils/convert";
 import { opt_mode_uit, opt_input_uit } from "./type"
 import SEARCH_BAR from "./search_bar";
+import "./index.css"
 
 //  https://stackoverflow.com/questions/40209352/
 //  how-to-specify-optal-default-props-with-typescript-for-stateless-functiona

@@ -1,5 +1,6 @@
 import {JSX} from "react";
 import {num_to_rgb} from "../../utils/convert";
+import "./index.css"
 
 export default function COLOR_UI({
     jsx_element,

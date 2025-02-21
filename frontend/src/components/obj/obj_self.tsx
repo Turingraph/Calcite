@@ -6,6 +6,7 @@ import { STR_TO_H } from "../../utils/convert";
 import { method_delete_item, 
     method_copy_item,
     method_update_item_attr } from '../../utils/arr_method'
+import "./index.css"
 
 export default function OBJ_SELF<t extends {name:a.name}>({
     arr,

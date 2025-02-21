@@ -23,6 +23,6 @@ import {
 
 export default function TEST(){
     return <>
-    <TEST_SEARCH_BAR/>
+    <TEST_BUTTON_CLICK/>
     </>
 }
