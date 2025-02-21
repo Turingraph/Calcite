@@ -84,8 +84,6 @@ export default function OBJ_STR<
     }, [arr.ss, attrs, this_item])
 
     useLayoutEffect(()=>{
-        console.log("ss_arr_length", ss_arr_length)
-        console.log("arr.ss.length", arr.ss.length)
         if(ss_arr_length.current !== arr.ss.length){
             const COPY_ARR = [...arr.ss]
             setss_default_arr({arr:COPY_ARR, this_item:this_item, attrs:attrs})

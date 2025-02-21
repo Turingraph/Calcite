@@ -7,28 +7,22 @@ import {
 import { 
     TEST_OBJ_SELF,       // OK
     TEST_OBJ_STR,        // OK
-    TEST_OBJ_BOOL        // FINISH
+    TEST_OBJ_BOOL        // OK
 } from "./components/obj";
 
 import {
-    TEST_INPUT_COMBINE, // FINISH
-    TEST_INPUT_STR,     // FINISH
+    TEST_INPUT_COMBINE, // OK
+    TEST_INPUT_STR,     // OK
 } from "./components/input";
 
-import { 
+import {
     TEST_OPT_EXIST_ARR, // FINISH
-    TEST_OPT_INPUT,     // FINISH
-    TEST_SEARCH_BAR     // FINISH
+    TEST_OPT_INPUT,     // -
+    TEST_SEARCH_BAR     // -
 } from "./components/opt";
-
-/*
-How to solve `Each child in a list should have a unique "key" prop.` ?
-*   https://stackoverflow.com/questions/28329382/
-    understanding-unique-keys-for-array-children-in-react-js
-*/
 
 export default function TEST(){
     return <>
-    <TEST_OBJ_SELF/>
+    <TEST_INPUT_COMBINE/>
     </>
 }

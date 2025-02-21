@@ -148,6 +148,12 @@ Meaning
 30. `this_item` = index of item inside the input array
 31. `key` = unique index of HTML DOM element.
 
+```
+How to solve `Each child in a list should have a unique "key" prop.` ?
+*   https://stackoverflow.com/questions/28329382/
+    understanding-unique-keys-for-array-children-in-react-js
+```
+
 # Additional Learning Resource
 
 1.	STOP! Don't Name That File Without First Watching This Video.

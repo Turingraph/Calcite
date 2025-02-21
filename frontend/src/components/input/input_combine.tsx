@@ -22,13 +22,15 @@ export default function INPUT_COMBINE({
 }:input_combine_uit){
     let jsx_input_opt = [<></>]
     if (input_opt !== undefined){
-        jsx_input_opt = input_opt.map((item:opt_input_uit)=>{
-            return <OPT_INPUT
+        jsx_input_opt = input_opt.map((item:opt_input_uit, index:number)=>{
+            return <div key={index}>
+                <OPT_INPUT
                 opt_name={item.opt_name}
                 available_opts={item.available_opts}
                 ss_mode={item.ss_mode}
                 is_search_bar={item.is_search_bar}
                 />
+                </div>
         })
     }
     let jsx_input_str = <></>

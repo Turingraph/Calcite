@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import {useEffect, useState, useRef} from "react";
 import * as a from "../../type/alias"
 import BUTTON_CLICK from "../button/button_click";
 import INPUT_STR from "./input_str";
@@ -18,7 +18,7 @@ export default function INPUT_FORM({
     func_activate = (()=>undefined) as a.func_event,
     is_undo = false
 }:input_form_t){
-    const [ss_DEFAULT_ARR, setss_DEFAULT_ARR] = useState<(string|number)[]>(arr.map((item)=>{
+    const ss_DEFAULT_ARR = useRef(arr.map((item)=>{
         if(typeof item.ss === "number"){
             return item.ss as number
         }
@@ -32,18 +32,18 @@ export default function INPUT_FORM({
         })
         setss_texts(UPDATE_TEXT)
         setss_update(0)
-    }, [ss_update])
+    }, [ss_update, arr])
     function func_set_default(){
-        arr.map((item, index)=>{item.setss(ss_DEFAULT_ARR[index])})
-        setss_texts(ss_DEFAULT_ARR as string[])
+        arr.forEach((item, index)=>{item.setss(ss_DEFAULT_ARR.current[index])})
+        setss_texts(ss_DEFAULT_ARR.current as string[])
     }
     function func_set_ok(){
         // https://www.geeksforgeeks.org/
         // how-to-resolve-usestate-set-method-is-not-reflecting-change-immediately/
-        arr.map((item, index)=>{
-            if(typeof ss_DEFAULT_ARR[index] === "number" && typeof item.ss === "number"){
+        arr.forEach((item, index)=>{
+            if(typeof ss_DEFAULT_ARR.current[index] === "number" && typeof item.ss === "number"){
                 const CONST_INPUT = str_to_default_num(
-                    ss_DEFAULT_ARR[index] as number,
+                    ss_DEFAULT_ARR.current[index] as number,
                     ss_texts[index]
                 )
                 item.setss(CONST_INPUT)
