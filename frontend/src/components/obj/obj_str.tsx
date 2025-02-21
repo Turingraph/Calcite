@@ -121,6 +121,7 @@ export default function OBJ_STR<
                 item as typeof CONST_ITEM[number],
                 let_input
             )
+            return item
         })
         setss_texts({
             arr: COPY_ARR, this_item: this_item, attrs: attrs,
