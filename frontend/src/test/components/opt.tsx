@@ -15,7 +15,6 @@ export function TEST_OPT_EXIST_ARR(){
         opt_name={"List" as a.opt_name}
         exist_opts={{ss:ss_arr, setss:setss_arr}}
         available_opts={AVAILABLE_OPTS}
-        is_search_bar={true}
         />
 }
 
