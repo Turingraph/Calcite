@@ -2,7 +2,7 @@ import {useEffect, useState, useRef} from "react";
 import * as a from "../../type/alias"
 import BUTTON_CLICK from "../button/button_click";
 import OPT_INPUT from "./opt_input";
-import {strarr_to_optmode, STR_TO_H, item_to_index} from "../../utils/convert";
+import {str_to_optmode, STR_TO_H, item_to_index} from "../../utils/convert";
 import { method_exclude_arr, method_push_arr, method_delete_item, method_sort_arrattr, method_unique_arr} from '../../utils/arr_method'
 import PANEL from "../asset/panel";
 import { opt_mode_uit } from "./type";
@@ -14,7 +14,7 @@ function func_exclude_opt(available_opts:string[], exist_opts:number[]){
     // how-can-i-convert-a-set-to-an-array-in-typescript
     available_opts  = method_unique_arr(available_opts)
     exist_opts      = method_unique_arr(exist_opts)
-    const CONST_AVAILABLE_OPTS = method_sort_arrattr(strarr_to_optmode(available_opts), "index")
+    const CONST_AVAILABLE_OPTS = method_sort_arrattr(str_to_optmode(available_opts), "index")
     const CONST_EXIST_OPTS = method_sort_arrattr(exist_opts.map((item)=>{
         return {
             name:available_opts[item] as a.name,
@@ -38,7 +38,6 @@ export default function OPT_EXIST_ARR(
         opt_name = undefined as a.opt_name,
         exist_opts,
         available_opts,
-        is_search_bar = false,
         shape = {
             x_scroll_bar: false,
             y_scroll_bar: false,
@@ -49,7 +48,6 @@ export default function OPT_EXIST_ARR(
         opt_name?:a.opt_name
         exist_opts:a.use_state_t<number[]>,
         available_opts:string[]
-        is_search_bar?:boolean
         shape?:{x_scroll_bar?:boolean,
             y_scroll_bar?:boolean,
             w?:undefined|number,
@@ -120,7 +118,7 @@ export default function OPT_EXIST_ARR(
             opt_name={"Select Mode" as a.opt_name} 
             available_opts={ss_available_opts} 
             ss_mode={{ss:ss_newobj_index, setss:setss_newobj_index} as a.use_state_t<number>}
-            is_search_bar={is_search_bar}
+            is_search_bar={false}
         />
         <BUTTON_CLICK 
             name={(

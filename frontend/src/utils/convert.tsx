@@ -164,12 +164,16 @@ export function str_to_str(input:string|a.name|a.opt_name){
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-export function strarr_to_optmode(arr:string[]){
+export function str_to_optmode(arr:(string|opt_mode_uit)[]){
     return arr.map((item, index)=>{
-        return {
+        if(typeof item === "string"){
+            return {
             name:item as a.name,
             index:index
-        } as opt_mode_uit
+        } as opt_mode_uit}
+        else{
+            return item
+        }
     })
 }
 
