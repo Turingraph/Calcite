@@ -1,4 +1,4 @@
-import React, { useState, useEffect, JSX} from "react";
+import React, { useState, useEffect, JSX, useRef, useLayoutEffect} from "react";
 import * as a from "../../type/alias"
 import {STR_TO_H} from "../../utils/convert";
 import { opt_mode_uit, opt_input_uit } from "./type"
@@ -39,7 +39,9 @@ export default function OPT_INPUT(
     const [ss_show_opts, setss_show_opts] = useState<opt_mode_uit[]>(
         func_init(available_opts) as opt_mode_uit[]
     )
-    useEffect(()=>{
+    const ref_show_opts = useRef(ss_show_opts)
+    useLayoutEffect(()=>{
+        if(ref_show_opts.current !== ss_show_opts){
         let i = 0
         while(i < ss_show_opts.length){
             if(ss_show_opts[i] !== undefined){
@@ -47,7 +49,7 @@ export default function OPT_INPUT(
                 i = ss_show_opts.length
             }
             i+=1
-        }
+        }}
     },[ss_show_opts, ss_mode])
     // https://stackoverflow.com/questions/40676343/
     // typescript-input-onchange-event-target-value
