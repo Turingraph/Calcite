@@ -3,7 +3,7 @@ import * as a from "../../type/alias"
 import BUTTON_CLICK from "../button/button_click";
 import OPT_INPUT from "./opt_input";
 import {str_to_optmode, STR_TO_H, item_to_index} from "../../utils/convert";
-import { method_exclude_arr, method_push_arr, method_delete_item, method_sort_arrattr, method_unique_arr} from '../../utils/arr_method'
+import { method_exclude_arr, method_push_arr, method_delete_item, method_sort_arrattr, method_unique_arr, method_sort_arr} from '../../utils/arr_method'
 import PANEL from "../asset/panel";
 import { opt_mode_uit } from "./type";
 import { handle_access_optmode } from "../../utils/utils";
@@ -12,6 +12,8 @@ import "./index.css"
 function func_exclude_opt(available_opts:string[], exist_opts:number[]){
     // https://stackoverflow.com/questions/36829184/
     // how-can-i-convert-a-set-to-an-array-in-typescript
+    available_opts = method_sort_arr(available_opts)
+    exist_opts = method_sort_arr(exist_opts)
     available_opts  = method_unique_arr(available_opts)
     exist_opts      = method_unique_arr(exist_opts)
     const CONST_AVAILABLE_OPTS = method_sort_arrattr(str_to_optmode(available_opts), "index")
@@ -25,10 +27,10 @@ function func_exclude_opt(available_opts:string[], exist_opts:number[]){
 }
 
 function func_default_newobj_index(available_opts:opt_mode_uit[], length:number){
-    const ARR = [...available_opts]
-    method_sort_arrattr(ARR, "index")
-    if (ARR.length > length){
-        return ARR[length].index
+    available_opts = method_sort_arr(available_opts)
+    method_sort_arrattr(available_opts, "index")
+    if (available_opts.length > length){
+        return available_opts[length].index
     }
     return undefined
 }
@@ -64,9 +66,15 @@ export default function OPT_EXIST_ARR(
         func_default_newobj_index(ss_available_opts, 0)
     )
     const ref_DEFAULT_OPT = useRef<number>(exist_opts.ss[0])
+    const ref_exist_opts = useRef(exist_opts.ss)
     useLayoutEffect(()=>{
         setss_available_opts(func_exclude_opt(available_opts, exist_opts.ss))
-    },[exist_opts.ss, available_opts])
+        if(ref_exist_opts.current !== exist_opts.ss){
+            const UPDATE = method_sort_arr(exist_opts.ss)
+            exist_opts.setss(UPDATE)
+        }
+        ref_exist_opts.current = exist_opts.ss
+    },[exist_opts, available_opts])
     useEffect(()=>{
         console.log("OPT_EXIST_ARR : ss_newobj_index", ss_newobj_index)
         console.log("OPT_EXIST_ARR : ss_available_opts",ss_available_opts)
