@@ -50,6 +50,7 @@ export default function OPT_INPUT(
             }
             i+=1
         }}
+        ref_show_opts.current = ss_show_opts
     },[ss_show_opts, ss_mode])
     // https://stackoverflow.com/questions/40676343/
     // typescript-input-onchange-event-target-value
