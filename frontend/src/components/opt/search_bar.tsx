@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useLayoutEffect } from "react";
 import * as a from "../../type/alias"
 import INPUT_STR from "../input/input_str";
 import { opt_mode_uit } from "./type";
@@ -24,6 +24,7 @@ export default function SEARCH_BAR(
 }){
     const [ss_search_text, setss_search_text] = useState<string>("")
     const ref_read_only_arr = useRef(str_to_optmode(read_only_arr))
+
     useEffect(()=>{
         // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/arr/filter
         const UPDATE_SEARCH_TEXT = ref_read_only_arr.current.map((item,index) => {
