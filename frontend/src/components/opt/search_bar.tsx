@@ -1,8 +1,9 @@
-import { useEffect, useState, useRef } from "react";
+import { useState, useRef, useLayoutEffect } from "react";
 import * as a from "../../type/alias"
 import INPUT_STR from "../input/input_str";
 import { opt_mode_uit } from "./type";
 import "./index.css"
+import { str_to_optmode } from "../../utils/convert";
 
 // How to make function accept prop based on attr
 // https://www.freecodecamp.org/news/typescript-generics-with-functional-react-components/
@@ -11,33 +12,33 @@ import "./index.css"
 // Do not use `ref` and `key` as prop name.
 // https://legacy.reactjs.org/warnings/special-props.html
 
-export default function SEARCH_BAR<t extends object, k extends keyof t>(
+export default function SEARCH_BAR(
 {
     opt_name = undefined,
     read_only_arr,
     select_arr,
-    attr
 }:{
     opt_name?:a.opt_name,
-    read_only_arr:t[],
+    read_only_arr:opt_mode_uit[]|string[],
     select_arr:a.use_state_t<opt_mode_uit[]>
-    attr:k
 }){
     const [ss_search_text, setss_search_text] = useState<string>("")
-    const ss_read_only_arr = useRef(read_only_arr)
-    const ref_attr = useRef(attr)
-    useEffect(()=>{
+    const ref_read_only_arr = useRef(str_to_optmode(read_only_arr))
+    const ref_select_arr = useRef(select_arr.ss)
+    useLayoutEffect(()=>{
         // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/arr/filter
-        const UPDATE_SEARCH_TEXT = ss_read_only_arr.current.map((item,index) => {
-                if ((item[ref_attr.current] as string).includes(ss_search_text) === true){
+        if(select_arr.ss !== ref_select_arr.current){
+            const UPDATE_SEARCH_TEXT = ref_read_only_arr.current.map((item,index) => {
+                if ((item.name as string).includes(ss_search_text) === true){
                     return {
-                        name:item[ref_attr.current] as string as a.name,
-                        index:index
+                        name:item.name as string as a.name,
+                        index:item.index
                     }
                 }
                 return undefined
             }) as opt_mode_uit[]
-        select_arr.setss(UPDATE_SEARCH_TEXT)
+            select_arr.setss(UPDATE_SEARCH_TEXT)
+        }
     },[ss_search_text])
 
     return (<>

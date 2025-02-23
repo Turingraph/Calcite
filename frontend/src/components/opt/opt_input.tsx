@@ -43,13 +43,13 @@ export default function OPT_INPUT(
         ref_show_opts.current = ss_show_opts
     },[ss_show_opts, ss_mode])
 
-    useEffect(()=>{
+    useLayoutEffect(()=>{
         setss_show_opts(str_to_optmode(available_opts))
     }, [available_opts])
     useEffect(()=>{
         console.log("OPT_INPUT : ss_mode",ss_mode.ss)
-        // console.log("OPT_INPUT : ss_show_opts",ss_show_opts)
-    },[ss_mode])
+        console.log("OPT_INPUT : ss_show_opts",ss_show_opts)
+    },[ss_mode, ss_show_opts])
     // https://stackoverflow.com/questions/40676343/
     // typescript-input-onchange-event-target-value
     const handle_event = ((e: React.ChangeEvent<HTMLSelectElement >) => {
@@ -81,7 +81,6 @@ export default function OPT_INPUT(
                     ss:ss_show_opts, 
                     setss:setss_show_opts
                 } as a.use_state_t<opt_mode_uit[]>}
-            attr = {"name"}
         />
     }
     return (<>

@@ -69,8 +69,8 @@ export default function OPT_EXIST_ARR(
     },[exist_opts.ss, available_opts])
     useEffect(()=>{
         console.log("OPT_EXIST_ARR : ss_newobj_index", ss_newobj_index)
-        // console.log("OPT_EXIST_ARR : ss_available_opts",ss_available_opts)
-    },[ss_newobj_index])
+        console.log("OPT_EXIST_ARR : ss_available_opts",ss_available_opts)
+    },[ss_newobj_index, ss_available_opts])
     function func_reset(){
         exist_opts.setss([ref_DEFAULT_OPT.current])
         if(ref_DEFAULT_OPT.current === available_opts.length - 1){
