@@ -63,7 +63,7 @@ export default function OBJ_STR<
     // https://stackoverflow.com/questions/53446020/
     // how-to-compare-oldvalues-and-newvalues-on-react-hooks-useLayoutEffect
     // https://react.dev/reference/react/useRef
-    const ss_arr_length = useRef(arr.ss.length)
+    const ref_arr_length = useRef(arr.ss.length)
     const [ss_default_arr, setss_default_arr] = useReducer(
         reduce_default,
         func_set_default(arr.ss, this_item, attrs)
@@ -85,11 +85,11 @@ export default function OBJ_STR<
     }, [arr.ss, attrs, this_item])
 
     useLayoutEffect(()=>{
-        if(ss_arr_length.current !== arr.ss.length){
+        if(ref_arr_length.current !== arr.ss.length){
             const COPY_ARR = [...arr.ss]
             setss_default_arr({arr:COPY_ARR, this_item:this_item, attrs:attrs})
         }
-        ss_arr_length.current = arr.ss.length
+        ref_arr_length.current = arr.ss.length
     },[ss_texts, arr.ss, attrs, this_item])
 
     // https://stackoverflow.com/questions/57438198/

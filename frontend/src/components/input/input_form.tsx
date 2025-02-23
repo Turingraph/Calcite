@@ -19,7 +19,7 @@ export default function INPUT_FORM({
     func_activate = (()=>undefined) as a.func_event,
     is_undo = false
 }:input_form_t){
-    const ss_DEFAULT_ARR = useRef(arr.map((item)=>{
+    const ref_DEFAULT_ARR = useRef(arr.map((item)=>{
         if(typeof item.ss === "number"){
             return item.ss as number
         }
@@ -35,16 +35,16 @@ export default function INPUT_FORM({
         setss_update(0)
     }, [ss_update, arr])
     function func_set_default(){
-        arr.forEach((item, index)=>{item.setss(ss_DEFAULT_ARR.current[index])})
-        setss_texts(ss_DEFAULT_ARR.current as string[])
+        arr.forEach((item, index)=>{item.setss(ref_DEFAULT_ARR.current[index])})
+        setss_texts(ref_DEFAULT_ARR.current as string[])
     }
     function func_set_ok(){
         // https://www.geeksforgeeks.org/
         // how-to-resolve-usestate-set-method-is-not-reflecting-change-immediately/
         arr.forEach((item, index)=>{
-            if(typeof ss_DEFAULT_ARR.current[index] === "number" && typeof item.ss === "number"){
+            if(typeof ref_DEFAULT_ARR.current[index] === "number" && typeof item.ss === "number"){
                 const CONST_INPUT = str_to_default_num(
-                    ss_DEFAULT_ARR.current[index] as number,
+                    ref_DEFAULT_ARR.current[index] as number,
                     ss_texts[index]
                 )
                 item.setss(CONST_INPUT)

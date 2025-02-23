@@ -1,6 +1,6 @@
 import React, { useState, useEffect, JSX, useRef, useLayoutEffect} from "react";
 import * as a from "../../type/alias"
-import {STR_TO_H} from "../../utils/convert";
+import {STR_TO_H, str_to_optmode} from "../../utils/convert";
 import { opt_mode_uit, opt_input_uit } from "./type"
 import SEARCH_BAR from "./search_bar";
 import "./index.css"
@@ -11,16 +11,6 @@ import { method_no_undefined } from "../../utils/arr_method";
 
 // https://stackoverflow.com/questions/
 // 58114855/handling-select-opts-in-react-hooks
-
-function func_init(available_opts:opt_mode_uit[]|string[]){
-    if(typeof available_opts[0] === "string"){
-        return available_opts.map(
-            (item, index)=>{ 
-                return {name:item as a.name, index:index} as opt_mode_uit
-        })
-    }
-    return available_opts
-}
 
 export default function OPT_INPUT(
 {
@@ -37,7 +27,7 @@ export default function OPT_INPUT(
     // test-for-array-of-string-type-in-typescript
 
     const [ss_show_opts, setss_show_opts] = useState<opt_mode_uit[]>(
-        func_init(available_opts) as opt_mode_uit[]
+        str_to_optmode(available_opts) as opt_mode_uit[]
     )
     const ref_show_opts = useRef(ss_show_opts)
     useLayoutEffect(()=>{
@@ -45,13 +35,21 @@ export default function OPT_INPUT(
         let i = 0
         while(i < ss_show_opts.length){
             if(ss_show_opts[i] !== undefined){
-                ss_mode.setss(i)
+                ss_mode.setss(ss_show_opts[i].index)
                 i = ss_show_opts.length
             }
             i+=1
         }}
         ref_show_opts.current = ss_show_opts
     },[ss_show_opts, ss_mode])
+
+    useEffect(()=>{
+        setss_show_opts(str_to_optmode(available_opts))
+    }, [available_opts])
+    useEffect(()=>{
+        console.log("OPT_INPUT : ss_mode",ss_mode.ss)
+        // console.log("OPT_INPUT : ss_show_opts",ss_show_opts)
+    },[ss_mode])
     // https://stackoverflow.com/questions/40676343/
     // typescript-input-onchange-event-target-value
     const handle_event = ((e: React.ChangeEvent<HTMLSelectElement >) => {

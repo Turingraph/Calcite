@@ -4,13 +4,14 @@ import OPT_INPUT from "../../components/opt/opt_input";
 import SEARCH_BAR from "../../components/opt/search_bar";
 import { opt_mode_uit } from "../../components/opt/type";
 import { OPT_NAME } from "../constant";
-import { CHARACTERS } from "../constant";
 import OPT_EXIST_ARR from "../../components/opt/opt_exist_arr";
 import PANEL from "../../components/asset/panel";
+import { method_sort_arr } from "../../utils/arr_method";
 
 export function TEST_OPT_EXIST_ARR(){
     const [ss_arr, setss_arr] = useState<number[]>([0])
-    const AVAILABLE_OPTS = CHARACTERS.map((item)=>{return item.name}) as string[]
+    // const AVAILABLE_OPTS = CHARACTERS.map((item)=>{return item.name}) as string[]
+    const AVAILABLE_OPTS = method_sort_arr(OPT_NAME)
     return <OPT_EXIST_ARR 
         opt_name={"List" as a.opt_name}
         exist_opts={{ss:ss_arr, setss:setss_arr}}

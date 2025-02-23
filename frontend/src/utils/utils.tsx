@@ -63,9 +63,8 @@ export function handle_access_optmode(index:number|undefined, arr:opt_mode_uit[]
         return undefined
     }
     for(let i = 0; i < arr.length; i++){
-        const item = arr[i]
-        if (index === item.index){
-            return item
+        if (index === arr[i].index){
+            return arr[i]
         }
     }
     return undefined

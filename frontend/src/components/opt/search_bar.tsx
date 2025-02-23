@@ -25,13 +25,13 @@ export default function SEARCH_BAR<t extends object, k extends keyof t>(
 }){
     const [ss_search_text, setss_search_text] = useState<string>("")
     const ss_read_only_arr = useRef(read_only_arr)
-    const ss_attr = useRef(attr)
+    const ref_attr = useRef(attr)
     useEffect(()=>{
         // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/arr/filter
         const UPDATE_SEARCH_TEXT = ss_read_only_arr.current.map((item,index) => {
-                if ((item[ss_attr.current] as string).includes(ss_search_text) === true){
+                if ((item[ref_attr.current] as string).includes(ss_search_text) === true){
                     return {
-                        name:item[ss_attr.current] as string as a.name,
+                        name:item[ref_attr.current] as string as a.name,
                         index:index
                     }
                 }

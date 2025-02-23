@@ -1,4 +1,4 @@
-import {useEffect, useState, useRef} from "react";
+import {useEffect, useState, useRef, useLayoutEffect} from "react";
 import * as a from "../../type/alias"
 import BUTTON_CLICK from "../button/button_click";
 import OPT_INPUT from "./opt_input";
@@ -63,18 +63,21 @@ export default function OPT_EXIST_ARR(
     const [ss_newobj_index, setss_newobj_index] = useState<number|undefined>(
         func_default_newobj_index(ss_available_opts, 0)
     )
-    const ss_DEFAULT_OPT = useRef<number>(exist_opts.ss[0])
-    useEffect(()=>{
+    const ref_DEFAULT_OPT = useRef<number>(exist_opts.ss[0])
+    useLayoutEffect(()=>{
         setss_available_opts(func_exclude_opt(available_opts, exist_opts.ss))
     },[exist_opts.ss, available_opts])
-
+    useEffect(()=>{
+        console.log("OPT_EXIST_ARR : ss_newobj_index", ss_newobj_index)
+        // console.log("OPT_EXIST_ARR : ss_available_opts",ss_available_opts)
+    },[ss_newobj_index])
     function func_reset(){
-        exist_opts.setss([ss_DEFAULT_OPT.current])
-        if(ss_DEFAULT_OPT.current === available_opts.length - 1){
+        exist_opts.setss([ref_DEFAULT_OPT.current])
+        if(ref_DEFAULT_OPT.current === available_opts.length - 1){
             setss_newobj_index(0)
         }
         else{
-            setss_newobj_index(ss_DEFAULT_OPT.current+1)
+            setss_newobj_index(ref_DEFAULT_OPT.current+1)
         }
     }
     function func_push_exist_opts(){
