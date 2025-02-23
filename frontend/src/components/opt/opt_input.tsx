@@ -66,21 +66,8 @@ export default function OPT_INPUT(
     if (is_search_bar===true){
         jsx_search_bar= <SEARCH_BAR
             opt_name={undefined as a.opt_name}
-            read_only_arr={
-                available_opts.map((item,index)=>{
-                    if(typeof item === "string"){
-                        return {
-                            name:item,
-                            index:index
-                        } as opt_mode_uit
-                    }
-                    else{
-                        return item
-                    }})}
-            select_arr={{
-                    ss:ss_show_opts, 
-                    setss:setss_show_opts
-                } as a.use_state_t<opt_mode_uit[]>}
+            read_only_arr={str_to_optmode(available_opts)}
+            setss_select_arr={setss_show_opts}
         />
     }
     return (<>

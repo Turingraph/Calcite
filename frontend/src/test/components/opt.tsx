@@ -47,7 +47,7 @@ export function TEST_SEARCH_BAR(){
         <SEARCH_BAR 
         opt_name={"Your name" as a.opt_name}
         read_only_arr={OPT_NAME}
-        select_arr={{ss:ss_name, setss:setss_name}}
+        setss_select_arr={setss_name}
         />
         <PANEL jsx_element={<>{JSX_ELEMENT}</>}/>
     </>

@@ -1,4 +1,4 @@
-import { useState, useRef, useLayoutEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import * as a from "../../type/alias"
 import INPUT_STR from "../input/input_str";
 import { opt_mode_uit } from "./type";
@@ -16,30 +16,27 @@ export default function SEARCH_BAR(
 {
     opt_name = undefined,
     read_only_arr,
-    select_arr,
+    setss_select_arr,
 }:{
     opt_name?:a.opt_name,
     read_only_arr:opt_mode_uit[]|string[],
-    select_arr:a.use_state_t<opt_mode_uit[]>
+    setss_select_arr:React.Dispatch<React.SetStateAction<opt_mode_uit[]>>
 }){
     const [ss_search_text, setss_search_text] = useState<string>("")
     const ref_read_only_arr = useRef(str_to_optmode(read_only_arr))
-    const ref_select_arr = useRef(select_arr.ss)
-    useLayoutEffect(()=>{
+    useEffect(()=>{
         // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/arr/filter
-        if(select_arr.ss !== ref_select_arr.current){
-            const UPDATE_SEARCH_TEXT = ref_read_only_arr.current.map((item,index) => {
-                if ((item.name as string).includes(ss_search_text) === true){
-                    return {
-                        name:item.name as string as a.name,
-                        index:item.index
-                    }
+        const UPDATE_SEARCH_TEXT = ref_read_only_arr.current.map((item,index) => {
+            if ((item.name as string).includes(ss_search_text) === true){
+                return {
+                    name:item.name as string as a.name,
+                    index:item.index
                 }
-                return undefined
-            }) as opt_mode_uit[]
-            select_arr.setss(UPDATE_SEARCH_TEXT)
-        }
-    },[ss_search_text])
+            }
+            return undefined
+        }) as opt_mode_uit[]
+        setss_select_arr(UPDATE_SEARCH_TEXT)
+    },[ss_search_text, setss_select_arr])
 
     return (<>
         <INPUT_STR
