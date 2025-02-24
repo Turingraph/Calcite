@@ -18,8 +18,9 @@ export default function OPT_INPUT(
     opt_name = undefined,
     available_opts,
     ss_mode,
-    is_search_bar = false
-}:opt_input_uit){
+    is_search_bar = false,
+    auto_update_opts = true
+}:opt_input_uit & {auto_update_opts?:boolean}){
 
     // https://developer.mozilla.org/en-US/docs/Web/
     // JavaScript/Reference/Global_Objects/Array/every
@@ -35,7 +36,7 @@ export default function OPT_INPUT(
     // Update ss_mode to be the first available ss_show_opts option.
     useLayoutEffect(()=>{
         // console.log("OPT_INPUT : ss_show_opts", ss_show_opts)
-        if(ref_show_opts.current !== ss_show_opts){
+        if(ref_show_opts.current !== ss_show_opts && auto_update_opts === true){
         let i = 0
         while(i < ss_show_opts.length){
             if(ss_show_opts[i] !== undefined){
@@ -49,7 +50,7 @@ export default function OPT_INPUT(
 
     // The ss_show_opts is updated every time the available_opts is updated.
     useLayoutEffect(()=>{
-        if(ref_show_opts.current !== ss_show_opts){
+        if(ref_show_opts.current !== ss_show_opts && auto_update_opts === true){
             setss_show_opts(
                 method_include_arr(
                     str_to_optmode(available_opts),
@@ -57,7 +58,7 @@ export default function OPT_INPUT(
                 )
         }
         ref_show_opts.current = ss_show_opts
-        console.log("OPT_INPUT : ss_show_opts", ss_show_opts)
+        // console.log("OPT_INPUT : ss_show_opts", ss_show_opts)
     }, [available_opts, ss_show_opts])
 
     // https://stackoverflow.com/questions/40676343/
