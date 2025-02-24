@@ -38,10 +38,13 @@ export default function SEARCH_BAR(
         setss_select_arr(UPDATE_SEARCH_TEXT)
     },[ss_search_text, setss_select_arr])
 
-    useEffect(()=>{
-        console.log("SEARCH_BAR : read_only_arr",read_only_arr)
-    },[read_only_arr])
+    // useEffect(()=>{
+    //     console.log("SEARCH_BAR : read_only_arr",read_only_arr)
+    // },[read_only_arr])
         
+    /*
+    // This line of code is used for fixing minor inconsistence of our UXUI.
+    // It is not finished and hard for debugging.
     // useLayoutEffect(()=>{
     //     if(ref_read_only_arr.current !== str_to_optmode(read_only_arr)){
     //         const UPDATE_SEARCH_TEXT = ref_read_only_arr.current.map((item,index) => {
@@ -57,6 +60,7 @@ export default function SEARCH_BAR(
     //     }
     //     ref_read_only_arr.current = str_to_optmode(read_only_arr)
     // },[ss_search_text, setss_select_arr, read_only_arr])
+    */
 
     return (<>
         <INPUT_STR
