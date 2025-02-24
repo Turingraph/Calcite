@@ -1,4 +1,4 @@
-import React, { useState, JSX, useRef, useLayoutEffect} from "react";
+import React, { useState, JSX, useRef, useLayoutEffect, useEffect} from "react";
 import * as a from "../../type/alias"
 import {STR_TO_H, str_to_optmode} from "../../utils/convert";
 import { opt_mode_uit, opt_input_uit } from "./type"
@@ -51,6 +51,10 @@ export default function OPT_INPUT(
     useLayoutEffect(()=>{
         setss_show_opts(str_to_optmode(available_opts))
     }, [available_opts])
+
+    useEffect(()=>{
+        console.log("OPT_INPUT : available_opts",available_opts)
+    },[available_opts])
     
     // https://stackoverflow.com/questions/40676343/
     // typescript-input-onchange-event-target-value

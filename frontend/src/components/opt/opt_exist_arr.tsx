@@ -1,4 +1,4 @@
-import {useState, useRef, useLayoutEffect} from "react";
+import {useState, useRef, useLayoutEffect, useEffect} from "react";
 import * as a from "../../type/alias"
 import BUTTON_CLICK from "../button/button_click";
 import OPT_INPUT from "./opt_input";
@@ -67,6 +67,7 @@ export default function OPT_EXIST_ARR(
     )
     const ref_DEFAULT_OPT = useRef<number>(exist_opts.ss[0])
     const ref_exist_opts = useRef(exist_opts.ss)
+    const ref_available_opts = useRef(ss_available_opts)
 
     // Update ss_available_opts everytime when update exist_opts.ss
     // Sort exist_opts.ss
