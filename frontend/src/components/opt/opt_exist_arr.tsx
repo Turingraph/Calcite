@@ -1,4 +1,4 @@
-import {useEffect, useState, useRef, useLayoutEffect} from "react";
+import {useState, useRef, useLayoutEffect} from "react";
 import * as a from "../../type/alias"
 import BUTTON_CLICK from "../button/button_click";
 import OPT_INPUT from "./opt_input";
@@ -67,6 +67,9 @@ export default function OPT_EXIST_ARR(
     )
     const ref_DEFAULT_OPT = useRef<number>(exist_opts.ss[0])
     const ref_exist_opts = useRef(exist_opts.ss)
+
+    // Update ss_available_opts everytime when update exist_opts.ss
+    // Sort exist_opts.ss
     useLayoutEffect(()=>{
         setss_available_opts(func_exclude_opt(available_opts, exist_opts.ss))
         if(ref_exist_opts.current !== exist_opts.ss){
@@ -75,10 +78,7 @@ export default function OPT_EXIST_ARR(
         }
         ref_exist_opts.current = exist_opts.ss
     },[exist_opts, available_opts])
-    useEffect(()=>{
-        console.log("OPT_EXIST_ARR : ss_newobj_index", ss_newobj_index)
-        console.log("OPT_EXIST_ARR : ss_available_opts",ss_available_opts)
-    },[ss_newobj_index, ss_available_opts])
+
     function func_reset(){
         exist_opts.setss([ref_DEFAULT_OPT.current])
         if(ref_DEFAULT_OPT.current === available_opts.length - 1){
@@ -117,7 +117,7 @@ export default function OPT_EXIST_ARR(
         }
         method_delete_item(index, exist_opts)
     }
-    const JSX_ARR = exist_opts.ss.map((item,index)=>{
+    const JSX_EXIST_OPTS = exist_opts.ss.map((item,index)=>{
         return <div key={index}>
             <STR_TO_H opt_name={available_opts[item] as a.opt_name}/>
             <BUTTON_CLICK name={"delete" as a.name} func_event={(()=>{
@@ -151,7 +151,7 @@ export default function OPT_EXIST_ARR(
             func_event={(()=>{func_reset()}) as a.func_event}
         />
         <PANEL
-            jsx_element={<>{JSX_ARR}</>}
+            jsx_element={<>{JSX_EXIST_OPTS}</>}
             x_scroll_bar={shape.x_scroll_bar}
             y_scroll_bar={shape.y_scroll_bar}
             w={shape.w}

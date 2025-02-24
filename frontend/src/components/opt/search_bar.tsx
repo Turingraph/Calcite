@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, useLayoutEffect } from "react";
+import { useState, useRef, useEffect} from "react";
 import * as a from "../../type/alias"
 import INPUT_STR from "../input/input_str";
 import { opt_mode_uit } from "./type";

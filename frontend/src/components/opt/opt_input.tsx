@@ -1,4 +1,4 @@
-import React, { useState, useEffect, JSX, useRef, useLayoutEffect} from "react";
+import React, { useState, JSX, useRef, useLayoutEffect} from "react";
 import * as a from "../../type/alias"
 import {STR_TO_H, str_to_optmode} from "../../utils/convert";
 import { opt_mode_uit, opt_input_uit } from "./type"

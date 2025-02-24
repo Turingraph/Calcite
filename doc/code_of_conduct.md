@@ -141,12 +141,13 @@ Meaning
 23. `_uit` = user interface (ui) type
 24. `opt` = option or optional
 25. `attr` = attribute, use instead of `key` in order to prevent naming conflict. (https://legacy.reactjs.org/warnings/special-props.html)
-26. `ss_` = set state (use in useState hook)
+26. `ss_` = set state (use in `useState` and `useReducer` hook)
 27. `setss_` = use in useState hook, `const [ss_num, setss_num] = useState<number>(0)`
 28. `item` = item of array
 29. `index` = index of item inside array
 30. `this_item` = index of item inside the input array
 31. `key` = unique index of HTML DOM element.
+32. `ref_` = means the variable is `useRef(...)`
 
 ```
 How to solve `Each child in a list should have a unique "key" prop.` ?
