@@ -23,6 +23,6 @@ import {
 
 export default function TEST(){
     return <>
-    <TEST_INPUT_COMBINE/>
+    <TEST_SEARCH_BAR/>
     </>
 }

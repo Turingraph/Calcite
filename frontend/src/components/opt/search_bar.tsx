@@ -24,11 +24,15 @@ export default function SEARCH_BAR(
 }){
     const [ss_search_text, setss_search_text] = useState<string>("")
     const ref_READ_ONLY_ARR = useRef(str_to_optmode(read_only_arr))
+    const ref_search_text = useRef(ss_search_text)
 
+    // use useRef in order to avoid both 
+    // React Hook useLayoutEffect has a missing dependency and Maximum update depth exceeded.
     useLayoutEffect(()=>{
         ref_READ_ONLY_ARR.current = str_to_optmode(read_only_arr)
     })
     
+    // Update ss_select_arr such that it match with the ss_search_text
     useEffect(()=>{
         const UPDATE_SEARCH_TEXT = ref_READ_ONLY_ARR.current.map((item,index) => {
             if ((item.name as string).includes(ss_search_text) === true){
@@ -42,29 +46,10 @@ export default function SEARCH_BAR(
         setss_select_arr(UPDATE_SEARCH_TEXT)
     },[ss_search_text, setss_select_arr])
 
+    // DEBUG
     // useEffect(()=>{
     //     console.log("SEARCH_BAR : read_only_arr",read_only_arr)
     // },[read_only_arr])
-        
-    /*
-    // This line of code is used for fixing minor inconsistence of our UXUI.
-    // It is not finished and hard for debugging.
-    // useLayoutEffect(()=>{
-    //     if(ref_read_only_arr.current !== str_to_optmode(read_only_arr)){
-    //         const UPDATE_SEARCH_TEXT = ref_read_only_arr.current.map((item,index) => {
-    //             if ((item.name as string).includes(ss_search_text) === true){
-    //                 return {
-    //                     name:item.name as string as a.name,
-    //                     index:item.index
-    //                 }
-    //             }
-    //             return undefined
-    //         }) as opt_mode_uit[]
-    //         setss_select_arr(UPDATE_SEARCH_TEXT)
-    //     }
-    //     ref_read_only_arr.current = str_to_optmode(read_only_arr)
-    // },[ss_search_text, setss_select_arr, read_only_arr])
-    */
 
     return (<>
         <INPUT_STR

@@ -4,7 +4,7 @@ import {STR_TO_H, str_to_optmode} from "../../utils/convert";
 import { opt_mode_uit, opt_input_uit } from "./type"
 import SEARCH_BAR from "./search_bar";
 import "./index.css"
-import { method_no_undefined} from "../../utils/arr_method";
+import {method_include_arr, method_no_undefined} from "../../utils/arr_method";
 import { handle_access_optmode } from "../../utils/utils";
 
 //  https://stackoverflow.com/questions/40209352/
@@ -30,7 +30,7 @@ export default function OPT_INPUT(
     const [ss_show_opts, setss_show_opts] = useState<opt_mode_uit[]>(
         str_to_optmode(available_opts) as opt_mode_uit[]
     )
-    const ref_show_opts = useRef(ss_show_opts)
+    const ref_show_opts: React.RefObject<opt_mode_uit[]|undefined> = useRef(ss_show_opts)
 
     // Update ss_mode to be the first available ss_show_opts option.
     useLayoutEffect(()=>{
@@ -48,11 +48,17 @@ export default function OPT_INPUT(
     },[ss_show_opts, ss_mode])
 
     // The ss_show_opts is updated every time the available_opts is updated.
-    // Then it is updated in JSX_SEARCH_BAR
     useLayoutEffect(()=>{
-        setss_show_opts(str_to_optmode(available_opts))
-        // console.log("EMMA CHINOMI")
-    }, [available_opts])
+        if(ref_show_opts.current !== ss_show_opts){
+            setss_show_opts(
+                method_include_arr(
+                    str_to_optmode(available_opts),
+                    ss_show_opts)
+                )
+        }
+        ref_show_opts.current = ss_show_opts
+        console.log("OPT_INPUT : ss_show_opts", ss_show_opts)
+    }, [available_opts, ss_show_opts])
 
     // https://stackoverflow.com/questions/40676343/
     // typescript-input-onchange-event-target-value

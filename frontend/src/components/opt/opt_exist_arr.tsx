@@ -59,7 +59,6 @@ export default function OPT_EXIST_ARR(
     )
     const ref_DEFAULT_OPT = useRef<number>(exist_opts.ss[0])
     const ref_exist_opts = useRef(exist_opts.ss)
-    // const ref_newobj_index = useRef(ss_newobj_index)
 
     // Update ss_available_opts everytime when update exist_opts.ss
     // Sort exist_opts.ss
@@ -70,25 +69,8 @@ export default function OPT_EXIST_ARR(
             exist_opts.setss(UPDATE)
         }
         ref_exist_opts.current = exist_opts.ss
+        // console.log("OPT_EXIST_ARR : ss_available_opts", ss_available_opts)
     },[exist_opts, available_opts])
-
-    // DEBUG
-    // useEffect(()=>{
-    //     console.log("OPT_EXIST_ARR : ss_available_opts",ss_available_opts)
-    // })
-
-    // This line of code will set the ss_newobj_index as the first item of ss_available_opts.
-    // It is not useful for our code.
-    // useLayoutEffect(()=>{
-    //     if(handle_access_optmode(
-    //         ss_newobj_index,
-    //         ss_available_opts,
-    //     ) === undefined && ss_available_opts.length > 0 &&
-    //     ref_newobj_index.current !== ss_newobj_index){
-    //         setss_newobj_index(func_default_newobj_index(ss_available_opts, 0))
-    //     }
-    //     ref_newobj_index.current = ss_newobj_index
-    // },[ss_newobj_index])
 
     function func_reset(){
         exist_opts.setss([ref_DEFAULT_OPT.current])
