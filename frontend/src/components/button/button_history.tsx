@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import {useLayoutEffect, useState, useRef} from "react";
 import * as a from "../../type/alias";
 import BUTTON_CLICK from "./button_click";
 import OPT_INPUT from "../opt/opt_input";
@@ -9,13 +9,18 @@ export default function BUTTON_HISTORY<t>({
 }:{history:a.use_state_t<a.history<t>>}
 ){
     const [ss_mode, setss_mode] = useState<number>(history.ss.current)
-    useEffect(()=>{
-        history.setss(({
-            arr:history.ss.arr,
-            commit: history.ss.commit,
-            current: ss_mode,
-        }) as unknown as a.history<t>)
-    },[ss_mode])
+    const ref_mode = useRef(ss_mode)
+    
+    useLayoutEffect(()=>{
+        if(ref_mode.current !== ss_mode){
+            history.setss(({
+                arr:history.ss.arr,
+                commit: history.ss.commit,
+                current: ss_mode,
+            }) as unknown as a.history<t>)
+        }
+        ref_mode.current = ss_mode
+    },[ss_mode, history])
     function prev_func(){
         if (history.ss.current - 1 > 0){
             history.setss(({
