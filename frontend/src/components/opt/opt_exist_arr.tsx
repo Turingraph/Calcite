@@ -1,4 +1,4 @@
-import {useState, useRef, useLayoutEffect, useEffect} from "react";
+import {useState, useRef, useLayoutEffect} from "react";
 import * as a from "../../type/alias"
 import BUTTON_CLICK from "../button/button_click";
 import OPT_INPUT from "./opt_input";
