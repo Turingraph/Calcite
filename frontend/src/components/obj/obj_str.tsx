@@ -76,6 +76,7 @@ export default function OBJ_STR<
 
     // https://react.dev/reference/react/useLayoutEffect
     
+    // Update ss_texts = arr.ss
     useLayoutEffect(()=>{
         const COPY_ARR = [...arr.ss]
         setss_texts({
@@ -84,6 +85,7 @@ export default function OBJ_STR<
         })
     }, [arr.ss, attrs, this_item])
 
+    // Update `default value` of arr.ss[this_index] every time the arr.ss is puch or deleted.
     useLayoutEffect(()=>{
         if(ref_arr_length.current !== arr.ss.length){
             const COPY_ARR = [...arr.ss]
@@ -97,7 +99,7 @@ export default function OBJ_STR<
     const CONST_ITEM : { [key: string]: any } = arr.ss[this_item]
     const CONST_ATTR = func_get_attr(arr.ss[this_item], attrs)
     const COPY_ARR = [...arr.ss]
-    function func_set_item_attr(input_arr:string[]){
+    function func_update_item(input_arr:string[]){
         CONST_ATTR.forEach((item, index)=>{
             let let_input:number|string = (input_arr[index])
             if (typeof CONST_ITEM[item] === 'number'){
@@ -126,6 +128,15 @@ export default function OBJ_STR<
             input_arr: input_arr
         })
     }
+    function func_discard_changes(){
+        const UPDATE_TEXTS = CONST_ATTR.map((item)=>{
+            return CONST_ITEM[item] as string
+        })
+        setss_texts({
+            arr: COPY_ARR, this_item: this_item, attrs: attrs,
+            input_arr: UPDATE_TEXTS
+        })
+    }
     const JSX_INPUTS = CONST_ATTR.map((item,index)=>{
         return <div key={index}>
             <STR_TO_H opt_name={item as a.opt_name}/>
@@ -148,29 +159,20 @@ export default function OBJ_STR<
             />
         </div>
     })
-    function func_set_cancel(){
-        const UPDATE_TEXTS = CONST_ATTR.map((item)=>{
-            return CONST_ITEM[item] as string
-        })
-        setss_texts({
-            arr: COPY_ARR, this_item: this_item, attrs: attrs,
-            input_arr: UPDATE_TEXTS
-        })
-    }
     return <>
     <STR_TO_H opt_name={opt_name}/>
     {JSX_INPUTS}
     <BUTTON_CLICK
         name={"apply change" as a.name}
-        func_event={(()=>{func_set_item_attr(ss_texts as typeof CONST_ITEM[number][])}) as a.func_event}
+        func_event={(()=>{func_update_item(ss_texts as typeof CONST_ITEM[number][])}) as a.func_event}
     />
     {is_undo ? <BUTTON_CLICK
         name={"cancel change" as a.name}
-        func_event={(()=>{func_set_cancel()}) as a.func_event}
+        func_event={(()=>{func_discard_changes()}) as a.func_event}
     /> : <></>}
     <BUTTON_CLICK
         name={"reset all" as a.name}
-        func_event={(()=>{func_set_item_attr(ss_default_arr as typeof CONST_ITEM[number][])}) as a.func_event}
+        func_event={(()=>{func_update_item(ss_default_arr as typeof CONST_ITEM[number][])}) as a.func_event}
     />
     </>
 }

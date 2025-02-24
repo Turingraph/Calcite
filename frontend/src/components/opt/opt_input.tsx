@@ -4,7 +4,7 @@ import {STR_TO_H, str_to_optmode} from "../../utils/convert";
 import { opt_mode_uit, opt_input_uit } from "./type"
 import SEARCH_BAR from "./search_bar";
 import "./index.css"
-import { method_no_undefined, method_include_arr } from "../../utils/arr_method";
+import { method_no_undefined} from "../../utils/arr_method";
 import { handle_access_optmode } from "../../utils/utils";
 
 //  https://stackoverflow.com/questions/40209352/
@@ -32,6 +32,7 @@ export default function OPT_INPUT(
     )
     const ref_show_opts = useRef(ss_show_opts)
 
+    // Update ss_mode to be the first available ss_show_opts option.
     useLayoutEffect(()=>{
         if(ref_show_opts.current !== ss_show_opts){
         let i = 0
@@ -45,13 +46,12 @@ export default function OPT_INPUT(
         ref_show_opts.current = ss_show_opts
     },[ss_show_opts, ss_mode])
 
+    // The ss_show_opts is updated every time the available_opts is updated.
+    // Then it is updated in JSX_SEARCH_BAR
     useLayoutEffect(()=>{
         setss_show_opts(str_to_optmode(available_opts))
     }, [available_opts])
-    useEffect(()=>{
-        console.log("OPT_INPUT : ss_mode",ss_mode.ss)
-        console.log("OPT_INPUT : ss_show_opts",ss_show_opts)
-    },[ss_mode, ss_show_opts])
+    
     // https://stackoverflow.com/questions/40676343/
     // typescript-input-onchange-event-target-value
     const handle_event = ((e: React.ChangeEvent<HTMLSelectElement >) => {
@@ -64,17 +64,14 @@ export default function OPT_INPUT(
         }
         return undefined
     })) as JSX.Element[]
-    let jsx_search_bar = <></>
-    if (is_search_bar===true){
-        jsx_search_bar= <SEARCH_BAR
+    const JSX_SEARCH_BAR = <SEARCH_BAR
             opt_name={undefined as a.opt_name}
             read_only_arr={str_to_optmode(available_opts)}
             setss_select_arr={setss_show_opts}
         />
-    }
     return (<>
         <STR_TO_H opt_name={opt_name}/>
-        {jsx_search_bar}
+        {is_search_bar ? JSX_SEARCH_BAR : <></>}
         <select value={ss_mode.ss} onChange={(e)=>handle_event(e)}>
             {JSX_OPTS}
         </select>

@@ -23,11 +23,10 @@ export default function SEARCH_BAR(
     setss_select_arr:React.Dispatch<React.SetStateAction<opt_mode_uit[]>>
 }){
     const [ss_search_text, setss_search_text] = useState<string>("")
-    const ref_read_only_arr = useRef(str_to_optmode(read_only_arr))
+    const ref_READ_ONLY_ARR = useRef(str_to_optmode(read_only_arr))
 
     useEffect(()=>{
-        // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/arr/filter
-        const UPDATE_SEARCH_TEXT = ref_read_only_arr.current.map((item,index) => {
+        const UPDATE_SEARCH_TEXT = ref_READ_ONLY_ARR.current.map((item,index) => {
             if ((item.name as string).includes(ss_search_text) === true){
                 return {
                     name:item.name as string as a.name,
@@ -45,7 +44,7 @@ export default function SEARCH_BAR(
             input = {{
                 ss: ss_search_text,
                 setss: setss_search_text
-            } as unknown as a.use_state_t<string>}
+            } as a.use_state_t<string>}
         />
     </>)
 }

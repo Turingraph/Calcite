@@ -33,15 +33,9 @@ export default function OBJ_BOOL<
         method_update_item(this_item, arr, UPDATE_INPUT)
     }
     const HANDLE = ((e:any)=>{func_select()})
-    let jsx_element = <>
-    <BUTTON_CLICK 
-        name={name as a.name} 
-        func_event={HANDLE as a.func_event}
-    />
-    </>
     if(ui_mode === "checkbox"){
         // https://github.com/gloriaJun/til/issues/18
-        jsx_element = <>
+        return <>
         <input 
             type="checkbox" 
             onChange={()=>{func_select()}}
@@ -50,5 +44,10 @@ export default function OBJ_BOOL<
         <label>{name}</label>
         </>
     }
-    return <>{jsx_element}</>
+    return <>
+    <BUTTON_CLICK 
+        name={name as a.name} 
+        func_event={HANDLE as a.func_event}
+    />
+    </>
 }

@@ -23,6 +23,6 @@ import {
 
 export default function TEST(){
     return <>
-    <TEST_OPT_EXIST_ARR/>
+    <TEST_OBJ_SELF/>
     </>
 }

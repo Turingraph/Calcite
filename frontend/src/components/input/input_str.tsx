@@ -22,16 +22,8 @@ export default function INPUT_STR(
             input.setss(e.target.value)}) as a.handle_event<HTMLInputElement>
     const HANDLE_TEXT_AREA = ((e: React.ChangeEvent<HTMLTextAreaElement>) => {
         input.setss(e.target.value)}) as a.handle_event<HTMLTextAreaElement>
-    let jsx_element = <>
-        <input 
-            type = "text"
-            onChange={(e)=>HANDLE_INPUT(e)} 
-            value={index !== undefined ? input.ss[index] : input.ss}
-            placeholder={STR_PLACEHOLDER}>
-        </input>
-    </>
     if(ui_mode === "text_area"){
-        jsx_element = <>
+        return <>
         <textarea
             onChange={(e)=>HANDLE_TEXT_AREA(e)} 
             value={index !== undefined ? input.ss[index] : input.ss}
@@ -40,6 +32,11 @@ export default function INPUT_STR(
     </>
     }
     return <>
-    {jsx_element}
-    </>
+    <input 
+        type = "text"
+        onChange={(e)=>HANDLE_INPUT(e)} 
+        value={index !== undefined ? input.ss[index] : input.ss}
+        placeholder={STR_PLACEHOLDER}>
+    </input>
+</>
 }
