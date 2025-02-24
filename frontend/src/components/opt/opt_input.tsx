@@ -34,6 +34,7 @@ export default function OPT_INPUT(
 
     // Update ss_mode to be the first available ss_show_opts option.
     useLayoutEffect(()=>{
+        // console.log("OPT_INPUT : ss_show_opts", ss_show_opts)
         if(ref_show_opts.current !== ss_show_opts){
         let i = 0
         while(i < ss_show_opts.length){
@@ -50,7 +51,6 @@ export default function OPT_INPUT(
     // Then it is updated in JSX_SEARCH_BAR
     useLayoutEffect(()=>{
         setss_show_opts(str_to_optmode(available_opts))
-        // console.log("OPT_INPUT : ss_show_opts",str_to_optmode(available_opts))
         // console.log("EMMA CHINOMI")
     }, [available_opts])
 
