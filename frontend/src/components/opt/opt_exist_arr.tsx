@@ -1,4 +1,4 @@
-import {useState, useRef, useLayoutEffect} from "react";
+import {useState, useRef, useLayoutEffect, useEffect} from "react";
 import * as a from "../../type/alias"
 import BUTTON_CLICK from "../button/button_click";
 import OPT_INPUT from "./opt_input";
@@ -8,6 +8,7 @@ import PANEL from "../asset/panel";
 import { opt_mode_uit } from "./type";
 import { handle_access_optmode } from "../../utils/utils";
 import "./index.css"
+import { func_default_newobj_index } from "./type";
 
 function func_exclude_opt(available_opts:string[], exist_opts:number[]){
     // https://stackoverflow.com/questions/36829184/
@@ -24,15 +25,6 @@ function func_exclude_opt(available_opts:string[], exist_opts:number[]){
         } as opt_mode_uit
     }),"index")
     return method_exclude_arr(CONST_AVAILABLE_OPTS, CONST_EXIST_OPTS) as opt_mode_uit[]
-}
-
-function func_default_newobj_index(available_opts:opt_mode_uit[], length:number){
-    available_opts = method_sort_arr(available_opts)
-    method_sort_arrattr(available_opts, "index")
-    if (available_opts.length > length){
-        return available_opts[length].index
-    }
-    return undefined
 }
 
 export default function OPT_EXIST_ARR(
@@ -67,6 +59,7 @@ export default function OPT_EXIST_ARR(
     )
     const ref_DEFAULT_OPT = useRef<number>(exist_opts.ss[0])
     const ref_exist_opts = useRef(exist_opts.ss)
+    // const ref_newobj_index = useRef(ss_newobj_index)
 
     // Update ss_available_opts everytime when update exist_opts.ss
     // Sort exist_opts.ss
@@ -78,6 +71,24 @@ export default function OPT_EXIST_ARR(
         }
         ref_exist_opts.current = exist_opts.ss
     },[exist_opts, available_opts])
+
+    // DEBUG
+    // useEffect(()=>{
+    //     console.log("OPT_EXIST_ARR : ss_available_opts",ss_available_opts)
+    // })
+
+    // This line of code will set the ss_newobj_index as the first item of ss_available_opts.
+    // It is not useful for our code.
+    // useLayoutEffect(()=>{
+    //     if(handle_access_optmode(
+    //         ss_newobj_index,
+    //         ss_available_opts,
+    //     ) === undefined && ss_available_opts.length > 0 &&
+    //     ref_newobj_index.current !== ss_newobj_index){
+    //         setss_newobj_index(func_default_newobj_index(ss_available_opts, 0))
+    //     }
+    //     ref_newobj_index.current = ss_newobj_index
+    // },[ss_newobj_index])
 
     function func_reset(){
         exist_opts.setss([ref_DEFAULT_OPT.current])
@@ -130,7 +141,7 @@ export default function OPT_EXIST_ARR(
         <OPT_INPUT 
             opt_name={"Select Mode" as a.opt_name} 
             available_opts={ss_available_opts} 
-            ss_mode={{ss:ss_newobj_index, setss:setss_newobj_index} as a.use_state_t<number>}
+            ss_mode={{ss:ss_newobj_index, setss:setss_newobj_index}}
             is_search_bar={is_search_bar}
         />
         <BUTTON_CLICK 

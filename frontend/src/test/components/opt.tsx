@@ -26,7 +26,7 @@ export function TEST_OPT_INPUT(){
     <OPT_INPUT
         opt_name={"Your name is " + OPT_NAME[ss_name] as a.opt_name }
         available_opts={OPT_NAME}
-        ss_mode={{ss:ss_name, setss:setss_name}}
+        ss_mode={{ss:ss_name, setss:setss_name} as a.use_state_t<number|undefined>}
         is_search_bar = {true}
     />
     </>

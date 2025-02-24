@@ -21,8 +21,8 @@ export function TEST_INPUT_COMBINE(){
     const [ss_j, setss_j] = useState<number>(DEFAULT_INPUT[1] as number)
     const [ss_k, setss_k] = useState<number>(DEFAULT_INPUT[2] as number)
     const [ss_r, setss_r] = useState<number>(DEFAULT_INPUT[3] as number)
-    const [ss_media, setss_media] = useState<number>(0)
-    const [ss_level, setss_level] = useState<number>(0)
+    const [ss_media, setss_media] = useState<number|undefined>(0)
+    const [ss_level, setss_level] = useState<number|undefined>(0)
     const [ss_scientist, setss_scientist] = useState<string>(DEFAULT_INPUT[4] as string)
 
     const INTERFACE_INPUT_UIT_ARR:a.use_state_uit<string|number>[]=[

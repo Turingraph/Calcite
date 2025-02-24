@@ -50,12 +50,10 @@ export default function OPT_INPUT(
     // Then it is updated in JSX_SEARCH_BAR
     useLayoutEffect(()=>{
         setss_show_opts(str_to_optmode(available_opts))
+        // console.log("OPT_INPUT : ss_show_opts",str_to_optmode(available_opts))
+        // console.log("EMMA CHINOMI")
     }, [available_opts])
 
-    // useEffect(()=>{
-    //     console.log("OPT_INPUT : available_opts",available_opts)
-    // },[available_opts])
-    
     // https://stackoverflow.com/questions/40676343/
     // typescript-input-onchange-event-target-value
     const handle_event = ((e: React.ChangeEvent<HTMLSelectElement >) => {
