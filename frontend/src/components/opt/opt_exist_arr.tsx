@@ -15,8 +15,8 @@ function func_exclude_opt(available_opts:string[], exist_opts:number[]){
     // how-can-i-convert-a-set-to-an-array-in-typescript
     available_opts = method_sort_arr(available_opts)
     exist_opts = method_sort_arr(exist_opts)
-    available_opts  = method_unique_arr(available_opts)
-    exist_opts      = method_unique_arr(exist_opts)
+    // available_opts  = method_unique_arr(available_opts)
+    // exist_opts      = method_unique_arr(exist_opts)
     const CONST_AVAILABLE_OPTS = method_sort_arrattr(str_to_optmode(available_opts), "index")
     const CONST_EXIST_OPTS = method_sort_arrattr(exist_opts.map((item)=>{
         return {
