@@ -3,7 +3,13 @@ import * as a from "../../type/alias"
 import BUTTON_CLICK from "../button/button_click";
 import OPT_INPUT from "./opt_input";
 import {str_to_optmode, STR_TO_H, item_to_index} from "../../utils/convert";
-import { method_exclude_arr, method_push_arr, method_delete_item, method_sort_arrattr, method_unique_arr, method_sort_arr} from '../../utils/arr_method'
+import { 
+    method_exclude_arr, 
+    method_push_arr, 
+    method_delete_item, 
+    method_sort_arrattr, 
+    method_sort_arr
+} from '../../utils/arr_method'
 import PANEL from "../asset/panel";
 import { opt_mode_uit } from "./type";
 import { handle_access_optmode } from "../../utils/utils";
@@ -69,7 +75,6 @@ export default function OPT_EXIST_ARR(
             exist_opts.setss(UPDATE)
         }
         ref_exist_opts.current = exist_opts.ss
-        // console.log("OPT_EXIST_ARR : ss_available_opts", ss_available_opts)
     },[exist_opts, available_opts])
 
     function func_reset(){

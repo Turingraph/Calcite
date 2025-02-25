@@ -111,18 +111,18 @@ export function method_sort_arrattr<t extends object, k extends keyof t>(
     // https://stackoverflow.com/questions/26871106/
     // check-if-all-elements-in-array-are-strings
     if(reverse===true){
-        return arr.sort((n0, n1) => n0[attr] < n1[attr] ? -1 : 1)
+        return arr.sort((n0, n1) => n0[attr] > n1[attr] ? -1 : 1)
     }
-    return arr.sort((n0, n1) => n0[attr] > n1[attr] ? -1 : 1)
+    return arr.sort((n0, n1) => n0[attr] < n1[attr] ? -1 : 1)
 }
 
 export function method_sort_arr<t>(arr:t[],reverse:boolean = false){
     // https://stackoverflow.com/questions/40472548/
     // typescript-sort-strings-descending
     if(reverse===true){
-        return arr.sort((n0, n1) => n0 < n1 ? -1 : 1)
+        return arr.sort((n0, n1) => n0 > n1 ? -1 : 1)
     }
-    return arr.sort((n0, n1) => n0 > n1 ? -1 : 1)
+    return arr.sort((n0, n1) => n0 < n1 ? -1 : 1)
 }
 
 // https://stackoverflow.com/questions/70926558/
