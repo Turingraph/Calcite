@@ -15,14 +15,14 @@ https://overreacted.io/a-complete-guide-to-useeffect/#dont-lie-to-react-about-de
 // Do not use `ref` and `key` as prop name.
 // https://legacy.reactjs.org/warnings/special-props.html
 
-export default function SEARCH_BAR(
+export default function SEARCH_BAR<t extends {name:a.name}>(
 {
     opt_name = undefined,
     read_only_arr,
     setss_select_arr,
 }:{
     opt_name?:a.opt_name,
-    read_only_arr:opt_mode_uit[]|string[],
+    read_only_arr:(t|string)[],
     setss_select_arr:React.Dispatch<React.SetStateAction<opt_mode_uit[]>>
 }){
     const [ss_search_text, setss_search_text] = useState<string>("")

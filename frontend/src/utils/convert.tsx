@@ -164,7 +164,7 @@ export function str_to_str(input:string|a.name|a.opt_name){
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-export function str_to_optmode(arr:(string|opt_mode_uit)[]){
+export function str_to_optmode<t extends {name:a.name}>(arr:(string|t)[]){
     return arr.map((item, index)=>{
         if(typeof item === "string"){
             return {
@@ -172,8 +172,10 @@ export function str_to_optmode(arr:(string|opt_mode_uit)[]){
             index:index
         } as opt_mode_uit}
         else{
-            return item
-        }
+            return {
+                name:item.name as a.name,
+                index:index
+            } as opt_mode_uit}
     })
 }
 
