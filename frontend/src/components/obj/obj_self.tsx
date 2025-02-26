@@ -25,10 +25,10 @@ export default function OBJ_SELF<t extends {name:a.name}>({
         if(ss_select.ss !== this_item && ss_ui_mode !== "normal"){
             setss_ui_mode("normal")
         }
-    })
+    },[ss_select.ss, this_item, ss_ui_mode])
     useEffect(()=>{
         setss_name(arr.ss[this_item].name as string)
-    },[arr.ss])
+    },[arr.ss, this_item])
     function func_reset(){
         ss_select.setss(undefined)
         setss_ui_mode("normal")

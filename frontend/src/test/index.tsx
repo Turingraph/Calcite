@@ -16,7 +16,7 @@ import {
 } from "./components/input";
 
 import {
-    TEST_SEARCH_OBJ,
+    TEST_SEARCH_OBJ,    // OK
     TEST_OPT_EXIST_ARR, // OK
     TEST_OPT_INPUT,     // OK
     TEST_SEARCH_BAR     // OK
