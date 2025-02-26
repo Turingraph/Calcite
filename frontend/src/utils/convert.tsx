@@ -164,18 +164,16 @@ export function str_to_str(input:string|a.name|a.opt_name){
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-export function str_to_optmode<t extends {name:a.name}>(arr:(string|t)[]){
-    const CONST_TYPE:opt_mode_uit = {
-        name:"cheche" as a.name,
-        index:24
-    }
+export function str_to_optmode<
+    t extends {[x: string]: any;name:a.name}>
+    (arr:(a.name|string|t)[]){
     return arr.map((item, index)=>{
         if(typeof item === "string"){
             return {
             name:item as a.name,
             index:index
         } as opt_mode_uit}
-        else if(typeof item === typeof CONST_TYPE){
+        else if(typeof item.name === "string" && typeof item.index === "number"){
             return item as unknown as opt_mode_uit
         }
         else{

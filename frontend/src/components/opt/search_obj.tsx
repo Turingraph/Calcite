@@ -22,9 +22,9 @@ export default function SEARCH_OBJ<t extends {name:a.name}>({
     const ref_show_arr: React.RefObject<opt_mode_uit[]|undefined> = useRef(ss_show_arr)
 
     // Update ss_show_arr every time the arr.ss is updated.
-    useLayoutEffect(()=>{
-        setss_show_arr(str_to_optmode(arr.ss))
-    },[arr])
+    // useLayoutEffect(()=>{
+    //     setss_show_arr(str_to_optmode(arr.ss))
+    // },[arr.ss])
 
     const JSX_ARR = ss_show_arr.map((item,index)=>{
         if(item !== undefined){
