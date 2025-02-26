@@ -28,6 +28,17 @@ export function method_copy_item<t>(
     arr.setss(UPDATE_ARR)
 }
 
+export function method_copy_unique_item<t extends {name:a.name}>(
+    index:number,
+    arr:a.use_state_t<t[]>
+){
+    const UPDATE_ARR = [...arr.ss]
+    const NEW_OBJ = JSON.parse(JSON.stringify(arr.ss[index]))
+    NEW_OBJ.name += "_clone"
+    UPDATE_ARR.splice(index + 1, 0, NEW_OBJ)
+    arr.setss(UPDATE_ARR)
+}
+
 export function method_copy_ptr_item<t>(
     index:number,
     arr:a.use_state_t<t[]>

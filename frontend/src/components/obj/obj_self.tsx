@@ -4,7 +4,7 @@ import BUTTON_CLICK from "../button/button_click";
 import INPUT_STR from "../input/input_str";
 import { STR_TO_H } from "../../utils/convert";
 import { method_delete_item, 
-    method_copy_item,
+    method_copy_unique_item,
     method_update_item_attr } from '../../utils/arr_method'
 import "./index.css"
 
@@ -58,7 +58,7 @@ export default function OBJ_SELF<t extends {name:a.name}>({
             />
             <BUTTON_CLICK
                 name={"copy" as a.name}
-                func_event={(()=>{method_copy_item(this_item,arr)}) as a.func_event}
+                func_event={(()=>{method_copy_unique_item(this_item,arr)}) as a.func_event}
             />
             <BUTTON_CLICK
                 name={"x" as a.name}
