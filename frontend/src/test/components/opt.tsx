@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import * as a from '../../type/alias'
 import OPT_INPUT from "../../components/opt/opt_input";
 import SEARCH_BAR from "../../components/opt/search_bar";

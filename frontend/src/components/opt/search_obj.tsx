@@ -35,9 +35,7 @@ export default function SEARCH_OBJ<t extends {name:a.name}>({
                 <hr/>
                 </div>
         }
-        else{
-            return <></>
-        }
+        return undefined
     })
     return <>
     <SEARCH_BAR 
