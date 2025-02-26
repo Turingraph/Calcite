@@ -55,7 +55,7 @@ export function TEST_SEARCH_BAR(){
     </>
 }
 
-export function TEST_SEARCH_SELF(){
+export function TEST_SEARCH_OBJ(){
     const [ss_arr, setss_arr] = useState<character_t[]>(CHARACTERS)
     const JSX_ARR = ss_arr.map((item,index)=>{
         return <>
