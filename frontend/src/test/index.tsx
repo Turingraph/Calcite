@@ -16,6 +16,7 @@ import {
 } from "./components/input";
 
 import {
+    TEST_SEARCH_SELF,
     TEST_OPT_EXIST_ARR, // OK
     TEST_OPT_INPUT,     // OK
     TEST_SEARCH_BAR     // OK
@@ -23,6 +24,6 @@ import {
 
 export default function TEST(){
     return <>
-    <TEST_OPT_EXIST_ARR/>
+    <TEST_SEARCH_SELF/>
     </>
 }
