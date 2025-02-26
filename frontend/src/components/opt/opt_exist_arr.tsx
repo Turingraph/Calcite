@@ -3,34 +3,28 @@ import * as a from "../../type/alias"
 import BUTTON_CLICK from "../button/button_click";
 import OPT_INPUT from "./opt_input";
 import {str_to_optmode, STR_TO_H, item_to_index} from "../../utils/convert";
-import { 
-    method_exclude_arr, 
-    method_push_arr, 
-    method_delete_item, 
-    method_sort_arrattr, 
-    method_sort_arr
-} from '../../utils/arr_method'
+import * as uarr from '../../utils/utils_arr'
 import PANEL from "../asset/panel";
 import { opt_mode_uit } from "./type";
-import { handle_access_optmode } from "../../utils/utils";
+import { access_optmode } from "../../utils/utils";
 import "./index.css"
 import { func_default_newobj_index } from "./type";
 
 function func_exclude_opt(available_opts:string[], exist_opts:number[]){
     // https://stackoverflow.com/questions/36829184/
     // how-can-i-convert-a-set-to-an-array-in-typescript
-    available_opts = method_sort_arr(available_opts)
-    exist_opts = method_sort_arr(exist_opts)
+    available_opts = uarr.sort_arr(available_opts)
+    exist_opts = uarr.sort_arr(exist_opts)
     // available_opts  = method_unique_arr(available_opts)
     // exist_opts      = method_unique_arr(exist_opts)
-    const CONST_AVAILABLE_OPTS = method_sort_arrattr(str_to_optmode(available_opts), "index")
-    const CONST_EXIST_OPTS = method_sort_arrattr(exist_opts.map((item)=>{
+    const CONST_AVAILABLE_OPTS = uarr.sort_arr_attr(str_to_optmode(available_opts), "index")
+    const CONST_EXIST_OPTS = uarr.sort_arr_attr(exist_opts.map((item)=>{
         return {
             name:available_opts[item] as a.name,
             index:item
         } as opt_mode_uit
     }),"index")
-    return method_exclude_arr(CONST_AVAILABLE_OPTS, CONST_EXIST_OPTS) as opt_mode_uit[]
+    return uarr.exclude_arr(CONST_AVAILABLE_OPTS, CONST_EXIST_OPTS) as opt_mode_uit[]
 }
 
 export default function OPT_EXIST_ARR(
@@ -71,7 +65,7 @@ export default function OPT_EXIST_ARR(
     useLayoutEffect(()=>{
         setss_available_opts(func_exclude_opt(available_opts, exist_opts.ss))
         if(ref_exist_opts.current !== exist_opts.ss){
-            const UPDATE = method_sort_arr(exist_opts.ss)
+            const UPDATE = uarr.sort_arr(exist_opts.ss)
             exist_opts.setss(UPDATE)
         }
         ref_exist_opts.current = exist_opts.ss
@@ -88,13 +82,13 @@ export default function OPT_EXIST_ARR(
     }
     function func_push_exist_opts(){
         if(ss_newobj_index !== undefined){
-            const INPUT = handle_access_optmode(
+            const INPUT = access_optmode(
                 ss_newobj_index,
                 ss_available_opts,
             )
             if(INPUT !== undefined){
                 const NEXT_INDEX = item_to_index(ss_available_opts, INPUT)
-                method_push_arr(INPUT.index, exist_opts)
+                uarr.push_arr(INPUT.index, exist_opts)
                 if(NEXT_INDEX !== undefined){
                     if(ss_available_opts.length <= 1){
                         setss_newobj_index(undefined)
@@ -113,7 +107,7 @@ export default function OPT_EXIST_ARR(
         if(ss_newobj_index === undefined){
             setss_newobj_index(exist_opts.ss[index])
         }
-        method_delete_item(index, exist_opts)
+        uarr.delete_item(index, exist_opts)
     }
     const JSX_EXIST_OPTS = exist_opts.ss.map((item,index)=>{
         return <div key={index}>
@@ -133,10 +127,10 @@ export default function OPT_EXIST_ARR(
         />
         <BUTTON_CLICK 
             name={(
-                handle_access_optmode(
+                access_optmode(
                     ss_newobj_index,
                     ss_available_opts,
-                ) ? "Create "+(handle_access_optmode(
+                ) ? "Create "+(access_optmode(
                     ss_newobj_index,
                     ss_available_opts,
                 ))?.name

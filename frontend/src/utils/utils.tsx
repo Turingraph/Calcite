@@ -1,19 +1,13 @@
 import * as a from "../type/alias";
 import { opt_mode_uit } from "../components/opt/type";
 
-/*
-Rule of every function in this file.
-1.  It should begin with `handle_`
-2.  It should be only used for check type.
-*/
-
 // Any, Unknown, Never
 // https://youtu.be/kWmUNChlzVw?si=DwNwPVm6KJG4nIco
 
 // https://www.reddit.com/r/typescript/comments/s1rdbp/
 // how_to_check_that_an_unknown_object_has_a/
 
-export default function handle_get_unknown({
+export default function get_unknown({
     unknown_obj,
     property,
     type,
@@ -36,8 +30,8 @@ export default function handle_get_unknown({
     return undefined
 }
 
-export function handle_get_finite_id(arr:number[], max:number){
-    const UPDATE_ARR = [... arr]
+export function get_finite_id(arr:number[], max:number){
+    const UPDATE_ARR = [...arr]
     // https://stackoverflow.com/questions/21687907/
     // typescript-sorting-an-array
     UPDATE_ARR.sort((n0, n1) => n0 > n1 ? -1 : 1)
@@ -58,7 +52,7 @@ export function handle_get_finite_id(arr:number[], max:number){
     return y
 }
 
-export function handle_access_optmode(index:number|undefined, arr:opt_mode_uit[]){
+export function access_optmode(index:number|undefined, arr:opt_mode_uit[]){
     if(index === undefined){
         return undefined
     }
@@ -70,7 +64,7 @@ export function handle_access_optmode(index:number|undefined, arr:opt_mode_uit[]
     return undefined
 }
 
-export function handle_identity<t>(x:t){
+export function identity<t>(x:t){
     const Y = x
     return Y
 }
@@ -79,6 +73,6 @@ export function handle_identity<t>(x:t){
 // https://medium.com/analytics-vidhya/
 // 3-ways-to-copy-by-value-any-composite-data-type-in-javascript-ca3c730e4d2f
 
-export function handle_copy<t>(input:t){
+export function copy_obj<t>(input:t){
     return JSON.parse(JSON.stringify(input))
 }

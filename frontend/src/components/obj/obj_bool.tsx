@@ -1,5 +1,5 @@
 import * as a from "../../type/alias";
-import { method_update_item } from "../../utils/arr_method";
+import * as uarr from "../../utils/utils_arr";
 import BUTTON_CLICK from "../button/button_click";
 import "./index.css"
 
@@ -30,7 +30,7 @@ export default function OBJ_BOOL<
         else{
             UPDATE_INPUT[attr] = true as t[k]
         }
-        method_update_item(this_item, arr, UPDATE_INPUT)
+        uarr.update_item(this_item, arr, UPDATE_INPUT)
     }
     const HANDLE = ((e:any)=>{func_select()})
     if(ui_mode === "checkbox"){

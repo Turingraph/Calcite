@@ -4,8 +4,8 @@ import {STR_TO_H, str_to_optmode} from "../../utils/convert";
 import { opt_mode_uit, opt_input_uit } from "./type"
 import SEARCH_BAR from "./search_bar";
 import "./index.css"
-import {method_no_undefined} from "../../utils/arr_method";
-import { handle_access_optmode } from "../../utils/utils";
+import * as uarr from "../../utils/utils_arr";
+import { access_optmode } from "../../utils/utils";
 
 //  https://stackoverflow.com/questions/40209352/
 //  how-to-specify-optal-default-props-with-typescript-for-stateless-functiona
@@ -66,8 +66,8 @@ export default function OPT_INPUT(
         ss_mode.setss(+e.target.value)
     }) as a.handle_event<HTMLSelectElement>
 
-    const JSX_OPTS = method_no_undefined(ss_show_opts.reverse().map((item,index)=>{
-        if(item !== undefined && handle_access_optmode(item.index, str_to_optmode(available_opts)) !== undefined){
+    const JSX_OPTS = uarr.no_undefined(ss_show_opts.reverse().map((item,index)=>{
+        if(item !== undefined && access_optmode(item.index, str_to_optmode(available_opts)) !== undefined){
             return (<option key={index} value={item.index}>{item.name}</option>)
         }
         return undefined

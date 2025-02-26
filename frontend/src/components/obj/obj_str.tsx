@@ -3,7 +3,7 @@ import * as a from "../../type/alias"
 import BUTTON_CLICK from "../button/button_click";
 import INPUT_STR from "../input/input_str";
 import {STR_TO_H, str_to_default_num} from "../../utils/convert";
-import { method_update_item, method_update_item_attr, method_include_arr } from "../../utils/arr_method";
+import * as uarr from "../../utils/utils_arr";
 import { arr_attr_t } from "../../type/obj";
 import "./index.css"
 
@@ -19,7 +19,7 @@ function func_get_attr<t extends object>(item:t, attrs:string[]){
     // https://www.geeksforgeeks.org/typescript-array-keys-method/
     const CONST_ITEM : { [key: string]: any } = item
     const ARR_ALL = Object.keys(CONST_ITEM).map((item)=>{return item as string})
-    const CONST_ATTR = method_include_arr(
+    const CONST_ATTR = uarr.include_arr(
         ARR_ALL,
         attrs, 
     ) as (keyof typeof CONST_ITEM)[]
@@ -116,7 +116,7 @@ export default function OBJ_STR<
                     ) as number
                 }
             }
-            method_update_item_attr(
+            uarr.update_item_attr(
                 this_item,
                 arr,
                 item as typeof CONST_ITEM[number],
@@ -145,7 +145,7 @@ export default function OBJ_STR<
                 input={{
                     ss:ss_texts[index],
                     setss:((e:string) =>{
-                        method_update_item(
+                        uarr.update_item(
                             index,
                             {ss:ss_texts, 
                             setss:((e:string[])=>{setss_texts({

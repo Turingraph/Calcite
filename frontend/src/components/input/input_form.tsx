@@ -3,7 +3,7 @@ import * as a from "../../type/alias"
 import BUTTON_CLICK from "../button/button_click";
 import INPUT_STR from "./input_str";
 import {STR_TO_H, str_to_default_num} from "../../utils/convert";
-import { method_update_item } from "../../utils/arr_method";
+import * as uarr from "../../utils/utils_arr";
 import "./index.css"
 
 export type input_form_t = {
@@ -72,7 +72,7 @@ export default function INPUT_FORM({
             input={{ 
                 ss: ss_texts, 
                 setss: ((e:string) => {
-                    method_update_item(
+                    uarr.update_item(
                         index, 
                         {ss:ss_texts, setss:setss_texts}, 
                         e);

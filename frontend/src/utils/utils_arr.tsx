@@ -2,11 +2,11 @@ import * as a from "../type/alias";
 
 /*
 Rule of every function in this file.
-1.  It should begin with `method_`
-2.  It should takes array or a.use_state_t<t[]> as it's input
+1.  It should takes t[] or a.use_state_t<t[]> as it's input
+2.  import * as uarr from ".../utils/utils_arr"
 */
 
-export function method_update_item<t>(
+export function update_item<t>(
         index:number, 
         arr:a.use_state_t<t[]>, 
         update_input:t){
@@ -18,7 +18,7 @@ export function method_update_item<t>(
 // https://stackoverflow.com/questions/586182/
 // https://medium.com/analytics-vidhya/
 // 3-ways-to-copy-by-value-any-composite-data-type-in-javascript-ca3c730e4d2f
-export function method_copy_item<t>(
+export function copy_item<t>(
     index:number,
     arr:a.use_state_t<t[]>
 ){
@@ -28,7 +28,7 @@ export function method_copy_item<t>(
     arr.setss(UPDATE_ARR)
 }
 
-export function method_copy_unique_item<t extends {name:a.name}>(
+export function copy_unique_item<t extends {name:a.name}>(
     index:number,
     arr:a.use_state_t<t[]>
 ){
@@ -39,7 +39,7 @@ export function method_copy_unique_item<t extends {name:a.name}>(
     arr.setss(UPDATE_ARR)
 }
 
-export function method_copy_ptr_item<t>(
+export function copy_ptr_item<t>(
     index:number,
     arr:a.use_state_t<t[]>
 ){
@@ -49,7 +49,7 @@ export function method_copy_ptr_item<t>(
     arr.setss(UPDATE_ARR)
 }
 
-export function method_update_arr<t>(
+export function update_arr<t>(
         arr:a.use_state_t<t>[],
         func_event:(e:t)=>void,
         input:t[]
@@ -61,7 +61,7 @@ export function method_update_arr<t>(
     })
 }
 
-export function method_push_arr<t>(
+export function push_arr<t>(
     input:t,
     arr:a.use_state_t<t[]>
 ){
@@ -70,13 +70,13 @@ export function method_push_arr<t>(
     arr.setss(UPDATE_ARR)
 }
 
-export function method_delete_item<t>(index:number,arr:a.use_state_t<t[]>){
+export function delete_item<t>(index:number,arr:a.use_state_t<t[]>){
     const UPDATE_ARR = [...arr.ss]
     UPDATE_ARR.splice(index, 1)
     arr.setss(UPDATE_ARR)
 }
 
-export function method_update_item_attr<
+export function update_item_attr<
     t extends object, 
     k extends keyof t,
     v extends t[k]>(
@@ -90,7 +90,7 @@ export function method_update_item_attr<
         arr.setss(UPDATE_ARR)
     }
 
-export function method_update_item_attrs<
+export function update_item_attrs<
     t extends object,
     k extends keyof t,
     v extends t[k]>(
@@ -100,7 +100,7 @@ export function method_update_item_attrs<
         input:v[]
     ){
         attrs.map((item, index)=>{
-            method_update_item_attr(
+            update_item_attr(
                 this_item,
                 arr,
                 item,
@@ -111,7 +111,7 @@ export function method_update_item_attrs<
     }
 
 
-export function method_sort_arrattr<t extends object, k extends keyof t>(
+export function sort_arr_attr<t extends object, k extends keyof t>(
     arr:t[],
     attr:k,
     reverse:boolean = false
@@ -127,7 +127,7 @@ export function method_sort_arrattr<t extends object, k extends keyof t>(
     return arr.sort((n0, n1) => n0[attr] < n1[attr] ? -1 : 1)
 }
 
-export function method_sort_arr<t>(arr:t[],reverse:boolean = false){
+export function sort_arr<t>(arr:t[],reverse:boolean = false){
     // https://stackoverflow.com/questions/40472548/
     // typescript-sort-strings-descending
     if(reverse===true){
@@ -138,11 +138,11 @@ export function method_sort_arr<t>(arr:t[],reverse:boolean = false){
 
 // https://stackoverflow.com/questions/70926558/
 // filter-wont-filter-undefined
-export function method_no_undefined<t>(arr:t[]){
+export function no_undefined<t>(arr:t[]){
     return arr.filter((item)=> item !== undefined) as t[]
 }
 
-export function method_exclude_arr<t>(arr_all:t[], arr_exclude:t[]){
+export function exclude_arr<t>(arr_all:t[], arr_exclude:t[]){
     const CONST_ARR_EXLUDE = arr_exclude.map((item)=>{
         return JSON.stringify(item)
     })
@@ -155,7 +155,7 @@ export function method_exclude_arr<t>(arr_all:t[], arr_exclude:t[]){
     }).filter((item)=> item !== undefined) as t[]
 }
 
-export function method_include_arr<t>(arr_all:t[], arr_include:t[]){
+export function include_arr<t>(arr_all:t[], arr_include:t[]){
     const CONST_ARR_INLUDE = arr_include.map((item)=>{
         return JSON.stringify(item)
     })
@@ -168,7 +168,7 @@ export function method_include_arr<t>(arr_all:t[], arr_include:t[]){
     }).filter((item)=> item !== undefined) as t[]
 }
 
-export function method_unique_arr<t>(arr:t[]){
+export function unique_arr<t>(arr:t[]){
     // https://stackoverflow.com/questions/36829184/
     // how-can-i-convert-a-set-to-an-array-in-typescript
     return Array.from(new Set(arr))

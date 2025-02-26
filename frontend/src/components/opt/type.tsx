@@ -1,5 +1,5 @@
 import * as a from "../../type/alias"
-import { method_sort_arrattr } from "../../utils/arr_method"
+import * as uarr from "../../utils/utils_arr"
 
 export type opt_mode_uit = {
     name:a.name,
@@ -14,7 +14,7 @@ export type opt_input_uit = {
 }
 
 export function func_default_newobj_index(available_opts:opt_mode_uit[], length:number){
-    available_opts = method_sort_arrattr(available_opts, "index")
+    available_opts = uarr.sort_arr_attr(available_opts, "index")
     if (available_opts.length > length){
         return available_opts[length].index
     }

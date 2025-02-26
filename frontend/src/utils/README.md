@@ -1,10 +1,10 @@
 This folder contains only 3 reusable function based files.
-1.  `arr_method.tsx` (array method)
+1.  `utils_arr.tsx` (utility array method)
 
 ```
 Rule of every function in this file.
-1.  It should begin with `method_`
-2.  It should takes array or a.use_state_t<t[]> as it's input
+1.  It should takes t[] or a.use_state_t<t[]> as it's input
+2.  import * as uarr from ".../utils/utils_arr"
 ```
 
 2.  `convert.tsx` 
@@ -21,6 +21,5 @@ Rule of every function in this file.
 
 ```
 Rule of every function in this file.
-1.  It should begin with `handle_`
-2.  It should be only used for check type.
+1.  import * as u from ".../utils/utils"
 ```

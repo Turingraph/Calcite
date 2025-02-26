@@ -3,9 +3,7 @@ import * as a from "../../type/alias";
 import BUTTON_CLICK from "../button/button_click";
 import INPUT_STR from "../input/input_str";
 import { STR_TO_H } from "../../utils/convert";
-import { method_delete_item, 
-    method_copy_unique_item,
-    method_update_item_attr } from '../../utils/arr_method'
+import * as uarr from '../../utils/utils_arr'
 import "./index.css"
 
 export default function OBJ_SELF<t extends {name:a.name}>({
@@ -38,7 +36,7 @@ export default function OBJ_SELF<t extends {name:a.name}>({
         setss_ui_mode(ui_mode)
     }
     function func_rename(){
-        method_update_item_attr(
+        uarr.update_item_attr(
             this_item,
             arr,
             'name',
@@ -47,7 +45,7 @@ export default function OBJ_SELF<t extends {name:a.name}>({
         func_reset()
     }
     function func_delete(){
-        method_delete_item(this_item, arr)
+        uarr.delete_item(this_item, arr)
         func_reset()
     }
     if (ss_ui_mode === "normal"){
@@ -58,7 +56,7 @@ export default function OBJ_SELF<t extends {name:a.name}>({
             />
             <BUTTON_CLICK
                 name={"copy" as a.name}
-                func_event={(()=>{method_copy_unique_item(this_item,arr)}) as a.func_event}
+                func_event={(()=>{uarr.copy_unique_item(this_item,arr)}) as a.func_event}
             />
             <BUTTON_CLICK
                 name={"x" as a.name}

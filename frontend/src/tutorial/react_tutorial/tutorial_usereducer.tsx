@@ -1,7 +1,7 @@
 import { useReducer } from 'react';
 import BUTTON_CLICK from '../../components/button/button_click';
 import * as a from "../../type/alias"
-import { handle_copy } from '../../utils/utils';
+import * as u from '../../utils/utils';
 
 function abs_nozero(input:number){
     if(input < 0){
@@ -64,7 +64,7 @@ function func_update_time(time:date_t, size:number, unit:"day"|"month"|"year"|"r
 }
 
 function reducer_today(ss_today: date_t, action: time_machine_t) {
-    const YOU_CANT_MODIFY_THE_HOOK_DIRECTLY = handle_copy(ss_today)
+    const YOU_CANT_MODIFY_THE_HOOK_DIRECTLY = u.copy_obj(ss_today)
     return func_update_time(
         YOU_CANT_MODIFY_THE_HOOK_DIRECTLY, 
         action.size, 
