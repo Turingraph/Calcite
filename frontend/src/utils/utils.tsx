@@ -74,5 +74,5 @@ export function identity<t>(x:t){
 // 3-ways-to-copy-by-value-any-composite-data-type-in-javascript-ca3c730e4d2f
 
 export function copy_obj<t>(input:t){
-    return JSON.parse(JSON.stringify(input))
+    return JSON.parse(JSON.stringify(input)) as t
 }

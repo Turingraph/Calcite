@@ -11,13 +11,13 @@ export type user_t = {
 
 export type img_t = {
     name:a.name,
-    select:a.select,
+    // select:a.select,
     img:a.img,
-    original?:a.img,
-    dilate?:a.img,
-    history?:a.history<a.img>,
-    ocr_text?: string,
-    osd?: string
+    origin:a.img,
+    // dilate:a.img,
+    // history:a.history<a.img>,
+    ocr: string,
+    osd: string
 }
 
 export type box_t = {

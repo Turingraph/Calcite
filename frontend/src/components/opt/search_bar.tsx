@@ -27,6 +27,9 @@ export default function SEARCH_BAR<t extends {name:a.name}>(
     // Update ss_select_arr such that it match with the ss_search_text
     // https://stackoverflow.com/questions/59467758/
     // passing-array-to-useeffect-dependency-list
+    // React Hook useEffect has a missing dependency: 'read_only_arr'.
+    // In order to prevent the unexpected behavior, do not edit read_only_arr in search_bar.tsx.
+    /* eslint-disable react-hooks/exhaustive-deps */
     useEffect(()=>{
         const UPDATE_SEARCH_TEXT = str_to_optmode(read_only_arr).map((item,index) => {
             if ((item.name as string).includes(ss_search_text) === true){
@@ -39,6 +42,7 @@ export default function SEARCH_BAR<t extends {name:a.name}>(
         }) as opt_mode_uit[]
         setss_select_arr(UPDATE_SEARCH_TEXT)
     },[ss_search_text, setss_select_arr, JSON.stringify(read_only_arr)])
+    /* eslint-disable react-hooks/exhaustive-deps */
 
     return (<>
         <INPUT_STR

@@ -4,9 +4,7 @@ import IMPORT_FILE from './tutorial/typescript_tutorial/import_file';
 
 function App() {
   return <>
-    <IMPORT_FILE/>
-    <IMPORT_FILE/>
-    <IMPORT_FILE/>
+    <TEST/>
   </>;
 }
 
