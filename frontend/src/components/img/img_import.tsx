@@ -2,6 +2,7 @@ import {useLayoutEffect, useState, useRef, useCallback} from "react";
 import * as a from "../../type/alias";
 import PANEL from "../asset/panel";
 import OPT_EXIST_ARR from "../opt/opt_exist_arr";
+import { useDropzone } from "react-dropzone/.";
 
 // https://www.geeksforgeeks.org/
 // how-to-upload-image-and-preview-it-using-reactjs/
@@ -14,40 +15,26 @@ import OPT_EXIST_ARR from "../opt/opt_exist_arr";
 
 const FILE_FORMAT = ".jpg,.jpeg,.bmp,.dib,.png,.webp,.sr,.ras,.tiff,.tif"
 
-
 export default function IMG_IMPORT({
     img_arr
 }:{
-    img_arr:a.use_state_t<File[]|undefined>
+    img_arr:a.use_state_t<File[]|null>
 }){
-    return <></>
-    // async function handle_submit(e:React.SyntheticEvent){
-    //     e.preventDefault()
-    //     // console.log("file",img_arr.ss)
-    //     if(typeof img_arr.ss === "undefined") return 
-    //     const FORM_DATA = new FormData()
-    //     // FORM_DATA.append('file', img_arr.ss)
-
-    // }
-    // function handle_event(e:React.FormEvent<HTMLInputElement>) {
-    //     const TARGET = e.target as HTMLInputElement & {
-    //         files: File[]
-    //     }
-    //     img_arr.setss(TARGET.files)
-    // }
-    // const onDrop = useCallback(acceptedFiles => {
-    //     // Do something with the files
-    //   }, [])
-    // const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop})
-    
-    // return <>
-    // <div {...getRootProps()}>
-    //   <input {...getInputProps()} />
-    //   {
-    //     isDragActive ?
-    //       <p>Drop the files here ...</p> :
-    //       <p>Drag 'n' drop some files here, or click to select files</p>
-    //   }
-    // </div>
-    // </>
+    const handle_event = (e:React.FormEvent<HTMLInputElement>)=>{
+        const TARGET = e.target as HTMLInputElement
+        const CONST_FILE_READER = new FileReader
+        if (typeof TARGET.files === "undefined")
+        CONST_FILE_READER.readAsDataURL(TARGET.files)
+        console.log(TARGET.files)
+        img_arr.setss(TARGET.files as unknown as File[])
+    }
+    return <>
+        <input
+        type = "file"
+        accept={FILE_FORMAT}
+        multiple={true}
+        name="import_image"
+        onChange={(e)=>{handle_event(e)}}
+        />
+    </>
 }

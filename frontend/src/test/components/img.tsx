@@ -15,7 +15,7 @@ export function TEST_IMG_CANVAS(){
 }
 
 export function TEST_IMG_IMPORT(){
-    const [ss_imgs, setss_imgs] = useState<File[]|undefined>(undefined)
+    const [ss_imgs, setss_imgs] = useState<File[]|null>(null)
     return <>
     <IMG_IMPORT
         img_arr={{ss:ss_imgs, setss:setss_imgs}}

@@ -1,12 +1,13 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 import TEST from './test';
+import CREATE_FILE from './tutorial/typescript_tutorial/create_file';
+import IMPORT_FILE from './tutorial/typescript_tutorial/import_file';
 
 function App() {
-  return (
-    <TEST/>
-  );
+  return <>
+    <IMPORT_FILE/>
+    <IMPORT_FILE/>
+    <IMPORT_FILE/>
+  </>;
 }
 
 export default App;
