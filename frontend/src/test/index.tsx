@@ -1,4 +1,5 @@
 import { 
+    TEST_BUTTON_SAVE,
     TEST_BUTTON_CLICK,  // OK
     TEST_BUTTON_TABS,   // OK
     TEST_BUTTON_HISTORY // OK
@@ -22,8 +23,14 @@ import {
     TEST_SEARCH_BAR     // OK
 } from "./components/opt";
 
+import {
+    TEST_IMG_ARR,
+    TEST_IMG_CANVAS,
+    TEST_IMG_IMPORT
+} from "./components/img"
+
 export default function TEST(){
     return <>
-    <TEST_SEARCH_OBJ/>
+    <TEST_IMG_IMPORT/>
     </>
 }
