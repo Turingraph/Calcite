@@ -260,3 +260,85 @@ export type equal_type_t<T, U> =
 // }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+export function anymonth_to_num(input:a.anymonth_t){
+    if(typeof input === "number"){
+        return input
+    }
+    const VALUE = input.toUpperCase().substring(0, 3)
+    switch(VALUE){
+        case "JAN":{
+            return 1
+        }
+        case "FEB":{
+            return 2
+        }
+        case "MAR":{
+            return 3
+        }
+        case "APR":{
+            return 4
+        }
+        case "MAY":{
+            return 5
+        }
+        case "JUN":{
+            return 6
+            break
+        }
+        case "JUL":{
+            return 7
+        }
+        case "AUG":{
+            return 8
+        }
+        case "SEP":{
+            return 9
+        }
+        case "OCT":{
+            return 10
+        }
+        case "NOV":{
+            return 11
+        }
+        case "DEC":{
+            return 12
+        }
+        default:{
+            console.log("convert.tsx/anymonth_to_num : Invalid Month")
+            return -1
+        }
+    }
+}
+
+export function num_to_index_name(input:number){
+    if(Math.abs(input) < 10){
+        return "0"+Math.abs(input).toString()
+    }
+    return Math.abs(input).toString()
+}
+
+export function anymonth_to_month(input:a.anymonth_t){
+    return num_to_index_name(anymonth_to_num(input)) as a.month_t
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+export function file_to_date(item:File|undefined = undefined, gmt:boolean=false){
+    const DAY = (item ? new Date(item.lastModified) : new Date()).toString().split(" ")
+    return (gmt ? DAY[5].replace("+","-")+"_" : "")+
+        DAY[3]+"-"+anymonth_to_month(DAY[1] as a.anymonth_t)+"-"+DAY[2]+
+        "_"+(DAY[4].split(":").join("-"))
+}
+
+export function file_to_url(input:Blob|MediaSource|File){
+    return URL.createObjectURL(input)
+}
+
+export async function url_to_file(input:string, metadata:string = 'text/plain'){
+    // https://stackoverflow.com/questions/25046301/
+    // convert-url-to-file-or-blob-for-filereader-readasdataurl
+    const RESPONSE = await fetch(input);
+    const DATA = await RESPONSE.blob();
+    return new File([DATA], "test.jpg", {type:metadata});
+}

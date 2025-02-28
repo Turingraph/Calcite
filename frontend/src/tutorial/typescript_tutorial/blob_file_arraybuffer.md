@@ -10,7 +10,7 @@
 
 Argument
 1.  data: data
-2.	type?: "text"|"plain"
+2.	type?: "text/plain"
 3.	ending?: "transparent"|"native"
 
 # File

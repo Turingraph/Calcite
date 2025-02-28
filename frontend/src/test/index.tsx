@@ -1,3 +1,5 @@
+//-------------------------------------------------------------------
+
 import { 
     TEST_BUTTON_SAVE,
     TEST_BUTTON_CLICK,  // OK
@@ -28,6 +30,8 @@ import {
     TEST_FILE_EXPORT    //
 } from "./components/file"
 
+//-------------------------------------------------------------------
+
 import { 
     TEST_BOX_CONFIG,
     TEST_BOX_EDIT,
@@ -47,12 +51,16 @@ import {
     TEST_OSD_OBJ,
 } from "./latout/ocr";
 
+//-------------------------------------------------------------------
+
 import { 
     TEST_PAGE,
     TEST_PAGE_LEFT,
     TEST_PAGE_MIDDLE,
     TEST_PAGE_RIGHT,
 } from "./page";
+
+//-------------------------------------------------------------------
 
 export default function TEST(){
     return <>
