@@ -1,7 +1,7 @@
 import { useReducer } from 'react';
 import BUTTON_CLICK from '../../components/button/button_click';
 import * as a from "../../type/alias"
-import * as u from '../../utils/utils';
+import * as u from '../../utility/utility';
 
 function abs_nozero(input:number){
     if(input < 0){

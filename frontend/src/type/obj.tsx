@@ -20,18 +20,19 @@ export type img_t = {
     osd: string
 }
 
+export type rect_t = {
+    x?:number|undefined,
+    y?:number|undefined,
+    w?:number|undefined,
+    h?:number|undefined,
+}
+
 export type box_t = {
     name:a.name,
     view:boolean,
-    ocr:boolean,
-    min_x?:undefined|number,
-    min_y?:undefined|number,
-    min_w?:undefined|number,
-    min_h?:undefined|number,
-    max_x?:undefined|number,
-    max_y?:undefined|number,
-    max_w?:undefined|number,
-    max_h?:undefined|number,
+    // ocr:boolean,
+    min:rect_t,
+    max:rect_t,
     r?:undefined|number,
     g?:undefined|number,
     b?:undefined|number,

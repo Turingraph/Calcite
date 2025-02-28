@@ -3,7 +3,7 @@ import { img_t } from "../../type/obj";
 
 const FILE_FORMAT = ".jpg,.jpeg,.bmp,.dib,.png,.webp,.sr,.ras,.tiff,.tif"
 
-export default function IMG_IMPORT({
+export default function FILE_IMPORT({
     imgs
 }:{
     imgs:a.use_state_t<img_t[]>

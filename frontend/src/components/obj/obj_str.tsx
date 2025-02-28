@@ -2,8 +2,8 @@ import {useLayoutEffect, useReducer, useRef} from "react";
 import * as a from "../../type/alias"
 import BUTTON_CLICK from "../button/button_click";
 import INPUT_STR from "../input/input_str";
-import {STR_TO_H, str_to_default_num} from "../../utils/convert";
-import * as uarr from "../../utils/utils_arr";
+import {STR_TO_H, str_to_default_num} from "../../utility/convert";
+import * as uarr from "../../utility/utility_arr";
 import { arr_attr_t } from "../../type/obj";
 import "./index.css"
 

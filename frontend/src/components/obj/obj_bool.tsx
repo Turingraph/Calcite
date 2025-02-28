@@ -1,5 +1,5 @@
 import * as a from "../../type/alias";
-import * as uarr from "../../utils/utils_arr";
+import * as uarr from "../../utility/utility_arr";
 import BUTTON_CLICK from "../button/button_click";
 import "./index.css"
 

@@ -1,7 +1,7 @@
 import React from "react";
 import * as a from "../../type/alias";
 import { opt_input_uit } from "../opt/type";
-import {STR_TO_H} from "../../utils/convert";
+import {STR_TO_H} from "../../utility/convert";
 import OPT_INPUT from "../opt/opt_input";
 import INPUT_FORM from "./input_form";
 import "./index.css"

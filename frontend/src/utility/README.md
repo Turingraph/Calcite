@@ -1,5 +1,5 @@
 This folder contains only 3 reusable function based files.
-1.  `utils_arr.tsx` (utility array method)
+1.  `utility_arr.tsx` (utility array method)
 
 ```
 Rule of every function in this file.
@@ -16,7 +16,7 @@ Rule of every function in this file.
 2.  It should be used for convert variable to get valid output
 ```
 
-3.  `utils.tsx` (utility)
+3.  `utility.tsx`
 -   Purpose: handle other issue.
 
 ```

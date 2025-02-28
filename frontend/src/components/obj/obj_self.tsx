@@ -2,8 +2,8 @@ import {JSX, useState, useEffect} from "react";
 import * as a from "../../type/alias";
 import BUTTON_CLICK from "../button/button_click";
 import INPUT_STR from "../input/input_str";
-import { STR_TO_H } from "../../utils/convert";
-import * as uarr from '../../utils/utils_arr'
+import { STR_TO_H } from "../../utility/convert";
+import * as uarr from '../../utility/utility_arr'
 import "./index.css"
 
 export default function OBJ_SELF<t extends {name:a.name}>({

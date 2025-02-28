@@ -1,5 +1,5 @@
 import * as a from "../../type/alias"
-import * as uarr from "../../utils/utils_arr"
+import * as uarr from "../../utility/utility_arr"
 
 export type opt_mode_uit = {
     name:a.name,

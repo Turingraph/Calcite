@@ -6,10 +6,10 @@ import OBJ_BOOL from "../../components/obj/obj_bool";
 import { character_t } from "../constant";
 import { CHARACTERS } from "../constant";
 import PANEL from "../../components/asset/panel";
-import { STR_TO_H } from "../../utils/convert";
+import { STR_TO_H } from "../../utility/convert";
 import BUTTON_CLICK from "../../components/button/button_click";
-import * as uarr from "../../utils/utils_arr";
-import * as u from "../../utils/utils";
+import * as uarr from "../../utility/utility_arr";
+import * as u from "../../utility/utility";
 
 function func_delete_arr<t>(arr:a.use_state_t<t[]>){
     if(arr.ss.length > 1){

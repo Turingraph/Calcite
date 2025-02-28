@@ -2,11 +2,11 @@ import {useState, useRef, useLayoutEffect} from "react";
 import * as a from "../../type/alias"
 import BUTTON_CLICK from "../button/button_click";
 import OPT_INPUT from "./opt_input";
-import {str_to_optmode, STR_TO_H, item_to_index} from "../../utils/convert";
-import * as uarr from '../../utils/utils_arr'
+import {str_to_optmode, STR_TO_H, item_to_index} from "../../utility/convert";
+import * as uarr from '../../utility/utility_arr'
 import PANEL from "../asset/panel";
 import { opt_mode_uit } from "./type";
-import { access_optmode } from "../../utils/utils";
+import { access_optmode } from "../../utility/utility";
 import "./index.css"
 import { func_default_newobj_index } from "./type";
 

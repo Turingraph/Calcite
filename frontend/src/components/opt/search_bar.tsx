@@ -3,7 +3,7 @@ import * as a from "../../type/alias"
 import INPUT_STR from "../input/input_str";
 import { opt_mode_uit } from "./type";
 import "./index.css"
-import { str_to_optmode } from "../../utils/convert";
+import { str_to_optmode } from "../../utility/convert";
 
 // How to make function accept prop based on attr
 // https://www.freecodecamp.org/news/typescript-generics-with-functional-react-components/

@@ -1,11 +1,11 @@
 import React, { useState, JSX, useRef, useLayoutEffect} from "react";
 import * as a from "../../type/alias"
-import {STR_TO_H, str_to_optmode} from "../../utils/convert";
+import {STR_TO_H, str_to_optmode} from "../../utility/convert";
 import { opt_mode_uit, opt_input_uit } from "./type"
 import SEARCH_BAR from "./search_bar";
 import "./index.css"
-import * as uarr from "../../utils/utils_arr";
-import { access_optmode } from "../../utils/utils";
+import * as uarr from "../../utility/utility_arr";
+import { access_optmode } from "../../utility/utility";
 
 //  https://stackoverflow.com/questions/40209352/
 //  how-to-specify-optal-default-props-with-typescript-for-stateless-functiona
