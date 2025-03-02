@@ -66,12 +66,12 @@ export default function OPT_INPUT(
         ss_mode.setss(+e.target.value)
     }) as a.handle_event<HTMLSelectElement>
 
-    const JSX_OPTS = uarr.no_undefined(ss_show_opts.reverse().map((item,index)=>{
+    const JSX_OPTS = ss_show_opts.reverse().map((item,index)=>{
         if(item !== undefined && access_optmode(item.index, str_to_optmode(available_opts)) !== undefined){
             return (<option key={index} value={item.index}>{item.name}</option>)
         }
         return undefined
-    })) as JSX.Element[]
+    }) as JSX.Element[]
     const JSX_SEARCH_BAR = <SEARCH_BAR
             opt_name={undefined as a.opt_name}
             read_only_arr={str_to_optmode(available_opts)}

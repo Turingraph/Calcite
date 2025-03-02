@@ -50,6 +50,7 @@ export default function OBJ_SELF<t extends {name:a.name}>({
     }
     if (ss_ui_mode === "normal"){
         return <>
+            <STR_TO_H opt_name={arr.ss[this_item].name as a.opt_name}/>
             <BUTTON_CLICK
                 name={"rename" as a.name}
                 func_event={(()=>{func_select("rename")}) as a.func_event}

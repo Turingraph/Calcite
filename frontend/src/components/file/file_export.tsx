@@ -1,24 +1,25 @@
 import React from "react";
+import JSZip from 'jszip';
 import * as a from "../../type/alias"
 import BUTTON_CLICK from "../button/button_click";
 import { file_to_date, file_to_url } from "../../utility/convert";
 
 export default function FILE_EXPORT({
     file_arr,
-    file_name=undefined,
+    folder_name=undefined,
     multiple=false
 }:{
     file_arr:a.use_state_t<File[]>
-    file_name?:string|undefined
+    folder_name?:string|undefined
     multiple?:boolean
 }){
     const func_event = () =>{
-        let upload_name = file_name
-        if(upload_name === undefined){
-            upload_name = "upload_file_" + file_to_date() + ".zip"
+        let let_folder_name = folder_name
+        if(let_folder_name === undefined){
+            let_folder_name = "upload_file_" + file_to_date() + ".zip"
         }
         if (file_arr.ss.length > 0){
-            const UPLOAD_FILE = multiple ? new File(file_arr.ss, upload_name) : file_arr.ss[0]
+            const UPLOAD_FILE = multiple ? new File(file_arr.ss, let_folder_name) : file_arr.ss[0]
             const UPLOAD_URL = file_to_url(UPLOAD_FILE)
             const A = document.createElement("a")
             A.href = UPLOAD_URL

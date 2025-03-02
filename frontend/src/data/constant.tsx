@@ -31,3 +31,4 @@ export const IMG_PROCESS_BUTTON_NAME:a.name[] = [
 ].map((item)=>{return item as a.name})
 
 export const IMG_FILE_FORMAT = ".jpg,.jpeg,.bmp,.dib,.png,.webp,.sr,.ras,.tiff,.tif"
+ 

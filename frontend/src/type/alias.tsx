@@ -14,7 +14,11 @@ export type history<t> = {
     commit:string[]
     current:number
 }
-export type func_event = nominal<()=>void>
+
+// https://stackoverflow.com/questions/67367665/
+// type-promisevoid-is-not-assignable-to-type-mouseeventhandlerhtmlbuttonelem
+
+export type func_event = nominal<()=>(void|Promise<void>)>
 export type handle_event<input_mode> = nominal<
     (e:React.ChangeEvent<input_mode>)=>void
 >
