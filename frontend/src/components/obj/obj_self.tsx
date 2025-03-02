@@ -1,4 +1,4 @@
-import {JSX, useState, useEffect} from "react";
+import {JSX, useState, useEffect, useLayoutEffect} from "react";
 import * as a from "../../type/alias";
 import BUTTON_CLICK from "../button/button_click";
 import INPUT_STR from "../input/input_str";
@@ -19,6 +19,9 @@ export default function OBJ_SELF<t extends {name:a.name}>({
 }){
     const [ss_ui_mode, setss_ui_mode] = useState<"normal"|"rename"|"delete">("normal")
     const [ss_name, setss_name] = useState<string>(arr.ss[this_item].name as string)
+    useLayoutEffect(()=>{
+        arr.setss(uarr.sort_arr_attr(arr.ss, "name", "SORT"))
+    })
     useEffect(()=>{
         if(ss_select.ss !== this_item && ss_ui_mode !== "normal"){
             setss_ui_mode("normal")
@@ -36,11 +39,11 @@ export default function OBJ_SELF<t extends {name:a.name}>({
         setss_ui_mode(ui_mode)
     }
     function func_rename(){
-        uarr.update_item_attr(
+        uarr.update_item_name(
             this_item,
             arr,
-            'name',
-            ss_name as t['name']
+            ss_name,
+            "SORT"
         )
         func_reset()
     }

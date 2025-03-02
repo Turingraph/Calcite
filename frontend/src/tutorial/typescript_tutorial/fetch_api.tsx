@@ -54,7 +54,7 @@ export default function FETCH_API(){
                     NEW_OBJ[ATTR_T] = NEW_POKEMON[ATTR_T];
                 }
             }
-            uarr.push_arr_attr(NEW_OBJ, {ss:ss_arr, setss:setss_arr})
+            uarr.push_arr_name(NEW_OBJ, {ss:ss_arr, setss:setss_arr})
         }
     }
 

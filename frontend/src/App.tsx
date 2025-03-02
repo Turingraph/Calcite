@@ -5,7 +5,7 @@ import FETCH_API from './tutorial/typescript_tutorial/fetch_api';
 
 function App() {
   return <>
-    <FETCH_API/>
+    <TEST/>
   </>;
 }
 

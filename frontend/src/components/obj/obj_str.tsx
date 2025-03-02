@@ -160,7 +160,6 @@ export default function OBJ_STR<
         </div>
     })
     return <>
-    <STR_TO_H opt_name={opt_name}/>
     {JSX_INPUTS}
     <BUTTON_CLICK
         name={"apply change" as a.name}

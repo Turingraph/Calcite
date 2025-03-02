@@ -1,10 +1,11 @@
-import { useState, JSX } from "react"
+import { useState, JSX, useLayoutEffect } from "react"
 import * as a from "../../type/alias"
 import { opt_mode_uit } from "./type"
 import { STR_TO_H, str_to_optmode } from "../../utility/convert"
 import OBJ_SELF from "../obj/obj_self"
 import SEARCH_BAR from "./search_bar"
 import PANEL from "../asset/panel"
+import * as uarr from '../../utility/utility_arr'
 
 export default function SEARCH_OBJ<t extends {name:a.name}>({
     arr,
@@ -18,6 +19,10 @@ export default function SEARCH_OBJ<t extends {name:a.name}>({
     )
     const [ss_select, setss_select] = useState<number|undefined>(undefined)
 
+    useLayoutEffect(()=>{
+        arr.setss(uarr.sort_arr_attr(arr.ss, "name", "SORT"))
+    })
+
     const JSX_ARR = ss_show_arr.map((item,index)=>{
         if(item !== undefined && arr.ss[item.index] !== undefined){
             let jsx_item = undefined
@@ -25,7 +30,6 @@ export default function SEARCH_OBJ<t extends {name:a.name}>({
                 jsx_item = jsx_additional[item.index]
             }
             return <div key={index}>
-                <STR_TO_H opt_name={item.name}/>
                 <OBJ_SELF 
                 arr = {arr}
                 this_item={item.index}

@@ -284,7 +284,6 @@ export function anymonth_to_num(input:a.anymonth_t){
         }
         case "JUN":{
             return 6
-            break
         }
         case "JUL":{
             return 7
