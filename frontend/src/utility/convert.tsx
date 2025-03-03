@@ -341,3 +341,11 @@ export async function url_to_file(input:string, metadata:string = 'text/plain'){
     const DATA = await RESPONSE.blob();
     return new File([DATA], "test.jpg", {type:metadata});
 }
+
+// https://stackoverflow.com/questions/42980645/
+// easier-way-to-transform-formdata-into-query-string
+export function formdata_to_url(input:FormData){
+    return new URLSearchParams(
+    input as unknown as Record<string, string>,
+    ).toString();
+}

@@ -6,7 +6,7 @@ import { file_to_date, url_to_file } from "../../utility/convert";
 
 /*
 TODONOW
-1.  Make FILE_IMPORT able to upload multiple file as zip.
+1.  Make FILE_EXPORT able to upload multiple file as zip.
 2.  able to set ss_file as url_to_file which is async.
 3.  start doing layout/
 */

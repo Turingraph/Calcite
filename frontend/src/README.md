@@ -7,6 +7,8 @@ which use the same medium size folder structure from this video
 ## Folder Structure of `frontend/src/`
 
 List of the folders in `frontend/src/`
+1.	`api`
+-	Purpose: It is used for creating API. Now it is unusable and under development.
 1.	`components/`
 -	Purpose: Contains reuseable UI components.
 2.	`data/`

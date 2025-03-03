@@ -1,2 +1,3 @@
-This file is unusable and under development.
-The main purpose of this file is to explain how to use our project.
+The purpose of this folder is to teach user how to use our app.
+
+This folder is unavailable and in the development process.

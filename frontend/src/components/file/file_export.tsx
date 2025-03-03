@@ -1,8 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import JSZip from 'jszip';
 import * as a from "../../type/alias"
 import BUTTON_CLICK from "../button/button_click";
 import { file_to_date, file_to_url } from "../../utility/convert";
+
+export async function JSZIP(){
+    const zip = new JSZip();
+
+    zip.file("Hello.txt", "Hello World\n");
+
+    const ARCHIVE = await zip.generateAsync({type:"blob"})
+
+    return new Response(ARCHIVE,{
+    status:200,
+    headers:{
+        "Content-Type":"application/zip"
+    }})
+}
 
 export default function FILE_EXPORT({
     file_arr,
@@ -13,6 +27,9 @@ export default function FILE_EXPORT({
     folder_name?:string|undefined
     multiple?:boolean
 }){
+    useEffect(()=>{
+        console.log("FILE_EXPORT : JSZIP :",JSZIP())
+    })
     const func_event = () =>{
         let let_folder_name = folder_name
         if(let_folder_name === undefined){

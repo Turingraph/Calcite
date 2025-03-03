@@ -116,7 +116,9 @@ export function push_arr<t>(
 ){
     let update_arr = [...arr.ss]
     update_arr.push(input)
-    update_arr = sort_arr(update_arr, is_sort)
+    if(typeof arr.ss[0] !== 'object'){
+        update_arr = sort_arr(update_arr, is_sort)
+    }
     arr.setss(update_arr)
 }
 
