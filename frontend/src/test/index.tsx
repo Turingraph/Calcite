@@ -73,6 +73,6 @@ import {
 
 export default function TEST(){
     return <>
-    <TEST_FILE_OPEN/>
+    <TEST_THEIR_ARR/>
     </>
 }

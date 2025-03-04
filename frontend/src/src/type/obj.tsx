@@ -9,7 +9,7 @@ export type user_t = {
     status?:number
 }
 
-export type img_t = {
+export type their_t = {
     name:a.name,
     // select:a.select,
     img:a.img,

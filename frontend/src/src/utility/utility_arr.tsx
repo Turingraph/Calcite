@@ -102,8 +102,10 @@ export function copy_unique_item<t extends {name:a.name}>(
     // is_sort:"NO_SORT"|"SORT"|"REVERSE" = "NO_SORT"
 ){
     let update_arr = [...arr.ss]
-    const NEW_OBJ = JSON.parse(JSON.stringify(arr.ss[index]))
-    NEW_OBJ.name += "_clone"
+    const NEW_OBJ:t = JSON.parse(JSON.stringify(arr.ss[index]))
+    const NAME = NEW_OBJ.name.split(".")
+    const NEW_NAME = NAME[0] + "_clone." + NAME.slice(1, NAME.length)
+    NEW_OBJ.name = NEW_NAME as a.name
     update_arr.splice(index + 1, 0, NEW_OBJ)
     // update_arr = sort_arr_attr(update_arr,"name", is_sort)
     arr.setss(update_arr)
