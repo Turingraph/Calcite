@@ -1,7 +1,7 @@
 import React from "react";
 import * as a from "../../type/alias"
 
-export default function OCR_OBJ({
+export default function IMG_UI({
     //
 }:{
     //

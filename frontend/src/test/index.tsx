@@ -26,38 +26,38 @@ import {
 } from "./components/opt";
 
 import {
-    TEST_SAVE_IMPORT,   //
-    TEST_SAVE_EXPORT    //
+    TEST_SAVE_IMPORT,   // UNFINISHED
+    TEST_SAVE_EXPORT    // UNFINISHED
 } from "./components/save"
 
 //-------------------------------------------------------------------
 
 import { 
-    TEST_BOX_SAVE,
-    TEST_BOX_EDIT,
-    TEST_BOX_OBJ
+    TEST_BOX_SAVE,      // EMPTY
+    TEST_BOX_EDIT,      // EMPTY
+    TEST_BOX_UI         // EMPTY
 } from "./latout/box";
 
 import { 
-    TEST_IMG_SAVE,
-    TEST_IMG_EDIT,
-    TEST_IMG_OBJ
+    TEST_IMG_SAVE,      // EMPTY
+    TEST_IMG_EDIT,      // EMPTY
+    TEST_IMG_UI         // EMPTY
 } from "./latout/img";
 
 import { 
-    TEST_OCR_SAVE,
-    TEST_OCR_EDIT,
-    TEST_OCR_OBJ,
-    TEST_OSD_OBJ,
+    TEST_OCR_SAVE,      // EMPTY
+    TEST_OCR_EDIT,      // EMPTY
+    TEST_OCR_UI,        // EMPTY
+    TEST_OSD_UI,        // EMPTY
 } from "./latout/ocr";
 
 //-------------------------------------------------------------------
 
 import { 
-    TEST_PAGE,
-    TEST_PAGE_LEFT,
-    TEST_PAGE_MIDDLE,
-    TEST_PAGE_RIGHT,
+    TEST_PAGE,          // EMPTY
+    TEST_PAGE_LEFT,     // EMPTY
+    TEST_PAGE_MIDDLE,   // EMPTY
+    TEST_PAGE_RIGHT,    // EMPTY
 } from "./page";
 
 //-------------------------------------------------------------------

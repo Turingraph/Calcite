@@ -2,8 +2,8 @@ import React from "react";
 import * as a from "../../src/type/alias"
 import OCR_SAVE from "../../src/layout/ocr/ocr_save";
 import OCR_EDIT from "../../src/layout/ocr/ocr_edit";
-import OCR_OBJ from "../../src/layout/ocr/ocr_obj";
-import OSD_OBJ from "../../src/layout/ocr/osd_obj";
+import OCR_UI from "../../src/layout/ocr/ocr_ui";
+import OSD_UI from "../../src/layout/ocr/osd_ui";
 
 export function TEST_OCR_SAVE(){
     return <>
@@ -17,14 +17,14 @@ export function TEST_OCR_EDIT(){
     </>
 }
 
-export function TEST_OCR_OBJ(){
+export function TEST_OCR_UI(){
     return <>
-    <OCR_OBJ/>
+    <OCR_UI/>
     </>
 }
 
-export function TEST_OSD_OBJ(){
+export function TEST_OSD_UI(){
     return <>
-    <OSD_OBJ/>
+    <OSD_UI/>
     </>
 }

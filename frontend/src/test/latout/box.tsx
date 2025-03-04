@@ -2,7 +2,7 @@ import React from "react";
 import * as a from "../../src/type/alias"
 import BOX_SAVE from "../../src/layout/box/box_save";
 import BOX_EDIT from "../../src/layout/box/box_edit";
-import BOX_OBJ from "../../src/layout/box/box_obj";
+import BOX_UI from "../../src/layout/box/box_ui";
 
 export function TEST_BOX_SAVE(){
     return <>
@@ -16,8 +16,8 @@ export function TEST_BOX_EDIT(){
     </>
 }
 
-export function TEST_BOX_OBJ(){
+export function TEST_BOX_UI(){
     return <>
-    <BOX_OBJ/>
+    <BOX_UI/>
     </>
 }

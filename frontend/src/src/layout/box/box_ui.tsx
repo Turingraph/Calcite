@@ -1,7 +1,7 @@
 import React from "react";
 import * as a from "../../type/alias"
 
-export default function OSD_OBJ({
+export default function BOX_UI({
     //
 }:{
     //
