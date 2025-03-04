@@ -20,7 +20,7 @@ export default function SEARCH_BAR<t extends {name:a.name}>(
 }:{
     opt_name?:a.opt_name,
     read_only_arr:(t|string)[],
-    setss_select_arr:React.Dispatch<React.SetStateAction<opt_mode_uit[]>>
+    setss_select_arr:a.setss_t<opt_mode_uit[]>
 }){
     const [ss_search_text, setss_search_text] = useState<string>("")
 

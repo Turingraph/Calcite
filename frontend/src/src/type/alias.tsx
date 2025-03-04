@@ -23,6 +23,10 @@ export type handle_event<input_mode> = nominal<
     (e:React.ChangeEvent<input_mode>)=>void
 >
 
+export type setss_t<t> = React.Dispatch<
+    React.SetStateAction<t>
+    >|((e:t)=>void)
+
 export type use_state_t<t> = {
     ss:t,
     setss:React.Dispatch<
@@ -61,7 +65,7 @@ export type char_t = '!'|'"'|'#'|'$'|
     'u'|'v'|'w'|'x'|'y'|'z'|'{'|'|'|
     '}'|'~';
 
-export type output_file_format = {
+export type output_file_format_t = {
     img:img_file_format_t|undefined|"zip",
     ocr:text_file_format_t|undefined|"zip",
 }

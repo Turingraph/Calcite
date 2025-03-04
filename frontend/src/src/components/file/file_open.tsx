@@ -1,17 +1,17 @@
 import * as a from "../../type/alias";
 
 export default function FILE_OPEN({
-    arr,
+    setss_files,
     multiple = false,
     file_format = undefined
 }:{
-    arr:a.use_state_t<File[]>
+    setss_files:a.setss_t<File[]>
     multiple?:boolean
     file_format?:string|undefined
 }){
     const handle_event = (e:React.FormEvent<HTMLInputElement>)=>{
         const TARGET = e.target as HTMLInputElement
-        arr.setss(TARGET.files ? Array.from(TARGET.files) : [])
+        setss_files(TARGET.files ? Array.from(TARGET.files) : [])
     }
     return <>
         <input
