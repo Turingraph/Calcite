@@ -1,5 +1,5 @@
 import React from "react";
-import { CHARACTERS } from "../../../test/data";
+import { CHARACTERS } from "../../test/data";
 
 /*
 `forEach` is used for loop the array without returning the data.
@@ -9,7 +9,7 @@ is not updated, the only things that is updated is &(ARR + i).
 You can learn more about this by study pointer in C.
 */
 
-function FOREACH_00<t>(){
+export function FOREACH_00<t>(){
     const ARR = CHARACTERS
     console.log("before",ARR)
     ARR.forEach((item)=>{
@@ -28,7 +28,7 @@ Reference
 
 // WRONG
 
-function MAP_00<t>(){
+export function MAP_00<t>(){
     const ARR = CHARACTERS
     console.log("before",ARR)
     ARR.map((item)=>{
@@ -39,7 +39,7 @@ function MAP_00<t>(){
 
 // WRONG
 
-function MAP_01<t>(){
+export function MAP_01<t>(){
     const ARR = CHARACTERS
     console.log("before",ARR)
     const AFTER = ARR.map((item)=>{
@@ -53,7 +53,7 @@ function MAP_01<t>(){
 
 // CORRECT
 
-function MAP_02<t>(){
+export function MAP_02<t>(){
     const ARR = CHARACTERS
     console.log("before",ARR)
     const AFTER = ARR.map((item)=>{
@@ -65,7 +65,7 @@ function MAP_02<t>(){
 
 // CORRECT
 
-function MAP_03<t>(){
+export function MAP_03<t>(){
     const ARR = CHARACTERS
     console.log("before",ARR)
     const AFTER = ARR.map((item)=>{

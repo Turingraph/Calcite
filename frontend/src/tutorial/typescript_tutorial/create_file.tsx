@@ -1,6 +1,6 @@
 import React from "react";
-import BUTTON_CLICK from "../../components/button/button_click";
-import * as a from "../../type/alias"
+import BUTTON_CLICK from "../../src/components/button/button_click";
+import * as a from "../../src/type/alias"
 
 export default function CREATE_FILE(){
     const func_event = () =>{

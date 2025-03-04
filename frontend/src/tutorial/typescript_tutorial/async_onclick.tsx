@@ -1,6 +1,6 @@
 import React from "react";
-import * as a from "../../type/alias"
-import BUTTON_CLICK from "../../components/button/button_click";
+import * as a from "../../src/type/alias"
+import BUTTON_CLICK from "../../src/components/button/button_click";
 
 // https://stackoverflow.com/questions/54779318/
 // can-async-functions-be-called-in-onclick-in-button-react

@@ -1,6 +1,6 @@
 import React, {useState} from "react";
-import BUTTON_CLICK from "../../components/button/button_click";
-import * as a from "../../type/alias"
+import BUTTON_CLICK from "../../src/components/button/button_click";
+import * as a from "../../src/type/alias"
 
 // const HIDDEN_STYLE = {
 //     opacity:0,

@@ -1,7 +1,7 @@
 import { useReducer } from 'react';
-import BUTTON_CLICK from '../../components/button/button_click';
-import * as a from "../../type/alias"
-import * as u from '../../utility/utility';
+import BUTTON_CLICK from '../../src/components/button/button_click';
+import * as a from "../../src/type/alias"
+import * as u from '../../src/utility/utility';
 
 function abs_nozero(input:number){
     if(input < 0){
@@ -71,7 +71,7 @@ function reducer_today(ss_today: date_t, action: time_machine_t) {
         action.unit)
 }
 
-function TUTORIAL_USEREDUCER() {
+export default function TUTORIAL_USEREDUCER() {
   const [ss_today, setss_today] = useReducer(reducer_today, {day:0, month:0, year:0} as date_t);
 
   return (

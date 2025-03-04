@@ -4,7 +4,7 @@
 // https://stackoverflow.com/questions/76755226/
 // include-information-about-the-values-type-in-keyof-type
 
-function SUMMARY<t extends object, k extends keyof t, j>({
+export default function KEY_OF<t extends object, k extends keyof t, j>({
   data,
   property,
   input

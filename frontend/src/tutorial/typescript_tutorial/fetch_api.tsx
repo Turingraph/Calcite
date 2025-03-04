@@ -1,10 +1,10 @@
 import React, {useState} from "react";
-import * as a from "../../type/alias"
-import OBJ_SELF from "../../components/obj/obj_self";
-import INPUT_STR from "../../components/input/input_str";
-import { STR_TO_H } from "../../utility/convert";
-import BUTTON_CLICK from "../../components/button/button_click";
-import * as uarr from "../../utility/utility_arr"
+import * as a from "../../src/type/alias"
+import OBJ_SELF from "../../src/components/obj/obj_self";
+import INPUT_STR from "../../src/components/input/input_str";
+import { STR_TO_H } from "../../src/utility/convert";
+import BUTTON_CLICK from "../../src/components/button/button_click";
+import * as uarr from "../../src/utility/utility_arr"
 
 type pokemon_t = {
     name:a.name,

@@ -3,9 +3,9 @@
 1.	`public/`
 -	Purpose: Store static files e.g. image etc (https://www.geeksforgeeks.org/videos/how-to-use-files-in-public-folder-in-reactjs/)
 2.	`src/`
--	Purpose: Store our coding files.
-3.	`test/`
--	Purpose: Sotre our testing files.
+-	Purpose: Store our coding files, include `src/src/`, `src/test/` and `src/tutorial/`.
+
+Note that it is not possible to execute code ourside `src/` in React.
 
 # Getting Started with Create React App
 

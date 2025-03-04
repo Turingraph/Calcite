@@ -24,22 +24,30 @@ This project is in the MVP development process. For anyone who want to contribut
 Expected Feature
 1.  `backend/`
 -	Purpose: Connect `include/` with `frontend/`
-- [] not finish
+-   Status: Empty
 2.  `doc_user`
 -	Purpose: user tutorial.
-- [] finish
+-   Status: Empty
 3.	`frontend/`
 -	Purpose: User Friendly UI Frontend based on React and Typescript. This is the only coding folder that does not contains Python files.
-- [] finish
+-   Status: In Development process.
 4.	`img_process/`
 -	Purpose: Processing Image e.g. Threshold, Blur, Convolution, Orientation etc.
-- [x] finish
+-   Status: Finish
 5.  `include/`
 -	Purpose: The Python Interface for enhancing open closed principle and use OCR, image processing and drawing box around the text.
-- [x] finish
+-   Status: Finish
 6.	`ocr/`
 -	Purpose: converting Image to text output using Tesseract OCR model and Pytesseract Python library.
-- [x] finish
+-   Status: Finish
+7.  `tests/`
+-	Purpose: Check if Python files works as expected.
+-   Status: In Development process. We will develop this folder after code `backend/`.
+8.  `trash/`
+-	Purpose: Contains useless file that might be useful later, it is ignored by `.gitignore`
+9.  `utility/`
+-	Purpose: Contains other Python utility files.
+
 
 Ignore Advanced Feature
 1.	`get_data/`
