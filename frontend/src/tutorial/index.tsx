@@ -14,7 +14,7 @@ import TUTORIAL_USESTATE from "./react_tutorial/tutorial_usestate"
 
 import ASYNC_ONCLICK from "./typescript_tutorial/async_onclick"
 import CREATE_FILE from "./typescript_tutorial/create_file"
-import FETCH_API from "./typescript_tutorial/fetch_api"
+import FETCH_POKEMON from "./typescript_tutorial/fetch_pokemon"
 import { 
     FOREACH_00,
     MAP_00,

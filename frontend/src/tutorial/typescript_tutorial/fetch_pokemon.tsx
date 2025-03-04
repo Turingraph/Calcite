@@ -15,7 +15,7 @@ type pokemon_t = {
 const BASE_URL = "https://pokeapi.co/api/v2/pokemon/"
 const SELECTED_PROPERTY = ["id", "sprites"]
 
-export default function FETCH_API(){
+export default function FETCH_POKEMON(){
     const [ss_arr, setss_arr] = useState<pokemon_t[]>([])
     const [ss_select, setss_select] = useState<number|undefined>(undefined)
     const [ss_name, setss_name] = useState<string>("")
