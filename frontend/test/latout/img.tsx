@@ -1,8 +1,8 @@
 import React from "react";
-import * as a from "../../type/alias"
-import IMG_CONFIG from "../../layout/img/img_config";
-import IMG_EDIT from "../../layout/img/img_edit";
-import IMG_OBJ from "../../layout/img/img_obj";
+import * as a from "../../src/type/alias"
+import IMG_CONFIG from "../../src/layout/img/img_config";
+import IMG_EDIT from "../../src/layout/img/img_edit";
+import IMG_OBJ from "../../src/layout/img/img_obj";
 
 export function TEST_IMG_CONFIG(){
     return <>

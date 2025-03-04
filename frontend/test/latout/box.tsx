@@ -1,8 +1,8 @@
 import React from "react";
-import * as a from "../../type/alias"
-import BOX_CONFIG from "../../layout/box/box_config";
-import BOX_EDIT from "../../layout/box/box_edit";
-import BOX_OBJ from "../../layout/box/box_obj";
+import * as a from "../../src/type/alias"
+import BOX_CONFIG from "../../src/layout/box/box_config";
+import BOX_EDIT from "../../src/layout/box/box_edit";
+import BOX_OBJ from "../../src/layout/box/box_obj";
 
 export function TEST_BOX_CONFIG(){
     return <>

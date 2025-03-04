@@ -1,14 +1,14 @@
 import {useState} from "react";
-import * as a from '../../type/alias'
-import OPT_INPUT from "../../components/opt/opt_input";
-import SEARCH_BAR from "../../components/opt/search_bar";
-import { opt_mode_uit } from "../../components/opt/type";
-import { character_t, CHARACTERS, OPT_NAME } from "../constant";
-import OPT_EXIST_ARR from "../../components/opt/opt_exist_arr";
-import PANEL from "../../components/asset/panel";
-import SEARCH_OBJ from "../../components/opt/search_obj";
-import OBJ_BOOL from "../../components/obj/obj_bool";
-import OBJ_STR from "../../components/obj/obj_str";
+import * as a from '../../src/type/alias'
+import OPT_INPUT from "../../src/components/opt/opt_input";
+import SEARCH_BAR from "../../src/components/opt/search_bar";
+import { opt_mode_uit } from "../../src/components/opt/type";
+import { character_t, CHARACTERS, OPT_NAME } from "../data";
+import OPT_EXIST_ARR from "../../src/components/opt/opt_exist_arr";
+import PANEL from "../../src/components/asset/panel";
+import SEARCH_OBJ from "../../src/components/opt/search_obj";
+import OBJ_BOOL from "../../src/components/obj/obj_bool";
+import OBJ_STR from "../../src/components/obj/obj_str";
 
 export function TEST_OPT_EXIST_ARR(){
     const [ss_arr, setss_arr] = useState<number[]>([0])

@@ -1,11 +1,11 @@
 import {useState} from "react";
-import * as a from '../../type/alias'
-import BUTTON_CLICK from "../../components/button/button_click";
-import BUTTON_TABS from "../../components/button/button_tabs";
-import { OPT_NAME } from "../constant";
-import BUTTON_HISTORY from "../../components/button/button_history";
-import { opt_mode_uit } from "../../components/opt/type";
-import BUTTON_SAVE from "../../components/button/button_save";
+import * as a from '../../src/type/alias'
+import BUTTON_CLICK from "../../src/components/button/button_click";
+import BUTTON_TABS from "../../src/components/button/button_tabs";
+import { OPT_NAME } from "../data";
+import BUTTON_HISTORY from "../../src/components/button/button_history";
+import { opt_mode_uit } from "../../src/components/opt/type";
+import BUTTON_SAVE from "../../src/components/button/button_save";
 
 export function TEST_BUTTON_CLICK(){
     const func_event = () =>{

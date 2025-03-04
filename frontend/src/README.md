@@ -7,7 +7,7 @@ which use the same medium size folder structure from this video
 ## Folder Structure of `frontend/src/`
 
 List of the folders in `frontend/src/`
-1.	`api`
+1.	`app/`
 -	Purpose: It is used for creating API. Now it is unusable and under development.
 1.	`components/`
 -	Purpose: Contains reuseable UI components.
@@ -17,8 +17,6 @@ List of the folders in `frontend/src/`
 -	Purpose: Contains file that composed by `components/` files for this specific OCR project.
 4.	`pages/`
 -	Purpose: Contains only UI page that are made by `layout/` and arrange as sub part of the main page.
-5.	`test/`
--	Purpose: Check if our Typescript frontend files work as expected.
 6.	`tutorial`
 -	Purpose: demonstrate Typescript and Javascript Tutorial with coding examples.
 7.	`type/`

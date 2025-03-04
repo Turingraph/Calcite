@@ -1,3 +1,12 @@
+# Folder Structure
+
+1.	`public/`
+-	Purpose: Store static files e.g. image etc (https://www.geeksforgeeks.org/videos/how-to-use-files-in-public-folder-in-reactjs/)
+2.	`src/`
+-	Purpose: Store our coding files.
+3.	`test/`
+-	Purpose: Sotre our testing files.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

@@ -1,9 +1,9 @@
 import React from "react";
-import * as a from "../../type/alias"
-import OCR_CONFIG from "../../layout/ocr/ocr_config";
-import OCR_EDIT from "../../layout/ocr/ocr_edit";
-import OCR_OBJ from "../../layout/ocr/ocr_obj";
-import OSD_OBJ from "../../layout/ocr/osd_obj";
+import * as a from "../../src/type/alias"
+import OCR_CONFIG from "../../src/layout/ocr/ocr_config";
+import OCR_EDIT from "../../src/layout/ocr/ocr_edit";
+import OCR_OBJ from "../../src/layout/ocr/ocr_obj";
+import OSD_OBJ from "../../src/layout/ocr/osd_obj";
 
 export function TEST_OCR_CONFIG(){
     return <>

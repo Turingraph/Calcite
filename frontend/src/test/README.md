@@ -1,1 +1,0 @@
-The purpose of this file is to check if the frontend coding file works as expected.

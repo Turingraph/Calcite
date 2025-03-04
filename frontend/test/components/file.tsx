@@ -1,8 +1,8 @@
 import {useEffect, useState} from "react";
-import FILE_EXPORT from "../../components/file/file_export";
-import FILE_IMPORT from "../../components/file/file_import";
-import PANEL from "../../components/asset/panel";
-import { file_to_date, url_to_file } from "../../utility/convert";
+import FILE_EXPORT from "../../src/components/file/file_export";
+import FILE_IMPORT from "../../src/components/file/file_import";
+import PANEL from "../../src/components/asset/panel";
+import { file_to_date, url_to_file } from "../../src/utility/convert";
 
 /*
 TODONOW

@@ -1,15 +1,15 @@
 import {useState, JSX} from "react";
-import * as a from '../../type/alias'
-import OBJ_SELF from "../../components/obj/obj_self";
-import OBJ_STR from "../../components/obj/obj_str";
-import OBJ_BOOL from "../../components/obj/obj_bool";
-import { character_t } from "../constant";
-import { CHARACTERS } from "../constant";
-import PANEL from "../../components/asset/panel";
-import { STR_TO_H } from "../../utility/convert";
-import BUTTON_CLICK from "../../components/button/button_click";
-import * as uarr from "../../utility/utility_arr";
-import * as u from "../../utility/utility";
+import * as a from '../../src/type/alias'
+import OBJ_SELF from "../../src/components/obj/obj_self";
+import OBJ_STR from "../../src/components/obj/obj_str";
+import OBJ_BOOL from "../../src/components/obj/obj_bool";
+import { character_t } from "../data";
+import { CHARACTERS } from "../data";
+import PANEL from "../../src/components/asset/panel";
+import { STR_TO_H } from "../../src/utility/convert";
+import BUTTON_CLICK from "../../src/components/button/button_click";
+import * as uarr from "../../src/utility/utility_arr";
+import * as u from "../../src/utility/utility";
 
 function func_delete_arr<t>(arr:a.use_state_t<t[]>){
     if(arr.ss.length > 1){

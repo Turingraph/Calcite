@@ -1,5 +1,5 @@
 import React from "react";
-import { CHARACTERS } from "../../test/constant";
+import { CHARACTERS } from "../../../test/data";
 
 /*
 `forEach` is used for loop the array without returning the data.

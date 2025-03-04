@@ -1,9 +1,9 @@
 import React, {useState, JSX} from "react";
-import * as a from '../../type/alias'
-import INPUT_COMBINE from "../../components/input/input_combine";
-import { opt_input_uit } from "../../components/opt/type";
-import INPUT_FORM from "../../components/input/input_form";
-import INPUT_STR from "../../components/input/input_str";
+import * as a from '../../src/type/alias'
+import INPUT_COMBINE from "../../src/components/input/input_combine";
+import { opt_input_uit } from "../../src/components/opt/type";
+import INPUT_FORM from "../../src/components/input/input_form";
+import INPUT_STR from "../../src/components/input/input_str";
 
 const DEFAULT_INPUT:(string|number)[] = [
     0.0001,
