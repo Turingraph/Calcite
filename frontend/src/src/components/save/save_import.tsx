@@ -1,18 +1,17 @@
 import * as a from "../../type/alias";
-import { img_t } from "../../type/obj";
 
-export default function FILE_IMPORT({
-    file_arr,
+export default function SAVE_IMPORT({
+    arr,
     multiple = false,
     file_format = undefined
 }:{
-    file_arr:a.use_state_t<File[]>
+    arr:a.use_state_t<File[]>
     multiple?:boolean
     file_format?:string|undefined
 }){
     const handle_event = (e:React.FormEvent<HTMLInputElement>)=>{
         const TARGET = e.target as HTMLInputElement
-        file_arr.setss(TARGET.files ? Array.from(TARGET.files) : [])
+        arr.setss(TARGET.files ? Array.from(TARGET.files) : [])
     }
     return <>
         <input

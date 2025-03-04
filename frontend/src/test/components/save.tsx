@@ -1,21 +1,21 @@
 import {useEffect, useState} from "react";
-import FILE_EXPORT from "../../src/components/file/file_export";
-import FILE_IMPORT from "../../src/components/file/file_import";
+import SAVE_EXPORT from "../../src/components/save/save_export";
+import SAVE_IMPORT from "../../src/components/save/save_import";
 import PANEL from "../../src/components/asset/panel";
 import { file_to_date, url_to_file } from "../../src/utility/convert";
 
 /*
 TODONOW
 1.  Make FILE_EXPORT able to upload multiple file as zip.
-2.  able to set ss_file as url_to_file which is async.
+2.  able to set ss_arr as url_to_file which is async.
 3.  start doing layout/
 */
 
 const MY_URL = "http://localhost:3000/data/box.csv"
 
-export function TEST_FILE_IMPORT(){
-    const [ss_file, setss_file] = useState<File[]>([])
-    const JSX_ARR = ss_file.map((item,index)=>{
+export function TEST_SAVE_IMPORT(){
+    const [ss_arr, setss_arr] = useState<File[]>([])
+    const JSX_ARR = ss_arr.map((item,index)=>{
         const DAY = file_to_date(item)
         return <div key={index}>
             <h1>Name: {item.name}</h1>
@@ -24,27 +24,27 @@ export function TEST_FILE_IMPORT(){
             </div>
     })
     return <>
-    <FILE_IMPORT
-        file_arr={{ss:ss_file, setss:setss_file}}
+    <SAVE_IMPORT
+        arr={{ss:ss_arr, setss:setss_arr}}
         multiple={true}
     />
     <PANEL jsx_element={<>{JSX_ARR}</>}/>
-    <FILE_EXPORT
-        file_arr={{ss:ss_file, setss:setss_file}}
+    <SAVE_EXPORT
+        arr={{ss:ss_arr, setss:setss_arr}}
         multiple={true}
     />
     </>
 }
 
-export function TEST_FILE_EXPORT(){
-    const [ss_file, setss_file] = useState<File[]>([])
+export function TEST_SAVE_EXPORT(){
+    const [ss_arr, setss_arr] = useState<File[]>([])
     // useEffect(()=>{async (MY_URL: string)=>{
     //     const DATA = await url_to_file(MY_URL)
-    //     setss_file(DATA ? [DATA] : [])
+    //     setss_arr(DATA ? [DATA] : [])
     // }})
     return <>
-    <FILE_EXPORT
-        file_arr={{ss:ss_file, setss:setss_file}}
+    <SAVE_EXPORT
+        arr={{ss:ss_arr, setss:setss_arr}}
     />
     </>
 }

@@ -26,26 +26,26 @@ import {
 } from "./components/opt";
 
 import {
-    TEST_FILE_IMPORT,   //
-    TEST_FILE_EXPORT    //
-} from "./components/file"
+    TEST_SAVE_IMPORT,   //
+    TEST_SAVE_EXPORT    //
+} from "./components/save"
 
 //-------------------------------------------------------------------
 
 import { 
-    TEST_BOX_CONFIG,
+    TEST_BOX_SAVE,
     TEST_BOX_EDIT,
     TEST_BOX_OBJ
 } from "./latout/box";
 
 import { 
-    TEST_IMG_CONFIG,
+    TEST_IMG_SAVE,
     TEST_IMG_EDIT,
     TEST_IMG_OBJ
 } from "./latout/img";
 
 import { 
-    TEST_OCR_CONFIG,
+    TEST_OCR_SAVE,
     TEST_OCR_EDIT,
     TEST_OCR_OBJ,
     TEST_OSD_OBJ,
@@ -64,6 +64,6 @@ import {
 
 export default function TEST(){
     return <>
-    <TEST_FILE_IMPORT/>
+    <TEST_SAVE_IMPORT/>
     </>
 }

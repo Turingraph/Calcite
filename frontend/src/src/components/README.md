@@ -4,11 +4,11 @@
 1.  `asset/`
 -   Purpose: for CSS and image UI logo.
 2.  `button/`
-3.  `file/`
--   Purpose: for importing and exporting files.
-4.  `input/`
+3.  `input/`
 -   Purpose: allow user to insert text input in our app.
-5.  `obj/` ("object")
+4.  `obj/` ("object")
 -   Purpose: allow the user to change the attribute of the objects e.g. Image object, box object etc.
-6.  `opt/` ("option")
+5.  `opt/` ("option")
 -   Purpose: for `HTML <option> Tag` based UI and the other related UI e.g. `search_bar.tsx` which help user search options.
+6.  `save/`
+-   Purpose: for importing and exporting files.
