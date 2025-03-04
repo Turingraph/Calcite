@@ -55,8 +55,8 @@ import {
 } from "./latout/ocr";
 
 import { 
-    TEST_THEIR_OPEN,    // EMPTY
-    TEST_THEIR_ARR,     // EMPTY
+    TEST_THEIR_OPEN,    // ...
+    TEST_THEIR_ARR,     // ...
     TEST_THEIR_SAVE     // EMPTY
 } from "./latout/their";
 
@@ -73,6 +73,6 @@ import {
 
 export default function TEST(){
     return <>
-    <TEST_OPT_EXIST_ARR/>
+    <TEST_SEARCH_OBJ/>
     </>
 }

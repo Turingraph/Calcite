@@ -13,17 +13,17 @@ import { func_default_newobj_index } from "./type";
 function func_exclude_opt(available_opts:string[], exist_opts:number[]){
     // https://stackoverflow.com/questions/36829184/
     // how-can-i-convert-a-set-to-an-array-in-typescript
-    available_opts = uarr.sort_arr(available_opts)
-    exist_opts = uarr.sort_arr(exist_opts)
+    available_opts = uarr.sort_arr(available_opts, "SORT")
+    exist_opts = uarr.sort_arr(exist_opts, "SORT")
     // available_opts  = method_unique_arr(available_opts)
     // exist_opts      = method_unique_arr(exist_opts)
-    const CONST_AVAILABLE_OPTS = uarr.sort_arr_attr(str_to_optmode(available_opts), "index")
+    const CONST_AVAILABLE_OPTS = uarr.sort_arr_attr(str_to_optmode(available_opts), "index", "SORT")
     const CONST_EXIST_OPTS = uarr.sort_arr_attr(exist_opts.map((item)=>{
         return {
             name:available_opts[item] as a.name,
             index:item
         } as opt_mode_uit
-    }),"index")
+    }),"index", "SORT")
     return uarr.exclude_arr(CONST_AVAILABLE_OPTS, CONST_EXIST_OPTS) as opt_mode_uit[]
 }
 

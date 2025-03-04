@@ -25,7 +25,7 @@ function func_create_arr<t>(arr:a.use_state_t<t[]>){
 }
 
 export function TEST_OBJ_SELF(){
-    const [ss_arr, setss_arr] = useState<character_t[]>(CHARACTERS)
+    const [ss_arr, setss_arr] = useState<character_t[]>(uarr.sort_arr_name(CHARACTERS, "SORT"))
     const [ss_select, setss_select] = useState<number|undefined>(undefined)
 
     const JSX_ARR = ss_arr.map((item,index)=>{

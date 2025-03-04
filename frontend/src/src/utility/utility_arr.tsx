@@ -27,13 +27,13 @@ export function sort_arr_attr<t extends object, k extends keyof t>(
     // https://stackoverflow.com/questions/26871106/
     // check-if-all-elements-in-array-are-strings
     if(is_sort==="SORT"){
-        return arr.sort((n0, n1) => n0[attr] > n1[attr] ? -1 : 1)
+        return arr.sort((n0, n1) => n0[attr] < n1[attr] ? -1 : 1)
     }
     else if(is_sort === "NO_SORT"){
         return arr
     }
     else{
-        return arr.sort((n0, n1) => n0[attr] < n1[attr] ? -1 : 1)
+        return arr.sort((n0, n1) => n0[attr] > n1[attr] ? -1 : 1)
     }
 }
 
@@ -51,13 +51,13 @@ export function sort_arr<t>(
     // https://stackoverflow.com/questions/40472548/
     // typescript-sort-strings-descending
     if(is_sort==="SORT"){
-        return arr.sort((n0, n1) => n0 > n1 ? -1 : 1)
+        return arr.sort((n0, n1) => n0 < n1 ? -1 : 1)
     }
     else if(is_sort === "NO_SORT"){
         return arr
     }
     else{
-        return arr.sort((n0, n1) => n0 < n1 ? -1 : 1)
+        return arr.sort((n0, n1) => n0 > n1 ? -1 : 1)
     }
 }
 
@@ -105,16 +105,14 @@ export function update_item_attr<
 
 export function copy_unique_item<t extends {name:a.name}>(
     index:number,
-    arr:a.use_state_t<t[]>,
-    // is_sort:"NO_SORT"|"SORT"|"REVERSE" = "NO_SORT"
+    arr:a.use_state_t<t[]>
 ){
     let update_arr = [...arr.ss]
-    const NEW_OBJ:t = update_arr[index]
+    const NEW_OBJ:t = JSON.parse(JSON.stringify(update_arr[index]))
     const NAME = NEW_OBJ.name.split(".")
     const NEW_NAME = NAME[0] + "_clone." + NAME.slice(1, NAME.length)
     NEW_OBJ.name = NEW_NAME as a.name
     update_arr.splice(index + 1, 0, NEW_OBJ)
-    // update_arr = sort_arr_name(update_arr,is_sort)
     arr.setss(update_arr)
 }
 

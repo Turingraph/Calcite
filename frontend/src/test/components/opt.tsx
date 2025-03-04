@@ -12,7 +12,6 @@ import OBJ_STR from "../../src/components/obj/obj_str";
 
 export function TEST_OPT_EXIST_ARR(){
     const [ss_arr, setss_arr] = useState<number[]>([0])
-    // const AVAILABLE_OPTS = CHARACTERS.map((item)=>{return item.name}) as string[]
     const AVAILABLE_OPTS = OPT_NAME
     return <OPT_EXIST_ARR 
         opt_name={"List" as a.opt_name}
