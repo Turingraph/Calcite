@@ -5,7 +5,7 @@ export type nominal<t> = t & { readonly '': unique symbol };
 export type name  = nominal<string>
 export type opt_name  = undefined|name // optional name
 // export type logo = name|img|undefined   // logo of button
-export type img = nominal<File> // image
+export type img = nominal<string>// <File> // image
 // export type func_convert<t_input, t_output> = nominal<(value:t_input)=>t_output>
 
 export type select = nominal<boolean>

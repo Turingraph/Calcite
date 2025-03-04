@@ -1,8 +1,9 @@
-import React, { useState, useEffect, useLayoutEffect } from "react";
+import React, {useState, useEffect} from "react";
 import * as a from "../../type/alias"
 import * as uarr from "../../utility/utility_arr"
 import FILE_OPEN from "../../components/file/file_open";
 import { their_t } from "../../type/obj";
+import { file_to_url } from "../../utility/convert";
 
 export default function THEIR_OPEN({
     setss_arr
@@ -10,12 +11,12 @@ export default function THEIR_OPEN({
     setss_arr:a.setss_t<their_t[]>
 }){
     const [ss_files, setss_files] = useState<File[]>([])
-    useLayoutEffect(()=>{
+    useEffect(()=>{
         let update_arr = ss_files.map((item)=>{
             return {
                 name: item.name as a.name,
-                img: item,
-                origin: item,
+                img: file_to_url(item),
+                origin: file_to_url(item),
                 ocr: "",
                 osd: ""
             } as their_t

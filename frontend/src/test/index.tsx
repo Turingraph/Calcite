@@ -73,6 +73,6 @@ import {
 
 export default function TEST(){
     return <>
-    <TEST_SEARCH_OBJ/>
+    <TEST_THEIR_ARR/>
     </>
 }
