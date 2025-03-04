@@ -27,14 +27,21 @@ export function sort_arr_attr<t extends object, k extends keyof t>(
     // https://stackoverflow.com/questions/26871106/
     // check-if-all-elements-in-array-are-strings
     if(is_sort==="SORT"){
-        return arr.sort((n0, n1) => n0[attr] < n1[attr] ? -1 : 1)
+        return arr.sort((n0, n1) => n0[attr] > n1[attr] ? -1 : 1)
     }
     else if(is_sort === "NO_SORT"){
         return arr
     }
     else{
-        return arr.sort((n0, n1) => n0[attr] > n1[attr] ? -1 : 1)
+        return arr.sort((n0, n1) => n0[attr] < n1[attr] ? -1 : 1)
     }
+}
+
+export function sort_arr_name<t extends {name:a.name}>(
+    arr:t[],
+    is_sort:"NO_SORT"|"SORT"|"REVERSE" = "SORT"
+){
+    return sort_arr_attr(arr, "name", is_sort)
 }
 
 export function sort_arr<t>(
@@ -44,13 +51,13 @@ export function sort_arr<t>(
     // https://stackoverflow.com/questions/40472548/
     // typescript-sort-strings-descending
     if(is_sort==="SORT"){
-        return arr.sort((n0, n1) => n0 < n1 ? -1 : 1)
+        return arr.sort((n0, n1) => n0 > n1 ? -1 : 1)
     }
     else if(is_sort === "NO_SORT"){
         return arr
     }
     else{
-        return arr.sort((n0, n1) => n0 > n1 ? -1 : 1)
+        return arr.sort((n0, n1) => n0 < n1 ? -1 : 1)
     }
 }
 
@@ -74,7 +81,7 @@ export function update_item_name<t extends {name:a.name}>(
     is_sort:"NO_SORT"|"SORT"|"REVERSE" = "NO_SORT"){
 let update_arr = [...arr.ss]
 update_arr[index].name  = update_input as a.name
-update_arr = sort_arr_attr(update_arr, "name", is_sort)
+update_arr = sort_arr_name(update_arr, is_sort)
 arr.setss(update_arr)
 }
 
@@ -102,12 +109,12 @@ export function copy_unique_item<t extends {name:a.name}>(
     // is_sort:"NO_SORT"|"SORT"|"REVERSE" = "NO_SORT"
 ){
     let update_arr = [...arr.ss]
-    const NEW_OBJ:t = JSON.parse(JSON.stringify(arr.ss[index]))
+    const NEW_OBJ:t = update_arr[index]
     const NAME = NEW_OBJ.name.split(".")
     const NEW_NAME = NAME[0] + "_clone." + NAME.slice(1, NAME.length)
     NEW_OBJ.name = NEW_NAME as a.name
     update_arr.splice(index + 1, 0, NEW_OBJ)
-    // update_arr = sort_arr_attr(update_arr,"name", is_sort)
+    // update_arr = sort_arr_name(update_arr,is_sort)
     arr.setss(update_arr)
 }
 

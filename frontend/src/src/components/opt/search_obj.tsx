@@ -1,4 +1,4 @@
-import { useState, JSX, useLayoutEffect } from "react"
+import { useState, JSX, useLayoutEffect, useEffect } from "react"
 import * as a from "../../type/alias"
 import { opt_mode_uit } from "./type"
 import { str_to_optmode } from "../../utility/convert"
@@ -19,9 +19,9 @@ export default function SEARCH_OBJ<t extends {name:a.name}>({
     )
     const [ss_select, setss_select] = useState<number|undefined>(undefined)
 
-    useLayoutEffect(()=>{
-        arr.setss(uarr.sort_arr_attr(arr.ss, "name", "SORT"))
-    })
+    // useEffect(()=>{
+    //     console.log("SEARCH_OBJ : arr",arr.ss)
+    // })
 
     const JSX_ARR = ss_show_arr.map((item,index)=>{
         if(item !== undefined && arr.ss[item.index] !== undefined){

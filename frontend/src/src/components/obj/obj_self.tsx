@@ -20,7 +20,7 @@ export default function OBJ_SELF<t extends {name:a.name}>({
     const [ss_ui_mode, setss_ui_mode] = useState<"normal"|"rename"|"delete">("normal")
     const [ss_name, setss_name] = useState<string>(arr.ss[this_item].name as string)
     useLayoutEffect(()=>{
-        arr.setss(uarr.sort_arr_attr(arr.ss, "name", "SORT"))
+        arr.setss(uarr.sort_arr_name(arr.ss, "SORT"))
     })
     useEffect(()=>{
         if(ss_select.ss !== this_item && ss_ui_mode !== "normal"){
