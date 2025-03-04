@@ -26,30 +26,39 @@ import {
 } from "./components/opt";
 
 import {
-    TEST_SAVE_IMPORT,   // UNFINISHED
-    TEST_SAVE_EXPORT    // UNFINISHED
-} from "./components/save"
+    TEST_FILE_OPEN,   // UNFINISHED
+    TEST_FILE_SAVE    // UNFINISHED
+} from "./components/file"
 
 //-------------------------------------------------------------------
 
 import { 
+    TEST_BOX_OPEN,      // EMPTY
     TEST_BOX_SAVE,      // EMPTY
     TEST_BOX_EDIT,      // EMPTY
     TEST_BOX_UI         // EMPTY
 } from "./latout/box";
 
 import { 
+    TEST_IMG_OPEN,      // EMPTY
     TEST_IMG_SAVE,      // EMPTY
     TEST_IMG_EDIT,      // EMPTY
     TEST_IMG_UI         // EMPTY
 } from "./latout/img";
 
 import { 
+    TEST_OCR_OPEN,      // EMPTY
     TEST_OCR_SAVE,      // EMPTY
     TEST_OCR_EDIT,      // EMPTY
     TEST_OCR_UI,        // EMPTY
     TEST_OSD_UI,        // EMPTY
 } from "./latout/ocr";
+
+import { 
+    TEST_THEIR_OPEN,    // EMPTY
+    TEST_THEIR_ARR,     // EMPTY
+    TEST_THEIR_SAVE     // EMPTY
+} from "./latout/their";
 
 //-------------------------------------------------------------------
 
@@ -64,6 +73,6 @@ import {
 
 export default function TEST(){
     return <>
-    <TEST_SAVE_IMPORT/>
+    <TEST_FILE_OPEN/>
     </>
 }

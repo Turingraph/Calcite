@@ -15,4 +15,14 @@ This folder contains 4 sub folders.
 Note that
 1.  `ui`, In this case `ui` means the UI components that represent data. User can also edit data that belongs to some files`_ui.tsx` e.g. `box_ui.tsx` etc.
 2.  `edit` means to edit the object data
-3.  `save` means to save and/or open the reusable data which is used for specify the `edit` setting. It can be saved and reused as JSON files and allow user to import input and export output data.
+3.  `save` means to save the reusable `edit` setting configuration.
+4.  `open` means to import the reusable `edit` setting configuration.
+
+Note that 
+1.  `their_open.tsx` is used for import user input image.
+2.  `img_open.tsx` is used for import reusable image processing configuration.
+3.  `their_save.tsx` is used for saving processed image and ocr output text output.
+4.  `img_save.tsx` is used for saving reusable image processing configuration.
+5.  `ocr_save.tsx` is used for saving reusable ocr configuration.
+6.  `box_open.tsx` is used for import box related setting configuration.
+7.  `box_save.tsx` is used for saving box related setting configuration.

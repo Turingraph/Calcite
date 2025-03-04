@@ -27,8 +27,13 @@ import KEY_OF from "./typescript_tutorial/key_of"
 
 //---------------------------------------------------------------------------
 
+import BUTTON_API from "../src/app/button_api"
+
+//---------------------------------------------------------------------------
+
+
 export default function TUTORIAL(){
     return <>
-    <FETCH_API/>
+    <BUTTON_API/>
     </>
 }

@@ -23,7 +23,7 @@ const formatBytes = (bytes:number, decimals:number = 2) => {
     );
 };
 
-export default function SAVE_EXPORT({
+export default function FILE_SAVE({
     file_arr,
     folder_name=undefined,
     multiple=false

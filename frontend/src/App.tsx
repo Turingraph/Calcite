@@ -1,5 +1,5 @@
 import TEST from './test/index';
-// import TUTORIAL from './tutorial';
+import TUTORIAL from './tutorial';
 
 function App() {
   return <>

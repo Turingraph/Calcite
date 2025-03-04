@@ -1,6 +1,6 @@
 import * as a from "../../type/alias";
 
-export default function SAVE_IMPORT({
+export default function FILE_OPEN({
     arr,
     multiple = false,
     file_format = undefined

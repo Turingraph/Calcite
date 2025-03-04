@@ -18,7 +18,7 @@ export async function JSZIP(){
     }})
 }
 
-export default function SAVE_EXPORT({
+export default function FILE_SAVE({
     arr,
     folder_name=undefined,
     multiple=false

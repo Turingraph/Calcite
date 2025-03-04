@@ -1,8 +1,8 @@
 import React from "react";
 import * as a from "../../type/alias"
-import FILE_SAVE from "../../components/file/file_save";
+import FILE_OPEN from "../../components/file/file_open";
 
-export default function THEIR_SAVE({
+export default function IMG_OPEN({
     //
 }:{
     //
