@@ -18,7 +18,12 @@ export default function THEIR_ARR({
                 name={"open" as a.name}
                 func_event={(()=>{setss_select(index)}) as a.func_event}
             />
-            <img src={item.img} style={{height:200}}
+            <img 
+                src={item.img} 
+                // https://stackoverflow.com/questions/43812733/
+                // what-does-this-warning-message-mean-img-elements-must-have-an-alt-prop-either
+                alt="ocr input" 
+                style={{height:200}}
             />
         </div>
     })

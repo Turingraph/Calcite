@@ -1,8 +1,9 @@
-import {useState, JSX} from "react";
+import {useState, JSX, useEffect} from "react";
 import * as a from "../../type/alias"
 import BUTTON_CLICK from "./button_click";
 import COLOR_UI from "../asset/color_ui";
 import "./index.css"
+import { num_to_rgb } from "../../utility/convert";
 
 export default function BUTTON_TABS(
 {
@@ -14,6 +15,21 @@ export default function BUTTON_TABS(
 }
 ){
     const [ss_select, setss_select] = useState<number>(0);
+    /*
+    React components rerender when either their state or their props, or their context change. 
+    Depending on how your code is written, change one of those after your data has been fetched.
+    
+    https://www.reddit.com/r/reactjs/comments/obixa7/how_to_rerender_a_component/
+    */
+    const [ss_rerender, setss_rerender] = useState<number>(2.718)
+    useEffect(()=>{
+        if(ss_rerender === 2.718){
+            setss_rerender(3.14)
+        }
+        else{
+            setss_rerender(2.718)
+        }
+    },[ss_select])
     const NORMAL_RGB = 255;
     const SELECT_RGB = [255,0,0];
     const BUTTON_ARR = name_arr.map((name,index)=>{
@@ -28,7 +44,7 @@ export default function BUTTON_TABS(
             /></div>
     })
     return <>
-        {BUTTON_ARR}
+        <div key={ss_rerender}>{BUTTON_ARR}</div>
         {jsx_elements[ss_select]}
     </>
 }

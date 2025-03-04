@@ -44,39 +44,28 @@ export function num_to_size(input:number|undefined, maxval:number){
 }
 
 export function num_to_255(input:number){
-    return num_to_size(input,255)
-}
-
-export function num_to_hex(input:number|undefined = 0){  
-    if (input === undefined){
-        return "FF";
-    }
-    if (input > 255){
-        input = 255;
-    }
-    if (input < 0){
-        input = 0;
-    }
-    return (HEX_ARR[input/16] + HEX_ARR[input%16]);
+    return num_to_size(input,255).toString()
 }
 
 export function num_to_rgb(input:undefined|number|number[]){
-    if (input === undefined){return "#FFFFFF"}
+    if (input === undefined){
+        return "#FFFFFF"
+    }
     else if (typeof input === "number"){
-        return "#" + num_to_hex(input)+"0000";
+        return "rgb("+num_to_255(input)+"0, 0)";
     }
     else if (Array.isArray(input) === true){
         if (input.length === 0){
             return "#FFFFFF"
         }
         else if (input.length === 1){
-            return "#" + num_to_hex(input[0]) + num_to_hex(input[0]) + num_to_hex(input[0]);
+            return "rgb("+num_to_255(input[0]) + "," + num_to_255(input[0]) + "," + num_to_255(input[0])+")";
         }
         else if (input.length === 2){
-            return "#" + num_to_hex(input[0])+num_to_hex(input[1])+"00";
+            return "rgb("+num_to_255(input[0]) + ","+num_to_255(input[1]) + ","+"0)";
         }
         else{
-            return "#" + num_to_hex(input[0])+num_to_hex(input[1]) + num_to_hex(input[2]);
+            return "rgb("+num_to_255(input[0]) + ","+num_to_255(input[1]) + "," + num_to_255(input[2])+")";
         }
     }
     else{

@@ -25,6 +25,6 @@ export function TEST_IMG_EDIT(){
 
 export function TEST_IMG_UI(){
     return <>
-    <IMG_UI/>
+    {/* <IMG_UI/> */}
     </>
 }

@@ -55,8 +55,8 @@ import {
 } from "./latout/ocr";
 
 import { 
-    TEST_THEIR_OPEN,    // ...
-    TEST_THEIR_ARR,     // ...
+    TEST_THEIR_OPEN,    // OK
+    TEST_THEIR_ARR,     // OK but their_t might be updated in future.
     TEST_THEIR_SAVE     // EMPTY
 } from "./latout/their";
 
@@ -64,15 +64,12 @@ import {
 
 import { 
     TEST_PAGE,          // EMPTY
-    TEST_PAGE_LEFT,     // EMPTY
-    TEST_PAGE_MIDDLE,   // EMPTY
-    TEST_PAGE_RIGHT,    // EMPTY
 } from "./page";
 
 //-------------------------------------------------------------------
 
 export default function TEST(){
     return <>
-    <TEST_THEIR_ARR/>
+    <TEST_PAGE/>
     </>
 }
