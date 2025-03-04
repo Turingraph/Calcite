@@ -21,13 +21,13 @@ export default function BUTTON_TABS(
     
     https://www.reddit.com/r/reactjs/comments/obixa7/how_to_rerender_a_component/
     */
-    const [ss_rerender, setss_rerender] = useState<number>(2.718)
+    const [ss_update, setss_update] = useState<number>(2.718)
     useEffect(()=>{
-        if(ss_rerender === 2.718){
-            setss_rerender(3.14)
+        if(ss_update === 2.718){
+            setss_update(3.14)
         }
         else{
-            setss_rerender(2.718)
+            setss_update(2.718)
         }
     },[ss_select])
     const NORMAL_RGB = 255;
@@ -44,7 +44,7 @@ export default function BUTTON_TABS(
             /></div>
     })
     return <>
-        <div key={ss_rerender}>{BUTTON_ARR}</div>
+        <div key={ss_update}>{BUTTON_ARR}</div>
         {jsx_elements[ss_select]}
     </>
 }

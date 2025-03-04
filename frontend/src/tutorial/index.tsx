@@ -35,6 +35,6 @@ import BUTTON_API from "../src/app/button_api"
 
 export default function TUTORIAL(){
     return <>
-    <IMPORT_IMG/>
+    <BUTTON_API/>
     </>
 }
