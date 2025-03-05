@@ -1,7 +1,6 @@
 //-------------------------------------------------------------------
 
 import { 
-    TEST_BUTTON_SAVE,
     TEST_BUTTON_CLICK,  // OK
     TEST_BUTTON_TABS,   // OK
     TEST_BUTTON_HISTORY // OK
@@ -14,7 +13,7 @@ import {
 } from "./components/obj";
 
 import {
-    TEST_INPUT_COMBINE, // OK
+    TEST_INPUT_FORM,    // OK
     TEST_INPUT_STR,     // OK
 } from "./components/input";
 
@@ -70,6 +69,6 @@ import {
 
 export default function TEST(){
     return <>
-    <TEST_PAGE/>
+    <TEST_INPUT_FORM/>
     </>
 }

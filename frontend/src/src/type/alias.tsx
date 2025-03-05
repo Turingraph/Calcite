@@ -15,6 +15,15 @@ export type history<t> = {
     current:number
 }
 
+export type attr_value<t> = {
+    name:name,
+    value:t
+}
+
+// https://stackoverflow.com/questions/42999983/
+// typescript-removing-readonly-modifier
+export type deep_writeable<t> = { -readonly [p in keyof t]: deep_writeable<t[p]> };
+
 // https://stackoverflow.com/questions/67367665/
 // type-promisevoid-is-not-assignable-to-type-mouseeventhandlerhtmlbuttonelem
 

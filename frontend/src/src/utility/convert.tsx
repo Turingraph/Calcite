@@ -44,7 +44,7 @@ export function num_to_size(input:number|undefined, maxval:number){
 }
 
 export function num_to_255(input:number){
-    return num_to_size(input,255).toString()
+    return num_to_size(input,255)
 }
 
 export function num_to_rgb(input:undefined|number|number[]){
@@ -52,20 +52,20 @@ export function num_to_rgb(input:undefined|number|number[]){
         return "#FFFFFF"
     }
     else if (typeof input === "number"){
-        return "rgb("+num_to_255(input)+"0, 0)";
+        return "rgb("+num_to_255(input).toString()+"0, 0)";
     }
     else if (Array.isArray(input) === true){
         if (input.length === 0){
             return "#FFFFFF"
         }
         else if (input.length === 1){
-            return "rgb("+num_to_255(input[0]) + "," + num_to_255(input[0]) + "," + num_to_255(input[0])+")";
+            return "rgb("+num_to_255(input[0]).toString() + "," + num_to_255(input[0]).toString() + "," + num_to_255(input[0]).toString()+")";
         }
         else if (input.length === 2){
-            return "rgb("+num_to_255(input[0]) + ","+num_to_255(input[1]) + ","+"0)";
+            return "rgb("+num_to_255(input[0]).toString() + ","+num_to_255(input[1]).toString() + ","+"0)";
         }
         else{
-            return "rgb("+num_to_255(input[0]) + ","+num_to_255(input[1]) + "," + num_to_255(input[2])+")";
+            return "rgb("+num_to_255(input[0]).toString() + ","+num_to_255(input[1]).toString() + "," + num_to_255(input[2]).toString()+")";
         }
     }
     else{
@@ -171,6 +171,17 @@ export function str_to_optmode<
                 index:index
             } as opt_mode_uit}
     })
+}
+
+export function str_to_index<t extends {name:a.name}>(arr:t[],name:string|a.name){
+    let i = 0
+    while(i < arr.length){
+        if(name === arr[i].name){
+            return i
+        }
+        i++
+    }
+    return -1
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

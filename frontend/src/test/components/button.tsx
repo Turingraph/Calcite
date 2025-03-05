@@ -5,7 +5,6 @@ import BUTTON_TABS from "../../src/components/button/button_tabs";
 import { OPT_NAME } from "../data";
 import BUTTON_HISTORY from "../../src/components/button/button_history";
 import { opt_mode_uit } from "../../src/components/opt/type";
-import BUTTON_SAVE from "../../src/components/button/button_save";
 
 export function TEST_BUTTON_CLICK(){
     const func_event = () =>{
@@ -45,9 +44,4 @@ export function TEST_BUTTON_TABS(){
     return <BUTTON_TABS 
     jsx_elements={JSX_ARR} 
     name_arr={OPT_NAME as a.name[]}/>
-}
-
-export function TEST_BUTTON_SAVE(){
-    return <>
-    </>
 }

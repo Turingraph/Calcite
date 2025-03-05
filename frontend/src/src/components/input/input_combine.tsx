@@ -36,20 +36,20 @@ export default function INPUT_COMBINE({
     }
     let jsx_input_str = <></>
     let let_input_str:a.use_state_uit<string|number>[] = []
-    if (input_str !== undefined){
-        let_input_str = input_str.map((item:a.use_state_uit<string|number>)=>{
-            return {
-                opt_name:item.opt_name,
-                ss:item.ss,
-                setss:item.setss
-            }
-        })
-        jsx_input_str = <INPUT_FORM
-            arr = {let_input_str}
-            func_activate={func_activate}
-            is_undo={is_undo}
-        />
-    }
+    // if (input_str !== undefined){
+    //     let_input_str = input_str.map((item:a.use_state_uit<string|number>)=>{
+    //         return {
+    //             opt_name:item.opt_name,
+    //             ss:item.ss,
+    //             setss:item.setss
+    //         }
+    //     })
+    //     jsx_input_str = <INPUT_FORM
+    //         arr = {let_input_str}
+    //         func_activate={func_activate}
+    //         is_undo={is_undo}
+    //     />
+    // }
     return <>
         <STR_TO_H opt_name={opt_name as a.opt_name}/>
         {jsx_input_opt}

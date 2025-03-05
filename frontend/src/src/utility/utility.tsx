@@ -20,3 +20,7 @@ export function access_optmode(index:number|undefined, arr:opt_mode_uit[]){
 export function copy_obj<t>(input:t){
     return JSON.parse(JSON.stringify(input)) as t
 }
+
+export function copy_edit_obj<t>(input:t){
+    return JSON.parse(JSON.stringify(input)) as t  
+}

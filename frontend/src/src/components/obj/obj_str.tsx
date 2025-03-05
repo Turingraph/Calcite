@@ -139,7 +139,7 @@ export default function OBJ_STR<
     }
     const JSX_INPUTS = CONST_ATTR.map((item,index)=>{
         return <div key={index}>
-            <STR_TO_H opt_name={item as a.opt_name}/>
+            <STR_TO_H opt_name={opt_name ? opt_name : item as a.opt_name}/>
             <INPUT_STR
                 opt_name={item as a.opt_name}
                 input={{
