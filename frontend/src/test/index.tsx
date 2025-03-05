@@ -14,6 +14,7 @@ import {
 
 import {
     TEST_INPUT_FORM,    // OK
+    TEST_INPUT_COMBINE, // ...
     TEST_INPUT_STR,     // OK
 } from "./components/input";
 
@@ -69,6 +70,6 @@ import {
 
 export default function TEST(){
     return <>
-    <TEST_INPUT_FORM/>
+    <TEST_INPUT_COMBINE/>
     </>
 }

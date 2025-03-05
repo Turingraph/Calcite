@@ -9,6 +9,7 @@ import "./index.css"
 export type input_form_t = {
     opt_name?:a.opt_name|undefined
     arr:a.use_state_t<a.attr_value<string|number>[]>
+    except_arr?:string[]
     func_activate?:a.func_event
     is_undo?:boolean
 }
@@ -16,6 +17,7 @@ export type input_form_t = {
 export default function INPUT_FORM({
     opt_name = undefined,
     arr,
+    except_arr = [],
     func_activate = (()=>undefined) as a.func_event,
     is_undo = false
 }:input_form_t){
@@ -82,6 +84,9 @@ export default function INPUT_FORM({
     const JSX_ELEMENTS = arr.ss.map((item,index)=>{
         // https://stackoverflow.com/questions/28329382/
         // understanding-unique-keys-for-array-children-in-react-js
+        if(except_arr.includes((item.name as string))){
+            return <div key={index}></div>
+        }
         return <div key={index}>
         <STR_TO_H opt_name={item.name}/>
         <INPUT_STR

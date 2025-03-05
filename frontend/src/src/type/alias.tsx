@@ -16,6 +16,7 @@ export type history<t> = {
 }
 
 export type attr_value<t> = {
+    [x: string]: any;
     name:name,
     value:t
 }

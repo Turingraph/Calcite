@@ -2,7 +2,7 @@ import {useState, useRef, useLayoutEffect} from "react";
 import * as a from "../../type/alias"
 import BUTTON_CLICK from "../button/button_click";
 import OPT_INPUT from "./opt_input";
-import {str_to_optmode, STR_TO_H, item_to_index} from "../../utility/convert";
+import {str_to_optmode_arr, STR_TO_H, item_to_index} from "../../utility/convert";
 import * as uarr from '../../utility/utility_arr'
 import PANEL from "../asset/panel";
 import { opt_mode_uit } from "./type";
@@ -17,7 +17,7 @@ function func_exclude_opt(available_opts:string[], exist_opts:number[]){
     exist_opts = uarr.sort_arr(exist_opts, "SORT")
     // available_opts  = method_unique_arr(available_opts)
     // exist_opts      = method_unique_arr(exist_opts)
-    const CONST_AVAILABLE_OPTS = uarr.sort_arr_attr(str_to_optmode(available_opts), "index", "SORT")
+    const CONST_AVAILABLE_OPTS = uarr.sort_arr_attr(str_to_optmode_arr(available_opts), "index", "SORT")
     const CONST_EXIST_OPTS = uarr.sort_arr_attr(exist_opts.map((item)=>{
         return {
             name:available_opts[item] as a.name,

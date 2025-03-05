@@ -1,7 +1,7 @@
 import { useState, JSX, useLayoutEffect } from "react"
 import * as a from "../../type/alias"
 import { opt_mode_uit } from "./type"
-import { str_to_optmode } from "../../utility/convert"
+import { str_to_optmode_arr } from "../../utility/convert"
 import OBJ_SELF from "../obj/obj_self"
 import SEARCH_BAR from "./search_bar"
 import PANEL from "../asset/panel"
@@ -15,7 +15,7 @@ export default function SEARCH_OBJ<t extends {name:a.name}>({
     jsx_additional?:(JSX.Element|undefined)[]|undefined
 }){
     const [ss_show_arr, setss_show_arr] = useState<opt_mode_uit[]>(
-        str_to_optmode(arr.ss)
+        str_to_optmode_arr(arr.ss)
     )
     const [ss_select, setss_select] = useState<number|undefined>(undefined)
 

@@ -153,7 +153,7 @@ export function str_to_str(input:string|a.name|a.opt_name){
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-export function str_to_optmode<
+export function str_to_optmode_arr<
     t extends {[x: string]: any;name:a.name}>
     (arr:(a.name|string|t)[]){
     return arr.map((item, index)=>{
@@ -182,6 +182,17 @@ export function str_to_index<t extends {name:a.name}>(arr:t[],name:string|a.name
         i++
     }
     return -1
+}
+
+export function str_to_attr_value<t>(name:string|a.name, arr:a.attr_value<t>[]){
+    let i = 0
+    while(i < arr.length){
+        if(name === arr[i].name){
+            return arr[i]
+        }
+        i++
+    }
+    return undefined
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

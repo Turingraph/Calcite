@@ -3,7 +3,7 @@ import * as a from "../../type/alias"
 import INPUT_STR from "../input/input_str";
 import { opt_mode_uit } from "./type";
 import "./index.css"
-import { str_to_optmode } from "../../utility/convert";
+import { str_to_optmode_arr } from "../../utility/convert";
 
 // How to make function accept prop based on attr
 // https://www.freecodecamp.org/news/typescript-generics-with-functional-react-components/
@@ -31,7 +31,7 @@ export default function SEARCH_BAR<t extends {name:a.name}>(
     // In order to prevent the unexpected behavior, do not edit read_only_arr in search_bar.tsx.
     /* eslint-disable react-hooks/exhaustive-deps */
     useEffect(()=>{
-        const UPDATE_SEARCH_TEXT = str_to_optmode(read_only_arr).map((item,index) => {
+        const UPDATE_SEARCH_TEXT = str_to_optmode_arr(read_only_arr).map((item,index) => {
             if ((item.name as string).includes(ss_search_text) === true){
                 return {
                     name:item.name as string as a.name,

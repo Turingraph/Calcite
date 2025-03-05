@@ -69,9 +69,11 @@ export function update_item<t>(
         index:number, 
         arr:a.use_state_t<t[]>, 
         update_input:t){
-    const UPDATE_ARR = [...arr.ss]
-    UPDATE_ARR[index]  = update_input
-    arr.setss(UPDATE_ARR)
+    if(index >= 0){
+        const UPDATE_ARR = [...arr.ss]
+        UPDATE_ARR[index]  = update_input
+        arr.setss(UPDATE_ARR)
+    }
 }
 
 export function update_item_name<t extends {name:a.name}>(
@@ -79,10 +81,12 @@ export function update_item_name<t extends {name:a.name}>(
     arr:a.use_state_t<t[]>, 
     update_input:a.name|string,
     is_sort:"NO_SORT"|"SORT"|"REVERSE" = "NO_SORT"){
-let update_arr = [...arr.ss]
-update_arr[index].name  = update_input as a.name
-update_arr = sort_arr_name(update_arr, is_sort)
-arr.setss(update_arr)
+    if(index >= 0){
+        let update_arr = [...arr.ss]
+        update_arr[index].name  = update_input as a.name
+        update_arr = sort_arr_name(update_arr, is_sort)
+        arr.setss(update_arr)
+    }
 }
 
 export function update_item_attr<
@@ -94,9 +98,11 @@ export function update_item_attr<
         attr:k,
         input:v
     ){
-        const UPDATE_ARR = [...arr.ss]
-        UPDATE_ARR[index][attr] = input
-        arr.setss(UPDATE_ARR)
+        if(index >= 0){
+            const UPDATE_ARR = [...arr.ss]
+            UPDATE_ARR[index][attr] = input
+            arr.setss(UPDATE_ARR)
+        }
     }
 
 //----------------------------------------------------------------------------------------
@@ -107,13 +113,15 @@ export function copy_unique_item<t extends {name:a.name}>(
     index:number,
     arr:a.use_state_t<t[]>
 ){
-    let update_arr = [...arr.ss]
-    const NEW_OBJ:t = JSON.parse(JSON.stringify(update_arr[index]))
-    const NAME = NEW_OBJ.name.split(".")
-    const NEW_NAME = NAME[0] + "_clone." + NAME.slice(1, NAME.length)
-    NEW_OBJ.name = NEW_NAME as a.name
-    update_arr.splice(index + 1, 0, NEW_OBJ)
-    arr.setss(update_arr)
+    if(index >= 0){
+        let update_arr = [...arr.ss]
+        const NEW_OBJ:t = JSON.parse(JSON.stringify(update_arr[index]))
+        const NAME = NEW_OBJ.name.split(".")
+        const NEW_NAME = NAME[0] + "_clone." + NAME.slice(1, NAME.length)
+        NEW_OBJ.name = NEW_NAME as a.name
+        update_arr.splice(index + 1, 0, NEW_OBJ)
+        arr.setss(update_arr)
+    }
 }
 
 export function push_arr<t>(
@@ -161,9 +169,11 @@ export function push_arr_name<t extends {name:a.name}>(
 // TITLE: UTILITY
 
 export function delete_item<t>(index:number,arr:a.use_state_t<t[]>){
-    const UPDATE_ARR = [...arr.ss]
-    UPDATE_ARR.splice(index, 1)
-    arr.setss(UPDATE_ARR)
+    if(index >= 0){
+        const UPDATE_ARR = [...arr.ss]
+        UPDATE_ARR.splice(index, 1)
+        arr.setss(UPDATE_ARR)
+    }
 }
 
 export function exclude_arr<t>(arr_all:t[], arr_exclude:t[]){

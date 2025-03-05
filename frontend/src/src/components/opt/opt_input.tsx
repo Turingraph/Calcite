@@ -1,6 +1,6 @@
 import React, { useState, JSX, useRef, useLayoutEffect} from "react";
 import * as a from "../../type/alias"
-import {STR_TO_H, str_to_optmode} from "../../utility/convert";
+import {STR_TO_H, str_to_optmode_arr} from "../../utility/convert";
 import { opt_mode_uit, opt_input_uit } from "./type"
 import SEARCH_BAR from "./search_bar";
 import "./index.css"
@@ -29,11 +29,12 @@ export default function OPT_INPUT(
     // test-for-array-of-string-type-in-typescript
 
     const [ss_show_opts, setss_show_opts] = useState<opt_mode_uit[]>(
-        str_to_optmode(available_opts) as opt_mode_uit[]
+        str_to_optmode_arr(available_opts) as opt_mode_uit[]
     )
     const ref_show_opts: React.RefObject<opt_mode_uit[]|undefined> = useRef(ss_show_opts)
 
-    // Update ss_mode to be the first available ss_show_opts option.
+    // Update ss_mode to be the first available ss_show_opts option, 
+    // everytime when ss_show_opt is pushed.
     useLayoutEffect(()=>{
         if(ref_show_opts.current !== ss_show_opts && auto_update_opts === true){
         let i = 0
@@ -50,7 +51,7 @@ export default function OPT_INPUT(
     // The ss_show_opts is updated every time the available_opts is updated.
     useLayoutEffect(()=>{
         if(ref_show_opts.current !== ss_show_opts && auto_update_opts === true){
-            setss_show_opts(str_to_optmode(available_opts))
+            setss_show_opts(str_to_optmode_arr(available_opts))
             // setss_show_opts(
             //     method_include_arr(
             //         str_to_optmode(available_opts),
@@ -67,14 +68,14 @@ export default function OPT_INPUT(
     }) as a.handle_event<HTMLSelectElement>
 
     const JSX_OPTS = ss_show_opts.reverse().map((item,index)=>{
-        if(item !== undefined && access_optmode(item.index, str_to_optmode(available_opts)) !== undefined){
+        if(item !== undefined && access_optmode(item.index, str_to_optmode_arr(available_opts)) !== undefined){
             return (<option key={index} value={item.index}>{item.name}</option>)
         }
         return undefined
     }) as JSX.Element[]
     const JSX_SEARCH_BAR = <SEARCH_BAR
             opt_name={undefined as a.opt_name}
-            read_only_arr={str_to_optmode(available_opts)}
+            read_only_arr={str_to_optmode_arr(available_opts)}
             setss_select_arr={setss_show_opts}
         />
     return (<>
