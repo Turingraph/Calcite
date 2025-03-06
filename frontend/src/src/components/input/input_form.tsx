@@ -1,11 +1,11 @@
-import {useEffect, useState, useRef} from "react";
+import {useEffect, useState, useRef, useReducer} from "react";
 import * as a from "../../type/alias"
 import BUTTON_CLICK from "../button/button_click";
 import INPUT_STR from "./input_str";
-import {STR_TO_H, str_to_default_num} from "../../utility/convert";
-import * as uarr from "../../utility/utility_arr";
-import { use_objarr_t } from "../../hook/useObjArr";
+import {STR_TO_H, avarr_to_value, str_to_default_num} from "../../utility/convert";
+import { use_objarr_t } from "../../use_reducer/act_objarr";
 import "./index.css"
+import act_arr from "../../use_reducer/act_arr";
 
 export type input_form_t = {
     opt_name?:a.opt_name|undefined
@@ -23,23 +23,22 @@ export default function INPUT_FORM({
     is_undo = false
 }:input_form_t){
     const ref_DEFAULT_ARR = useRef(arr.ss)
-    const [ss_texts, setss_texts] = useState<string[]>(arr.ss.map((item)=>{return item.value.toString()}))
+    const [ss_texts, setss_texts] = useReducer(act_arr, avarr_to_value(arr.ss) as string[])
     const [ss_update, setss_update] = useState<0|1>(0)
     useEffect(()=>{
-        const UPDATE_TEXT = arr.ss.map((item)=>{
-            return item.value as string
-        })
-        setss_texts(UPDATE_TEXT)
+        const UPDATE_TEXT = avarr_to_value(arr.ss) as string[]
+        setss_texts({type:"SET", input:UPDATE_TEXT})
         setss_update(0)
     }, [ss_update, arr])
     function func_set_default(){
         arr.setss({
-            type:"RESET",
+            type:"SET",
             input:ref_DEFAULT_ARR.current
         })
-        setss_texts(
-            ref_DEFAULT_ARR.current.map((item)=>{return item.value}) as string[]
-        )
+        setss_texts({
+            type:"SET", 
+            input:avarr_to_value(ref_DEFAULT_ARR.current) as string[]
+        })
     }
     function func_set_ok(){
         // https://www.geeksforgeeks.org/
@@ -70,10 +69,10 @@ export default function INPUT_FORM({
         func_activate()
     }
     function func_set_cancel(){
-        const UPDATE_TEXT = arr.ss.map((item)=>{
-            return item.value as string
+        setss_texts({
+            type:"SET", 
+            input:avarr_to_value(arr.ss) as string[]
         })
-        setss_texts(UPDATE_TEXT)
     }
     const JSX_ELEMENTS = arr.ss.map((item,index)=>{
         // https://stackoverflow.com/questions/28329382/
@@ -88,10 +87,11 @@ export default function INPUT_FORM({
             input={{ 
                 ss: ss_texts, 
                 setss: ((e:string) => {
-                    uarr.update_item(
-                        index, 
-                        {ss:ss_texts, setss:setss_texts}, 
-                        e);
+                    setss_texts({
+                        type:"EDIT",
+                        index:index,
+                        input:e
+                    })
                 }),
             } as unknown as a.use_state_t<string>}
             index = {index}
