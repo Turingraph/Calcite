@@ -33,7 +33,7 @@ export function sort_arr<t extends object, k extends keyof t>(
         default:{
             console.log("--------------------------------------------------------------------")
             console.log("The sort.mode of sort_arr is invalid.")
-            console.log("The action.type should be \"SORT\"|\"REVERSE\"|\"NO_SORT\"")
+            console.log("The sort.mode should be \"SORT\"|\"REVERSE\"|\"NO_SORT\"")
             console.log("Warning from frontend/ src/ src/ hook/ funcObjArr.tsx/ function sort_arr")
             console.log("--------------------------------------------------------------------")
             return arr
