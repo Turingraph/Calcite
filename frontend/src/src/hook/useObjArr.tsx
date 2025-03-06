@@ -124,3 +124,7 @@ export default function useObjArr<t extends object>(init:t[]){
     const [ss_objs, setss_objs] = useReducer(reducer, init);
     return [ss_objs, setss_objs]
 }
+
+export type use_objarr_t<t extends object> = {
+    ss:t[],
+    setss:(t[] | React.ActionDispatch<[action: action_t<t, keyof t, t[keyof t]>]>)[]}
