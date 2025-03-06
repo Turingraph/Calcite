@@ -46,7 +46,7 @@ export default function BUTTON_HISTORY<t>({
     const JSX_HISTORY_BUTTON = <OPT_INPUT
         opt_name={"History" as a.opt_name}
         available_opts={history.ss.commit}
-        ss_mode={{ss:ss_mode, setss:setss_mode} as a.use_state_t<number|undefined>}
+        ss_mode={{ss:ss_mode, setss:setss_mode} as a.use_state_t<number>}
         is_search_bar={true}
     />
     return <>

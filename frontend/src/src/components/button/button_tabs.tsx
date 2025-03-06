@@ -3,7 +3,6 @@ import * as a from "../../type/alias"
 import BUTTON_CLICK from "./button_click";
 import COLOR_UI from "../asset/color_ui";
 import "./index.css"
-import { num_to_rgb } from "../../utility/convert";
 
 export default function BUTTON_TABS(
 {
