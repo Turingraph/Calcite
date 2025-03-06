@@ -1,5 +1,7 @@
 # Folder Structure
 
+1.  `previous_useful_files`
+-	Purpose: Store previous unused files as txt files. It might be beneficial for our project in the future.
 1.	`public/`
 -	Purpose: Store static files e.g. image etc (https://www.geeksforgeeks.org/videos/how-to-use-files-in-public-folder-in-reactjs/)
 2.	`src/`
