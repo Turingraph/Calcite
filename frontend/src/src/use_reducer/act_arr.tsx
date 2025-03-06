@@ -1,4 +1,4 @@
-import { sort_arr } from "./func_arr";
+import { sort_arr } from "./utility_arr";
 import * as oarr from "./func_objarr"
 
 export type act_arr_t<t> = {
