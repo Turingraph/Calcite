@@ -106,7 +106,7 @@ function reducer<t extends object, k extends keyof t, o extends t[k]>
         default: { 
            console.log("--------------------------------------------------------------------")
            console.log("The action.type of useObjArr is invalid.")
-           console.log("The action.type should be \"SORT\"|\"PUSH\"|\"DELETE\"|\"EDIT\"")
+           console.log("The action.type should be \"SORT\"|\"PUSH\"|\"DELETE\"|\"EDIT_ITEM\"|\"EDIT_ATTR\"|\"RESET\"")
            console.log("Warning from frontend/ src/ src/ hook/ useObjArr.tsx/ function reducer")
            console.log("--------------------------------------------------------------------")
            const C_COPY_ARR = [...prev_arr]
