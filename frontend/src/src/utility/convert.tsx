@@ -28,15 +28,15 @@ export function num_to_ksize(input:number){
     }
 }
 
-export function num_to_size(input:number|undefined, maxval:number){
+export function num_to_size(input:number|undefined, maxval:number, min:number = 0){
     if (input === undefined){
         return maxval
     }
     else if (input > maxval){
         return maxval
     }
-    else if (input < 0){
-        return 0
+    else if (input < min){
+        return min
     }
     else{
         return input 
@@ -71,6 +71,30 @@ export function num_to_rgb(input:undefined|number|number[]){
     else{
         return "#FFFFFF";
     }
+}
+
+export function avarr_to_value<t>(input:a.attr_value<t>[]){
+    return input.map((item)=>{
+        return item.value
+    })
+}
+
+export function avarr_to_str<t>(input:a.attr_value<t>[]){
+    return input.map((item)=>{
+        return item.attr
+    })
+}
+
+export function index_to_optmode(index:number|undefined, arr:opt_mode_uit[]){
+    if(index === undefined){
+        return undefined
+    }
+    for(let i = 0; i < arr.length; i++){
+        if (index === arr[i].index){
+            return arr[i]
+        }
+    }
+    return undefined
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -184,10 +208,10 @@ export function str_to_index<t extends {name:a.name}>(arr:t[],name:string|a.name
     return -1
 }
 
-export function str_to_attr_value<t>(name:string|a.name, arr:a.attr_value<t>[]){
+export function str_to_attr_value<t>(name:string, arr:a.attr_value<t>[]){
     let i = 0
     while(i < arr.length){
-        if(name === arr[i].name){
+        if(name === arr[i].attr){
             return arr[i]
         }
         i++
