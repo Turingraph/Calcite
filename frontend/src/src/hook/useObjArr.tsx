@@ -12,101 +12,96 @@ type action_t<t extends object, k extends keyof t, o extends t[k]> = {
 } & ({
     type:"SORT"
 } | {
-    type:"PUSH"
-} & {
+    type:"PUSH",
     input:t
 }
 | {
-    type:"DELETE"
-} & {
+    type:"DELETE",
     index:number
 }
 | {
-    type:"EDIT_ATTR"
-} & {
+    type:"EDIT_ATTR",
     index:number,
     attr:k,
     input:o,
 }
 | {
-    type:"EDIT_ITEM"
-} & {
+    type:"EDIT_ITEM",
     index:number,
     input:t,
 }
 | {
-    type:"RESET"
-} & {
+    type:"RESET",
     input: t[],
 })
 
 function reducer<t extends object, k extends keyof t, o extends t[k]>
-    (prev:t[], action:action_t<t,k,o>){
+    (prev_arr:t[], action:action_t<t,k,o>){
     switch(action.type) { 
         case "SORT": { 
-            const COPY_PREV = [...prev]
-            const SUPDATE = oarr.sort_arr(
-                COPY_PREV,
+            const C_COPY_ARR = [...prev_arr]
+            const C_SORT_ARR = oarr.sort_arr(
+                C_COPY_ARR,
                 action.sort)
-            return SUPDATE
+            return C_SORT_ARR
         } 
         case "EDIT_ITEM": { 
-            const COPY_PREV = [...prev]
-            const UPDATE = oarr.edit_item(
-                COPY_PREV,
+            const C_COPY_ARR = [...prev_arr]
+            const C_UPDATE = oarr.edit_item(
+                C_COPY_ARR,
                 action.index,
                 action.input
             )
-            const SUPDATE = oarr.sort_arr(
-                UPDATE,
+            const C_SORT_ARR = oarr.sort_arr(
+                C_UPDATE,
                 action.sort
             )
-            return SUPDATE
+            return C_SORT_ARR
         } 
         case "EDIT_ATTR": { 
-            const COPY_PREV = [...prev]
-            const UPDATE = oarr.edit_attr(
-                COPY_PREV,
+            const C_COPY_ARR = [...prev_arr]
+            const C_UPDATE = oarr.edit_attr(
+                C_COPY_ARR,
                 action.index,
                 action.input,
                 action.attr,
             )
-            const SUPDATE = oarr.sort_arr(
-                UPDATE,
+            const C_SORT_ARR = oarr.sort_arr(
+                C_UPDATE,
                 action.sort
             )
-            return SUPDATE
+            return C_SORT_ARR
         } 
         case "PUSH": { 
-            const COPY_PREV = [...prev]
-            const UPDATE = oarr.push_arr(
-                COPY_PREV,
+            const C_COPY_ARR = [...prev_arr]
+            const C_UPDATE = oarr.push_arr(
+                C_COPY_ARR,
                 action.input
             )
-            const SUPDATE = oarr.sort_arr(
-                UPDATE,
+            const C_SORT_ARR = oarr.sort_arr(
+                C_UPDATE,
                 action.sort
             )
-            return SUPDATE
+            return C_SORT_ARR
         } 
         case "DELETE": { 
-            const COPY_PREV = [...prev]
-            const UPDATE = oarr.delete_item(
-                COPY_PREV,
+            const C_COPY_ARR = [...prev_arr]
+            const C_UPDATE = oarr.delete_item(
+                C_COPY_ARR,
                 action.index
             )
-            const SUPDATE = oarr.sort_arr(
-                UPDATE,
+            const C_SORT_ARR = oarr.sort_arr(
+                C_UPDATE,
                 action.sort
             )
-            return SUPDATE
+            return C_SORT_ARR
         } 
         case "RESET": {
-            const SUPDATE = oarr.sort_arr(
+            const C_SORT_ARR = oarr.sort_arr(
                 action.input,
                 action.sort
             )
-            return SUPDATE
+            return C_SORT_ARR
         }
         default: { 
            console.log("--------------------------------------------------------------------")
@@ -114,8 +109,8 @@ function reducer<t extends object, k extends keyof t, o extends t[k]>
            console.log("The action.type should be \"SORT\"|\"PUSH\"|\"DELETE\"|\"EDIT\"")
            console.log("Warning from frontend/ src/ src/ hook/ useObjArr.tsx/ function reducer")
            console.log("--------------------------------------------------------------------")
-           const COPY_PREV = [...prev]
-           return COPY_PREV
+           const C_COPY_ARR = [...prev_arr]
+           return C_COPY_ARR
         } 
     }
 }
@@ -127,4 +122,5 @@ export default function useObjArr<t extends object>(init:t[]){
 
 export type use_objarr_t<t extends object> = {
     ss:t[],
-    setss:(t[] | React.ActionDispatch<[action: action_t<t, keyof t, t[keyof t]>]>)[]}
+    setss:React.ActionDispatch<[action: action_t<t, keyof t, t[keyof t]>]>
+}
