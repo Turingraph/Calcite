@@ -1,0 +1,113 @@
+import React, { useState } from "react";
+import JSZip from 'jszip';
+import * as a from "../../type/alias"
+import * as uarr from "../../utility/utility_arr"
+import BUTTON_CLICK from "../button/button_click";
+import { file_to_date, file_to_url, formdata_to_url, num_to_index_name } from "../../utility/convert";
+import { AxiosAdapter } from "axios";
+
+const FormData = require('form-data');
+const fs = require('fs');
+const axios = require('axios');
+
+// https://medium.com/@kuldeepkrsharma00/
+// how-to-zip-a-file-and-upload-using-react-a-step-by-step-guide-2f3cf18f5b41
+const formatBytes = (bytes:number, decimals:number = 2) => {
+    if (bytes === 0) return "0 Bytes";
+    const k = 1024;
+    const dm = decimals < 0 ? 0 : decimals;
+    const sizes = ["Bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    return (
+        parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + " " + sizes[i]
+    );
+};
+
+export default function FILE_SAVE({
+    file_arr,
+    folder_name=undefined,
+    multiple=false
+}:{
+    file_arr:a.use_state_t<File[]>
+    folder_name?:string|undefined
+    multiple?:boolean
+}){
+    const [ss_export, setss_export] = useState<File[]>([])
+
+    const fileTransferUpload = (formData:FormData) => {
+        // Specify headers for FormData
+        console.log("uploading file");
+        // Make the POST request with FormData
+        return postfileupload("api/file-transfer-upload", formData);
+      };
+    
+      async function postfileupload(url:string, data:object) {
+        return axiosApi
+            .post(url, data, {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                },
+            })
+            .then((response: { data: any; }) => response.data);
+    }
+
+    const handleZipFiles = async () => {
+        const zip = new JSZip();
+        
+        ss_export.forEach((file, index) => {
+            zip.file(`${index + 1}_${file.name}`, file);
+        });
+  
+        const zipContent = await zip.generateAsync({ type: "blob" });
+        try {
+            // Create FormData to append the zip file
+            const formData = new FormData();
+            formData.append("uploadFile", zipContent, "zippedfile.zip");
+            fileTransferUpload(formData);
+            console.log("Uploading file Completed");
+        } catch (error) {
+            console.log(error);
+            console.log("Error uploading file");
+        }
+        // toggle(); // Assuming toggle() is a function to handle any UI changes after upload
+    };
+
+    const func_event = async () =>{
+        let let_folder_name = folder_name
+        if(let_folder_name === undefined){
+            let_folder_name = "upload_file_" + file_to_date() + ".zip"
+        }
+        if (file_arr.ss.length > 0){
+            const FORMDATA = new FormData();
+            file_arr.ss.forEach((item, index)=>{
+                const CONST_ITEM = item
+                Object.assign(CONST_ITEM, {
+                    preview: URL.createObjectURL(CONST_ITEM),
+                    formattedSize: formatBytes(CONST_ITEM.size),
+                  })
+                uarr.push_arr(CONST_ITEM, {ss:ss_export, setss:setss_export})
+            })
+            // const UPLOAD_URL = await fetch("http://example.org/post", {
+            //     method: "POST",
+            //     body: FORMDATA,
+            // });
+
+            // const UPLOAD_FILE = multiple ? new File(file_arr.ss, let_folder_name) : file_arr.ss[0]
+            // const UPLOAD_URL = formdata_to_url(FORMDATA)
+            // console.log("UPLOAD_URL", UPLOAD_URL)
+
+            // const A = document.createElement("a")
+            // A.href = UPLOAD_URL
+            // A.setAttribute("download", UPLOAD_FILE.name)
+            // document.body.appendChild(A)
+            // A.click()
+            // A.remove()
+        }
+    }
+    return <>
+    <BUTTON_CLICK 
+        name={"upload file" as a.name} 
+        func_event={func_event as a.func_event}
+    />
+    </>
+}
