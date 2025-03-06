@@ -4,11 +4,12 @@ import BUTTON_CLICK from "../button/button_click";
 import INPUT_STR from "./input_str";
 import {STR_TO_H, str_to_default_num} from "../../utility/convert";
 import * as uarr from "../../utility/utility_arr";
+import { use_objarr_t } from "../../hook/useObjArr";
 import "./index.css"
 
 export type input_form_t = {
     opt_name?:a.opt_name|undefined
-    arr:a.use_state_t<a.attr_value<string|number>[]>
+    arr:use_objarr_t<a.attr_value<string|number>>
     except_arr?:string[]
     func_activate?:a.func_event
     is_undo?:boolean
@@ -21,12 +22,7 @@ export default function INPUT_FORM({
     func_activate = (()=>undefined) as a.func_event,
     is_undo = false
 }:input_form_t){
-    const ref_DEFAULT_ARR = useRef(arr.ss.map((item)=>{
-        if(typeof item.value === "number"){
-            return item.value as number
-        }
-        return item.value.toString()
-    }))
+    const ref_DEFAULT_ARR = useRef(arr.ss)
     const [ss_texts, setss_texts] = useState<string[]>(arr.ss.map((item)=>{return item.value.toString()}))
     const [ss_update, setss_update] = useState<0|1>(0)
     useEffect(()=>{
@@ -37,15 +33,13 @@ export default function INPUT_FORM({
         setss_update(0)
     }, [ss_update, arr])
     function func_set_default(){
-        arr.ss.forEach((item, index)=>{
-            uarr.update_item_attr(
-                index,
-                arr,
-                "value",
-                ref_DEFAULT_ARR.current[index]
-            )
+        arr.setss({
+            type:"RESET",
+            input:ref_DEFAULT_ARR.current
         })
-        setss_texts(ref_DEFAULT_ARR.current as string[])
+        setss_texts(
+            ref_DEFAULT_ARR.current.map((item)=>{return item.value}) as string[]
+        )
     }
     function func_set_ok(){
         // https://www.geeksforgeeks.org/
@@ -56,20 +50,20 @@ export default function INPUT_FORM({
                     ref_DEFAULT_ARR.current[index] as number,
                     ss_texts[index]
                 )
-                uarr.update_item_attr(
-                    index,
-                    arr,
-                    "value",
-                    CONST_INPUT
-                )
+                arr.setss({
+                    type:"EDIT_ATTR",
+                    index:index,
+                    attr:"value",
+                    input:CONST_INPUT
+                })
             }
             else{
-                uarr.update_item_attr(
-                    index,
-                    arr,
-                    "value",
-                    ss_texts[index]
-                )
+                arr.setss({
+                    type:"EDIT_ATTR",
+                    index:index,
+                    attr:"value",
+                    input:ss_texts[index]
+                })
             }
         })
         setss_update(1)
@@ -84,11 +78,11 @@ export default function INPUT_FORM({
     const JSX_ELEMENTS = arr.ss.map((item,index)=>{
         // https://stackoverflow.com/questions/28329382/
         // understanding-unique-keys-for-array-children-in-react-js
-        if(except_arr.includes((item.name as string))){
+        if(except_arr.includes((item.attr as string))){
             return <div key={index}></div>
         }
         return <div key={index}>
-        <STR_TO_H opt_name={item.name}/>
+        <STR_TO_H opt_name={item.attr}/>
         <INPUT_STR
             opt_name={undefined}
             input={{ 
@@ -108,15 +102,15 @@ export default function INPUT_FORM({
         <STR_TO_H opt_name={opt_name}/>
         {JSX_ELEMENTS}
         <BUTTON_CLICK
-            name={"apply change" as a.name}
+            name={"apply change" as a.attr}
             func_event={(()=>{func_set_ok()}) as a.func_event}
         />
         {is_undo ? <BUTTON_CLICK
-            name={"cancel change" as a.name}
+            name={"cancel change" as a.attr}
             func_event={(()=>{func_set_cancel()}) as a.func_event}
         /> : <></>}
         <BUTTON_CLICK
-            name={"reset all" as a.name}
+            name={"reset all" as a.attr}
             func_event={(()=>{func_set_default()}) as a.func_event}
         />
     </>
