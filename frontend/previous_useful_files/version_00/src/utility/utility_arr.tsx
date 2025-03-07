@@ -69,11 +69,9 @@ export function update_item<t>(
         index:number, 
         arr:a.use_state_t<t[]>, 
         update_input:t){
-    if(index >= 0){
-        const UPDATE_ARR = [...arr.ss]
-        UPDATE_ARR[index]  = update_input
-        arr.setss(UPDATE_ARR)
-    }
+    const UPDATE_ARR = [...arr.ss]
+    UPDATE_ARR[index]  = update_input
+    arr.setss(UPDATE_ARR)
 }
 
 export function update_item_name<t extends {name:a.name}>(
@@ -81,12 +79,10 @@ export function update_item_name<t extends {name:a.name}>(
     arr:a.use_state_t<t[]>, 
     update_input:a.name|string,
     is_sort:"NO_SORT"|"SORT"|"REVERSE" = "NO_SORT"){
-    if(index >= 0){
-        let update_arr = [...arr.ss]
-        update_arr[index].name  = update_input as a.name
-        update_arr = sort_arr_name(update_arr, is_sort)
-        arr.setss(update_arr)
-    }
+let update_arr = [...arr.ss]
+update_arr[index].name  = update_input as a.name
+update_arr = sort_arr_name(update_arr, is_sort)
+arr.setss(update_arr)
 }
 
 export function update_item_attr<
@@ -98,11 +94,9 @@ export function update_item_attr<
         attr:k,
         input:v
     ){
-        if(index >= 0){
-            const UPDATE_ARR = [...arr.ss]
-            UPDATE_ARR[index][attr] = input
-            arr.setss(UPDATE_ARR)
-        }
+        const UPDATE_ARR = [...arr.ss]
+        UPDATE_ARR[index][attr] = input
+        arr.setss(UPDATE_ARR)
     }
 
 //----------------------------------------------------------------------------------------
@@ -113,15 +107,13 @@ export function copy_unique_item<t extends {name:a.name}>(
     index:number,
     arr:a.use_state_t<t[]>
 ){
-    if(index >= 0){
-        let update_arr = [...arr.ss]
-        const NEW_OBJ:t = JSON.parse(JSON.stringify(update_arr[index]))
-        const NAME = NEW_OBJ.name.split(".")
-        const NEW_NAME = NAME[0] + "_clone." + NAME.slice(1, NAME.length)
-        NEW_OBJ.name = NEW_NAME as a.name
-        update_arr.splice(index + 1, 0, NEW_OBJ)
-        arr.setss(update_arr)
-    }
+    let update_arr = [...arr.ss]
+    const NEW_OBJ:t = JSON.parse(JSON.stringify(update_arr[index]))
+    const NAME = NEW_OBJ.name.split(".")
+    const NEW_NAME = NAME[0] + "_clone." + NAME.slice(1, NAME.length)
+    NEW_OBJ.name = NEW_NAME as a.name
+    update_arr.splice(index + 1, 0, NEW_OBJ)
+    arr.setss(update_arr)
 }
 
 export function push_arr<t>(
@@ -169,11 +161,9 @@ export function push_arr_name<t extends {name:a.name}>(
 // TITLE: UTILITY
 
 export function delete_item<t>(index:number,arr:a.use_state_t<t[]>){
-    if(index >= 0){
-        const UPDATE_ARR = [...arr.ss]
-        UPDATE_ARR.splice(index, 1)
-        arr.setss(UPDATE_ARR)
-    }
+    const UPDATE_ARR = [...arr.ss]
+    UPDATE_ARR.splice(index, 1)
+    arr.setss(UPDATE_ARR)
 }
 
 export function exclude_arr<t>(arr_all:t[], arr_exclude:t[]){
@@ -201,69 +191,3 @@ export function include_arr<t>(arr_all:t[], arr_include:t[]){
         return undefined
     }).filter((item)=> item !== undefined) as t[]
 }
-
-//----------------------------------------------------------------------------------------
-
-// TITLE: UNUSED PART 1
-
-// WE DON'T USE THIS 2 FUNCTION BECAUSE WE WANT TO MAKE SURE THAT THE NAME OF OBJECTS IS UNIQUE.
-
-// https://stackoverflow.com/questions/586182/
-// https://medium.com/analytics-vidhya/
-// 3-ways-to-copy-by-value-any-composite-data-type-in-javascript-ca3c730e4d2f
-export function copy_item<t>(
-    index:number,
-    arr:a.use_state_t<t[]>,
-    is_sort:boolean|undefined = false
-){
-    let update_arr = [...arr.ss]
-    const new_obj = JSON.parse(JSON.stringify(arr.ss[index]))
-    update_arr.splice(index + 1, 0, new_obj)
-    update_arr = sort_arr(update_arr, is_sort)
-    arr.setss(update_arr)
-}
-
-export function copy_ptr_item<t>(
-    index:number,
-    arr:a.use_state_t<t[]>
-){
-    const UPDATE_ARR = [...arr.ss]
-    const NEW_OBJ = arr.ss[index]
-    UPDATE_ARR.splice(index + 1, 0, NEW_OBJ)
-    arr.setss(UPDATE_ARR)
-}
-
-//----------------------------------------------------------------------------------------
-
-// TITLE: UNUSED PART 2
-
-// THIS FUNCTION DOES NOT WORKS.
-// https://stackoverflow.com/questions/70926558/
-// filter-wont-filter-undefined
-export function no_undefined<t>(arr:t[]){
-    return arr.filter((item)=> item !== undefined) as t[]
-}
-
-//----------------------------------------------------------------------------------------
-
-// TITLE: UNUSED PART 3
-
-// OTHER USEFUL FUNCTION THAT WE NEVER EVER USED YET.
-export function unique_arr<t>(arr:t[]){
-    // https://stackoverflow.com/questions/36829184/
-    // how-can-i-convert-a-set-to-an-array-in-typescript
-    return Array.from(new Set(arr))
-}
-
-export function foreach_setss<t>(
-        arr:a.use_state_t<t>[],
-        func_event:(e:t)=>void,
-        input:t[]
-    ){
-    arr.forEach((item, index)=>{
-        item.setss(input[index])
-        func_event(input[index])
-    })
-}
-
-//----------------------------------------------------------------------------------------

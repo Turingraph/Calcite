@@ -1,25 +1,28 @@
-import {JSX, useState, useEffect} from "react";
+import {JSX, useState, useEffect, useLayoutEffect} from "react";
 import * as a from "../../type/alias";
 import BUTTON_CLICK from "../button/button_click";
 import INPUT_STR from "../input/input_str";
 import { STR_TO_H } from "../../utility/convert";
+import * as uarr from '../../utility/utility_arr'
 import "./index.css"
-import { use_namearr_t } from "../../use_reducer/act_objarr";
 
-export default function OBJ_SELF<
-    t extends {name:a.name}[]>({
+export default function OBJ_SELF<t extends {name:a.name}>({
     arr,
     this_item,
     ss_select,
     jsx_additional = undefined, 
 }:{
-    arr:use_namearr_t<t>
+    arr:a.use_state_t<t[]>
     this_item:number
     ss_select:a.use_state_t<number|undefined>
     jsx_additional?:JSX.Element|undefined
 }){
     const [ss_ui_mode, setss_ui_mode] = useState<"normal"|"rename"|"delete">("normal")
     const [ss_name, setss_name] = useState<string>(arr.ss[this_item].name as string)
+    // Ideally the arr should be sorted by name. However we comment this code in order for computational efficiency.
+    // useLayoutEffect(()=>{
+    //     arr.setss(uarr.sort_arr_name(arr.ss, "SORT"))
+    // })
     useEffect(()=>{
         if(ss_select.ss !== this_item && ss_ui_mode !== "normal"){
             setss_ui_mode("normal")
