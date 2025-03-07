@@ -1,177 +1,135 @@
-import {useLayoutEffect, useReducer, useRef} from "react";
+import { useEffect, useRef, useReducer, useLayoutEffect } from "react"
+import {use_objarr_t} from "../../use_reducer/act_objarr"
+import INPUT_STR from "../input/input_str"
+import { get_obj_value } from "../../use_reducer/utility_arr"
+import act_arr from "../../use_reducer/act_arr"
 import * as a from "../../type/alias"
-import BUTTON_CLICK from "../button/button_click";
-import INPUT_STR from "../input/input_str";
-import {STR_TO_H, str_to_default_num} from "../../utility/convert";
-import * as uarr from "../../utility/utility_arr";
-import { arr_attr_t } from "../../type/obj";
-import "./index.css"
-
-export type obj_str_uit<t extends object> = {
-    opt_name?:a.opt_name
-    arr:a.use_state_t<t[]>,
-    this_item:number,
-    attrs:string[]
-    is_undo?:boolean,
-}
-
-function func_get_attr<t extends object>(item:t, attrs:string[]){
-    // https://www.geeksforgeeks.org/typescript-array-keys-method/
-    const CONST_ITEM : { [key: string]: any } = item
-    const ARR_ALL = Object.keys(CONST_ITEM).map((item)=>{return item as string})
-    const CONST_ATTR = uarr.include_arr(
-        ARR_ALL,
-        attrs, 
-    ) as (keyof typeof CONST_ITEM)[]
-    return CONST_ATTR
-}
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-function func_set_default<t extends object>(arr:t[], this_item:number, attrs:string[]){
-    const CONST_ATTR = func_get_attr(arr[this_item], attrs)
-    return CONST_ATTR.map((item)=>{
-        return (arr[this_item] as { [key: string]: any })[item]
-    }) as t[]
-}
-
-// https://stackoverflow.com/questions/41385059/
-// possible-to-extend-types-in-typescript
-function reduce_texts<t extends object>(
-    state:string[], 
-    action:arr_attr_t<t> & {input_arr:string[]|undefined}){
-        if (action.input_arr !== undefined){
-            return action.input_arr
-        }
-        return func_set_default(action.arr, action.this_item, action.attrs) as unknown as string[]
-}
-
-function reduce_default<t extends object>(
-    state:t[], 
-    action:arr_attr_t<t>){
-        return func_set_default(action.arr, action.this_item, action.attrs)
-}
+import { avarr_to_value, str_to_default_num, STR_TO_H } from "../../utility/convert"
+import BUTTON_CLICK from "../button/button_click"
 
 export default function OBJ_STR<
-    t extends object>({
-        opt_name = undefined,       
-        arr  ,   
-        this_item,              
-        attrs  ,  
-        is_undo = false
-}:obj_str_uit<t>){
-    // https://stackoverflow.com/questions/53446020/
-    // how-to-compare-oldvalues-and-newvalues-on-react-hooks-useLayoutEffect
-    // https://react.dev/reference/react/useRef
-    const ref_arr_length = useRef(arr.ss.length)
-    const [ss_default_arr, setss_default_arr] = useReducer(
-        reduce_default,
-        func_set_default(arr.ss, this_item, attrs)
+    t extends object[],
+    k extends keyof t[number]>({
+    input_arr,
+    this_item,
+    attrs,
+    default_value = undefined,
+    is_undo=false
+}:{
+    input_arr:use_objarr_t<t>,
+    this_item:number,
+    attrs:k[],
+    default_value?:(undefined|a.attr_value<t[k]>[])
+    is_undo?:boolean,
+}){
+    const ref_pigeon_hole = useRef(input_arr.ss.length)
+    const [ss_defaults, setss_defaults] = useReducer(
+        act_arr,
+        (default_value 
+            ? avarr_to_value(default_value) 
+            : get_obj_value(input_arr.ss[this_item] as t[number], attrs)
+        ) as t[number][k][]
     )
-
     const [ss_texts, setss_texts] = useReducer(
-        reduce_texts,
-        func_set_default(arr.ss, this_item, attrs) as unknown as string[]
+        act_arr,
+        get_obj_value(input_arr.ss[this_item] as t[number], attrs) as string[]
     )
 
-    // https://react.dev/reference/react/useLayoutEffect
-    
-    // Update ss_texts = arr.ss
-    useLayoutEffect(()=>{
-        const COPY_ARR = [...arr.ss]
+    // Update ss_texts = input_arr.ss
+    useEffect(()=>{
+        const UPDATE = get_obj_value(input_arr.ss[this_item] as t[number], attrs) as string[]
         setss_texts({
-            arr: COPY_ARR, this_item: this_item, attrs: attrs,
-            input_arr: undefined
+            type:"SET",
+            input:UPDATE
         })
-    }, [arr.ss, attrs, this_item])
+    }, [input_arr.ss, this_item])
 
-    // Update `default value` of arr.ss[this_index] every time the arr.ss is puch or deleted.
+    // Update ss_defaults (a.k.a. default value of input_arr.ss[this_index])
+    // every time the input_arr.ss is puch or deleted.
     useLayoutEffect(()=>{
-        if(ref_arr_length.current !== arr.ss.length){
-            const COPY_ARR = [...arr.ss]
-            setss_default_arr({arr:COPY_ARR, this_item:this_item, attrs:attrs})
+        if(ref_pigeon_hole.current !== input_arr.ss.length 
+            && default_value === undefined){
+            const UPDATE = get_obj_value(input_arr.ss[this_item] as t[number], attrs)
+            setss_defaults({
+                type:"SET",
+                input:UPDATE
+            })
+            ref_pigeon_hole.current = input_arr.ss.length
         }
-        ref_arr_length.current = arr.ss.length
-    },[ss_texts, arr.ss, attrs, this_item])
+    },[ss_texts, this_item, input_arr.ss])
 
-    // https://stackoverflow.com/questions/57438198/
-    // typescript-element-implicitly-has-an-any-type-because-expression-of-type-st
-    const CONST_ITEM : { [key: string]: any } = arr.ss[this_item]
-    const CONST_ATTR = func_get_attr(arr.ss[this_item], attrs)
-    const COPY_ARR = [...arr.ss]
-    function func_update_item(input_arr:string[]){
-        CONST_ATTR.forEach((item, index)=>{
-            let let_input:number|string = (input_arr[index])
-            if (typeof CONST_ITEM[item] === 'number'){
-                if (typeof ss_default_arr[index] === 'number'){
+    const C_THIS_ITEM : t[number] = input_arr.ss[this_item]
+
+    function func_update_item(new_input_arr:string[]){
+        attrs.forEach((item:k, index)=>{
+            let let_input:number|string = new_input_arr[index]
+            if (typeof C_THIS_ITEM[item] === "number"){
+                if (typeof ss_defaults[index] === "number"){
                     let_input = str_to_default_num(
-                        ss_default_arr[index] as unknown as number,
-                        let_input as string
+                        ss_defaults[index],
+                        let_input
                     ) as number
                 }
                 else{
                     let_input = str_to_default_num(
                         0,
-                        let_input as string
+                        let_input
                     ) as number
                 }
             }
-            uarr.update_item_attr(
-                this_item,
-                arr,
-                item as typeof CONST_ITEM[number],
-                let_input
-            )
-        })
-        setss_texts({
-            arr: COPY_ARR, this_item: this_item, attrs: attrs,
-            input_arr: input_arr
-        })
-    }
-    function func_discard_changes(){
-        const UPDATE_TEXTS = CONST_ATTR.map((item)=>{
-            return CONST_ITEM[item] as string
-        })
-        setss_texts({
-            arr: COPY_ARR, this_item: this_item, attrs: attrs,
-            input_arr: UPDATE_TEXTS
+            if(typeof C_THIS_ITEM[item] === "number" || 
+                typeof C_THIS_ITEM[item] === "string"){
+                input_arr.setss({
+                    type:"EDIT_ATTR",
+                    index:this_item,
+                    attr:item as keyof t[number],
+                    input:let_input as t[number][keyof t[number]]
+                })
+            }
         })
     }
-    const JSX_INPUTS = CONST_ATTR.map((item,index)=>{
+    function func_cancel(){
+        const UPDATE = get_obj_value(input_arr.ss[this_item] as t[number], attrs) as string[]
+        setss_texts({
+            type:"SET",
+            input:UPDATE
+        })
+    }
+    const JAX_INPUTS = attrs.map((item, index)=>{
         return <div key={index}>
-            <STR_TO_H opt_name={opt_name ? opt_name : item as a.opt_name}/>
+            <STR_TO_H opt_name={item as a.opt_name}/>
             <INPUT_STR
                 opt_name={item as a.opt_name}
                 input={{
                     ss:ss_texts[index],
-                    setss:((e:string) =>{
-                        uarr.update_item(
-                            index,
-                            {ss:ss_texts, 
-                            setss:((e:string[])=>{setss_texts({
-                                arr: COPY_ARR, this_item: this_item, attrs: attrs,
-                                input_arr: e
-                            })})},
-                            e
-                        )}
-                    )
-                } as unknown as a.use_state_t<string>}
+                    setss:((e:string)=>{
+                        setss_texts({
+                            type:"EDIT",
+                            index:this_item,
+                            input:e
+                        })
+                    })
+                }}
             />
         </div>
     })
     return <>
-    {JSX_INPUTS}
-    <BUTTON_CLICK
-        name={"apply change" as a.name}
-        func_event={(()=>{func_update_item(ss_texts as typeof CONST_ITEM[number][])}) as a.func_event}
-    />
-    {is_undo ? <BUTTON_CLICK
-        name={"cancel change" as a.name}
-        func_event={(()=>{func_discard_changes()}) as a.func_event}
-    /> : <></>}
-    <BUTTON_CLICK
-        name={"reset all" as a.name}
-        func_event={(()=>{func_update_item(ss_default_arr as typeof CONST_ITEM[number][])}) as a.func_event}
-    />
+        {JAX_INPUTS}
+        <BUTTON_CLICK
+            name={"apply change" as a.name}
+            func_event={(()=>{func_update_item(ss_texts)}) as a.func_event}
+        />
+        {is_undo ? <BUTTON_CLICK
+            name={"apply change" as a.name}
+            func_event={(()=>{func_cancel()}) as a.func_event}
+        /> : <></>}
+        <BUTTON_CLICK
+            name={"reset all" as a.name}
+            func_event={(()=>{
+                func_update_item(ss_defaults.map((item)=>{
+                    return item as string
+                }))
+            }) as a.func_event}
+        />
     </>
 }
