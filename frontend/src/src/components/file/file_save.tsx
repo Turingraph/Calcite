@@ -19,11 +19,11 @@ export async function JSZIP(){
 }
 
 export default function FILE_SAVE({
-    arr,
+    files,
     folder_name=undefined,
     multiple=false
 }:{
-    arr:a.use_state_t<File[]>
+    files:a.use_state_t<File[]>
     folder_name?:string|undefined
     multiple?:boolean
 }){
@@ -35,8 +35,8 @@ export default function FILE_SAVE({
         if(let_folder_name === undefined){
             let_folder_name = "upload_file_" + file_to_date() + ".zip"
         }
-        if (arr.ss.length > 0){
-            const UPLOAD_FILE = multiple ? new File(arr.ss, let_folder_name) : arr.ss[0]
+        if (files.ss.length > 0){
+            const UPLOAD_FILE = multiple ? new File(files.ss, let_folder_name) : files.ss[0]
             const UPLOAD_URL = file_to_url(UPLOAD_FILE)
             const A = document.createElement("a")
             A.href = UPLOAD_URL
