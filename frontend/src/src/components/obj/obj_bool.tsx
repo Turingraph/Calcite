@@ -1,36 +1,36 @@
 import * as a from "../../type/alias";
-import * as uarr from "../../utility/utility_arr";
 import BUTTON_CLICK from "../button/button_click";
 import "./index.css"
+import { use_objarr_t } from "../../use_reducer/act_objarr";
 
 export type obj_bool_uit<
-    t extends object,
-    k extends keyof t> = {
+t extends object[],
+k extends keyof t[number]> = {
         name?:a.name
-        arr:a.use_state_t<t[]>,
+        input_arr:use_objarr_t<t[]>,
         this_item:number,
         attr:k,
         ui_mode?:"button"|"checkbox"
 }
 
 export default function OBJ_BOOL<
-    t extends object,
-    k extends keyof t>({
+    t extends object[],
+    k extends keyof t[number]>({
     name = "select" as a.name,
-    arr,
+    input_arr,
     this_item,
     attr,
     ui_mode = "button"
 }:obj_bool_uit<t,k>){
     function func_select(){
-        const UPDATE_INPUT = arr.ss[this_item]
-        if (UPDATE_INPUT[attr] === true){
-            UPDATE_INPUT[attr] = false as t[k]
+        if(typeof input_arr.ss[this_item][attr] === "boolean"){
+            input_arr.setss({
+                type:"EDIT_ATTR",
+                index:this_item as number,
+                attr:attr as k,
+                input:(input_arr.ss[this_item][attr] ? false : true) as t[keyof t]
+            })
         }
-        else{
-            UPDATE_INPUT[attr] = true as t[k]
-        }
-        uarr.update_item(this_item, arr, UPDATE_INPUT)
     }
     const HANDLE = ((e:any)=>{func_select()})
     if(ui_mode === "checkbox"){
@@ -39,7 +39,7 @@ export default function OBJ_BOOL<
         <input 
             type="checkbox" 
             onChange={()=>{func_select()}}
-            checked={arr.ss[this_item][attr] as unknown as boolean}
+            checked={input_arr.ss[this_item][attr] as unknown as boolean}
         />
         <label>{name}</label>
         </>
