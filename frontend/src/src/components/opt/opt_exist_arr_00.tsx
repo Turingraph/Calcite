@@ -1,4 +1,4 @@
-import {useState, useRef, useLayoutEffect, useReducer} from "react";
+import {useState, useRef, useLayoutEffect} from "react";
 import * as a from "../../type/alias"
 import BUTTON_CLICK from "../button/button_click";
 import OPT_INPUT from "./opt_input";
@@ -8,18 +8,7 @@ import PANEL from "../asset/panel";
 import { opt_mode_uit } from "./type";
 import { index_to_optmode } from "../../utility/convert";
 import "./index.css"
-import { act_namearr } from "../../use_reducer/act_objarr";
-import * as uarr from "../../use_reducer/utility_arr"
-import * as oarr from "../../use_reducer/func_objarr"
-import { use_arr_t } from "../../use_reducer/act_arr";
-
-export function func_default_newobj_index(available_opts:opt_mode_uit[], length:number){
-    available_opts = oarr.sort_arr(available_opts, {attr:"index", mode:"SORT"})
-    if (available_opts.length > length){
-        return available_opts[length].index
-    }
-    return undefined
-}
+import { func_default_newobj_index } from "./type";
 
 function func_exclude_opt(available_opts:string[], exist_opts:number[]){
     // https://stackoverflow.com/questions/36829184/
@@ -28,20 +17,14 @@ function func_exclude_opt(available_opts:string[], exist_opts:number[]){
     exist_opts = uarr.sort_arr(exist_opts, "SORT")
     // available_opts  = method_unique_arr(available_opts)
     // exist_opts      = method_unique_arr(exist_opts)
-    const C_AVAILABLE_OPTS = oarr.sort_arr(
-        str_to_optmode_arr(available_opts), 
-        {attr:"index", mode:"SORT"}
-    )
-    const C_EXIST_OPTS = oarr.sort_arr(
-        exist_opts.map((item)=>{
-            return {
-                name:available_opts[item] as a.name,
-                index:item
-            } as opt_mode_uit
-        }),
-        {attr:"index", mode:"SORT"}
-    )
-    return exclude_arr(C_AVAILABLE_OPTS, C_EXIST_OPTS) as opt_mode_uit[]
+    const CONST_AVAILABLE_OPTS = uarr.sort_arr_attr(str_to_optmode_arr(available_opts), "index", "SORT")
+    const CONST_EXIST_OPTS = uarr.sort_arr_attr(exist_opts.map((item)=>{
+        return {
+            name:available_opts[item] as a.name,
+            index:item
+        } as opt_mode_uit
+    }),"index", "SORT")
+    return exclude_arr(CONST_AVAILABLE_OPTS, CONST_EXIST_OPTS) as opt_mode_uit[]
 }
 
 export default function OPT_EXIST_ARR(
@@ -58,7 +41,7 @@ export default function OPT_EXIST_ARR(
         }
     }:{
         opt_name?:a.opt_name
-        exist_opts:use_arr_t<number>,
+        exist_opts:a.use_state_t<number[]>,
         available_opts:string[]
         is_search_bar?:boolean
         shape?:{x_scroll_bar?:boolean,
@@ -68,29 +51,28 @@ export default function OPT_EXIST_ARR(
         },
     }
 ){
-    const [ss_available_opts, setss_available_opts] = useReducer(
-        act_namearr,
+    const [ss_available_opts, setss_available_opts] = useState<opt_mode_uit[]>(
         func_exclude_opt(available_opts, exist_opts.ss)
     )
     const [ss_newobj_index, setss_newobj_index] = useState<number|undefined>(
         func_default_newobj_index(ss_available_opts, 0)
     )
     const ref_DEFAULT_OPT = useRef<number>(exist_opts.ss[0])
+    const ref_exist_opts = useRef(exist_opts.ss)
 
     // Update ss_available_opts everytime when update exist_opts.ss
     // Sort exist_opts.ss
     useLayoutEffect(()=>{
-        setss_available_opts({
-            type:"SET",
-            input:func_exclude_opt(available_opts, exist_opts.ss)
-        })
+        setss_available_opts(func_exclude_opt(available_opts, exist_opts.ss))
+        if(ref_exist_opts.current !== exist_opts.ss){
+            const UPDATE = uarr.sort_arr(exist_opts.ss)
+            exist_opts.setss(UPDATE)
+        }
+        ref_exist_opts.current = exist_opts.ss
     },[exist_opts, available_opts])
 
     function func_reset(){
-        exist_opts.setss({
-            type:"SET",
-            input:[ref_DEFAULT_OPT.current]
-        })
+        exist_opts.setss([ref_DEFAULT_OPT.current])
         if(ref_DEFAULT_OPT.current === available_opts.length - 1){
             setss_newobj_index(0)
         }
@@ -106,10 +88,7 @@ export default function OPT_EXIST_ARR(
             )
             if(INPUT !== undefined){
                 const NEXT_INDEX = item_to_index(ss_available_opts, INPUT)
-                exist_opts.setss({
-                    type:"PUSH",
-                    input:INPUT.index
-                })
+                uarr.push_arr(INPUT.index, exist_opts)
                 if(NEXT_INDEX !== undefined){
                     if(ss_available_opts.length <= 1){
                         setss_newobj_index(undefined)
@@ -128,10 +107,7 @@ export default function OPT_EXIST_ARR(
         if(ss_newobj_index === undefined){
             setss_newobj_index(exist_opts.ss[index])
         }
-        exist_opts.setss({
-            type:"DELETE",
-            index:index
-        })
+        uarr.delete_item(index, exist_opts)
     }
     const JSX_EXIST_OPTS = exist_opts.ss.map((item,index)=>{
         return <div key={index}>
