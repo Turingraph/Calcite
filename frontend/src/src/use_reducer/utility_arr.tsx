@@ -63,3 +63,14 @@ export function include_arr<t>(arr_all:t[], arr_include:t[]){
         return undefined
     }).filter((item)=> item !== undefined) as t[]
 }
+
+//-------------------------------------------------------------------------
+
+export function get_obj_value<
+    t extends object, 
+    k extends keyof t>(
+        input:t,
+        attrs:k[]
+    ){
+    return attrs.map((item)=>{return input[item]})
+}

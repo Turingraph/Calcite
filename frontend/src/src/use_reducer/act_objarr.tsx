@@ -126,7 +126,7 @@ o extends t[number][k]>
 export function act_namearr<
     t extends {name:a.name}[], 
     k extends keyof t[number], 
-    o extends t[number][k]>(prev_arr:t, action:act_objarr_t<t,k,o> | {type:"COPY", index:number}){
+    o extends t[number][k]>(prev_arr:t, action:(act_objarr_t<t,k,o> | {type:"COPY", index:number})){
     switch (action.type){
         case "COPY":{
             const C_COPY_ARR = [...prev_arr]
@@ -134,7 +134,7 @@ export function act_namearr<
                 C_COPY_ARR,
                 action.index
             )
-            return C_UPDATE
+            return C_UPDATE as t
         }
         default: {
             if(action.sort === undefined){
@@ -161,5 +161,5 @@ export type use_objarr_t<t extends object[]> = {
 export type use_namearr_t<
     t extends {name:a.name}[]> = {
     ss:t,
-    setss:React.ActionDispatch<[action: act_objarr_t<t, keyof t[number], t[number][keyof t[number]]>]>
+    setss:React.ActionDispatch<[action: (act_objarr_t<t, keyof t[number], t[number][keyof t[number]]> | {type:"COPY", index:number})]>
 }
