@@ -19,7 +19,7 @@ function func_input_opt_index(arr_all:a.attr_value<string|number>[], arr_include
 
 export type input_combine_uit = {
     opt_name?:a.opt_name,
-    input_str?:use_objarr_t<a.attr_value<string|number>>|undefined
+    input_str?:use_objarr_t<a.attr_value<string|number>[]>|undefined
     input_opt?:(a.attr_value<string[]> & {is_search_bar?:undefined|boolean})[]
     func_activate?:a.func_event,
     is_undo?:boolean

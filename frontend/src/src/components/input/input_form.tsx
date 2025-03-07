@@ -9,7 +9,7 @@ import act_arr from "../../use_reducer/act_arr";
 
 export type input_form_t = {
     opt_name?:a.opt_name|undefined
-    input_arr:use_objarr_t<a.attr_value<string|number>>
+    input_arr:use_objarr_t<a.attr_value<string|number>[]>
     no_input_fields?:string[]
     func_activate?:a.func_event
     is_undo?:boolean
