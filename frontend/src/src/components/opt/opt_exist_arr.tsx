@@ -123,7 +123,7 @@ export default function OPT_EXIST_ARR(
         else if(NEXT_INDEX === ss_available_opts.length - 1){
             setss_create_opt(func_create_opt(ss_available_opts, 0))
         }
-        else{
+        else if (NEXT_INDEX !== undefined){
             setss_create_opt(func_create_opt(ss_available_opts, NEXT_INDEX+1))
         }
     }
