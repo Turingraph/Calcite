@@ -6,13 +6,15 @@ import SEARCH_BAR from "./search_bar";
 import "./index.css"
 import { index_to_optmode } from "../../utility/convert";
 import act_objarr, { setss_namearr_t } from "../../array/act_objarr";
+import BUTTON_CLICK from "../button/button_click";
 
 export type opt_input_t = {
     opt_name?:a.opt_name
     available_opts:string[]|opt_mode_uit[]
     ss_mode:a.use_state_t<number|undefined>
     is_search_bar?:boolean,
-    auto_update_opts?:boolean
+    auto_update_opts?:boolean,
+    default_input?:undefined|number
 }
 
 //  https://stackoverflow.com/questions/40209352/
@@ -27,7 +29,8 @@ export default function OPT_INPUT(
     available_opts,
     ss_mode,
     is_search_bar = false,
-    auto_update_opts = true
+    auto_update_opts = true,
+    default_input = undefined
 } : opt_input_t){
 
     // https://developer.mozilla.org/en-US/docs/Web/
@@ -96,5 +99,12 @@ export default function OPT_INPUT(
         <select value={ss_mode.ss} onChange={(e)=>handle_event(e)}>
             {JSX_OPTS}
         </select>
+        {default_input 
+            ? <BUTTON_CLICK 
+                name={"default_input" as a.name} 
+                func_event={(()=>{ss_mode.setss(default_input)}) as a.func_event}
+            />
+            : <></>
+        }
     </>);
 }
