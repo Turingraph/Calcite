@@ -1,5 +1,6 @@
 import * as a from "../type/alias"
 import { opt_mode_uit } from "../components/opt/type";
+import { anymonth_t, month_t } from "../type/utility";
 
 /*
 Rule of every function in this file.
@@ -296,7 +297,7 @@ export type equal_type_t<T, U> =
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-export function anymonth_to_num(input:a.anymonth_t){
+export function anymonth_to_num(input:anymonth_t){
     if(typeof input === "number"){
         return input
     }
@@ -352,8 +353,8 @@ export function num_to_index_name(input:number){
     return Math.abs(input).toString()
 }
 
-export function anymonth_to_month(input:a.anymonth_t){
-    return num_to_index_name(anymonth_to_num(input)) as a.month_t
+export function anymonth_to_month(input:anymonth_t){
+    return num_to_index_name(anymonth_to_num(input)) as month_t
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -361,7 +362,7 @@ export function anymonth_to_month(input:a.anymonth_t){
 export function file_to_date(item:File|undefined = undefined, gmt:boolean=false){
     const DAY = (item ? new Date(item.lastModified) : new Date()).toString().split(" ")
     return (gmt ? DAY[5].replace("+","-")+"_" : "")+
-        DAY[3]+"-"+anymonth_to_month(DAY[1] as a.anymonth_t)+"-"+DAY[2]+
+        DAY[3]+"-"+anymonth_to_month(DAY[1] as anymonth_t)+"-"+DAY[2]+
         "_"+(DAY[4].split(":").join("-"))
 }
 

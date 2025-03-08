@@ -3,10 +3,11 @@ import * as a from "../../type/alias";
 import BUTTON_CLICK from "./button_click";
 import OPT_INPUT from "../opt/opt_input";
 import "./index.css"
+import { history_t } from "../../type/utility";
 
 export default function BUTTON_HISTORY<t>({
     history,
-}:{history:a.use_state_t<a.history<t>>}
+}:{history:a.use_state_t<history_t<t>>}
 ){
     const [ss_mode, setss_mode] = useState<number>(history.ss.current)
     const ref_mode = useRef(ss_mode)
@@ -17,7 +18,7 @@ export default function BUTTON_HISTORY<t>({
                 arr:history.ss.arr,
                 commit: history.ss.commit,
                 current: ss_mode,
-            }) as unknown as a.history<t>)
+            }) as unknown as history_t<t>)
         }
         ref_mode.current = ss_mode
     },[ss_mode, history])
@@ -27,7 +28,7 @@ export default function BUTTON_HISTORY<t>({
                     arr:history.ss.arr,
                     commit: history.ss.commit,
                     current: history.ss.current - 1,
-                }) as unknown as a.history<t>)
+                }) as unknown as history_t<t>)
             setss_mode(history.ss.current - 1)
         }
     }
@@ -37,7 +38,7 @@ export default function BUTTON_HISTORY<t>({
                 arr:history.ss.arr,
                 commit: history.ss.commit,
                 current: history.ss.current + 1,
-                }) as unknown as a.history<t>)
+                }) as unknown as history_t<t>)
                 setss_mode(history.ss.current + 1)
         }
     }
