@@ -3,15 +3,15 @@ import * as a from "../../type/alias"
 import BUTTON_CLICK from "../button/button_click";
 import OPT_INPUT from "./opt_input";
 import {str_to_optmode_arr, STR_TO_H, item_to_index} from "../../utility/convert";
-import { exclude_arr } from "../../use_reducer/utility_arr";
+import { exclude_arr } from "../../array/utility";
 import PANEL from "../asset/panel";
 import { opt_mode_uit } from "./type";
 import { index_to_optmode } from "../../utility/convert";
 import "./index.css"
-import { act_namearr } from "../../use_reducer/act_objarr";
-import * as uarr from "../../use_reducer/utility_arr"
-import * as oarr from "../../use_reducer/func_objarr"
-import { use_arr_t } from "../../use_reducer/act_arr";
+import { act_namearr } from "../../array/act_objarr";
+import * as uarr from "../../array/utility"
+import * as oarr from "../../array/func_objarr"
+import { use_arr_t } from "../../array/act_arr";
 
 export function func_create_opt(available_opts:opt_mode_uit[], length:number){
     available_opts = oarr.sort_arr(available_opts, {attr:"index", mode:"SORT"})

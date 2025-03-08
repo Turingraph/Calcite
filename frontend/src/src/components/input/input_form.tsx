@@ -3,9 +3,9 @@ import * as a from "../../type/alias"
 import BUTTON_CLICK from "../button/button_click";
 import INPUT_STR from "./input_str";
 import {STR_TO_H, avarr_to_value, str_to_default_num} from "../../utility/convert";
-import { use_objarr_t } from "../../use_reducer/act_objarr";
+import { use_objarr_t } from "../../array/act_objarr";
 import "./index.css"
-import act_arr from "../../use_reducer/act_arr";
+import act_arr from "../../array/act_arr";
 
 export type input_form_t = {
     opt_name?:a.opt_name|undefined

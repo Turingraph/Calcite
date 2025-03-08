@@ -4,7 +4,7 @@ import INPUT_STR from "../input/input_str";
 import { opt_mode_uit } from "./type";
 import "./index.css"
 import { str_to_optmode_arr } from "../../utility/convert";
-import { setss_namearr_t } from "../../use_reducer/act_objarr";
+import { setss_namearr_t } from "../../array/act_objarr";
 
 // How to make function accept prop based on attr
 // https://www.freecodecamp.org/news/typescript-generics-with-functional-react-components/

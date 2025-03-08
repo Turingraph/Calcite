@@ -4,7 +4,7 @@ import { str_to_optmode_arr } from "../../utility/convert"
 import OBJ_SELF from "../obj/obj_self"
 import SEARCH_BAR from "./search_bar"
 import PANEL from "../asset/panel"
-import { act_namearr, use_namearr_t } from "../../use_reducer/act_objarr"
+import { act_namearr, use_namearr_t } from "../../array/act_objarr"
 
 export default function SEARCH_OBJ<t extends {name:a.name}[]>({
     input_arr,

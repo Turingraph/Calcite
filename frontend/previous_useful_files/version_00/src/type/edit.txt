@@ -1,8 +1,8 @@
 import { input_combine_uit } from "../components/input/input_combine"
-import { opt_input_uit } from "../components/opt/type"
+import { opt_input_t } from "../components/opt/opt_input"
 import * as a from "./alias"
 
-export type config_img_t = {
+export type edit_img_t = {
     remove_noice:boolean,
     thin_font:boolean,
     think_font:boolean,
@@ -19,9 +19,9 @@ export type config_img_t = {
     list_arr:number[]
 }
 
-export type config_ocr_t = {
+export type edit_ocr_t = {
     psm: string[],
-    languages:string[]|opt_input_uit[],
+    languages:string[]|opt_input_t[],
     oem:string[],
     timeout:a.use_state_uit<number>,
     white_or_black_list:string[],

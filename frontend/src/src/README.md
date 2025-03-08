@@ -3,19 +3,19 @@
 List of the folders in `frontend/src/src/`
 1.	`app/`
 -	Purpose: It is used for creating API. Now it is unusable and under development.
-2.	`components/`
+2.	`APP/`
+-	Purpose: Contain function for handle `useReducer` for complicated array related logic.
+3.	`components/`
 -	Purpose: Contains reuseable UI components.
-3.	`data/`
+4.	`data/`
 -	Purpose: Contains only constant variable and JSON files.
-4.	`layout/`
+5.	`layout/`
 -	Purpose: Contains file that composed by `components/` files for this specific OCR project.
-5.	`pages/`
+6.	`pages/`
 -	Purpose: Contains only UI page that are made by `layout/` and arrange as sub part of the main page.
-6.	`type/`
+7.	`type/`
 -	Purpose: Contains reusable type.
-7.	`use_reducer/`
--	Purpose: Contains function for handle `useReducer` complicated logic e.g. Create-Update-Delete-Sort logic of array logic etc.
-7.	`utility`
+8.	`utility`
 -	Purpose: Contains other files.
 
 Note that `layout/` and `pages/` contains only empty functions.

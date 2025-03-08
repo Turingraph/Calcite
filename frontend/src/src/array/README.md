@@ -1,10 +1,14 @@
-The purpose of `use_reducer/` is to contain function for handle `useReducer` complicated logic.
+The purpose of `array/` is to contain function for handle `useReducer` complicated array related logic.
 
 It consistes of
-1.  `act_arr.tsx`
--   Purpose: Handle `"SORT"`, `"PUSH"`, `"DELETE"`, `"EDIT"` and `"SET"` of array type `t[]` logic.
-2.  `act_objarr`
--   Purpose: Handle `"SORT"`, `"PUSH"`, `"DELETE"`, `"EDIT_ATTR"`, `"EDIT_ITEM"` and `"SET"` of array type `object[]` logic.
+1.  `act_arr.tsx.tsx`
+-   Purpose: Handle `"SORT"`, `"PUSH"`, `"DELETE"`, `"EDIT"` and `"SET"` of `useReducer` with array type `t[]` logic.
+2.  `act_objarr.tsx`
+-   Purpose: Handle `"SORT"`, `"PUSH"`, `"DELETE"`, `"EDIT_ATTR"`, `"EDIT_ITEM"` and `"SET"` of `useReducer` with array type `object[]` logic.
+3.  `func_objarr.tsx`
+-   Purpose: Implementation for `act_objarr.tsx`
+4.  `utility.tsx`
+-   Purpose: Contains other utility functions.
 
 Naming meaning
 1.  `act_` = function that is used for handle `useReducer` `logic.

@@ -1,4 +1,4 @@
-import { setss_arr_t } from "../../use_reducer/act_arr"
+import { setss_arr_t } from "../../array/act_arr"
 
 export default function FILE_OPEN({
     setss_files,

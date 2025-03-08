@@ -1,5 +1,4 @@
 import * as a from "../type/alias";
-import { opt_mode_uit } from "../components/opt/type";
 
 // https://stackoverflow.com/questions/586182/
 // https://medium.com/analytics-vidhya/

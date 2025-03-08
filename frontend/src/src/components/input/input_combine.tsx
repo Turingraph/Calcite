@@ -1,11 +1,10 @@
 import React, { JSX } from "react";
 import * as a from "../../type/alias";
-import { opt_input_uit } from "../opt/type";
 import {str_to_attrvalue, STR_TO_H} from "../../utility/convert";
 import OPT_INPUT from "../opt/opt_input";
 import INPUT_FORM from "./input_form";
 import "./index.css"
-import { use_objarr_t } from "../../use_reducer/act_objarr";
+import { use_objarr_t } from "../../array/act_objarr";
 
 function func_input_opt_index(arr_all:a.attr_value<string|number>[], arr_include:string[]){
     return arr_all.map((item, index)=>{
@@ -62,7 +61,7 @@ export default function INPUT_COMBINE({
                         attr:"value",
                         input: e
                     })
-                })}}
+                }) as ((e: number | undefined) => void)}}
                 is_search_bar={item.is_search_bar ? item.is_search_bar : false}
                 />
                 </div>

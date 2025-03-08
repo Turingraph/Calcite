@@ -1,7 +1,7 @@
 import React, {useState, JSX} from "react";
 import * as a from '../../src/type/alias'
 import INPUT_COMBINE from "../../src/components/input/input_combine";
-import { opt_input_uit } from "../../src/components/opt/type";
+import { opt_mode_uit } from "../../src/components/opt/type";
 import INPUT_FORM from "../../src/components/input/input_form";
 import INPUT_STR from "../../src/components/input/input_str";
 

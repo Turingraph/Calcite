@@ -1,11 +1,19 @@
 import React, { useState, JSX, useRef, useLayoutEffect, useReducer} from "react";
 import * as a from "../../type/alias"
 import {STR_TO_H, str_to_optmode_arr} from "../../utility/convert";
-import { opt_mode_uit, opt_input_uit } from "./type"
+import { opt_mode_uit} from "./type"
 import SEARCH_BAR from "./search_bar";
 import "./index.css"
 import { index_to_optmode } from "../../utility/convert";
-import act_objarr, { setss_namearr_t } from "../../use_reducer/act_objarr";
+import act_objarr, { setss_namearr_t } from "../../array/act_objarr";
+
+export type opt_input_t = {
+    opt_name?:a.opt_name
+    available_opts:string[]|opt_mode_uit[]
+    ss_mode:a.use_state_t<number|undefined>
+    is_search_bar?:boolean,
+    auto_update_opts?:boolean
+}
 
 //  https://stackoverflow.com/questions/40209352/
 //  how-to-specify-optal-default-props-with-typescript-for-stateless-functiona
@@ -20,7 +28,7 @@ export default function OPT_INPUT(
     ss_mode,
     is_search_bar = false,
     auto_update_opts = true
-}:opt_input_uit & {auto_update_opts?:boolean}){
+} : opt_input_t){
 
     // https://developer.mozilla.org/en-US/docs/Web/
     // JavaScript/Reference/Global_Objects/Array/every

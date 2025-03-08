@@ -1,7 +1,7 @@
 import * as a from "../../type/alias";
 import BUTTON_CLICK from "../button/button_click";
 import "./index.css"
-import { use_objarr_t } from "../../use_reducer/act_objarr";
+import { use_objarr_t } from "../../array/act_objarr";
 
 export type obj_bool_uit<
 t extends object[],

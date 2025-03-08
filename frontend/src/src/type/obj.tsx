@@ -2,7 +2,6 @@ import * as a from "./alias"
 
 export type user_t = {
     name:a.name,
-    select:a.select,
     password:string,
     first_date?:undefined|Date,
     last_date?:undefined|Date,
