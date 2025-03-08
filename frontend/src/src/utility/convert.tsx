@@ -208,7 +208,7 @@ export function str_to_index<t extends {name:a.name}>(arr:t[],name:string|a.name
     return -1
 }
 
-export function str_to_attr_value<t>(name:string, arr:a.attr_value<t>[]){
+export function str_to_attrvalue<t>(name:string, arr:a.attr_value<t>[]){
     let i = 0
     while(i < arr.length){
         if(name === arr[i].attr){
