@@ -105,3 +105,5 @@ export type use_arr_t<t> = {
     ss:t[],
     setss:React.ActionDispatch<[action: act_arr_t<t>]>
 }
+
+export type setss_arr_t<t> = React.ActionDispatch<[action: act_arr_t<t>]>

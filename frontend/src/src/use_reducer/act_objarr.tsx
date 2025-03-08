@@ -155,11 +155,27 @@ export function act_namearr<
 
 export type use_objarr_t<t extends object[]> = {
     ss:t,
-    setss:React.ActionDispatch<[action: act_objarr_t<t, keyof t[number], t[number][keyof t[number]]>]>
+    setss:React.ActionDispatch<[
+        action: act_objarr_t<t, keyof t[number], t[number][keyof t[number]]>
+    ]>
 }
+
+export type setss_objarr_t<
+    t extends object[]
+> = React.ActionDispatch<[
+    action: act_objarr_t<t, keyof t[number], t[number][keyof t[number]]>
+]>
 
 export type use_namearr_t<
     t extends {name:a.name}[]> = {
     ss:t,
-    setss:React.ActionDispatch<[action: (act_objarr_t<t, keyof t[number], t[number][keyof t[number]]> | {type:"COPY", index:number})]>
+    setss:React.ActionDispatch<[
+        action: (act_objarr_t<t, keyof t[number], t[number][keyof t[number]]> | {type:"COPY", index:number})
+    ]>
 }
+
+export type setss_namearr_t<
+    t extends {name:a.name}[]
+> = React.ActionDispatch<[
+    action: (act_objarr_t<t, keyof t[number], t[number][keyof t[number]]> | {type:"COPY", index:number})
+]>
