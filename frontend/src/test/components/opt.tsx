@@ -60,7 +60,7 @@ export function TEST_SEARCH_OBJ(){
         return <>
         <OBJ_BOOL
                 name={"rule64" as a.name}
-                arr={{ss:ss_arr, setss:setss_arr}}
+                input_arr={{ss:ss_arr, setss:setss_arr}}
                 this_item={index}
                 attr={"is_male"}
                 ui_mode={"checkbox"}

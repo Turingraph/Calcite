@@ -18,13 +18,13 @@ const OPT_LEVEL = ["Beginner", "Elementary", "Intermediate", "Advance", "Genius"
 
 export function TEST_INPUT_FORM(){
     const [ss_obj, setss_obj] = useState<a.attr_value<number|string>[]>([
-        {name:"Favorite Number No.0" as a.name, value:DEFAULT_INPUT[0]},
-        {name:"Favorite Number No.1" as a.name, value:DEFAULT_INPUT[1]},
-        {name:"Favorite Number No.2" as a.name, value:DEFAULT_INPUT[2]},
-        {name:"Media" as a.name, value:0},
-        {name:"Mode" as a.name, value:0},
-        {name:"Favorite Number No.3" as a.name, value:DEFAULT_INPUT[3]},
-        {name:"Scientist" as a.name, value:DEFAULT_INPUT[4]},
+        {attr:"Favorite Number No.0" as a.attr, value:DEFAULT_INPUT[0]},
+        {attr:"Favorite Number No.1" as a.attr, value:DEFAULT_INPUT[1]},
+        {attr:"Favorite Number No.2" as a.attr, value:DEFAULT_INPUT[2]},
+        {attr:"Media" as a.attr, value:0},
+        {attr:"Mode" as a.attr, value:0},
+        {attr:"Favorite Number No.3" as a.attr, value:DEFAULT_INPUT[3]},
+        {attr:"Scientist" as a.attr, value:DEFAULT_INPUT[4]},
     ])
     const JSX_INPUT_FORM:JSX.Element = <INPUT_FORM
         opt_name={"Vector Space" as a.opt_name}
@@ -39,20 +39,20 @@ export function TEST_INPUT_FORM(){
 
 export function TEST_INPUT_COMBINE(){
     const [ss_obj, setss_obj] = useState<a.attr_value<number|string>[]>([
-        {name:"Favorite Number No.0" as a.name, value:DEFAULT_INPUT[0]},
-        {name:"Favorite Number No.1" as a.name, value:DEFAULT_INPUT[1]},
-        {name:"Favorite Number No.2" as a.name, value:DEFAULT_INPUT[2]},
-        {name:"Media" as a.name, value:0},
-        {name:"Mode" as a.name, value:0},
-        {name:"Favorite Number No.3" as a.name, value:DEFAULT_INPUT[3]},
-        {name:"Scientist" as a.name, value:DEFAULT_INPUT[4]},
+        {attr:"Favorite Number No.0" as a.attr, value:DEFAULT_INPUT[0]},
+        {attr:"Favorite Number No.1" as a.attr, value:DEFAULT_INPUT[1]},
+        {attr:"Favorite Number No.2" as a.attr, value:DEFAULT_INPUT[2]},
+        {attr:"Media" as a.attr, value:0},
+        {attr:"Mode" as a.attr, value:0},
+        {attr:"Favorite Number No.3" as a.attr, value:DEFAULT_INPUT[3]},
+        {attr:"Scientist" as a.attr, value:DEFAULT_INPUT[4]},
     ])
     const JSX_INPUT_FORM:JSX.Element = <INPUT_COMBINE
         opt_name={"Vector Space" as a.opt_name}
         input_str={{ss:ss_obj, setss:setss_obj}}
         input_opt={[
-            {name:"Media" as a.name, value:OPT_MEDIA_ARR}, 
-            {name:"Mode" as a.name, value:OPT_LEVEL}
+            {attr:"Media" as a.attr, value:OPT_MEDIA_ARR}, 
+            {attr:"Mode" as a.attr, value:OPT_LEVEL}
         ]}
         is_undo={true}
     />
