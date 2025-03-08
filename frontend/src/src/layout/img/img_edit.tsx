@@ -1,31 +1,30 @@
 import React, { useState } from "react";
 import * as a from "../../type/alias"
-import { DEFAULT_IMG } from "../../data/default_config";
+import { DEFAULT_IMG } from "../../data/default_edit";
 import OBJ_STR from "../../components/obj/obj_str";
 import { str_to_index } from "../../utility/convert";
 // import * as u from "../../utility/utility"
 // import * as uarr from "../../utility/utility_arr"
 
 export default function IMG_EDIT(){
-    const [ss_thresh, setss_thresh]  = useState<a.attr_value<number>[]>(
-        DEFAULT_IMG.thresh
-    )
-    return <>
-    <OBJ_STR
-        opt_name={"px" as a.opt_name}
-        arr={{ss:ss_thresh, setss:setss_thresh}}
-        this_item={str_to_index(ss_thresh, "px")}
-        attrs={["value"]}
-    />
+    // const [ss_thresh, setss_thresh]  = useState<a.attr_value<number>[]>(
+    //     DEFAULT_IMG.thresh
+    // )
+    return <></>
+    // <OBJ_STR
+    //     opt_name={"px" as a.opt_name}
+    //     arr={{ss:ss_thresh, setss:setss_thresh}}
+    //     this_item={str_to_index(ss_thresh, "px")}
+    //     attrs={["value"]}
+    // />
 
-    <OBJ_STR
-        opt_name={"maxval" as a.opt_name}
-        arr={{ss:ss_thresh, setss:setss_thresh}}
-        this_item={str_to_index(ss_thresh, "maxval")}
-        attrs={["value"]}
-    />
-Z  
-    </>
+    // <OBJ_STR
+    //     opt_name={"maxval" as a.opt_name}
+    //     arr={{ss:ss_thresh, setss:setss_thresh}}
+    //     this_item={str_to_index(ss_thresh, "maxval")}
+    //     attrs={["value"]}
+    // />
+    // </>
 }
 
 /*

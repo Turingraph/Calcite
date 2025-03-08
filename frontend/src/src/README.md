@@ -13,6 +13,8 @@ List of the folders in `frontend/src/src/`
 -	Purpose: Contains only UI page that are made by `layout/` and arrange as sub part of the main page.
 6.	`type/`
 -	Purpose: Contains reusable type.
+7.	`use_reducer/`
+-	Purpose: Contains function for handle `useReducer` complicated logic e.g. Create-Update-Delete-Sort logic of array logic etc.
 7.	`utility`
 -	Purpose: Contains other files.
 
