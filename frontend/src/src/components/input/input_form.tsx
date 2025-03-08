@@ -3,13 +3,13 @@ import * as a from "../../type/alias"
 import BUTTON_CLICK from "../button/button_click";
 import INPUT_STR from "./input_str";
 import {STR_TO_H, avarr_to_value, str_to_default_num} from "../../utility/convert";
-import { use_objarr_t } from "../../array/act_objarr";
+import { use_arrobj_t } from "../../array/act_arrobj";
 import "./index.css"
 import act_arr from "../../array/act_arr";
 
 export type input_form_t = {
     opt_name?:a.opt_name|undefined
-    input_arr:use_objarr_t<a.attr_value<string|number>[]>
+    input_arr:use_arrobj_t<a.attr_value<string|number>[]>
     no_input_fields?:string[]
     func_activate?:a.func_event
     is_undo?:boolean

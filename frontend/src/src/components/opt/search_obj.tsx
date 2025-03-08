@@ -4,17 +4,17 @@ import { str_to_optmode_arr } from "../../utility/convert"
 import OBJ_SELF from "../obj/obj_self"
 import SEARCH_BAR from "./search_bar"
 import PANEL from "../asset/panel"
-import { act_namearr, use_namearr_t } from "../../array/act_objarr"
+import { act_arrname, use_arrname_t } from "../../array/act_arrobj"
 
 export default function SEARCH_OBJ<t extends {name:a.name}[]>({
     input_arr,
     jsx_additional = undefined,
 }:{
-    input_arr:use_namearr_t<t>
+    input_arr:use_arrname_t<t>
     jsx_additional?:(JSX.Element|undefined)[]|undefined
 }){
     const [ss_show_arr, setss_show_arr] = useReducer(
-        act_namearr,
+        act_arrname,
         str_to_optmode_arr(input_arr.ss)
     )
     const [ss_select, setss_select] = useState<number|undefined>(undefined)

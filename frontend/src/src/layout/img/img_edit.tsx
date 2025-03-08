@@ -1,32 +1,53 @@
-import React, { useState } from "react";
+import React from "react";
 import * as a from "../../type/alias"
+import OBJ_SELF from "../../components/obj/obj_self";
 import { DEFAULT_IMG } from "../../data/default_edit";
-import OBJ_STR from "../../components/obj/obj_str";
-import { str_to_index } from "../../utility/convert";
-// import * as u from "../../utility/utility"
-// import * as uarr from "../../utility/utility_arr"
+import { useReducer } from "react";
+import act_arrobj from "../../array/act_arrobj";
+import { use_arrobj_t } from "../../array/act_arrobj";
+import INPUT_COMBINE from "../../components/input/input_combine";
 
-export default function IMG_EDIT(){
-    // const [ss_thresh, setss_thresh]  = useState<a.attr_value<number>[]>(
-    //     DEFAULT_IMG.thresh
-    // )
-    return <></>
-    // <OBJ_STR
-    //     opt_name={"px" as a.opt_name}
-    //     arr={{ss:ss_thresh, setss:setss_thresh}}
-    //     this_item={str_to_index(ss_thresh, "px")}
-    //     attrs={["value"]}
-    // />
-
-    // <OBJ_STR
-    //     opt_name={"maxval" as a.opt_name}
-    //     arr={{ss:ss_thresh, setss:setss_thresh}}
-    //     this_item={str_to_index(ss_thresh, "maxval")}
-    //     attrs={["value"]}
-    // />
-    // </>
+export default function IMG_EDIT({
+    // complicated attr_value[]
+    ss_thresh       = undefined,
+    ss_thresh_adp   = undefined,
+    ss_blur         = undefined,
+    ss_crop         = undefined,
+    // simple attr_value[] with "r" and "c"
+    ss_erode        = undefined,
+    ss_opening      = undefined,
+    ss_canny        = undefined,
+    ss_dilate       = undefined,
+    // useState
+    ss_rotate       = undefined,
+    // Update input images
+    func_activate   = undefined
+}:{
+    // complicated attr_value[]
+    ss_thresh?:     undefined|use_arrobj_t<a.attr_value<number>[]>
+    ss_thresh_adp?: undefined|use_arrobj_t<a.attr_value<number>[]>
+    ss_blur?:       undefined|use_arrobj_t<a.attr_value<number>[]>
+    ss_crop?:       undefined|use_arrobj_t<a.attr_value<number>[]>
+    // simple attr_value[] with "r" and "c"
+    ss_erode?:      undefined|use_arrobj_t<a.attr_value<number>[]>
+    ss_opening?:    undefined|use_arrobj_t<a.attr_value<number>[]>
+    ss_canny?:      undefined|use_arrobj_t<a.attr_value<number>[]>
+    ss_dilate?:     undefined|use_arrobj_t<a.attr_value<number>[]>
+    // useState
+    ss_rotate?:     undefined|a.use_state_t<number>
+    // Update input images
+    func_activate?: undefined|a.func_event
+}){
+    return <>
+    {ss_thresh 
+        ? <INPUT_COMBINE
+            opt_name={"Threshold" as a.opt_name}
+            input_str={ss_thresh as use_arrobj_t<a.attr_value<string | number>[]>}
+            input_opt={[]}
+        />
+        :<></>}
+    </>
 }
-
 /*
 export default function IMG_EDIT(){
     const [ss_thresh_px, setss_thresh_px] = useState<number>(Num_to_255(DEFAULT_IMG.thresh.px))

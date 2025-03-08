@@ -1,4 +1,4 @@
-import * as oarr from "./func_objarr"
+import * as oarr from "./func_arrobj"
 import * as a from "../type/alias"
 // import { useReducer } from "react"
 
@@ -8,7 +8,7 @@ import * as a from "../type/alias"
 // How Did I Not Know This TypeScript Trick Earlier??!
 // https://youtu.be/9i38FPugxB8?si=G9EBCw2mXhiQ2dMz
 
-export type act_objarr_t<
+export type act_arrobj_t<
     t extends object[], 
     k extends keyof t[number], 
     o extends t[number][k]> = {
@@ -39,11 +39,11 @@ export type act_objarr_t<
     input:t,
 })
 
-export default function act_objarr<
+export default function act_arrobj<
 t extends object[], 
 k extends keyof t[number], 
 o extends t[number][k]>
-    (prev_arr:t, action:act_objarr_t<t,k,o>){
+    (prev_arr:t, action:act_arrobj_t<t,k,o>){
     switch(action.type) { 
         case "SORT": { 
             const C_COPY_ARR = [...prev_arr]
@@ -113,9 +113,9 @@ o extends t[number][k]>
         }
         default: { 
            console.log("--------------------------------------------------------------------")
-           console.log("The action.type of useObjArr is invalid.")
+           console.log("The action.type of act_arrobj is invalid.")
            console.log("The action.type should be \"SORT\"|\"PUSH\"|\"DELETE\"|\"EDIT_ITEM\"|\"EDIT_ATTR\"|\"SET\"")
-           console.log("Warning from frontend/ src/ src/ hook/ useObjArr.tsx/ function reducer")
+           console.log("Warning from frontend/ src/ src/ hook/ act_arrobj.tsx/ function reducer")
            console.log("--------------------------------------------------------------------")
            const C_COPY_ARR = [...prev_arr]
            return C_COPY_ARR as t
@@ -123,10 +123,10 @@ o extends t[number][k]>
     }
 }
 
-export function act_namearr<
+export function act_arrname<
     t extends {name:a.name}[], 
     k extends keyof t[number], 
-    o extends t[number][k]>(prev_arr:t, action:(act_objarr_t<t,k,o> | {type:"COPY", index:number})){
+    o extends t[number][k]>(prev_arr:t, action:(act_arrobj_t<t,k,o> | {type:"COPY", index:number})){
     switch (action.type){
         case "COPY":{
             const C_COPY_ARR = [...prev_arr]
@@ -143,39 +143,34 @@ export function act_namearr<
                     mode:"SORT"
                 } as oarr.sort_t<t,k>
             }
-            return act_objarr(prev_arr, action)
+            return act_arrobj(prev_arr, action)
         }
     }
 }
 
-// export function useObjArr<t extends object[]>(init:t){
-//     const [ss_objs, setss_objs] = useReducer(act_objarr, init);
-//     return [ss_objs, setss_objs]
-// }
-
-export type use_objarr_t<t extends object[]> = {
+export type use_arrobj_t<t extends object[]> = {
     ss:t,
     setss:React.ActionDispatch<[
-        action: act_objarr_t<t, keyof t[number], t[number][keyof t[number]]>
+        action: act_arrobj_t<t, keyof t[number], t[number][keyof t[number]]>
     ]>
 }
 
-export type setss_objarr_t<
+export type setss_arrobj_t<
     t extends object[]
 > = React.ActionDispatch<[
-    action: act_objarr_t<t, keyof t[number], t[number][keyof t[number]]>
+    action: act_arrobj_t<t, keyof t[number], t[number][keyof t[number]]>
 ]>
 
-export type use_namearr_t<
+export type use_arrname_t<
     t extends {name:a.name}[]> = {
     ss:t,
     setss:React.ActionDispatch<[
-        action: (act_objarr_t<t, keyof t[number], t[number][keyof t[number]]> | {type:"COPY", index:number})
+        action: (act_arrobj_t<t, keyof t[number], t[number][keyof t[number]]> | {type:"COPY", index:number})
     ]>
 }
 
-export type setss_namearr_t<
+export type setss_arrname_t<
     t extends {name:a.name}[]
 > = React.ActionDispatch<[
-    action: (act_objarr_t<t, keyof t[number], t[number][keyof t[number]]> | {type:"COPY", index:number})
+    action: (act_arrobj_t<t, keyof t[number], t[number][keyof t[number]]> | {type:"COPY", index:number})
 ]>

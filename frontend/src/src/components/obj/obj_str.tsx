@@ -1,5 +1,5 @@
 import { useEffect, useRef, useReducer, useLayoutEffect } from "react"
-import {use_objarr_t} from "../../array/act_objarr"
+import {use_arrobj_t} from "../../array/act_arrobj"
 import INPUT_STR from "../input/input_str"
 import { get_obj_value } from "../../array/utility"
 import act_arr from "../../array/act_arr"
@@ -16,7 +16,7 @@ export default function OBJ_STR<
     default_value = undefined,
     is_undo=false
 }:{
-    input_arr:use_objarr_t<t>,
+    input_arr:use_arrobj_t<t>,
     this_item:number,
     attrs:k[],
     default_value?:(undefined|a.attr_value<t[k]>[])

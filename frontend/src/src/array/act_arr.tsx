@@ -1,5 +1,5 @@
 import { sort_arr } from "./utility";
-import * as oarr from "./func_objarr"
+import * as oarr from "./func_arrobj"
 
 export type act_arr_t<t> = {
     sort?:"NO_SORT"|"SORT"|"REVERSE"|undefined

@@ -4,7 +4,7 @@ import INPUT_STR from "../input/input_str";
 import { opt_mode_uit } from "./type";
 import "./index.css"
 import { str_to_optmode_arr } from "../../utility/convert";
-import { setss_namearr_t } from "../../array/act_objarr";
+import { setss_arrname_t } from "../../array/act_arrobj";
 
 // How to make function accept prop based on attr
 // https://www.freecodecamp.org/news/typescript-generics-with-functional-react-components/
@@ -21,7 +21,7 @@ export default function SEARCH_BAR<t extends {name:a.name}>(
 }:{
     opt_name?:a.opt_name,
     read_only_arr:(t|string)[],
-    setss_select_arr:setss_namearr_t<opt_mode_uit[]>
+    setss_select_arr:setss_arrname_t<opt_mode_uit[]>
 }){
     const [ss_search_text, setss_search_text] = useState<string>("")
 

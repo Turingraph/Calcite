@@ -8,9 +8,9 @@ import PANEL from "../asset/panel";
 import { opt_mode_uit } from "./type";
 import { index_to_optmode } from "../../utility/convert";
 import "./index.css"
-import { act_namearr } from "../../array/act_objarr";
+import { act_arrname } from "../../array/act_arrobj";
 import * as uarr from "../../array/utility"
-import * as oarr from "../../array/func_objarr"
+import * as oarr from "../../array/func_arrobj"
 import { use_arr_t } from "../../array/act_arr";
 
 export function func_create_opt(available_opts:opt_mode_uit[], length:number){
@@ -69,7 +69,7 @@ export default function OPT_EXIST_ARR(
     }
 ){
     const [ss_available_opts, setss_available_opts] = useReducer(
-        act_namearr,
+        act_arrname,
         func_exclude_opt(available_opts, exist_opts.ss)
     )
     const [ss_create_opt, setss_create_opt] = useState<number|undefined>(

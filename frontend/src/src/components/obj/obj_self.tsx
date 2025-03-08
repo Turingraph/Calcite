@@ -4,7 +4,7 @@ import BUTTON_CLICK from "../button/button_click";
 import INPUT_STR from "../input/input_str";
 import { STR_TO_H } from "../../utility/convert";
 import "./index.css"
-import { use_namearr_t } from "../../array/act_objarr";
+import { use_arrname_t } from "../../array/act_arrobj";
 
 export default function OBJ_SELF<
     t extends {name:a.name}[]>({
@@ -13,7 +13,7 @@ export default function OBJ_SELF<
     ss_select,
     jsx_additional = undefined, 
 }:{
-    input_arr:use_namearr_t<t>
+    input_arr:use_arrname_t<t>
     this_item:number
     ss_select:a.use_state_t<number|undefined>
     jsx_additional?:JSX.Element|undefined

@@ -5,7 +5,7 @@ import { opt_mode_uit} from "./type"
 import SEARCH_BAR from "./search_bar";
 import "./index.css"
 import { index_to_optmode } from "../../utility/convert";
-import act_objarr, { setss_namearr_t } from "../../array/act_objarr";
+import act_arrobj, { setss_arrname_t } from "../../array/act_arrobj";
 import BUTTON_CLICK from "../button/button_click";
 
 export type opt_input_t = {
@@ -40,7 +40,7 @@ export default function OPT_INPUT(
     // test-for-array-of-string-type-in-typescript
 
     const [ss_show_opts, setss_show_opts] = useReducer(
-        act_objarr,
+        act_arrobj,
         str_to_optmode_arr(available_opts) as opt_mode_uit[]
     )
     const ref_show_opts: React.RefObject<opt_mode_uit[]|undefined> = useRef(ss_show_opts)
@@ -90,7 +90,7 @@ export default function OPT_INPUT(
             opt_name={undefined as a.opt_name}
             read_only_arr={available_opts}
             setss_select_arr={
-                setss_show_opts as setss_namearr_t<opt_mode_uit[]>
+                setss_show_opts as setss_arrname_t<opt_mode_uit[]>
             }
         />
     return (<>

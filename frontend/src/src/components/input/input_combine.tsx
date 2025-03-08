@@ -4,7 +4,7 @@ import {str_to_attrvalue, STR_TO_H} from "../../utility/convert";
 import OPT_INPUT from "../opt/opt_input";
 import INPUT_FORM from "./input_form";
 import "./index.css"
-import { use_objarr_t } from "../../array/act_objarr";
+import { use_arrobj_t } from "../../array/act_arrobj";
 
 function func_input_opt_index(arr_all:a.attr_value<string|number>[], arr_include:string[]){
     return arr_all.map((item, index)=>{
@@ -18,7 +18,7 @@ function func_input_opt_index(arr_all:a.attr_value<string|number>[], arr_include
 
 export type input_combine_uit = {
     opt_name?:a.opt_name,
-    input_str?:use_objarr_t<a.attr_value<string|number>[]>|undefined
+    input_str?:use_arrobj_t<a.attr_value<string|number>[]>|undefined
     input_opt?:(a.attr_value<string[]> & {is_search_bar?:undefined|boolean})[]
     func_activate?:a.func_event,
     is_undo?:boolean

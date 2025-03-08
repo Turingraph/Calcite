@@ -1,13 +1,13 @@
 import * as a from "../../type/alias";
 import BUTTON_CLICK from "../button/button_click";
 import "./index.css"
-import { use_objarr_t } from "../../array/act_objarr";
+import { use_arrobj_t } from "../../array/act_arrobj";
 
 export type obj_bool_uit<
 t extends object[],
 k extends keyof t[number]> = {
         name?:a.name
-        input_arr:use_objarr_t<t[]>,
+        input_arr:use_arrobj_t<t[]>,
         this_item:number,
         attr:k,
         ui_mode?:"button"|"checkbox"
