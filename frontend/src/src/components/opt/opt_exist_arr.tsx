@@ -13,7 +13,7 @@ import * as uarr from "../../use_reducer/utility_arr"
 import * as oarr from "../../use_reducer/func_objarr"
 import { use_arr_t } from "../../use_reducer/act_arr";
 
-export function func_default_newobj_index(available_opts:opt_mode_uit[], length:number){
+export function func_create_opt(available_opts:opt_mode_uit[], length:number){
     available_opts = oarr.sort_arr(available_opts, {attr:"index", mode:"SORT"})
     if (available_opts.length > length){
         return available_opts[length].index
@@ -72,8 +72,8 @@ export default function OPT_EXIST_ARR(
         act_namearr,
         func_exclude_opt(available_opts, exist_opts.ss)
     )
-    const [ss_newobj_index, setss_newobj_index] = useState<number|undefined>(
-        func_default_newobj_index(ss_available_opts, 0)
+    const [ss_create_opt, setss_create_opt] = useState<number|undefined>(
+        func_create_opt(ss_available_opts, 0)
     )
     const ref_DEFAULT_OPT = useRef<number>(exist_opts.ss[0])
 
@@ -92,41 +92,44 @@ export default function OPT_EXIST_ARR(
             input:[ref_DEFAULT_OPT.current]
         })
         if(ref_DEFAULT_OPT.current === available_opts.length - 1){
-            setss_newobj_index(0)
+            setss_create_opt(0)
         }
         else{
-            setss_newobj_index(ref_DEFAULT_OPT.current+1)
+            setss_create_opt(ref_DEFAULT_OPT.current+1)
         }
     }
-    function func_push_exist_opts(){
-        if(ss_newobj_index !== undefined){
-            const INPUT = index_to_optmode(
-                ss_newobj_index,
-                ss_available_opts,
-            )
-            if(INPUT !== undefined){
-                const NEXT_INDEX = item_to_index(ss_available_opts, INPUT)
-                exist_opts.setss({
-                    type:"PUSH",
-                    input:INPUT.index
-                })
-                if(NEXT_INDEX !== undefined){
-                    if(ss_available_opts.length <= 1){
-                        setss_newobj_index(undefined)
-                    }
-                    else if(NEXT_INDEX === ss_available_opts.length - 1){
-                        setss_newobj_index(func_default_newobj_index(ss_available_opts, 0))
-                    }
-                    else{
-                        setss_newobj_index(func_default_newobj_index(ss_available_opts, NEXT_INDEX+1))
-                    }
-                }
-            }
+    function func_push_eopts(){
+        if(ss_create_opt === undefined){
+            return null
+        }
+        const INPUT = index_to_optmode(
+            ss_create_opt,
+            ss_available_opts,
+        )
+        if(INPUT === undefined){
+            return null
+        }
+        exist_opts.setss({
+            type:"PUSH",
+            input:INPUT.index
+        })
+        const NEXT_INDEX = item_to_index(ss_available_opts, INPUT)
+        if(NEXT_INDEX !== undefined){
+            return null
+        }
+        if(ss_available_opts.length <= 1){
+            setss_create_opt(undefined)
+        }
+        else if(NEXT_INDEX === ss_available_opts.length - 1){
+            setss_create_opt(func_create_opt(ss_available_opts, 0))
+        }
+        else{
+            setss_create_opt(func_create_opt(ss_available_opts, NEXT_INDEX+1))
         }
     }
-    function func_delete_exist_opts(index:number){
-        if(ss_newobj_index === undefined){
-            setss_newobj_index(exist_opts.ss[index])
+    function func_delete_eopts(index:number){
+        if(ss_create_opt === undefined){
+            setss_create_opt(exist_opts.ss[index])
         }
         exist_opts.setss({
             type:"DELETE",
@@ -137,7 +140,7 @@ export default function OPT_EXIST_ARR(
         return <div key={index}>
             <STR_TO_H opt_name={available_opts[item] as a.opt_name}/>
             <BUTTON_CLICK name={"delete" as a.name} func_event={(()=>{
-                func_delete_exist_opts(index)
+                func_delete_eopts(index)
             }) as a.func_event}/>
         </div>
     })
@@ -146,22 +149,22 @@ export default function OPT_EXIST_ARR(
         <OPT_INPUT 
             opt_name={"Select Mode" as a.opt_name} 
             available_opts={ss_available_opts} 
-            ss_mode={{ss:ss_newobj_index, setss:setss_newobj_index}}
+            ss_mode={{ss:ss_create_opt, setss:setss_create_opt}}
             is_search_bar={is_search_bar}
             auto_update_opts={true}
         />
         <BUTTON_CLICK 
             name={(
                 index_to_optmode(
-                    ss_newobj_index,
+                    ss_create_opt,
                     ss_available_opts,
                 ) ? "Create "+(index_to_optmode(
-                    ss_newobj_index,
+                    ss_create_opt,
                     ss_available_opts,
                 ))?.name
                 : "Unable to create new option"
             ) as a.name}
-            func_event={(()=>{func_push_exist_opts()}) as a.func_event}
+            func_event={(()=>{func_push_eopts()}) as a.func_event}
         />
         <BUTTON_CLICK 
             name={("Reset") as a.name}
