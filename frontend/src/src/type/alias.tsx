@@ -2,7 +2,15 @@
 // /typescript-strict-alias-checking
 
 export type nominal<t> = t & { readonly '': unique symbol };
+
+/*
+Note that
+1.  name should always be sorted in alphabet order.
+2.  both attr and name should be unique among the array where it belong to.
+*/
+
 export type name  = nominal<string>
+export type attr  = nominal<string>
 export type opt_name  = undefined|name // optional name
 // export type logo = name|img|undefined   // logo of button
 export type img = nominal<string>// <File> // image
@@ -16,8 +24,7 @@ export type history<t> = {
 }
 
 export type attr_value<t> = {
-    [x: string]: any;
-    name:name,
+    attr:attr,
     value:t
 }
 
