@@ -1,10 +1,10 @@
-import React, {useState} from "react";
+import React, {useState, useReducer} from "react";
 import * as a from "../../src/type/alias"
 import OBJ_SELF from "../../src/components/obj/obj_self";
 import INPUT_STR from "../../src/components/input/input_str";
-import { STR_TO_H } from "../../src/utility/convert";
+import { STR_TO_H } from "../../src/convert/str"
 import BUTTON_CLICK from "../../src/components/button/button_click";
-import * as uarr from "../../src/utility/utility_arr"
+import { act_arrname } from "../../src/array/act_arrobj";
 
 type pokemon_t = {
     name:a.name,
@@ -16,7 +16,10 @@ const BASE_URL = "https://pokeapi.co/api/v2/pokemon/"
 const SELECTED_PROPERTY = ["id", "sprites"]
 
 export default function FETCH_POKEMON(){
-    const [ss_arr, setss_arr] = useState<pokemon_t[]>([])
+    const [ss_arr, setss_arr] = useReducer(
+        act_arrname,
+        [] as pokemon_t[]
+    )
     const [ss_select, setss_select] = useState<number|undefined>(undefined)
     const [ss_name, setss_name] = useState<string>("")
 
@@ -54,14 +57,17 @@ export default function FETCH_POKEMON(){
                     NEW_OBJ[ATTR_T] = NEW_POKEMON[ATTR_T];
                 }
             }
-            uarr.push_arr_name(NEW_OBJ, {ss:ss_arr, setss:setss_arr})
+            setss_arr({
+                type:"PUSH",
+                input:NEW_OBJ as pokemon_t
+            })
         }
     }
 
     const JSX_ARR = ss_arr.map((item,index)=>{
         return <div key={index}>
             <OBJ_SELF
-                arr={{ss:ss_arr, setss: setss_arr}}
+                input_arr={{ss:ss_arr, setss: setss_arr}}
                 this_item={index}
                 ss_select={{ss:ss_select, setss:setss_select}}
                 jsx_additional={<>

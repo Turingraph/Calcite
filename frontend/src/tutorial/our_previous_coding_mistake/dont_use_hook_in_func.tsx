@@ -1,4 +1,6 @@
-import {useState} from "react"
+import {JSX, useState} from "react"
+
+//------------------------------------------------------------------------------------
 
 /*
 RULES OF HOOK
@@ -10,6 +12,8 @@ RULES OF HOOK
 REFERENCE
 -   https://react.dev/reference/rules/rules-of-hooks
 */
+
+//------------------------------------------------------------------------------------
 
 /*
 How does this not violate Rule of Hook ?
@@ -45,6 +49,8 @@ export function DONT_USE_HOOK_IN_FUNC_00<t>(){
     </>
 }
 
+//------------------------------------------------------------------------------------
+
 /*
 How does this not violate Rule of Hook ?
 
@@ -77,6 +83,8 @@ export function DONT_USE_HOOK_IN_FUNC_01<t>({
     <p>Hello</p>
     </>
 }
+
+//------------------------------------------------------------------------------------
 
 /*
 How does this violate Rule of Hook ?
@@ -112,6 +120,47 @@ export function DONT_USE_HOOK_IN_FUNC_02<t>({
     <p>Hello</p>
     </>
 }
+
+//------------------------------------------------------------------------------------
+
+/*
+The reason is because given that 
+
+RULES OF HOOK
+1.  Only call Hooks at the top level 
+2.  Only call Hooks from React functions 
+    (function that contains hook should 
+    begin with big letter, or custom hook)
+
+The JSX Element update everytime the Hook is updated.
+
+REFERENCE
+-   https://react.dev/reference/rules/rules-of-hooks
+
+Implies that when the Hook is updated, the {jsx_element(item)} does not updated.
+If {jsx_element(item)} contains hook, this cause Error.
+
+On the other hands when the Hook is updated, every <JSX_Element .../> updated,
+which prevent error
+*/
+
+export function OPT_TO_JSX_ARR<t>({
+    arr = undefined, jsx_element
+}: {
+    arr?: undefined | t[];
+    jsx_element: (t: t) => JSX.Element;
+}){
+    if(arr != undefined){
+        return arr.map((item,index)=>{
+            return <div key={index}>
+                {jsx_element(item)}
+                </div>
+        })
+    }
+    return [<></>]
+}
+
+//------------------------------------------------------------------------------------
 
 /*
 LESSON
