@@ -1,10 +1,9 @@
 import {useState, useEffect} from "react";
 import * as a from "../../type/alias"
 import INPUT_STR from "../input/input_str";
-import { opt_mode_uit } from "./type";
 import "./index.css"
-import { str_to_optmode_arr } from "../../utility/convert";
-import { setss_arrname_t } from "../../array/act_arrobj";
+import { arr_to_opt } from "../../utility/convert";
+import { setss_arrobj_t } from "../../array/act_arrobj";
 
 // How to make function accept prop based on attr
 // https://www.freecodecamp.org/news/typescript-generics-with-functional-react-components/
@@ -13,7 +12,7 @@ import { setss_arrname_t } from "../../array/act_arrobj";
 // Do not use `ref` and `key` as prop name.
 // https://legacy.reactjs.org/warnings/special-props.html
 
-export default function SEARCH_BAR<t extends {name:a.name}>(
+export default function SEARCH_BAR<t extends {[x: string]: any}>(
 {
     opt_name = undefined,
     read_only_arr,
@@ -21,7 +20,7 @@ export default function SEARCH_BAR<t extends {name:a.name}>(
 }:{
     opt_name?:a.opt_name,
     read_only_arr:(t|string)[],
-    setss_select_arr:setss_arrname_t<opt_mode_uit[]>
+    setss_select_arr:setss_arrobj_t<a.attr_value<number>[]>
 }){
     const [ss_search_text, setss_search_text] = useState<string>("")
 
@@ -32,15 +31,15 @@ export default function SEARCH_BAR<t extends {name:a.name}>(
     // In order to prevent the unexpected behavior, do not edit read_only_arr in search_bar.tsx.
     /* eslint-disable react-hooks/exhaustive-deps */
     useEffect(()=>{
-        const UPDATE_SEARCH_TEXT = str_to_optmode_arr(read_only_arr).map((item,index) => {
-            if ((item.name as string).includes(ss_search_text) === true){
+        const UPDATE_SEARCH_TEXT = arr_to_opt(read_only_arr).map((item,index) => {
+            if ((item.attr as string).includes(ss_search_text) === true){
                 return {
-                    name:item.name as string as a.name,
-                    index:item.index
+                    attr:item.attr as string as a.attr,
+                    value:item.value
                 }
             }
             return undefined
-        }) as opt_mode_uit[]
+        }) as a.attr_value<number>[]
         setss_select_arr({
             type:"SET",
             input:UPDATE_SEARCH_TEXT

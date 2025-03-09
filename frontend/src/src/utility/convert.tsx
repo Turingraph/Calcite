@@ -1,6 +1,9 @@
 import * as a from "../type/alias"
-import { opt_mode_uit } from "../components/opt/type";
 import { anymonth_t, month_t } from "../type/utility";
+
+//------------------------------------------------------------------------------------
+
+// TITLE : NUM
 
 /*
 Rule of every function in this file.
@@ -74,7 +77,92 @@ export function num_to_rgb(input:undefined|number|number[]){
     }
 }
 
-export function avarr_to_value<t>(input:a.attr_value<t>[]){
+export function str_to_default_num(
+    default_input:number,
+    input:string
+){
+if(!Number.isNaN(Number(input))){
+    return Number(input)
+}
+return default_input
+}
+
+//------------------------------------------------------------------------------------
+
+// TITLE : ARRAY
+
+export function numarr_to_strarr(numarr:number[], strarr:string[]){
+    return numarr.map((item)=>{
+        return strarr[item]
+    })
+}
+
+export function item_to_index<t>(arr:t[],item:t){
+    for(let i = 0; i < arr.length; i++){
+        if(arr[i] === item){
+            return i
+        }
+    }
+    return undefined
+}
+
+export function arr_to_opt<
+    t extends {[x: string]: any}>
+    (arr:(string|t)[]){
+    return arr.map((item, index)=>{
+        if(typeof item === "string"){
+            return {
+            attr:item as a.attr,
+            value:index
+            } as a.attr_value<number>
+        }
+        else if(typeof item.attr === "string"){
+            if(typeof item.value === "number"){
+                return {
+                    attr:item.attr as a.attr,
+                    value:item.value
+                } as a.attr_value<number>
+            }
+            else{
+                return {
+                    attr:item.attr as a.attr,
+                    value:item.index
+                } as a.attr_value<number>
+            }
+        }
+        else if(typeof item.name === "string"){
+            if(typeof item.value === "number"){
+                return {
+                    attr:item.name as a.attr,
+                    value:item.value
+                } as a.attr_value<number>
+            }
+            else{
+                return {
+                    attr:item.name as a.attr,
+                    value:item.item
+                } as a.attr_value<number>
+            }
+        }
+        else{
+            return {
+                attr:JSON.stringify(item),
+                value:index
+            } as a.attr_value<number>
+        }
+    })
+}
+
+//------------------------------------------------------------------------------------
+
+// TITLE : ATTR ARRAY
+
+/*
+av = attr_value
+nv = name_value
+*/
+
+export function arr_to_value<t>(input:(a.attr_value<t>|a.name_value<t>)[]){
     return input.map((item)=>{
         return item.value
     })
@@ -86,130 +174,25 @@ export function avarr_to_str<t>(input:a.attr_value<t>[]){
     })
 }
 
-export function index_to_optmode(index:number|undefined, arr:opt_mode_uit[]){
-    if(index === undefined){
+export function nvarr_to_str<t>(input:a.name_value<t>[]){
+    return input.map((item)=>{
+        return item.name
+    })
+}
+
+export function value_to_varr<t>(value:t|undefined, arr:(a.attr_value<t>|a.name_value<t>)[]){
+    if(value === undefined){
         return undefined
     }
     for(let i = 0; i < arr.length; i++){
-        if (index === arr[i].index){
+        if (value === arr[i].value){
             return arr[i]
         }
     }
     return undefined
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-/*
-THIS WAS THE MISTAKE FUNCTION
-
-The reason is because given that 
-
-RULES OF HOOK
-1.  Only call Hooks at the top level 
-2.  Only call Hooks from React functions 
-    (function that contains hook should 
-    begin with big letter, or custom hook)
-
-The JSX Element update everytime the Hook is updated.
-
-REFERENCE
--   https://react.dev/reference/rules/rules-of-hooks
-
-Implies that when the Hook is updated, the {jsx_element(item)} does not updated.
-If {jsx_element(item)} contains hook, this cause Error.
-
-On the other hands when the Hook is updated, every <JSX_Element .../> updated,
-which prevent error
-*/
-
-// export function OPT_TO_JSX_ARR<t>({
-//     arr = undefined, jsx_element
-// }: {
-//     arr?: undefined | t[];
-//     jsx_element: (t: t) => JSX.Element;
-// }){
-//     if(arr != undefined){
-//         return arr.map((item,index)=>{
-//             return <div key={index}>
-//                 {jsx_element(item)}
-//                 </div>
-//         })
-//     }
-//     return [<></>]
-// }
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-export function STR_TO_H(
-{
-    opt_name = undefined
-}:{
-    opt_name:a.opt_name
-}
-){
-    if (opt_name !== undefined)
-    {
-        return (<h1>{opt_name}</h1>)
-    }
-    return (<></>)
-}
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-export function str_to_default_num(
-    default_input:number,
-    input:string
-){
-if(!Number.isNaN(Number(input))){
-    return Number(input)
-}
-return default_input
-}
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-export function str_to_str(input:string|a.name|a.opt_name){
-    if (input === undefined){
-        return ""
-    }
-    return input
-}
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-export function str_to_optmode_arr<
-    t extends {[x: string]: any;name:a.name}>
-    (arr:(a.name|string|t)[]){
-    return arr.map((item, index)=>{
-        if(typeof item === "string"){
-            return {
-            name:item as a.name,
-            index:index
-        } as opt_mode_uit}
-        else if(typeof item.name === "string" && typeof item.index === "number"){
-            return item as unknown as opt_mode_uit
-        }
-        else{
-            return {
-                name:item.name as a.name,
-                index:index
-            } as opt_mode_uit}
-    })
-}
-
-export function str_to_index<t extends {name:a.name}>(arr:t[],name:string|a.name){
-    let i = 0
-    while(i < arr.length){
-        if(name === arr[i].name){
-            return i
-        }
-        i++
-    }
-    return -1
-}
-
-export function str_to_attrvalue<t>(name:string, arr:a.attr_value<t>[]){
+export function str_to_avarr<t>(name:string, arr:a.attr_value<t>[]){
     let i = 0
     while(i < arr.length){
         if(name === arr[i].attr){
@@ -220,82 +203,38 @@ export function str_to_attrvalue<t>(name:string, arr:a.attr_value<t>[]){
     return undefined
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-export function numarr_to_strarr(numarr:number[], strarr:string[]){
-    return numarr.map((item)=>{
-        return strarr[item]
-    })
-}
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-export function item_to_index<t>(arr:t[],item:t){
-    for(let i = 0; i < arr.length; i++){
-        if(arr[i] === item){
-            return i
+export function str_to_nvarr<t>(name:string, arr:a.name_value<t>[]){
+    let i = 0
+    while(i < arr.length){
+        if(name === arr[i].name){
+            return arr[i]
         }
+        i++
     }
     return undefined
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+export function nvarr_to_avarr<t>(arr:a.name_value<t>[]){
+    return arr.map((item)=>{
+        return {
+            attr:item.name as a.attr,
+            value:item.value
+        } as a.attr_value<t>
+    })
+}
 
-// https://stackoverflow.com/questions/53807517/
-// how-to-test-if-two-types-are-exactly-the-same
+export function avarr_to_nvarr<t>(arr:a.attr_value<t>[]){
+    return arr.map((item)=>{
+        return {
+            name:item.attr as a.name,
+            value:item.value
+        } as a.name_value<t>
+    })
+}
 
-export type equal_type_t<T, U> =
-    (<G>() => G extends T ? 1 : 2) extends
-    (<G>() => G extends U ? 1 : 2) ? 1 : 0;
+//------------------------------------------------------------------------------------
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-// export function Input_to_default<
-//             t extends "string" | "number" |
-//              "bigint" |"boolean" | "symbol" | 
-//              "undefined" | "object" | "function",u>(
-//         default_input:t,
-//         input:t|u
-// ){
-//     const CONST_T = typeof default_input
-//     let let_output:typeof CONST_T;
-//     try{
-//         let_output = input as t
-//     }
-//     catch{
-//         let_output = default_input
-//     }
-//     return let_output
-// }
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-// https://stackoverflow.com/questions/76299963/
-// typescript-check-if-object-has-property-and-check-property-input
-
-// export function check_obj<t>(arg:unknown){
-//     return !!arg && typeof arg === 'object' && !Array.isArray(arg);
-// }
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-// export function Obj_to_key<t extends object>(obj:t){
-//     return [a as keyof typeof obj]
-// }
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-// export function check_attr<t extends object>(obj:t, attr:string){
-//     const ARR = check_get_attrs(obj) as string[]
-//     if (ARR.includes(attr)){
-//         return true
-//     }
-//     else{
-//         return false
-//     }
-// }
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// TITLE : DATE
 
 export function anymonth_to_num(input:anymonth_t){
     if(typeof input === "number"){
@@ -357,14 +296,16 @@ export function anymonth_to_month(input:anymonth_t){
     return num_to_index_name(anymonth_to_num(input)) as month_t
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 export function file_to_date(item:File|undefined = undefined, gmt:boolean=false){
     const DAY = (item ? new Date(item.lastModified) : new Date()).toString().split(" ")
     return (gmt ? DAY[5].replace("+","-")+"_" : "")+
         DAY[3]+"-"+anymonth_to_month(DAY[1] as anymonth_t)+"-"+DAY[2]+
         "_"+(DAY[4].split(":").join("-"))
 }
+
+//------------------------------------------------------------------------------------
+
+// TITLE : FILE
 
 export function file_to_url(input:Blob|MediaSource|File){
     return URL.createObjectURL(input)
@@ -385,3 +326,70 @@ export function formdata_to_url(input:FormData){
     input as unknown as Record<string, string>,
     ).toString();
 }
+
+//------------------------------------------------------------------------------------
+
+// TITLE : UTILITY
+
+export function STR_TO_H(
+    {
+        opt_name = undefined
+    }:{
+        opt_name:a.opt_name
+    }
+    ){
+        if (opt_name !== undefined)
+        {
+            return (<h1>{opt_name}</h1>)
+        }
+        return (<></>)
+    }
+
+export function str_to_str(input:string|a.name|a.opt_name){
+    if (input === undefined){
+        return ""
+    }
+    return input
+}
+
+    
+//------------------------------------------------------------------------------------
+
+// TITLE : MISTAKE FUNCTION
+
+/*
+The reason is because given that 
+
+RULES OF HOOK
+1.  Only call Hooks at the top level 
+2.  Only call Hooks from React functions 
+    (function that contains hook should 
+    begin with big letter, or custom hook)
+
+The JSX Element update everytime the Hook is updated.
+
+REFERENCE
+-   https://react.dev/reference/rules/rules-of-hooks
+
+Implies that when the Hook is updated, the {jsx_element(item)} does not updated.
+If {jsx_element(item)} contains hook, this cause Error.
+
+On the other hands when the Hook is updated, every <JSX_Element .../> updated,
+which prevent error
+*/
+
+// export function OPT_TO_JSX_ARR<t>({
+//     arr = undefined, jsx_element
+// }: {
+//     arr?: undefined | t[];
+//     jsx_element: (t: t) => JSX.Element;
+// }){
+//     if(arr != undefined){
+//         return arr.map((item,index)=>{
+//             return <div key={index}>
+//                 {jsx_element(item)}
+//                 </div>
+//         })
+//     }
+//     return [<></>]
+// }

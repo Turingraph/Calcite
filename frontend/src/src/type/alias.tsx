@@ -27,6 +27,14 @@ export type attr_value<t> = {
     value:t
 }
 
+// name_valueis identical to attr_value, except it make sure that
+// by default, the act_namearr will sort the name_value[] in alphabet order.
+
+export type name_value<t> = {
+    name:name,
+    value:t
+}
+
 //------------------------------------------------------------------------------------
 
 // TITLE : FUNCTION BASED TYPE

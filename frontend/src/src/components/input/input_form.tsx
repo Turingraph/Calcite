@@ -2,7 +2,7 @@ import {useEffect, useState, useRef, useReducer} from "react";
 import * as a from "../../type/alias"
 import BUTTON_CLICK from "../button/button_click";
 import INPUT_STR from "./input_str";
-import {STR_TO_H, avarr_to_value, str_to_default_num} from "../../utility/convert";
+import {STR_TO_H, arr_to_value, str_to_default_num} from "../../utility/convert";
 import { use_arrobj_t } from "../../array/act_arrobj";
 import "./index.css"
 import act_arr from "../../array/act_arr";
@@ -23,10 +23,10 @@ export default function INPUT_FORM({
     is_undo = false
 }:input_form_t){
     const ref_DEFAULT_ARR = useRef(input_arr.ss)
-    const [ss_texts, setss_texts] = useReducer(act_arr, avarr_to_value(input_arr.ss) as string[])
+    const [ss_texts, setss_texts] = useReducer(act_arr, arr_to_value(input_arr.ss) as string[])
     const [ss_update, setss_update] = useState<0|1>(0)
     useEffect(()=>{
-        const UPDATE_TEXT = avarr_to_value(input_arr.ss) as string[]
+        const UPDATE_TEXT = arr_to_value(input_arr.ss) as string[]
         setss_texts({type:"SET", input:UPDATE_TEXT})
         setss_update(0)
     }, [ss_update, input_arr])
@@ -37,7 +37,7 @@ export default function INPUT_FORM({
         })
         setss_texts({
             type:"SET", 
-            input:avarr_to_value(ref_DEFAULT_ARR.current) as string[]
+            input:arr_to_value(ref_DEFAULT_ARR.current) as string[]
         })
     }
     function func_set_ok(){
@@ -71,7 +71,7 @@ export default function INPUT_FORM({
     function func_set_cancel(){
         setss_texts({
             type:"SET", 
-            input:avarr_to_value(input_arr.ss) as string[]
+            input:arr_to_value(input_arr.ss) as string[]
         })
     }
     const JSX_ELEMENTS = input_arr.ss.map((item,index)=>{

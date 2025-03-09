@@ -2,21 +2,20 @@ import {useState, useRef, useLayoutEffect, useReducer} from "react";
 import * as a from "../../type/alias"
 import BUTTON_CLICK from "../button/button_click";
 import OPT_INPUT from "./opt_input";
-import {str_to_optmode_arr, STR_TO_H, item_to_index} from "../../utility/convert";
+import {arr_to_opt, STR_TO_H, item_to_index, avarr_to_nvarr, nvarr_to_avarr} from "../../utility/convert";
 import { exclude_arr } from "../../array/utility";
 import PANEL from "../asset/panel";
-import { opt_mode_uit } from "./type";
-import { index_to_optmode } from "../../utility/convert";
+import { value_to_varr } from "../../utility/convert";
 import "./index.css"
 import { act_arrname } from "../../array/act_arrobj";
 import * as uarr from "../../array/utility"
 import * as oarr from "../../array/func_arrobj"
 import { use_arr_t } from "../../array/act_arr";
 
-export function func_create_opt(available_opts:opt_mode_uit[], length:number){
-    available_opts = oarr.sort_arr(available_opts, {attr:"index", mode:"SORT"})
+export function func_create_opt(available_opts:a.name_value<number>[], length:number){
+    available_opts = oarr.sort_arr(available_opts, {attr:"value", mode:"SORT"})
     if (available_opts.length > length){
-        return available_opts[length].index
+        return available_opts[length].value
     }
     return undefined
 }
@@ -28,20 +27,20 @@ function func_exclude_opt(available_opts:string[], exist_opts:number[]){
     exist_opts = uarr.sort_arr(exist_opts, "SORT")
     // available_opts  = method_unique_arr(available_opts)
     // exist_opts      = method_unique_arr(exist_opts)
-    const C_AVAILABLE_OPTS = oarr.sort_arr(
-        str_to_optmode_arr(available_opts), 
-        {attr:"index", mode:"SORT"}
-    )
+    const C_AVAILABLE_OPTS = avarr_to_nvarr(oarr.sort_arr(
+        arr_to_opt(available_opts), 
+        {attr:"value", mode:"SORT"}
+    ))
     const C_EXIST_OPTS = oarr.sort_arr(
         exist_opts.map((item)=>{
             return {
                 name:available_opts[item] as a.name,
-                index:item
-            } as opt_mode_uit
+                value:item
+            } as a.name_value<number>
         }),
-        {attr:"index", mode:"SORT"}
+        {attr:"value", mode:"SORT"}
     )
-    return exclude_arr(C_AVAILABLE_OPTS, C_EXIST_OPTS) as opt_mode_uit[]
+    return exclude_arr(C_AVAILABLE_OPTS, C_EXIST_OPTS) as a.name_value<number>[]
 }
 
 export default function OPT_EXIST_ARR(
@@ -102,7 +101,7 @@ export default function OPT_EXIST_ARR(
         if(ss_create_opt === undefined){
             return null
         }
-        const INPUT = index_to_optmode(
+        const INPUT = value_to_varr(
             ss_create_opt,
             ss_available_opts,
         )
@@ -111,7 +110,7 @@ export default function OPT_EXIST_ARR(
         }
         exist_opts.setss({
             type:"PUSH",
-            input:INPUT.index
+            input:INPUT.value
         })
         const NEXT_INDEX = item_to_index(ss_available_opts, INPUT)
         if(NEXT_INDEX !== undefined){
@@ -148,20 +147,20 @@ export default function OPT_EXIST_ARR(
         <STR_TO_H opt_name={opt_name}/>
         <OPT_INPUT 
             opt_name={"Select Mode" as a.opt_name} 
-            available_opts={ss_available_opts} 
+            available_opts={nvarr_to_avarr(ss_available_opts)} 
             ss_mode={{ss:ss_create_opt, setss:setss_create_opt}}
             is_search_bar={is_search_bar}
             auto_update_opts={true}
         />
         <BUTTON_CLICK 
             name={(
-                index_to_optmode(
+                value_to_varr(
                     ss_create_opt,
                     ss_available_opts,
-                ) ? "Create "+(index_to_optmode(
+                ) ? "Create "+((value_to_varr(
                     ss_create_opt,
                     ss_available_opts,
-                ))?.name
+                )) as a.name_value<number>)?.name
                 : "Unable to create new option"
             ) as a.name}
             func_event={(()=>{func_push_eopts()}) as a.func_event}

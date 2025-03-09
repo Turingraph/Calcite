@@ -1,6 +1,6 @@
 import { useState, JSX, useReducer } from "react"
 import * as a from "../../type/alias"
-import { str_to_optmode_arr } from "../../utility/convert"
+import { arr_to_opt } from "../../utility/convert"
 import OBJ_SELF from "../obj/obj_self"
 import SEARCH_BAR from "./search_bar"
 import PANEL from "../asset/panel"
@@ -15,7 +15,7 @@ export default function SEARCH_OBJ<t extends {name:a.name}[]>({
 }){
     const [ss_show_arr, setss_show_arr] = useReducer(
         act_arrname,
-        str_to_optmode_arr(input_arr.ss)
+        arr_to_opt(input_arr.ss)
     )
     const [ss_select, setss_select] = useState<number|undefined>(undefined)
 

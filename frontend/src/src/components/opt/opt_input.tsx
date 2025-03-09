@@ -1,16 +1,14 @@
 import React, { useState, JSX, useRef, useLayoutEffect, useReducer} from "react";
 import * as a from "../../type/alias"
-import {STR_TO_H, str_to_optmode_arr} from "../../utility/convert";
-import { opt_mode_uit} from "./type"
+import {STR_TO_H, arr_to_opt, value_to_varr} from "../../utility/convert";
 import SEARCH_BAR from "./search_bar";
 import "./index.css"
-import { index_to_optmode } from "../../utility/convert";
-import act_arrobj, { setss_arrname_t } from "../../array/act_arrobj";
+import act_arrobj, { setss_arrobj_t } from "../../array/act_arrobj";
 import BUTTON_CLICK from "../button/button_click";
 
 export type opt_input_t = {
     opt_name?:a.opt_name
-    available_opts:string[]|opt_mode_uit[]
+    available_opts:string[]|a.attr_value<number>[]
     ss_mode:a.use_state_t<number|undefined>
     is_search_bar?:boolean,
     auto_update_opts?:boolean,
@@ -41,9 +39,9 @@ export default function OPT_INPUT(
 
     const [ss_show_opts, setss_show_opts] = useReducer(
         act_arrobj,
-        str_to_optmode_arr(available_opts) as opt_mode_uit[]
+        arr_to_opt(available_opts) as a.attr_value<number>[]
     )
-    const ref_show_opts: React.RefObject<opt_mode_uit[]|undefined> = useRef(ss_show_opts)
+    const ref_show_opts: React.RefObject<a.attr_value<number>[]> = useRef(ss_show_opts)
 
     // Update ss_mode to be the first available ss_show_opts option, 
     // everytime when ss_show_opt is pushed.
@@ -52,7 +50,7 @@ export default function OPT_INPUT(
             let i = 0
             while(i < ss_show_opts.length){
                 if(ss_show_opts[i] !== undefined){
-                    ss_mode.setss(ss_show_opts[i].index)
+                    ss_mode.setss(ss_show_opts[i].value)
                     i = ss_show_opts.length
                 }
                 i+=1
@@ -66,7 +64,7 @@ export default function OPT_INPUT(
         if(ref_show_opts.current !== ss_show_opts && auto_update_opts === true){
             setss_show_opts({
                 type:"SET",
-                input:str_to_optmode_arr(available_opts)
+                input:arr_to_opt(available_opts)
             })
             ref_show_opts.current = ss_show_opts
         }
@@ -81,8 +79,8 @@ export default function OPT_INPUT(
     // PREVIOUS: const JSX_OPTS = ss_show_opts.reverse().map((item,index)=>{
     // What does .reverse() do and is it important ?
     const JSX_OPTS = ss_show_opts.map((item,index)=>{
-        if(item !== undefined && index_to_optmode(item.index, str_to_optmode_arr(available_opts)) !== undefined){
-            return (<option key={index} value={item.index}>{item.name}</option>)
+        if(item !== undefined && value_to_varr(item.value, arr_to_opt(available_opts)) !== undefined){
+            return (<option key={index} value={item.value}>{item.attr}</option>)
         }
         return undefined
     }) as JSX.Element[]
@@ -90,7 +88,7 @@ export default function OPT_INPUT(
             opt_name={undefined as a.opt_name}
             read_only_arr={available_opts}
             setss_select_arr={
-                setss_show_opts as setss_arrname_t<opt_mode_uit[]>
+                setss_show_opts as setss_arrobj_t<a.attr_value<number>[]>
             }
         />
     return (<>
