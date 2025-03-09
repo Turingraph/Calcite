@@ -2,10 +2,12 @@ import {useState, useRef, useLayoutEffect, useReducer} from "react";
 import * as a from "../../type/alias"
 import BUTTON_CLICK from "../button/button_click";
 import OPT_INPUT from "./opt_input";
-import {arr_to_opt, STR_TO_H, item_to_index, avarr_to_nvarr, nvarr_to_avarr} from "../../utility/convert";
+import { item_to_index, arr_to_opt } from "../../convert/arr";
+import { avarr_to_nvarr, nvarr_to_avarr } from "../../convert/attr";
+import { STR_TO_H } from "../../convert/str";
 import { exclude_arr } from "../../array/utility";
 import PANEL from "../asset/panel";
-import { value_to_varr } from "../../utility/convert";
+import { value_to_varr } from "../../convert/attr";
 import "./index.css"
 import { act_arrname } from "../../array/act_arrobj";
 import * as uarr from "../../array/utility"

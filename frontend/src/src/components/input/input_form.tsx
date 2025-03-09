@@ -2,7 +2,9 @@ import {useEffect, useState, useRef, useReducer} from "react";
 import * as a from "../../type/alias"
 import BUTTON_CLICK from "../button/button_click";
 import INPUT_STR from "./input_str";
-import {STR_TO_H, arr_to_value, str_to_default_num} from "../../utility/convert";
+import { str_to_default_num } from "../../convert/num";
+import { STR_TO_H } from "../../convert/str";
+import { arr_to_value } from "../../convert/attr";
 import { use_arrobj_t } from "../../array/act_arrobj";
 import "./index.css"
 import act_arr from "../../array/act_arr";

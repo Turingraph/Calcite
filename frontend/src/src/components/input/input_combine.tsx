@@ -1,6 +1,7 @@
 import React, { JSX } from "react";
 import * as a from "../../type/alias";
-import {str_to_attrvalue, STR_TO_H} from "../../utility/convert";
+import { str_to_avarr } from "../../convert/attr";
+import { STR_TO_H } from "../../convert/str";
 import OPT_INPUT from "../opt/opt_input";
 import INPUT_FORM from "./input_form";
 import "./index.css"
@@ -46,7 +47,7 @@ export default function INPUT_COMBINE({
     let jsx_input_opt:(JSX.Element|undefined)[]|undefined = [<></>]
     if (input_opt.length > 0 && input_str !== undefined){
         jsx_input_opt = input_opt.map((item, index:number)=>{
-            const CONST_ITEM = str_to_attrvalue(item.attr, input_str.ss)
+            const CONST_ITEM = str_to_avarr(item.attr, input_str.ss)
             if(CONST_ITEM === undefined || typeof CONST_ITEM.value !== "number"){
                 return <div key={index}></div>
             }

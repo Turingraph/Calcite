@@ -3,7 +3,7 @@ import * as a from "../../type/alias"
 import * as uarr from "../../utility/utility_arr"
 import FILE_OPEN from "../../components/file/file_open";
 import { their_t } from "../../type/obj";
-import { file_to_url } from "../../utility/convert";
+import { file_to_url } from "../../convert/file";
 
 export default function THEIR_OPEN({
     setss_arr

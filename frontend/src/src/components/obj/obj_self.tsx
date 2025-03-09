@@ -2,7 +2,7 @@ import {JSX, useState, useEffect} from "react";
 import * as a from "../../type/alias";
 import BUTTON_CLICK from "../button/button_click";
 import INPUT_STR from "../input/input_str";
-import { STR_TO_H } from "../../utility/convert";
+import { STR_TO_H } from "../../convert/str";
 import "./index.css"
 import { use_arrname_t } from "../../array/act_arrobj";
 

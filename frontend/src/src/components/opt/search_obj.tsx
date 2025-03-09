@@ -1,6 +1,6 @@
 import { useState, JSX, useReducer } from "react"
 import * as a from "../../type/alias"
-import { arr_to_opt } from "../../utility/convert"
+import { arr_to_opt } from "../../convert/arr"
 import OBJ_SELF from "../obj/obj_self"
 import SEARCH_BAR from "./search_bar"
 import PANEL from "../asset/panel"

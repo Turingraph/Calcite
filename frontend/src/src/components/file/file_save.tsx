@@ -2,7 +2,9 @@ import React, { useEffect } from "react";
 import JSZip from 'jszip';
 import * as a from "../../type/alias"
 import BUTTON_CLICK from "../button/button_click";
-import { file_to_date, file_to_url } from "../../utility/convert";
+import { file_to_date } from "../../convert/date";
+import { file_to_url } from "../../convert/file";
+
 // import { use_arr_t } from "../../use_reducer/act_arr";
 
 // export async function JSZIP(){

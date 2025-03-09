@@ -2,7 +2,7 @@ import {useState, useEffect} from "react";
 import * as a from "../../type/alias"
 import INPUT_STR from "../input/input_str";
 import "./index.css"
-import { arr_to_opt } from "../../utility/convert";
+import { arr_to_opt } from "../../convert/arr";
 import { setss_arrobj_t } from "../../array/act_arrobj";
 
 // How to make function accept prop based on attr

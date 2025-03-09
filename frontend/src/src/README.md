@@ -7,6 +7,8 @@ List of the folders in `frontend/src/src/`
 -	Purpose: Contain function for handle `useReducer` for complicated array related logic.
 3.	`components/`
 -	Purpose: Contains reuseable UI components.
+4.	`convert/`
+-	Purpose: Transform one type of input to the expected output.
 4.	`data/`
 -	Purpose: Contains only constant variable and JSON files.
 5.	`layout/`

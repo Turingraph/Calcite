@@ -4,7 +4,9 @@ import INPUT_STR from "../input/input_str"
 import { get_obj_value } from "../../array/utility"
 import act_arr from "../../array/act_arr"
 import * as a from "../../type/alias"
-import { arr_to_value, str_to_default_num, STR_TO_H } from "../../utility/convert"
+import { str_to_default_num } from "../../convert/num"
+import { STR_TO_H } from "../../convert/str"
+import { arr_to_opt } from "../../convert/arr"
 import BUTTON_CLICK from "../button/button_click"
 
 export default function OBJ_STR<
