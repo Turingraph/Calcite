@@ -6,7 +6,7 @@ import act_arr from "../../array/act_arr"
 import * as a from "../../type/alias"
 import { str_to_default_num } from "../../convert/num"
 import { STR_TO_H } from "../../convert/str"
-import { arr_to_opt } from "../../convert/arr"
+import { arr_to_value } from "../../convert/attr"
 import BUTTON_CLICK from "../button/button_click"
 
 export default function OBJ_STR<
