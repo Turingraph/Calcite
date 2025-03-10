@@ -1,5 +1,4 @@
 import React from "react";
-import * as a from "../../src/type/alias"
 import OCR_SAVE from "../../src/layout/ocr/ocr_save";
 import OCR_EDIT from "../../src/layout/ocr/ocr_edit";
 import OCR_UI from "../../src/layout/ocr/ocr_ui";

@@ -1,4 +1,3 @@
-import React from "react";
 import { CHARACTERS } from "../../test/data";
 
 /*
@@ -9,7 +8,7 @@ is not updated, the only things that is updated is &(ARR + i).
 You can learn more about this by study pointer in C.
 */
 
-export function FOREACH_00<t>(){
+export function FOREACH_00(){
     const ARR = CHARACTERS
     console.log("before",ARR)
     ARR.forEach((item)=>{
@@ -28,7 +27,7 @@ Reference
 
 // WRONG
 
-export function MAP_00<t>(){
+export function MAP_00(){
     const ARR = CHARACTERS
     console.log("before",ARR)
     ARR.map((item)=>{
@@ -39,7 +38,7 @@ export function MAP_00<t>(){
 
 // WRONG
 
-export function MAP_01<t>(){
+export function MAP_01(){
     const ARR = CHARACTERS
     console.log("before",ARR)
     const AFTER = ARR.map((item)=>{
@@ -53,7 +52,7 @@ export function MAP_01<t>(){
 
 // CORRECT
 
-export function MAP_02<t>(){
+export function MAP_02(){
     const ARR = CHARACTERS
     console.log("before",ARR)
     const AFTER = ARR.map((item)=>{
@@ -65,7 +64,7 @@ export function MAP_02<t>(){
 
 // CORRECT
 
-export function MAP_03<t>(){
+export function MAP_03(){
     const ARR = CHARACTERS
     console.log("before",ARR)
     const AFTER = ARR.map((item)=>{

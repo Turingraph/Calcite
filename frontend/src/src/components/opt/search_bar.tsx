@@ -1,9 +1,10 @@
-import {useState, useEffect} from "react";
-import * as a from "../../type/alias"
-import INPUT_STR from "../input/input_str";
-import "./index.css"
-import { arr_to_opt } from "../../convert/arr";
+import React from "react";
+import { useEffect, useState } from "react";
 import { setss_arrobj_t } from "../../array/act_arrobj";
+import { arr_to_opt } from "../../convert/arr";
+import * as a from "../../type/alias";
+import INPUT_STR from "../input/input_str";
+import "./index.css";
 
 // How to make function accept prop based on attr
 // https://www.freecodecamp.org/news/typescript-generics-with-functional-react-components/
@@ -12,7 +13,7 @@ import { setss_arrobj_t } from "../../array/act_arrobj";
 // Do not use `ref` and `key` as prop name.
 // https://legacy.reactjs.org/warnings/special-props.html
 
-export default function SEARCH_BAR<t extends {[x: string]: any}>(
+export default function SEARCH_BAR<t extends {[x: string]: unknown}>(
 {
     opt_name = undefined,
     read_only_arr,
@@ -29,9 +30,9 @@ export default function SEARCH_BAR<t extends {[x: string]: any}>(
     // passing-array-to-useeffect-dependency-list
     // React Hook useEffect has a missing dependency: 'read_only_arr'.
     // In order to prevent the unexpected behavior, do not edit read_only_arr in search_bar.tsx.
-    /* eslint-disable react-hooks/exhaustive-deps */
+
     useEffect(()=>{
-        const UPDATE_SEARCH_TEXT = arr_to_opt(read_only_arr).map((item,index) => {
+        const UPDATE_SEARCH_TEXT = arr_to_opt(read_only_arr).map((item) => {
             if ((item.attr as string).includes(ss_search_text) === true){
                 return {
                     attr:item.attr as string as a.attr,
@@ -45,7 +46,6 @@ export default function SEARCH_BAR<t extends {[x: string]: any}>(
             input:UPDATE_SEARCH_TEXT
         })
     },[ss_search_text, setss_select_arr, JSON.stringify(read_only_arr)])
-    /* eslint-disable react-hooks/exhaustive-deps */
 
     return (<>
         <INPUT_STR

@@ -16,7 +16,7 @@ export function item_to_index<t>(arr:t[],item:t){
 }
 
 export function arr_to_opt<
-    t extends {[x: string]: any}>
+    t extends {[x: string]: unknown}>
     (arr:(string|t)[]){
     return arr.map((item, index)=>{
         if(typeof item === "string"){

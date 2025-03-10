@@ -1,5 +1,4 @@
 import React from "react";
-import * as a from "../../src/type/alias"
 import BOX_SAVE from "../../src/layout/box/box_save";
 import BOX_EDIT from "../../src/layout/box/box_edit";
 import BOX_UI from "../../src/layout/box/box_ui";

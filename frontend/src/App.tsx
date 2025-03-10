@@ -1,3 +1,6 @@
+/* eslint-disable */
+
+import React  from 'react';
 import TEST from './test/index';
 import TUTORIAL from './tutorial';
 

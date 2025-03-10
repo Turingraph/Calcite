@@ -1,18 +1,18 @@
-import {useState, useRef, useLayoutEffect, useReducer} from "react";
-import * as a from "../../type/alias"
-import BUTTON_CLICK from "../button/button_click";
-import OPT_INPUT from "./opt_input";
-import { item_to_index, arr_to_opt } from "../../convert/arr";
-import { avarr_to_nvarr, nvarr_to_avarr } from "../../convert/attr";
-import { STR_TO_H } from "../../convert/str";
-import { exclude_arr } from "../../array/utility";
-import PANEL from "../asset/panel";
-import { value_to_varr } from "../../convert/attr";
-import "./index.css"
-import { act_arrname } from "../../array/act_arrobj";
-import * as uarr from "../../array/utility"
-import * as oarr from "../../array/func_arrobj"
+import React from "react";
+import { useLayoutEffect, useReducer, useRef, useState } from "react";
 import { use_arr_t } from "../../array/act_arr";
+import { act_arrname } from "../../array/act_arrobj";
+import * as oarr from "../../array/func_arrobj";
+import * as uarr from "../../array/utility";
+import { exclude_arr } from "../../array/utility";
+import { arr_to_opt, item_to_index } from "../../convert/arr";
+import { avarr_to_nvarr, nvarr_to_avarr, value_to_varr } from "../../convert/attr";
+import { STR_TO_H } from "../../convert/str";
+import * as a from "../../type/alias";
+import PANEL from "../asset/panel";
+import BUTTON_CLICK from "../button/button_click";
+import "./index.css";
+import OPT_INPUT from "./opt_input";
 
 export function func_create_opt(available_opts:a.name_value<number>[], length:number){
     available_opts = oarr.sort_arr(available_opts, {attr:"value", mode:"SORT"})

@@ -1,15 +1,16 @@
-import {useState, useReducer} from "react";
-import * as a from '../../src/type/alias'
-import OPT_INPUT from "../../src/components/opt/opt_input";
-import SEARCH_BAR from "../../src/components/opt/search_bar";
-import { CHARACTERS, OPT_NAME } from "../data";
-import OPT_EXIST_ARR from "../../src/components/opt/opt_exist_arr";
-import PANEL from "../../src/components/asset/panel";
-import SEARCH_OBJ from "../../src/components/opt/search_obj";
-import OBJ_BOOL from "../../src/components/obj/obj_bool";
-import OBJ_STR from "../../src/components/obj/obj_str";
+import React from "react";
+import { useReducer, useState } from "react";
 import act_arr from "../../src/array/act_arr";
 import act_arrobj, { act_arrname } from "../../src/array/act_arrobj";
+import PANEL from "../../src/components/asset/panel";
+import OBJ_BOOL from "../../src/components/obj/obj_bool";
+import OBJ_STR from "../../src/components/obj/obj_str";
+import OPT_EXIST_ARR from "../../src/components/opt/opt_exist_arr";
+import OPT_INPUT from "../../src/components/opt/opt_input";
+import SEARCH_BAR from "../../src/components/opt/search_bar";
+import SEARCH_OBJ from "../../src/components/opt/search_obj";
+import * as a from '../../src/type/alias';
+import { CHARACTERS, OPT_NAME } from "../data";
 
 export function TEST_OPT_EXIST_ARR(){
     const [ss_arr, setss_arr] = useReducer(

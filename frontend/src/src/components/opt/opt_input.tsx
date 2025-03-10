@@ -1,12 +1,12 @@
-import React, { useState, JSX, useRef, useLayoutEffect, useReducer} from "react";
-import * as a from "../../type/alias"
-import { arr_to_opt } from "../../convert/arr";
-import { STR_TO_H } from "../../convert/str";
-import { value_to_varr } from "../../convert/attr";
-import SEARCH_BAR from "./search_bar";
-import "./index.css"
+import React, { JSX, useLayoutEffect, useReducer, useRef } from "react";
 import act_arrobj, { setss_arrobj_t } from "../../array/act_arrobj";
+import { arr_to_opt } from "../../convert/arr";
+import { value_to_varr } from "../../convert/attr";
+import { STR_TO_H } from "../../convert/str";
+import * as a from "../../type/alias";
 import BUTTON_CLICK from "../button/button_click";
+import "./index.css";
+import SEARCH_BAR from "./search_bar";
 
 export type opt_input_t = {
     opt_name?:a.opt_name

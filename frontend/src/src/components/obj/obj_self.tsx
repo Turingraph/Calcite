@@ -1,10 +1,11 @@
-import {JSX, useState, useEffect} from "react";
+import React from "react";
+import { JSX, useEffect, useState } from "react";
+import { use_arrname_t } from "../../array/act_arrobj";
+import { STR_TO_H } from "../../convert/str";
 import * as a from "../../type/alias";
 import BUTTON_CLICK from "../button/button_click";
 import INPUT_STR from "../input/input_str";
-import { STR_TO_H } from "../../convert/str";
-import "./index.css"
-import { use_arrname_t } from "../../array/act_arrobj";
+import "./index.css";
 
 export default function OBJ_SELF<
     t extends {name:a.name}[]>({

@@ -1,3 +1,4 @@
+import React from "react";
 import { setss_arr_t } from "../../array/act_arr"
 
 export default function FILE_OPEN({

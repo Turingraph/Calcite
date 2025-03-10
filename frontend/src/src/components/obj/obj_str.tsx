@@ -1,13 +1,14 @@
-import { useEffect, useRef, useReducer, useLayoutEffect } from "react"
-import {use_arrobj_t} from "../../array/act_arrobj"
-import INPUT_STR from "../input/input_str"
-import { get_obj_value } from "../../array/utility"
+import React from "react"
+import { useEffect, useLayoutEffect, useReducer, useRef } from "react"
 import act_arr from "../../array/act_arr"
-import * as a from "../../type/alias"
+import { use_arrobj_t } from "../../array/act_arrobj"
+import { get_obj_value } from "../../array/utility"
+import { arr_to_value } from "../../convert/attr"
 import { str_to_default_num } from "../../convert/num"
 import { STR_TO_H } from "../../convert/str"
-import { arr_to_value } from "../../convert/attr"
+import * as a from "../../type/alias"
 import BUTTON_CLICK from "../button/button_click"
+import INPUT_STR from "../input/input_str"
 
 export default function OBJ_STR<
     t extends object[],

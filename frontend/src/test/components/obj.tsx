@@ -1,14 +1,14 @@
-import {useState, JSX, useReducer} from "react";
-import * as a from '../../src/type/alias'
-import OBJ_SELF from "../../src/components/obj/obj_self";
-import OBJ_STR from "../../src/components/obj/obj_str";
-import OBJ_BOOL from "../../src/components/obj/obj_bool";
-import { character_t } from "../data";
-import { CHARACTERS } from "../data";
+import React from "react";
+import { JSX, useReducer, useState } from "react";
+import { act_arrname, use_arrname_t } from "../../src/array/act_arrobj";
+import * as oarr from "../../src/array/func_arrobj";
 import PANEL from "../../src/components/asset/panel";
 import BUTTON_CLICK from "../../src/components/button/button_click";
-import * as oarr from "../../src/array/func_arrobj"
-import { act_arrname, use_arrname_t } from "../../src/array/act_arrobj";
+import OBJ_BOOL from "../../src/components/obj/obj_bool";
+import OBJ_SELF from "../../src/components/obj/obj_self";
+import OBJ_STR from "../../src/components/obj/obj_str";
+import * as a from '../../src/type/alias';
+import { character_t, CHARACTERS } from "../data";
 
 function func_delete_arr<t extends {name:a.name}[]>(input_arr:use_arrname_t<t>){
     if(input_arr.ss.length > 1){

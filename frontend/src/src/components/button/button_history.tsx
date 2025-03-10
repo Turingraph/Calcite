@@ -1,9 +1,10 @@
-import {useLayoutEffect, useState, useRef} from "react";
+import React from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import * as a from "../../type/alias";
-import BUTTON_CLICK from "./button_click";
-import OPT_INPUT from "../opt/opt_input";
-import "./index.css"
 import { history_t } from "../../type/utility";
+import OPT_INPUT from "../opt/opt_input";
+import BUTTON_CLICK from "./button_click";
+import "./index.css";
 
 export default function BUTTON_HISTORY<t>({
     history,

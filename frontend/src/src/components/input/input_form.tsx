@@ -1,3 +1,4 @@
+import React from "react";
 import {useEffect, useState, useRef, useReducer} from "react";
 import * as a from "../../type/alias"
 import BUTTON_CLICK from "../button/button_click";

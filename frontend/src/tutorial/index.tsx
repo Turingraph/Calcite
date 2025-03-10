@@ -1,3 +1,8 @@
+/* eslint-disable */
+import React from "react"
+
+//---------------------------------------------------------------------------
+
 import { 
     DONT_USE_HOOK_IN_FUNC_00,
     DONT_USE_HOOK_IN_FUNC_01,

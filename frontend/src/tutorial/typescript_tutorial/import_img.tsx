@@ -1,5 +1,4 @@
 import React, {useReducer} from "react";
-import * as a from "../../src/type/alias"
 import FILE_OPEN from "../../src/components/file/file_open";
 import { file_to_url } from "../../src/convert/file";
 import act_arr from "../../src/array/act_arr";

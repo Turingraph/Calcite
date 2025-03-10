@@ -1,10 +1,9 @@
+import React from "react";
 import {useState} from "react";
 import * as a from "../../src/type/alias"
 import BUTTON_CLICK from "../../src/components/button/button_click";
 
-export default function TUTORIAL_USESTATE({
-}:{
-}){
+export default function TUTORIAL_USESTATE(){
     const [ss, setss] = useState<number>(0)
     return <><div >
     <h1>{ss}</h1>

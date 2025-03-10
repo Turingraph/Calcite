@@ -1,3 +1,4 @@
+import React from "react";
 import * as a from "../../type/alias"
 import "./index.css"
 

@@ -1,10 +1,11 @@
-import {useState} from "react";
-import * as a from '../../src/type/alias'
+import React from "react";
+import { useState } from "react";
 import BUTTON_CLICK from "../../src/components/button/button_click";
-import BUTTON_TABS from "../../src/components/button/button_tabs";
-import { OPT_NAME } from "../data";
 import BUTTON_HISTORY from "../../src/components/button/button_history";
+import BUTTON_TABS from "../../src/components/button/button_tabs";
+import * as a from '../../src/type/alias';
 import { history_t } from "../../src/type/utility";
+import { OPT_NAME } from "../data";
 
 export function TEST_BUTTON_CLICK(){
     const func_event = () =>{
@@ -39,7 +40,7 @@ export function TEST_BUTTON_HISTORY(){
 
 export function TEST_BUTTON_TABS(){
     const JSX_ARR = OPT_NAME.map((item,index)=>{
-        return <h1>No.{index}: {item}</h1>
+        return <div key={index}><h1>No.{index}: {item}</h1></div>
     })
     return <BUTTON_TABS 
     jsx_elements={JSX_ARR} 

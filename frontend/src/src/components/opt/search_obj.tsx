@@ -1,10 +1,11 @@
-import { useState, JSX, useReducer } from "react"
-import * as a from "../../type/alias"
+import React from "react"
+import { JSX, useReducer, useState } from "react"
+import act_arrobj, { use_arrname_t } from "../../array/act_arrobj"
 import { arr_to_opt } from "../../convert/arr"
+import * as a from "../../type/alias"
+import PANEL from "../asset/panel"
 import OBJ_SELF from "../obj/obj_self"
 import SEARCH_BAR from "./search_bar"
-import PANEL from "../asset/panel"
-import act_arrobj, { act_arrname, use_arrname_t } from "../../array/act_arrobj"
 
 export default function SEARCH_OBJ<t extends {name:a.name}[]>({
     input_arr,

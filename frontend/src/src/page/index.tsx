@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import * as a from "../type/alias"
-import THEIR_OPEN from "../layout/their/their_open";
-import THEIR_ARR from "../layout/their/their_arr";
-import { their_t } from "../type/obj";
+import React from "react";
+import { useState } from "react";
 import IMG_UI from "../layout/img/img_ui";
+import THEIR_ARR from "../layout/their/their_arr";
+import THEIR_OPEN from "../layout/their/their_open";
+import { their_t } from "../type/obj";
 
 export default function PAGE(){
     const [ss_arr, setss_arr] = useState<their_t[]>([])

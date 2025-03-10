@@ -1,4 +1,6 @@
-import {JSX, useState} from "react"
+/* eslint-disable */
+
+import React, {JSX, useState} from "react"
 
 //------------------------------------------------------------------------------------
 
@@ -42,7 +44,7 @@ It is implies that
 -   {DONT_USE_HOOK_IN_FUNC_00()} is not updated when the hook is updated.
 */
 
-export function DONT_USE_HOOK_IN_FUNC_00<t>(){
+export function DONT_USE_HOOK_IN_FUNC_00(){
     const [ss_texts, setss_texts] = useState<string>("")
     return <>
     <p>Hello</p>

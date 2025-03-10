@@ -1,6 +1,7 @@
-import {JSX, useRef, useLayoutEffect, useState} from "react";
-import {num_to_rgb} from "../../convert/num";
-import "./index.css"
+import React from "react";
+import { JSX } from "react";
+import { num_to_rgb } from "../../convert/num";
+import "./index.css";
 
 export default function COLOR_UI({
     jsx_element,

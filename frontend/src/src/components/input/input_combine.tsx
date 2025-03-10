@@ -1,21 +1,22 @@
-import React, { JSX } from "react";
-import * as a from "../../type/alias";
+import React from "react";
+import { JSX } from "react";
+import { use_arrobj_t } from "../../array/act_arrobj";
 import { str_to_avarr } from "../../convert/attr";
 import { STR_TO_H } from "../../convert/str";
+import * as a from "../../type/alias";
 import OPT_INPUT from "../opt/opt_input";
+import "./index.css";
 import INPUT_FORM from "./input_form";
-import "./index.css"
-import { use_arrobj_t } from "../../array/act_arrobj";
 
-function func_input_opt_index(arr_all:a.attr_value<string|number>[], arr_include:string[]){
-    return arr_all.map((item, index)=>{
-        if(arr_include.includes(item.attr as string) === true)
-        {
-            return index
-        }
-        return 0
-    })
-}
+// function func_input_opt_index(arr_all:a.attr_value<string|number>[], arr_include:string[]){
+//     return arr_all.map((item, index)=>{
+//         if(arr_include.includes(item.attr as string) === true)
+//         {
+//             return index
+//         }
+//         return 0
+//     })
+// }
 
 export type input_combine_uit = {
     opt_name?:a.opt_name,
@@ -32,9 +33,9 @@ export default function INPUT_COMBINE({
     func_activate = (()=>{}) as a.func_event,
     is_undo = false
 }:input_combine_uit){
-    const INPUT_OPT_INDEX = func_input_opt_index(
-        input_str ? input_str.ss : [], 
-        input_opt.map((item)=>{return item.attr}))
+    // const INPUT_OPT_INDEX = func_input_opt_index(
+    //     input_str ? input_str.ss : [], 
+    //     input_opt.map((item)=>{return item.attr}))
     let jsx_input_str = <></>
     if (input_str !== undefined){
         jsx_input_str = <INPUT_FORM

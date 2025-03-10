@@ -1,8 +1,9 @@
-import {useState, JSX, useEffect} from "react";
-import * as a from "../../type/alias"
-import BUTTON_CLICK from "./button_click";
+import React from "react";
+import { JSX, useEffect, useState } from "react";
+import * as a from "../../type/alias";
 import COLOR_UI from "../asset/color_ui";
-import "./index.css"
+import BUTTON_CLICK from "./button_click";
+import "./index.css";
 
 export default function BUTTON_TABS(
 {

@@ -1,9 +1,10 @@
-import React, {useState, JSX, useReducer} from "react";
-import * as a from '../../src/type/alias'
+import React from "react";
+import { JSX, useReducer, useState } from "react";
+import act_arrobj from "../../src/array/act_arrobj";
 import INPUT_COMBINE from "../../src/components/input/input_combine";
 import INPUT_FORM from "../../src/components/input/input_form";
 import INPUT_STR from "../../src/components/input/input_str";
-import act_arrobj, { act_arrname } from "../../src/array/act_arrobj";
+import * as a from '../../src/type/alias';
 
 const DEFAULT_INPUT:(string|number)[] = [
     0.0001,
