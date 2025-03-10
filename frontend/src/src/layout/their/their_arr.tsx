@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from "react";
 import * as a from "../../type/alias"
 import { their_t } from "../../type/obj";

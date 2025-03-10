@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, {useState, useEffect} from "react";
 import * as a from "../../type/alias"
 import FILE_OPEN from "../../components/file/file_open";

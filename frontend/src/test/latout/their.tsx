@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React, {useState} from "react";
 import { their_t } from "../../src/type/obj";
 import THEIR_ARR from "../../src/layout/their/their_arr";

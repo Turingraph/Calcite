@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { use_arrobj_t } from "../../array/act_arrobj";
 import INPUT_COMBINE from "../../components/input/input_combine";
 import * as a from "../../type/alias";

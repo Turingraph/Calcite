@@ -83,16 +83,9 @@ Reference
 
 # How to solve Eslint related issue ?
 
-## How to solve `ESLint couldn't find the config "prettier" to extend from`
+It is recommended to remove Eslint and `$./node_modules/.bin/eslint . --init`,
+if there is the unexpected issue againt, try to Google it.
 
-Answer: `npm eslint-config-prettier`
-
-Reference
--   https://stackoverflow.com/questions/61597932/eslint-couldnt-find-the-config-prettier-to-extend-from
-
-## How to solve `Run autofix to sort these imports!` ?
-
-Answer: `npm install eslint-plugin-simple-import-sort`
-
-Reference
--   https://dev.to/julioxavierr/sorting-your-imports-with-eslint-3ped
+The ChatGPT's advide when encounter the similar issue is to
+1.  Remove and reinstall dependency
+2.  Avoid using and setting `.eslintrc.json` for no reason.

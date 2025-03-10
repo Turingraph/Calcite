@@ -6,7 +6,7 @@ import React from "react";
 
 import { 
     TEST_BUTTON_CLICK,  // OK
-    TEST_BUTTON_TABS,   // UNTESTED
+    TEST_BUTTON_TABS,   // OK
     TEST_BUTTON_HISTORY // UNTESTED
 } from "./components/button";
 
@@ -74,6 +74,6 @@ import {
 
 export default function TEST(){
     return <>
-    <TEST_BUTTON_CLICK/>
+    <TEST_BUTTON_TABS/>
     </>
 }

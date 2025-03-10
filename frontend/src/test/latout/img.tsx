@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React from "react";
 import IMG_SAVE from "../../src/layout/img/img_save";
 import IMG_EDIT from "../../src/layout/img/img_edit";

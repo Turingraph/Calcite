@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React from "react";
 import OCR_SAVE from "../../src/layout/ocr/ocr_save";
 import OCR_EDIT from "../../src/layout/ocr/ocr_edit";

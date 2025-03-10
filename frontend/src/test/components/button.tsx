@@ -41,7 +41,9 @@ export function TEST_BUTTON_TABS(){
     const JSX_ARR = OPT_NAME.map((item,index)=>{
         return <div key={index}><h1>No.{index}: {item}</h1></div>
     })
-    return <BUTTON_TABS 
+    return <>
+    <BUTTON_TABS 
     jsx_elements={JSX_ARR} 
     name_arr={OPT_NAME as a.name[]}/>
+    </>
 }

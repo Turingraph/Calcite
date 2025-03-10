@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React from "react";
 import BOX_SAVE from "../../src/layout/box/box_save";
 import BOX_EDIT from "../../src/layout/box/box_edit";

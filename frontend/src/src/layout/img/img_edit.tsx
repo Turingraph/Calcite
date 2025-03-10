@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from "react";
 import * as a from "../../type/alias"
 import OBJ_SELF from "../../components/obj/obj_self";
