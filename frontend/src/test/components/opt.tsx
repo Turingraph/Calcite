@@ -1,17 +1,20 @@
-import {useState} from "react";
+import {useState, useReducer} from "react";
 import * as a from '../../src/type/alias'
 import OPT_INPUT from "../../src/components/opt/opt_input";
 import SEARCH_BAR from "../../src/components/opt/search_bar";
-import { opt_mode_uit } from "../../src/components/opt/type";
-import { character_t, CHARACTERS, OPT_NAME } from "../data";
+import { CHARACTERS, OPT_NAME } from "../data";
 import OPT_EXIST_ARR from "../../src/components/opt/opt_exist_arr";
 import PANEL from "../../src/components/asset/panel";
 import SEARCH_OBJ from "../../src/components/opt/search_obj";
 import OBJ_BOOL from "../../src/components/obj/obj_bool";
 import OBJ_STR from "../../src/components/obj/obj_str";
+import act_arr from "../../src/array/act_arr";
+import act_arrobj, { act_arrname } from "../../src/array/act_arrobj";
 
 export function TEST_OPT_EXIST_ARR(){
-    const [ss_arr, setss_arr] = useState<number[]>([0])
+    const [ss_arr, setss_arr] = useReducer(
+        act_arr,
+        [0])
     const AVAILABLE_OPTS = OPT_NAME
     return <OPT_EXIST_ARR 
         opt_name={"List" as a.opt_name}
@@ -22,28 +25,28 @@ export function TEST_OPT_EXIST_ARR(){
 }
 
 export function TEST_OPT_INPUT(){
-    const [ss_name, setss_name] = useState<number>(0)
-
+    const [ss_select, setss_select] = useState<number>(0)
     return <>
     <OPT_INPUT
-        opt_name={"Your name is " + OPT_NAME[ss_name] as a.opt_name }
+        opt_name={"Your name is " + OPT_NAME[ss_select] as a.opt_name }
         available_opts={OPT_NAME}
-        ss_mode={{ss:ss_name, setss:setss_name} as a.use_state_t<number|undefined>}
+        ss_mode={{ss:ss_select, setss:setss_select} as a.use_state_t<number|undefined>}
         is_search_bar = {true}
     />
     </>
 }
 
 export function TEST_SEARCH_BAR(){
-    const [ss_name, setss_name] = useState<opt_mode_uit[]>(
+    const [ss_name, setss_name] = useReducer(
+        act_arrobj,
         OPT_NAME.map((item,index)=>{
             return {
-                name:item as a.name,
-                index:index
-            }
+                attr:item as a.attr,
+                value:index
+            } as a.attr_value<number>
         })
     )
-    const JSX_ELEMENT = ss_name.map((item,index)=>{return <h1 key={index}>{item?item.name:""}</h1>})
+    const JSX_ELEMENT = ss_name.map((item,index)=>{return <h1 key={index}>{item?item.attr:""}</h1>})
     return <>
         <SEARCH_BAR 
         opt_name={"Your name" as a.opt_name}
@@ -55,7 +58,10 @@ export function TEST_SEARCH_BAR(){
 }
 
 export function TEST_SEARCH_OBJ(){
-    const [ss_arr, setss_arr] = useState<character_t[]>(CHARACTERS)
+    const [ss_arr, setss_arr] = useReducer(
+        act_arrname,
+        CHARACTERS
+    )
     const JSX_ARR = ss_arr.map((item,index)=>{
         return <>
         <OBJ_BOOL
@@ -66,8 +72,7 @@ export function TEST_SEARCH_OBJ(){
                 ui_mode={"checkbox"}
             />
         <OBJ_STR
-            opt_name={item.name as a.opt_name}
-            arr={{ss:ss_arr, setss:setss_arr}}
+            input_arr={{ss:ss_arr, setss:setss_arr}}
             this_item={index}
             attrs={["skill"]}
             is_undo={false}
@@ -76,7 +81,7 @@ export function TEST_SEARCH_OBJ(){
     })
     return <>
     <SEARCH_OBJ 
-        arr={{ss:ss_arr, setss:setss_arr} as a.use_state_t<character_t[]>}
+        input_arr={{ss:ss_arr, setss:setss_arr}}
         jsx_additional={JSX_ARR}
     />
     </>
