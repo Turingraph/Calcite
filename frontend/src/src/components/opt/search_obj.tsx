@@ -4,7 +4,7 @@ import { arr_to_opt } from "../../convert/arr"
 import OBJ_SELF from "../obj/obj_self"
 import SEARCH_BAR from "./search_bar"
 import PANEL from "../asset/panel"
-import { act_arrname, use_arrname_t } from "../../array/act_arrobj"
+import act_arrobj, { act_arrname, use_arrname_t } from "../../array/act_arrobj"
 
 export default function SEARCH_OBJ<t extends {name:a.name}[]>({
     input_arr,
@@ -14,21 +14,21 @@ export default function SEARCH_OBJ<t extends {name:a.name}[]>({
     jsx_additional?:(JSX.Element|undefined)[]|undefined
 }){
     const [ss_show_arr, setss_show_arr] = useReducer(
-        act_arrname,
+        act_arrobj,
         arr_to_opt(input_arr.ss)
     )
     const [ss_select, setss_select] = useState<number|undefined>(undefined)
 
     const JSX_ARR = ss_show_arr.map((item,index)=>{
-        if(item !== undefined && input_arr.ss[item.index] !== undefined){
+        if(item !== undefined && input_arr.ss[item.value] !== undefined){
             let jsx_item = undefined
-            if (jsx_additional !== undefined && jsx_additional.length > item.index){
-                jsx_item = jsx_additional[item.index]
+            if (jsx_additional !== undefined && jsx_additional.length > item.value){
+                jsx_item = jsx_additional[item.value]
             }
             return <div key={index}>
                 <OBJ_SELF 
                 input_arr = {input_arr}
-                this_item={item.index}
+                this_item={item.value}
                 ss_select={{ss:ss_select, setss:setss_select}}
                 jsx_additional={jsx_item ? jsx_item : <></>}
                 />
