@@ -1,5 +1,4 @@
-import React from "react";
-import { useLayoutEffect, useRef, useState } from "react";
+import React, { useLayoutEffect, useRef, useState } from "react";
 import * as a from "../../type/alias";
 import { history_t } from "../../type/utility";
 import OPT_INPUT from "../opt/opt_input";

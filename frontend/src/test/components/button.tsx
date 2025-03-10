@@ -1,5 +1,4 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import BUTTON_CLICK from "../../src/components/button/button_click";
 import BUTTON_HISTORY from "../../src/components/button/button_history";
 import BUTTON_TABS from "../../src/components/button/button_tabs";

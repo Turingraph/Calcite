@@ -28,11 +28,11 @@ export default function THEIR_ARR({
         </div>
     })
     return <>
-    <PANEL jsx_element={<>
+    {/* <PANEL jsx_element={<>
         <SEARCH_OBJ
             arr={ss_arr}
             jsx_additional={JSX_ADDITIONAL}
         />
-        </>}/>
+        </>}/> */}
     </>
 }

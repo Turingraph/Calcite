@@ -1,5 +1,4 @@
-import React from "react";
-import { JSX } from "react";
+import React, { JSX } from "react";
 import { num_to_rgb } from "../../convert/num";
 import "./index.css";
 

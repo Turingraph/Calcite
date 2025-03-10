@@ -1,5 +1,4 @@
-import React from "react";
-import { JSX, useEffect, useState } from "react";
+import React, { JSX, useEffect, useState } from "react";
 import { use_arrname_t } from "../../array/act_arrobj";
 import { STR_TO_H } from "../../convert/str";
 import * as a from "../../type/alias";

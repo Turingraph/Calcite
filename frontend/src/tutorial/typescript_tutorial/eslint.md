@@ -80,3 +80,19 @@ Reference
 
 Reference
 -   https://stackoverflow.com/questions/27732209/turning-off-eslint-rule-for-a-specific-line
+
+# How to solve Eslint related issue ?
+
+## How to solve `ESLint couldn't find the config "prettier" to extend from`
+
+Answer: `npm eslint-config-prettier`
+
+Reference
+-   https://stackoverflow.com/questions/61597932/eslint-couldnt-find-the-config-prettier-to-extend-from
+
+## How to solve `Run autofix to sort these imports!` ?
+
+Answer: `npm install eslint-plugin-simple-import-sort`
+
+Reference
+-   https://dev.to/julioxavierr/sorting-your-imports-with-eslint-3ped

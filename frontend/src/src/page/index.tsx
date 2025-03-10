@@ -1,5 +1,4 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import IMG_UI from "../layout/img/img_ui";
 import THEIR_ARR from "../layout/their/their_arr";
 import THEIR_OPEN from "../layout/their/their_open";

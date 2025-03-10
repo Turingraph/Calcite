@@ -1,5 +1,4 @@
-import React from "react";
-import { JSX } from "react";
+import React, { JSX } from "react";
 import { use_arrobj_t } from "../../array/act_arrobj";
 import { str_to_avarr } from "../../convert/attr";
 import { STR_TO_H } from "../../convert/str";
@@ -68,7 +67,6 @@ export default function INPUT_COMBINE({
                 />
                 </div>
             })
-            return undefined
     }
     return <>
         <STR_TO_H opt_name={opt_name as a.opt_name}/>

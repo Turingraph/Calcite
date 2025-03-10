@@ -6,27 +6,27 @@ import React from "react";
 
 import { 
     TEST_BUTTON_CLICK,  // OK
-    TEST_BUTTON_TABS,   // OK
-    TEST_BUTTON_HISTORY // OK
+    TEST_BUTTON_TABS,   // UNTESTED
+    TEST_BUTTON_HISTORY // UNTESTED
 } from "./components/button";
 
 import { 
-    TEST_OBJ_SELF,       // OK
-    TEST_OBJ_STR,        // OK
-    TEST_OBJ_BOOL        // OK
+    TEST_OBJ_SELF,       // UNTESTED
+    TEST_OBJ_STR,        // UNTESTED
+    TEST_OBJ_BOOL        // UNTESTED
 } from "./components/obj";
 
 import {
-    TEST_INPUT_FORM,    // OK
+    TEST_INPUT_FORM,    // UNTESTED
     TEST_INPUT_COMBINE, // ...
-    TEST_INPUT_STR,     // OK
+    TEST_INPUT_STR,     // UNTESTED
 } from "./components/input";
 
 import {
-    TEST_SEARCH_OBJ,    // OK
-    TEST_OPT_EXIST_ARR, // OK
-    TEST_OPT_INPUT,     // OK
-    TEST_SEARCH_BAR     // OK
+    TEST_SEARCH_OBJ,    // UNTESTED
+    TEST_OPT_EXIST_ARR, // UNTESTED
+    TEST_OPT_INPUT,     // UNTESTED
+    TEST_SEARCH_BAR     // UNTESTED
 } from "./components/opt";
 
 import {
@@ -59,8 +59,8 @@ import {
 } from "./latout/ocr";
 
 import { 
-    TEST_THEIR_OPEN,    // OK
-    TEST_THEIR_ARR,     // OK but their_t might be updated in future.
+    TEST_THEIR_OPEN,    // UNTESTED
+    TEST_THEIR_ARR,     // UNTESTED but their_t might be updated in future.
     TEST_THEIR_SAVE     // EMPTY
 } from "./latout/their";
 
@@ -74,6 +74,6 @@ import {
 
 export default function TEST(){
     return <>
-    <TEST_INPUT_COMBINE/>
+    <TEST_BUTTON_CLICK/>
     </>
 }

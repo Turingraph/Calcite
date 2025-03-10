@@ -1,5 +1,4 @@
-import React from "react";
-import { JSX, useReducer, useState } from "react";
+import React,{ JSX, useReducer, useState } from "react";
 import { act_arrname, use_arrname_t } from "../../src/array/act_arrobj";
 import * as oarr from "../../src/array/func_arrobj";
 import PANEL from "../../src/components/asset/panel";

@@ -1,5 +1,4 @@
-import React from "react"
-import { JSX, useReducer, useState } from "react"
+import React, { JSX, useReducer, useState } from "react"
 import act_arrobj, { use_arrname_t } from "../../array/act_arrobj"
 import { arr_to_opt } from "../../convert/arr"
 import * as a from "../../type/alias"

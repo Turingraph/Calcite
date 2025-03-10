@@ -1,5 +1,4 @@
-import React from "react";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { setss_arrobj_t } from "../../array/act_arrobj";
 import { arr_to_opt } from "../../convert/arr";
 import * as a from "../../type/alias";

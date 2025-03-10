@@ -1,5 +1,4 @@
-import React from "react";
-import { JSX, useEffect, useState } from "react";
+import React, { JSX, useEffect, useState } from "react";
 import * as a from "../../type/alias";
 import COLOR_UI from "../asset/color_ui";
 import BUTTON_CLICK from "./button_click";

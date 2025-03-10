@@ -1,5 +1,4 @@
-import React from "react";
-import {useEffect, useState, useRef, useReducer} from "react";
+import React, {useEffect, useState, useRef, useReducer} from "react";
 import * as a from "../../type/alias"
 import BUTTON_CLICK from "../button/button_click";
 import INPUT_STR from "./input_str";
@@ -47,9 +46,9 @@ export default function INPUT_FORM({
         // https://www.geeksforgeeks.org/
         // how-to-resolve-usestate-set-method-is-not-reflecting-change-immediately/
         input_arr.ss.forEach((item, index)=>{
-            if(typeof ref_DEFAULT_ARR.current[index] === "number" && typeof item.value === "number"){
+            if(typeof ref_DEFAULT_ARR.current[index].value === "number" && typeof item.value === "number"){
                 const CONST_INPUT = str_to_default_num(
-                    ref_DEFAULT_ARR.current[index] as number,
+                    ref_DEFAULT_ARR.current[index].value as number,
                     ss_texts[index]
                 )
                 input_arr.setss({

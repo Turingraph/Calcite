@@ -1,5 +1,4 @@
-import React from "react"
-import { useEffect, useLayoutEffect, useReducer, useRef } from "react"
+import React, { useEffect, useLayoutEffect, useReducer, useRef } from "react"
 import act_arr from "../../array/act_arr"
 import { use_arrobj_t } from "../../array/act_arrobj"
 import { get_obj_value } from "../../array/utility"
@@ -69,7 +68,7 @@ export default function OBJ_STR<
             if (typeof C_THIS_ITEM[item] === "number"){
                 if (typeof ss_defaults[index] === "number"){
                     let_input = str_to_default_num(
-                        ss_defaults[index],
+                        ss_defaults[index] as number,
                         let_input
                     ) as number
                 }

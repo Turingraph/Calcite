@@ -19,7 +19,7 @@ export function num_to_ksize(input:number){
     }
 }
 
-export function num_to_size(input:number|undefined, maxval:number, min:number = 0){
+export function num_to_size(input:number|undefined, maxval:number, min = 0){
     if (input === undefined){
         return maxval
     }

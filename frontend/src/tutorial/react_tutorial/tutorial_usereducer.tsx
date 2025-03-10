@@ -1,5 +1,4 @@
-import React from 'react';
-import { useReducer } from 'react';
+import React,{ useReducer } from 'react';
 import BUTTON_CLICK from '../../src/components/button/button_click';
 import * as a from "../../src/type/alias"
 import * as u from '../../src/utility/utility';

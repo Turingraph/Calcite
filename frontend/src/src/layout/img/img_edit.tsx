@@ -39,13 +39,13 @@ export default function IMG_EDIT({
     func_activate?: undefined|a.func_event
 }){
     return <>
-    {ss_thresh 
+    {/* {ss_thresh 
         ? <INPUT_COMBINE
             opt_name={"Threshold" as a.opt_name}
             input_str={ss_thresh as use_arrobj_t<a.attr_value<string | number>[]>}
             input_opt={[]}
         />
-        :<></>}
+        :<></>} */}
     </>
 }
 /*

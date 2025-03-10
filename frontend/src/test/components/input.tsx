@@ -1,5 +1,4 @@
-import React from "react";
-import { JSX, useReducer, useState } from "react";
+import React ,{ JSX, useReducer, useState } from "react";
 import act_arrobj from "../../src/array/act_arrobj";
 import INPUT_COMBINE from "../../src/components/input/input_combine";
 import INPUT_FORM from "../../src/components/input/input_form";
