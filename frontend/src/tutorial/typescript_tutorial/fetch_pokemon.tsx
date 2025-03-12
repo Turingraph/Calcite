@@ -4,7 +4,7 @@ import OBJ_SELF from "../../src/components/obj/obj_self";
 import INPUT_STR from "../../src/components/input/input_str";
 import { STR_TO_H } from "../../src/convert/str"
 import BUTTON_CLICK from "../../src/components/button/button_click";
-import { act_arrname } from "../../src/array/act_arrobj";
+import { act_arrname, ss_arrobj_t } from "../../src/array/act_arrobj";
 
 type pokemon_t = {
     name:a.name,
@@ -18,7 +18,7 @@ const SELECTED_PROPERTY = ["id", "sprites"]
 export default function FETCH_POKEMON(){
     const [ss_arr, setss_arr] = useReducer(
         act_arrname,
-        [] as pokemon_t[]
+        {ss:[] as pokemon_t[]} as ss_arrobj_t<pokemon_t[], keyof pokemon_t>
     )
     const [ss_select, setss_select] = useState<number|undefined>(undefined)
     const [ss_name, setss_name] = useState<string>("")
@@ -64,7 +64,7 @@ export default function FETCH_POKEMON(){
         }
     }
 
-    const JSX_ARR = ss_arr.map((item,index)=>{
+    const JSX_ARR = ss_arr.ss.map((item,index)=>{
         return <div key={index}>
             <OBJ_SELF
                 input_arr={{ss:ss_arr, setss: setss_arr}}

@@ -1,7 +1,7 @@
 import React, {useReducer} from "react";
 import FILE_OPEN from "../../src/components/file/file_open";
 import { file_to_url } from "../../src/convert/file";
-import act_arr from "../../src/array/act_arr";
+import act_arr, {ss_arr_t} from "../../src/array/act_arr";
 
 // https://stackoverflow.com/questions/54149972/
 // convert-file-object-to-img-angular
@@ -9,8 +9,8 @@ import act_arr from "../../src/array/act_arr";
 export default function IMPORT_IMG(){
     const [ss_file, setss_file] = useReducer(
         act_arr,
-        [] as File[])
-    const JSX_ARR = ss_file.map((item,index)=>{
+        {ss:[] as File[]} as ss_arr_t<File>)
+    const JSX_ARR = ss_file.ss.map((item,index)=>{
         return <div key={index}>
             <img src={file_to_url(item)}/>
             <hr/>
