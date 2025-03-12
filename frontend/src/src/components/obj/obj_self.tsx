@@ -13,20 +13,20 @@ export default function OBJ_SELF<
     ss_select,
     jsx_additional = undefined, 
 }:{
-    input_arr:use_arrname_t<t>
+    input_arr:use_arrname_t<t, keyof t[number]>
     this_item:number
     ss_select:a.use_state_t<number|undefined>
     jsx_additional?:JSX.Element|undefined
 }){
     const [ss_ui_mode, setss_ui_mode] = useState<"NORMAL"|"RENAME"|"DELETE">("NORMAL")
-    const [ss_name, setss_name] = useState<string>(input_arr.ss[this_item].name as string)
+    const [ss_name, setss_name] = useState<string>(input_arr.ss.ss[this_item].name as string)
     useEffect(()=>{
         if(ss_select.ss !== this_item && ss_ui_mode !== "NORMAL"){
             setss_ui_mode("NORMAL")
         }
     },[ss_select.ss, this_item, ss_ui_mode])
     useEffect(()=>{
-        setss_name(input_arr.ss[this_item].name as string)
+        setss_name(input_arr.ss.ss[this_item].name as string)
     },[input_arr.ss, this_item])
     function func_reset(){
         ss_select.setss(undefined)
@@ -61,7 +61,7 @@ export default function OBJ_SELF<
     }
     if (ss_ui_mode === "NORMAL"){
         return <>
-            <STR_TO_H opt_name={input_arr.ss[this_item].name as a.opt_name}/>
+            <STR_TO_H opt_name={input_arr.ss.ss[this_item].name as a.opt_name}/>
             <BUTTON_CLICK
                 name={"RENAME" as a.name}
                 func_event={(()=>{func_select("RENAME")}) as a.func_event}
@@ -99,7 +99,7 @@ export default function OBJ_SELF<
         // https://stackoverflow.com/questions/15292278/
         // how-do-i-remove-an-array-item-in-typescript
         return <>
-            <STR_TO_H opt_name={"Do you want to delete \"" + input_arr.ss[this_item].name + "\"" as a.opt_name}/>
+            <STR_TO_H opt_name={"Do you want to delete \"" + input_arr.ss.ss[this_item].name + "\"" as a.opt_name}/>
             <BUTTON_CLICK
                 name={"yes" as a.name}
                 func_event={(()=>{func_delete()}) as a.func_event}

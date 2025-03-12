@@ -1,5 +1,5 @@
 import React, { useEffect, useLayoutEffect, useReducer, useRef } from "react"
-import act_arr from "../../array/act_arr"
+import act_arr, {ss_arr_t} from "../../array/act_arr"
 import { use_arrobj_t } from "../../array/act_arrobj"
 import { get_obj_value } from "../../array/utility"
 import { arr_to_value } from "../../convert/attr"
@@ -27,14 +27,14 @@ export default function OBJ_STR<
     const ref_pigeon_hole = useRef(input_arr.ss.length)
     const [ss_defaults, setss_defaults] = useReducer(
         act_arr,
-        (default_value 
+        {ss:(default_value 
             ? arr_to_value(default_value) 
             : get_obj_value(input_arr.ss[this_item] as t[number], attrs)
-        ) as t[number][k][]
+        ) as t[number][k][]} as ss_arr_t<t>
     )
     const [ss_texts, setss_texts] = useReducer(
         act_arr,
-        get_obj_value(input_arr.ss[this_item] as t[number], attrs) as string[]
+        {ss:get_obj_value(input_arr.ss[this_item] as t[number], attrs) as string[]} as ss_arr_t<t>
     )
 
     // Update ss_texts = input_arr.ss
@@ -66,9 +66,9 @@ export default function OBJ_STR<
         attrs.forEach((item:k, index)=>{
             let let_input:number|string = new_input_arr[index]
             if (typeof C_THIS_ITEM[item] === "number"){
-                if (typeof ss_defaults[index] === "number"){
+                if (typeof ss_defaults.ss[index] === "number"){
                     let_input = str_to_default_num(
-                        ss_defaults[index] as number,
+                        ss_defaults.ss[index] as number,
                         let_input
                     ) as number
                 }
@@ -103,7 +103,7 @@ export default function OBJ_STR<
             <INPUT_STR
                 opt_name={item as a.opt_name}
                 input={{
-                    ss:ss_texts[index],
+                    ss:ss_texts.ss[index],
                     setss:((e:string)=>{
                         setss_texts({
                             type:"EDIT",
@@ -128,7 +128,7 @@ export default function OBJ_STR<
         <BUTTON_CLICK
             name={"reset all" as a.name}
             func_event={(()=>{
-                func_update_item(ss_defaults.map((item)=>{
+                func_update_item(ss_defaults.ss.map((item)=>{
                     return item as string
                 }))
             }) as a.func_event}
