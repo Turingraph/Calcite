@@ -1,8 +1,7 @@
 import React, { useLayoutEffect, useReducer, useRef, useState } from "react";
 import { use_arr_t } from "../../array/act_arr";
-import { act_arrname } from "../../array/act_arrobj";
+import { act_arrname, ss_arrname_t } from "../../array/act_arrobj";
 import * as oarr from "../../array/func_arrobj";
-import * as uarr from "../../array/utility";
 import { exclude_arr } from "../../array/utility";
 import { arr_to_opt, item_to_index } from "../../convert/arr";
 import { avarr_to_nvarr, nvarr_to_avarr, value_to_varr } from "../../convert/attr";
@@ -14,7 +13,7 @@ import "./index.css";
 import OPT_INPUT from "./opt_input";
 
 export function func_create_opt(available_opts:a.name_value<number>[], length:number){
-    available_opts = oarr.sort_arr(available_opts, {attr:"value", mode:"SORT"})
+    available_opts = oarr.sort_arrobj(available_opts, "SORT", "value")
     if (available_opts.length > length){
         return available_opts[length].value
     }
@@ -24,23 +23,21 @@ export function func_create_opt(available_opts:a.name_value<number>[], length:nu
 function func_exclude_opt(available_opts:string[], exist_opts:number[]){
     // https://stackoverflow.com/questions/36829184/
     // how-can-i-convert-a-set-to-an-array-in-typescript
-    available_opts = uarr.sort_arr(available_opts, "SORT")
-    exist_opts = uarr.sort_arr(exist_opts, "SORT")
+    available_opts = oarr.sort_arr(available_opts, "SORT")
+    exist_opts = oarr.sort_arr(exist_opts, "SORT")
     // available_opts  = method_unique_arr(available_opts)
     // exist_opts      = method_unique_arr(exist_opts)
-    const C_AVAILABLE_OPTS = avarr_to_nvarr(oarr.sort_arr(
+    const C_AVAILABLE_OPTS = avarr_to_nvarr(oarr.sort_arrobj(
         arr_to_opt(available_opts), 
-        {attr:"value", mode:"SORT"}
-    ))
-    const C_EXIST_OPTS = oarr.sort_arr(
+        "SORT", "value"))
+    const C_EXIST_OPTS = oarr.sort_arrobj(
         exist_opts.map((item)=>{
             return {
                 name:available_opts[item] as a.name,
                 value:item
             } as a.name_value<number>
         }),
-        {attr:"value", mode:"SORT"}
-    )
+        "SORT", "value")
     return exclude_arr(C_AVAILABLE_OPTS, C_EXIST_OPTS) as a.name_value<number>[]
 }
 
@@ -70,19 +67,19 @@ export default function OPT_EXIST_ARR(
 ){
     const [ss_available_opts, setss_available_opts] = useReducer(
         act_arrname,
-        func_exclude_opt(available_opts, exist_opts.ss)
+        {ss:func_exclude_opt(available_opts, exist_opts.ss.ss)} as ss_arrname_t<a.name_value<number>[], keyof a.name_value<number>>
     )
     const [ss_create_opt, setss_create_opt] = useState<number|undefined>(
-        func_create_opt(ss_available_opts, 0)
+        func_create_opt(ss_available_opts.ss, 0)
     )
-    const ref_DEFAULT_OPT = useRef<number>(exist_opts.ss[0])
+    const ref_DEFAULT_OPT = useRef<number>(exist_opts.ss.ss[0])
 
     // Update ss_available_opts everytime when update exist_opts.ss
     // Sort exist_opts.ss
     useLayoutEffect(()=>{
         setss_available_opts({
             type:"SET",
-            input:func_exclude_opt(available_opts, exist_opts.ss)
+            input:func_exclude_opt(available_opts, exist_opts.ss.ss)
         })
     },[exist_opts, available_opts])
 
@@ -104,7 +101,7 @@ export default function OPT_EXIST_ARR(
         }
         const INPUT = value_to_varr(
             ss_create_opt,
-            ss_available_opts,
+            ss_available_opts.ss,
         )
         if(INPUT === undefined){
             return null
@@ -113,30 +110,30 @@ export default function OPT_EXIST_ARR(
             type:"PUSH",
             input:INPUT.value
         })
-        const NEXT_INDEX = item_to_index(ss_available_opts, INPUT)
+        const NEXT_INDEX = item_to_index(ss_available_opts.ss, INPUT)
         if(NEXT_INDEX !== undefined){
             return null
         }
-        if(ss_available_opts.length <= 1){
+        if(ss_available_opts.ss.length <= 1){
             setss_create_opt(undefined)
         }
-        else if(NEXT_INDEX === ss_available_opts.length - 1){
-            setss_create_opt(func_create_opt(ss_available_opts, 0))
+        else if(NEXT_INDEX === ss_available_opts.ss.length - 1){
+            setss_create_opt(func_create_opt(ss_available_opts.ss, 0))
         }
         else if (NEXT_INDEX !== undefined){
-            setss_create_opt(func_create_opt(ss_available_opts, NEXT_INDEX+1))
+            setss_create_opt(func_create_opt(ss_available_opts.ss, NEXT_INDEX+1))
         }
     }
     function func_delete_eopts(index:number){
         if(ss_create_opt === undefined){
-            setss_create_opt(exist_opts.ss[index])
+            setss_create_opt(exist_opts.ss.ss[index])
         }
         exist_opts.setss({
             type:"DELETE",
             index:index
         })
     }
-    const JSX_EXIST_OPTS = exist_opts.ss.map((item,index)=>{
+    const JSX_EXIST_OPTS = exist_opts.ss.ss.map((item,index)=>{
         return <div key={index}>
             <STR_TO_H opt_name={available_opts[item] as a.opt_name}/>
             <BUTTON_CLICK name={"delete" as a.name} func_event={(()=>{
@@ -148,7 +145,7 @@ export default function OPT_EXIST_ARR(
         <STR_TO_H opt_name={opt_name}/>
         <OPT_INPUT 
             opt_name={"Select Mode" as a.opt_name} 
-            available_opts={nvarr_to_avarr(ss_available_opts)} 
+            available_opts={nvarr_to_avarr(ss_available_opts.ss)} 
             ss_mode={{ss:ss_create_opt, setss:setss_create_opt}}
             is_search_bar={is_search_bar}
             auto_update_opts={true}
@@ -157,10 +154,10 @@ export default function OPT_EXIST_ARR(
             name={(
                 value_to_varr(
                     ss_create_opt,
-                    ss_available_opts,
+                    ss_available_opts.ss,
                 ) ? "Create "+((value_to_varr(
                     ss_create_opt,
-                    ss_available_opts,
+                    ss_available_opts.ss,
                 )) as a.name_value<number>)?.name
                 : "Unable to create new option"
             ) as a.name}
