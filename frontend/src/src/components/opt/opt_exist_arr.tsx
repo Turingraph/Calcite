@@ -67,7 +67,11 @@ export default function OPT_EXIST_ARR(
 ){
     const [ss_available_opts, setss_available_opts] = useReducer(
         act_arrname,
-        {ss:func_exclude_opt(available_opts, exist_opts.ss.ss)} as ss_arrname_t<a.name_value<number>[], keyof a.name_value<number>>
+        {
+            sort_attr:"name",
+            sort_mode:"SORT",
+            ss:func_exclude_opt(available_opts, exist_opts.ss.ss)
+        } as ss_arrname_t<a.name_value<number>[], keyof a.name_value<number>>
     )
     const [ss_create_opt, setss_create_opt] = useState<number|undefined>(
         func_create_opt(ss_available_opts.ss, 0)
