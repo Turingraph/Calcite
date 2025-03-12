@@ -1,4 +1,3 @@
-import { useReducer } from "react"
 import * as oarr from "./func_arrobj"
 
 export type ss_arr_t<t> = {
@@ -7,9 +6,8 @@ export type ss_arr_t<t> = {
 }
 
 export type act_arr_t<t> = {
+    type:"SORT",
     sort?:"NO_SORT"|"SORT"|"REVERSE"|undefined
-} & ({
-    type:"SORT"
 } | {
     type:"PUSH",
     input:t
@@ -28,7 +26,8 @@ export type act_arr_t<t> = {
     input: t[],
 } | {
     type: "SET_AUTO_SORT",
-})
+    sort?:"NO_SORT"|"SORT"|"REVERSE"|undefined
+}
 
 export default function act_arr<t>
     (prev_arr:ss_arr_t<t>, action:act_arr_t<t>){
@@ -43,7 +42,7 @@ export default function act_arr<t>
             const C_COPY_ARR = [...prev_arr.ss]
             const C_SORT_ARR = oarr.sort_arr(
                 C_COPY_ARR,
-                action.sort)
+                action.sort ? action.sort : prev_arr.sort)
             return {
                 ...prev_arr,
                 ss:C_SORT_ARR
@@ -120,10 +119,10 @@ export default function act_arr<t>
     }
 }
 
-export function useArr<t>(init:ss_arr_t<t>){
-    const [ss_arr, setss_arr] = useReducer(act_arr, init);
-    return [ss_arr, setss_arr]
-}
+// export function useArr<t>(init:ss_arr_t<t>){
+//     const [ss_arr, setss_arr] = useReducer(act_arr, init);
+//     return [ss_arr, setss_arr]
+// }
 
 /*
 https://stackoverflow.com/questions/69678018/

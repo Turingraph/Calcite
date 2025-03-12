@@ -3,14 +3,14 @@ import * as a from "../type/alias"
 
 // TYPE : "SORT"
 
-export type sort_t<t extends object[], k extends keyof t[number]> = {
+export type sort_arrobj_t<t extends object[], k extends keyof t[number]> = {
     attr:k,
     mode:"NO_SORT"|"SORT"|"REVERSE"
 }
 
-export function sort_arr<t extends object[], k extends keyof t[number]>(
-    arr:t,
-    sort:sort_t<t,k>|undefined
+export function sort_arr<t>(
+    arr:t[],
+    sort:"NO_SORT"|"SORT"|"REVERSE"|undefined
 ){
     // https://stackoverflow.com/questions/21687907/
     // typescript-sorting-an-array
@@ -21,21 +21,57 @@ export function sort_arr<t extends object[], k extends keyof t[number]>(
     if(sort === undefined){
         return arr
     }
-    switch(sort.mode){
+    switch(sort){
         case "SORT":{
-            return arr.sort((n0, n1) => (n0 as t[number])[sort.attr] < (n1 as t[number])[sort.attr] ? -1 : 1)
+            return arr.sort((n0, n1) => n0 < n1 ? -1 : 1)
         }
         case "REVERSE":{
-            return arr.sort((n0, n1) => (n0 as t[number])[sort.attr] > (n1 as t[number])[sort.attr] ? -1 : 1)
+            return arr.sort((n0, n1) => n0 > n1 ? -1 : 1)
         }
         case "NO_SORT":{
             return arr
         }
         default:{
             console.log("--------------------------------------------------------------------")
-            console.log("The sort.mode of sort_arr is invalid.")
-            console.log("The sort.mode should be \"SORT\"|\"REVERSE\"|\"NO_SORT\"")
-            console.log("Warning from frontend/ src/ src/ hook/ funcObjArr.tsx/ function sort_arr")
+            console.log("The sort is invalid.")
+            console.log("The sort should be \"SORT\"|\"REVERSE\"|\"NO_SORT\"")
+            console.log("Warning from frontend/ src/ src/ hook/ func_arrobj.tsx/ function sort_arr")
+            console.log("--------------------------------------------------------------------")
+            return arr
+        }
+    }
+}
+
+
+export function sort_arrobj<t extends object[], k extends keyof t[number]>(
+    arr:t,
+    sort_mode:undefined|"NO_SORT"|"SORT"|"REVERSE",
+    sort_attr:undefined|k
+){
+    // https://stackoverflow.com/questions/21687907/
+    // typescript-sorting-an-array
+
+    // https://stackoverflow.com/questions/26871106/
+    // check-if-all-elements-in-array-are-strings
+
+    if(sort_attr === undefined || sort_mode === undefined){
+        return arr
+    }
+    switch(sort_mode){
+        case "SORT":{
+            return arr.sort((n0, n1) => (n0 as t[number])[sort_attr] < (n1 as t[number])[sort_attr] ? -1 : 1)
+        }
+        case "REVERSE":{
+            return arr.sort((n0, n1) => (n0 as t[number])[sort_attr] > (n1 as t[number])[sort_attr] ? -1 : 1)
+        }
+        case "NO_SORT":{
+            return arr
+        }
+        default:{
+            console.log("--------------------------------------------------------------------")
+            console.log("The sort_mode is invalid.")
+            console.log("The sort_mode should be \"SORT\"|\"REVERSE\"|\"NO_SORT\"")
+            console.log("Warning from frontend/ src/ src/ hook/ func_arrobj.tsx/ function sort_arrobj")
             console.log("--------------------------------------------------------------------")
             return arr
         }
