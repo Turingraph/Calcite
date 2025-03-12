@@ -20,7 +20,7 @@ export default function SEARCH_BAR<t extends {[x: string]: unknown}>(
 }:{
     opt_name?:a.opt_name,
     read_only_arr:(t|string)[],
-    setss_select_arr:setss_arrobj_t<a.attr_value<number>[]>
+    setss_select_arr:setss_arrobj_t<a.attr_value<number>[], keyof a.attr_value<number>>
 }){
     const [ss_search_text, setss_search_text] = useState<string>("")
 

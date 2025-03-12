@@ -1,5 +1,5 @@
 import React, { JSX, useLayoutEffect, useReducer, useRef } from "react";
-import act_arrobj, { setss_arrobj_t } from "../../array/act_arrobj";
+import act_arrobj, { setss_arrobj_t, ss_arrobj_t } from "../../array/act_arrobj";
 import { arr_to_opt } from "../../convert/arr";
 import { value_to_varr } from "../../convert/attr";
 import { STR_TO_H } from "../../convert/str";
@@ -41,34 +41,38 @@ export default function OPT_INPUT(
 
     const [ss_show_opts, setss_show_opts] = useReducer(
         act_arrobj,
-        arr_to_opt(available_opts) as a.attr_value<number>[]
+        {
+            sort_attr:undefined,
+            sort_mode:undefined,
+            ss:arr_to_opt(available_opts) as a.attr_value<number>[]
+        } as ss_arrobj_t<a.attr_value<number>[], keyof a.attr_value<number>>
     )
-    const ref_show_opts: React.RefObject<a.attr_value<number>[]> = useRef(ss_show_opts)
+    const ref_show_opts = useRef(ss_show_opts.ss)
 
     // Update ss_mode to be the first available ss_show_opts option, 
     // everytime when ss_show_opt is pushed.
     useLayoutEffect(()=>{
-        if(ref_show_opts.current !== ss_show_opts && auto_update_opts === true){
+        if(ref_show_opts.current !== ss_show_opts.ss && auto_update_opts === true){
             let i = 0
-            while(i < ss_show_opts.length){
-                if(ss_show_opts[i] !== undefined){
-                    ss_mode.setss(ss_show_opts[i].value)
-                    i = ss_show_opts.length
+            while(i < ss_show_opts.ss.length){
+                if(ss_show_opts.ss[i] !== undefined){
+                    ss_mode.setss(ss_show_opts.ss[i].value)
+                    i = ss_show_opts.ss.length
                 }
                 i+=1
             }
-            ref_show_opts.current = ss_show_opts
+            ref_show_opts.current = ss_show_opts.ss
         }
     },[ss_show_opts, ss_mode, auto_update_opts])
 
     // The ss_show_opts is updated every time the available_opts is updated.
     useLayoutEffect(()=>{
-        if(ref_show_opts.current !== ss_show_opts && auto_update_opts === true){
+        if(ref_show_opts.current !== ss_show_opts.ss && auto_update_opts === true){
             setss_show_opts({
                 type:"SET",
                 input:arr_to_opt(available_opts)
             })
-            ref_show_opts.current = ss_show_opts
+            ref_show_opts.current = ss_show_opts.ss
         }
     }, [available_opts, ss_show_opts, auto_update_opts])
 
@@ -80,7 +84,7 @@ export default function OPT_INPUT(
 
     // PREVIOUS: const JSX_OPTS = ss_show_opts.reverse().map((item,index)=>{
     // What does .reverse() do and is it important ?
-    const JSX_OPTS = ss_show_opts.map((item,index)=>{
+    const JSX_OPTS = ss_show_opts.ss.map((item,index)=>{
         if(item !== undefined && value_to_varr(item.value, arr_to_opt(available_opts)) !== undefined){
             return (<option key={index} value={item.value}>{item.attr}</option>)
         }
@@ -90,7 +94,7 @@ export default function OPT_INPUT(
             opt_name={undefined as a.opt_name}
             read_only_arr={available_opts}
             setss_select_arr={
-                setss_show_opts as setss_arrobj_t<a.attr_value<number>[]>
+                setss_show_opts as setss_arrobj_t<a.attr_value<number>[], keyof a.attr_value<number>>
             }
         />
     return (<>
