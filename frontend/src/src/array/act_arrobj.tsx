@@ -1,3 +1,5 @@
+import { useReducer } from "react"
+import * as a from "../type/alias"
 import * as oarr from "./func_arrobj"
 // import { useReducer } from "react"
 
@@ -188,41 +190,60 @@ export type setss_arrobj_t<
 
 //-------------------------------------------------------------------------
 
-// export function act_arrname<
-//     t extends {name:a.name}[], 
-//     k extends keyof t[number], 
-//     o extends t[number][k]>(prev_arr:t, action:(act_arrobj_t<t,k,o> | {type:"COPY", index:number})){
-//     switch (action.type){
-//         case "COPY":{
-//             const C_COPY_ARR = [...prev_arr.ss]
-//             const C_UPDATE = oarr.copy_unique_item(
-//                 C_COPY_ARR,
-//                 action.index
-//             )
-//             return C_UPDATE as t
-//         }
-//         default: {
-//             if(action.sort === undefined){
-//                 action.sort = {
-//                     attr:"name",
-//                     mode:"SORT"
-//                 } as oarr.sort_arrobj_t<t,k>
-//             }
-//             return act_arrobj(prev_arr, action)
-//         }
-//     }
-// }
+export type ss_arrname_t<
+t extends {name:a.name}[], 
+k extends keyof t[number]> = {
+    ss:t,
+    sort_mode?:undefined|"NO_SORT"|"SORT"|"REVERSE",
+    sort_attr?:undefined|k
+}
 
-// export type use_arrname_t<
-//     t extends {name:a.name}[]> = {
-//     ss:t,
-//     setss:React.ActionDispatch<[
-//         action: (act_arrobj_t<t, keyof t[number], t[number][keyof t[number]]> | {type:"COPY", index:number})
-//     ]>
-// }
+export function act_arrname<
+    t extends {name:a.name}[], 
+    k extends keyof t[number], 
+    o extends t[number][k]>(prev_arr:ss_arrobj_t<t,k>, action:(act_arrobj_t<t,k,o> | {type:"COPY", index:number})){
+    switch (action.type){
+        case "COPY":{
+            const C_COPY_ARR = [...prev_arr.ss]
+            const C_UPDATE = oarr.copy_unique_item(
+                C_COPY_ARR,
+                action.index
+            )
+            return {
+                ...prev_arr,
+                ss:C_UPDATE as t
+            }
+        }
+        default: {
+            const C_COPY_ARR = [...prev_arr.ss]
+            return {
+                ...prev_arr,
+                ss:C_COPY_ARR
+            } as ss_arrobj_t<t,k>
+        }
+    }
+}
 
-// export type setss_arrname_t<
-//     t extends {name:a.name}[]
-// > = React.ActionDispatch<[
-//     action: (act_arrobj_t<t, keyof t[number], t[number][keyof t[number]]> | {type:"COPY", index:number})
-// ]>
+export function useArr<t extends {name:a.name}[],
+k extends keyof t[number]>(init:ss_arrname_t<t,k>){
+    const [ss_arr, setss_arr] = useReducer(act_arrname, init);
+    return [ss_arr, setss_arr]
+}
+
+export type use_arrname_t<
+    t extends {name:a.name}[],
+    k extends keyof t[number]> = {
+    ss:ss_arrobj_t<t, k>,
+    setss:React.ActionDispatch<[action: {
+        type: "COPY";
+        index: number;
+    } | act_arrobj_t<t, k, t[number][k]>]>
+}
+
+export type setss_arrname_t<
+    t extends {name:a.name}[],
+    k extends keyof t[number]
+> = React.ActionDispatch<[action: {
+    type: "COPY";
+    index: number;
+} | act_arrobj_t<t, k, t[number][k]>]>
