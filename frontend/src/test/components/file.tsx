@@ -1,5 +1,5 @@
 import React, { useReducer, useState } from "react";
-import act_arr from "../../src/array/act_arr";
+import act_arr, {ss_arr_t} from "../../src/array/act_arr";
 import PANEL from "../../src/components/asset/panel";
 import FILE_OPEN from "../../src/components/file/file_open";
 import FILE_SAVE from "../../src/components/file/file_save";
@@ -15,8 +15,9 @@ TO DO LIST
 export function TEST_FILE_OPEN(){
     const [ss_files, setss_files] = useReducer(
         act_arr,
-        [] as File[])
-    const JSX_ARR = ss_files.map((item,index)=>{
+        {ss:[] as File[]} as ss_arr_t<File>
+    )
+    const JSX_ARR = ss_files.ss.map((item,index)=>{
         const DAY = file_to_date(item)
         return <div key={index}>
             <h1>Name: {item.name}</h1>
@@ -31,7 +32,7 @@ export function TEST_FILE_OPEN(){
     />
     <PANEL jsx_element={<>{JSX_ARR}</>}/>
     <FILE_SAVE
-        files={ss_files}
+        files={ss_files.ss}
         multiple={true}
     />
     </>

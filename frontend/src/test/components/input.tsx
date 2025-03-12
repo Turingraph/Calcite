@@ -1,5 +1,5 @@
 import React ,{ JSX, useReducer, useState } from "react";
-import act_arrobj from "../../src/array/act_arrobj";
+import act_arrobj, { ss_arrobj_t } from "../../src/array/act_arrobj";
 import INPUT_COMBINE from "../../src/components/input/input_combine";
 import INPUT_FORM from "../../src/components/input/input_form";
 import INPUT_STR from "../../src/components/input/input_str";
@@ -19,7 +19,7 @@ const OPT_LEVEL = ["Beginner", "Elementary", "Intermediate", "Advance", "Genius"
 export function TEST_INPUT_FORM(){
     const [ss_obj, setss_obj] = useReducer(
         act_arrobj,
-        [
+        {ss:[
             {attr:"Favorite Number No.0" as a.attr, value:DEFAULT_INPUT[0]},
             {attr:"Favorite Number No.1" as a.attr, value:DEFAULT_INPUT[1]},
             {attr:"Favorite Number No.2" as a.attr, value:DEFAULT_INPUT[2]},
@@ -27,7 +27,7 @@ export function TEST_INPUT_FORM(){
             {attr:"Mode" as a.attr, value:0},
             {attr:"Favorite Number No.3" as a.attr, value:DEFAULT_INPUT[3]},
             {attr:"Scientist" as a.attr, value:DEFAULT_INPUT[4]},
-        ] as a.attr_value<number|string>[]
+        ] as a.attr_value<number|string>[]} as ss_arrobj_t<a.attr_value<number|string>[], keyof a.attr_value<number|string>>
     )
     const JSX_INPUT_FORM:JSX.Element = <INPUT_FORM
         opt_name={"Vector Space" as a.opt_name}
@@ -43,7 +43,7 @@ export function TEST_INPUT_FORM(){
 export function TEST_INPUT_COMBINE(){
     const [ss_obj, setss_obj] = useReducer(
         act_arrobj,
-        [
+        {ss:[
             {attr:"Favorite Number No.0" as a.attr, value:DEFAULT_INPUT[0]},
             {attr:"Favorite Number No.1" as a.attr, value:DEFAULT_INPUT[1]},
             {attr:"Favorite Number No.2" as a.attr, value:DEFAULT_INPUT[2]},
@@ -51,7 +51,7 @@ export function TEST_INPUT_COMBINE(){
             {attr:"Mode" as a.attr, value:0},
             {attr:"Favorite Number No.3" as a.attr, value:DEFAULT_INPUT[3]},
             {attr:"Scientist" as a.attr, value:DEFAULT_INPUT[4]},
-        ] as a.attr_value<number|string>[]
+        ] as a.attr_value<number|string>[]} as ss_arrobj_t<a.attr_value<number|string>[], keyof a.attr_value<number|string>>
     )
     const JSX_INPUT_FORM:JSX.Element = <INPUT_COMBINE
         opt_name={"Vector Space" as a.opt_name}

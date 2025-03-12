@@ -1,5 +1,5 @@
-import React,{ JSX, useReducer, useState } from "react";
-import { act_arrname, use_arrname_t } from "../../src/array/act_arrobj";
+import React, { JSX, useReducer, useState } from "react";
+import { act_arrname, ss_arrname_t, use_arrname_t } from "../../src/array/act_arrobj";
 import * as oarr from "../../src/array/func_arrobj";
 import PANEL from "../../src/components/asset/panel";
 import BUTTON_CLICK from "../../src/components/button/button_click";
@@ -9,8 +9,8 @@ import OBJ_STR from "../../src/components/obj/obj_str";
 import * as a from '../../src/type/alias';
 import { character_t, CHARACTERS } from "../data";
 
-function func_delete_arr<t extends {name:a.name}[]>(input_arr:use_arrname_t<t>){
-    if(input_arr.ss.length > 1){
+function func_delete_arr<t extends {name:a.name}[]>(input_arr:use_arrname_t<t, keyof t[number]>){
+    if(input_arr.ss.ss.length > 1){
         input_arr.setss({
             type:"DELETE",
             index:0
@@ -18,8 +18,8 @@ function func_delete_arr<t extends {name:a.name}[]>(input_arr:use_arrname_t<t>){
     }
 }
 
-function func_create_arr<t extends {name:a.name}[]>(input_arr:use_arrname_t<t>){
-    if(input_arr.ss.length > 0){
+function func_create_arr<t extends {name:a.name}[]>(input_arr:use_arrname_t<t, keyof t[number]>){
+    if(input_arr.ss.ss.length > 0){
         input_arr.setss({
             type:"COPY",
             index:0
@@ -30,11 +30,15 @@ function func_create_arr<t extends {name:a.name}[]>(input_arr:use_arrname_t<t>){
 export function TEST_OBJ_SELF(){
     const [ss_arr, setss_arr] = useReducer(
         act_arrname,
-        oarr.sort_arr(CHARACTERS, {attr:"name", mode:"SORT"}) as character_t[]
+        {
+            sort_mode:"SORT",
+            sort_attr:"name",
+            ss:oarr.sort_arrobj(CHARACTERS, "SORT", "name") as character_t[]
+        } as ss_arrname_t<character_t[], keyof character_t>
     )
     const [ss_select, setss_select] = useState<number|undefined>(undefined)
 
-    const JSX_ARR = ss_arr.map((item,index)=>{
+    const JSX_ARR = ss_arr.ss.map((item,index)=>{
         return <div key={index}>
             <OBJ_SELF 
             input_arr = {{ss:ss_arr, setss:setss_arr}}
@@ -67,9 +71,13 @@ export function TEST_OBJ_SELF(){
 export function TEST_OBJ_STR(){
     const [ss_arr, setss_arr] = useReducer(
         act_arrname,
-        oarr.sort_arr(CHARACTERS, {attr:"name", mode:"SORT"}) as character_t[]
+        {
+            sort_attr:"name",
+            sort_mode:"SORT",
+            ss:oarr.sort_arrobj(CHARACTERS, "SORT", "name") as character_t[]
+        } as ss_arrname_t<character_t[],keyof character_t>
     )
-    const JSX_ELEMENTS:JSX.Element[] = ss_arr.map((item,index)=>{
+    const JSX_ELEMENTS:JSX.Element[] = ss_arr.ss.map((item,index)=>{
         return <div key={index}>
             <OBJ_STR
                 input_arr={{ss:ss_arr,setss:setss_arr}}
@@ -98,9 +106,13 @@ export function TEST_OBJ_STR(){
 export function TEST_OBJ_BOOL(){
     const [ss_arr, setss_arr] = useReducer(
         act_arrname,
-        oarr.sort_arr(CHARACTERS, {attr:"name", mode:"SORT"}) as character_t[]
+        {
+            sort_attr:"name",
+            sort_mode:"SORT",
+            ss:oarr.sort_arrobj(CHARACTERS, "SORT", "name") as character_t[]
+        } as ss_arrname_t<character_t[],keyof character_t>
     )
-    const JSX_ARR = ss_arr.map((item, index)=>{
+    const JSX_ARR = ss_arr.ss.map((item, index)=>{
         return <div key={index}>
         <h1>Name: {item.name}</h1>
         <h1>Gander: {item.is_male ? "Male" : "Female"}</h1>

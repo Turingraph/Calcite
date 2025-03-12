@@ -1,6 +1,7 @@
-import React,{ useReducer, useState } from "react";
-import act_arr from "../../src/array/act_arr";
-import act_arrobj, { act_arrname } from "../../src/array/act_arrobj";
+import React, { useReducer, useState } from "react";
+import act_arr, { ss_arr_t } from "../../src/array/act_arr";
+import act_arrobj, { act_arrname, ss_arrname_t } from "../../src/array/act_arrobj";
+import * as oarr from "../../src/array/func_arrobj";
 import PANEL from "../../src/components/asset/panel";
 import OBJ_BOOL from "../../src/components/obj/obj_bool";
 import OBJ_STR from "../../src/components/obj/obj_str";
@@ -9,12 +10,13 @@ import OPT_INPUT from "../../src/components/opt/opt_input";
 import SEARCH_BAR from "../../src/components/opt/search_bar";
 import SEARCH_OBJ from "../../src/components/opt/search_obj";
 import * as a from '../../src/type/alias';
-import { CHARACTERS, OPT_NAME } from "../data";
+import { character_t, CHARACTERS, OPT_NAME } from "../data";
 
 export function TEST_OPT_EXIST_ARR(){
     const [ss_arr, setss_arr] = useReducer(
         act_arr,
-        [0])
+        {ss:[0]} as ss_arr_t<number>
+    )
     const AVAILABLE_OPTS = OPT_NAME
     return <OPT_EXIST_ARR 
         opt_name={"List" as a.opt_name}
@@ -39,14 +41,14 @@ export function TEST_OPT_INPUT(){
 export function TEST_SEARCH_BAR(){
     const [ss_name, setss_name] = useReducer(
         act_arrobj,
-        OPT_NAME.map((item,index)=>{
+        {ss:OPT_NAME.map((item,index)=>{
             return {
                 attr:item as a.attr,
                 value:index
             } as a.attr_value<number>
-        })
+        })} as ss_arr_t<a.attr_value<number>>
     )
-    const JSX_ELEMENT = ss_name.map((item,index)=>{return <h1 key={index}>{item?item.attr:""}</h1>})
+    const JSX_ELEMENT = ss_name.ss.map((item,index)=>{return <h1 key={index}>{item?item.attr:""}</h1>})
     return <>
         <SEARCH_BAR 
         opt_name={"Your name" as a.opt_name}
@@ -60,9 +62,13 @@ export function TEST_SEARCH_BAR(){
 export function TEST_SEARCH_OBJ(){
     const [ss_arr, setss_arr] = useReducer(
         act_arrname,
-        CHARACTERS
+        {
+            sort_mode:"SORT",
+            sort_attr:"name",
+            ss:oarr.sort_arrobj(CHARACTERS, "SORT", "name") as character_t[]
+        } as ss_arrname_t<character_t[], keyof character_t>
     )
-    const JSX_ARR = ss_arr.map((item,index)=>{
+    const JSX_ARR = ss_arr.ss.map((item,index)=>{
         return <>
         <OBJ_BOOL
                 name={"rule64" as a.name}
