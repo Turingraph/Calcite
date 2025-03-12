@@ -7,11 +7,11 @@ import { STR_TO_H } from "../../convert/str";
 import { arr_to_value } from "../../convert/attr";
 import { use_arrobj_t } from "../../array/act_arrobj";
 import "./index.css"
-import act_arr from "../../array/act_arr";
+import act_arr,{ss_arr_t} from "../../array/act_arr";
 
 export type input_form_t = {
     opt_name?:a.opt_name|undefined
-    input_arr:use_arrobj_t<a.attr_value<string|number>[]>
+    input_arr:use_arrobj_t<a.attr_value<string|number>[], keyof a.attr_value<string|number>>
     no_input_fields?:string[]
     func_activate?:a.func_event
     is_undo?:boolean
@@ -24,11 +24,17 @@ export default function INPUT_FORM({
     func_activate = (()=>undefined) as a.func_event,
     is_undo = false
 }:input_form_t){
-    const ref_DEFAULT_ARR = useRef(input_arr.ss)
-    const [ss_texts, setss_texts] = useReducer(act_arr, arr_to_value(input_arr.ss) as string[])
+    const ref_DEFAULT_ARR = useRef(input_arr.ss.ss)
+    const [ss_texts, setss_texts] = useReducer(
+        act_arr, 
+        {
+            sort:undefined,
+            ss:arr_to_value(input_arr.ss.ss) as string[]
+        } as ss_arr_t<string>
+    )
     const [ss_update, setss_update] = useState<0|1>(0)
     useEffect(()=>{
-        const UPDATE_TEXT = arr_to_value(input_arr.ss) as string[]
+        const UPDATE_TEXT = arr_to_value(input_arr.ss.ss) as string[]
         setss_texts({type:"SET", input:UPDATE_TEXT})
         setss_update(0)
     }, [ss_update, input_arr])
@@ -45,11 +51,11 @@ export default function INPUT_FORM({
     function func_set_ok(){
         // https://www.geeksforgeeks.org/
         // how-to-resolve-usestate-set-method-is-not-reflecting-change-immediately/
-        input_arr.ss.forEach((item, index)=>{
+        input_arr.ss.ss.forEach((item, index)=>{
             if(typeof ref_DEFAULT_ARR.current[index].value === "number" && typeof item.value === "number"){
                 const CONST_INPUT = str_to_default_num(
                     ref_DEFAULT_ARR.current[index].value as number,
-                    ss_texts[index]
+                    ss_texts.ss[index]
                 )
                 input_arr.setss({
                     type:"EDIT_ATTR",
@@ -63,7 +69,7 @@ export default function INPUT_FORM({
                     type:"EDIT_ATTR",
                     index:index,
                     attr:"value",
-                    input:ss_texts[index]
+                    input:ss_texts.ss[index]
                 })
             }
         })
@@ -73,10 +79,10 @@ export default function INPUT_FORM({
     function func_set_cancel(){
         setss_texts({
             type:"SET", 
-            input:arr_to_value(input_arr.ss) as string[]
+            input:arr_to_value(input_arr.ss.ss) as string[]
         })
     }
-    const JSX_ELEMENTS = input_arr.ss.map((item,index)=>{
+    const JSX_ELEMENTS = input_arr.ss.ss.map((item,index)=>{
         // https://stackoverflow.com/questions/28329382/
         // understanding-unique-keys-for-array-children-in-react-js
         if(no_input_fields.includes((item.attr as string))){
