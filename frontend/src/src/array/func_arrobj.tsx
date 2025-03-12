@@ -1,12 +1,20 @@
 import * as a from "../type/alias"
+
+export function unique_arr<t>(arr:t[], unique:undefined|boolean = undefined){
+    // https://www.geeksforgeeks.org/
+    // how-to-convert-array-of-objects-into-unique-array-of-objects-in-javascript/
+    if(unique === true){
+        return arr.filter(
+            (value, index, self) => self.findIndex((obj) =>
+                JSON.stringify(obj) === JSON.stringify(value)) === index
+        );
+    }
+    return arr
+}
+
 //-------------------------------------------------------------------------
 
 // TYPE : "SORT"
-
-export type sort_arrobj_t<t extends object[], k extends keyof t[number]> = {
-    attr:k,
-    mode:"NO_SORT"|"SORT"|"REVERSE"
-}
 
 export function sort_arr<t>(
     arr:t[],
@@ -108,6 +116,8 @@ export function edit_attr<
         attr:k,
     ){
     const UPDATE_ARR = [...arr]
+    // console.log("index",index)
+    // console.log("UPDATE_ARR.length",UPDATE_ARR.length)
     if(index >= 0 && index < UPDATE_ARR.length){
         (UPDATE_ARR[index] as t[number])[attr] = input
     }
@@ -149,13 +159,15 @@ export function copy_unique_item<
     arr:t,
     index:number,
 ){
-    if(index >= 0){
+    if(index >= 0 && index < arr.length){
         const UPDATE_ARR = [...arr]
         const NEW_OBJ:t[number] = JSON.parse(JSON.stringify(UPDATE_ARR[index]))
+        const IS_DOT = NEW_OBJ.name.includes(".")
         const NAME = NEW_OBJ.name.split(".")
-        const NEW_NAME = NAME[0] + "_clone." + NAME.slice(1, NAME.length)
+        const NEW_NAME = NAME[0] + "_clone" + (IS_DOT ? "." : "") + NAME.slice(1, NAME.length)
         NEW_OBJ.name = NEW_NAME as a.name
         UPDATE_ARR.splice(index + 1, 0, NEW_OBJ)
         return UPDATE_ARR
     }
+    return arr
 }
