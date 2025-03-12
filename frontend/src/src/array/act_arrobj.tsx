@@ -145,7 +145,7 @@ o extends t[number][k]>
             } as ss_arrobj_t<t,k>
         } 
         case "SET": {
-            const C_COPY_ARR = [...prev_arr.ss]
+            const C_COPY_ARR = [...action.input]
             const C_SORT_ARR = oarr.sort_arrobj(
                 C_COPY_ARR,
                 prev_arr.sort_mode,

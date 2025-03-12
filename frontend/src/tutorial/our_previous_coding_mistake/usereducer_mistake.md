@@ -1,6 +1,6 @@
 # Mistake
 
-The Mistake we make is use `useReducer` like this
+## Wrong Example
 
 ```
 export type act_arr_t<t> = {
@@ -21,7 +21,9 @@ export default function act_arr<t>
         ...
 ```
 
-In stead of coding like this
+## Correct Example
+
+Make sure that every case branch copies all of the existing fields when returning the new state:
 
 ```
 export type act_arr_t<t> = {
@@ -50,8 +52,6 @@ export default function act_arr<t>
         ...
 ```
 
-Which does not the tricker change.
-
-Reference
+## Reference
 -   https://react.dev/reference/react/useReducer#ive-dispatched-an-action-but-the-screen-doesnt-update
 

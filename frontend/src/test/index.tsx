@@ -26,7 +26,7 @@ import {
     TEST_SEARCH_OBJ,    // UNTESTED
     TEST_OPT_EXIST_ARR, // UNTESTED
     TEST_OPT_INPUT,     // UNTESTED
-    TEST_SEARCH_BAR     // UNTESTED
+    TEST_SEARCH_BAR     // OK
 } from "./components/opt";
 
 import {
@@ -74,6 +74,6 @@ import {
 
 export default function TEST(){
     return <>
-    <TEST_BUTTON_TABS/>
+    <TEST_SEARCH_BAR/>
     </>
 }

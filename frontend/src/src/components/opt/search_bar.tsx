@@ -44,6 +44,11 @@ export default function SEARCH_BAR<t extends {[x: string]: unknown}>(
             type:"SET",
             input:UPDATE_SEARCH_TEXT
         })
+        setss_select_arr({
+            type:"SORT",
+            sort_attr:"attr",
+            sort_mode:"SORT"
+        })
     },[ss_search_text, setss_select_arr, JSON.stringify(read_only_arr)])
 
     return (<>

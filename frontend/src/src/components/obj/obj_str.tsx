@@ -68,7 +68,7 @@ export default function OBJ_STR<
             if (typeof C_THIS_ITEM[item] === "number"){
                 if (typeof ss_defaults.ss[index] === "number"){
                     let_input = str_to_default_num(
-                        ss_defaults.ss[index] as number,
+                        ss_defaults.ss[index] as unknown as number,
                         let_input
                     ) as number
                 }
