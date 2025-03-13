@@ -44,7 +44,7 @@ export default function OBJ_STR<
             type:"SET",
             input:UPDATE
         })
-    }, [input_arr.ss, this_item])
+    }, [input_arr.ss, this_item, attrs])
 
     // Update ss_defaults (a.k.a. default value of input_arr.ss[this_index])
     // every time the input_arr.ss is puch or deleted.
@@ -59,7 +59,7 @@ export default function OBJ_STR<
             })
         }
         ref_pigeon_hole.current = input_arr.ss.ss.length
-    },[ss_texts, this_item, input_arr.ss])
+    },[ss_texts, this_item, input_arr.ss, attrs, default_value])
 
     const C_THIS_ITEM : t[number] = input_arr.ss.ss[this_item]
 
