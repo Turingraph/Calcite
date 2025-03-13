@@ -11,6 +11,25 @@ export function arr_to_value<t>(input:(a.attr_value<t>|a.name_value<t>)[]){
     })
 }
 
+export function avarr_to_index<t>(arr:a.attr_value<t>[], attr:string){
+    for(let i = 0; i < arr.length; i++){
+        if (attr === arr[i].attr){
+            return i
+        }
+    }
+    return undefined
+}
+
+export function nvarr_to_index<t extends a.name_value<t>[]>(arr:t, name:a.name|string){
+    for(let i = 0; i < arr.length; i++){
+        if (name === arr[i].name){
+            return i
+        }
+    }
+    return undefined
+}
+
+
 export function avarr_to_str<t>(input:a.attr_value<t>[]){
     return input.map((item)=>{
         return item.attr

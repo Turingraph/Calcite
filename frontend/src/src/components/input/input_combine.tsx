@@ -1,6 +1,6 @@
 import React, { JSX } from "react";
 import { use_arrobj_t } from "../../array/act_arrobj";
-import { str_to_avarr } from "../../convert/attr";
+import { avarr_to_index, str_to_avarr } from "../../convert/attr";
 import { STR_TO_H } from "../../convert/str";
 import * as a from "../../type/alias";
 import OPT_INPUT from "../opt/opt_input";
@@ -34,8 +34,9 @@ export default function INPUT_COMBINE({
     let jsx_input_opt:(JSX.Element|undefined)[]|undefined = [<></>]
     if (input_opt.length > 0 && input_str !== undefined){
         jsx_input_opt = input_opt.map((item, index:number)=>{
+            const C_ITEM_INDEX = avarr_to_index(input_str.ss.ss, item.attr)
             const CONST_ITEM = str_to_avarr(item.attr, input_str.ss.ss)
-            if(CONST_ITEM === undefined || typeof CONST_ITEM.value !== "number"){
+            if(C_ITEM_INDEX === undefined || CONST_ITEM === undefined || typeof CONST_ITEM.value !== "number"){
                 return <div key={index}></div>
             }
             return <div key={index}>
@@ -45,7 +46,7 @@ export default function INPUT_COMBINE({
                 ss_mode={{ss:CONST_ITEM.value, setss:((e:number)=>{
                     input_str.setss({
                         type:"EDIT_ATTR",
-                        index:index,
+                        index:C_ITEM_INDEX,
                         attr:"value",
                         input: e
                     })

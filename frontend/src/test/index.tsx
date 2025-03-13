@@ -11,21 +11,21 @@ import {
 } from "./components/button";
 
 import { 
-    TEST_OBJ_SELF,       // UNTESTED
+    TEST_OBJ_SELF,       // OK
     TEST_OBJ_STR,        // OK
     TEST_OBJ_BOOL        // OK
 } from "./components/obj";
 
 import {
-    TEST_INPUT_FORM,    // UNTESTED
-    TEST_INPUT_COMBINE, // ...
-    TEST_INPUT_STR,     // UNTESTED
+    TEST_INPUT_FORM,    // OK
+    TEST_INPUT_COMBINE, // OK
+    TEST_INPUT_STR,     // OK
 } from "./components/input";
 
 import {
     TEST_SEARCH_OBJ,    // UNTESTED
     TEST_OPT_EXIST_ARR, // UNTESTED
-    TEST_OPT_INPUT,     // UNTESTED
+    TEST_OPT_INPUT,     // OK
     TEST_SEARCH_BAR     // OK
 } from "./components/opt";
 
@@ -80,6 +80,6 @@ import {
 
 export default function TEST(){
     return <>
-    <TEST_OBJ_STR/>
+    <TEST_SEARCH_OBJ/>
     </>
 }

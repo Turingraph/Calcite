@@ -54,7 +54,7 @@ export function TEST_OBJ_SELF(){
             <OBJ_STR
                 input_arr={{ss:ss_arr, setss:setss_arr}}
                 this_item={index}
-                attrs={["skill"]}
+                attrs={["skill", "age"]}
                 is_undo={false}
             />
             </>}
