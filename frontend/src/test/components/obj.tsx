@@ -1,5 +1,5 @@
 import React, { JSX, useReducer, useState } from "react";
-import { act_arrname, ss_arrname_t, use_arrname_t } from "../../src/array/act_arrobj";
+import { act_arrname, INIT_ARRNAME, ss_arrname_t, use_arrname_t } from "../../src/array/act_arrobj";
 import * as oarr from "../../src/array/func_arrobj";
 import PANEL from "../../src/components/asset/panel";
 import BUTTON_CLICK from "../../src/components/button/button_click";
@@ -31,8 +31,7 @@ export function TEST_OBJ_SELF(){
     const [ss_arr, setss_arr] = useReducer(
         act_arrname,
         {
-            sort_mode:"SORT",
-            sort_attr:"name",
+            ...INIT_ARRNAME,
             ss:oarr.sort_arrobj(CHARACTERS, "SORT", "name") as character_t[]
         } as ss_arrname_t<character_t[], keyof character_t>
     )
@@ -72,8 +71,7 @@ export function TEST_OBJ_STR(){
     const [ss_arr, setss_arr] = useReducer(
         act_arrname,
         {
-            sort_attr:"name",
-            sort_mode:"SORT",
+            ...INIT_ARRNAME,
             ss:oarr.sort_arrobj(CHARACTERS, "SORT", "name") as character_t[]
         } as ss_arrname_t<character_t[],keyof character_t>
     )
@@ -107,9 +105,7 @@ export function TEST_OBJ_BOOL(){
     const [ss_arr, setss_arr] = useReducer(
         act_arrname,
         {
-            sort_attr:"name",
-            sort_mode:"SORT",
-            ss:oarr.sort_arrobj(CHARACTERS, "SORT", "name") as character_t[]
+            ss:oarr.sort_arrobj(CHARACTERS, "SORT", "name") as character_t[],
         } as ss_arrname_t<character_t[],keyof character_t>
     )
     const JSX_ARR = ss_arr.ss.map((item, index)=>{

@@ -63,7 +63,7 @@ export default function OBJ_SELF<
         return <>
             <STR_TO_H opt_name={input_arr.ss.ss[this_item].name as a.opt_name}/>
             <BUTTON_CLICK
-                name={"RENAME" as a.name}
+                name={"rename" as a.name}
                 func_event={(()=>{func_select("RENAME")}) as a.func_event}
             />
             <BUTTON_CLICK

@@ -9,6 +9,12 @@ import * as oarr from "./func_arrobj"
 // How Did I Not Know This TypeScript Trick Earlier??!
 // https://youtu.be/9i38FPugxB8?si=G9EBCw2mXhiQ2dMz
 
+/*
+To Do Now
+1.  Add uniqueness in act_arr.tsx and test if it works.
+2.  check other UI components.
+*/
+
 export type ss_arrobj_t<
 t extends object[], 
 k extends keyof t[number]> = {

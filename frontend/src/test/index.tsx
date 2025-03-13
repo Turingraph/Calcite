@@ -7,13 +7,13 @@ import React from "react";
 import { 
     TEST_BUTTON_CLICK,  // OK
     TEST_BUTTON_TABS,   // OK
-    TEST_BUTTON_HISTORY // UNTESTED
+    TEST_BUTTON_HISTORY // OK
 } from "./components/button";
 
 import { 
     TEST_OBJ_SELF,       // UNTESTED
     TEST_OBJ_STR,        // UNTESTED
-    TEST_OBJ_BOOL        // UNTESTED
+    TEST_OBJ_BOOL        // OK
 } from "./components/obj";
 
 import {
@@ -72,8 +72,14 @@ import {
 
 //-------------------------------------------------------------------
 
+import { 
+    TEST_UNIQUE         // OK
+} from "./array";
+
+//-------------------------------------------------------------------
+
 export default function TEST(){
     return <>
-    <TEST_SEARCH_BAR/>
+    <TEST_OBJ_BOOL/>
     </>
 }

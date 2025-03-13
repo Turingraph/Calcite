@@ -2,12 +2,13 @@ import * as oarr from "./func_arrobj"
 
 export type ss_arr_t<t> = {
     sort?:"NO_SORT"|"SORT"|"REVERSE"|undefined,
-    ss:t[]
+    ss:t[],
+    unique?:boolean|undefined
 }
 
 export type act_arr_t<t> = {
     type:"SORT",
-    sort?:"NO_SORT"|"SORT"|"REVERSE"|undefined
+    sort?:"NO_SORT"|"SORT"|"REVERSE"|undefined,
 } | {
     type:"PUSH",
     input:t
@@ -26,7 +27,10 @@ export type act_arr_t<t> = {
     input: t[],
 } | {
     type: "SET_AUTO_SORT",
-    sort?:"NO_SORT"|"SORT"|"REVERSE"|undefined
+    sort?:"NO_SORT"|"SORT"|"REVERSE"|undefined,
+    unique?:undefined|boolean
+} | {
+    type:"UNIQUE"
 }
 
 export default function act_arr<t>
@@ -35,28 +39,48 @@ export default function act_arr<t>
         case "SET_AUTO_SORT":{
             return {
                 ...prev_arr,
-                sort:action.sort
+                sort:action.sort,
+                unique:action.unique
             }
         }
         case "SORT": { 
             const C_COPY_ARR = [...prev_arr.ss]
-            const C_SORT_ARR = oarr.sort_arr(
+            const C_UNIQUE_ARR = oarr.unique_arr(
                 C_COPY_ARR,
+                prev_arr.unique
+            )
+            const C_SORT_ARR = oarr.sort_arr(
+                C_UNIQUE_ARR,
                 action.sort ? action.sort : prev_arr.sort)
             return {
                 ...prev_arr,
                 ss:C_SORT_ARR
             } as ss_arr_t<t>
         } 
+        case "UNIQUE":{
+            const C_COPY_ARR = [...prev_arr.ss]
+            const C_UNIQUE_ARR = oarr.unique_arr(
+                C_COPY_ARR,
+                true
+            )
+            return {
+                ...prev_arr,
+                ss:C_UNIQUE_ARR
+            }
+        }
         case "EDIT": { 
             const C_COPY_ARR = [...prev_arr.ss]
-            const C_UPDATE = oarr.edit_item(
+            const C_UPDATE_ARR = oarr.edit_item(
                 C_COPY_ARR,
                 action.index,
                 action.input
             )
+            const C_UNIQUE_ARR = oarr.unique_arr(
+                C_UPDATE_ARR,
+                prev_arr.unique
+            )
             const C_SORT_ARR = oarr.sort_arr(
-                C_UPDATE,
+                C_UNIQUE_ARR,
                 prev_arr.sort
             )
             return {
@@ -66,12 +90,16 @@ export default function act_arr<t>
         } 
         case "PUSH": { 
             const C_COPY_ARR = [...prev_arr.ss]
-            const C_UPDATE = oarr.push_arr(
+            const C_UPDATE_ARR = oarr.push_arr(
                 C_COPY_ARR,
                 action.input
             )
+            const C_UNIQUE_ARR = oarr.unique_arr(
+                C_UPDATE_ARR,
+                prev_arr.unique
+            )
             const C_SORT_ARR = oarr.sort_arr(
-                C_UPDATE,
+                C_UNIQUE_ARR,
                 prev_arr.sort
             )
             return {
@@ -81,12 +109,12 @@ export default function act_arr<t>
         } 
         case "DELETE": { 
             const C_COPY_ARR = [...prev_arr.ss]
-            const C_UPDATE = oarr.delete_item(
+            const C_UPDATE_ARR = oarr.delete_item(
                 C_COPY_ARR,
                 action.index
             )
             const C_SORT_ARR = oarr.sort_arr(
-                C_UPDATE,
+                C_UPDATE_ARR,
                 prev_arr.sort
             )
             return {
@@ -95,8 +123,12 @@ export default function act_arr<t>
             } as ss_arr_t<t>
         } 
         case "SET": {
-            const C_SORT_ARR = oarr.sort_arr(
+            const C_UNIQUE_ARR = oarr.unique_arr(
                 action.input,
+                prev_arr.unique
+            )
+            const C_SORT_ARR = oarr.sort_arr(
+                C_UNIQUE_ARR,
                 prev_arr.sort
             )
             return {
