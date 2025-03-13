@@ -93,7 +93,7 @@ export default function INPUT_FORM({
         <INPUT_STR
             opt_name={undefined}
             input={{ 
-                ss: ss_texts, 
+                ss: ss_texts.ss[index], 
                 setss: ((e:string) => {
                     setss_texts({
                         type:"EDIT",
@@ -102,7 +102,6 @@ export default function INPUT_FORM({
                     })
                 }),
             } as unknown as a.use_state_t<string>}
-            index = {index}
         />
         </div>
     })

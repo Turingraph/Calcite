@@ -77,6 +77,7 @@ export function TEST_OBJ_STR(){
     )
     const JSX_ELEMENTS:JSX.Element[] = ss_arr.ss.map((item,index)=>{
         return <div key={index}>
+            <h1>Skill no.{index} : {item.skill}</h1>
             <OBJ_STR
                 input_arr={{ss:ss_arr,setss:setss_arr}}
                 this_item={index}

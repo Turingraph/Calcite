@@ -12,7 +12,7 @@ import {
 
 import { 
     TEST_OBJ_SELF,       // UNTESTED
-    TEST_OBJ_STR,        // UNTESTED
+    TEST_OBJ_STR,        // OK
     TEST_OBJ_BOOL        // OK
 } from "./components/obj";
 
@@ -80,6 +80,6 @@ import {
 
 export default function TEST(){
     return <>
-    <TEST_OBJ_BOOL/>
+    <TEST_OBJ_STR/>
     </>
 }
