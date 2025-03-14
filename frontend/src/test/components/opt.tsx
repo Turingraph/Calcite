@@ -68,8 +68,9 @@ export function TEST_SEARCH_OBJ(){
             ss:oarr.sort_arrobj(CHARACTERS, "SORT", "name") as character_t[]
         } as ss_arrname_t<character_t[], keyof character_t>
     )
+ 
     const JSX_ARR = ss_arr.ss.map((item,index)=>{
-        return <>
+        return <div key={index}>
         <OBJ_BOOL
                 name={"rule64" as a.name}
                 input_arr={{ss:ss_arr, setss:setss_arr}}
@@ -80,10 +81,10 @@ export function TEST_SEARCH_OBJ(){
         <OBJ_STR
             input_arr={{ss:ss_arr, setss:setss_arr}}
             this_item={index}
-            attrs={["skill"]}
+            attrs={["skill","age"]}
             is_undo={false}
         />
-        </>
+        </div>
     })
     return <>
     <SEARCH_OBJ 

@@ -22,7 +22,6 @@ export default function SEARCH_OBJ<t extends {name:a.name}[]>({
         } as ss_arrobj_t<a.attr_value<number>[], keyof a.attr_value<number>>
     )
     const [ss_select, setss_select] = useState<number|undefined>(undefined)
-
     const JSX_ARR = ss_show_arr.ss.map((item,index)=>{
         if(item !== undefined && input_arr.ss.ss[item.value] !== undefined){
             let jsx_item = undefined
@@ -39,7 +38,7 @@ export default function SEARCH_OBJ<t extends {name:a.name}[]>({
                 <hr/>
                 </div>
         }
-        return undefined
+        return <div key={index}></div>
     })
     return <>
     <SEARCH_BAR 

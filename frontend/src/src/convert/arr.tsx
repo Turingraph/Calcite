@@ -35,7 +35,7 @@ export function arr_to_opt<
             else{
                 return {
                     attr:item.attr as a.attr,
-                    value:item.index
+                    value:index
                 } as a.attr_value<number>
             }
         }
@@ -49,7 +49,7 @@ export function arr_to_opt<
             else{
                 return {
                     attr:item.name as a.attr,
-                    value:item.item
+                    value:index
                 } as a.attr_value<number>
             }
         }
