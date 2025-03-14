@@ -4,7 +4,7 @@ import BUTTON_HISTORY from "../../src/components/button/button_history";
 import BUTTON_TABS from "../../src/components/button/button_tabs";
 import * as a from '../../src/type/alias';
 import { history_t } from "../../src/type/utility";
-import { OPT_NAME } from "../data";
+import { OPT_NAME } from "../utility/data";
 
 export function TEST_BUTTON_CLICK(){
     const func_event = () =>{

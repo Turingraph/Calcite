@@ -10,7 +10,7 @@ import OPT_INPUT from "../../src/components/opt/opt_input";
 import SEARCH_BAR from "../../src/components/opt/search_bar";
 import SEARCH_OBJ from "../../src/components/opt/search_obj";
 import * as a from '../../src/type/alias';
-import { character_t, CHARACTERS, OPT_NAME } from "../data";
+import { character_t, CHARACTERS, OPT_NAME } from "../utility/data";
 
 export function TEST_OPT_EXIST_ARR(){
     const [ss_arr, setss_arr] = useReducer(

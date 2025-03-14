@@ -7,7 +7,7 @@ import OBJ_BOOL from "../../src/components/obj/obj_bool";
 import OBJ_SELF from "../../src/components/obj/obj_self";
 import OBJ_STR from "../../src/components/obj/obj_str";
 import * as a from '../../src/type/alias';
-import { character_t, CHARACTERS } from "../data";
+import { character_t, CHARACTERS } from "../utility/data";
 
 function func_delete_arr<t extends {name:a.name}[]>(input_arr:use_arrname_t<t, keyof t[number]>){
     if(input_arr.ss.ss.length > 1){

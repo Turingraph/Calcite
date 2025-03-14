@@ -1,8 +1,8 @@
-import React, {useReducer} from "react";
-import * as a from "../src/type/alias"
-import act_arr from "../src/array/act_arr";
+import React, { useReducer } from "react";
+import act_arr from "../../src/array/act_arr";
+import BUTTON_CLICK from "../../src/components/button/button_click";
+import * as a from "../../src/type/alias";
 import { DUPLICATE_NAME } from "./data";
-import BUTTON_CLICK from "../src/components/button/button_click";
 
 
 export function TEST_UNIQUE(){
