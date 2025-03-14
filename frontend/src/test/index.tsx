@@ -30,7 +30,7 @@ import {
 } from "./components/opt";
 
 import {
-    TEST_FILE_OPEN,   // UNFINISHED
+    TEST_FILE_OPEN,   // OK
     TEST_FILE_SAVE    // UNFINISHED
 } from "./components/file"
 
@@ -80,6 +80,6 @@ import {
 
 export default function TEST(){
     return <>
-    <TEST_SEARCH_OBJ/>
+    <TEST_FILE_OPEN/>
     </>
 }
