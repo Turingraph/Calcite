@@ -1,7 +1,0 @@
-{
-  "importOrder":["^cimponents/(.*)$", "^[./]"],
-  "importOrderSeparation": true,
-    "singleQuote": true,
-    "semi": false
-}
-  

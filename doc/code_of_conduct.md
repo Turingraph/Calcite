@@ -35,6 +35,7 @@ Rule of naming file and folder in our project.
 7.  Every function, oop class, file and folder name that starts with `__`, means that it is unusable, and is in the development process.
 -	1st Example: `__deployment.md` means that our deployment documentation is under the development process.
 -	2nd Example: `__img_to_str.py` means that our OCR Python script (`img_to_str.py`) is under the development process.
+-   3rd Example: `_type/` does not means `_type/` folder is unfinished, but it means it is not the part of the route of the Next JS app. (see https://nextjs.org/docs/app/getting-started/project-structure#private-folders for more details).
 8.  If the file is not the utility file and contains an OOP class, then both file and class have the same name.
 -	1st Example: `img_process_img` class belong to `include/imgprocess_img.py`.
 -	2nd Example: `table` class belong to `include/table.py`.

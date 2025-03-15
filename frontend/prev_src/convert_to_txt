@@ -1,0 +1,2 @@
+find . -type f -name "*.*" -exec bash -c 'mv "$0" "${0%.*}.txt"' {} \;
+# Code by ChatGPT

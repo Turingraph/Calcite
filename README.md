@@ -29,7 +29,7 @@ Expected Feature
 -	Purpose: user tutorial.
 -   Status: Empty
 3.	`frontend/`
--	Purpose: User Friendly UI Frontend based on React and Typescript. This is the only coding folder that does not contains Python files.
+-	Purpose: User Friendly UI Frontend based on Next JS and Typescript. This is the only coding folder that contain Typescript files.
 -   Status: In Development process.
 4.	`img_process/`
 -	Purpose: Processing Image e.g. Threshold, Blur, Convolution, Orientation etc.
