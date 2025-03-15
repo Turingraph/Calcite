@@ -1,13 +1,13 @@
 "use client"
 import { JSX, useReducer, useState } from "react";
-import { act_arrname, INIT_ARRNAME, ss_arrname_t, use_arrname_t } from "../../ui/array/act_arrobj";
-import * as oarr from "../../ui/array/func_arrobj";
-import PANEL from "../../ui/components/asset/panel";
-import BUTTON_CLICK from "../../ui/components/button/button_click";
-import OBJ_BOOL from "../../ui/components/obj/obj_bool";
-import OBJ_SELF from "../../ui/components/obj/obj_self";
-import OBJ_STR from "../../ui/components/obj/obj_str";
-import * as a from '../../ui/type/alias';
+import { act_arrname, INIT_ARRNAME, ss_arrname_t, use_arrname_t } from "../../src/ui/array/act_arrobj";
+import * as oarr from "../../src/ui/array/func_arrobj";
+import PANEL from "../../src/ui/components/asset/panel";
+import BUTTON_CLICK from "../../src/ui/components/button/button_click";
+import OBJ_BOOL from "../../src/ui/components/obj/obj_bool";
+import OBJ_SELF from "../../src/ui/components/obj/obj_self";
+import OBJ_STR from "../../src/ui/components/obj/obj_str";
+import * as a from '../../src/ui/type/alias';
 import { character_t, CHARACTERS } from "./data";
 
 function func_delete_arr<t extends {name:a.name}[]>(input_arr:use_arrname_t<t, keyof t[number]>){

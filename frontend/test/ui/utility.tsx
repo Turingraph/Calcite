@@ -1,8 +1,8 @@
 "use client"
 import { useReducer } from "react";
-import act_arr from "../../ui/array/act_arr";
-import BUTTON_CLICK from "../../ui/components/button/button_click";
-import * as a from "../../ui/type/alias";
+import act_arr from "../../src/ui/array/act_arr";
+import BUTTON_CLICK from "../../src/ui/components/button/button_click";
+import * as a from "../../src/ui/type/alias";
 import { DUPLICATE_NAME } from "./data";
 
 

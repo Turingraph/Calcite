@@ -1,4 +1,4 @@
-import * as a from "../../ui/type/alias"
+import * as a from "../../src/ui/type/alias"
 
 export const DUPLICATE_NAME = [
     "Gauss",

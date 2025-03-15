@@ -1,6 +1,6 @@
 "use client"
-import CLOSE_PANEL from "../../ui/components/asset/close_panel";
-import * as a from '../../ui/type/alias';
+import CLOSE_PANEL from "../../src/ui/components/asset/close_panel";
+import * as a from '../../src/ui/type/alias';
 
 export function TEST_CLOSE_PANEL(){
     return <>

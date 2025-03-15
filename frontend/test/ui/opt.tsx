@@ -1,16 +1,16 @@
 "use client"
 import { useReducer, useState } from "react";
-import act_arr, { ss_arr_t } from "../../ui/array/act_arr";
-import act_arrobj, { act_arrname, ss_arrname_t } from "../../ui/array/act_arrobj";
-import * as oarr from "../../ui/array/func_arrobj";
-import PANEL from "../../ui/components/asset/panel";
-import OBJ_BOOL from "../../ui/components/obj/obj_bool";
-import OBJ_STR from "../../ui/components/obj/obj_str";
-import OPT_EXIST_ARR from "../../ui/components/opt/opt_exist_arr";
-import OPT_INPUT from "../../ui/components/opt/opt_input";
-import SEARCH_BAR from "../../ui/components/opt/search_bar";
-import SEARCH_OBJ from "../../ui/components/opt/search_obj";
-import * as a from '../../ui/type/alias';
+import act_arr, { ss_arr_t } from "../../src/ui/array/act_arr";
+import act_arrobj, { act_arrname, ss_arrname_t } from "../../src/ui/array/act_arrobj";
+import * as oarr from "../../src/ui/array/func_arrobj";
+import PANEL from "../../src/ui/components/asset/panel";
+import OBJ_BOOL from "../../src/ui/components/obj/obj_bool";
+import OBJ_STR from "../../src/ui/components/obj/obj_str";
+import OPT_EXIST_ARR from "../../src/ui/components/opt/opt_exist_arr";
+import OPT_INPUT from "../../src/ui/components/opt/opt_input";
+import SEARCH_BAR from "../../src/ui/components/opt/search_bar";
+import SEARCH_OBJ from "../../src/ui/components/opt/search_obj";
+import * as a from '../../src/ui/type/alias';
 import { character_t, CHARACTERS, OPT_NAME } from "./data";
 
 export function TEST_OPT_EXIST_ARR(){

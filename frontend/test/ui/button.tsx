@@ -1,10 +1,10 @@
 "use client"
 import { useState } from "react";
-import BUTTON_CLICK from "../../ui/components/button/button_click";
-import BUTTON_HISTORY from "../../ui/components/button/button_history";
-import BUTTON_TABS from "../../ui/components/button/button_tabs";
-import * as a from '../../ui/type/alias';
-import { history_t } from "../../ui/type/utility";
+import BUTTON_CLICK from "../../src/ui/components/button/button_click";
+import BUTTON_HISTORY from "../../src/ui/components/button/button_history";
+import BUTTON_TABS from "../../src/ui/components/button/button_tabs";
+import * as a from '../../src/ui/type/alias';
+import { history_t } from "../../src/ui/type/utility";
 import { OPT_NAME } from "./data";
 
 export function TEST_BUTTON_CLICK(){

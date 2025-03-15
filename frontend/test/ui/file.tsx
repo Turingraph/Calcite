@@ -1,10 +1,10 @@
 "use client"
 import { useReducer } from "react";
-import act_arr, { ss_arr_t } from "../../ui/array/act_arr";
-import PANEL from "../../ui/components/asset/panel";
-import FILE_OPEN from "../../ui/components/file/file_open";
+import act_arr, { ss_arr_t } from "../../src/ui/array/act_arr";
+import PANEL from "../../src/ui/components/asset/panel";
+import FILE_OPEN from "../../src/ui/components/file/file_open";
 // import FILE_SAVE from "../../src/components/file/file_save";
-import { file_to_date } from "../../ui/convert/date";
+import { file_to_date } from "../../src/ui/convert/date";
 
 /*
 TO DO LIST

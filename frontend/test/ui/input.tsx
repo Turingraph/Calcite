@@ -1,10 +1,10 @@
 "use client"
 import { JSX, useReducer, useState } from "react";
-import act_arrobj, { ss_arrobj_t } from "../../ui/array/act_arrobj";
-import INPUT_COMBINE from "../../ui/components/input/input_combine";
-import INPUT_FORM from "../../ui/components/input/input_form";
-import INPUT_STR from "../../ui/components/input/input_str";
-import * as a from '../../ui/type/alias';
+import act_arrobj, { ss_arrobj_t } from "../../src/ui/array/act_arrobj";
+import INPUT_COMBINE from "../../src/ui/components/input/input_combine";
+import INPUT_FORM from "../../src/ui/components/input/input_form";
+import INPUT_STR from "../../src/ui/components/input/input_str";
+import * as a from '../../src/ui/type/alias';
 
 const DEFAULT_INPUT:(string|number)[] = [
     0.0001,

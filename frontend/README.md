@@ -7,7 +7,9 @@
 -   Contains : Static file e.g. logo image for UI etc.
 3.  `src/`
 -   Contains : Our actual frontend code e.g. button, layout, page etc.
-4.  `tutorial/`
+4.  `test/`
+-   Purpose : Check if `src/` works as expected.
+5.  `tutorial/`
 -   Contains : Our actual frontend code related tutorial documentation e.g. How to use React Hook, How to fetch data etc.
 
 Read the following resource to learn more about our frontend folder structure.

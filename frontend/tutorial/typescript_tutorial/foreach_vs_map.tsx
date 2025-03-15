@@ -1,4 +1,4 @@
-import { CHARACTERS } from "../../src/test/ui/data";
+import { CHARACTERS } from "../../test/ui/data";
 
 /*
 `forEach` is used for loop the array without returning the data.
