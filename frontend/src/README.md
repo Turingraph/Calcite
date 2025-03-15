@@ -2,7 +2,7 @@
 
 This folder contains
 1.	`app/`
--	Purpose : Contains our code that is used as the web app page.
+-	Purpose : Contains our code that is used as the web app page and can be accessed by URI.
 2.	`test/`
 -	Purpose : Check if `ui/` and `app/` works as expected.
 3.	`ui/`
