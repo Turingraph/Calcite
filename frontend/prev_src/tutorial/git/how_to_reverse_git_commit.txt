@@ -1,0 +1,15 @@
+# How to reverse Git commit ?
+
+1.  copy unwanted file and folder.
+2.  git log
+3.  copy selected git commit's id 
+4.  git reset <selected git commit's id>
+5.  Try to ignore every change 
+5.  git add .
+6.  git commit -m "Discard change"
+7.  paste unwanted file and folder in prev_src/ 
+    and transform it using bash convert_to_txt 
+    `find . -type f -name "*.*" -exec bash -c 'mv "$0" "${0%.*}.txt"' {} \;`
+8.  document about the reason to discard commit and why the previous commit was made, 
+    and the dependency of the previous unwanted commit.
+9.  git push url --force
