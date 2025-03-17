@@ -2,15 +2,8 @@ import React, { useReducer } from "react";
 import act_arr, { ss_arr_t } from "../../ui/array/act_arr";
 import PANEL from "../../ui/components/asset/panel";
 import FILE_OPEN from "../../ui/components/file/file_open";
-// import FILE_SAVE from "../../src/components/file/file_save";
 import { file_to_date } from "../../ui/convert/date";
-
-/*
-TO DO LIST
-1.  Make FILE_EXPORT able to upload multiple file as zip.
-2.  able to set ss_files as url_to_file which is async.
-3.  start doing layout/
-*/
+import FILE_SAVE from "../../ui/components/file/file_save";
 
 export function TEST_FILE_OPEN(){
     const [ss_files, setss_files] = useReducer(
@@ -50,6 +43,10 @@ export function TEST_FILE_SAVE(){
     return <>
     <FILE_OPEN
         setss_files={setss_files}
+        multiple={true}
+    />
+    <FILE_SAVE
+        files={ss_files.ss}
         multiple={true}
     />
     <PANEL jsx_element={<>{JSX_ARR}</>}/>

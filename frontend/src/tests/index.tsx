@@ -31,13 +31,13 @@ import {
 
 import {
     TEST_FILE_OPEN,   // OK
-    TEST_FILE_SAVE    // UNFINISHED
+    TEST_FILE_SAVE    // OK
 } from "./components/file"
 
 //-------------------------------------------------------------------
 
 export default function TESTS(){
     return <>
-    <TEST_FILE_OPEN/>
+    <TEST_FILE_SAVE/>
     </>
 }
