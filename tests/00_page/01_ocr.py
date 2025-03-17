@@ -17,7 +17,7 @@ from include.ocr import ocr
 
 path = [
     "/tests/00_page/img/img.jpg",
-    "/tests/00_page/img_out/img_out.jpg",
+    "/tests/00_page/img/img_out.jpg",
 ]
 
 name = ["origin", "modified"]

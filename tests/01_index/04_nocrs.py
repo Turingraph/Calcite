@@ -14,9 +14,9 @@ from include.multi_ocrs import multi_ocrs
 from include.img_process_gray import img_process_gray
 
 path = [
-    parent + "/tests/01_index/img_out/boxes_img_00.jpg",
-    parent + "/tests/01_index/img_out/boxes_img_01.jpg",
-    parent + "/tests/01_index/img_out/boxes_img_02.jpg"
+    parent + "/tests/01_index/img/boxes_img_00.jpg",
+    parent + "/tests/01_index/img/boxes_img_01.jpg",
+    parent + "/tests/01_index/img/boxes_img_02.jpg"
 ]
 
 ls = []

@@ -15,12 +15,12 @@ def show(img: np.ndarray, title: str = "img_out") -> None:
 
 def save_img(
     img: np.ndarray,
-    path: list[str] | str = ["img_out", "img_out", "jpg"],
+    path: list[str] | str = ["img", "img_out", "jpg"],
 ) -> None:
     # https://stackoverflow.com/questions/902761/saving-a-numpy-array-as-an-image
     if isinstance(path, list):
         if len(path) == 0:
-            path = ["img_out", "img_out", "jpg"]
+            path = ["img", "img_out", "jpg"]
         if len(path) == 1:
             path = [path[0], "img_out", "jpg"]
         if len(path) == 2:
@@ -47,7 +47,7 @@ img_process/show.py/def save
 
 def save(
     img: np.ndarray,
-    path: list[str] | str = ["img_out", "img_out", "jpg"],
+    path: list[str] | str = ["img", "img_out", "jpg"],
 ) -> None:
 # This function save the image
 Note that

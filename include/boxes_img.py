@@ -96,10 +96,10 @@ available `mode` options
             out_img_arr.append(out_img)
         return out_img_arr
 
-    def save_boxes(self,path: list[str] | str = ["img_out", "img_out", "jpg"]) -> None:
+    def save_boxes(self,path: list[str] | str = ["img", "img_out", "jpg"]) -> None:
         count = 0
         if isinstance(path, str):
-            path = ["img_out", path, "jpg"]
+            path = ["img", path, "jpg"]
         for i in self.boxes:
             x, y, w, h = cv2.boundingRect(i)
             out_img = self.origin_img.img[y:y + h, x:x + w]

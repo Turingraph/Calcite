@@ -13,9 +13,9 @@ sys.path.append(parent)
 from include.multi_ocrs import multi_ocrs
 
 path = [
-    parent + "/tests/01_index/img_out/boxes_img_00.jpg",
-    parent + "/tests/01_index/img_out/boxes_img_01.jpg",
-    parent + "/tests/01_index/img_out/boxes_img_02.jpg"
+    parent + "/tests/01_index/img/boxes_img_00.jpg",
+    parent + "/tests/01_index/img/boxes_img_01.jpg",
+    parent + "/tests/01_index/img/boxes_img_02.jpg"
 ]
 
 ocr_setting = multi_ocrs(multi_imgs=path)

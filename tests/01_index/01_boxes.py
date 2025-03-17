@@ -10,7 +10,6 @@ sys.path.append(parent)
 
 ###############################################################################################################
 
-import img_process.contour as tour
 from include.boxes_img import boxes_img
 import numpy as np
 

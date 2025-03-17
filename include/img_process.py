@@ -19,7 +19,7 @@ class img_process:
 
     def save_img(
         self,
-        path: list[str] | str = ["img_out", "img_out", "jpg"]
+        path: list[str] | str = ["img", "img_out", "jpg"]
     ) -> None:
         save_img(img=self.img, path=path)
 
