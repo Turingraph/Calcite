@@ -1,7 +1,7 @@
 The purpose of this file is to check if the frontend coding file works as expected.
 
 It contains
-1.  `components/`
+1.  `ui/`
 -   Purpose : Check if `ui/components/` works as expected.
 2.  `data.tsx`
 -   Contains: constant variable.
