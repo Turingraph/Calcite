@@ -38,7 +38,15 @@ How to create `requirements.txt` file ?
 * `pip freeze > requirements.txt`
 
 How to create `requirements.txt` file that only include used package ?
-* `pipreqs --force`
+* `pipreqs ./ --ignore .venv`
+* https://stackoverflow.com/questions/64630130/pipreqs-requirements-txt-is-not-correct
+
+If `error: externally-managed-environment` in Ubuntu when `pip install ...` use
+*   `.venv/bin/pip3 install ...`
+*   https://stackoverflow.com/questions/75608323/how-do-i-solve-error-externally-managed-environment-every-time-i-use-pip-3
+
+If `bash: pipreqs: command not found`, then add `export PATH=$PATH:~/.local/bin` in `~/.bashrc`.
+*   Read https://github.com/bndr/pipreqs/issues/69#issuecomment-298758892 and `environment_variable.md` for more detail.
 
 # Reference
 

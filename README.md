@@ -10,10 +10,29 @@ It is intended for
 -	Text Language detection model
 -   other ML Model
 
-# How to install Tesseract OCR
+# How to Set up our project ?
+
+1.  Click `<> Code` button
+2.  Copy URL or `Download Zip`
+3.  Install Python, pip, npm, Typescript and React
+4.  `pip install -r requirements.txt`
+5.  Install Tesseract OCR
 
 Read this for more detail.
+1.  How to install Tesseract OCR ?
 -   https://tesseract-ocr.github.io/tessdoc/Installation.html
+2.  How to install Python ?
+-   https://www.python.org/downloads/
+3.  How to install pip ?
+-   https://pip.pypa.io/en/stable/installation/
+4.  How to install npm ?
+-   https://docs.npmjs.com/downloading-and-installing-node-js-and-npm
+5.  How to install React and Typescript ? (it is recommended to install npm first)
+-   https://create-react-app.dev/docs/adding-typescript/
+6.  How to use Git ?
+-   https://youtu.be/hwP7WQkmECE?si=3dpwnxaAztigW7x-
+-   https://colab.research.google.com/drive/1ERz9tNhId3gBNsxGpvRWnqfY6x0LJFs-?usp=sharing
+-   https://youtu.be/tRZGeaHPoaw?si=qNfziX2r9p-XARow
 
 # Status
 
