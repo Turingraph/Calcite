@@ -2,7 +2,9 @@ Date : 15/03/2025
 
 Note : 
 -   This version use `useReducer` for Array management.
--   The main reason we stop using `version_01/` is because Next JS can be used for allow user to upload output Zip file.
+
+Why we don't use this folder ?
+-   The `src/components/` works as expected except `file/` so we are developing the next version.
 
 Dependency : 
--   Reac
+-   React

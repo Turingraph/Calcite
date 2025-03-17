@@ -1,0 +1,37 @@
+/* eslint-disable */
+
+import OCR_EDIT from "../../ui/layout/ocr/ocr_edit";
+import OCR_OPEN from "../../ui/layout/ocr/ocr_open";
+import OCR_SAVE from "../../ui/layout/ocr/ocr_save";
+import OCR_UI from "../../ui/layout/ocr/ocr_ui";
+import OSD_UI from "../../ui/layout/ocr/osd_ui";
+
+export function TEST_OCR_OPEN(){
+    return <>
+    <OCR_OPEN/>
+    </>
+}
+
+export function TEST_OCR_SAVE(){
+    return <>
+    <OCR_SAVE/>
+    </>
+}
+
+export function TEST_OCR_EDIT(){
+    return <>
+    <OCR_EDIT/>
+    </>
+}
+
+export function TEST_OCR_UI(){
+    return <>
+    <OCR_UI/>
+    </>
+}
+
+export function TEST_OSD_UI(){
+    return <>
+    <OSD_UI/>
+    </>
+}

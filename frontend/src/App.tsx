@@ -1,12 +1,10 @@
 /* eslint-disable */
 
-import React from 'react';
-import TEST from './test/index';
-import TUTORIAL from './tutorial';
+import TESTS from './tests/index';
 
 function App() {
   return <>
-    <TEST/>
+    <TESTS/>
   </>;
 }
 

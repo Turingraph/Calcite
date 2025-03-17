@@ -1,0 +1,25 @@
+import { useState } from "react";
+import { their_t } from "../../ui/type/obj";
+import IMG_UI from "../layout/img/img_ui";
+import THEIR_ARR from "../layout/their/their_arr";
+import THEIR_OPEN from "../layout/their/their_open";
+
+export default function PAGE(){
+    const [ss_arr, setss_arr] = useState<their_t[]>([])
+    const [ss_select_obj, setss_select_obj] = useState<number>(0)
+    return <>
+    <THEIR_OPEN
+        setss_arr={setss_arr}
+    />
+    <THEIR_ARR
+        ss_arr={{ss:ss_arr, setss: setss_arr}}
+        setss_select={setss_select_obj}
+    />
+    <IMG_UI
+        select_img={ss_arr.length > ss_select_obj 
+            ? ss_arr[ss_select_obj]
+            : undefined
+        }
+    />
+    </>
+}

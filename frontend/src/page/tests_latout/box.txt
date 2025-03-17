@@ -1,0 +1,30 @@
+/* eslint-disable */
+
+import BOX_EDIT from "../../ui/layout/box/box_edit";
+import BOX_OPEN from "../../ui/layout/box/box_open";
+import BOX_SAVE from "../../ui/layout/box/box_save";
+import BOX_UI from "../../ui/layout/box/box_ui";
+
+export function TEST_BOX_OPEN(){
+    return <>
+    <BOX_OPEN/>
+    </>
+}
+
+export function TEST_BOX_SAVE(){
+    return <>
+    <BOX_SAVE/>
+    </>
+}
+
+export function TEST_BOX_EDIT(){
+    return <>
+    <BOX_EDIT/>
+    </>
+}
+
+export function TEST_BOX_UI(){
+    return <>
+    <BOX_UI/>
+    </>
+}

@@ -1,11 +1,11 @@
 # Folder Structure
 
-1.  `previous_useful_files`
--	Purpose: Store previous unused files as txt files. It might be beneficial for our project in the future.
+1.  `prev_src`
+-	Contains : `version_n` (unused previous version files) and `tutorial/` (coding example and coding tutorial) as txt files. It might be beneficial for our project in the future.
 1.	`public/`
--	Purpose: Store static files e.g. image etc (https://www.geeksforgeeks.org/videos/how-to-use-files-in-public-folder-in-reactjs/)
+-	Contains : static files e.g. image etc (https://www.geeksforgeeks.org/videos/how-to-use-files-in-public-folder-in-reactjs/)
 2.	`src/`
--	Purpose: Store our coding files, include `src/src/`, `src/test/` and `src/tutorial/`.
+-	Contains : our coding files, include `src/page/`, `src/ui/` and `src/tests/`.
 
 Note that it is not possible to execute code ourside `src/` in React.
 

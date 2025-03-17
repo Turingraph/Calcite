@@ -1,6 +1,6 @@
 # Description
 
-The project name is "Calcite OCR". It is OCR app based on Tesseract OCR model.
+The project name is "Calcite OCR". It is an OCR app based on Tesseract OCR model.
 
 It is intended for 
 1.	Allowing user without coding background to be able to use Tesseract OCR much more easily for extract text data from image or multiple images of text.
@@ -17,7 +17,14 @@ Read this for more detail.
 
 # Status
 
-This project is in the MVP development process. For anyone who want to contribute our project in MVP version, you can read `doc/issue.md`. Thank you.
+This project is in the MVP development process. For anyone who want to contribute our project in MVP version, you can
+1.  create additional OCR coding example in `tests/` using the class from `include/`
+2.  submit your UXUI design in `doc/` and user tutorial in `doc_user/`
+3.  help us develop `frontend/` and connect `frontend/` with `backend/`
+4.  write how to deploy our project as Desktop app in `doc/`
+5.  add the feature that allow user to submit OCR and NLP training data publicly or anonymously (if they want to) in `get_data`
+
+Thank you for your contribution.
 
 # MVP (Minimum Viable Product)
 
@@ -25,7 +32,7 @@ Expected Feature
 1.  `backend/`
 -	Purpose: Connect `include/` with `frontend/`
 -   Status: Empty
-2.  `doc_user`
+2.  `doc_user/`
 -	Purpose: user tutorial.
 -   Status: Empty
 3.	`frontend/`
@@ -47,7 +54,6 @@ Expected Feature
 -	Purpose: Contains useless file that might be useful later, it is ignored by `.gitignore`
 9.  `utility/`
 -	Purpose: Contains other Python utility files.
-
 
 Ignore Advanced Feature
 1.	`get_data/`
