@@ -37,6 +37,6 @@ ocr_setting = ocr(
 for i in range(len(path)):
     img = img_process_rgb(img = (parent + path[i])).img
     ocr_setting.img_to_str(img=img)
-    ocr_setting.save_text(path = ["str_out_oop", name[i]])
+    ocr_setting.save_text(path = ["text_oop", name[i]])
 
 ###############################################################################################################

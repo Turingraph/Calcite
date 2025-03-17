@@ -83,13 +83,13 @@ class multi_ocrs:
             self.multi_out.append(self.ocr_setting.out)
             self.out += self.ocr_setting.out
     
-    def save_text(self, path: list[str] | str = ["str_out", "str_out", "txt"])-> None:
+    def save_text(self, path: list[str] | str = ["text", "text", "txt"])-> None:
         self.ocr_setting.out = self.out
         self.ocr_setting.save_text(path=path)
     
-    def save_milti_text(self, path: list[str] | str = ["str_out", "str_out", "txt"])-> None:
+    def save_milti_text(self, path: list[str] | str = ["text", "text", "txt"])-> None:
         if isinstance(path, str):
-            path = ["str_out", path, "txt"]
+            path = ["text", path, "txt"]
         count = 0
         for i in self.multi_imgs:
             self.ocr_setting.img_to_str(img = i)

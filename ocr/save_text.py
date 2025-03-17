@@ -2,17 +2,17 @@ import os
 
 def save_text(
     text:str,
-    path: list[str] | str = ["str_out", "str_out", "txt"],
+    path: list[str] | str = ["text", "text", "txt"],
 )-> None:
     if isinstance(path, list):
         if len(path) == 0:
-            path = ["str_out", "str_out", "txt"]
+            path = ["text", "text", "txt"]
         if len(path) == 1:
-            path = [path[0], "str_out", "txt"]
+            path = [path[0], "text", "txt"]
         if len(path) == 2:
             path = [path[0], path[1], "txt"]
     if isinstance(path, str):
-        path = ["str_out", path, "txt"]
+        path = ["text", path, "txt"]
     # https://www.w3schools.com/python/python_file_write.asp
     # https://www.geeksforgeeks.org/python-check-if-a-file-or-directory-exists/
     if not os.path.exists(path=path[0]):

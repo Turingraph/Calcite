@@ -34,7 +34,7 @@ class ocr:
                         timeout=self.timeout
                     )
 
-    def save_text(self, path: list[str] | str = ["str_out", "str_out", "txt"])-> None:
+    def save_text(self, path: list[str] | str = ["text", "text", "txt"])-> None:
         save_text(self.out, path)
 
     def osd(self, img:np.ndarray|img_process_rgb|img_process_gray, out_type:str = Output.STRING) -> any:
