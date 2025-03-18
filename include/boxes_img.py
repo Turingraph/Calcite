@@ -67,10 +67,15 @@ class boxes_img:
         self.all_boxes = get_contours(img=self.dilate_img.img)
         self.boxes = []
         for i in self.all_boxes:
-            x, y, w, h = cv2.boundingRect(i)
-            if ((w > min_w and h > min_h) 
-                and (w < max_w and h < max_h)):
+            if ((i[2] > min_w and i[3] > min_h) 
+                and (i[2] < max_w and i[3] < max_h)):
                 self.boxes.append(i)
+
+#-----------------------------------------------------------------------------------------
+
+    def column_boxes(self,vertical:bool = False):
+        for i in self.boxes:
+            print(i)
 
 #-----------------------------------------------------------------------------------------
 
@@ -94,8 +99,7 @@ available `method` options
             ) -> None:
         self.marked_img = copy.deepcopy(self.origin_img)
         for i in self.boxes:
-            x, y, w, h = cv2.boundingRect(i)
-            self.marked_img.rectangle(rgb=rgb,x=x, y=y, w=w, h=h)
+            self.marked_img.rectangle(rgb=rgb,x=i[0], y=i[1], w=i[2], h=i[3])
         self.marked_img.show(title=title)
 
 #-----------------------------------------------------------------------------------------

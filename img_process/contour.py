@@ -30,7 +30,10 @@ def get_contours(img: np.ndarray) -> tuple:
         mode=cv2.RETR_LIST, 
         method=cv2.CHAIN_APPROX_SIMPLE
     )
-    return contours
+    output = []
+    for i in contours:
+        output.append(cv2.boundingRect(i))
+    return output
 
 #-----------------------------------------------------------------------------------------
 
@@ -90,7 +93,7 @@ available `method` options
     if method in [0, 1, 2, 3]:
         return sorted(
             contour,
-            key=lambda x: cv2.boundingRect(array=x)[method],
+            key=lambda x: x[method],
             reverse=reverse,
         )
     return sorted(
@@ -118,6 +121,6 @@ def rectangle(img:np.ndarray, rgb:list[int]|int, x:int, y:int, h:int, w:int) -> 
             rgb = set_px(n=rgb[0])
     else:
         rgb = get_rgb(rgb)
-    return cv2.rectangle(img=img, pt1=(x, y), pt2=(x+w, y+h), color=rgb, thickness=2)
+    return cv2.rectangle(img=img, pt1=(x, y), pt2=(x+w, y+h), color=rgb, thickness=3)
 
 #-----------------------------------------------------------------------------------------
