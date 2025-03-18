@@ -18,14 +18,14 @@ path = [
     parent + "/tests/01_index/img/boxes_img_02.jpg"
 ]
 
-ocr_setting = ocr_config_arr(multi_imgs=path)
+ocr_setting = ocr_config_arr(img_arr=path)
 ocr_setting.img_to_str()
 ocr_setting.save_text(path="single_text")
 ocr_setting.save_text_arr(path="multi_text")
 
 ###############################################################################################################
 
-ocr_setting.update_multi_imgs(multi_imgs=parent + "/tests/01_index/img/img.jpeg")
+ocr_setting.update_img_arr(img_arr=parent + "/tests/01_index/img/img.jpeg")
 ocr_setting.save_text(path="single_text_without_boxes")
 print(ocr_setting.osd())
 

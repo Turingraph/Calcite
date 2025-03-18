@@ -28,7 +28,7 @@ img.sort_boxes(method=0,reverse=True)
 
 from include.ocr_confg_arr import ocr_config_arr
 
-ocr_setting = ocr_config_arr(multi_imgs=img)
+ocr_setting = ocr_config_arr(img_arr=img)
 ocr_setting.img_to_str()
 ocr_setting.save_text(path="b_single_text")
 ocr_setting.save_text_arr(path="b_multi_text")

@@ -24,7 +24,7 @@ ls = []
 for i in path:
     ls.append(img_process_gray(img=i))
 
-ocr_setting = ocr_config_arr(multi_imgs=ls)
+ocr_setting = ocr_config_arr(img_arr=ls)
 ocr_setting.img_to_str()
 ocr_setting.save_text(path="np_single_text")
 ocr_setting.save_text_arr(path="np_multi_text")

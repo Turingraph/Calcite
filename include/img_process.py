@@ -31,7 +31,7 @@ class img_process:
     # img_process/(zoom.py, rotate.py)
 
     def zoom(self, scale: int = 1) -> None:
-        self.img = zoom(img=self.img, zoom=scale)
+        self.img = zoom(img=self.img, scale=scale)
 
     def remove_borders(self) -> None:
         self.img = remove_borders(img=self.img)

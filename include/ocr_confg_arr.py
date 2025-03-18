@@ -108,14 +108,14 @@ class ocr_config_arr:
         self.output = ''
         for i in self.img_arr:
             self.ocr_setting.img_to_str(img = i)
-            self.output_arr.append(self.ocr_setting.out)
-            self.output += self.ocr_setting.out
+            self.output_arr.append(self.ocr_setting.output)
+            self.output += self.ocr_setting.output
     
 #-----------------------------------------------------------------------------------------
 
     # Save one text file.
     def save_text(self, path: list[str] | str = ["text", "text", "txt"])-> None:
-        self.ocr_setting.out = self.output
+        self.ocr_setting.output = self.output
         self.ocr_setting.save_text(path=path)
     
 #-----------------------------------------------------------------------------------------

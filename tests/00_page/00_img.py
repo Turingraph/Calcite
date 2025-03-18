@@ -15,7 +15,7 @@ from include.img_process_gray import img_process_gray
 path = parent + "/tests/00_page/img/img.jpg"
 
 img = img_process_gray(img=path)
-img.zoom(zooms=-1.23)
+img.zoom(scale=-1.23)
 img.rotate()
 img.threshold()
 img.show()
