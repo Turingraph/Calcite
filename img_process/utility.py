@@ -62,16 +62,21 @@ def check_img(img: np.ndarray) -> np.ndarray:
 
 def get_rgb(rgb:list[int]|int) -> list[int]:
     if isinstance(rgb, int):
-        return [0, 0, set_px(rgb)]
+        output = [0, 0, set_px(rgb)]
+        return output
     else:
         if len(rgb) == 0:
-            return [0, 0, 255]
+            output = [0, 0, 255]
+            return output
         if len(rgb) == 1:
-            return [0, 0, set_px(rgb[0])]
+            output = [0, 0, set_px(rgb[0])]
+            return output
         if len(rgb) == 2:
-            return [0, set_px(rgb[1]), set_px(rgb[0])]
+            output = [0, set_px(rgb[1]), set_px(rgb[0])]
+            return output
         else:
-            return [set_px(rgb[2]), set_px(rgb[1]), set_px(rgb[1])]
+            output = [set_px(rgb[2]), set_px(rgb[1]), set_px(rgb[0])]
+            return output
 
 """
 Reference
