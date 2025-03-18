@@ -12,6 +12,8 @@ Reference
 *   https://docs.opencv.org/4.x/d4/d86/group__imgproc__filter.html#ga4ff0f3318642c4f469d0e11f242f3b6c
 """
 
+#-----------------------------------------------------------------------------------------
+
 def remove_noise(img: np.ndarray) -> np.ndarray:
     # https://github.com/wjbmattingly/ocr_python_textbook/blob/main/02_02_working%20with%20opencv.ipynb
     # https://www.geeksforgeeks.org/erosion-and-dilation-morphological-transformations-in-opencv-in-cpp/
@@ -36,15 +38,28 @@ def thick_font(img: np.ndarray) -> np.ndarray:
     img = cv2.bitwise_not(src = img)
     return img
 
+#-----------------------------------------------------------------------------------------
+
+# Increase the line width of the image
 def dilate(img: np.ndarray, kernel: np.ndarray = np.ones((5, 5), np.uint8)) -> np.ndarray:
     return cv2.dilate(src = img, kernel = kernel, iterations=1)
 
+#-----------------------------------------------------------------------------------------
+
+# Decrease the line width of the image
 def erode(img: np.ndarray, kernel: np.ndarray = np.ones((5, 5), np.uint8)) -> np.ndarray:
     return cv2.erode(src = img, kernel = kernel, iterations=1)
 
+#-----------------------------------------------------------------------------------------
+
+# erosion followed by dilation
 def opening(img: np.ndarray, kernel: np.ndarray = np.ones((5, 5), np.uint8)) -> np.ndarray:
     return cv2.morphologyEx(src = img, borderType= cv2.MORPH_OPEN, kernel = kernel)
 
+#-----------------------------------------------------------------------------------------
+
+# thin edge
+# https://docs.opencv.org/4.x/da/d22/tutorial_py_canny.html
 def canny(img: np.ndarray, c1: int = 100, c2: int = 200) -> np.ndarray:
     if c1 > c2:
         tp = c1
@@ -52,4 +67,7 @@ def canny(img: np.ndarray, c1: int = 100, c2: int = 200) -> np.ndarray:
         c2 = tp
     return cv2.Canny(src = img, threshold1= set_px(c1), threshold2= set_px(c2))
 
+#-----------------------------------------------------------------------------------------
+
 # https://nanonets.com/blog/ocr-with-tesseract/
+# https://docs.opencv.org/4.x/d9/d61/tutorial_py_morphological_ops.html
