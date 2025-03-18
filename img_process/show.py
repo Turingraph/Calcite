@@ -26,7 +26,7 @@ def save_img(
         if len(path) == 2:
             path = [path[0], path[1], "jpg"]
     if isinstance(path, str):
-        path = [path, "img_out", "jpg"]
+        path = ["img", path, "jpg"]
 
     format_options = [
         "jpg",
@@ -72,5 +72,8 @@ available file_format options
     # https://docs.python.org/3/library/os.path.html
     path = os.path.join(path[0], path[1] + "." + path[2])
     # https://numpy.org/doc/2.1/reference/generated/numpy.save.html
+    # https://stackoverflow.com/questions/62293077/
+    # why-is-pils-image-fromarray-distorting-my-image-color
+    img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
     im = Image.fromarray(img)
     im.save(path)
