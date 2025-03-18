@@ -17,19 +17,17 @@ path = parent + "/tests/02_jojo_soba/img/thinn.jpg"
 img = boxes_img(img = path, kernel=np.ones((13, 23)))
 
 img.select_boxes(min_w=1000,max_h=50)
-img.sort_boxes(1)
-img.show_boxes(rgb=[255,0,0], title="before")
-# print("*** BEFORE ***")
-# for i in img.boxes:
-#     print(i)
-img.marked_img.save_img(["img_01","before"])
-img.row_boxes()
-img.show_boxes(rgb=[255,0,0], title="after")
-img.marked_img.save_img(["img_01","after"])
+img.row_half(1)
+img.show_boxes(rgb=[255,0,0], title="half_00")
+img.marked_img.save_img(["img_01","half_00"])
+img.select_boxes(min_w=1000,max_h=50)
 
-img.row_boxes()
-img.show_boxes(rgb=[255,0,0], title="after_01")
-img.marked_img.save_img(["img_01","after_01"])
+img.select_boxes(min_w=1000,max_h=50)
+img.row_half(2)
+img.show_boxes(rgb=[255,0,0], title="half_01")
+img.marked_img.save_img(["img_01","half_01"])
+img.select_boxes(min_w=1000,max_h=50)
+
 
 # print("*** AFTER  ***")
 # for i in img.boxes:
