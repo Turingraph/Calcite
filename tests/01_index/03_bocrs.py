@@ -1,7 +1,7 @@
 ###############################################################################################################
 
-import sys
 import os
+import sys
 
 current = os.path.dirname(os.path.realpath(__file__))
 parent = os.path.dirname(current)
@@ -10,9 +10,10 @@ sys.path.append(parent)
 
 ###############################################################################################################
 
+import numpy as np
+
 import img_process.contour as tour
 from include.boxes_img import boxes_img
-import numpy as np
 
 path = parent + "/tests/01_index/img/img.jpeg"
 img = boxes_img(img = path, kernel=np.ones((13, 3)))
@@ -25,9 +26,9 @@ img.sort_boxes(method=0,reverse=True)
 
 ###############################################################################################################
 
-from include.multi_ocrs import multi_ocrs
+from include.ocr_confg_arr import ocr_config_arr
 
-ocr_setting = multi_ocrs(multi_imgs=img)
+ocr_setting = ocr_config_arr(multi_imgs=img)
 ocr_setting.img_to_str()
 ocr_setting.save_text(path="b_single_text")
-ocr_setting.save_milti_text(path="b_multi_text")
+ocr_setting.save_text_arr(path="b_multi_text")

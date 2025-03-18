@@ -1,7 +1,7 @@
 ###############################################################################################################
 
-import sys
 import os
+import sys
 
 current = os.path.dirname(os.path.realpath(__file__))
 parent = os.path.dirname(current)
@@ -10,7 +10,7 @@ sys.path.append(parent)
 
 ###############################################################################################################
 
-from include.multi_ocrs import multi_ocrs
+from include.ocr_confg_arr import ocr_config_arr
 
 path = [
     parent + "/tests/01_index/img/boxes_img_00.jpg",
@@ -18,10 +18,10 @@ path = [
     parent + "/tests/01_index/img/boxes_img_02.jpg"
 ]
 
-ocr_setting = multi_ocrs(multi_imgs=path)
+ocr_setting = ocr_config_arr(multi_imgs=path)
 ocr_setting.img_to_str()
 ocr_setting.save_text(path="single_text")
-ocr_setting.save_milti_text(path="multi_text")
+ocr_setting.save_text_arr(path="multi_text")
 
 ###############################################################################################################
 

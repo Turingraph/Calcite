@@ -8,13 +8,13 @@ from typing import Self
 class img_process_rgb(img_process):
     def __init__(self, img: Self | np.ndarray | str):
         if type(img) == Self:
-            self.img = np.copy(img.img)
+            self.img:np.ndarray = np.copy(img.img)
         elif type(img) == str:
-            self.img = cv2.imread(filename=img)
+            self.img:np.ndarray = cv2.imread(filename=img)
             if self.img is None:
                 raise ValueError(f"Error: The file at path '{img}' could not be loaded.")
         elif type(img) == np.ndarray:
-            self.img = rgb_img(img = img)
+            self.img:np.ndarray = rgb_img(img = img)
         else:
             raise TypeError("Error: Input must be an instance of 'img_process_rgb', a NumPy array, or a file path.")
 

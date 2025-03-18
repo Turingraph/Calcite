@@ -9,7 +9,7 @@ from typing import Self
 
 class img_process:
     def __init__(self, img: any):
-        self.img = img
+        self.img:any = img
     ########################################################################################################################################################
     # read img
     # img_process/show.py
@@ -30,8 +30,8 @@ class img_process:
     # edit img
     # img_process/(zoom.py, rotate.py)
 
-    def zoom(self, zooms: int = 1) -> None:
-        self.img = zoom(img=self.img, zoom=zooms)
+    def zoom(self, scale: int = 1) -> None:
+        self.img = zoom(img=self.img, zoom=scale)
 
     def remove_borders(self) -> None:
         self.img = remove_borders(img=self.img)

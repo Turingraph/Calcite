@@ -1,3 +1,5 @@
+# The purpose of this file is to check
+# if we import coding file from `include/` to `tests/` correctly.
 import sys
 
 def hello_world() -> None:

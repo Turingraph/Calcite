@@ -14,12 +14,12 @@ def remove_borders(img: np.ndarray) -> np.ndarray:
     crop = img[y : y + h, x : x + w]
     return crop
 
-def zoom(img: np.ndarray, zoom: int = 1) -> np.ndarray:
+def zoom(img: np.ndarray, scale: int = 1) -> np.ndarray:
     # https://stackoverflow.com/questions/69050464/zoom-into-image-with-opencv
-    # zoom < 1 implies Zoom out
-    # zoom > 1 implies Zoom in
+    # scale < 1 implies Zoom out
+    # scale > 1 implies Zoom in
     rotation_matrix = cv2.getRotationMatrix2D(
-        center=(img.shape[1] / 2, img.shape[0] / 2), angle=0, scale=abs(zoom)
+        center=(img.shape[1] / 2, img.shape[0] / 2), angle=0, scale=abs(scale)
     )
     result = cv2.warpAffine(
         src=img, M=rotation_matrix, dsize=img.shape[1::-1], flags=cv2.INTER_LINEAR

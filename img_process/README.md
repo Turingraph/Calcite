@@ -1,4 +1,4 @@
-The purpose of this folder is to processing the image.
+The purpose of this folder is to processing the image to improve OCR output result.
 
 This folder contains
 1.  `blur.py`

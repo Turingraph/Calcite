@@ -15,21 +15,20 @@ from img_process.utility import rgb_img, gray_img
 from img_process.contour import contour_img
 from img_process.threshold import threshold, threshold_adapt
 from img_process.kernel_2d import sharp_kernel_2d
-#from img_process.fft_2d import fft_blur, fft_sharp, get_fft, get_fft_image
 from img_process.utility import invert_img
 from typing import Self
 
 class img_process_gray(img_process):
     def __init__(self, img: Self | np.ndarray | str):
         if type(img) == Self:
-            self.img = img.img
+            self.img:np.ndarray = img.img
         elif type(img) == str:
-            self.img = cv2.imread(filename=img)
+            self.img:np.ndarray = cv2.imread(filename=img)
             if self.img is None:
                 raise ValueError(f"Error: The file at path '{img}' could not be loaded.")
-            self.img = cv2.cvtColor(src=self.img, code=cv2.COLOR_RGB2GRAY)
+            self.img:np.ndarray = cv2.cvtColor(src=self.img, code=cv2.COLOR_RGB2GRAY)
         elif type(img) == np.ndarray:
-            self.img = gray_img(img = img)
+            self.img:np.ndarray = gray_img(img = img)
         else:
             raise TypeError("Error: Input must be an instance of 'img_process_gray', a NumPy array, or a file path.")
 
@@ -45,18 +44,23 @@ class img_process_gray(img_process):
     def thick_font(self) -> None:
         self.img = thick_font(img=self.img)
 
+    # Increase the line width of the image
     def dilate(self, kernel: np.ndarray = np.ones(shape=(5, 5), dtype= np.uint8)) -> None:
         self.img = dilate(img=self.img, kernel= kernel)
 
+    # Decrease the line width of the image
     def erode(self, kernel: np.ndarray = np.ones(shape=(5, 5), dtype=np.uint8)) -> None:
         self.img = erode(img=self.img, kernel=kernel)
 
+    # erosion followed by dilation
     def opening(self, kernel: np.ndarray = np.ones(shape=(5, 5), dtype=np.uint8)) -> None:
         self.img = opening(img=self.img, kernel=kernel)
 
+    # thin edge
     def canny(self, c1: int = 100, c2: int = 200) -> None:
         self.img = canny(img=self.img, c1=c1, c2=c2)
 
+    # Blur the image for getting the format of the text
     def contour_img(
         self,
         thresh_px: None | int = None,
@@ -72,6 +76,8 @@ class img_process_gray(img_process):
 
     ########################################################################################################################################################
     # img_process/threshold.py
+    # Both threshold and threshold_adapt are used for making the clear distinction 
+    # between background and text in output image.
 
     def threshold(
         self,
@@ -99,6 +105,7 @@ class img_process_gray(img_process):
     ########################################################################################################################################################
     # img_process/kernel_2d.py
 
+    # Sharp the image
     def sharp_filter2d(
         self, ls: list[float] = [-0.1, -5], center_px: int | None = None
     ) -> None:
@@ -142,6 +149,7 @@ class img_process_gray(img_process):
     ########################################################################################################################################################
     # img_process/utility.py
 
+    # Make the black area of the image become white and vice versa
     def invert_img(self) -> None:
         self.img = invert_img(img=self.img)
 

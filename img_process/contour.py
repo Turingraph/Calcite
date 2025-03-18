@@ -34,7 +34,7 @@ def get_contours(img: np.ndarray) -> tuple:
 
 #-----------------------------------------------------------------------------------------
 
-# Blur the image
+# Blur the image for getting the format of the text
 def contour_img(
     img: np.ndarray,
     thresh_px: int = 0,
@@ -56,7 +56,7 @@ def contour_img(
 
 #-----------------------------------------------------------------------------------------
 
-# Dev can sort the get_contours(img) based on x, y, width, height and size, using this function.
+# Sort the get_contours(img) based on x, y, width, height and size, using this function.
 '''
 dilate_img = contour_img(img)
 contours = get_contours(dilate_img)

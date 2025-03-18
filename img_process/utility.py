@@ -1,6 +1,7 @@
 import cv2
 import numpy as np
 
+# Make the black area of the image become white and vice versa
 def invert_img(img: np.ndarray) -> np.ndarray:
     return cv2.bitwise_not(src=img)
 
