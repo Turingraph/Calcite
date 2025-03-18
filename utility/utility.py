@@ -4,3 +4,8 @@ def get_options(input: any, input_options: list, message: str) -> any:
         return input_options[0]
     else:
         return input
+
+def opposite(input:bool):
+    if input == True:
+        return False
+    return True
