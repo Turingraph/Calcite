@@ -1,6 +1,60 @@
-from img_process.contour import get_contours, sort_contours, contour_img
+from img_process.contour import contour_img
 import numpy as np
 import cv2
+from utility.utility import get_options
+
+#-----------------------------------------------------------------------------------------
+
+# Get the array of rectangles that indicate the boundary of text in img image.
+# It is recommended to transform the input image using contour_img before use this function.
+def get_general_contours(img: np.ndarray) -> tuple:
+    contours, hierarchy = cv2.findContours(
+        image=img, 
+        mode=cv2.RETR_LIST, 
+        method=cv2.CHAIN_APPROX_SIMPLE
+    )
+    return contours
+
+#-----------------------------------------------------------------------------------------
+
+def sort_general_contours(
+    contour: list | tuple, reverse: bool = False, method: int = 4
+) -> list:
+    message = """
+-------------------------------------------------------------------------------------------
+img_process/rotate.py/def sort_general_contours
+
+def sort_general_contours(
+    contour: list | tuple, 
+    reverse: bool = False, 
+    method: int = 4
+) -> list:
+# This function sort the `contour` list or tuple, based on `method` option.
+
+available `method` options
+-   0 = x
+-   1 = y
+-   2 = width
+-   3 = height
+-   4 = size
+-------------------------------------------------------------------------------------------
+    """
+    method = get_options(
+        input=method, input_options=[4, 0, 1, 2, 3], message=message
+    )
+    if method in [0, 1, 2, 3]:
+        return sorted(
+            contour,
+            key=lambda x: cv2.boundingRect(array=x)[method],
+            reverse=reverse,
+        )
+    return sorted(
+        contour,
+        key=lambda x: cv2.contourArea(contour=x),
+        reverse=reverse,
+    )
+
+#-----------------------------------------------------------------------------------------
 
 def get_skew_angle(img: np.ndarray) -> int:
     # https://github.com/wjbmattingly/ocr_python_textbook/blob/main/02_02_working%20with%20opencv.ipynb
@@ -28,7 +82,7 @@ def get_skew_angle(img: np.ndarray) -> int:
 
     # 4.th There can be various approaches to determine skew angle,
     # but we’ll stick to the simple one — take the largest text block and use its angle.
-    largest_contour = sort_contours(contour = get_contours(img = img))[-1]
+    largest_contour = sort_general_contours(contour = get_general_contours(img = img))[-1]
 
     #####################################################################################################################
 
@@ -45,6 +99,7 @@ def get_skew_angle(img: np.ndarray) -> int:
 
     return angle
 
+#-----------------------------------------------------------------------------------------
 
 def rotate(img: np.ndarray, angle: int | None = None) -> np.ndarray:
     (h, w) = img.shape[:2]
@@ -59,3 +114,5 @@ def rotate(img: np.ndarray, angle: int | None = None) -> np.ndarray:
         flags=cv2.INTER_CUBIC,
         borderMode=cv2.BORDER_REPLICATE,
     )
+
+#-----------------------------------------------------------------------------------------
