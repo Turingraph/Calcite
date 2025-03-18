@@ -3,6 +3,7 @@ from pytesseract import Output
 import numpy as np
 from utility.utility import get_options
 
+# Get OSD (Orientation and Script Detection) data from the input img image
 def osd(img:np.ndarray, out_type:str = Output.STRING,timeout:int = 0)->any:
     message = """
 -------------------------------------------------------------------------------------------

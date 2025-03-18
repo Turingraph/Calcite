@@ -1,6 +1,9 @@
 from utility.utility import get_options
 from ocr.utility import int_from_str
 
+#-----------------------------------------------------------------------------------------
+
+# Help user select valid PSM (Page Segmentation Mode) for img_to_str
 def get_psm(psm:str|int|None)->str:
     message = """
 -------------------------------------------------------------------------------------------
@@ -40,6 +43,9 @@ Reference
     )
     return '--psm ' + str(out)
 
+#-----------------------------------------------------------------------------------------
+
+# Help user select valid OEM (OCR Engine Mode) for img_to_str
 def get_oem(oem:str|int|None)->str:
     message = """
 -------------------------------------------------------------------------------------------
@@ -62,3 +68,5 @@ Execute this line to see more details.
         oem = int_from_str(oem)
     out = get_options(input=oem, input_options=[3, 2, 1, 0], message=message)
     return "--oem " + str(out)
+
+#-----------------------------------------------------------------------------------------
