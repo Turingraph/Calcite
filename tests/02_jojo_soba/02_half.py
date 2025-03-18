@@ -27,8 +27,3 @@ img.row_half(2)
 img.show_boxes(rgb=[255,0,0], title="half_01")
 img.marked_img.save_img(["img_01","half_01"])
 img.select_boxes(min_w=1000,max_h=50)
-
-
-# print("*** AFTER  ***")
-# for i in img.boxes:
-#     print(i)
