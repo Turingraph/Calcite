@@ -98,7 +98,7 @@ available `method` options
         )
     return sorted(
         contour,
-        key=lambda x: cv2.contourArea(contour=x),
+        key=lambda x: (x[2]-x[0])*(x[3]-x[1]),
         reverse=reverse,
     )
 

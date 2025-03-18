@@ -73,9 +73,57 @@ class boxes_img:
 
 #-----------------------------------------------------------------------------------------
 
-    def column_boxes(self,vertical:bool = False):
-        for i in self.boxes:
-            print(i)
+    # Update self.boxes based on the row of previous self.boxes
+    def row_boxes(self):
+        new_boxes = []
+        w = self.origin_img.shape()[1]
+        h = self.origin_img.shape()[0]
+        arr = sort_contours(self.boxes, 1)
+        for i in range(len(arr)):
+            if i == 0:
+                new_boxes.append((0, 0, w, arr[0][1]))
+            else:
+                new_boxes.append((0, arr[i-1][3], w, arr[i][1]))
+        new_boxes.append((0, arr[len(arr)-1][3], w, h))
+        self.boxes = new_boxes
+
+    # Update self.boxes as 2 parts, based on the index-th row of previous self.boxes
+    def row_half(self, index:int = 0):
+        new_boxes = []
+        w = self.origin_img.shape()[1]
+        h = self.origin_img.shape()[0]
+        arr = sort_contours(self.boxes, 1)
+        for i in range(len(arr)):
+            if i == index:
+                new_boxes.append((0, 0, w, arr[i][1]))
+                new_boxes.append((0, arr[i][3], w, h))
+        self.boxes = new_boxes
+
+    # Update self.boxes based on the column of previous self.boxes
+    def col_boxes(self):
+        new_boxes = []
+        w = self.origin_img.shape()[1]
+        h = self.origin_img.shape()[0]
+        arr = sort_contours(self.boxes, 0)
+        for i in range(len(arr)):
+            if i == 0:
+                new_boxes.append((0, 0, arr[0][0], h))
+            else:
+                new_boxes.append((arr[i-1][2], 0, arr[i][0], h))
+        new_boxes.append((arr[len(arr)-1][2], 0, w, h))
+        self.boxes = new_boxes
+
+    # Update self.boxes as 2 parts, based on the index-th column of previous self.boxes
+    def col_half(self, index:int = 0):
+        new_boxes = []
+        w = self.origin_img.shape()[1]
+        h = self.origin_img.shape()[0]
+        arr = sort_contours(self.boxes, 0)
+        for i in range(len(arr)):
+            if i == index:
+                new_boxes.append((0, 0, arr[i][0], h))
+                new_boxes.append((arr[i][2], 0, w, h))
+        self.boxes = new_boxes
 
 #-----------------------------------------------------------------------------------------
 
