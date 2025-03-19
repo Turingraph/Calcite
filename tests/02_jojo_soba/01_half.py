@@ -18,19 +18,10 @@ img = boxes_img(img = path, kernel=np.ones((13, 23)))
 
 img.select_boxes(min_w=1000,max_h=50)
 img.sort_boxes(1)
-img.show_boxes(rgb=[255,0,0], title="before")
-# print("*** BEFORE ***")
-# for i in img.boxes:
-#     print(i)
-img.marked_img.save_img(["img_01","before"])
-img.row_boxes()
-img.show_boxes(rgb=[255,0,0], title="after")
-img.marked_img.save_img(["img_01","after"])
+img.show_boxes(rgb=[255,0,0], title="origin")
+img.marked_img.save_img(["img_01_half","origin"])
 
-img.row_boxes()
-img.show_boxes(rgb=[255,0,0], title="after_01")
-img.marked_img.save_img(["img_01","after_01"])
-
-# print("*** AFTER  ***")
-# for i in img.boxes:
-#     print(i)
+img.row_half(1)
+img.show_boxes(rgb=[255,0,0], title="half")
+img.marked_img.save_img(["img_01_half","half"])
+img.save_boxes(["img_01_half", "subhalf"])
