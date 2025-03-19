@@ -1,6 +1,6 @@
 # My Ignore folder
 trash/
-
+privatefile*
 # ####################################################################################
 # # ignore frontend dependencies
 

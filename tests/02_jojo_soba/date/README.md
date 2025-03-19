@@ -1,1 +1,0 @@
-It see, `thinn.jpg` is the best image in `02_jojo_soba/img/`

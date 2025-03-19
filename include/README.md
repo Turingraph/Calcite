@@ -34,7 +34,7 @@ Note that every Python file in this directory except `hello_world.py` have the c
 
 `include/` contains
 1.  `boxes_img.py`
--   Purpose : //
+-   Purpose : Create the box around the text using image processing technique.
 2.  `hello_world.py`
 -   Purpose : Check if we import coding file from `include/` to `tests/` correctly.
 3.  `img_process_gray.py`
@@ -47,7 +47,8 @@ Note that every Python file in this directory except `hello_world.py` have the c
 -   Warning : It is not recommended to use `img_process` class because the Constructor of `img_process` does not check if `img` argument valid or not.
 -   Note : `img_process` is the only class with 2 inherited child classes, `img_process_rgb` and `img_process_gray`. Both child classes do not overwrite any `img_process`'s methods.
 6.  `ocr_arr.py`
--   Purpose : //
+-   Purpose : Get data from image with complicated format e.g. table of content, bills etc.
+-   Reference: https://youtu.be/9FCw1xo_s0I?si=p5_igTL5jUrwfvUh
 7.  `ocr.py`
 -   Purpose : 
     1.  `img_to_str`: Convert image to OCR text output
