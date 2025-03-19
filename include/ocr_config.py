@@ -27,7 +27,7 @@ class ocr_config:
         self.config:str = config
 
     # Convert img image to OCR text output
-    def img_to_str(self, img:np.ndarray|img_process_rgb|img_process_gray)-> None:
+    def img_to_str(self, img:np.ndarray|img_process_rgb|img_process_gray|str)-> None:
         if isinstance(img, img_process_rgb) or isinstance(img, img_process_gray):
             img = img.img
         self.output = ''
