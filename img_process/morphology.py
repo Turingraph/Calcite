@@ -65,7 +65,7 @@ def canny(img: np.ndarray, c1: int = 100, c2: int = 200) -> np.ndarray:
         tp = c1
         c1 = c2
         c2 = tp
-    return cv2.Canny(src = img, threshold1= set_px(c1), threshold2= set_px(c2))
+    return cv2.Canny(image = img, threshold1= set_px(c1), threshold2= set_px(c2))
 
 #-----------------------------------------------------------------------------------------
 

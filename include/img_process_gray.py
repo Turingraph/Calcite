@@ -118,7 +118,7 @@ class img_process_gray(img_process):
     def mean_blur(self, w: int = 15, h:int = 15, scalar: None | int = None) -> None:
         self.img = mean_blur(img=self.img, w=w,h=h, scalar=scalar)
 
-    def gauss_blur(self, w: int = 15, h:int = 15) -> None:
+    def gauss_blur(self, w: float = 15, h:float = 15) -> None:
         self.img = gauss_blur(img=self.img, w=w,h=h)
 
     def bilateral_blur(self, ksize: int = 15, effect: int = 75) -> None:

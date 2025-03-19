@@ -127,7 +127,7 @@ class threshold_adapt:
         img = gray_img(img = img)
         return cv2.adaptiveThreshold(
             src=img,
-            maxVal=self.maxval,
+            maxValue=self.maxval,
             adaptiveMethod=self.adaptive_method,
             thresholdType=self.method,
             blockSize=self.ksize,

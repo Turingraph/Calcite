@@ -94,5 +94,5 @@ print(out)
 * This YouTube playlist teaches how to preprocess the image (of book page and index page), the extract text from the image.
 * https://www.youtube.com/watch?v=tQGgGY8mTP0&list=PL2VXyKi-KpYuTAZz__9KVl1jQz74bDG7i
 2. OCR Tutorial Website
-* This YouTube playlist teaches how to preprocess the image, the extract text from the image, make the text bounding box and select some text inside the input image.
+* This website teaches how to preprocess the image, the extract text from the image, make the text bounding box and select some text inside the input image.
 * https://nanonets.com/blog/ocr-with-tesseract/

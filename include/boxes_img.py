@@ -75,14 +75,6 @@ class boxes_img:
         min_h = get_size(size=min_h, maxval=self.marked_img.img.shape[0])
         max_w = get_size(size=max_w, maxval=self.marked_img.img.shape[1],default_size=self.marked_img.img.shape[1])
         max_h = get_size(size=max_h, maxval=self.marked_img.img.shape[0],default_size=self.marked_img.img.shape[0])
-        print("min_x",min_x)
-        print("max_x",max_x)
-        print("min_y",min_y)
-        print("max_y",max_y)
-        print("min_w",min_w)
-        print("max_w",max_w)
-        print("min_h",min_h)
-        print("max_h",max_h)
         all_box = self.boxes
 
         if reset == True:
@@ -179,7 +171,12 @@ available `method` options
 
     # Show the original img image with the image of selected box (self.boxes)
     def show_boxes(self,
-            rgb:list[list[int]]|list[int]|int = [255,0,0], title:str="boxes_img.show_boxes()"
+            rgb:list[list[int]]|list[int]|int = [
+                [255,0,0],
+                [0,255,0],
+                [0,0,255]
+            ],
+            title:str="boxes_img.show_boxes()"
             ) -> None:
         self.marked_img = copy.deepcopy(self.origin_img)
         c = 0
