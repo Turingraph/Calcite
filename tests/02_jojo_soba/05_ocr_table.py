@@ -38,9 +38,12 @@ for name in names:
     ocr_00.img_to_str(img=img_process_rgb(img.get_imgs()[2]).img)
     ocr_00.save_text(path = ["table",name])
 
+###############################################################################################################
+
     # Get the right most number of the input image. 
     # But it is easier to use psm 11 instead.
 
+    """
     # img = boxes_img(
     #     img = img_process_rgb(img.get_imgs()[2]).get_rgb_img(), 
     #     kernel=np.ones((100, 13)))
@@ -57,5 +60,6 @@ for name in names:
     #     print(ocr_01.output)
     #     ocr_00.output += "\n---------------\n" + ocr_01.output
     #     ocr_00.save_text(path = ["table",name])
+    """
 
 ###############################################################################################################

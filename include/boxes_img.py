@@ -56,21 +56,51 @@ class boxes_img:
     # Get selected box as self.boxes from self.all_boxes filtered by this function.
     def select_boxes(
             self, 
+            reset:bool = True,
+            min_x:int = 0,
+            max_x:int|None = None,
+            min_y:int = 0,
+            max_y:int|None = None,
             min_w:int = 0,
             max_w:int|None = None,
             min_h:int = 0,
             max_h:int|None = None,
             ) -> None:
+        min_x = get_size(size=min_x, maxval=self.marked_img.img.shape[1])
+        min_y = get_size(size=min_y, maxval=self.marked_img.img.shape[0])
+        max_x = get_size(size=max_x, maxval=self.marked_img.img.shape[1],default_size=self.marked_img.img.shape[1])
+        max_y = get_size(size=max_y, maxval=self.marked_img.img.shape[0],default_size=self.marked_img.img.shape[0])
+
         min_w = get_size(size=min_w, maxval=self.marked_img.img.shape[1])
         min_h = get_size(size=min_h, maxval=self.marked_img.img.shape[0])
         max_w = get_size(size=max_w, maxval=self.marked_img.img.shape[1],default_size=self.marked_img.img.shape[1])
         max_h = get_size(size=max_h, maxval=self.marked_img.img.shape[0],default_size=self.marked_img.img.shape[0])
-        self.all_boxes = get_contours(img=self.dilate_img.img)
-        self.boxes = []
-        for i in self.all_boxes:
-            if ((i[2] > min_w and i[3] > min_h) 
-                and (i[2] < max_w and i[3] < max_h)):
-                self.boxes.append(i)
+        print("min_x",min_x)
+        print("max_x",max_x)
+        print("min_y",min_y)
+        print("max_y",max_y)
+        print("min_w",min_w)
+        print("max_w",max_w)
+        print("min_h",min_h)
+        print("max_h",max_h)
+        all_box = self.boxes
+
+        if reset == True:
+            self.all_boxes = get_contours(img=self.dilate_img.img)
+            all_box = self.all_boxes
+        
+        update_box = []
+        for i in all_box:
+            if len(all_box)< 10:
+                print(i)
+            if (
+                (i[0] > min_x and i[0] < max_x) and 
+                (i[1] > min_y and i[1] < max_y) and 
+                (i[2] > min_w and i[2] < max_w) and 
+                (i[3] > min_h and i[3] < max_h)
+                ):
+                update_box.append(i)
+        self.boxes = update_box
 
 #-----------------------------------------------------------------------------------------
     # (x, y, width, height) = (arr[i-1].x, arr[i-1].y, arr[i].x - arr[i-1].x, arr[i].y- arr[i-1].y)
