@@ -52,6 +52,24 @@ class boxes_img:
         self.boxes = []
 
 #-----------------------------------------------------------------------------------------
+    # TITLE : CREATE AND SELECT BOX
+    # (x, y, width, height) = (arr[i-1].x, arr[i-1].y, arr[i].x - arr[i-1].x, arr[i].y- arr[i-1].y)
+
+    # Update dilate_img using img_process_gray.contour_img method
+    def update_dilate_img(self,                
+                thresh_px: int = 0,
+                kernel: np.ndarray = np.ones(shape=(2, 30)),
+                ksize: int = 9) -> None:
+        self.marked_img = copy.deepcopy(self.origin_img)
+        img = img_process_gray(img = copy.deepcopy(self.origin_img.img))
+        img = img_process_gray(img=img)
+        img.contour_img(
+            thresh_px=thresh_px,
+            kernel=kernel,
+            ksize=ksize)
+        self.dilate_img = img
+        self.all_boxes = get_contours(img=self.dilate_img.img)
+        self.boxes = []
 
     # Get selected box as self.boxes from self.all_boxes filtered by this function.
     def select_boxes(
@@ -93,9 +111,6 @@ class boxes_img:
                 ):
                 update_box.append(i)
         self.boxes = update_box
-
-#-----------------------------------------------------------------------------------------
-    # (x, y, width, height) = (arr[i-1].x, arr[i-1].y, arr[i].x - arr[i-1].x, arr[i].y- arr[i-1].y)
 
     # Update self.boxes based on the row of previous self.boxes
     def row_boxes(self):
@@ -154,20 +169,7 @@ class boxes_img:
             self.boxes = new_boxes
 
 #-----------------------------------------------------------------------------------------
-
-    # Sort the get_contours(img) based on x, y, width, height and size, using this function.
-    '''
-available `method` options
--   0 = x
--   1 = y
--   2 = width
--   3 = height
--   4 = size
-    '''
-    def sort_boxes(self, reverse: bool = False, method: int = 4)->None:
-        self.boxes = sort_contours(contour=self.boxes, reverse=reverse, method=method)
-
-#-----------------------------------------------------------------------------------------
+    # TITLE : READ AND RETURN BOX DATA
 
     # Show the original img image with the image of selected box (self.boxes)
     def show_boxes(self,
@@ -191,8 +193,6 @@ available `method` options
     def print_boxes(self):
         for i in self.boxes:
             print(i)
-
-#-----------------------------------------------------------------------------------------
 
     # Get multiple images as array of image, based on self.boxes.
     def get_imgs(self, mode:int = 0) -> list[img_process_gray]|list[img_process_rgb]|list[np.ndarray]:
@@ -220,8 +220,6 @@ available `mode` options
             out_img_arr.append(out_img)
         return out_img_arr
 
-#-----------------------------------------------------------------------------------------
-
     # Save multiple images as array of image, based on self.boxes.
     def save_boxes(self,path: list[str] | str = ["img", "img_out", "jpg"]) -> None:
         count = 0
@@ -236,21 +234,18 @@ available `mode` options
             count += 1
 
 #-----------------------------------------------------------------------------------------
+    # TITLE : UTILITY
 
-    # Update dilate_img using img_process_gray.contour_img method
-    def update_dilate_img(self,                
-                thresh_px: int = 0,
-                kernel: np.ndarray = np.ones(shape=(2, 30)),
-                ksize: int = 9) -> None:
-        self.marked_img = copy.deepcopy(self.origin_img)
-        img = img_process_gray(img = copy.deepcopy(self.origin_img.img))
-        img = img_process_gray(img=img)
-        img.contour_img(
-            thresh_px=thresh_px,
-            kernel=kernel,
-            ksize=ksize)
-        self.dilate_img = img
-        self.all_boxes = get_contours(img=self.dilate_img.img)
-        self.boxes = []
+    # Sort the `self.boxes = get_contours(img)` based on x, y, width, height and size, using this function.
+    '''
+available `method` options
+-   0 = x
+-   1 = y
+-   2 = width
+-   3 = height
+-   4 = size
+    '''
+    def sort_boxes(self, reverse: bool = False, method: int = 4)->None:
+        self.boxes = sort_contours(contour=self.boxes, reverse=reverse, method=method)
 
 #-----------------------------------------------------------------------------------------
