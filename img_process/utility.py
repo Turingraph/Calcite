@@ -66,9 +66,9 @@ def get_rgb(rgb:list[int]|int) -> list[int]:
     else:
         if len(rgb) == 0:
             return [0, 0, 255]
-        if len(rgb) == 1:
+        elif len(rgb) == 1:
             return [0, 0, set_px(rgb[0])]
-        if len(rgb) == 2:
+        elif len(rgb) == 2:
             return [0, set_px(rgb[1]), set_px(rgb[0])]
         else:
             return [set_px(rgb[2]), set_px(rgb[1]), set_px(rgb[0])]

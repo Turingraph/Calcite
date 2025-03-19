@@ -4,6 +4,7 @@ import cv2
 import numpy as np
 
 from img_process.contour import get_contours, sort_contours
+from img_process.show import get_valid_path
 from img_process.utility import check_img, get_size, rgb_img
 from include.img_process import img_process
 from include.img_process_gray import img_process_gray
@@ -72,6 +73,7 @@ class boxes_img:
                 self.boxes.append(i)
 
 #-----------------------------------------------------------------------------------------
+    # (x, y, width, height) = (arr[i-1].x, arr[i-1].y, arr[i].x - arr[i-1].x, arr[i].y- arr[i-1].y)
 
     # Update self.boxes based on the row of previous self.boxes
     def row_boxes(self):
@@ -83,8 +85,8 @@ class boxes_img:
             if i == 0:
                 new_boxes.append((0, 0, w, arr[0][1]))
             else:
-                new_boxes.append((0, arr[i-1][3], w, arr[i][1]))
-        new_boxes.append((0, arr[len(arr)-1][3], w, h))
+                new_boxes.append((0, arr[i-1][1], w, arr[i][1]-arr[i-1][1]))
+        new_boxes.append((0, arr[len(arr)-1][1], w, h-arr[len(arr)-1][1]))
         self.boxes = new_boxes
 
     # Update self.boxes as 2 parts, based on the index-th row of previous self.boxes
@@ -96,7 +98,7 @@ class boxes_img:
         for i in range(len(arr)):
             if i == index:
                 new_boxes.append((0, 0, w, arr[i][1]))
-                new_boxes.append((0, arr[i][3], w, h))
+                new_boxes.append((0, arr[i][1], w, h))
         self.boxes = new_boxes
 
     # Update self.boxes based on the column of previous self.boxes
@@ -109,8 +111,8 @@ class boxes_img:
             if i == 0:
                 new_boxes.append((0, 0, arr[0][0], h))
             else:
-                new_boxes.append((arr[i-1][2], 0, arr[i][0], h))
-        new_boxes.append((arr[len(arr)-1][2], 0, w, h))
+                new_boxes.append((arr[i-1][0], 0, arr[i][0]-arr[i-1][0], h))
+        new_boxes.append((arr[len(arr)-1][0], 0, w-arr[len(arr)-1][0], h))
         self.boxes = new_boxes
 
     # Update self.boxes as 2 parts, based on the index-th column of previous self.boxes
@@ -121,8 +123,8 @@ class boxes_img:
         arr = sort_contours(self.boxes, 0)
         for i in range(len(arr)):
             if i == index:
-                new_boxes.append((0, 0, arr[i][0], h))
-                new_boxes.append((arr[i][2], 0, w, h))
+                new_boxes.append((0, 0, arr[0][0], h))
+                new_boxes.append((arr[0][2], 0, w, h))
         self.boxes = new_boxes
 
 #-----------------------------------------------------------------------------------------
@@ -143,12 +145,21 @@ available `method` options
 
     # Show the original img image with the image of selected box (self.boxes)
     def show_boxes(self,
-            rgb:list[int]|int|None = None, title:str="boxes_img.show_boxes()"
+            rgb:list[list[int]]|list[int]|int = [255,0,0], title:str="boxes_img.show_boxes()"
             ) -> None:
         self.marked_img = copy.deepcopy(self.origin_img)
+        c = 0
         for i in self.boxes:
-            self.marked_img.rectangle(rgb=rgb,x=i[0], y=i[1], w=i[2], h=i[3])
+            color_of_the_wind = rgb
+            if isinstance(rgb,list) and isinstance(rgb[0], list):
+                color_of_the_wind=rgb[c%len(rgb)]
+                c+=1
+            self.marked_img.rectangle(rgb=color_of_the_wind,x=i[0], y=i[1], w=i[2], h=i[3])
         self.marked_img.show(title=title)
+
+    def print_boxes(self):
+        for i in self.boxes:
+            print(i)
 
 #-----------------------------------------------------------------------------------------
 
@@ -170,8 +181,7 @@ available `mode` options
         mode = get_options(input=mode,input_options=[0,1,2],message=message)
         out_img_arr = []
         for i in self.boxes:
-            x, y, w, h = cv2.boundingRect(i)
-            out_img = self.origin_img.img[y:y + h, x:x + w]
+            out_img = self.origin_img.img[i[1]:i[1]+i[3], i[0]:i[0]+i[2]]
             if mode == 1:
                 out_img = img_process_rgb(img = out_img)
             elif mode == 2:
@@ -184,11 +194,9 @@ available `mode` options
     # Save multiple images as array of image, based on self.boxes.
     def save_boxes(self,path: list[str] | str = ["img", "img_out", "jpg"]) -> None:
         count = 0
-        if isinstance(path, str):
-            path = ["img", path, "jpg"]
+        path = get_valid_path(path)
         for i in self.boxes:
-            x, y, w, h = cv2.boundingRect(i)
-            out_img = self.origin_img.img[y:y + h, x:x + w]
+            out_img = self.origin_img.img[i[1]:i[1]+i[3], i[0]:i[0]+i[2]]
             out_img = img_process_rgb(img = out_img)
             count_stars = str(count)
             if count < 10:

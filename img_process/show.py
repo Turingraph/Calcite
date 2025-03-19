@@ -13,21 +13,27 @@ def show(img: np.ndarray, title: str = "img_out") -> None:
     cv2.waitKey(delay=0)
     cv2.destroyAllWindows()
 
+def get_valid_path(path: list[str] | str = ["img", "img_out", "jpg"]):
+    if isinstance(path, list):
+        if len(path) == 0:
+            return ["img", "img_out", "jpg"]
+        elif len(path) == 1:
+            return [path[0], "img_out", "jpg"]
+        elif len(path) == 2:
+            return [path[0], path[1], "jpg"]
+        else:
+            return [path[0], path[1], path[2]]
+    elif isinstance(path, str):
+        return ["img", path, "jpg"]
+    else:
+        return ["img", "img_out", "jpg"]
+
 def save_img(
     img: np.ndarray,
     path: list[str] | str = ["img", "img_out", "jpg"],
 ) -> None:
     # https://stackoverflow.com/questions/902761/saving-a-numpy-array-as-an-image
-    if isinstance(path, list):
-        if len(path) == 0:
-            path = ["img", "img_out", "jpg"]
-        if len(path) == 1:
-            path = [path[0], "img_out", "jpg"]
-        if len(path) == 2:
-            path = [path[0], path[1], "jpg"]
-    if isinstance(path, str):
-        path = ["img", path, "jpg"]
-
+    path = get_valid_path(path)
     format_options = [
         "jpg",
         "jpeg",
