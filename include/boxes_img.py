@@ -123,17 +123,20 @@ class boxes_img:
 
     # Update self.boxes as 2 parts, based on the index-th row of previous self.boxes
     def row_half(self, index:int = 0):
-        if index < len(self.boxes):
+        if abs(index) < len(self.boxes):
             new_boxes = []
             w = self.origin_img.shape()[1]
             h = self.origin_img.shape()[0]
             arr = sort_contours(self.boxes, 1)
             if index < 0:
                 index += len(arr)
-            for i in range(len(arr)):
+            i = 0
+            while i < len(arr):
                 if i == index:
                     new_boxes.append((0, 0, w, arr[i][1]))
                     new_boxes.append((0, arr[i][1], w, h))
+                    i = len(arr)
+                i += 1
             self.boxes = new_boxes
 
     # Update self.boxes based on the column of previous self.boxes
@@ -153,17 +156,20 @@ class boxes_img:
 
     # Update self.boxes as 2 parts, based on the index-th column of previous self.boxes
     def col_half(self, index:int = 0):
-        if index < len(self.boxes):
+        if abs(index) < len(self.boxes):
             new_boxes = []
             w = self.origin_img.shape()[1]
             h = self.origin_img.shape()[0]
             arr = sort_contours(self.boxes, 0)
             if index < 0:
                 index += len(arr)
-            for i in range(len(arr)):
+            i = 0
+            while i < len(arr):
                 if i == index:
                     new_boxes.append((0, 0, arr[i][0], h))
                     new_boxes.append((arr[i][0], 0, w, h))
+                    i = len(arr)
+                i += 1
             self.boxes = new_boxes
 
     # Get Box around the word
