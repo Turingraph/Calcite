@@ -1,6 +1,6 @@
 # Description
 
-The project name is "Calcite OCR". It is an OCR app based on Tesseract OCR model.
+The project name is "Optical-Characteristic-Disorder". It is an OCR app based on Tesseract OCR model.
 
 It is intended for 
 1.	Allowing user without coding background to be able to use Tesseract OCR much more easily for extract text data from image or multiple images of text.
@@ -84,7 +84,7 @@ Ignore Advanced Feature
 4.	`latex/`
 -	Purpose: Convert image of mathematical notation e.g. ratio, integration, vector etc to Latex representation. (OCR mathematical notation)
 
-# How to use Calcite OCR ? (Quick Tutorial)
+# How to use "Optical-Characteristic-Disorder" ? (Quick Tutorial)
 
 The project is unfinished. You can support our project by add the missing feature of our app.
 Thank you for your contribution.
