@@ -72,7 +72,7 @@ def sharp_kernel_2d(
     # space: o(n^2)
     ksize = len(ls) * 2 + 1
     kernel = np.ones(shape = (ksize, ksize))
-    for i in range(stop = len(ls)):
+    for i in range(len(ls)):
         j = ksize - i - 1
         kernel[i] = ls[i] * kernel[i]
         kernel[j] = ls[i] * kernel[j]
@@ -82,14 +82,14 @@ def sharp_kernel_2d(
             kernel[i][p] = ls[q]
             kernel[j][q] = ls[q]
             kernel[j][p] = ls[q]
-    for i in range(stop = len(ls)):
+    for i in range(len(ls)):
         j = ksize - i - 1
         kernel[len(ls)][i] = ls[i]
         kernel[len(ls)][j] = ls[i]
     if not isinstance(center_px, (int, float)):
         center_coef = 1
         center_px = 0
-        for i in range(stop = len(ls)):
+        for i in range(len(ls)):
             j = len(ls) - i - 1
             center_coef += 2
             center_px += (center_coef * 2 + (center_coef - 2) * 2) * ls[j]

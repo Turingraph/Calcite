@@ -76,7 +76,6 @@ class boxes_img:
     # Get selected box as self.boxes from self.all_boxes filtered by this function.
     def select_boxes(
             self, 
-            reset:bool = True,
             min_x:int = 0,
             max_x:int|None = None,
             min_y:int = 0,
@@ -95,24 +94,17 @@ class boxes_img:
         min_h = get_size(size=min_h, maxval=self.marked_img.img.shape[0])
         max_w = get_size(size=max_w, maxval=self.marked_img.img.shape[1],default_size=self.marked_img.img.shape[1])
         max_h = get_size(size=max_h, maxval=self.marked_img.img.shape[0],default_size=self.marked_img.img.shape[0])
-        all_box = self.boxes
-
-        if reset == True:
-            self.all_boxes = get_contours(img=self.dilate_img.img)
-            all_box = self.all_boxes
+        self.all_boxes = get_contours(img=self.dilate_img.img)
         
-        update_box = []
-        for i in all_box:
-            if len(all_box)< 10:
-                print(i)
+        self.boxes = []
+        for i in self.all_boxes:
             if (
                 (i[0] > min_x and i[0] < max_x) and 
                 (i[1] > min_y and i[1] < max_y) and 
                 (i[2] > min_w and i[2] < max_w) and 
                 (i[3] > min_h and i[3] < max_h)
                 ):
-                update_box.append(i)
-        self.boxes = update_box
+                self.boxes.append(i)
 
     # Update self.boxes based on the row of previous self.boxes
     def row_boxes(self):
@@ -136,6 +128,8 @@ class boxes_img:
             w = self.origin_img.shape()[1]
             h = self.origin_img.shape()[0]
             arr = sort_contours(self.boxes, 1)
+            if index < 0:
+                index += len(arr)
             for i in range(len(arr)):
                 if i == index:
                     new_boxes.append((0, 0, w, arr[i][1]))
@@ -164,6 +158,8 @@ class boxes_img:
             w = self.origin_img.shape()[1]
             h = self.origin_img.shape()[0]
             arr = sort_contours(self.boxes, 0)
+            if index < 0:
+                index += len(arr)
             for i in range(len(arr)):
                 if i == index:
                     new_boxes.append((0, 0, arr[i][0], h))

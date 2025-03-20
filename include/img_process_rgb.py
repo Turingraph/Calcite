@@ -18,8 +18,26 @@ class img_process_rgb(img_process):
         else:
             raise TypeError("Error: Input must be an instance of 'img_process_rgb', a NumPy array, or a file path.")
 
-    def get_gray_img(self):
-        return gray_img(img = self.img)
+    def get_gray_img(self, mode:int = 3):
+        # https://stackoverflow.com/questions/44554125/
+        # python-want-to-display-red-channel-only-in-opencv
+        match mode:
+            case 0:
+                self.img[:, :, 0] = 0
+                self.img[:, :, 1] = 0
+                return gray_img(img = self.img)
+            case 1:
+                self.img[:, :, 1] = 0
+                self.img[:, :, 2] = 0
+                return gray_img(img = self.img)
+            case 2:
+                self.img[:, :, 2] = 0
+                self.img[:, :, 0] = 0
+                return gray_img(img = self.img)
+            case 3:
+                return gray_img(img = self.img)
+            case default:
+                return gray_img(img = self.img)
     
     def get_rgb_img(self):
         return self.img
