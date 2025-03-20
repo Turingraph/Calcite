@@ -92,3 +92,7 @@ Thank you for your contribution.
 # Additional Information
 
 -	Read `doc/README.md` and `doc/` to read additional information about our project.
+
+# Random UXUI Idea !
+
+Well I love anime, Zutomayo and Vocaloid, Japanese style UXUI is not minimalistic (https://youtu.be/z6ep308goxQ?si=qGumbQV0GXycy8OL), minimalism seem very saturate and box around text created by Tesseract OCR seem Chaos. It is very interesting to combine all of that in Open source OCR app on GitHub ! We might change the name of our project alter after we build the core functionality !
