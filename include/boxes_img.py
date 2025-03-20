@@ -111,7 +111,7 @@ class boxes_img:
         new_boxes = []
         w = self.origin_img.shape()[1]
         h = self.origin_img.shape()[0]
-        arr = sort_contours(self.boxes, 1)
+        arr = sort_contours(contour=self.boxes, method=1)
         for i in range(len(arr)):
             if i == 0:
                 new_boxes.append((0, 0, w, arr[0][1]))
@@ -127,7 +127,7 @@ class boxes_img:
             new_boxes = []
             w = self.origin_img.shape()[1]
             h = self.origin_img.shape()[0]
-            arr = sort_contours(self.boxes, 1)
+            arr = sort_contours(contour=self.boxes, method=1)
             if index < 0:
                 index += len(arr)
             i = 0
@@ -144,7 +144,9 @@ class boxes_img:
         new_boxes = []
         w = self.origin_img.shape()[1]
         h = self.origin_img.shape()[0]
-        arr = sort_contours(self.boxes, 0)
+        # don't forget to add parameter name because
+        # arr = sort_contours(self.boxes, 0) is not working
+        arr = sort_contours(contour=self.boxes, method=0)
         for i in range(len(arr)):
             if i == 0:
                 new_boxes.append((0, 0, arr[0][0], h))
@@ -160,7 +162,7 @@ class boxes_img:
             new_boxes = []
             w = self.origin_img.shape()[1]
             h = self.origin_img.shape()[0]
-            arr = sort_contours(self.boxes, 0)
+            arr = sort_contours(contour=self.boxes, method=0)
             if index < 0:
                 index += len(arr)
             i = 0
