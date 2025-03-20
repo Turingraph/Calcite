@@ -3,10 +3,10 @@ from pytesseract import Output
 
 from include.img_process_gray import img_process_gray
 from include.img_process_rgb import img_process_rgb
-from ocr.flag_options import get_oem, get_psm
-from ocr.img_to_str import img_to_str
-from ocr.osd import osd
-from ocr.save_text import save_text
+from ocr_config.flag_options import get_oem, get_psm
+from ocr_config.img_to_str import img_to_str
+from ocr_config.osd import osd
+from ocr_config.save_text import save_text
 
 
 # ocr = Optical Characteristic Recognition

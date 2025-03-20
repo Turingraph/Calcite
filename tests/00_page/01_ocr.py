@@ -12,8 +12,8 @@ sys.path.append(parent)
 
 from include.img_process_rgb import img_process_rgb
 from include.ocr_config import ocr_config
-from ocr.img_to_str import img_to_str
-from ocr.save_text import save_text
+from ocr_config.img_to_str import img_to_str
+from ocr_config.save_text import save_text
 
 path = [
     "/tests/00_page/img/img.jpg",
