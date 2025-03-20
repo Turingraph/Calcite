@@ -58,7 +58,8 @@ See https://stackoverflow.com/questions/58148626/tesseract-options-image-preproc
 ```
 my_lang = 'eng' 
 # 'eng' is the default language.
-# my_lang = 'eng + tha' # to get both English and Thai language OCR output.
+# my_lang = 'eng+tha' # to get both English and Thai language OCR output.
+# WARNING : my_lang = 'eng + tha' cause error, but my_lang = 'eng+tha' don't.
 
 # URL list
 # 1. List of all available languages in Tesseract OCR model

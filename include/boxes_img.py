@@ -2,6 +2,8 @@ import copy
 
 import cv2
 import numpy as np
+import pytesseract
+from pytesseract import Output
 
 from img_process.contour import get_contours, sort_contours
 from img_process.show import get_valid_path
@@ -167,6 +169,34 @@ class boxes_img:
                     new_boxes.append((0, 0, arr[i][0], h))
                     new_boxes.append((arr[i][0], 0, w, h))
             self.boxes = new_boxes
+
+    # Get Box around the word
+    def word_boxes(
+            self, 
+            reset:bool = True, 
+            config:ocr_config = ocr_config(), 
+            conf:int = 60, 
+            search:str="", 
+            lang:None|str=None):
+        # https://nanonets.com/blog/ocr-with-tesseract/
+        language = config.lang
+        if lang != None and config.lang == ocr_config().lang:
+            language = lang
+        d = pytesseract.image_to_data(
+            self.origin_img.get_gray_img(), 
+            output_type=Output.DICT,
+            lang=language,
+            config=config.config,
+            timeout=config.timeout
+        )
+        if reset == True:
+            self.boxes = []
+        for i in range(len(d['text'])):
+            if int(d['conf'][i]) > conf:
+                if search == "":
+                    self.boxes.append((d['left'][i], d['top'][i], d['width'][i], d['height'][i]))
+                if search != "" and search in d['text'][i]:
+                    self.boxes.append((d['left'][i], d['top'][i], d['width'][i], d['height'][i]))
 
 #-----------------------------------------------------------------------------------------
     # TITLE : READ AND RETURN BOX DATA
