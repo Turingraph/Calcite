@@ -55,6 +55,8 @@ Note that every Python file in this directory except `hello_world.py` have the c
     2.  `osd`       : Get OSD (Orientation and Script Detection) data from the input img image
     3.  `save_text` : save the OCR text output `self.out` as text file
 
+Note that it is recommended to use `ocr_config` over `ocr_config_arr.py` in most case because `ocr_config_arr.py` is harder to use.
+
 # Bonus tips: Avoid using Inheritance.
 
 Avoid using inheritance unless there is a clear reason to do so 

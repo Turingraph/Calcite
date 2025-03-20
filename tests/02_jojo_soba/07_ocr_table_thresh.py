@@ -22,7 +22,8 @@ name = "thresh"
 
 ocr_00 = ocr_config(
     lang = 'eng+tha',
-    psm=11
+    psm=11,
+    is_space=False
 )
 
 img = boxes_img(

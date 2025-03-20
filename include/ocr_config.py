@@ -17,7 +17,8 @@ class ocr_config:
             psm:str|int|None = 3,
             oem:str|int|None = 3,
             timeout:int = 0,
-            config:str = ''
+            config:str = '',
+            is_space:bool = True
             ):
         self.output:str = ''
         self.lang:str = lang
@@ -25,6 +26,7 @@ class ocr_config:
         self.oem:str = get_oem(oem)
         self.timeout:int = timeout
         self.config:str = config
+        self.is_space:bool = is_space
 
     # Convert img image to OCR text output
     def img_to_str(self, img:np.ndarray|img_process_rgb|img_process_gray|str)-> None:
@@ -35,7 +37,8 @@ class ocr_config:
                         img=img,
                         lang = self.lang,
                         config=self.psm + ' ' + self.oem + ' ' + self.config,
-                        timeout=self.timeout
+                        timeout=self.timeout,
+                        is_space=self.is_space
                     )
 
     # Get OSD (Orientation and Script Detection) data from the input img image

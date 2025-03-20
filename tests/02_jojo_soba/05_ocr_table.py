@@ -26,7 +26,8 @@ names= [
 
 ocr_00 = ocr_config(
     lang = 'eng+tha',
-    psm=11
+    psm=11,
+    is_space=False
 )
 
 for name in names:

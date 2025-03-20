@@ -13,18 +13,7 @@ sys.path.append(parent)
 ###############################################################################################################
 
 from include.boxes_img import boxes_img
-from include.img_process_rgb import img_process_rgb
 from include.ocr_config import ocr_config
-
-# path = "/tests/02_jojo_soba/img_02_row/row_01.jpg"
-
-# name = "thinn"
-# ocr_setting = ocr_config(
-#     lang = 'eng+tha'
-# )
-# img = img_process_rgb(img = (parent + path)).img
-# ocr_setting.img_to_str(img=img)
-# ocr_setting.save_text(path = ["date",name])
 
 ###############################################################################################################
 
@@ -37,7 +26,8 @@ names= [
 ]
 
 ocr_setting = ocr_config(
-    lang = 'eng+tha'
+    lang = 'eng+tha',
+    is_space=False
 )
 
 for name in names:

@@ -12,8 +12,6 @@ sys.path.append(parent)
 
 ###############################################################################################################
 
-from include.boxes_img import boxes_img
-from include.img_process_rgb import img_process_rgb
 from include.ocr_config import ocr_config
 
 path = "/tests/02_jojo_soba/img/"
@@ -26,7 +24,8 @@ names= [
 
 ocr_setting = ocr_config(
     lang = 'eng+tha',
-    psm=11
+    psm=11,
+    is_space=False
 )
 
 for name in names:
