@@ -191,7 +191,9 @@ class boxes_img:
             config:ocr_config = ocr_config(), 
             conf:int = 60, 
             search:str="", 
-            lang:None|str=None):
+            lang:None|str=None,
+            new_word:str = " "
+        ):
         # https://nanonets.com/blog/ocr-with-tesseract/
         language = config.lang
         if lang != None and config.lang == ocr_config().lang:
@@ -209,7 +211,7 @@ class boxes_img:
             if int(d['conf'][i]) > conf:
                 if search == "" or (search != "" and search in d['text'][i]):
                     self.boxes.append((d['left'][i], d['top'][i], d['width'][i], d['height'][i]))
-                    ocr_output += d['text'][i] + "\n"
+                    ocr_output += d['text'][i] + new_word
         return ocr_output
 
 
