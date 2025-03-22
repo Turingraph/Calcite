@@ -1,8 +1,6 @@
 import numpy as np
 from pytesseract import Output
 
-from include.img_process_gray import img_process_gray
-from include.img_process_rgb import img_process_rgb
 from ocr_config.flag_options import get_oem, get_psm
 from ocr_config.img_to_str import img_to_str
 from ocr_config.osd import osd

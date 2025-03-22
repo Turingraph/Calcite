@@ -124,3 +124,6 @@ def rectangle(img:np.ndarray, rgb:list[int]|int, x:int, y:int, h:int, w:int) -> 
     return cv2.rectangle(img=img, pt1=(x, y), pt2=(x+w, y+h), color=rgb, thickness=3)
 
 #-----------------------------------------------------------------------------------------
+
+def get_box_area(b:list[int]):
+    return (b[0] + b[2]) * (b[1] + b[3])

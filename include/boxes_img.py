@@ -5,14 +5,12 @@ import numpy as np
 import pytesseract
 from pytesseract import Output
 
-from img_process.contour import get_contours, sort_contours
+from img_process.contour import get_contours, sort_contours, get_box_area
 from img_process.show import get_valid_path
 from img_process.utility import check_img, get_size, rgb_img
-from include.img_process import img_process
 from include.img_process_gray import img_process_gray
 from include.img_process_rgb import img_process_rgb
 from include.ocr_config import ocr_config
-from utility.utility import get_options
 
 '''
 Attribute
@@ -285,5 +283,52 @@ available `method` options
     '''
     def sort_boxes(self, reverse: bool = False, method: int = 4)->None:
         self.boxes = sort_contours(contour=self.boxes, reverse=reverse, method=method)
+
+#-----------------------------------------------------------------------------------------
+    # TITLE : GET BOXES WITH THE MOST/LEAST VALUE.
+
+    def get_largest_boxes(self, return_int:bool = False):
+        y = 0
+        i = 0
+        while i < len(self.boxes):
+            if get_box_area(self.boxes[y]) < get_box_area(self.boxes[i]):
+                y = i 
+            i += 1
+        if return_int == True:
+            return y
+        return self.boxes[y]
+
+    def get_smallest_boxes(self, return_int:bool = False):
+        y = 0
+        i = 0
+        while i < len(self.boxes):
+            if 1/get_box_area(self.boxes[y]) < 1/get_box_area(self.boxes[i]):
+                y = i 
+            i += 1
+        if return_int == True:
+            return y
+        return self.boxes[y]
+
+    def get_max_box(self, return_int:bool = False, mode:int = 0):
+        y = 0
+        i = 0
+        while i < len(self.boxes):
+            if self.boxes[y][mode] < self.boxes[i][mode]:
+                y = i 
+            i += 1
+        if return_int == True:
+            return y
+        return self.boxes[y]
+
+    def get_min_box(self, return_int:bool = False, mode:int = 0):
+        y = 0
+        i = 0
+        while i < len(self.boxes):
+            if 1/self.boxes[y][mode] < 1/self.boxes[i][mode]:
+                y = i 
+            i += 1
+        if return_int == True:
+            return y
+        return self.boxes[y]
 
 #-----------------------------------------------------------------------------------------

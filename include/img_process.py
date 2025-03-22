@@ -1,11 +1,7 @@
-import cv2
-import numpy as np
 from img_process.show import show, save_img
 from img_process.zoom import remove_borders, zoom, create_borders, crop
 from img_process.rotate import rotate
 from img_process.contour import rectangle
-# https://www.reddit.com/r/vscode/comments/19eqplp/python_typing_issue_unsupported_operand_types_for/?rdt=43767
-from typing import Self
 
 class img_process:
     def __init__(self, img: any):
