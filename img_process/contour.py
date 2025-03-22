@@ -24,7 +24,7 @@ Reference
 
 # Get the array of rectangles that indicate the boundary of text in img image.
 # It is recommended to transform the input image using contour_img before use this function.
-def get_contours(img: np.ndarray) -> tuple:
+def get_contours(img: np.ndarray) -> list:
     contours, hierarchy = cv2.findContours(
         image=img, 
         mode=cv2.RETR_LIST, 

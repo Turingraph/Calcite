@@ -45,7 +45,7 @@ class boxes_img:
             kernel=kernel,
             ksize=ksize)
         self.dilate_img:img_process_gray = img
-        self.all_boxes:tuple = get_contours(img=self.dilate_img.img)
+        self.all_boxes:list = get_contours(img=self.dilate_img.img)
         self.boxes = []
 
 #-----------------------------------------------------------------------------------------
@@ -193,7 +193,8 @@ class boxes_img:
             search:str="", 
             lang:None|str=None,
             max_text_width:int = 80,
-            is_space:bool = True
+            is_space:bool = True,
+            is_update_box:bool = True
         ):
         # https://nanonets.com/blog/ocr-with-tesseract/
         language = config.lang
@@ -206,13 +207,13 @@ class boxes_img:
             config=config.config,
             timeout=config.timeout
         )
-        self.boxes = []
+        self.all_boxes = []
         ocr_output = ""
         text_width = 0
         for i in range(len(d['text'])):
             if int(d['conf'][i]) > conf:
                 if search == "" or (search != "" and search in d['text'][i]):
-                    self.boxes.append((d['left'][i], d['top'][i], d['width'][i], d['height'][i]))
+                    self.all_boxes.append((d['left'][i], d['top'][i], d['width'][i], d['height'][i]))
                     ocr_output += d['text'][i]
                     text_width += len(d['text'][i])
                     if text_width > max_text_width:
@@ -223,6 +224,8 @@ class boxes_img:
                         text_width += 1
                     else:
                         text_width += 0
+        if is_update_box == True:
+            self.boxes = self.all_boxes
         return ocr_output
 
 
@@ -256,6 +259,24 @@ class boxes_img:
                 c+=1
             self.marked_img.rectangle(rgb=color_of_the_wind,x=i[0], y=i[1], w=i[2], h=i[3])
         self.marked_img.show(title=title)
+
+    def save_marked_img(self,
+            rgb:list[list[int]]|list[int]|int = [
+                [255,0,0],
+                [0,255,0],
+                [0,0,255]
+            ],
+            path:str|list[str] = ["img","img_out","jpg"]
+            ) -> None:
+        self.marked_img = copy.deepcopy(self.origin_img)
+        c = 0
+        for i in self.boxes:
+            color_of_the_wind = rgb
+            if isinstance(rgb,list) and isinstance(rgb[0], list):
+                color_of_the_wind=rgb[c%len(rgb)]
+                c+=1
+            self.marked_img.rectangle(rgb=color_of_the_wind,x=i[0], y=i[1], w=i[2], h=i[3])
+        self.marked_img.save_img(path=path)
 
     def print_boxes(self):
         for i in self.boxes:
