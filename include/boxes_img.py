@@ -220,7 +220,7 @@ class boxes_img:
                         text_width = 0
                     elif is_space == True:
                         ocr_output += " "
-                        text_width += " "
+                        text_width += 1
                     else:
                         text_width += 0
         return ocr_output
