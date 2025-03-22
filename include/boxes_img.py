@@ -192,7 +192,8 @@ class boxes_img:
             conf:int = 60, 
             search:str="", 
             lang:None|str=None,
-            new_word:str = " "
+            max_text_width:int = 80,
+            is_space:bool = True
         ):
         # https://nanonets.com/blog/ocr-with-tesseract/
         language = config.lang
@@ -207,11 +208,21 @@ class boxes_img:
         )
         self.boxes = []
         ocr_output = ""
+        text_width = 0
         for i in range(len(d['text'])):
             if int(d['conf'][i]) > conf:
                 if search == "" or (search != "" and search in d['text'][i]):
                     self.boxes.append((d['left'][i], d['top'][i], d['width'][i], d['height'][i]))
-                    ocr_output += d['text'][i] + new_word
+                    ocr_output += d['text'][i]
+                    text_width += len(d['text'][i])
+                    if text_width > max_text_width:
+                        ocr_output += "\n"
+                        text_width = 0
+                    elif is_space == True:
+                        ocr_output += " "
+                        text_width += " "
+                    else:
+                        text_width += 0
         return ocr_output
 
 
