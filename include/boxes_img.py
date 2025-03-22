@@ -136,7 +136,6 @@ class boxes_img:
             i = 0
             while i < len(arr):
                 if i == index:
-                    i = len(arr)
                     if is_double == True:
                         new_boxes.append((0, 0, w, arr[i][1]))
                         new_boxes.append((0, arr[i][1], w, arr[i][3]))
@@ -144,6 +143,7 @@ class boxes_img:
                     else:
                         new_boxes.append((0, 0, w, arr[i][1]))
                         new_boxes.append((0, arr[i][1], w, h-arr[i][1]))
+                    i = len(arr)
                 i += 1
             self.boxes = new_boxes
 
@@ -184,7 +184,6 @@ class boxes_img:
             i = 0
             while i < len(arr):
                 if i == index:
-                    i = len(arr)
                     if is_double == True:
                         new_boxes.append((0, 0, arr[i][0], h))
                         new_boxes.append((arr[i][0], 0, arr[i][2], h))
@@ -192,6 +191,7 @@ class boxes_img:
                     else:
                         new_boxes.append((0, 0, arr[i][0], h))
                         new_boxes.append((arr[i][0], 0, w - arr[i][0], h))
+                    i = len(arr)
                 i += 1
             self.boxes = new_boxes
 
