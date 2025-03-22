@@ -125,7 +125,7 @@ class boxes_img:
         self.boxes = new_boxes
 
     # Update self.boxes as 2 parts, based on the index-th row of previous self.boxes
-    def row_half(self, index:int = 0):
+    def row_half(self, index:int = 0, is_double:bool = False):
         if abs(index) < len(self.boxes):
             new_boxes = []
             w = self.origin_img.shape()[1]
@@ -136,9 +136,14 @@ class boxes_img:
             i = 0
             while i < len(arr):
                 if i == index:
-                    new_boxes.append((0, 0, w, arr[i][1]))
-                    new_boxes.append((0, arr[i][1], w, h))
                     i = len(arr)
+                    if is_double == True:
+                        new_boxes.append((0, 0, w, arr[i][1]))
+                        new_boxes.append((0, arr[i][1], w, arr[i][3]))
+                        new_boxes.append((0, arr[i][1]+arr[i][3], w, h-(arr[i][1]+arr[i][3])))
+                    else:
+                        new_boxes.append((0, 0, w, arr[i][1]))
+                        new_boxes.append((0, arr[i][1], w, h-arr[i][1]))
                 i += 1
             self.boxes = new_boxes
 
@@ -168,7 +173,7 @@ class boxes_img:
         self.boxes = new_boxes
 
     # Update self.boxes as 2 parts, based on the index-th column of previous self.boxes
-    def col_half(self, index:int = 0):
+    def col_half(self, index:int = 0, is_double:bool = False):
         if abs(index) < len(self.boxes):
             new_boxes = []
             w = self.origin_img.shape()[1]
@@ -179,9 +184,14 @@ class boxes_img:
             i = 0
             while i < len(arr):
                 if i == index:
-                    new_boxes.append((0, 0, arr[i][0], h))
-                    new_boxes.append((arr[i][0], 0, w, h))
                     i = len(arr)
+                    if is_double == True:
+                        new_boxes.append((0, 0, arr[i][0], h))
+                        new_boxes.append((arr[i][0], 0, arr[i][2], h))
+                        new_boxes.append((arr[i][0] + arr[i][0], 0, w - (arr[i][0] + arr[i][0]), h))
+                    else:
+                        new_boxes.append((0, 0, arr[i][0], h))
+                        new_boxes.append((arr[i][0], 0, w - arr[i][0], h))
                 i += 1
             self.boxes = new_boxes
 
