@@ -79,7 +79,6 @@ class boxes_img:
             max_w:int|None = None,
             min_h:int = 0,
             max_h:int|None = None,
-            reset:bool = True
             ) -> None:
         min_x = get_size(size=min_x, maxval=self.marked_img.img.shape[1])
         min_y = get_size(size=min_y, maxval=self.marked_img.img.shape[0])
@@ -90,9 +89,8 @@ class boxes_img:
         min_h = get_size(size=min_h, maxval=self.marked_img.img.shape[0])
         max_w = get_size(size=max_w, maxval=self.marked_img.img.shape[1],default_size=self.marked_img.img.shape[1])
         max_h = get_size(size=max_h, maxval=self.marked_img.img.shape[0],default_size=self.marked_img.img.shape[0])
-        if reset == True:
-            self.all_boxes = get_contours(img=self.dilate_img.img)
-        
+
+        self.all_boxes = get_contours(img=self.dilate_img.img)
         self.boxes = []
         for i in self.all_boxes:
             if (
@@ -195,9 +193,30 @@ class boxes_img:
             search:str="", 
             lang:None|str=None,
             is_space:bool = True,
-            is_update_box:bool = True
+            is_update_box:bool = True,
+            min_x:int = 0,
+            max_x:int|None = None,
+            min_y:int = 0,
+            max_y:int|None = None,
+            min_w:int = 0,
+            max_w:int|None = None,
+            min_h:int = 0,
+            max_h:int|None = None,
         ):
         # https://nanonets.com/blog/ocr-with-tesseract/
+        min_x = get_size(size=min_x, maxval=self.marked_img.img.shape[1])
+        min_y = get_size(size=min_y, maxval=self.marked_img.img.shape[0])
+        max_x = get_size(size=max_x, maxval=self.marked_img.img.shape[1],default_size=self.marked_img.img.shape[1])
+        max_y = get_size(size=max_y, maxval=self.marked_img.img.shape[0],default_size=self.marked_img.img.shape[0])
+
+        min_w = get_size(size=min_w, maxval=self.marked_img.img.shape[1])
+        min_h = get_size(size=min_h, maxval=self.marked_img.img.shape[0])
+        max_w = get_size(size=max_w, maxval=self.marked_img.img.shape[1],default_size=self.marked_img.img.shape[1])
+        max_h = get_size(size=max_h, maxval=self.marked_img.img.shape[0],default_size=self.marked_img.img.shape[0])
+
+        self.all_boxes = []
+        self.boxes = []
+
         language = config.lang
         if lang != None and config.lang == ocr_config().lang:
             language = lang
@@ -208,13 +227,16 @@ class boxes_img:
             config=config.config,
             timeout=config.timeout
         )
-        self.all_boxes = []
         ocr_output = ""
         for i in range(len(d['text'])):
-            if int(d['conf'][i]) > conf:
-                if search == "" or (search != "" and search in d['text'][i]):
+            if (
+                int(d['conf'][i]) > conf and (search == "" or (search != "" and search in d['text'][i])) and 
+                (i[0] > min_x and i[0] < max_x) and 
+                (i[1] > min_y and i[1] < max_y) and 
+                (i[2] > min_w and i[2] < max_w) and 
+                (i[3] > min_h and i[3] < max_h)):
                     self.all_boxes.append((d['left'][i], d['top'][i], d['width'][i], d['height'][i]))
-                    if i > 0 and d['left'][i] < d['left'][i-1]:
+                    if i > 0 and d['left'][i] < d['left'][i-2]:
                         ocr_output += "\n"
                     ocr_output += d['text'][i]
                     if is_space == True:
