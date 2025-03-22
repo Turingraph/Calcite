@@ -194,7 +194,6 @@ class boxes_img:
             conf:int = 60, 
             search:str="", 
             lang:None|str=None,
-            max_text_width:int = 80,
             is_space:bool = True,
             is_update_box:bool = True
         ):
@@ -211,21 +210,15 @@ class boxes_img:
         )
         self.all_boxes = []
         ocr_output = ""
-        text_width = 0
         for i in range(len(d['text'])):
             if int(d['conf'][i]) > conf:
                 if search == "" or (search != "" and search in d['text'][i]):
                     self.all_boxes.append((d['left'][i], d['top'][i], d['width'][i], d['height'][i]))
-                    ocr_output += d['text'][i]
-                    text_width += len(d['text'][i])
-                    if text_width > max_text_width:
+                    if i > 0 and d['left'][i] < d['left'][i-1]:
                         ocr_output += "\n"
-                        text_width = 0
-                    elif is_space == True:
+                    ocr_output += d['text'][i]
+                    if is_space == True:
                         ocr_output += " "
-                        text_width += 1
-                    else:
-                        text_width += 0
         if is_update_box == True:
             self.boxes = self.all_boxes
         return ocr_output
