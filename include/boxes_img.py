@@ -104,7 +104,7 @@ class boxes_img:
                 self.boxes.append(i)
 
     # Update self.boxes based on the row of previous self.boxes
-    def row_boxes(self):
+    def row_boxes(self, is_double:bool = False):
         new_boxes = []
         w = self.origin_img.shape()[1]
         h = self.origin_img.shape()[0]
@@ -113,9 +113,17 @@ class boxes_img:
             if i == 0:
                 new_boxes.append((0, 0, w, arr[0][1]))
             else:
-                new_boxes.append((0, arr[i-1][1], w, arr[i][1]-arr[i-1][1]))
+                if is_double == True:
+                    new_boxes.append((0, arr[i-1][1], w, arr[i-1][3]))
+                    new_boxes.append((0, arr[i-1][1] + arr[i-1][3], w, arr[i][1] - (arr[i-1][1] + arr[i-1][3])))
+                else:
+                    new_boxes.append((0, arr[i-1][1], w, arr[i][1]-arr[i-1][1]))
         if len(arr) > 0:
-            new_boxes.append((0, arr[len(arr)-1][1], w, h-arr[len(arr)-1][1]))
+            if is_double == True:
+                new_boxes.append((0, arr[len(arr)-1][1], w, arr[len(arr)-1][3]))
+                new_boxes.append((0, arr[len(arr)-1][1] + arr[len(arr)-1][3], w, h - (arr[len(arr)-1][1] + arr[len(arr)-1][3])))
+            else:
+                new_boxes.append((0, arr[len(arr)-1][1], w, h-arr[len(arr)-1][1]))
         self.boxes = new_boxes
 
     # Update self.boxes as 2 parts, based on the index-th row of previous self.boxes
@@ -137,7 +145,7 @@ class boxes_img:
             self.boxes = new_boxes
 
     # Update self.boxes based on the column of previous self.boxes
-    def col_boxes(self):
+    def col_boxes(self, is_double:bool = False):
         new_boxes = []
         w = self.origin_img.shape()[1]
         h = self.origin_img.shape()[0]
@@ -148,9 +156,17 @@ class boxes_img:
             if i == 0:
                 new_boxes.append((0, 0, arr[0][0], h))
             else:
-                new_boxes.append((arr[i-1][0], 0, arr[i][0]-arr[i-1][0], h))
+                if is_double == True:
+                    new_boxes.append((arr[i-1][0], 0, arr[i-1][2], h))
+                    new_boxes.append((arr[i-1][0] + arr[i-1][2], 0, arr[i][0] - (arr[i-1][0] + arr[i-1][2]), h))
+                else:
+                    new_boxes.append((arr[i-1][0], 0, arr[i][0]-arr[i-1][0], h))
         if len(arr) > 0:
-            new_boxes.append((arr[len(arr)-1][0], 0, w-arr[len(arr)-1][0], h))
+            if is_double == True:
+                new_boxes.append((arr[len(arr)-1][0], 0, arr[len(arr)-1][2], h))
+                new_boxes.append((arr[len(arr)-1][0] + arr[len(arr)-1][2], 0, w - (arr[len(arr)-1][0] + arr[len(arr)-1][2]), h))
+            else:
+                new_boxes.append((arr[len(arr)-1][0], 0, w-arr[len(arr)-1][0], h))
         self.boxes = new_boxes
 
     # Update self.boxes as 2 parts, based on the index-th column of previous self.boxes
@@ -198,6 +214,15 @@ class boxes_img:
                     self.boxes.append((d['left'][i], d['top'][i], d['width'][i], d['height'][i]))
                 if search != "" and search in d['text'][i]:
                     self.boxes.append((d['left'][i], d['top'][i], d['width'][i], d['height'][i]))
+
+    def filter_half(self, is_odd:bool = False):
+        update_boxes = []
+        i = 0
+        while i < len(self.boxes):
+            if (is_odd == True and i%2 == 1) or (is_odd == False and i%2 == 0):
+                update_boxes.append(self.boxes[i])
+            i += 1
+        self.boxes = update_boxes
 
 #-----------------------------------------------------------------------------------------
     # TITLE : READ AND RETURN BOX DATA
