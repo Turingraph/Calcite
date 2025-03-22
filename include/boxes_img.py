@@ -231,10 +231,10 @@ class boxes_img:
         for i in range(len(d['text'])):
             if (
                 int(d['conf'][i]) > conf and (search == "" or (search != "" and search in d['text'][i])) and 
-                (i[0] > min_x and i[0] < max_x) and 
-                (i[1] > min_y and i[1] < max_y) and 
-                (i[2] > min_w and i[2] < max_w) and 
-                (i[3] > min_h and i[3] < max_h)):
+                (d['left'][i] > min_x and d['left'][i] < max_x) and 
+                (d['top'][i] > min_y and d['top'][i] < max_y) and 
+                (d['width'][i] > min_w and d['width'][i] < max_w) and 
+                (d['height'][i] > min_h and d['height'][i] < max_h)):
                     self.all_boxes.append((d['left'][i], d['top'][i], d['width'][i], d['height'][i]))
                     if i > 0 and d['left'][i] < d['left'][i-2]:
                         ocr_output += "\n"
