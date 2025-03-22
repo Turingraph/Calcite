@@ -79,6 +79,7 @@ class boxes_img:
             max_w:int|None = None,
             min_h:int = 0,
             max_h:int|None = None,
+            reset:bool = True
             ) -> None:
         min_x = get_size(size=min_x, maxval=self.marked_img.img.shape[1])
         min_y = get_size(size=min_y, maxval=self.marked_img.img.shape[0])
@@ -89,7 +90,8 @@ class boxes_img:
         min_h = get_size(size=min_h, maxval=self.marked_img.img.shape[0])
         max_w = get_size(size=max_w, maxval=self.marked_img.img.shape[1],default_size=self.marked_img.img.shape[1])
         max_h = get_size(size=max_h, maxval=self.marked_img.img.shape[0],default_size=self.marked_img.img.shape[0])
-        self.all_boxes = get_contours(img=self.dilate_img.img)
+        if reset == True:
+            self.all_boxes = get_contours(img=self.dilate_img.img)
         
         self.boxes = []
         for i in self.all_boxes:
@@ -260,6 +262,7 @@ class boxes_img:
             self.marked_img.rectangle(rgb=color_of_the_wind,x=i[0], y=i[1], w=i[2], h=i[3])
         self.marked_img.show(title=title)
 
+    # Save self.marked_img
     def save_marked_img(self,
             rgb:list[list[int]]|list[int]|int = [
                 [255,0,0],
