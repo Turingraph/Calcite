@@ -188,7 +188,6 @@ class boxes_img:
     # Get Box around the word
     def word_boxes(
             self, 
-            reset:bool = True, 
             config:ocr_config = ocr_config(), 
             conf:int = 60, 
             search:str="", 
@@ -204,14 +203,15 @@ class boxes_img:
             config=config.config,
             timeout=config.timeout
         )
-        if reset == True:
-            self.boxes = []
+        self.boxes = []
+        ocr_output = ""
         for i in range(len(d['text'])):
             if int(d['conf'][i]) > conf:
-                if search == "":
+                if search == "" or (search != "" and search in d['text'][i]):
                     self.boxes.append((d['left'][i], d['top'][i], d['width'][i], d['height'][i]))
-                if search != "" and search in d['text'][i]:
-                    self.boxes.append((d['left'][i], d['top'][i], d['width'][i], d['height'][i]))
+                    ocr_output += d['text'][i] + "\n"
+        return ocr_output
+
 
     def filter_half(self, is_odd:bool = False):
         update_boxes = []
