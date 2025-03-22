@@ -236,7 +236,7 @@ class boxes_img:
                 (d['width'][i] > min_w and d['width'][i] < max_w) and 
                 (d['height'][i] > min_h and d['height'][i] < max_h)):
                     self.all_boxes.append((d['left'][i], d['top'][i], d['width'][i], d['height'][i]))
-                    if i > 0 and d['left'][i] < d['left'][i-2]:
+                    if i > 0 and d['left'][i] <= d['left'][i-2]:
                         ocr_output += "\n"
                     ocr_output += d['text'][i]
                     if is_space == True:
