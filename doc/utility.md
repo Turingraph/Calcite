@@ -52,13 +52,6 @@ Reference
 *   How to solve pip install error This environment is externally managed.
 *   https://youtu.be/5jsr42KIh34?si=hj4LoikKcGRS66u7
 
-# How to `git commit` one folder ?
-
-*   `git commit -m 'message' -- my-dir`
-
-Reference
-*   https://stackoverflow.com/questions/5862233/commit-changes-only-in-one-directory-in-git
-
 # What is Open Closed Principle and why it is important for coding project ?
 
 -   It is the coding guidance concept where it is recommended to code, such that programmer can

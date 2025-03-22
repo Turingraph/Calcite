@@ -11,6 +11,13 @@
 -   `git pull https://github.com/Turingraph/Optical-Characteristic-Disorder.git --rebase`
 -   https://stackoverflow.com/questions/13193787/why-would-i-want-to-do-git-rebase
 
+# How to `git commit` one folder ?
+
+*   `git commit -m 'message' -- my-dir`
+
+Reference
+*   https://stackoverflow.com/questions/5862233/commit-changes-only-in-one-directory-in-git
+
 # Reference
 
 -   https://youtu.be/hwP7WQkmECE?si=3dpwnxaAztigW7x-
