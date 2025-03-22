@@ -27,13 +27,11 @@ boxes       list                selected boxes from all_boxes, filtered by selec
 
 class boxes_img:
     def __init__(self, 
-                img: img_process| np.ndarray | str,
+                img: np.ndarray | str,
                 thresh_px: int = 0,
                 kernel: np.ndarray = np.ones(shape=(2, 30)),
                 ksize: int = 9):
-        if type(img) == img_process:
-            img:np.ndarray = img.img
-        elif type(img) == str:
+        if type(img) == str:
             img:np.ndarray = cv2.imread(filename=img)
             if img is None:
                 raise ValueError(f"Error: The file at path '{img}' could not be loaded.")
@@ -228,28 +226,10 @@ class boxes_img:
             print(i)
 
     # Get multiple images as array of image, based on self.boxes.
-    def get_imgs(self, mode:int = 0) -> list[img_process_gray]|list[img_process_rgb]|list[np.ndarray]:
-        message = """
--------------------------------------------------------------------------------------------
-include/boxes_img.py/class boxes_img/def get_imgs()
-
-def get_imgs(self, mode:int = 0) -> list[img_process_gray]|list[img_process_rgb]|list[np.ndarray]:
-# This function return the lists of image based on `mode` option and self.boxes
-
-available `mode` options
--   0 = np.ndarray
--   1 = img_process_rgb
--   2 = img_process_gray
--------------------------------------------------------------------------------------------
-"""
-        mode = get_options(input=mode,input_options=[0,1,2],message=message)
+    def get_imgs(self) -> list[np.ndarray]:
         out_img_arr = []
         for i in self.boxes:
             out_img = self.origin_img.img[i[1]:i[1]+i[3], i[0]:i[0]+i[2]]
-            if mode == 1:
-                out_img = img_process_rgb(img = out_img)
-            elif mode == 2:
-                out_img = img_process_gray(img = out_img)
             out_img_arr.append(out_img)
         return out_img_arr
 

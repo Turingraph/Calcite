@@ -29,9 +29,7 @@ class ocr_config:
         self.is_space:bool = is_space
 
     # Convert img image to OCR text output
-    def img_to_str(self, img:np.ndarray|img_process_rgb|img_process_gray|str)-> None:
-        if isinstance(img, img_process_rgb) or isinstance(img, img_process_gray):
-            img = img.img
+    def img_to_str(self, img:np.ndarray|str)-> None:
         self.output = ''
         self.output = img_to_str(
                         img=img,
@@ -42,9 +40,7 @@ class ocr_config:
                     )
 
     # Get OSD (Orientation and Script Detection) data from the input img image
-    def osd(self, img:np.ndarray|img_process_rgb|img_process_gray, out_type:str = Output.STRING) -> any:
-        if isinstance(img, img_process_rgb) or isinstance(img, img_process_gray):
-            img = img.img
+    def osd(self, img:np.ndarray, out_type:str = Output.STRING) -> any:
         return osd(img=img, out_type=out_type, timeout=self.timeout)
 
     # save the OCR text output `self.output` as text file

@@ -46,16 +46,14 @@ Note that every Python file in this directory except `hello_world.py` have the c
 -   Contains: Basic image processing command e.g. `show`, `save_img`, `shape`, `zoom` and `rectangle` etc.
 -   Warning : It is not recommended to use `img_process` class because the Constructor of `img_process` does not check if `img` argument valid or not.
 -   Note : `img_process` is the only class with 2 inherited child classes, `img_process_rgb` and `img_process_gray`. Both child classes do not overwrite any `img_process`'s methods.
-6.  `ocr_arr.py`
--   Purpose : Get data from image with complicated format e.g. table of content, bills etc.
+6.  `ocr_config_arr.txt`
+-   Purpose : Get data from image with complicated format e.g. table of content, bills etc. It is not used at all because `ocr_config.py` can be used instead of `ocr_config_arr.py`.
 -   Reference: https://youtu.be/9FCw1xo_s0I?si=p5_igTL5jUrwfvUh
-7.  `ocr.py`
+7.  `ocr_config.py`
 -   Purpose : 
     1.  `img_to_str`: Convert image to OCR text output
     2.  `osd`       : Get OSD (Orientation and Script Detection) data from the input img image
     3.  `save_text` : save the OCR text output `self.out` as text file
-
-Note that it is recommended to use `ocr_config` over `ocr_config_arr.py` in most case because `ocr_config_arr.py` is harder to use.
 
 # Bonus tips: Avoid using Inheritance.
 
