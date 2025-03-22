@@ -1,6 +1,6 @@
 # Description
 
-The project name is "Open Close Rider". It is an OCR app based on Tesseract OCR model.
+The project name is `open_close_rider`. It is an OCR app based on Tesseract OCR model.
 
 It is intended for 
 1.	Allowing user without coding background to be able to use Tesseract OCR much more easily for extract text data from image or multiple images of text.
@@ -84,7 +84,7 @@ Ignore Advanced Feature
 4.	`latex/`
 -	Purpose: Convert image of mathematical notation e.g. ratio, integration, vector etc to Latex representation. (OCR mathematical notation)
 
-# How to use "Open Close Rider" ? (Quick Tutorial)
+# How to use `open_close_rider` ? (Quick Tutorial)
 
 The `frontend/` is not finished yet. However user can use our code by
 1.  Download our code, except `doc/` (which only contains Mark Down documentation) and `frontend/` (which only contains React Typescript frontend part). Watch this following URL to learn about Git.
