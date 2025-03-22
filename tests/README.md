@@ -9,7 +9,6 @@ This folder contains
 -   Reference: https://youtu.be/9FCw1xo_s0I?si=-BFSaYI6PVrSJvnT
 3.  `02_jojo_soba/`
 -   Purpose : Demonstrate how to get data from Jojo Soba (restaurant from Bangkok) bills. 
--   Reference: https://youtu.be/9FCw1xo_s0I?si=-BFSaYI6PVrSJvnT
 4.  `03_sign/`
 -   Purpose : Check if Tesseract OCR command able to works with photo of text on the Window. It seem our code is not working for this type of input. However we won't fix it because it is not our main focus.
 4.  `hello_world/`

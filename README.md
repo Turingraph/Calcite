@@ -1,6 +1,6 @@
 # Description
 
-The project name is "Optical-Characteristic-Disorder". It is an OCR app based on Tesseract OCR model.
+The project name is "Open Close Rider". It is an OCR app based on Tesseract OCR model.
 
 It is intended for 
 1.	Allowing user without coding background to be able to use Tesseract OCR much more easily for extract text data from image or multiple images of text.
@@ -84,13 +84,24 @@ Ignore Advanced Feature
 4.	`latex/`
 -	Purpose: Convert image of mathematical notation e.g. ratio, integration, vector etc to Latex representation. (OCR mathematical notation)
 
-# How to use "Optical-Characteristic-Disorder" ? (Quick Tutorial)
+# How to use "Open Close Rider" ? (Quick Tutorial)
 
-The project is unfinished. You can support our project by add the missing feature of our app.
-Thank you for your contribution.
+The `frontend/` is not finished yet. However user can use our code by
+1.  Download our code, except `doc/` (which only contains Mark Down documentation) and `frontend/` (which only contains React Typescript frontend part). Watch this following URL to learn about Git.
+-   https://youtu.be/hwP7WQkmECE?si=3dpwnxaAztigW7x-
+-   https://colab.research.google.com/drive/1ERz9tNhId3gBNsxGpvRWnqfY6x0LJFs-?usp=sharing
+-   https://youtu.be/tRZGeaHPoaw?si=qNfziX2r9p-XARow
+2.  Download Pip and Python3
+-   https://www.python.org/downloads/
+-   https://pip.pypa.io/en/stable/installation/
+3.  Use command line
+    1.  `python3 -m venv .venv`
+    2.  `source .venv/bin/activate` 
+    3.  `.venv/bin/pip3 install -r requirements.txt`
+    4.  If facing any issue, read `doc/python_virtual_environment.md`
+4.  See some example about how to use our code in `tests/`
+5.  Import our file from `include/` to apply with your image input.
 
 # Additional Information
 
 -	Read `doc/README.md` and `doc/` to read additional information about our project.
-
-Hello

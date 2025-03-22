@@ -12,7 +12,6 @@ from include.img_process import img_process
 from include.img_process_gray import img_process_gray
 from include.img_process_rgb import img_process_rgb
 from include.ocr_config import ocr_config
-from ocr.save_text import save_text
 from utility.utility import get_options
 
 '''

@@ -1,5 +1,5 @@
 from utility.utility import get_options
-from ocr.utility import int_from_str
+from ocr_config.utility import int_from_str
 
 #-----------------------------------------------------------------------------------------
 

@@ -10,23 +10,22 @@ sys.path.append(parent)
 
 ###############################################################################################################
 
-from include.ocr_confg_arr import ocr_config_arr
+from include.img_process_rgb import img_process_rgb
+from include.ocr_config import ocr_config
 
-path = [
-    parent + "/tests/01_index/img/boxes_img_00.jpg",
-    parent + "/tests/01_index/img/boxes_img_01.jpg",
-    parent + "/tests/01_index/img/boxes_img_02.jpg"
-]
+path = "/tests/01_index/img/boxes_img_"
+file_format = ".jpg"
 
-ocr_setting = ocr_config_arr(img_arr=path)
-ocr_setting.img_to_str()
-ocr_setting.save_text(path="single_text")
-ocr_setting.save_text_arr(path="multi_text")
-
-###############################################################################################################
-
-ocr_setting.update_img_arr(img_arr=parent + "/tests/01_index/img/img.jpeg")
-ocr_setting.save_text(path="single_text_without_boxes")
-print(ocr_setting.osd())
+for i in range(3):
+    index = str(i)
+    if i < 10:
+        index = "0"+str(i)
+    ocr_setting = ocr_config(
+        lang = 'eng'
+    )
+    # print(parent + path + index + file_format)
+    img = img_process_rgb(img = (parent + path + index + file_format)).img
+    ocr_setting.img_to_str(img=img)
+    ocr_setting.save_text(path = ["text", "text_" + index])
 
 ###############################################################################################################

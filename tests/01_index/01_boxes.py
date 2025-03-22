@@ -21,4 +21,3 @@ img.sort_boxes(method=0,reverse=True)
 img.show_boxes(rgb=255, title="marked image")
 img.origin_img.show(title="original image")
 img.save_boxes(path = "boxes_img")
-

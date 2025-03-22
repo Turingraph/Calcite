@@ -23,3 +23,14 @@ img = img_process_gray(img=path)
 ocr_setting = ocr_config()
 out = ocr_setting.osd(img=img,out_type=Output.DICT)
 print(out)
+
+"""
+{
+    'page_num':     0, 
+    'orientation':  0, 
+    'rotate':       0, 
+    'orientation_conf': 12.15, 
+    'script':           'Latin', 
+    'script_conf':      3.68
+}
+"""
