@@ -121,3 +121,6 @@ class boxes_ocr:
     # Return image in np.ndarray data type.
     def get_img(self) -> np.ndarray:
         return self.img.img
+
+    def get_boxes(self):
+        return self.boxes
