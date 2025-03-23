@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 
 from box.box_manage import box_manage
-from box.img_view import img_output
+from box.img_output import img_output
 from img_process.contour import get_contours, sort_contours
 from img_process.utility import check_img, get_size, rgb_img
 from include.img_process_gray import img_process_gray
@@ -123,7 +123,7 @@ class img_dilate:
         return self.box
 
     def get_box_manage(self):
-        return box_manage(box = self.box)
+        return box_manage(box = self.box, w = self.img.shape()[1], h = self.img.shape()[0])
 
     def sort_box(self, reverse: bool = False, method: int = 4)->None:
         self.box = sort_contours(contour=self.box, reverse=reverse, method=method)

@@ -15,3 +15,11 @@ This folder contains
 -	Purpose : Get text that surrounding the given area.
 6.  `img_view.py`
 -	Purpose : View and save image.
+
+Rule
+1.  Any method that return the output (that is not `None`), should have `get_` at the beginning
+-   Wrong Example : `img_output()`, `box()`, `osd()` etc.
+-   Correct Examples : `get_img_output()`, `get_box()`, `get_osd()` etc.
+2.  Any method that save output, should have `save_` at the beginning
+-   Wrong Examples : `img()`, `multiple_imgs()`, `text()` etc.
+-   Correct Examples : `save_img()`, `save_multiple_imgs()`, `save_text()` etc.

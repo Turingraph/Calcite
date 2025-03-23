@@ -36,8 +36,7 @@ class img_output:
 #-----------------------------------------------------------------------------------------
     # PURPOSE : DISPLAY AND GET IMAGE DATA
 
-    # Draw box in the image. It is recommended to use update_img() before show_img() and save_img() 
-    # to see the box in the image.
+    # Draw box in the image.
     def update_img(self,
             rgb:list[list[int]]|list[int]|int = [
                 [255,0,0],
@@ -53,11 +52,29 @@ class img_output:
                 c+=1
             self.img.rectangle(rgb=color_of_the_wind,x=i[0], y=i[1], w=i[2], h=i[3])
     
-    def show_img(self, title:str="img_out"):
+    def show_img(
+            self, 
+            title:str="img_out",
+            rgb:list[list[int]]|list[int]|int|None = [
+                [255,0,0],
+                [0,255,0],
+                [0,0,255]
+            ]):
+        if rgb != None:
+            self.update_img(rgb = rgb)
         self.img.show(title=title)
 
     # Save one image.
-    def save_img(self,path:str|list[str] = ["img","img_out","jpg"]) -> None:
+    def save_img(
+            self,
+            path:str|list[str] = ["img","img_out","jpg"],
+            rgb:list[list[int]]|list[int]|int|None = [
+                [255,0,0],
+                [0,255,0],
+                [0,0,255]
+            ]) -> None:
+        if rgb != None:
+            self.update_img(rgb = rgb)
         self.img.save_img(path=path)
 
     def print_box(self):
@@ -73,9 +90,18 @@ class img_output:
         return out_img_arr
 
     # Save multiple images as array of image, based on self.box.
-    def save_multiple_imgs(self,path: list[str] | str = ["img", "img_out", "jpg"]) -> None:
+    def save_multiple_imgs(
+            self,
+            path: list[str] | str = ["img", "img_out", "jpg"],
+            rgb:list[list[int]]|list[int]|int|None = [
+                [255,0,0],
+                [0,255,0],
+                [0,0,255]
+            ]) -> None:
         count = 0
         path = get_valid_path(path)
+        if rgb != None:
+            self.update_img(rgb = rgb)
         for i in self.box:
             out_img = self.img.img[i[1]:i[1]+i[3], i[0]:i[0]+i[2]]
             out_img = img_process_rgb(img = out_img)
@@ -93,7 +119,7 @@ class img_output:
         return self.box
 
     def get_box_manage(self):
-        return box_manage(box = self.box)
+        return box_manage(box = self.box, w = self.img.shape()[1], h = self.img.shape()[0])
 
     def sort_box(self, reverse: bool = False, method: int = 4)->None:
         self.box = sort_contours(contour=self.box, reverse=reverse, method=method)

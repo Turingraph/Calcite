@@ -4,7 +4,7 @@ from pytesseract import Output
 import pytesseract
 
 from box.box_manage import box_manage
-from box.img_view import img_output
+from box.img_output import img_output
 from img_process.contour import sort_contours
 from img_process.utility import check_img, get_size
 from include.img_process_rgb import img_process_rgb
@@ -117,7 +117,7 @@ class img_ocr:
                         self.output += " "
 
     # Get OSD (Orientation and Script Detection) data from the input img image
-    def osd(self, img:np.ndarray, out_type:str = Output.STRING) -> any:
+    def get_osd(self, img:np.ndarray, out_type:str = Output.STRING) -> any:
         return osd(img=img, out_type=out_type, timeout=self.timeout)
 
     # save the OCR text output `self.output` as text file
@@ -143,7 +143,7 @@ class img_ocr:
         return self.box
 
     def get_box_manage(self):
-        return box_manage(box = self.box)
+        return box_manage(box = self.box, w = self.img.shape()[1], h = self.img.shape()[0])
 
     def sort_box(self, reverse: bool = False, method: int = 4)->None:
         self.box = sort_contours(contour=self.box, reverse=reverse, method=method)
