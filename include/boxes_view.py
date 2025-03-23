@@ -1,16 +1,8 @@
-import copy
-
 import cv2
 import numpy as np
-import pytesseract
-from pytesseract import Output
-
-from img_process.contour import get_contours, sort_contours, get_box_area
 from img_process.show import get_valid_path
-from img_process.utility import check_img, get_size, rgb_img
-from include.img_process_gray import img_process_gray
+from img_process.utility import check_img, rgb_img
 from include.img_process_rgb import img_process_rgb
-from include.ocr_config import ocr_config
 
 '''
 Attribute
