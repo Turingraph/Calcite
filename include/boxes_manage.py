@@ -127,3 +127,6 @@ class boxes_manage:
 
     def sort_boxes(self, reverse: bool = False, method: int = 4)->None:
         self.boxes = sort_contours(contour=self.boxes, reverse=reverse, method=method)
+
+    def get_boxes(self):
+        return self.boxes
