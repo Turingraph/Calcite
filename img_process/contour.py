@@ -106,22 +106,25 @@ available `method` options
 
 # draw a rectangle in the img image.
 # This function can also draw rectangle based on contour like this
+# Note that : rgb == None means no color.
 '''
 dilate_img = contour_img(img)
 contours = get_contours(dilate_img)
 x, y, w, h = cv2.boundingRect(contours[0])
 draw_img = rectangle(img=img, rgb=rgb,x=x, y=y, w=w, h=h)
 '''
-def rectangle(img:np.ndarray, rgb:list[int]|int, x:int, y:int, h:int, w:int) -> np.ndarray:
-    img = check_img(img=img)
-    if img.shape == 2:
-        if isinstance(rgb, int):
-            rgb = set_px(n=rgb)
+def rectangle(img:np.ndarray, rgb:list[int]|int|None, x:int, y:int, h:int, w:int) -> np.ndarray:
+    if rgb != None:
+        img = check_img(img=img)
+        if img.shape == 2:
+            if isinstance(rgb, int):
+                rgb = set_px(n=rgb)
+            else:
+                rgb = set_px(n=rgb[0])
         else:
-            rgb = set_px(n=rgb[0])
-    else:
-        rgb = get_rgb(rgb)
-    return cv2.rectangle(img=img, pt1=(x, y), pt2=(x+w, y+h), color=rgb, thickness=3)
+            rgb = get_rgb(rgb)
+        return cv2.rectangle(img=img, pt1=(x, y), pt2=(x+w, y+h), color=rgb, thickness=3)
+    return img
 
 #-----------------------------------------------------------------------------------------
 

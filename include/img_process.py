@@ -50,5 +50,6 @@ class img_process:
     ########################################################################################################################################################
     # img_process/color.py
 
-    def rectangle(self, rgb:list[int]|int, x:int, y:int, h:int, w:int) -> None:
+    # Note that : rgb == None means no color.
+    def rectangle(self, rgb:list[int]|int|None, x:int, y:int, h:int, w:int) -> None:
         self.img = rectangle(img = self.img, rgb=rgb, x=x, y=y, w=w, h=h)

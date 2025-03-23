@@ -37,20 +37,22 @@ class img_output:
     # PURPOSE : DISPLAY AND GET IMAGE DATA
 
     # Draw box in the image.
-    def update_img(self,
-            rgb:list[list[int]]|list[int]|int = [
+    # Note that : rgb == None means no color.
+    def color_img(self,
+            rgb:list[list[int]]|list[int]|int|None = [
                 [255,0,0],
                 [0,255,0],
                 [0,0,255]
             ],
             ) -> None:
         c = 0
-        for i in self.box:
-            color_of_the_wind = rgb
-            if isinstance(rgb,list) and isinstance(rgb[0], list):
-                color_of_the_wind=rgb[c%len(rgb)]
-                c+=1
-            self.img.rectangle(rgb=color_of_the_wind,x=i[0], y=i[1], w=i[2], h=i[3])
+        if rgb != None:
+            for i in self.box:
+                color_of_the_wind = rgb
+                if isinstance(rgb,list) and isinstance(rgb[0], list):
+                    color_of_the_wind=rgb[c%len(rgb)]
+                    c+=1
+                self.img.rectangle(rgb=color_of_the_wind,x=i[0], y=i[1], w=i[2], h=i[3])
     
     def show_img(
             self, 
@@ -61,7 +63,7 @@ class img_output:
                 [0,0,255]
             ]):
         if rgb != None:
-            self.update_img(rgb = rgb)
+            self.color_img(rgb = rgb)
         self.img.show(title=title)
 
     # Save one image.
@@ -74,7 +76,7 @@ class img_output:
                 [0,0,255]
             ]) -> None:
         if rgb != None:
-            self.update_img(rgb = rgb)
+            self.color_img(rgb = rgb)
         self.img.save_img(path=path)
 
     def print_box(self):
@@ -101,7 +103,7 @@ class img_output:
         count = 0
         path = get_valid_path(path)
         if rgb != None:
-            self.update_img(rgb = rgb)
+            self.color_img(rgb = rgb)
         for i in self.box:
             out_img = self.img.img[i[1]:i[1]+i[3], i[0]:i[0]+i[2]]
             out_img = img_process_rgb(img = out_img)
