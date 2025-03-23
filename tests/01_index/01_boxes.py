@@ -10,14 +10,20 @@ sys.path.append(parent)
 
 ###############################################################################################################
 
-from include.boxes_img import boxes_img
+from include.boxes_dilate import boxes_dilate
+from include.boxes_manage import boxes_manage
+from include.boxes_view import boxes_view
 import numpy as np
 
 path = parent + "/tests/01_index/img/img.jpeg"
-img = boxes_img(img = path, kernel=np.ones((13, 3)))
-img.dilate_img.show(title="default_dilate_image13x3")
+img = boxes_dilate(img = path, kernel=np.ones((13, 3)))
 img.select_boxes(min_w=20,min_h=200)
-img.sort_boxes(method=0,reverse=True)
-img.show_boxes(rgb=255, title="marked image")
-img.origin_img.show(title="original image")
-img.save_boxes(path = "boxes_img")
+
+dilate_img = img.dilate_img
+dilate_img.save_img(path="dilate_img13x3")
+
+sorted_box = boxes_manage(boxes = img.boxes)
+sorted_box.sort_boxes(method=0)
+
+img_view = boxes_view(img = img.get_img(), boxes = sorted_box.get_boxes())
+img_view.save_boxes(path = "boxes_img")
