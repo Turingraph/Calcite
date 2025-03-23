@@ -38,7 +38,7 @@ Note that every Python file in this directory except `hello_world.py` have the c
 2.  `boxes_guinness.py`
 -	Purpose : Return the largest, smallest, topmost, buttonmost or other box that have specific property.
 3.  `boxes_img.txt`
--   Purpose : Create the box around the text using image processing technique. IT IS OUTDATED BECAUSE THE CLASS IS TOO LARGE TO MANAGE !
+-   Purpose : Create the box around the text using image processing technique. It is outdated because the class is too large to manage.
 4.  `boxes_manage.py`
 -	Purpose : Get row/column or the boxes and sort boxes.
 5.  `boxes_ocr.py`
