@@ -1,11 +1,12 @@
 import cv2
 import numpy as np
+
+from box.box_manage import box_manage
+from img_process.contour import sort_contours
 from img_process.show import get_valid_path
 from img_process.utility import check_img, rgb_img
 from include.img_process_rgb import img_process_rgb
 from utility.utility import index_name
-from box.box_manage import box_manage
-from img_process.contour import sort_contours
 
 '''
 Purpose
@@ -18,7 +19,7 @@ img		np.ndarray			update_img()	image input
 box		list[list[int]]		-				box around the given region.
 '''
 
-class img_view:
+class img_output:
     def __init__(self, 
                 img: np.ndarray | str,
                 box: list[list[int]]):
@@ -85,11 +86,11 @@ class img_view:
     def get_img(self) -> np.ndarray:
         return self.img.img
 
-    def get_box(self):
-        return self.box
-
 #-----------------------------------------------------------------------------------------
     # PURPOSE : GET BOXES DATA
+
+    def get_box(self):
+        return self.box
 
     def get_box_manage(self):
         return box_manage(box = self.box)
