@@ -1,6 +1,7 @@
 import cv2
 import numpy as np
 from pytesseract import Output
+import pytesseract
 
 from box.box_manage import box_manage
 from box.img_view import img_output
@@ -63,7 +64,7 @@ class img_ocr:
 #-----------------------------------------------------------------------------------------
     # PURPOSE : GET TEXT RELATED DATA
     # Get Box around the word
-    def img_to_text(
+    def img_to_str(
             self, 
             conf:int = 60, 
             search:str="", 
@@ -93,7 +94,7 @@ class img_ocr:
 
         self.box = []
 
-        d = img_to_str(
+        d = pytesseract.image_to_data(
             self.img.img, 
             output_type=Output.DICT,
             lang=self.lang,
