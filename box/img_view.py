@@ -73,7 +73,7 @@ class img_output:
         return out_img_arr
 
     # Save multiple images as array of image, based on self.box.
-    def save_box(self,path: list[str] | str = ["img", "img_out", "jpg"]) -> None:
+    def save_multiple_imgs(self,path: list[str] | str = ["img", "img_out", "jpg"]) -> None:
         count = 0
         path = get_valid_path(path)
         for i in self.box:
