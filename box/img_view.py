@@ -6,6 +6,7 @@ from include.img_process_rgb import img_process_rgb
 from utility.utility import index_name
 from box.box_guinness import box_guinness
 from box.box_manage import box_manage
+from img_process.contour import sort_contours
 
 '''
 Purpose
@@ -96,5 +97,8 @@ class img_view:
     
     def get_box_manage(self):
         return box_manage(box = self.box)
+
+    def sort_box(self, reverse: bool = False, method: int = 4)->None:
+        self.box = sort_contours(contour=self.box, reverse=reverse, method=method)
 
 #-----------------------------------------------------------------------------------------

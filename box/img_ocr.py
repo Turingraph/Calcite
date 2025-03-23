@@ -2,6 +2,7 @@ import cv2
 import numpy as np
 from pytesseract import Output
 
+from img_process.contour import sort_contours
 from img_process.utility import get_size, check_img
 from include.img_process_rgb import img_process_rgb
 from ocr_config.flag_options import get_oem, get_psm
@@ -146,5 +147,8 @@ class img_ocr:
     
     def get_box_manage(self):
         return box_manage(box = self.box)
+
+    def sort_box(self, reverse: bool = False, method: int = 4)->None:
+        self.box = sort_contours(contour=self.box, reverse=reverse, method=method)
 
 #-----------------------------------------------------------------------------------------

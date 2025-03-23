@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 
-from img_process.contour import get_contours
+from img_process.contour import get_contours, sort_contours
 from img_process.utility import check_img, get_size, rgb_img
 from include.img_process_gray import img_process_gray
 from include.img_process_rgb import img_process_rgb
@@ -128,5 +128,8 @@ class img_dilate:
     
     def get_box_manage(self):
         return box_manage(box = self.box)
+
+    def sort_box(self, reverse: bool = False, method: int = 4)->None:
+        self.box = sort_contours(contour=self.box, reverse=reverse, method=method)
 
 #-----------------------------------------------------------------------------------------
