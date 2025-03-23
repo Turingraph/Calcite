@@ -14,7 +14,7 @@ from utility.utility import index_name
 from include.img_process_rgb import img_process_rgb
 from include.ocr_config import ocr_config
 
-path = "/tests/01_index/img/boxes_img_"
+path = "/tests/01_index/img/box_img_"
 file_format = ".jpg"
 
 for i in range(3):
