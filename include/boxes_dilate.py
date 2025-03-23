@@ -99,3 +99,7 @@ class boxes_dilate:
                 (i[3] > min_h and i[3] < max_h)
                 ):
                 self.boxes.append(i)
+
+    # Return image in np.ndarray data type.
+    def get_img(self) -> np.ndarray:
+        return self.img.img

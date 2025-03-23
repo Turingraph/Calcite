@@ -26,7 +26,7 @@ class boxes_view:
         elif type(img) == np.ndarray:
             img:np.ndarray = check_img(img)
         else:
-            raise TypeError("Error: Input img must be img_process, np.ndarray or str")
+            raise TypeError("Error: Input img must be np.ndarray or str")
         self.img:img_process_rgb = img_process_rgb(img = rgb_img(img))
         self.boxes = boxes
 
@@ -78,3 +78,7 @@ class boxes_view:
                 count_stars = '0' + count_stars
             out_img.save_img(path=[path[0], path[1]+"_" + count_stars, path[2]])
             count += 1
+
+    # Return image in np.ndarray data type.
+    def get_img(self) -> np.ndarray:
+        return self.img.img

@@ -3,7 +3,7 @@ import numpy as np
 from pytesseract import Output
 
 from img_process.utility import get_size, check_img
-from include.img_process_gray import img_process_gray
+from include.img_process_rgb import img_process_rgb
 from ocr_config.flag_options import get_oem, get_psm
 from ocr_config.img_to_str import img_to_str
 from ocr_config.osd import osd
@@ -47,7 +47,7 @@ class boxes_ocr:
             img:np.ndarray = check_img(img)
         else:
             raise TypeError("Error: Input img must be img_process, np.ndarray or str")
-        self.img = img_process_gray(img = img)
+        self.img = img_process_rgb(img = img)
         self.output:str = ''
         self.lang:str = lang
         self.psm:str = get_psm(psm)
@@ -72,16 +72,19 @@ class boxes_ocr:
             min_h:int = 0,
             max_h:int|None = None,
         ):
-        # https://nanonets.com/blog/ocr-with-tesseract/
-        min_x = get_size(size=min_x, maxval=self.img.shape[1])
-        min_y = get_size(size=min_y, maxval=self.img.shape[0])
-        max_x = get_size(size=max_x, maxval=self.img.shape[1],default_size=self.img.shape[1])
-        max_y = get_size(size=max_y, maxval=self.img.shape[0],default_size=self.img.shape[0])
+        w = self.img.img.shape[1]
+        h = self.img.img.shape[0]
 
-        min_w = get_size(size=min_w, maxval=self.img.shape[1])
-        min_h = get_size(size=min_h, maxval=self.img.shape[0])
-        max_w = get_size(size=max_w, maxval=self.img.shape[1],default_size=self.img.shape[1])
-        max_h = get_size(size=max_h, maxval=self.img.shape[0],default_size=self.img.shape[0])
+        # https://nanonets.com/blog/ocr-with-tesseract/
+        min_x = get_size(size=min_x, maxval=w)
+        min_y = get_size(size=min_y, maxval=h)
+        max_x = get_size(size=max_x, maxval=w,default_size=w)
+        max_y = get_size(size=max_y, maxval=h,default_size=h)
+
+        min_w = get_size(size=min_w, maxval=w)
+        min_h = get_size(size=min_h, maxval=h)
+        max_w = get_size(size=max_w, maxval=w,default_size=w)
+        max_h = get_size(size=max_h, maxval=h,default_size=h)
 
         self.boxes = []
 
@@ -114,3 +117,7 @@ class boxes_ocr:
     # save the OCR text output `self.output` as text file
     def save_text(self, path: list[str] | str = ["text", "text", "txt"])-> None:
         save_text(self.output, path)
+
+    # Return image in np.ndarray data type.
+    def get_img(self) -> np.ndarray:
+        return self.img.img
