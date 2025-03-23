@@ -1,6 +1,9 @@
 from img_process.contour import sort_contours
 
 '''
+Purpose
+-   Get row/column or the boxes and sort boxes.
+
 Attribute
 
 NAME        TYPE            DESCRIPTION
@@ -120,3 +123,6 @@ class boxes_manage:
                 update_boxes.append(self.boxes[i])
             i += 1
         self.boxes = update_boxes
+
+    def sort_boxes(self, reverse: bool = False, method: int = 4)->None:
+        self.boxes = sort_contours(contour=self.boxes, reverse=reverse, method=method)

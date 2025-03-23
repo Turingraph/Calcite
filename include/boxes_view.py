@@ -5,6 +5,9 @@ from img_process.utility import check_img, rgb_img
 from include.img_process_rgb import img_process_rgb
 
 '''
+Purpose
+-	View and save image.
+
 Attribute
 
 NAME		TYPE				UPDATE_METHOD	DESCRIPTION

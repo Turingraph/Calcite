@@ -1,6 +1,9 @@
 from img_process.contour import get_box_area
 
 '''
+Purpose
+-   Return the largest, smallest, topmost, buttonmost or other box that have specific property.
+
 Attribute
 
 NAME        TYPE            DESCRIPTION
@@ -33,7 +36,14 @@ class boxes_guinness:
         if return_int == True:
             return y
         return self.boxes[y]
-
+    
+    """
+    mode
+    0 = left to right
+    1 = top to button
+    2 = width
+    3 = height
+    """
     def get_max_box(self, return_int:bool = False, mode:int = 0):
         y = 0
         i = 0

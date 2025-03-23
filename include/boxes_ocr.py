@@ -10,6 +10,9 @@ from ocr_config.osd import osd
 from ocr_config.save_text import save_text
 
 """
+Purpose
+-	Get text that surrounding the given area.
+
 Attribute
 
 NAME        TYPE      		UPDATE_METHOD	DESCRIPTION
