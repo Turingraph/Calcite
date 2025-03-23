@@ -33,23 +33,33 @@ Note that every Python file in this directory except `hello_world.py` have the c
 # Python File in `include/` directory.
 
 `include/` contains
-1.  `boxes_img.py`
--   Purpose : Create the box around the text using image processing technique.
-2.  `hello_world.py`
+1.  `boxes_dilate.py`
+-	Purpose : Transform image as dilated image to get the text format data without using ML model.
+2.  `boxes_guinness.py`
+-	Purpose : Return the largest, smallest, topmost, buttonmost or other box that have specific property.
+3.  `boxes_img.txt`
+-   Purpose : Create the box around the text using image processing technique. IT IS OUTDATED BECAUSE THE CLASS IS TOO LARGE TO MANAGE !
+4.  `boxes_manage.py`
+-	Purpose : Get row/column or the boxes and sort boxes.
+5.  `boxes_ocr.py`
+-	Purpose : Get text that surrounding the given area.
+6.  `boxes_view.py`
+-	Purpose : View and save image.
+7.  `hello_world.py`
 -   Purpose : Check if we import coding file from `include/` to `tests/` correctly.
-3.  `img_process_gray.py`
+8.  `img_process_gray.py`
 -   Purpose : Allow user to editing the gray image with `img_process` methods and additional image processing related methods for helping the Tesseract OCR model get more accurate result and get the column of text e.g. table of contents, bill etc.
-4.  `img_process_rgb.py`
+9.  `img_process_rgb.py`
 -   Purpose : Allow user to editing the colorful image with `img_process` methods.
-5.  `img_process.py`
+10. `img_process.py`
 -   Purpose : Parent class of `img_process_rgb` and `img_process_gray`, for editing the image with basic image processing method.
 -   Contains: Basic image processing command e.g. `show`, `save_img`, `shape`, `zoom` and `rectangle` etc.
 -   Warning : It is not recommended to use `img_process` class because the Constructor of `img_process` does not check if `img` argument valid or not.
 -   Note : `img_process` is the only class with 2 inherited child classes, `img_process_rgb` and `img_process_gray`. Both child classes do not overwrite any `img_process`'s methods.
-6.  `ocr_config_arr.txt`
+11. `ocr_config_arr.txt`
 -   Purpose : Get data from image with complicated format e.g. table of content, bills etc. It is not used at all because `ocr_config.py` can be used instead of `ocr_config_arr.py`.
 -   Reference: https://youtu.be/9FCw1xo_s0I?si=p5_igTL5jUrwfvUh
-7.  `ocr_config.py`
+12. `ocr_config.py`
 -   Purpose : 
     1.  `img_to_str`: Convert image to OCR text output
     2.  `osd`       : Get OSD (Orientation and Script Detection) data from the input img image
