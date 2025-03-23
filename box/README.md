@@ -1,13 +1,17 @@
+The purpose of this folder is to get OCR output of the image with complicated 
+format e.g. bills, Table of contents etc by drawing the box around the group of 
+text.
+
 This folder contains
-1.  `box_dilate.py`
--	Purpose : Transform image as dilated image to get the text format data without using ML model.
-2.  `box_guinness.py`
--	Purpose : Return the largest, smallest, topmost, buttonmost or other box that have specific property.
-3.  `box_img.txt`
+1.  `box_guinness.txt`
+-	Purpose : Useless File
+2.  `box_img.txt`
 -   Purpose : Create the box around the text using image processing technique. It is outdated because the class is too large to manage.
-4.  `box_manage.py`
+3.  `box_manage.py`
 -	Purpose : Get row/column or the box and sort box.
-5.  `box_ocr.py`
+4.  `img_dilate.py`
+-	Purpose : Transform image as dilated image to get the text format data without using ML model.
+5.  `img_ocr.py`
 -	Purpose : Get text that surrounding the given area.
-6.  `box_view.py`
+6.  `img_view.py`
 -	Purpose : View and save image.

@@ -10,7 +10,6 @@ from ocr_config.img_to_str import img_to_str
 from ocr_config.osd import osd
 from ocr_config.save_text import save_text
 from box.img_view import img_view
-from box.box_guinness import box_guinness
 from box.box_manage import box_manage
 
 """
@@ -142,9 +141,6 @@ class img_ocr:
 #-----------------------------------------------------------------------------------------
     # PURPOSE : GET BOXES DATA
 
-    def get_box_guinness(self):
-        return box_guinness(box = self.box)
-    
     def get_box_manage(self):
         return box_manage(box = self.box)
 
