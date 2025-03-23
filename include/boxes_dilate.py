@@ -35,7 +35,7 @@ class boxes_dilate:
         elif type(img) == np.ndarray:
             img:np.ndarray = check_img(img)
         else:
-            raise TypeError("Error: Input img must be img_process, np.ndarray or str")
+            raise TypeError("Error: Input img must be np.ndarray or str")
         self.img:img_process_rgb = img_process_rgb(img = rgb_img(img))
         img:img_process_gray = img_process_gray(img=img)
         img.contour_img(

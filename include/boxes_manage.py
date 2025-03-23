@@ -21,7 +21,7 @@ class boxes_manage:
                 ):
         self.w = w
         self.h = h 
-        self.boxes = []
+        self.boxes = boxes
         self.all_boxes = boxes
 
     # Update self.boxes based on the row of previous self.boxes

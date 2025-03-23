@@ -3,6 +3,7 @@ import numpy as np
 from img_process.show import get_valid_path
 from img_process.utility import check_img, rgb_img
 from include.img_process_rgb import img_process_rgb
+from utility.utility import index_name
 
 '''
 Purpose
@@ -73,10 +74,7 @@ class boxes_view:
         for i in self.boxes:
             out_img = self.img.img[i[1]:i[1]+i[3], i[0]:i[0]+i[2]]
             out_img = img_process_rgb(img = out_img)
-            count_stars = str(count)
-            if count < 10:
-                count_stars = '0' + count_stars
-            out_img.save_img(path=[path[0], path[1]+"_" + count_stars, path[2]])
+            out_img.save_img(path=[path[0], path[1]+"_" + index_name(count), path[2]])
             count += 1
 
     # Return image in np.ndarray data type.
