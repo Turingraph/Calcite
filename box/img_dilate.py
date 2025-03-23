@@ -6,6 +6,8 @@ from img_process.utility import check_img, get_size, rgb_img
 from include.img_process_gray import img_process_gray
 from include.img_process_rgb import img_process_rgb
 from box.img_view import img_view
+from box.box_guinness import box_guinness
+from box.box_manage import box_manage
 
 '''
 Purpose
@@ -98,7 +100,7 @@ class img_dilate:
                 self.box.append(i)
 
 #-----------------------------------------------------------------------------------------
-    # PURPOSE : GET DATA
+    # PURPOSE : GET IMAGE DATA
 
     def get_img_view(self):
         return img_view(
@@ -117,5 +119,14 @@ class img_dilate:
 
     def get_box(self):
         return self.box
+
+#-----------------------------------------------------------------------------------------
+    # PURPOSE : GET BOXES DATA
+
+    def get_box_guinness(self):
+        return box_guinness(box = self.box)
+    
+    def get_box_manage(self):
+        return box_manage(box = self.box)
 
 #-----------------------------------------------------------------------------------------

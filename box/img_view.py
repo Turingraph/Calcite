@@ -4,6 +4,8 @@ from img_process.show import get_valid_path
 from img_process.utility import check_img, rgb_img
 from include.img_process_rgb import img_process_rgb
 from utility.utility import index_name
+from box.box_guinness import box_guinness
+from box.box_manage import box_manage
 
 '''
 Purpose
@@ -30,6 +32,8 @@ class img_view:
             raise TypeError("Error: Input img must be np.ndarray or str")
         self.img:img_process_rgb = img_process_rgb(img = rgb_img(img))
         self.box = box
+#-----------------------------------------------------------------------------------------
+    # PURPOSE : DISPLAY AND GET IMAGE DATA
 
     # Draw box in the image. It is recommended to use update_img() before show_img() and save_img() 
     # to see the box in the image.
@@ -83,3 +87,14 @@ class img_view:
 
     def get_box(self):
         return self.box
+
+#-----------------------------------------------------------------------------------------
+    # PURPOSE : GET BOXES DATA
+
+    def get_box_guinness(self):
+        return box_guinness(box = self.box)
+    
+    def get_box_manage(self):
+        return box_manage(box = self.box)
+
+#-----------------------------------------------------------------------------------------
