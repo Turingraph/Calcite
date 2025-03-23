@@ -9,3 +9,8 @@ def opposite(input:bool):
     if input == True:
         return False
     return True
+
+def index_name(input:int):
+    if input < 10:
+        return "0"+str(input)
+    return str(input)
