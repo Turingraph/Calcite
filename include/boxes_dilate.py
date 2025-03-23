@@ -36,8 +36,7 @@ class boxes_dilate:
             img:np.ndarray = check_img(img)
         else:
             raise TypeError("Error: Input img must be img_process, np.ndarray or str")
-        self.origin_img:img_process_rgb = img_process_rgb(img = rgb_img(img))
-        self.marked_img:img_process_rgb = copy.deepcopy(self.origin_img)
+        self.img:img_process_rgb = img_process_rgb(img = rgb_img(img))
         img:img_process_gray = img_process_gray(img=img)
         img.contour_img(
             thresh_px=thresh_px,
@@ -56,15 +55,13 @@ class boxes_dilate:
                 thresh_px: int = 0,
                 kernel: np.ndarray = np.ones(shape=(2, 30)),
                 ksize: int = 9) -> None:
-        self.marked_img = copy.deepcopy(self.origin_img)
-        img = img_process_gray(img = copy.deepcopy(self.origin_img.img))
-        img = img_process_gray(img=img)
+        img:img_process_gray = img_process_gray(img=self.img.img)
         img.contour_img(
             thresh_px=thresh_px,
             kernel=kernel,
             ksize=ksize)
         self.dilate_img = img
-        self.all_boxes = get_contours(img=self.dilate_img.img)
+        self.all_boxes = get_contours(img=self.img)
         self.boxes = []
 
     # Get selected box as self.boxes from self.all_boxes filtered by this function.
@@ -79,15 +76,18 @@ class boxes_dilate:
             min_h:int = 0,
             max_h:int|None = None,
             ) -> None:
-        min_x = get_size(size=min_x, maxval=self.marked_img.img.shape[1])
-        min_y = get_size(size=min_y, maxval=self.marked_img.img.shape[0])
-        max_x = get_size(size=max_x, maxval=self.marked_img.img.shape[1],default_size=self.marked_img.img.shape[1])
-        max_y = get_size(size=max_y, maxval=self.marked_img.img.shape[0],default_size=self.marked_img.img.shape[0])
+        w = self.img.img.shape[1]
+        h = self.img.img.shape[0]
 
-        min_w = get_size(size=min_w, maxval=self.marked_img.img.shape[1])
-        min_h = get_size(size=min_h, maxval=self.marked_img.img.shape[0])
-        max_w = get_size(size=max_w, maxval=self.marked_img.img.shape[1],default_size=self.marked_img.img.shape[1])
-        max_h = get_size(size=max_h, maxval=self.marked_img.img.shape[0],default_size=self.marked_img.img.shape[0])
+        min_x = get_size(size=min_x, maxval=w)
+        min_y = get_size(size=min_y, maxval=h)
+        max_x = get_size(size=max_x, maxval=w,default_size=w)
+        max_y = get_size(size=max_y, maxval=h,default_size=h)
+
+        min_w = get_size(size=min_w, maxval=w)
+        min_h = get_size(size=min_h, maxval=h)
+        max_w = get_size(size=max_w, maxval=w,default_size=w)
+        max_h = get_size(size=max_h, maxval=h,default_size=h)
 
         self.all_boxes = get_contours(img=self.dilate_img.img)
         self.boxes = []

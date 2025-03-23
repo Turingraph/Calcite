@@ -15,9 +15,10 @@ all_boxes   list[list[int]] original array of boxes
 
 class boxes_manage:
     def __init__(self, 
-                w:int,
-                h:int,
-                boxes: list[list[int]]):
+                boxes: list[list[int]],
+                w:int = -1,
+                h:int = -1,
+                ):
         self.w = w
         self.h = h 
         self.boxes = []
