@@ -19,13 +19,13 @@ from box.img_dilate import img_dilate
 path = parent + "/tests/02_jojo_soba/img/thinn.jpg"
 img = img_dilate(img = path, kernel=np.ones((13, 23)))
 img.select_box(min_w = 1000, max_h=50)
-img.img_output().show_img(rgb=[255,0,0], title="origin")
-img.img_output().save_img(rgb=[255,0,0], path = ["img_01_half","origin"])
+img.get_img_output().show_img(rgb=[255,0,0], title="origin")
+img.get_img_output().save_img(rgb=[255,0,0], path = ["img_01_half","origin"])
 
 box_arr = img.get_box_manage()
 box_arr.row_half(1)
 img.box = box_arr.get_box()
 
-img.img_output().show_img(rgb=[255,0,0], title="half")
-img.img_output().save_img(rgb=[255,0,0], path=["img_01_half","half"])
-img.img_output().save_multiple_imgs(rgb=[255,0,0], path=["img_01_half", "subhalf"])
+img.get_img_output().show_img(rgb=[255,0,0], title="half")
+img.get_img_output().save_img(rgb=[255,0,0], path=["img_01_half","half"])
+img.get_img_output().save_multiple_imgs(rgb=[255,0,0], path=["img_01_half", "subhalf"])
