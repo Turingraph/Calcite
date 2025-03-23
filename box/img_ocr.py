@@ -21,7 +21,7 @@ Attribute
 
 NAME        TYPE      		UPDATE_METHOD	DESCRIPTION
 img         np.ndarray		__init__()		image input.
-output      str       		img_to_text()	ocr text output
+output      str       		img_to_str()	ocr text output
 psm         str       		__init__()		OCR Setting : Page Segmentation Modes
 oem         str       		__init__()		OCR Setting : OCR Engine Mode
 lang        str       		__init__()		OCR Setting : Languages
@@ -29,7 +29,7 @@ timeout     str       		__init__()		OCR Setting : Maximum time, 0 = any time
 is_space    str       		__init__()		OCR Setting : It is recommended to set false when 
 											use non spacing language e.g. Thai, Chinese etc.
 config      str       		__init__()		other OCR Settings
-box       list[list[int]] img_to_text()	array of box around text, represented as [x, y, w = width, h = height]
+box         list[list[int]] img_to_str()	array of box around text, represented as [x, y, w = width, h = height]
 """
 
 class img_ocr:

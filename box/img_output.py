@@ -79,9 +79,9 @@ class img_output:
             self.color_img(rgb = rgb)
         self.img.save_img(path=path)
 
-    def print_box(self):
-        for i in self.box:
-            print(i)
+    # def print_box(self):
+    #     for i in self.box:
+    #         print(i)
 
     # Get multiple images as array of image, based on self.box.
     def get_imgs(self) -> list[np.ndarray]:

@@ -125,8 +125,5 @@ class box_manage:
             i += 1
         self.box = update_box
 
-    def sort_box(self, reverse: bool = False, method: int = 4)->None:
-        self.box = sort_contours(contour=self.box, reverse=reverse, method=method)
-
     def get_box(self):
         return self.box
