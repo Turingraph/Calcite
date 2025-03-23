@@ -30,7 +30,8 @@ class boxes_view:
         self.img:img_process_rgb = img_process_rgb(img = rgb_img(img))
         self.boxes = boxes
 
-    # Show the original img image with the image of selected box (self.boxes)
+    # Draw boxes in the image. It is recommended to use update_img() before show_img() and save_img() 
+    # to see the box in the image.
     def update_img(self,
             rgb:list[list[int]]|list[int]|int = [
                 [255,0,0],
