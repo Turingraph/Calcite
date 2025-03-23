@@ -50,6 +50,7 @@ class boxes_view:
     def show_img(self, title:str="img_out"):
         self.img.show(title=title)
 
+    # Save one image.
     def save_img(self,path:str|list[str] = ["img","img_out","jpg"]) -> None:
         self.img.save_img(path=path)
 
