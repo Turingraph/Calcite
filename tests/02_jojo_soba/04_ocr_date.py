@@ -12,7 +12,7 @@ sys.path.append(parent)
 
 ###############################################################################################################
 
-from include.boxes_img import boxes_img
+from box.box_edit import box_edit
 from include.ocr_config import ocr_config
 
 ###############################################################################################################
@@ -31,12 +31,11 @@ ocr_setting = ocr_config(
 )
 
 for name in names:
-    img = boxes_img(
-        img = (parent + path + name + ".jpg"), 
-        kernel=np.ones((13, 23)))
-    img.select_boxes(min_w=1000,max_h=50)
-    img.row_boxes()
-    ocr_setting.img_to_str(img=img.get_imgs()[1])
+    img = box_edit(img = (parent + path + name + ".jpg"))
+    img.update_area_box(kernel=np.ones((13, 23)))
+    img.select_box(min_w=1000,max_h=50)
+    img.row_box()
+    ocr_setting.img_to_str(img=img.get_img())
     ocr_setting.save_text(path = ["date",name])
 
 ###############################################################################################################
