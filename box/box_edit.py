@@ -6,8 +6,8 @@ from box.box_read import box_read
 from box.get_row import col_box, col_half, filter_half, row_box, row_half
 from box.ocr import save_text, get_oem, get_psm, osd
 from box.update_box import get_ocr, select_box, update_area_box
-from img_process.contour import sort_contours
-from img_process.utility import check_img
+from img_process.contour import get_contours, sort_contours
+from img_process.utility import check_img, invert_img
 
 '''
 Purpose
@@ -118,8 +118,13 @@ class box_edit:
             kernel = kernel,
             ksize = ksize
         )
-        self.__all_box = output[0]
-        self.__dilate_img = output[1]
+        self.__all_box = get_contours(img=output)
+        self.__dilate_img = output
+        self.__box = self.__all_box
+
+    def update_area_invert_box(self):
+        self.__dilate_img = invert_img(img = self.__dilate_img)
+        self.__all_box = get_contours(img=self.__dilate_img)
         self.__box = self.__all_box
 
     def select_box(self,
