@@ -10,7 +10,7 @@ sys.path.append(parent)
 
 ###############################################################################################################
 
-from include.img_process_gray import img_process_gray
+from img_process_class.img_process_gray import img_process_gray
 
 path = parent + "/tests/02_jojo_soba/img/img.jpeg"
 

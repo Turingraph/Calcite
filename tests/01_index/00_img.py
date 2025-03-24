@@ -11,8 +11,8 @@ sys.path.append(parent)
 ###############################################################################################################
 
 import img_process.contour as tour
-from include.img_process_gray import img_process_gray
-from include.img_process_rgb import img_process_rgb
+from img_process_class.img_process_gray import img_process_gray
+from img_process_class.img_process_rgb import img_process_rgb
 import numpy as np
 
 path = parent + "/tests/01_index/img/img.jpeg"

@@ -10,7 +10,7 @@ sys.path.append(parent)
 
 ###############################################################################################################
 
-from include.boxes_img import boxes_img
+from img_process_class.boxes_img import boxes_img
 import numpy as np
 
 path = parent + "/tests/02_jojo_soba/img/thinn.jpg"

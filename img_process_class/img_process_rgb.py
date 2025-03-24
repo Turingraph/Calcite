@@ -1,6 +1,6 @@
 import cv2
 import numpy as np
-from include.img_process import img_process
+from img_process_class.img_process import img_process
 from img_process.utility import rgb_img, gray_img
 # https://www.reddit.com/r/vscode/comments/19eqplp/python_typing_issue_unsupported_operand_types_for/?rdt=43767
 from typing import Self

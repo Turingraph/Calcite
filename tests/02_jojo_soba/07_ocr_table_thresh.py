@@ -12,9 +12,9 @@ sys.path.append(parent)
 
 ###############################################################################################################
 
-from include.boxes_img import boxes_img
-from include.img_process_rgb import img_process_rgb
-from include.ocr_config import ocr_config
+from img_process_class.boxes_img import boxes_img
+from img_process_class.img_process_rgb import img_process_rgb
+from img_process_class.ocr_config import ocr_config
 
 path = "/tests/02_jojo_soba/img/"
 

@@ -1,6 +1,6 @@
 import cv2
 import numpy as np
-from include.img_process import img_process
+from img_process_class.img_process import img_process
 from img_process.blur import mean_blur, gauss_blur, bilateral_blur
 from img_process.morphology import (
     thin_font,
