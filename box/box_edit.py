@@ -36,6 +36,7 @@ class box_edit:
         else:
             raise TypeError("Error: Input img must be np.ndarray or str")
         self.__img:np.ndarray = img
+        self.__dilate_img = img
         self.__all_box = []
         self.__box = []
         self.__output = ""
@@ -45,6 +46,9 @@ class box_edit:
 
     def get_box_read(self):
         return box_read(img=self.__img, box=self.__box)
+
+    def get_dilate_box_read(self):
+        return box_read(img=self.__dilate_img, box=self.__box)
 
     def get_img(self):
         return self.__img
@@ -116,7 +120,8 @@ class box_edit:
             kernel = kernel,
             ksize = ksize
         )
-        self.__all_box = output
+        self.__all_box = output[0]
+        self.__dilate_img = output[1]
         self.__box = self.__all_box
 
     def select_box(self,

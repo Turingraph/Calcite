@@ -16,7 +16,10 @@ def update_area_img(
             thresh_px=thresh_px,
             kernel=kernel,
             ksize=ksize)
-        return get_contours(img=img)
+        return [
+            get_contours(img=img),
+            img
+        ]
 
 def select_box(
             w:int,
