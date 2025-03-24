@@ -10,14 +10,18 @@ sys.path.append(parent)
 
 ###############################################################################################################
 
-from img_process_class.boxes_img import boxes_img
+from box.box_edit import box_edit
 import numpy as np
 
 path = parent + "/tests/02_jojo_soba/img/thinn.jpg"
-img = boxes_img(img = path, kernel=np.ones((13, 23)))
+img = box_edit(img = path) 
+img.update_area_box(kernel=np.ones((13, 23)))
 
-img.select_boxes(min_w=1000,max_h=50)
-img.sort_boxes(1)
-img.row_boxes(is_double=True)
+img.select_box(min_w=1000,max_h=50)
+img.sort_box(1)
+img.row_box(is_double=True)
 img.filter_half()
-img.save_boxes(["img_04_row_double", "row"])
+img.get_box_read().save_imgarr(
+    rgb=None,
+    path=["img_04_row_double", "row"]
+)
