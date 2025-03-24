@@ -163,7 +163,8 @@ class box_edit:
             timeout:int = 0,
             conf:int = 60, 
             search:str="", 
-            is_space:bool = True
+            is_space:bool = True,
+            column:list[int] = []
         ):
         output = get_ocr(
             img=self.__img,
@@ -172,7 +173,8 @@ class box_edit:
             timeout=timeout,
             conf=conf,
             search=search,
-            is_space=is_space
+            is_space=is_space,
+            column=column
         )
         self.__all_box = output[0]
         self.__box = self.__all_box

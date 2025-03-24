@@ -65,8 +65,15 @@ def get_ocr(
             conf:int = 60, 
             search:str="", 
             is_space:bool = True,
+            column:list[int] = []
         ):
         # https://nanonets.com/blog/ocr-with-tesseract/
+        col = []
+        for i in column:
+            if i > 0 and i < img.shape[1]:
+                 col.append(i)
+        col.sort()
+
         output_box = []
 
         d = pytesseract.image_to_data(
@@ -77,15 +84,24 @@ def get_ocr(
             timeout=timeout
         )
         output_text = ""
+        col_index = 0
         for i in range(len(d['text'])):
             if (
                 int(d['conf'][i]) > conf and 
                 (search == "" or (search != "" and search in d['text'][i]))):
+
+                    if len(col) > col_index:
+                        if d['left'][i] > col[col_index]:
+                            output_text += ", "
+                            col_index += 1
+
                     output_box.append((d['left'][i], d['top'][i], d['width'][i], d['height'][i]))
                     if len(output_box) > 1:
                         if d['left'][i] <= output_box[-2][0]:
                             output_text += "\n"
+                            col_index = 0
                     output_text += d['text'][i]
+
                     if is_space == True:
                         output_text += " "
         return [
