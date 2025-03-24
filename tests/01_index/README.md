@@ -10,8 +10,4 @@ This folder contains
 5.  `01_boxes.py`
 -   Purpose : Separate `img.jpeg` to `boxes_img_00.jpg`, `boxes_img_01.jpg` and `boxes_img_02.jpg`
 6.  `02_ocr.py`
--   Purpose : Convert `boxes_img_00.jpg`, `boxes_img_01.jpg` and `boxes_img_02.jpg` to `text_01/` output.
-7.  `03_ocr.py`
--   Purpose : Convert `boxes_img_00.jpg`, `boxes_img_01.jpg` and `boxes_img_02.jpg` to `text_01/` output.
-
-Note : It seem that `02_ocr.py` produce slightly more reliable result than `03_ocr.py`.
+-   Purpose : Convert `boxes_img_00.jpg`, `boxes_img_01.jpg` and `boxes_img_02.jpg` to `text/` output.

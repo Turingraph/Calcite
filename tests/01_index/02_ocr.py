@@ -11,18 +11,14 @@ sys.path.append(parent)
 ###############################################################################################################
 
 from utility.utility import index_name
-from include.img_process_rgb import img_process_rgb
-from include.ocr_config import ocr_config
+from box.box_edit import box_edit
 
 path = "/tests/01_index/img/box_img_"
 file_format = ".jpg"
 
 for i in range(3):
-    ocr_setting = ocr_config(
-        lang = 'eng'
-    )
-    img = img_process_rgb(img = (parent + path + index_name(i) + file_format)).img
-    ocr_setting.img_to_str(img=img)
-    ocr_setting.save_text(path = ["text_01", "text_" + index_name(i)])
+    img = box_edit(img = (parent + path + index_name(i) + file_format))
+    img.get_ocr(lang="eng")
+    img.save_text(path = "text_" + index_name(i))
 
 ###############################################################################################################
