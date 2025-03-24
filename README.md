@@ -56,27 +56,27 @@ Expected Feature
 format e.g. bills, Table of contents etc by drawing the box around the group of 
 text.
 -   Status: Finish
-2.  `doc_user/`
+3.  `doc_user/`
 -	Purpose: user tutorial.
 -   Status: Empty
-3.	`frontend/`
+4.	`frontend/`
 -	Purpose: User Friendly UI Frontend based on React and Typescript. This is the only coding folder that does not contains Python files.
 -   Status: In Development process.
-4.	`img_process/`
+5.	`img_process/`
 -	Purpose: Processing Image e.g. Threshold, Blur, Convolution, Orientation etc.
 -   Status: Finish
-5.  `include/`
+6.  `include/`
 -	Purpose: The Python Interface for enhancing open closed principle and use OCR, image processing and drawing box around the text.
 -   Status: Finish
-6.	`ocr/`
+7.	`ocr/`
 -	Purpose: converting Image to text output using Tesseract OCR model and Pytesseract Python library.
 -   Status: Finish
-7.  `tests/`
+8.  `tests/`
 -	Purpose: Check if Python files works as expected.
 -   Status: In Development process. We will develop this folder after code `backend/`.
-8.  `trash/`
+9.  `trash/`
 -	Purpose: Contains useless file that might be useful later, it is ignored by `.gitignore`
-9.  `utility/`
+10. `utility/`
 -	Purpose: Contains other Python utility files.
 
 Ignore Advanced Feature
