@@ -10,7 +10,6 @@ sys.path.append(parent)
 
 ###############################################################################################################
 
-from include.img_process_rgb import img_process_rgb
 from box.box_edit import box_edit
 import numpy as np
 
