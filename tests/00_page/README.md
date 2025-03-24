@@ -1,16 +1,16 @@
 This folder contains
 1.  `img/`
 -   Contains : images
+2.  `img_text/`
+-   Contains : image output that have text bounding boxes.
 2.  `text/`
 -   Contains : text output.
 4.  `00_img.py`
--   Purpose :  Transform `img.jpeg` to `img_out.jpg`
+-   Purpose :  Transform `img.jpeg` to `thick.jpg` and `thresh.jpg`
 5.  `01_ocr.py`
--   Purpose : Transform `img_out.jpg` to text output.
-6.  `02_osd.py`
--   Purpose : print Orientation and Script Detection data
-7.  `03_ocr.py`
--   Purpose : Demonstrate how to use `include/ocr_config.tsx` for a single image input.
+-   Purpose : Transform `thick.jpg` and `thresh.jpg` to text output and `img_text/` output.
+
+The `thresh.jpg` is slightly more reliable than `thick.jpg`.
 
 Reference
 1.  https://youtu.be/ADV-AjAXHdc?si=pbCm__vFPVl25u6v

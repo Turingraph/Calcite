@@ -82,8 +82,9 @@ def get_ocr(
                 int(d['conf'][i]) > conf and 
                 (search == "" or (search != "" and search in d['text'][i]))):
                     output_box.append((d['left'][i], d['top'][i], d['width'][i], d['height'][i]))
-                    if i > 0 and d['left'][i] <= d['left'][i-2]:
-                        output_text += "\n"
+                    if len(output_box) > 1:
+                        if d['left'][i] <= output_box[-2][0]:
+                            output_text += "\n"
                     output_text += d['text'][i]
                     if is_space == True:
                         output_text += " "

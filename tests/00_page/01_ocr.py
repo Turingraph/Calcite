@@ -10,16 +10,29 @@ sys.path.append(parent)
 
 ###############################################################################################################
 
-from include.img_process_rgb import img_process_rgb
-from include.ocr_config import ocr_config
+from box.box_edit import box_edit
+path = "/tests/00_page/img/"
+names = [
+    "thick",    # len(img.get_box()) = 267
+    "thresh"    # len(img.get_box()) = 268
+]
 
-path = "/tests/00_page/img/img_out.jpg"
+for name in names:
+    img = box_edit(img = (parent + path + name + ".jpg"))
+    img.get_ocr(conf=50)
+    img.get_box_read().save_img(path=["img_text", name])
+    print(len(img.get_box()))
+    img.save_text(path=name)
 
-ocr_setting = ocr_config(
-    lang = 'eng'
-)
-img = img_process_rgb(img = (parent + path)).img
-ocr_setting.img_to_str(img=img)
-ocr_setting.save_text()
+print(img.get_osd())
+
+"""
+Page number: 0
+Orientation in degrees: 0
+Rotate: 0
+Orientation confidence: 12.15
+Script: Latin
+Script confidence: 3.68
+"""
 
 ###############################################################################################################
