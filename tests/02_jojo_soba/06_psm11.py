@@ -12,7 +12,7 @@ sys.path.append(parent)
 
 ###############################################################################################################
 
-from img_process_class.ocr_config import ocr_config
+from box.box_edit import box_edit
 
 path = "/tests/02_jojo_soba/img/"
 
@@ -22,14 +22,13 @@ names= [
     "thresh",
 ]
 
-ocr_setting = ocr_config(
-    lang = 'eng+tha',
-    psm=11,
-    is_space=False
-)
-
 for name in names:
-    ocr_setting.img_to_str(img=parent+path+name+".jpg")
-    ocr_setting.save_text(path = ["psm11",name])
+    img = box_edit(img = parent+path+name+".jpg")
+    img.get_ocr(
+        lang = 'eng+tha',
+        psm=11,
+        is_space=False
+    )
+    img.save_text(path = ["psm11",name])
 
 ###############################################################################################################
