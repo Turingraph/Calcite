@@ -4,13 +4,10 @@ from pytesseract import Output
 
 from box.box_read import box_read
 from box.get_row import col_box, col_half, filter_half, row_box, row_half
+from box.ocr import save_text, get_oem, get_psm, osd
 from box.update_box import get_ocr, select_box, update_area_box
 from img_process.contour import sort_contours
 from img_process.utility import check_img
-from ocr_config.flag_options import get_oem, get_psm
-from ocr_config.img_to_str import img_to_str
-from ocr_config.osd import osd
-from ocr_config.save_text import save_text
 
 '''
 Purpose

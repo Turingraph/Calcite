@@ -4,7 +4,7 @@ import numpy as np
 from img_process.contour import sort_contours
 from img_process.show import get_valid_path
 from img_process.utility import check_img, rgb_img
-from include.img_process_rgb import img_process_rgb
+from img_process_class.img_process_rgb import img_process_rgb
 from utility.utility import index_name
 
 '''

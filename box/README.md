@@ -9,5 +9,7 @@ This folder contains
 -   Purpose : Display and save the `__img` and `__box` attributes of class `box_edit`.
 3.  `get_row.py`
 -	Purpose : Get row/column of the box for `box_edit`.
-4.  `update_box.py`
+4.  `ocr.py`
+-   Purpose : Compute and save OCR output.
+5.  `update_box.py`
 -	Purpose : Update `__all_box` and `__box` attributes of class `box_edit`

@@ -65,18 +65,15 @@ text.
 5.	`img_process/`
 -	Purpose: Processing Image e.g. Threshold, Blur, Convolution, Orientation etc.
 -   Status: Finish
-6.  `include/`
--	Purpose: The Python Interface for enhancing open closed principle and use OCR, image processing and drawing box around the text.
+6.  `img_process_class/`
+-	Purpose: The interface of `img_process/`
 -   Status: Finish
-7.	`ocr/`
--	Purpose: converting Image to text output using Tesseract OCR model and Pytesseract Python library.
--   Status: Finish
-8.  `tests/`
+7.  `tests/`
 -	Purpose: Check if Python files works as expected.
 -   Status: In Development process. We will develop this folder after code `backend/`.
-9.  `trash/`
+8.  `trash/`
 -	Purpose: Contains useless file that might be useful later, it is ignored by `.gitignore`
-10. `utility/`
+9.  `utility/`
 -	Purpose: Contains other Python utility files.
 
 Ignore Advanced Feature

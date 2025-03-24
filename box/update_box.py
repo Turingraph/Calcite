@@ -4,7 +4,7 @@ from pytesseract import Output
 
 from img_process.contour import get_contours
 from img_process.utility import get_size
-from include.img_process_gray import img_process_gray
+from img_process_class.img_process_gray import img_process_gray
 
 
 def update_area_box(
