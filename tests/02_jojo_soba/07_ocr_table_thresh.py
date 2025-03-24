@@ -12,29 +12,27 @@ sys.path.append(parent)
 
 ###############################################################################################################
 
-from img_process_class.boxes_img import boxes_img
+from box.box_edit import box_edit
 from img_process_class.img_process_rgb import img_process_rgb
-from img_process_class.ocr_config import ocr_config
 
 path = "/tests/02_jojo_soba/img/"
-
 name = "thresh"
+format = ".jpg"
 
-ocr_00 = ocr_config(
-    lang = 'eng+tha',
-    psm=11,
-    is_space=False
-)
-
-img = boxes_img(
-    img = (parent + path + name + ".jpg"), 
-    kernel=np.ones((13, 23)))
-img.select_boxes(min_w=1000,max_h=50)
-img.row_boxes()
-img.show_boxes(rgb=[
+img = box_edit(img = (parent + path + name + format))
+img.update_area_box(kernel=np.ones((13, 23)))
+img.select_box(min_w=1000,max_h=50)
+img.row_box()
+img.get_box_read().show_img(rgb=[
     [255,0,0],
     [0,255,0],
     [0,0,255]
 ])
-ocr_00.img_to_str(img=img_process_rgb(img.get_imgs()[3]).img)
-ocr_00.save_text(path = ["table",name])
+ocr = box_edit(img=img.get_box_read().get_imgarr()[3])
+ocr.get_ocr(
+    column=[1510,691],
+    lang = 'eng+tha',
+    psm=11,
+    is_space=False
+)
+ocr.save_text(path = ["table",name])
