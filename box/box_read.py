@@ -1,7 +1,6 @@
 import cv2
 import numpy as np
 
-from box.box_manage import box_manage
 from img_process.contour import sort_contours
 from img_process.show import get_valid_path
 from img_process.utility import check_img, rgb_img
@@ -19,7 +18,7 @@ img		np.ndarray			update_img()	image input
 box		list[list[int]]		-				box around the given region.
 '''
 
-class img_output:
+class box_read:
     def __init__(self, 
                 img: np.ndarray | str,
                 box: list[list[int]]):
@@ -31,14 +30,28 @@ class img_output:
             img:np.ndarray = check_img(img)
         else:
             raise TypeError("Error: Input img must be np.ndarray or str")
-        self.img:img_process_rgb = img_process_rgb(img = rgb_img(img))
-        self.box = box
-#-----------------------------------------------------------------------------------------
-    # PURPOSE : DISPLAY AND GET IMAGE DATA
+        self.__img:img_process_rgb = img_process_rgb(img = rgb_img(img))
+        self.__box = box
 
-    # Draw box in the image.
-    # Note that : rgb == None means no color.
-    def color_img(self,
+#-----------------------------------------------------------------------------------------
+    # PURPOSE : GET PRIVATE ATTRIBUTE AS READ ONLY VARIABLE.
+
+    def get_box(self):
+        return self.__box
+    
+    def get_img(self) -> np.ndarray:
+        return self.__img.img
+
+#-----------------------------------------------------------------------------------------
+    # PURPOSE : SORT BOX
+
+    def sort_box(self, reverse: bool = False, method: int = 4)->None:
+        self.__box = sort_contours(contour=self.__box, reverse=reverse, method=method)
+
+#-----------------------------------------------------------------------------------------
+    # PURPOSE : PRIVATE METHOD
+
+    def __color_img(self,
             rgb:list[list[int]]|list[int]|int|None = [
                 [255,0,0],
                 [0,255,0],
@@ -47,13 +60,16 @@ class img_output:
             ) -> None:
         c = 0
         if rgb != None:
-            for i in self.box:
+            for i in self.__box:
                 color_of_the_wind = rgb
                 if isinstance(rgb,list) and isinstance(rgb[0], list):
                     color_of_the_wind=rgb[c%len(rgb)]
                     c+=1
-                self.img.rectangle(rgb=color_of_the_wind,x=i[0], y=i[1], w=i[2], h=i[3])
-    
+                self.__img.rectangle(rgb=color_of_the_wind,x=i[0], y=i[1], w=i[2], h=i[3])
+
+#-----------------------------------------------------------------------------------------
+    # PURPOSE : DISPLAY IMAGE DATA
+
     def show_img(
             self, 
             title:str="img_out",
@@ -63,10 +79,9 @@ class img_output:
                 [0,0,255]
             ]):
         if rgb != None:
-            self.color_img(rgb = rgb)
-        self.img.show(title=title)
+            self.__color_img(rgb = rgb)
+        self.__img.show(title=title)
 
-    # Save one image.
     def save_img(
             self,
             path:str|list[str] = ["img","img_out","jpg"],
@@ -76,23 +91,20 @@ class img_output:
                 [0,0,255]
             ]) -> None:
         if rgb != None:
-            self.color_img(rgb = rgb)
-        self.img.save_img(path=path)
+            self.__color_img(rgb = rgb)
+        self.__img.save_img(path=path)
 
-    # def print_box(self):
-    #     for i in self.box:
-    #         print(i)
+#-----------------------------------------------------------------------------------------
+    # PURPOSE : DISPLAY IMAGE DATA ARRAY BASED ON self.box
 
-    # Get multiple images as array of image, based on self.box.
-    def get_imgs(self) -> list[np.ndarray]:
+    def get_imgarr(self) -> list[np.ndarray]:
         out_img_arr = []
-        for i in self.box:
-            out_img = self.img.img[i[1]:i[1]+i[3], i[0]:i[0]+i[2]]
+        for i in self.__box:
+            out_img = self.__img.img[i[1]:i[1]+i[3], i[0]:i[0]+i[2]]
             out_img_arr.append(out_img)
         return out_img_arr
 
-    # Save multiple images as array of image, based on self.box.
-    def save_multiple_imgs(
+    def save_imgarr(
             self,
             path: list[str] | str = ["img", "img_out", "jpg"],
             rgb:list[list[int]]|list[int]|int|None = [
@@ -103,27 +115,11 @@ class img_output:
         count = 0
         path = get_valid_path(path)
         if rgb != None:
-            self.color_img(rgb = rgb)
-        for i in self.box:
-            out_img = self.img.img[i[1]:i[1]+i[3], i[0]:i[0]+i[2]]
+            self.__color_img(rgb = rgb)
+        for i in self.__box:
+            out_img = self.__img.img[i[1]:i[1]+i[3], i[0]:i[0]+i[2]]
             out_img = img_process_rgb(img = out_img)
             out_img.save_img(path=[path[0], path[1]+"_" + index_name(count), path[2]])
             count += 1
-
-    # Return image in np.ndarray data type.
-    def get_img(self) -> np.ndarray:
-        return self.img.img
-
-#-----------------------------------------------------------------------------------------
-    # PURPOSE : GET BOXES DATA
-
-    def get_box(self):
-        return self.box
-
-    def get_box_manage(self):
-        return box_manage(box = self.box, w = self.img.shape()[1], h = self.img.shape()[0])
-
-    def sort_box(self, reverse: bool = False, method: int = 4)->None:
-        self.box = sort_contours(contour=self.box, reverse=reverse, method=method)
 
 #-----------------------------------------------------------------------------------------
