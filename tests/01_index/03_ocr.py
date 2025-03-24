@@ -11,7 +11,6 @@ sys.path.append(parent)
 ###############################################################################################################
 
 from box.box_edit import box_edit
-from box.box_read import box_read
 from utility.utility import index_name
 
 path = "/tests/01_index/img/box_img_"

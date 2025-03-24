@@ -13,7 +13,6 @@ sys.path.append(parent)
 import numpy as np
 
 from box.box_edit import box_edit
-from box.box_read import box_read
 
 path = parent + "/tests/01_index/img/img.jpeg"
 img = box_edit(img = path)
