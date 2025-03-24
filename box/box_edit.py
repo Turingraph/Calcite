@@ -4,7 +4,7 @@ from pytesseract import Output
 
 from box.box_read import box_read
 from box.get_row import col_box, col_half, filter_half, row_box, row_half
-from box.update_box import select_box, update_area_img, update_text_box
+from box.update_box import get_ocr, select_box, update_area_box
 from img_process.contour import sort_contours
 from img_process.utility import check_img
 from ocr_config.flag_options import get_oem, get_psm
@@ -114,7 +114,7 @@ class box_edit:
             thresh_px: int = 0,
             kernel: np.ndarray = np.ones(shape=(2, 30)),
             ksize: int = 9) -> None:
-        output = update_area_img(
+        output = update_area_box(
             img=self.__img,
             thresh_px = thresh_px,
             kernel = kernel,
@@ -154,7 +154,7 @@ class box_edit:
 #-----------------------------------------------------------------------------------------
     # PURPOSE : GET OCR OUTPUT
 
-    def update_text_output(self,
+    def get_ocr(self,
             lang:str = "eng",
             psm:str|int|None = 3,
             oem:str|int|None = 3,
@@ -164,7 +164,8 @@ class box_edit:
             search:str="", 
             is_space:bool = True
         ):
-        output = update_text_box(
+        output = get_ocr(
+            img=self.__img,
             lang=lang,
             config=config + ' ' + get_oem(oem) + ' ' + get_psm(psm),
             timeout=timeout,

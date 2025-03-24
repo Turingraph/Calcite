@@ -6,7 +6,8 @@ from img_process.contour import get_contours
 from img_process.utility import get_size
 from include.img_process_gray import img_process_gray
 
-def update_area_img(
+
+def update_area_box(
                 img:np.ndarray,             
                 thresh_px: int = 0,
                 kernel: np.ndarray = np.ones(shape=(2, 30)),
@@ -56,7 +57,7 @@ def select_box(
             box.append(i)
     return box 
 
-def update_text_box(
+def get_ocr(
             img:np.ndarray,
             lang:str = "eng",
             config:str = '',
