@@ -17,8 +17,8 @@ def update_area_img(
             kernel=kernel,
             ksize=ksize)
         return [
-            get_contours(img=img),
-            img
+            get_contours(img=img.img),
+            img.img
         ]
 
 def select_box(

@@ -12,12 +12,13 @@ sys.path.append(parent)
 
 import numpy as np
 
-from box.img_dilate import img_dilate
+from box.box_edit import box_edit
+from box.box_read import box_read
 
 path = parent + "/tests/01_index/img/img.jpeg"
-img = img_dilate(img = path, kernel=np.ones((13, 3)))
+img = box_edit(img = path)
+img.update_area_box(kernel=np.ones((13, 3)))
 img.select_box(min_w=20,min_h=200)
-img.dilate_img.save_img(path="dilate_img13x3")
+img.get_dilate_box_read().save_img(rgb=None,path="dilate_img13x3")
 img.sort_box(method=0)
-img_result = img.get_img_output()
-img_result.save_multiple_imgs(path = "box_img")
+img.get_box_read().save_imgarr(rgb=None,path = "box_img")
