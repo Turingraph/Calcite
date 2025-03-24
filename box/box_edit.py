@@ -70,7 +70,7 @@ class box_edit:
 
     def row_box(self, is_double:bool = False):
         self.__box = row_box(
-            all_box=self.__all_box,
+            all_box=self.__box,
             w=self.__img.shape[1],
             h=self.__img.shape[0],
             is_double=is_double
@@ -78,7 +78,7 @@ class box_edit:
 
     def row_half(self, index:int = 0, is_double:bool = False):
         self.__box = row_half(
-            all_box=self.__all_box,
+            all_box=self.__box,
             w=self.__img.shape[1],
             h=self.__img.shape[0],
             index=index,
@@ -87,7 +87,7 @@ class box_edit:
 
     def col_box(self, is_double:bool = False):
         self.__box = col_box(
-            all_box=self.__all_box,
+            all_box=self.__box,
             w=self.__img.shape[1],
             h=self.__img.shape[0],
             is_double=is_double
@@ -95,7 +95,7 @@ class box_edit:
 
     def col_half(self, index:int = 0, is_double:bool = False):
         self.__box = col_half(
-            all_box=self.__all_box,
+            all_box=self.__box,
             w=self.__img.shape[1],
             h=self.__img.shape[0],
             index=index,

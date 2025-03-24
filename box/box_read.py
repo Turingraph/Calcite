@@ -49,9 +49,9 @@ class box_read:
         self.__box = sort_contours(contour=self.__box, reverse=reverse, method=method)
 
 #-----------------------------------------------------------------------------------------
-    # PURPOSE : PRIVATE METHOD
+    # PURPOSE : DISPLAY IMAGE DATA
 
-    def __color_img(self,
+    def color_img(self,
             rgb:list[list[int]]|list[int]|int|None = [
                 [255,0,0],
                 [0,255,0],
@@ -67,9 +67,6 @@ class box_read:
                     c+=1
                 self.__img.rectangle(rgb=color_of_the_wind,x=i[0], y=i[1], w=i[2], h=i[3])
 
-#-----------------------------------------------------------------------------------------
-    # PURPOSE : DISPLAY IMAGE DATA
-
     def show_img(
             self, 
             title:str="img_out",
@@ -79,7 +76,7 @@ class box_read:
                 [0,0,255]
             ]):
         if rgb != None:
-            self.__color_img(rgb = rgb)
+            self.color_img(rgb = rgb)
         self.__img.show(title=title)
 
     def save_img(
@@ -91,7 +88,7 @@ class box_read:
                 [0,0,255]
             ]) -> None:
         if rgb != None:
-            self.__color_img(rgb = rgb)
+            self.color_img(rgb = rgb)
         self.__img.save_img(path=path)
 
 #-----------------------------------------------------------------------------------------
@@ -115,7 +112,7 @@ class box_read:
         count = 0
         path = get_valid_path(path)
         if rgb != None:
-            self.__color_img(rgb = rgb)
+            self.color_img(rgb = rgb)
         for i in self.__box:
             out_img = self.__img.img[i[1]:i[1]+i[3], i[0]:i[0]+i[2]]
             out_img = img_process_rgb(img = out_img)
