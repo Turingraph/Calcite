@@ -22,12 +22,6 @@ names= [
     "thresh",
 ]
 
-# ocr_00 = ocr_config(
-#     lang = 'eng+tha',
-#     psm=11,
-#     is_space=False
-# )
-
 for name in names:
     img = box_edit(img = (parent + path + name + ".jpg"))
     img.update_area_box(kernel=np.ones((13, 23)))
