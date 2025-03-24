@@ -10,8 +10,8 @@ sys.path.append(parent)
 
 ###############################################################################################################
 
-from utility.utility import index_name
 from box.box_edit import box_edit
+from utility.utility import index_name
 
 path = "/tests/01_index/img/box_img_"
 file_format = ".jpg"

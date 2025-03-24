@@ -11,6 +11,7 @@ sys.path.append(parent)
 ###############################################################################################################
 
 from box.box_edit import box_edit
+
 path = "/tests/00_page/img/"
 names = [
     "thick",    # len(img.get_box()) = 267

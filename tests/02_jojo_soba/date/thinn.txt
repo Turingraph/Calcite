@@ -1,6 +1,4 @@
-Tis : 2 FLOOR 3
-
-พนักงาน . wittawadee@gmail.com
-วันที่ :07/10/2023                   เวลา : 18:32:12
-
-ID :811816
+FLOOR3
+พนักงาน.wittawadee@gmail.com
+วันที่:07/10/2023เวลา:18:32:12
+ ID:811816

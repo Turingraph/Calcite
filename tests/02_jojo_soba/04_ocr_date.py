@@ -13,7 +13,6 @@ sys.path.append(parent)
 ###############################################################################################################
 
 from box.box_edit import box_edit
-from include.ocr_config import ocr_config
 
 ###############################################################################################################
 
@@ -25,17 +24,13 @@ names= [
     "thresh",
 ]
 
-ocr_setting = ocr_config(
-    lang = 'eng+tha',
-    is_space=False
-)
-
 for name in names:
     img = box_edit(img = (parent + path + name + ".jpg"))
     img.update_area_box(kernel=np.ones((13, 23)))
     img.select_box(min_w=1000,max_h=50)
     img.row_box()
-    ocr_setting.img_to_str(img=img.get_img())
-    ocr_setting.save_text(path = ["date",name])
+    select_img = box_edit(img = img.get_box_read().get_imgarr()[1])
+    select_img.get_ocr(lang = 'eng+tha', is_space=False)
+    select_img.save_text(path = ["date",name])
 
 ###############################################################################################################
