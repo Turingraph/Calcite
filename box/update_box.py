@@ -1,8 +1,10 @@
+
+import re
+
 import numpy as np
 import pytesseract
 from pytesseract import Output
 
-from img_process.contour import get_contours
 from img_process.utility import get_size
 from img_process_class.img_process_gray import img_process_gray
 
@@ -61,10 +63,11 @@ def get_ocr(
             timeout:int = 0,
             conf:int = 60, 
             search:str="", 
-            is_space:bool = True,
             column:list[int] = []
         ):
         # https://nanonets.com/blog/ocr-with-tesseract/
+        # https://stackoverflow.com/questions/6676675/
+        # in-python-how-do-i-check-if-a-string-has-alphabets-or-numbers
         col = []
         for i in column:
             if i > 0 and i < img.shape[1]:
@@ -82,11 +85,13 @@ def get_ocr(
         )
         output_text = ""
         col_index = 0
+
         for i in range(len(d['text'])):
             if (
                 int(d['conf'][i]) > conf and 
-                (search == "" or (search != "" and search in d['text'][i]))):
-
+                (search == "" or (search != "" and search in d['text'][i])) and 
+                (d['text'][i] != " ")
+                ):
                     if len(col) > col_index:
                         if d['left'][i] > col[col_index]:
                             output_text += ", "
@@ -97,9 +102,9 @@ def get_ocr(
                         if d['left'][i] <= output_box[-2][0]:
                             output_text += "\n"
                             col_index = 0
-                    output_text += d['text'][i]
 
-                    if is_space == True:
+                    output_text += str(d['text'][i]).replace(" ", "")
+                    if bool(re.match('[A-Za-z0-9]',output_text[-1])) or output_text[-1] in "!@#$%^&*()_-+=[]:;\"\'<>?":
                         output_text += " "
         return [
              output_box,

@@ -200,17 +200,15 @@ class box_edit:
             timeout:int = 0,
             conf:int = 60, 
             search:str="", 
-            is_space:bool = True,
             column:list[int] = []
         ):
         output = get_ocr(
             img=self.__img,
             lang=lang,
-            config=config + ' ' + get_oem(oem) + ' ' + get_psm(psm),
+            config=config + ' ' + get_oem(oem) + ' ' + get_psm(psm) + "-c preserve_interword_spaces=0",
             timeout=timeout,
             conf=conf,
             search=search,
-            is_space=is_space,
             column=column
         )
         self.__all_box = output[0]
