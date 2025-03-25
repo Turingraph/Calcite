@@ -2,6 +2,7 @@ import cv2
 import numpy as np
 import os
 from PIL import Image
+from img_process.warning import warn_save_img
 from utility.utility import get_options
 
 def show(img: np.ndarray, title: str = "img_out") -> None:
@@ -47,32 +48,10 @@ def save_img(
     ]
     if '.' == path[2][0]:
         path[2][0] = path[2][0][1:]
-    message = """
--------------------------------------------------------------------------------------------
-img_process/show.py/def save
-
-def save(
-    img: np.ndarray,
-    path: list[str] | str = ["img", "img_out", "jpg"],
-) -> None:
-# This function save the image
-Note that
--   path[0] = folder_name
--   path[1] = file_name
--   path[2] = file_format
-
-available file_format options
--   jpeg
--   png
--   gif
--   bmp
--   tiff
--   ppm
--   ico
--   psd
--------------------------------------------------------------------------------------------
-"""
-    path[2] = get_options(input=path[2], input_options=format_options, message=message)
+    path[2] = get_options(
+        input=path[2], 
+        input_options=format_options, 
+        message=warn_save_img())
     if not os.path.exists(path=path[0]):
         os.makedirs(name=path[0])
     # https://docs.python.org/3/library/os.path.html

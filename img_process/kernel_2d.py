@@ -1,48 +1,7 @@
 import numpy as np
 import cv2
+from img_process.warning import warn_kernel_2d
 from utility.utility import get_options
-
-message = """
--------------------------------------------------------------------------------------------
-img_process/kernel_2d.py/def kernel_2d
-
-def kernel_2d(
-    w: int,
-    h: int | None = None,
-    scalar: float = 1,
-    mode: int = cv2.MORPH_RECT,
-) -> np.ndarray:
-# This function create `np.ndarray` kernel with `(w, h)` as it's `shape`, based on `mode` option
-
-available `mode` options
--   cv2.MORPH_RECT      =   Rectangular Kernel
->>> cv2.getStructuringElement(cv2.MORPH_RECT,(5,5))
-array([[1, 1, 1, 1, 1],
-       [1, 1, 1, 1, 1],
-       [1, 1, 1, 1, 1],
-       [1, 1, 1, 1, 1],
-       [1, 1, 1, 1, 1]], dtype=uint8)
-
--   cv2.MORPH_ELLIPSE   =   Elliptical Kernel
->>> cv2.getStructuringElement(cv2.MORPH_ELLIPSE,(5,5))
-array([[0, 0, 1, 0, 0],
-       [1, 1, 1, 1, 1],
-       [1, 1, 1, 1, 1],
-       [1, 1, 1, 1, 1],
-       [0, 0, 1, 0, 0]], dtype=uint8)
-
--   cv2.MORPH_CROSS     =   Cross Kernel
->>> cv2.getStructuringElement(cv2.MORPH_CROSS,(5,5))
-array([[0, 0, 1, 0, 0],
-       [0, 0, 1, 0, 0],
-       [1, 1, 1, 1, 1],
-       [0, 0, 1, 0, 0],
-       [0, 0, 1, 0, 0]], dtype=uint8)
-
-Reference
-*   https://opencv24-python-tutorials.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_morphological_ops/py_morphological_ops.html
--------------------------------------------------------------------------------------------
-"""
 
 input_options = [cv2.MORPH_RECT, cv2.MORPH_ELLIPSE, cv2.MORPH_CROSS]
 
@@ -55,7 +14,7 @@ def kernel_2d(
     mode = get_options(
         input = mode, 
         input_options = input_options, 
-        message = message)
+        message = warn_kernel_2d())
     if h == None:
         h = w
     return scalar * cv2.getStructuringElement(

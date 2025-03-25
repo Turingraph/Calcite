@@ -5,7 +5,7 @@ from pytesseract import Output
 from box.box_read import box_read
 from box.get_row import (add_area, col_box, col_half, filter_half, row_box,
                          row_half)
-from box.ocr import get_oem, get_psm, osd, save_text
+from box.ocr import get_oem, get_osd, get_psm, save_text
 from box.update_box import get_ocr, select_box, update_area_box
 from img_process.contour import get_contours, sort_contours
 from img_process.utility import check_img
@@ -218,7 +218,7 @@ class box_edit:
         self.__output = output[1]
 
     def get_osd(self, out_type:str = Output.STRING, timeout:int = 0) -> any:
-        return osd(img=self.__img, out_type=out_type, timeout=timeout)
+        return get_osd(img=self.__img, out_type=out_type, timeout=timeout)
 
     def save_text(self, path: list[str] | str = ["text", "text", "txt"])-> None:
         save_text(self.__output, path)

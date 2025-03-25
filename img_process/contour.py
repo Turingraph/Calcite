@@ -1,6 +1,7 @@
 import cv2
 import numpy as np
 from img_process.utility import get_ksize
+from img_process.warning import warn_sort_contours
 from utility.utility import get_options
 from img_process.threshold import threshold
 from img_process.utility import get_rgb, check_img, set_px
@@ -68,27 +69,10 @@ sort_by_area = sort_contour(contours, 4)
 def sort_contours(
     contour: list | tuple, reverse: bool = False, method: int = 4
 ) -> list:
-    message = """
--------------------------------------------------------------------------------------------
-img_process/contour.py/def sort_contours
-
-def sort_contours(
-    contour: list | tuple, 
-    reverse: bool = False, 
-    method: int = 4
-) -> list:
-# This function sort the `contour` list or tuple, based on `method` option.
-
-available `method` options
--   0 = x
--   1 = y
--   2 = width
--   3 = height
--   4 = size
--------------------------------------------------------------------------------------------
-    """
     method = get_options(
-        input=method, input_options=[4, 0, 1, 2, 3], message=message
+        input=method, 
+        input_options=[4, 0, 1, 2, 3], 
+        message=warn_sort_contours()
     )
     if method in [0, 1, 2, 3]:
         return sorted(

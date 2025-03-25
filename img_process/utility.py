@@ -1,6 +1,8 @@
 import cv2
 import numpy as np
 
+from img_process.warning import warn_valid_img
+
 # Make the black area of the image become white and vice versa
 def invert_img(img: np.ndarray) -> np.ndarray:
     return cv2.bitwise_not(src=img)
@@ -44,7 +46,7 @@ def gray_img(img: np.ndarray) -> np.ndarray:
     elif len(img.shape) == 2:
         return np.copy(img)
     else:
-        raise ValueError("Error: Invalid NumPy array. len(img.shape) must be 2 or 3.")
+        raise ValueError(warn_valid_img())
 
 def rgb_img(img: np.ndarray) -> np.ndarray:
     if len(img.shape) == 3:
@@ -52,13 +54,13 @@ def rgb_img(img: np.ndarray) -> np.ndarray:
     elif len(img.shape) == 2:
         return cv2.cvtColor(src=img, code=cv2.COLOR_GRAY2RGB)
     else:
-        raise ValueError("Error: Invalid NumPy array. len(img.shape) must be 2 or 3.")
+        raise ValueError(warn_valid_img())
 
 def check_img(img: np.ndarray) -> np.ndarray:
     if len(img.shape) in [2,3]:
         return img
     else:
-        raise ValueError("Error: Invalid NumPy array. len(img.shape) must be 2 or 3.")
+        raise ValueError(warn_valid_img())
 
 def get_rgb(rgb:list[int]|int) -> list[int]:
     if isinstance(rgb, int):

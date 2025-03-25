@@ -1,6 +1,7 @@
 from img_process.contour import contour_img
 import numpy as np
 import cv2
+from img_process.warning import warn_sort_general_contours
 from utility.utility import get_options
 
 #-----------------------------------------------------------------------------------------
@@ -20,27 +21,10 @@ def get_general_contours(img: np.ndarray) -> tuple:
 def sort_general_contours(
     contour: list | tuple, reverse: bool = False, method: int = 4
 ) -> list:
-    message = """
--------------------------------------------------------------------------------------------
-img_process/rotate.py/def sort_general_contours
-
-def sort_general_contours(
-    contour: list | tuple, 
-    reverse: bool = False, 
-    method: int = 4
-) -> list:
-# This function sort the `contour` list or tuple, based on `method` option.
-
-available `method` options
--   0 = x
--   1 = y
--   2 = width
--   3 = height
--   4 = size
--------------------------------------------------------------------------------------------
-    """
     method = get_options(
-        input=method, input_options=[4, 0, 1, 2, 3], message=message
+        input=method, 
+        input_options=[4, 0, 1, 2, 3], 
+        message=warn_sort_general_contours()
     )
     if method in [0, 1, 2, 3]:
         return sorted(

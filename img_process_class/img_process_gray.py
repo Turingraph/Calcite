@@ -124,28 +124,6 @@ class img_process_gray(img_process):
     def bilateral_blur(self, ksize: int = 15, effect: int = 75) -> None:
         self.img = bilateral_blur(img=self.img, ksize=ksize, effect=effect)
 
-    """
-    ########################################################################################################################################################
-    # img_process/fft_2d.py
-
-    def fft_blur(
-        self, row: int, col: int, freq: int = 0, mode: int = cv2.MORPH_RECT
-    ) -> None:
-        self.img = fft_blur(img=self.img, row=row, col= col, freq=freq, mode=mode)
-
-    def fft_sharp(
-        self, row: int, col: int, freq: int = 0, mode: int = cv2.MORPH_RECT
-    ) -> None:
-        self.img = fft_sharp(img=self.img, row=row, col=col, freq=freq, mode=mode)
-
-    def get_fft(self) -> np.ndarray:
-        return get_fft(img=self.img)
-
-    # https://stackoverflow.com/questions/61636701/is-there-a-way-in-a-class-function-to-return-an-instance-of-the-class-itself
-    def get_fft_image(self) -> "img_process_gray":
-        return img_process_gray(img=get_fft_image(img=self.img))
-    """
-
     ########################################################################################################################################################
     # img_process/utility.py
 
