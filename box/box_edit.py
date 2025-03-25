@@ -3,11 +3,12 @@ import numpy as np
 from pytesseract import Output
 
 from box.box_read import box_read
-from box.get_row import col_box, col_half, filter_half, row_box, row_half
-from box.ocr import save_text, get_oem, get_psm, osd
+from box.get_row import (add_area, col_box, col_half, filter_half, row_box,
+                         row_half)
+from box.ocr import get_oem, get_psm, osd, save_text
 from box.update_box import get_ocr, select_box, update_area_box
 from img_process.contour import get_contours, sort_contours
-from img_process.utility import check_img, invert_img
+from img_process.utility import check_img
 
 '''
 Purpose
@@ -71,16 +72,17 @@ class box_edit:
             all_box=self.__box,
             w=self.__img.shape[1],
             h=self.__img.shape[0],
-            is_double=is_double
+            is_double=is_double,
         )
 
-    def row_half(self, index:int = 0, is_double:bool = False):
+    def row_half(self, index:int = 0, is_double:bool = False, is_sort:bool = True):
         self.__box = row_half(
             all_box=self.__box,
             w=self.__img.shape[1],
             h=self.__img.shape[0],
             index=index,
-            is_double=is_double
+            is_double=is_double,
+            is_sort=is_sort
         )
 
     def col_box(self, is_double:bool = False):
@@ -88,22 +90,55 @@ class box_edit:
             all_box=self.__box,
             w=self.__img.shape[1],
             h=self.__img.shape[0],
-            is_double=is_double
+            is_double=is_double,
         )
 
-    def col_half(self, index:int = 0, is_double:bool = False):
+    def col_half(self, index:int = 0, is_double:bool = False, is_sort:bool = True):
         self.__box = col_half(
             all_box=self.__box,
             w=self.__img.shape[1],
             h=self.__img.shape[0],
             index=index,
-            is_double=is_double
+            is_double=is_double,
+            is_sort=is_sort
         )
 
     def filter_half(self, is_odd:bool = False):
         self.__box = filter_half(
             box=self.__box, 
             is_odd=is_odd)
+
+    def add_x(self, area:int, index:int = 0):
+        self.__box = add_area(
+            self.__box, 
+            area=area,
+            max=self.__img.shape[1],
+            mode = 0,
+            index=index)
+
+    def add_y(self, area:int, index:int = 0):
+        self.__box = add_area(
+            self.__box, 
+            area=area,
+            max=self.__img.shape[0],
+            mode = 1,
+            index=index)
+
+    def add_width(self, area:int, index:int = 0):
+        self.__box = add_area(
+            self.__box, 
+            area=area,
+            max=self.__img.shape[1],
+            mode = 2,
+            index=index)
+
+    def add_height(self, area:int, index:int = 0):
+        self.__box = add_area(
+            self.__box, 
+            area=area,
+            max=self.__img.shape[0],
+            mode = 3,
+            index=index)
 
 #-----------------------------------------------------------------------------------------
     # PURPOSE : UPDATE self.__all_box and self.__box
@@ -122,10 +157,10 @@ class box_edit:
         self.__dilate_img = output
         self.__box = self.__all_box
 
-    def update_area_invert_box(self):
-        self.__dilate_img = invert_img(img = self.__dilate_img)
-        self.__all_box = get_contours(img=self.__dilate_img)
-        self.__box = self.__all_box
+    # def update_area_invert_box(self):
+    #     self.__dilate_img = invert_img(img = self.__dilate_img)
+    #     self.__all_box = get_contours(img=self.__dilate_img)
+    #     self.__box = self.__all_box
 
     def select_box(self,
             min_x:int = 0,

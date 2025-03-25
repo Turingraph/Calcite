@@ -1,5 +1,6 @@
 from img_process.contour import sort_contours
 
+
 def row_box(all_box:list[list[int]], w:int, h:int, is_double:bool = False):
     box = []
     arr = sort_contours(contour=all_box, method=1)
@@ -20,15 +21,16 @@ def row_box(all_box:list[list[int]], w:int, h:int, is_double:bool = False):
             box.append((0, arr[len(arr)-1][1], w, h-arr[len(arr)-1][1]))
     return box
 
-def row_half(all_box:list[list[int]], w:int, h:int, index:int = 0, is_double:bool = False):
+def row_half(all_box:list[list[int]], w:int, h:int, index:int = 0, is_double:bool = False, is_sort:bool = True):
     if abs(index) < len(all_box):
         box = []
-        arr = sort_contours(contour=all_box, method=1)
+        arr = all_box
+        if is_sort == True:
+            arr = sort_contours(contour=all_box, method=1)
         if index < 0:
             index += len(arr)
         i = 0
         while i < len(arr):
-            print(arr[i])
             if i == index:
                 if is_double == True:
                     box.append((0, 0, w, arr[i][1]))
@@ -61,10 +63,12 @@ def col_box(all_box:list[list[int]], w:int, h:int, is_double:bool = False):
             box.append((arr[len(arr)-1][0], 0, w-arr[len(arr)-1][0], h))
     return box
 
-def col_half(all_box:list[list[int]], w:int, h:int, index:int = 0, is_double:bool = False):
+def col_half(all_box:list[list[int]], w:int, h:int, index:int = 0, is_double:bool = False, is_sort:bool = True):
     if abs(index) < len(all_box):
         box = []
-        arr = sort_contours(contour=all_box, method=0)
+        arr = all_box
+        if is_sort == True:
+            arr = sort_contours(contour=all_box, method=0)
         if index < 0:
             index += len(arr)
         i = 0
@@ -73,7 +77,7 @@ def col_half(all_box:list[list[int]], w:int, h:int, index:int = 0, is_double:boo
                 if is_double == True:
                     box.append((0, 0, arr[i][0], h))
                     box.append((arr[i][0], 0, arr[i][2], h))
-                    box.append((arr[i][0] + arr[i][0], 0, w - (arr[i][0] + arr[i][0]), h))
+                    box.append((arr[i][0] + arr[i][2], 0, w - (arr[i][0] + arr[i][0]), h))
                 else:
                     box.append((0, 0, arr[i][0], h))
                     box.append((arr[i][0], 0, w - arr[i][0], h))
@@ -89,3 +93,25 @@ def filter_half(box:list[list[int]], is_odd:bool = False):
             update_box.append(box[i])
         i += 1
     return update_box
+
+def add_area(box:list[list[int]], area:int,max:int, mode:int = 0, index:int = 0):
+    if abs(index) < len(box):
+        if index < 0:
+            index += len(box)
+        if (
+            (box[index][mode] + area < max) and 
+            (box[index][mode] + area > 0) and 
+            (mode in [0, 1])
+            ):
+            prev = list(box[index])
+            prev[mode] = area + box[index][mode]
+            box[index] = tuple(prev)
+        if (
+            (box[index][mode] + box[index][mode-2] + area < max) and 
+            (box[index][mode] + box[index][mode-2] + area > 0) and 
+            (mode in [2, 3])
+            ):
+            prev = list(box[index])
+            prev[mode] = area + box[index][mode]
+            box[index] = tuple(prev)
+    return box
