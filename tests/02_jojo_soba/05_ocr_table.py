@@ -28,7 +28,7 @@ for name in names:
     img.select_box(min_w=1000,max_h=50)
     img.row_box()
     select_img = box_edit(img = img.get_box_read().get_imgarr()[2])
-    select_img.get_ocr(column=[1510,691], lang="eng+tha",psm=11,is_space=False)
+    select_img.get_ocr(column=[1510,691], lang="eng+tha",psm=11,)
     select_img.get_box_read().show_img()
     select_img.save_text(path = ["table",name])
 

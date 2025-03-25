@@ -1,15 +1,15 @@
-ส่วนประกอบ/INGREDIENTS
-แป้งสเฉ75%
-wheatFlour
-แป้งข้าวเจ้า16%
-RiceFlour
-แป้งมันสําปะหลง5%
-TapiocaStarch
-สารช่วยให้ฟู3%
-RaisingAgent
-INS341(i),INS450(i),INS5OO(i)
-เกลืบ5โภคเสริมไอโอดิน1%
-lodizedSalt
+ส่วนประกอบ/INGREDIENTS 
+แป้งสเฉ75% 
+wheat Flour 
+แป้งข้าวเจ้า16% 
+Rice Flour 
+แป้งมันสําปะหลง5% 
+Tapioca Starch 
+สารช่วยให้ฟู3% 
+Raising Agent 
+INS341 (i),INS450(i),INS5OO(i) 
+เกลืบ5 โภคเสริมไอโอดิน1% 
+lodized Salt 
 ข้อมูลสําหรับผู้แพ้อาหาร
 กลูเตนจากแป้งสาลี|
 เคล็ดสับความอร่อยไดยหนี่

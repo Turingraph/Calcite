@@ -19,6 +19,6 @@ name = "middle"
 format = ".jpg"
 
 img = box_edit(img = (parent + path + name + format))
-img.get_ocr(lang="eng+tha", is_space=False, psm=11)
+img.get_ocr(lang="eng+tha", psm=11)
 img.save_text()
 img.get_box_read().save_img(path="mark")

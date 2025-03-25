@@ -33,6 +33,6 @@ ocr.get_ocr(
     column=[1510,691],
     lang = 'eng+tha',
     psm=11,
-    is_space=False
+    
 )
 ocr.save_text(path = ["table",name])

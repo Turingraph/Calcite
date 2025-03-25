@@ -27,7 +27,7 @@ for name in names:
     img.get_ocr(
         lang = 'eng+tha',
         psm=11,
-        is_space=False
+        
     )
     img.save_text(path = ["psm11",name])
 

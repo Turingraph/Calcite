@@ -16,7 +16,7 @@ path = "/tests/04_green_pig/img/"
 name = "thresh"
 
 img = box_edit(img = (parent + path + name + ".jpg"))
-img.get_ocr(conf=50, lang="eng+tha", is_space=False,psm=11)
+img.get_ocr(conf=50, lang="eng+tha", psm=11)
 img.get_box_read().save_img(path= "mark")
 print(len(img.get_box())) 
 img.save_text()

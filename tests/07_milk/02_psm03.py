@@ -22,7 +22,7 @@ img = box_edit(img = parent+path+name+format)
 img.get_ocr(
     lang = 'eng+tha',
     psm=3,
-    is_space=False
+    
 )
 img.get_box_read().save_img(path="psm03")
 img.save_text(path = "psm03")
