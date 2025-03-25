@@ -119,4 +119,21 @@ class box_read:
             out_img.save_img(path=[path[0], path[1]+"_" + index_name(count), path[2]])
             count += 1
 
+    def save_sub_img(
+            self,
+            path:str|list[str] = ["img","img_out","jpg"],
+            rgb:list[list[int]]|list[int]|int|None = [
+                [255,0,0],
+                [0,255,0],
+                [0,0,255]
+            ],
+            index:int = 0
+            ) -> None:
+        if rgb != None:
+            self.color_img(rgb = rgb)
+        if abs(index) < len(self.__box):
+            if index < 0:
+                index += len(self.__box)
+            img_process_rgb(img = self.get_imgarr()[index]).save_img(path = path)
+
 #-----------------------------------------------------------------------------------------
