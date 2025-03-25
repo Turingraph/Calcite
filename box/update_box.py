@@ -104,7 +104,7 @@ def get_ocr(
                             col_index = 0
 
                     output_text += str(d['text'][i]).replace(" ", "")
-                    if bool(re.match('[A-Za-z0-9]',output_text[-1])) or output_text[-1] in "!@#$%^&*()_-+=[]:;\"\'<>?":
+                    if bool(re.match('[A-Za-z0-9]',output_text[-1])) or output_text[-1] in "!@#$%^&*()_-+=[]:;\"\'<>?~`":
                         output_text += " "
         return [
              output_box,
