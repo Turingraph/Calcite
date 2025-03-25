@@ -63,7 +63,8 @@ def get_ocr(
             timeout:int = 0,
             conf:int = 60, 
             search:str="", 
-            column:list[int] = []
+            column:list[int] = [],
+            csv_separator:str = ", "
         ):
         # https://nanonets.com/blog/ocr-with-tesseract/
         # https://stackoverflow.com/questions/6676675/
@@ -94,7 +95,7 @@ def get_ocr(
                 ):
                     if len(col) > col_index:
                         if d['left'][i] > col[col_index]:
-                            output_text += ", "
+                            output_text += csv_separator
                             col_index += 1
 
                     output_box.append((d['left'][i], d['top'][i], d['width'][i], d['height'][i]))
