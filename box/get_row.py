@@ -22,8 +22,8 @@ def row_box(all_box:list[list[int]], w:int, h:int, is_double:bool = False):
     return box
 
 def row_half(all_box:list[list[int]], w:int, h:int, index:int = 0, is_double:bool = False, is_sort:bool = True):
+    box = []
     if abs(index) < len(all_box):
-        box = []
         arr = all_box
         if is_sort == True:
             arr = sort_contours(contour=all_box, method=1)
@@ -64,8 +64,8 @@ def col_box(all_box:list[list[int]], w:int, h:int, is_double:bool = False):
     return box
 
 def col_half(all_box:list[list[int]], w:int, h:int, index:int = 0, is_double:bool = False, is_sort:bool = True):
+    box = []
     if abs(index) < len(all_box):
-        box = []
         arr = all_box
         if is_sort == True:
             arr = sort_contours(contour=all_box, method=0)
