@@ -58,14 +58,27 @@ def opening(img: np.ndarray, kernel: np.ndarray = np.ones((5, 5), np.uint8)) -> 
 
 #-----------------------------------------------------------------------------------------
 
-# thin edge
-# https://docs.opencv.org/4.x/da/d22/tutorial_py_canny.html
-def canny(img: np.ndarray, c1: int = 100, c2: int = 200) -> np.ndarray:
-    if c1 > c2:
-        tp = c1
-        c1 = c2
-        c2 = tp
-    return cv2.Canny(image = img, threshold1= set_px(c1), threshold2= set_px(c2))
+"""
+This algorithm works by 
+1.  It is recommended to transform image to gray image and apply Gaussian Blur.
+2.  approximate the derivative of image pixal (Gx and Gy).
+-   using horizontal and vertical kernal to find Gx and Gy
+-   G_d = square_root(Gx^2 + Gy^2) = how large the gradient
+-   Theta = arctan(Gy / Gx) = orientation of gradient
+3.  Use G_d and Theta to find local maximum pixel, and make other pixel equal 0.
+4.  Select only pixel that higher than high_thresh or connected 
+    to the selected pixel and higher than low_thresh.
+
+Reference
+-   https://youtu.be/uihBwtPIBxM?si=eX2jBPZZLiu8A87y
+-   https://youtu.be/sRFM5IEqR2w?si=PqnIy0Abml61lZQx    
+"""
+def canny(img: np.ndarray, low_thresh: int = 100, high_thresh: int = 200) -> np.ndarray:
+    if low_thresh > high_thresh:
+        tp = low_thresh
+        low_thresh = high_thresh
+        high_thresh = tp
+    return cv2.Canny(image = img, threshold1= set_px(low_thresh), threshold2= set_px(high_thresh))
 
 #-----------------------------------------------------------------------------------------
 
