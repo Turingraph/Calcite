@@ -19,7 +19,7 @@ from box.ocr import (
     save_text
 )
 from box.update_box import (
-    boundary_checking, 
+    # boundary_checking, 
     get_ocr, 
     select_box, 
     select_line, 
@@ -48,7 +48,7 @@ class box_edit:
     def __init__(
             self, 
             img: np.ndarray | str,
-            box:list[tuple[int]] = []
+            box:list[tuple[int]]|deque = []
             ):
         if type(img) == str:
             img:np.ndarray = cv2.imread(filename=img)
@@ -59,8 +59,8 @@ class box_edit:
         else:
             raise TypeError("Error: Input img must be np.ndarray or str")
         self.__img:np.ndarray = img
-        self.__all_box = box
-        self.__box = box
+        self.__all_box = deque(box)
+        self.__box = deque(box)
         self.__output = ""
 
 #-----------------------------------------------------------------------------------------
@@ -85,7 +85,7 @@ class box_edit:
     # PURPOSE : MANAGE BOX
 
     def sort_box(self, reverse: bool = False, method: int = 4)->None:
-        self.__box = sort_contours(contour=self.__box, reverse=reverse, method=method)
+        self.__box = deque(sort_contours(contour=self.__box, reverse=reverse, method=method))
 
     def row_box(self, is_double:bool = False)->None:
         self.__box = row_box(
@@ -129,7 +129,7 @@ class box_edit:
             is_odd=is_odd)
 
     def add_x(self, area:int, index:int = 0)->None:
-        self.__box = add_area(
+        add_area(
             self.__box, 
             area=area,
             max=self.__img.shape[1],
@@ -137,7 +137,7 @@ class box_edit:
             index=index)
 
     def add_y(self, area:int, index:int = 0)->None:
-        self.__box = add_area(
+        add_area(
             self.__box, 
             area=area,
             max=self.__img.shape[0],
@@ -145,7 +145,7 @@ class box_edit:
             index=index)
 
     def add_width(self, area:int, index:int = 0)->None:
-        self.__box = add_area(
+        add_area(
             self.__box, 
             area=area,
             max=self.__img.shape[1],
@@ -153,7 +153,7 @@ class box_edit:
             index=index)
 
     def add_height(self, area:int, index:int = 0)->None:
-        self.__box = add_area(
+        add_area(
             self.__box, 
             area=area,
             max=self.__img.shape[0],
@@ -375,6 +375,7 @@ class box_edit:
 
         self.__box = list(box_select)
     """
+
     def get_osd(self, out_type:str = Output.STRING, timeout:int = 0) -> any:
         return get_osd(img=self.__img, out_type=out_type, timeout=timeout)
 

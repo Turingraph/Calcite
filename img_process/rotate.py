@@ -23,7 +23,7 @@ def sort_general_contours(
 ) -> list:
     method = get_options(
         input=method, 
-        input_options=[4, 0, 1, 2, 3], 
+        input_options=(4, 0, 1, 2, 3), 
         message=warn_sort_general_contours()
     )
     if method in [0, 1, 2, 3]:

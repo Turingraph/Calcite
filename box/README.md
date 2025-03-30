@@ -13,3 +13,7 @@ This folder contains
 -   Purpose : Compute and save OCR output.
 5.  `update_box.py`
 -	Purpose : Update `__all_box` and `__box` attributes of class `box_edit`
+
+We use `deque` for `self.__box` and `self.__all_box` attributes of 
+`box_edit` and `box_read` because we rarely access the i-th item outside forloop,
+but we append new item frequency.

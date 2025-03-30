@@ -3,7 +3,7 @@ import cv2
 from img_process.warning import warn_kernel_2d
 from utility.utility import get_options
 
-input_options = [cv2.MORPH_RECT, cv2.MORPH_ELLIPSE, cv2.MORPH_CROSS]
+input_options = (cv2.MORPH_RECT, cv2.MORPH_ELLIPSE, cv2.MORPH_CROSS)
 
 def kernel_2d(
     w: int,

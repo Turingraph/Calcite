@@ -35,7 +35,7 @@ def save_img(
 ) -> None:
     # https://stackoverflow.com/questions/902761/saving-a-numpy-array-as-an-image
     path = get_valid_path(path)
-    format_options = [
+    format_options = (
         "jpg",
         "jpeg",
         "png",
@@ -45,7 +45,7 @@ def save_img(
         "ppm",
         "ico",
         "psd"
-    ]
+    )
     if '.' == path[2][0]:
         path[2][0] = path[2][0][1:]
     path[2] = get_options(

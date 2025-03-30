@@ -40,7 +40,7 @@ class threshold_adapt:
         self.maxval = set_px(n=maxval)
         self.adaptive_method = get_options(
             input=adaptive_method,
-            input_options=[cv2.ADAPTIVE_THRESH_MEAN_C, cv2.ADAPTIVE_THRESH_GAUSSIAN_C],
+            input_options=(cv2.ADAPTIVE_THRESH_MEAN_C, cv2.ADAPTIVE_THRESH_GAUSSIAN_C),
             message=warn_thresh(),
         )
 

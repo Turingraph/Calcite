@@ -1,103 +1,112 @@
+from collections import deque
 from img_process.contour import sort_contours
 
-
-def row_box(all_box:list[tuple[int]], w:int, h:int, is_double:bool = False):
-    box = []
-    arr = sort_contours(contour=all_box, method=1)
-    for i in range(len(arr)):
-        if i == 0:
-            box.append((0, 0, w, arr[0][1]))
+def row_box(all_box:deque[tuple[int]]|list[tuple[int]], w:int, h:int, is_double:bool = False):
+    # time : O(n)
+    # space: O(n)
+    box = deque()
+    # There is no way to sort deque with O(1) space in Python
+    # Because Python focus on user friendly over optimization.
+    arr = deque(sort_contours(contour=all_box, method=1))
+    prev = None
+    if len(arr) > 0:
+        prev = arr[0]
+        box.append((0, 0, w, arr[0][1]))
+        arr.popleft()
+    while len(arr) > 1:
+        if is_double == True:
+            box.append((0, prev[1], w, prev[3]))
+            box.append((0, prev[1] + prev[3], w, arr[0][1] - (prev[1] + prev[3])))
         else:
-            if is_double == True:
-                box.append((0, arr[i-1][1], w, arr[i-1][3]))
-                box.append((0, arr[i-1][1] + arr[i-1][3], w, arr[i][1] - (arr[i-1][1] + arr[i-1][3])))
-            else:
-                box.append((0, arr[i-1][1], w, arr[i][1]-arr[i-1][1]))
+            box.append((0, prev[1], w, arr[0][1]-prev[1]))
+        prev = arr[0]
+        arr.popleft()
     if len(arr) > 0:
         if is_double == True:
-            box.append((0, arr[len(arr)-1][1], w, arr[len(arr)-1][3]))
-            box.append((0, arr[len(arr)-1][1] + arr[len(arr)-1][3], w, h - (arr[len(arr)-1][1] + arr[len(arr)-1][3])))
+            box.append((0, arr[0][1], w, arr[0][3]))
+            box.append((0, arr[0][1] + arr[0][3], w, h - (arr[0][1] + arr[0][3])))
         else:
-            box.append((0, arr[len(arr)-1][1], w, h-arr[len(arr)-1][1]))
+            box.append((0, arr[0][1], w, h-arr[0][1]))
+        arr.popleft()
     return box
 
-def row_half(all_box:list[tuple[int]], w:int, h:int, index:int = 0, is_double:bool = False, is_sort:bool = True):
-    box = []
+def row_half(all_box:deque[tuple[int]]|list[tuple[int]], w:int, h:int, index:int = 0, is_double:bool = False, is_sort:bool = True):
+    # time : O(n) for deque. O(1) for list
+    # space: O(1)
+    box = deque()
     if abs(index) < len(all_box):
         arr = all_box
         if is_sort == True:
-            arr = sort_contours(contour=all_box, method=1)
-        if index < 0:
-            index += len(arr)
-        i = 0
-        while i < len(arr):
-            if i == index:
-                if is_double == True:
-                    box.append((0, 0, w, arr[i][1]))
-                    box.append((0, arr[i][1], w, arr[i][3]))
-                    box.append((0, arr[i][1]+arr[i][3], w, h-(arr[i][1]+arr[i][3])))
-                else:
-                    box.append((0, 0, w, arr[i][1]))
-                    box.append((0, arr[i][1], w, h-arr[i][1]))
-                i = len(arr)
-            i += 1
+            arr = deque(sort_contours(contour=all_box, method=1))
+        if is_double == True:
+            box.append((0, 0, w, arr[index][1]))
+            box.append((0, arr[index][1], w, arr[index][3]))
+            box.append((0, arr[index][1]+arr[index][3], w, h-(arr[index][1]+arr[index][3])))
+        else:
+            box.append((0, 0, w, arr[index][1]))
+            box.append((0, arr[index][1], w, h-arr[index][1]))
     return box
 
-def col_box(all_box:list[tuple[int]], w:int, h:int, is_double:bool = False):
-    box = []
-    arr = sort_contours(contour=all_box, method=0)
-    for i in range(len(arr)):
-        if i == 0:
-            box.append((0, 0, arr[0][0], h))
+def col_box(all_box:deque[tuple[int]]|list[tuple[int]], w:int, h:int, is_double:bool = False):
+    # time : O(n) for deque. O(1) for list
+    # space: O(n)
+    box = deque()
+    arr = deque(sort_contours(contour=all_box, method=0))
+    prev = None
+    if len(arr) > 0:
+        prev = arr[0]
+        box.append((0, 0, arr[0][0], h))
+        arr.popleft()
+    while len(arr) > 1:
+        if is_double == True:
+            box.append((prev[0], 0, prev[2], h))
+            box.append((prev[0] + prev[2], 0, arr[0][0] - (prev[0] + prev[2]), h))
         else:
-            if is_double == True:
-                box.append((arr[i-1][0], 0, arr[i-1][2], h))
-                box.append((arr[i-1][0] + arr[i-1][2], 0, arr[i][0] - (arr[i-1][0] + arr[i-1][2]), h))
-            else:
-                box.append((arr[i-1][0], 0, arr[i][0]-arr[i-1][0], h))
+            box.append((prev[0], 0, arr[0][0]-prev[0], h))
+        prev = arr[0]
+        arr.popleft()
     if len(arr) > 0:
         if is_double == True:
-            box.append((arr[len(arr)-1][0], 0, arr[len(arr)-1][2], h))
-            box.append((arr[len(arr)-1][0] + arr[len(arr)-1][2], 0, w - (arr[len(arr)-1][0] + arr[len(arr)-1][2]), h))
+            box.append((arr[0][0], 0, arr[0][2], h))
+            box.append((arr[0][0] + arr[0][2], 0, w - (arr[0][0] + arr[0][2]), h))
         else:
-            box.append((arr[len(arr)-1][0], 0, w-arr[len(arr)-1][0], h))
+            box.append((arr[0][0], 0, w-arr[0][0], h))
+        arr.popleft()
     return box
 
-def col_half(all_box:list[tuple[int]], w:int, h:int, index:int = 0, is_double:bool = False, is_sort:bool = True):
-    box = []
+def col_half(all_box:deque[tuple[int]]|list[tuple[int]], w:int, h:int, index:int = 0, is_double:bool = False, is_sort:bool = True):
+    # time : O(n) for deque. O(1) for list
+    # space: O(1)
+    box = deque()
     if abs(index) < len(all_box):
         arr = all_box
         if is_sort == True:
             arr = sort_contours(contour=all_box, method=0)
-        if index < 0:
-            index += len(arr)
-        i = 0
-        while i < len(arr):
-            if i == index:
-                if is_double == True:
-                    box.append((0, 0, arr[i][0], h))
-                    box.append((arr[i][0], 0, arr[i][2], h))
-                    box.append((arr[i][0] + arr[i][2], 0, w - (arr[i][0] + arr[i][0]), h))
-                else:
-                    box.append((0, 0, arr[i][0], h))
-                    box.append((arr[i][0], 0, w - arr[i][0], h))
-                i = len(arr)
-            i += 1
+        if is_double == True:
+            box.append((0, 0, arr[index][0], h))
+            box.append((arr[index][0], 0, arr[index][2], h))
+            box.append((arr[index][0] + arr[index][2], 0, w - (arr[index][0] + arr[index][0]), h))
+        else:
+            box.append((0, 0, arr[index][0], h))
+            box.append((arr[index][0], 0, w - arr[index][0], h))
     return box
 
-def filter_half(box:list[tuple[int]], is_odd:bool = False):
-    update_box = []
+def filter_half(box:deque[tuple[int]]|list[tuple[int]], is_odd:bool = False):
+    # time : O(n) for deque. O(1) for list
+    # space: O(n)
+    update_box = deque()
     i = 0
+    box = list(box)
     while i < len(box):
         if (is_odd == True and i%2 == 1) or (is_odd == False and i%2 == 0):
             update_box.append(box[i])
         i += 1
     return update_box
 
-def add_area(box:list[tuple[int]], area:int,max:int, mode:int = 0, index:int = 0):
+def add_area(box:deque[tuple[int]]|list[tuple[int]], area:int,max:int, mode:int = 0, index:int = 0):
+    # time : O(n) for deque. O(1) for list
+    # space: O(1)
     if abs(index) < len(box):
-        if index < 0:
-            index += len(box)
         if (
             (box[index][mode] + area < max) and 
             (box[index][mode] + area > 0) and 
@@ -114,4 +123,3 @@ def add_area(box:list[tuple[int]], area:int,max:int, mode:int = 0, index:int = 0
             prev = list(box[index])
             prev[mode] = area + box[index][mode]
             box[index] = tuple(prev)
-    return box

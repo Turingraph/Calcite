@@ -1,4 +1,5 @@
 
+from collections import deque
 import re
 
 import cv2
@@ -23,6 +24,8 @@ def boundary_checking(
         w_01:int,
         h_01:int,
         )->bool:
+    # time : O(1)
+    # space: O(1)
     if (((
         (x_00 >= x_01) and 
         (x_00 <= x_01 + w_01)
@@ -48,6 +51,8 @@ def update_area_box(
             ksize: int = 9,
             show_result:tuple[int]|int|None|bool = None
             ) -> img_process_gray:
+        # time : O(n)
+        # space: O(n)
         img:img_process_gray = img_process_gray(img=img)
         img.contour_img(
             thresh_px=thresh_px,
@@ -64,7 +69,7 @@ def update_area_box(
 def select_box(
             w:int,
             h:int,
-            all_box:list[tuple[int]],
+            all_box:deque,
             min_x:int = 0,
             max_x:int|None = None,
             min_y:int = 0,
@@ -73,8 +78,9 @@ def select_box(
             max_w:int|None = None,
             min_h:int = 0,
             max_h:int|None = None,
-            )->list:
-
+            )->deque:
+    # time : O(n)
+    # space: O(n)
     min_x = get_size(size=min_x, maxval=w)
     min_y = get_size(size=min_y, maxval=h)
     max_x = get_size(size=max_x, maxval=w,default_size=w)
@@ -85,7 +91,7 @@ def select_box(
     max_w = get_size(size=max_w, maxval=w,default_size=w)
     max_h = get_size(size=max_h, maxval=h,default_size=h)
 
-    box = []
+    box = deque()
     for i in all_box:
         if (
             (i[0] > min_x and i[0] < max_x) and 
@@ -105,14 +111,16 @@ def update_line(
         thresh:int = 100,       # all line that less than thresh will be eliminated.
         min_line_len:int = 100, # all line that is shorter than this will be eliminated.
         max_line_gap:int = 20,  # all line that have more gap than this will be eliminated.
-        show_result:tuple[int]|int|None|bool = None
-    )->list:
+        show_result:list[int]|int|None|bool = None
+    )->tuple:
+    # time : O(n)
+    # space: O(n)
     # https://stackoverflow.com/questions/45322630/
     # how-to-detect-lines-in-opencv
     img:img_process_gray = img_process_gray(img=img)
     img.gauss_blur(ksize_w=ksize_w,ksize_h=ksize_h)
     img.canny(low_thresh=low_thresh, high_thresh=high_thresh)
-    box = []
+    box = deque()
     lines = cv2.HoughLinesP(
          image=img.img, 
          rho=1, 
@@ -123,7 +131,7 @@ def update_line(
     rgb_img = img_process_rgb(img = img.img)
     for line in lines:
         x_00, y_00, x_01, y_01 = line[0]
-        if isinstance(show_result, (list, int)):
+        if isinstance(show_result, (list, tuple, int)):
             rgb_img.line(rgb=show_result, x_00=x_00, y_00=y_00, x_01=x_01, y_01=y_01)
         x = x_00
         y = y_00
@@ -138,12 +146,12 @@ def update_line(
         box.append((x, y, w, h))
     if show_result not in [None, False]:
         rgb_img.show()
-    return [box, rgb_img]
+    return (box, rgb_img)
 
 def select_line(
             w:int,
             h:int,
-            all_box:list[tuple[int]],
+            all_box:deque[tuple[int]],
             min_x:int = 0,
             max_x:int|None = None,
             min_y:int = 0,
@@ -152,8 +160,9 @@ def select_line(
             max_w:int|None = None,
             min_h:int = 0,
             max_h:int|None = None,
-            ) -> list:
-
+            ) -> deque:
+    # time : O(n)
+    # space: O(n)
     min_x = get_size(size=min_x, maxval=w)
     min_y = get_size(size=min_y, maxval=h)
     max_x = get_size(size=max_x, maxval=w,default_size=w)
@@ -164,7 +173,7 @@ def select_line(
     max_w = get_size(size=max_w, maxval=w,default_size=w)
     max_h = get_size(size=max_h, maxval=h,default_size=h)
 
-    box = []
+    box = deque()
     for i in all_box:
         if (
             (i[0] > min_x and i[0] < max_x) and 
@@ -186,7 +195,9 @@ def get_ocr(
             csv_separator:str = ", ",
             first_row:int = 0,
             last_row:int|None = None
-        )->list:
+        )->tuple:
+        # time : O(n)
+        # space: O(n)
         # https://nanonets.com/blog/ocr-with-tesseract/
         # https://stackoverflow.com/questions/6676675/
         # in-python-how-do-i-check-if-a-string-has-alphabets-or-numbers
@@ -198,7 +209,7 @@ def get_ocr(
         first_row = get_size(size=first_row, maxval=img.shape[1])
         last_row  = get_size(size=last_row, maxval=img.shape[1], default_size=img.shape[1])
 
-        output_box = []
+        output_box = deque()
 
         d = pytesseract.image_to_data(
             img, 
@@ -231,7 +242,7 @@ def get_ocr(
                     if len(output_text) > 0:
                         if bool(re.match('[A-Za-z0-9]',output_text[-1])) or output_text[-1] in "\n,.!@#$%^&*()_-+=[]:;\"\'<>?~`":
                             output_text += " "
-        return [
+        return (
              output_box,
              output_text
-        ]
+        )

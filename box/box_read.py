@@ -1,3 +1,4 @@
+from collections import deque
 import cv2
 import numpy as np
 
@@ -21,7 +22,7 @@ box		list[tuple[int]]		-			box around the given region.
 class box_read:
     def __init__(self, 
                 img: np.ndarray | str,
-                box: list[tuple[int]]):
+                box: deque):
         if type(img) == str:
             img:np.ndarray = cv2.imread(filename=img)
             if img is None:
@@ -46,7 +47,7 @@ class box_read:
     # PURPOSE : SORT BOX
 
     def sort_box(self, reverse: bool = False, method: int = 4)->None:
-        self.__box = sort_contours(contour=self.__box, reverse=reverse, method=method)
+        self.__box = deque(sort_contours(contour=self.__box, reverse=reverse, method=method))
 
 #-----------------------------------------------------------------------------------------
     # PURPOSE : DISPLAY IMAGE DATA
@@ -81,7 +82,7 @@ class box_read:
 
     def save_img(
             self,
-            path:str|list[str] = ["img","img_out","jpg"],
+            path:str|list[str]|tuple[str] = ["img","img_out","jpg"],
             rgb:list[tuple[int]]|tuple[int]|int|None = [
                 [255,0,0],
                 [0,255,0],
@@ -103,7 +104,7 @@ class box_read:
 
     def save_imgarr(
             self,
-            path: list[str] | str = ["img", "img_out", "jpg"],
+            path: list[str] | str | tuple[str] = ["img", "img_out", "jpg"],
             rgb:list[tuple[int]]|tuple[int]|int|None = [
                 [255,0,0],
                 [0,255,0],

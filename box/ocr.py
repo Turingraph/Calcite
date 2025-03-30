@@ -18,7 +18,7 @@ def get_psm(psm:str|int|None)->str:
         psm = int_from_str(psm)
     out = get_options(
         input = psm,
-        input_options=[3, 1, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
+        input_options=(3, 1, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13),
         message=message
     )
     return '--psm ' + str(out)
@@ -28,7 +28,7 @@ def get_oem(oem:str|int|None)->str:
     message = warn_get_oem()
     if type(oem) == str:
         oem = int_from_str(oem)
-    out = get_options(input=oem, input_options=[3, 2, 1, 0], message=message)
+    out = get_options(input=oem, input_options=(3, 2, 1, 0), message=message)
     return "--oem " + str(out)
 
 def int_from_str(text: str) -> int:
@@ -42,7 +42,7 @@ def int_from_str(text: str) -> int:
 
 def get_osd(img:np.ndarray, out_type:str = Output.STRING,timeout:int = 0)->any:
     message = warn_get_osd()
-    out_type = get_options(input=out_type, input_options=[Output.STRING,Output.BYTES, Output.DATAFRAME, Output.DICT], message=message)
+    out_type = get_options(input=out_type, input_options=(Output.STRING,Output.BYTES, Output.DATAFRAME, Output.DICT), message=message)
     return pytesseract.image_to_osd(image = img, output_type=out_type,timeout=timeout)
 
 #-----------------------------------------------------------------------------------------
