@@ -31,6 +31,7 @@ from img_process.contour import (
     sort_contours
 )
 from img_process.utility import check_img
+from img_process_class.img_process_gray import img_process_gray
 
 '''
 Purpose
@@ -86,7 +87,7 @@ class box_edit:
     def sort_box(self, reverse: bool = False, method: int = 4)->None:
         self.__box = sort_contours(contour=self.__box, reverse=reverse, method=method)
 
-    def row_box(self, is_double:bool = False):
+    def row_box(self, is_double:bool = False)->None:
         self.__box = row_box(
             all_box=self.__box,
             w=self.__img.shape[1],
@@ -94,7 +95,7 @@ class box_edit:
             is_double=is_double,
         )
 
-    def row_half(self, index:int = 0, is_double:bool = False, is_sort:bool = True):
+    def row_half(self, index:int = 0, is_double:bool = False, is_sort:bool = True)->None:
         self.__box = row_half(
             all_box=self.__box,
             w=self.__img.shape[1],
@@ -104,7 +105,7 @@ class box_edit:
             is_sort=is_sort
         )
 
-    def col_box(self, is_double:bool = False):
+    def col_box(self, is_double:bool = False)->None:
         self.__box = col_box(
             all_box=self.__box,
             w=self.__img.shape[1],
@@ -112,7 +113,7 @@ class box_edit:
             is_double=is_double,
         )
 
-    def col_half(self, index:int = 0, is_double:bool = False, is_sort:bool = True):
+    def col_half(self, index:int = 0, is_double:bool = False, is_sort:bool = True)->None:
         self.__box = col_half(
             all_box=self.__box,
             w=self.__img.shape[1],
@@ -122,12 +123,12 @@ class box_edit:
             is_sort=is_sort
         )
 
-    def filter_half(self, is_odd:bool = False):
+    def filter_half(self, is_odd:bool = False)->None:
         self.__box = filter_half(
             box=self.__box, 
             is_odd=is_odd)
 
-    def add_x(self, area:int, index:int = 0):
+    def add_x(self, area:int, index:int = 0)->None:
         self.__box = add_area(
             self.__box, 
             area=area,
@@ -135,7 +136,7 @@ class box_edit:
             mode = 0,
             index=index)
 
-    def add_y(self, area:int, index:int = 0):
+    def add_y(self, area:int, index:int = 0)->None:
         self.__box = add_area(
             self.__box, 
             area=area,
@@ -143,7 +144,7 @@ class box_edit:
             mode = 1,
             index=index)
 
-    def add_width(self, area:int, index:int = 0):
+    def add_width(self, area:int, index:int = 0)->None:
         self.__box = add_area(
             self.__box, 
             area=area,
@@ -151,7 +152,7 @@ class box_edit:
             mode = 2,
             index=index)
 
-    def add_height(self, area:int, index:int = 0):
+    def add_height(self, area:int, index:int = 0)->None:
         self.__box = add_area(
             self.__box, 
             area=area,
@@ -167,7 +168,7 @@ class box_edit:
             kernel: np.ndarray = np.ones(shape=(2, 30)),
             ksize: int = 9,
             show_result:list[int]|int|None|bool = None
-        ) -> None:
+        ) -> img_process_gray:
         output = update_area_box(
             img=self.__img,
             thresh_px = thresh_px,
@@ -175,7 +176,7 @@ class box_edit:
             ksize = ksize,
             show_result=show_result
         )
-        self.__all_box = get_contours(output)
+        self.__all_box = get_contours(output.img)
         self.__box = self.__all_box
         return output
 
@@ -188,7 +189,7 @@ class box_edit:
             max_w:int|None = None,
             min_h:int = 0,
             max_h:int|None = None,
-        ):
+        )->None:
         self.__box = select_box(
             w = self.__img.shape[1],
             h = self.__img.shape[0],
@@ -203,7 +204,7 @@ class box_edit:
             max_h = max_h,
         )
 
-    def select_all_box(self):
+    def select_all_box(self)->None:
         self.__box = self.__all_box
 
     def update_line(self,
@@ -215,7 +216,7 @@ class box_edit:
             min_line_len:int = 100,
             max_line_gap:int = 20,
             show_result:list[int]|int|None|bool = None
-        ):
+        )->None:
         output = update_line(
             img=self.__img,
             ksize_w=ksize_w,
@@ -240,7 +241,7 @@ class box_edit:
             max_w:int|None = None,
             min_h:int = 0,
             max_h:int|None = None,
-        ):
+        )->None:
         self.__box = select_line(
             w = self.__img.shape[1],
             h = self.__img.shape[0],
@@ -270,7 +271,7 @@ class box_edit:
             csv_separator:str = ", ",
             first_row:int = 0,
             last_row:int|None = None
-        ):
+        )->None:
         output = get_ocr(
             img=self.__img,
             lang=lang,

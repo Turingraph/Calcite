@@ -22,7 +22,7 @@ def boundary_checking(
         y_01:int,
         w_01:int,
         h_01:int,
-        ):
+        )->bool:
     if (((
         (x_00 >= x_01) and 
         (x_00 <= x_01 + w_01)
@@ -47,19 +47,19 @@ def update_area_box(
             kernel: np.ndarray = np.ones(shape=(2, 30)),
             ksize: int = 9,
             show_result:list[int]|int|None|bool = None
-            ) -> list:
+            ) -> img_process_gray:
         img:img_process_gray = img_process_gray(img=img)
         img.contour_img(
             thresh_px=thresh_px,
             kernel=kernel,
             ksize=ksize)
-        if isinstance(show_result, (list[int], int)):
+        if isinstance(show_result, (list, int)):
             box = get_contours(img.img)
             for b in box:
                 img.rectangle(rgb=show_result, x=b[0], y=b[1], w=b[2], h=b[3])
         if show_result not in [None, False]:
             img.show()
-        return img.img
+        return img
 
 def select_box(
             w:int,
@@ -73,7 +73,7 @@ def select_box(
             max_w:int|None = None,
             min_h:int = 0,
             max_h:int|None = None,
-            ) -> None:
+            )->list:
 
     min_x = get_size(size=min_x, maxval=w)
     min_y = get_size(size=min_y, maxval=h)
@@ -106,7 +106,7 @@ def update_line(
         min_line_len:int = 100, # all line that is shorter than this will be eliminated.
         max_line_gap:int = 20,  # all line that have more gap than this will be eliminated.
         show_result:list[int]|int|None|bool = None
-    ):
+    )->list:
     # https://stackoverflow.com/questions/45322630/
     # how-to-detect-lines-in-opencv
     img:img_process_gray = img_process_gray(img=img)
@@ -152,7 +152,7 @@ def select_line(
             max_w:int|None = None,
             min_h:int = 0,
             max_h:int|None = None,
-            ) -> None:
+            ) -> list:
 
     min_x = get_size(size=min_x, maxval=w)
     min_y = get_size(size=min_y, maxval=h)
@@ -186,7 +186,7 @@ def get_ocr(
             csv_separator:str = ", ",
             first_row:int = 0,
             last_row:int|None = None
-        ):
+        )->list:
         # https://nanonets.com/blog/ocr-with-tesseract/
         # https://stackoverflow.com/questions/6676675/
         # in-python-how-do-i-check-if-a-string-has-alphabets-or-numbers
