@@ -229,7 +229,7 @@ def get_ocr(
 
                     output_text += str(d['text'][i]).replace(" ", "")
                     if len(output_text) > 0:
-                        if bool(re.match('[A-Za-z0-9]',output_text[-1])) or output_text[-1] in ",.!@#$%^&*()_-+=[]:;\"\'<>?~`":
+                        if bool(re.match('[A-Za-z0-9]',output_text[-1])) or output_text[-1] in "\n,.!@#$%^&*()_-+=[]:;\"\'<>?~`":
                             output_text += " "
         return [
              output_box,
