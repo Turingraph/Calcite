@@ -1,13 +1,35 @@
+from collections import deque
 import cv2
 import numpy as np
 from pytesseract import Output
 
 from box.box_read import box_read
-from box.get_row import (add_area, col_box, col_half, filter_half, row_box,
-                         row_half)
-from box.ocr import get_oem, get_osd, get_psm, save_text
-from box.update_box import get_ocr, select_box, update_area_box
-from img_process.contour import get_contours, sort_contours
+from box.get_row import (
+    add_area, 
+    col_box, 
+    col_half, 
+    filter_half, 
+    row_box,
+    row_half
+)
+from box.ocr import (
+    get_oem, 
+    get_osd, 
+    get_psm, 
+    save_text
+)
+from box.update_box import (
+    boundary_checking, 
+    get_ocr, 
+    select_box, 
+    select_line, 
+    update_area_box,
+    update_line
+)
+from img_process.contour import (
+    get_contours, 
+    sort_contours
+)
 from img_process.utility import check_img
 
 '''
@@ -25,6 +47,7 @@ class box_edit:
     def __init__(
             self, 
             img: np.ndarray | str,
+            box:list[list[int]] = []
             ):
         if type(img) == str:
             img:np.ndarray = cv2.imread(filename=img)
@@ -35,9 +58,8 @@ class box_edit:
         else:
             raise TypeError("Error: Input img must be np.ndarray or str")
         self.__img:np.ndarray = img
-        self.__dilate_img = img
-        self.__all_box = []
-        self.__box = []
+        self.__all_box = box
+        self.__box = box
         self.__output = ""
 
 #-----------------------------------------------------------------------------------------
@@ -45,9 +67,6 @@ class box_edit:
 
     def get_box_read(self):
         return box_read(img=self.__img, box=self.__box)
-
-    def get_dilate_box_read(self):
-        return box_read(img=self.__dilate_img, box=self.__box)
 
     def get_img(self):
         return self.__img
@@ -146,21 +165,19 @@ class box_edit:
     def update_area_box(self,
             thresh_px: int = 0,
             kernel: np.ndarray = np.ones(shape=(2, 30)),
-            ksize: int = 9) -> None:
+            ksize: int = 9,
+            show_result:list[int]|int|None|bool = None
+        ) -> None:
         output = update_area_box(
             img=self.__img,
             thresh_px = thresh_px,
             kernel = kernel,
-            ksize = ksize
+            ksize = ksize,
+            show_result=show_result
         )
-        self.__all_box = get_contours(img=output)
-        self.__dilate_img = output
+        self.__all_box = get_contours(output)
         self.__box = self.__all_box
-
-    # def update_area_invert_box(self):
-    #     self.__dilate_img = invert_img(img = self.__dilate_img)
-    #     self.__all_box = get_contours(img=self.__dilate_img)
-    #     self.__box = self.__all_box
+        return output
 
     def select_box(self,
             min_x:int = 0,
@@ -189,6 +206,55 @@ class box_edit:
     def select_all_box(self):
         self.__box = self.__all_box
 
+    def update_line(self,
+            ksize_w:int = 5,
+            ksize_h:int = 5,
+            low_thresh = 50,
+            high_thresh= 150,
+            thresh:int = 100,
+            min_line_len:int = 100,
+            max_line_gap:int = 20,
+            show_result:list[int]|int|None|bool = None
+        ):
+        output = update_line(
+            img=self.__img,
+            ksize_w=ksize_w,
+            ksize_h=ksize_h,
+            low_thresh=low_thresh,
+            high_thresh=high_thresh,
+            thresh=thresh,
+            min_line_len=min_line_len,
+            max_line_gap=max_line_gap,
+            show_result=show_result
+        )
+        self.__all_box = output[0]
+        self.__box = self.__all_box
+        return output[1]
+
+    def select_line(self,
+            min_x:int = 0,
+            max_x:int|None = None,
+            min_y:int = 0,
+            max_y:int|None = None,
+            min_w:int = 0,
+            max_w:int|None = None,
+            min_h:int = 0,
+            max_h:int|None = None,
+        ):
+        self.__box = select_line(
+            w = self.__img.shape[1],
+            h = self.__img.shape[0],
+            all_box = self.__all_box,
+            min_x = min_x,
+            max_x = max_x,
+            min_y = min_y,
+            max_y = max_y,
+            min_w = min_w,
+            max_w = max_w,
+            min_h = min_h,
+            max_h = max_h,
+        )
+
 #-----------------------------------------------------------------------------------------
     # PURPOSE : GET OCR OUTPUT
 
@@ -200,7 +266,10 @@ class box_edit:
             timeout:int = 0,
             conf:int = 60, 
             search:str="", 
-            column:list[int] = []
+            column:list[int] = [],
+            csv_separator:str = ", ",
+            first_row:int = 0,
+            last_row:int|None = None
         ):
         output = get_ocr(
             img=self.__img,
@@ -209,12 +278,102 @@ class box_edit:
             timeout=timeout,
             conf=conf,
             search=search,
-            column=column
+            column=column,
+            csv_separator=csv_separator,
+            first_row=first_row,
+            last_row=last_row
         )
         self.__all_box = output[0]
         self.__box = self.__all_box
         self.__output = output[1]
 
+    # https://stackoverflow.com/questions/47338547/
+    # what-is-the-time-complexity-of-iterating-through-a-deque-in-python
+    # https://stackoverflow.com/questions/31093766/
+    # iterate-over-deque-in-python
+    """
+    
+    Reference
+    1.  Check_if_2_lines_intersect.ipynb
+    -   https://colab.research.google.com/drive/1hTyYKHRhW-JmD_wTPWL5lWyr3qskcuqn?usp=sharing
+    2.  Given n line segments, find if any two segments intersect
+    -   https://www.geeksforgeeks.org/given-a-set-of-line-segments-find-if-any-two-segments-intersect/
+    -   https://www.youtube.com/watch?v=nNtiZM-j3Pk&list=PLubYOWSl9mItBLmB2WiFU0A_WINUSLtGH
+    """
+    """
+    def update_box_and_text(self,
+            lang:str = "eng",
+            psm:str|int|None = 3,
+            oem:str|int|None = 3,
+            config:str = '',
+            timeout:int = 0,
+            conf:int = 60, 
+            search:str="", 
+            column:list[int] = [],
+            csv_separator:str = ", ",
+            first_row:int = 0,
+            last_row:int|None = None
+        ):
+        # time : O(n) + O(n * log(n)) due to sorting algorithm.
+        # space: O(n)
+        ocr_result = get_ocr(
+            img=self.__img,
+            lang=lang,
+            config=config + ' ' + get_oem(oem) + ' ' + get_psm(psm) + "-c preserve_interword_spaces=0",
+            timeout=timeout,
+            conf=conf,
+            search=search,
+            column=column,
+            csv_separator=csv_separator,
+            first_row=first_row,
+            last_row=last_row
+        )
+        self.__output = ocr_result[1]
+        self.sort_box(method = 0)
+        box_ocr = deque(sort_contours(contour = ocr_result[0], method = 0))
+        box_ocr.append((self.__img.shape[1], self.__img.shape[0], 0, 0))
+        box_select  = deque() 
+        box_img = deque() 
+
+        # time : O(n)
+        for i in range(len(self.__box)):
+            box_img.append(i)
+
+        # time : O(n^2)
+        # The reason is because 
+        # box_preserve.append(b_img) and box_img.extendleft(box_preserve)
+        # make it require to use O(n) time per iteration
+        while len(box_ocr) > 1:
+            b_ocr = box_ocr[0]
+            # time : O(n)
+            while self.__box[box_img[0]][0] + self.__box[box_img[0]][2] < b_ocr[0]:
+                box_select.append(box_img[0])
+                box_img.popleft()
+            box_preserve = deque()
+            # time : O(n)
+            while (
+                (self.__box[box_img[0]][0] <= b_ocr[0] + b_ocr[2]) # and 
+                # (self.__box[box_img[0]][0] < box_ocr[1][0])
+                ):
+                b_img = box_img[0]
+                if boundary_checking(
+                    x_00= self.__box[b_img][0],
+                    y_00= self.__box[b_img][1],
+                    w_00= self.__box[b_img][2],
+                    h_00= self.__box[b_img][3],
+                    x_01= b_ocr[0],
+                    y_01= b_ocr[1],
+                    w_01= b_ocr[2],
+                    h_01= b_ocr[3],
+                ) == False:
+                    box_preserve.append(b_img)
+                box_img.popleft()
+            # time : O(n)
+            box_img.extendleft(box_preserve)
+            box_ocr.popleft()
+
+        self.__box = list(box_select)
+    """
     def get_osd(self, out_type:str = Output.STRING, timeout:int = 0) -> any:
         return get_osd(img=self.__img, out_type=out_type, timeout=timeout)
 

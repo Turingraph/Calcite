@@ -1,7 +1,7 @@
 from img_process.show import show, save_img
 from img_process.zoom import remove_borders, zoom, create_borders, crop
 from img_process.rotate import rotate
-from img_process.contour import rectangle
+from img_process.contour import rectangle, line
 
 class img_process:
     def __init__(self, img: any):
@@ -53,3 +53,6 @@ class img_process:
     # Note that : rgb == None means no color.
     def rectangle(self, rgb:list[int]|int|None, x:int, y:int, h:int, w:int) -> None:
         self.img = rectangle(img = self.img, rgb=rgb, x=x, y=y, w=w, h=h)
+
+    def line(self, rgb:list[int]|int|None, x_00:int, y_00:int, x_01:int, y_01:int):
+        self.img = line(img = self.img, rgb=rgb, x_00 = x_00, y_00 = y_00, x_01 = x_01, y_01 = y_01)

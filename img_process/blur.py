@@ -29,11 +29,11 @@ def mean_blur(
 # Blur the image based in the pixel with in ksize using Gaussian function
 def gauss_blur(
         img: np.ndarray, 
-        w:float = 1, 
-        h:float = 1,
+        ksize_w:int = 1, 
+        ksize_h:int = 1,
     ) -> np.ndarray:
     # https://www.geeksforgeeks.org/python-image-blurring-using-opencv/
-    return cv2.GaussianBlur(src=img, sigmaX=0, ksize=(get_ksize(w),get_ksize(h)))
+    return cv2.GaussianBlur(src=img, sigmaX=0, ksize=(get_ksize(ksize_w),get_ksize(ksize_h)))
 
 #-----------------------------------------------------------------------------------------
 

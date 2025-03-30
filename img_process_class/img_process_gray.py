@@ -57,8 +57,8 @@ class img_process_gray(img_process):
         self.img = opening(img=self.img, kernel=kernel)
 
     # thin edge
-    def canny(self, c1: int = 100, c2: int = 200) -> None:
-        self.img = canny(img=self.img, c1=c1, c2=c2)
+    def canny(self, low_thresh: int = 100, high_thresh: int = 200) -> None:
+        self.img = canny(img=self.img, low_thresh=low_thresh, high_thresh=high_thresh)
 
     # Blur the image for getting the format of the text
     def contour_img(
@@ -118,8 +118,8 @@ class img_process_gray(img_process):
     def mean_blur(self, w: int = 15, h:int = 15, scalar: None | int = None) -> None:
         self.img = mean_blur(img=self.img, w=w,h=h, scalar=scalar)
 
-    def gauss_blur(self, w: float = 15, h:float = 15) -> None:
-        self.img = gauss_blur(img=self.img, w=w,h=h)
+    def gauss_blur(self, ksize_w: int = 15, ksize_h:int = 15) -> None:
+        self.img = gauss_blur(img=self.img, ksize_w=ksize_w,ksize_h=ksize_h)
 
     def bilateral_blur(self, ksize: int = 15, effect: int = 75) -> None:
         self.img = bilateral_blur(img=self.img, ksize=ksize, effect=effect)

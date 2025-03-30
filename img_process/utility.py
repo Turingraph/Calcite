@@ -26,11 +26,9 @@ def set_px(n: int) -> int:
         return n
 
 def get_size(
-    size: int | None, maxval: int | None = None, default_size: int = 0
+    size: int | None, maxval: int, default_size: int = 0
 ) -> int:
     if type(size) == int:
-        if maxval == None:
-            maxval = size
         if size < 0:
             return 0
         elif size > maxval:
