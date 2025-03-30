@@ -1,7 +1,7 @@
 from img_process.contour import sort_contours
 
 
-def row_box(all_box:list[list[int]], w:int, h:int, is_double:bool = False):
+def row_box(all_box:list[tuple[int]], w:int, h:int, is_double:bool = False):
     box = []
     arr = sort_contours(contour=all_box, method=1)
     for i in range(len(arr)):
@@ -21,7 +21,7 @@ def row_box(all_box:list[list[int]], w:int, h:int, is_double:bool = False):
             box.append((0, arr[len(arr)-1][1], w, h-arr[len(arr)-1][1]))
     return box
 
-def row_half(all_box:list[list[int]], w:int, h:int, index:int = 0, is_double:bool = False, is_sort:bool = True):
+def row_half(all_box:list[tuple[int]], w:int, h:int, index:int = 0, is_double:bool = False, is_sort:bool = True):
     box = []
     if abs(index) < len(all_box):
         arr = all_box
@@ -43,7 +43,7 @@ def row_half(all_box:list[list[int]], w:int, h:int, index:int = 0, is_double:boo
             i += 1
     return box
 
-def col_box(all_box:list[list[int]], w:int, h:int, is_double:bool = False):
+def col_box(all_box:list[tuple[int]], w:int, h:int, is_double:bool = False):
     box = []
     arr = sort_contours(contour=all_box, method=0)
     for i in range(len(arr)):
@@ -63,7 +63,7 @@ def col_box(all_box:list[list[int]], w:int, h:int, is_double:bool = False):
             box.append((arr[len(arr)-1][0], 0, w-arr[len(arr)-1][0], h))
     return box
 
-def col_half(all_box:list[list[int]], w:int, h:int, index:int = 0, is_double:bool = False, is_sort:bool = True):
+def col_half(all_box:list[tuple[int]], w:int, h:int, index:int = 0, is_double:bool = False, is_sort:bool = True):
     box = []
     if abs(index) < len(all_box):
         arr = all_box
@@ -85,7 +85,7 @@ def col_half(all_box:list[list[int]], w:int, h:int, index:int = 0, is_double:boo
             i += 1
     return box
 
-def filter_half(box:list[list[int]], is_odd:bool = False):
+def filter_half(box:list[tuple[int]], is_odd:bool = False):
     update_box = []
     i = 0
     while i < len(box):
@@ -94,7 +94,7 @@ def filter_half(box:list[list[int]], is_odd:bool = False):
         i += 1
     return update_box
 
-def add_area(box:list[list[int]], area:int,max:int, mode:int = 0, index:int = 0):
+def add_area(box:list[tuple[int]], area:int,max:int, mode:int = 0, index:int = 0):
     if abs(index) < len(box):
         if index < 0:
             index += len(box)

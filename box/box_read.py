@@ -15,13 +15,13 @@ Attribute
 
 NAME	TYPE				UPDATE_METHOD	DESCRIPTION
 img		np.ndarray			update_img()	image input
-box		list[list[int]]		-				box around the given region.
+box		list[tuple[int]]		-			box around the given region.
 '''
 
 class box_read:
     def __init__(self, 
                 img: np.ndarray | str,
-                box: list[list[int]]):
+                box: list[tuple[int]]):
         if type(img) == str:
             img:np.ndarray = cv2.imread(filename=img)
             if img is None:
@@ -52,7 +52,7 @@ class box_read:
     # PURPOSE : DISPLAY IMAGE DATA
 
     def color_img(self,
-            rgb:list[list[int]]|list[int]|int|None = [
+            rgb:list[tuple[int]]|tuple[int]|int|None = [
                 [255,0,0],
                 [0,255,0],
                 [0,0,255]
@@ -70,7 +70,7 @@ class box_read:
     def show_img(
             self, 
             title:str="img_out",
-            rgb:list[list[int]]|list[int]|int|None = [
+            rgb:list[tuple[int]]|tuple[int]|int|None = [
                 [255,0,0],
                 [0,255,0],
                 [0,0,255]
@@ -82,7 +82,7 @@ class box_read:
     def save_img(
             self,
             path:str|list[str] = ["img","img_out","jpg"],
-            rgb:list[list[int]]|list[int]|int|None = [
+            rgb:list[tuple[int]]|tuple[int]|int|None = [
                 [255,0,0],
                 [0,255,0],
                 [0,0,255]
@@ -104,7 +104,7 @@ class box_read:
     def save_imgarr(
             self,
             path: list[str] | str = ["img", "img_out", "jpg"],
-            rgb:list[list[int]]|list[int]|int|None = [
+            rgb:list[tuple[int]]|tuple[int]|int|None = [
                 [255,0,0],
                 [0,255,0],
                 [0,0,255]
@@ -122,7 +122,7 @@ class box_read:
     def save_sub_img(
             self,
             path:str|list[str] = ["img","img_out","jpg"],
-            rgb:list[list[int]]|list[int]|int|None = [
+            rgb:list[tuple[int]]|tuple[int]|int|None = [
                 [255,0,0],
                 [0,255,0],
                 [0,0,255]

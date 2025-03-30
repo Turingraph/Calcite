@@ -97,7 +97,7 @@ contours = get_contours(dilate_img)
 x, y, w, h = cv2.boundingRect(contours[0])
 draw_img = rectangle(img=img, rgb=rgb,x=x, y=y, w=w, h=h)
 '''
-def rectangle(img:np.ndarray, rgb:list[int]|int|None, x:int, y:int, h:int, w:int) -> np.ndarray:
+def rectangle(img:np.ndarray, rgb:list[int]|tuple[int]|int|None, x:int, y:int, h:int, w:int) -> np.ndarray:
     if rgb != None:
         img = check_img(img=img)
         if img.shape == 2:

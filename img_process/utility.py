@@ -60,7 +60,7 @@ def check_img(img: np.ndarray) -> np.ndarray:
     else:
         raise ValueError(warn_valid_img())
 
-def get_rgb(rgb:list[int]|int) -> list[int]:
+def get_rgb(rgb:list[int]|tuple[int]|int) -> list[int]:
     if isinstance(rgb, int):
         return [0, 0, set_px(rgb)]
     else:

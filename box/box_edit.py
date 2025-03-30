@@ -41,14 +41,14 @@ Attribute
 
 NAME	TYPE				UPDATE_METHOD	DESCRIPTION
 img		np.ndarray			update_img()	image input
-box		list[list[int]]		-				box around the given region.
+box		list[tuple[int]]		-				box around the given region.
 '''
 
 class box_edit:
     def __init__(
             self, 
             img: np.ndarray | str,
-            box:list[list[int]] = []
+            box:list[tuple[int]] = []
             ):
         if type(img) == str:
             img:np.ndarray = cv2.imread(filename=img)
@@ -167,7 +167,7 @@ class box_edit:
             thresh_px: int = 0,
             kernel: np.ndarray = np.ones(shape=(2, 30)),
             ksize: int = 9,
-            show_result:list[int]|int|None|bool = None
+            show_result:tuple[int]|int|None|bool = None
         ) -> img_process_gray:
         output = update_area_box(
             img=self.__img,
@@ -215,7 +215,7 @@ class box_edit:
             thresh:int = 100,
             min_line_len:int = 100,
             max_line_gap:int = 20,
-            show_result:list[int]|int|None|bool = None
+            show_result:tuple[int]|int|None|bool = None
         )->None:
         output = update_line(
             img=self.__img,
@@ -267,7 +267,7 @@ class box_edit:
             timeout:int = 0,
             conf:int = 60, 
             search:str="", 
-            column:list[int] = [],
+            column:tuple[int] = [],
             csv_separator:str = ", ",
             first_row:int = 0,
             last_row:int|None = None
@@ -310,7 +310,7 @@ class box_edit:
             timeout:int = 0,
             conf:int = 60, 
             search:str="", 
-            column:list[int] = [],
+            column:tuple[int] = [],
             csv_separator:str = ", ",
             first_row:int = 0,
             last_row:int|None = None

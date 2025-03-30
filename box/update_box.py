@@ -46,7 +46,7 @@ def update_area_box(
             thresh_px: int = 0,
             kernel: np.ndarray = np.ones(shape=(2, 30)),
             ksize: int = 9,
-            show_result:list[int]|int|None|bool = None
+            show_result:tuple[int]|int|None|bool = None
             ) -> img_process_gray:
         img:img_process_gray = img_process_gray(img=img)
         img.contour_img(
@@ -64,7 +64,7 @@ def update_area_box(
 def select_box(
             w:int,
             h:int,
-            all_box:list[list[int]],
+            all_box:list[tuple[int]],
             min_x:int = 0,
             max_x:int|None = None,
             min_y:int = 0,
@@ -105,7 +105,7 @@ def update_line(
         thresh:int = 100,       # all line that less than thresh will be eliminated.
         min_line_len:int = 100, # all line that is shorter than this will be eliminated.
         max_line_gap:int = 20,  # all line that have more gap than this will be eliminated.
-        show_result:list[int]|int|None|bool = None
+        show_result:tuple[int]|int|None|bool = None
     )->list:
     # https://stackoverflow.com/questions/45322630/
     # how-to-detect-lines-in-opencv
@@ -143,7 +143,7 @@ def update_line(
 def select_line(
             w:int,
             h:int,
-            all_box:list[list[int]],
+            all_box:list[tuple[int]],
             min_x:int = 0,
             max_x:int|None = None,
             min_y:int = 0,
