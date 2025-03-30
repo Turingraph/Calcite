@@ -267,7 +267,7 @@ class box_edit:
             timeout:int = 0,
             conf:int = 60, 
             search:str="", 
-            column:tuple[int] = [],
+            column:list[int] = [],
             csv_separator:str = ", ",
             first_row:int = 0,
             last_row:int|None = None
