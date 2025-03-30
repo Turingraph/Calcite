@@ -14,3 +14,8 @@ def index_name(input:int):
     if input < 10:
         return "0"+str(input)
     return str(input)
+
+def handle_default(p:any, d:any):
+    if p == None:
+        return d
+    return p

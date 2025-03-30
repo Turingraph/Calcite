@@ -51,6 +51,8 @@ Expected Feature
 1.  `backend/`
 -	Purpose: Connect `include/` with `frontend/`
 -   Status: Empty
+2.  `basic_ocr`
+-   Purpose: The purpose of this folder is to allow user to use our code easily.
 2.  `box/`
 -   Purpose: get OCR output of the image with complicated 
 format e.g. bills, Table of contents etc by drawing the box around the group of 

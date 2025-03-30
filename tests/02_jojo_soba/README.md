@@ -45,6 +45,8 @@
 -   Purpose : Get list of purchased food data and price from the `thresh.jpg` bill.
 16. `08_row_double.py`
 -   Purpose : Check if `row_boxes(is_double)` and `filter_half` methods of `include/boxes_img.tsx` works as expected.
+17. `basic.py`
+-   Purpose : Check if `basic_ocr/` works as expected.
 
 # Additional Learning Resource
 
