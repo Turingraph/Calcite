@@ -18,7 +18,6 @@ path = parent + "/tests/01_index/img/img.jpeg"
 img = box_edit(img = path)
 dilate_img = img.update_area_box(kernel=np.ones((13, 3)))
 img.select_box(min_w=20,min_h=200)
-dilate_img = img_process_gray(img = dilate_img)
 dilate_img.save_img(path="dilate_img13x3")
 img.sort_box(method=0)
 img.get_box_read().save_imgarr(rgb=None,path = "box_img")
