@@ -1,20 +1,15 @@
 # Description
 
-The project name is `open_close_rider`. It is an OCR app based on Tesseract OCR model.
+The project name is `open_close_rider`. It is an OCR app based on Tesseract OCR model and Open CV.
 
-It is intended for 
-1.	Allowing user without coding background to be able to use Tesseract OCR much more easily for extract text data from image or multiple images of text.
-2.	Allowing user to collect text data set (if they want to) for improving
--	OCR model
--	Spelling checking language model
--	Text Language detection model
--   other ML Model
+It is intended for allow user to get text data from image of text e.g. book, bills etc based on 
+user customized format.
 
 # How to Set up our project ?
 
-1.  Click `<> Code` button
+1.  Click `<> Code` green button.
 2.  Copy URL or `Download Zip`
-3.  Install Python, pip, npm, Typescript and React
+3.  Install Python and pip
 4.  `pip install -r requirements.txt`
 5.  Install Tesseract OCR
 
@@ -25,11 +20,7 @@ Read this for more detail.
 -   https://www.python.org/downloads/
 3.  How to install pip ?
 -   https://pip.pypa.io/en/stable/installation/
-4.  How to install npm ?
--   https://docs.npmjs.com/downloading-and-installing-node-js-and-npm
-5.  How to install React and Typescript ? (it is recommended to install npm first)
--   https://create-react-app.dev/docs/adding-typescript/
-6.  How to use Git ?
+4.  How to use Git ?
 -   https://youtu.be/hwP7WQkmECE?si=3dpwnxaAztigW7x-
 -   https://colab.research.google.com/drive/1ERz9tNhId3gBNsxGpvRWnqfY6x0LJFs-?usp=sharing
 -   https://youtu.be/tRZGeaHPoaw?si=qNfziX2r9p-XARow
