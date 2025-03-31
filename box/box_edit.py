@@ -66,28 +66,42 @@ class box_edit:
 #-----------------------------------------------------------------------------------------
     # PURPOSE : GET PRIVATE ATTRIBUTE AS READ ONLY VARIABLE.
 
-    def get_box_read(self):
+    def get_box_read(self)->box_read:
+        # time : O(n)
+        # space: O(n)
         return box_read(img=self.__img, box=self.__box)
 
-    def get_img(self):
+    def get_img(self)->np.ndarray:
+        # time : O(1)
+        # space: O(1)
         return self.__img
     
-    def get_all_box(self):
+    def get_all_box(self)->deque:
+        # time : O(1)
+        # space: O(1)
         return self.__all_box
     
-    def get_box(self):
+    def get_box(self)->deque:
+        # time : O(1)
+        # space: O(1)
         return self.__box
     
-    def get_output(self):
+    def get_output(self)->str:
+        # time : O(1)
+        # space: O(1)
         return self.__output
 
 #-----------------------------------------------------------------------------------------
     # PURPOSE : MANAGE BOX
 
     def sort_box(self, reverse: bool = False, method: int = 4)->None:
+        # time : O(n * log(n))
+        # space: O(n)
         self.__box = deque(sort_contours(contour=self.__box, reverse=reverse, method=method))
 
     def row_box(self, is_double:bool = False)->None:
+        # time : O(n)
+        # space: O(n)
         self.__box = row_box(
             all_box=self.__box,
             w=self.__img.shape[1],
@@ -96,6 +110,8 @@ class box_edit:
         )
 
     def row_half(self, index:int = 0, is_double:bool = False, is_sort:bool = True)->None:
+        # time : O(n) for deque. O(1) for list
+        # space: O(1)
         self.__box = row_half(
             all_box=self.__box,
             w=self.__img.shape[1],
@@ -106,6 +122,8 @@ class box_edit:
         )
 
     def col_box(self, is_double:bool = False)->None:
+        # time : O(n)
+        # space: O(n)
         self.__box = col_box(
             all_box=self.__box,
             w=self.__img.shape[1],
@@ -114,6 +132,8 @@ class box_edit:
         )
 
     def col_half(self, index:int = 0, is_double:bool = False, is_sort:bool = True)->None:
+        # time : O(n) for deque. O(1) for list
+        # space: O(1)
         self.__box = col_half(
             all_box=self.__box,
             w=self.__img.shape[1],
@@ -124,11 +144,15 @@ class box_edit:
         )
 
     def filter_half(self, is_odd:bool = False)->None:
+        # time : O(n)
+        # space: O(n)
         self.__box = filter_half(
             box=self.__box, 
             is_odd=is_odd)
 
     def add_x(self, area:int, index:int = 0)->None:
+        # time : O(n)
+        # space: O(1)
         add_area(
             self.__box, 
             area=area,
@@ -137,6 +161,8 @@ class box_edit:
             index=index)
 
     def add_y(self, area:int, index:int = 0)->None:
+        # time : O(n)
+        # space: O(1)
         add_area(
             self.__box, 
             area=area,
@@ -145,6 +171,8 @@ class box_edit:
             index=index)
 
     def add_width(self, area:int, index:int = 0)->None:
+        # time : O(n)
+        # space: O(1)
         add_area(
             self.__box, 
             area=area,
@@ -153,6 +181,8 @@ class box_edit:
             index=index)
 
     def add_height(self, area:int, index:int = 0)->None:
+        # time : O(n)
+        # space: O(1)
         add_area(
             self.__box, 
             area=area,
@@ -169,6 +199,8 @@ class box_edit:
             ksize: int = 9,
             show_result:tuple[int]|int|None|bool = None
         ) -> img_process_gray:
+        # time : O(n)
+        # space: O(n)
         output = update_area_box(
             img=self.__img,
             thresh_px = thresh_px,
@@ -190,6 +222,8 @@ class box_edit:
             min_h:int = 0,
             max_h:int|None = None,
         )->None:
+        # time : O(n)
+        # space: O(n)
         self.__box = select_box(
             w = self.__img.shape[1],
             h = self.__img.shape[0],
@@ -205,6 +239,8 @@ class box_edit:
         )
 
     def select_all_box(self)->None:
+        # time : O(1)
+        # space: O(1)
         self.__box = self.__all_box
 
     def update_line(self,
@@ -217,6 +253,8 @@ class box_edit:
             max_line_gap:int = 20,
             show_result:tuple[int]|int|None|bool = None
         )->None:
+        # time : O(n)
+        # space: O(n)
         output = update_line(
             img=self.__img,
             ksize_w=ksize_w,
@@ -242,6 +280,8 @@ class box_edit:
             min_h:int = 0,
             max_h:int|None = None,
         )->None:
+        # time : O(n)
+        # space: O(n)
         self.__box = select_line(
             w = self.__img.shape[1],
             h = self.__img.shape[0],
@@ -272,6 +312,8 @@ class box_edit:
             first_row:int = 0,
             last_row:int|None = None
         )->None:
+        # time : O(n)
+        # space: O(n)
         output = get_ocr(
             img=self.__img,
             lang=lang,
@@ -377,9 +419,13 @@ class box_edit:
     """
 
     def get_osd(self, out_type:str = Output.STRING, timeout:int = 0) -> any:
+        # time : O(1) regardless of how OCR model works.
+        # space: O(1)
         return get_osd(img=self.__img, out_type=out_type, timeout=timeout)
 
     def save_text(self, path: list[str] | str = ["text", "text", "txt"])-> None:
+        # time : O(1)
+        # space: O(1)
         save_text(self.__output, path)
 
 #-----------------------------------------------------------------------------------------

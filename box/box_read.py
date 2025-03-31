@@ -37,16 +37,22 @@ class box_read:
 #-----------------------------------------------------------------------------------------
     # PURPOSE : GET PRIVATE ATTRIBUTE AS READ ONLY VARIABLE.
 
-    def get_box(self):
+    def get_box(self)->deque:
+        # time : O(1)
+        # space: O(1)        
         return self.__box
     
     def get_img(self) -> np.ndarray:
+        # time : O(1)
+        # space: O(1)
         return self.__img.img
 
 #-----------------------------------------------------------------------------------------
     # PURPOSE : SORT BOX
 
     def sort_box(self, reverse: bool = False, method: int = 4)->None:
+        # time : O(n * log(n))
+        # space: O(n)
         self.__box = deque(sort_contours(contour=self.__box, reverse=reverse, method=method))
 
 #-----------------------------------------------------------------------------------------
@@ -59,6 +65,8 @@ class box_read:
                 [0,0,255]
             ],
             ) -> None:
+        # time : O(n)
+        # space: O(1)
         c = 0
         if rgb != None:
             for i in self.__box:
@@ -75,7 +83,9 @@ class box_read:
                 [255,0,0],
                 [0,255,0],
                 [0,0,255]
-            ]):
+            ])->None:
+        # time : O(1) + O(n)
+        # space: O(1)
         if rgb != None:
             self.color_img(rgb = rgb)
         self.__img.show(title=title)
@@ -88,6 +98,8 @@ class box_read:
                 [0,255,0],
                 [0,0,255]
             ]) -> None:
+        # time : O(1) + O(n)
+        # space: O(1)
         if rgb != None:
             self.color_img(rgb = rgb)
         self.__img.save_img(path=path)
@@ -110,6 +122,8 @@ class box_read:
                 [0,255,0],
                 [0,0,255]
             ]) -> None:
+        # time : O(1) + O(n)
+        # space: O(1)
         count = 0
         path = get_valid_path(path)
         if rgb != None:
@@ -130,6 +144,8 @@ class box_read:
             ],
             index:int = 0
             ) -> None:
+        # time : O(n)
+        # space: O(n)
         if rgb != None:
             self.color_img(rgb = rgb)
         if abs(index) < len(self.__box):

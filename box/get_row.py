@@ -1,8 +1,8 @@
 from collections import deque
 from img_process.contour import sort_contours
 
-def row_box(all_box:deque[tuple[int]]|list[tuple[int]], w:int, h:int, is_double:bool = False):
-    # time : O(n)
+def row_box(all_box:deque[tuple[int]]|list[tuple[int]], w:int, h:int, is_double:bool = False)->deque:
+    # time : O(n) + O(n * log(n))
     # space: O(n)
     box = deque()
     # There is no way to sort deque with O(1) space in Python
@@ -30,8 +30,8 @@ def row_box(all_box:deque[tuple[int]]|list[tuple[int]], w:int, h:int, is_double:
         arr.popleft()
     return box
 
-def row_half(all_box:deque[tuple[int]]|list[tuple[int]], w:int, h:int, index:int = 0, is_double:bool = False, is_sort:bool = True):
-    # time : O(n) for deque. O(1) for list
+def row_half(all_box:deque[tuple[int]]|list[tuple[int]], w:int, h:int, index:int = 0, is_double:bool = False, is_sort:bool = True)->deque:
+    # time : O(n) + O(n * log(n))
     # space: O(1)
     box = deque()
     if abs(index) < len(all_box):
@@ -47,8 +47,8 @@ def row_half(all_box:deque[tuple[int]]|list[tuple[int]], w:int, h:int, index:int
             box.append((0, arr[index][1], w, h-arr[index][1]))
     return box
 
-def col_box(all_box:deque[tuple[int]]|list[tuple[int]], w:int, h:int, is_double:bool = False):
-    # time : O(n) for deque. O(1) for list
+def col_box(all_box:deque[tuple[int]]|list[tuple[int]], w:int, h:int, is_double:bool = False)->deque:
+    # time : O(n) + O(n * log(n))
     # space: O(n)
     box = deque()
     arr = deque(sort_contours(contour=all_box, method=0))
@@ -74,8 +74,8 @@ def col_box(all_box:deque[tuple[int]]|list[tuple[int]], w:int, h:int, is_double:
         arr.popleft()
     return box
 
-def col_half(all_box:deque[tuple[int]]|list[tuple[int]], w:int, h:int, index:int = 0, is_double:bool = False, is_sort:bool = True):
-    # time : O(n) for deque. O(1) for list
+def col_half(all_box:deque[tuple[int]]|list[tuple[int]], w:int, h:int, index:int = 0, is_double:bool = False, is_sort:bool = True)->deque:
+    # time : O(n) + O(n * log(n))
     # space: O(1)
     box = deque()
     if abs(index) < len(all_box):
@@ -91,8 +91,8 @@ def col_half(all_box:deque[tuple[int]]|list[tuple[int]], w:int, h:int, index:int
             box.append((arr[index][0], 0, w - arr[index][0], h))
     return box
 
-def filter_half(box:deque[tuple[int]]|list[tuple[int]], is_odd:bool = False):
-    # time : O(n) for deque. O(1) for list
+def filter_half(box:deque[tuple[int]]|list[tuple[int]], is_odd:bool = False)->deque:
+    # time : O(n) for deque
     # space: O(n)
     update_box = deque()
     i = 0
@@ -103,7 +103,7 @@ def filter_half(box:deque[tuple[int]]|list[tuple[int]], is_odd:bool = False):
         i += 1
     return update_box
 
-def add_area(box:deque[tuple[int]]|list[tuple[int]], area:int,max:int, mode:int = 0, index:int = 0):
+def add_area(box:deque[tuple[int]]|list[tuple[int]], area:int,max:int, mode:int = 0, index:int = 0)->None:
     # time : O(n) for deque. O(1) for list
     # space: O(1)
     if abs(index) < len(box):
