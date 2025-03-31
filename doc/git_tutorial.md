@@ -1,14 +1,14 @@
 # How to clone and update this project ?
 
-1.  `git clone https://github.com/Turingraph/Optical-Characteristic-Disorder.git`
+1.  `git clone https://github.com/Turingraph/open_close_rider.git`
 2.  Edit our code
 3.  `git add .`
 4.  `git commit -m "..."`
-5.  `git push https://github.com/Turingraph/Optical-Characteristic-Disorder.git`
+5.  `git push https://github.com/Turingraph/open_close_rider.git`
 
 # How to update the code in your local computer according to the latest version of our code ?
 
--   `git pull https://github.com/Turingraph/Optical-Characteristic-Disorder.git --rebase`
+-   `git pull https://github.com/Turingraph/open_close_rider.git --rebase`
 -   https://stackoverflow.com/questions/13193787/why-would-i-want-to-do-git-rebase
 
 # How to `git commit` one folder ?
