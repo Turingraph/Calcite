@@ -16,7 +16,7 @@ import img_process.contour as tour
 from img_process_class.img_process_gray import img_process_gray
 from img_process_class.img_process_rgb import img_process_rgb
 
-path = parent + "/tests/01_index/img/img.jpeg"
+path = parent + "/tests/index_00/img/img.jpeg"
 img = img_process_rgb(img = path)
 img.zoom(1)
 img.show_img()

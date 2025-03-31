@@ -15,7 +15,7 @@ import numpy as np
 from img_process_class.img_process_gray import img_process_gray
 from ocr_box.ocr_box_editor import ocr_box_editor
 
-path = parent + "/tests/01_index/img/img.jpeg"
+path = parent + "/tests/index_00/img/img.jpeg"
 img = ocr_box_editor(img = path)
 dilate_img = img.update_bbox(kernel=np.ones((13, 3)))
 img.select_box(min_w=20,min_h=200)

@@ -13,7 +13,7 @@ sys.path.append(parent)
 from ocr_box.ocr_box_editor import ocr_box_editor
 from utility.utility import index_name
 
-path = "/tests/01_index/img/box_img_"
+path = "/tests/index_00/img/box_img_"
 file_format = ".jpg"
 
 for i in range(3):
