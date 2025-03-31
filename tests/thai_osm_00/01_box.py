@@ -12,7 +12,7 @@ sys.path.append(parent)
 
 from ocr_box.ocr_box_editor import ocr_box_editor
 
-path = parent + "/tests/06_thai_osm/img/thresh.jpg"
+path = parent + "/tests/thai_osm_00/img/thresh.jpg"
 img = ocr_box_editor(img = path)
 img.get_ocr(lang="eng+tha")
 img.update_line()

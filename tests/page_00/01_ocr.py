@@ -12,10 +12,10 @@ sys.path.append(parent)
 
 from ocr_box.ocr_box_editor import ocr_box_editor
 
-path = "/tests/00_page/img/"
+path = "/tests/page_00/img/"
 names = [
     "thick",    # len(img.get_box()) = 267
-    "thresh"    # len(img.get_box()) = 268
+    "thresh"    # len(img.get_box()) = 267
 ]
 
 for name in names:

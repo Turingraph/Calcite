@@ -14,7 +14,7 @@ sys.path.append(parent)
 
 from ocr_box.ocr_box_editor import ocr_box_editor
 
-path = "/tests/07_milk/img/"
+path = "/tests/milk_00/img/"
 name = "thresh"
 format = ".jpg"
 

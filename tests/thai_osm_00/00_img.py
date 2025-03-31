@@ -12,7 +12,7 @@ sys.path.append(parent)
 
 from img_process_class.img_process_gray import img_process_gray
 
-path = parent + "/tests/06_thai_osm/img/img.jpg"
+path = parent + "/tests/thai_osm_00/img/img.jpg"
 
 img = img_process_gray(img=path)
 img.zoom(scale=1)
