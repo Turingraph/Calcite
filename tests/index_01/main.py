@@ -14,7 +14,7 @@ import numpy as np
 
 from basic_ocr.basic_ocr import get_box_img, get_ocr_arr, get_threshold_img
 
-path = parent + "/tests_basic_ocr/01_index/img/img.jpeg"
+path = parent + "/tests/index_01/img/img.jpeg"
 img = get_threshold_img(
     image=path,
     save_path="thresh"
