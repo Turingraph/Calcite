@@ -8,3 +8,4 @@
 6.  Evaluating OCR accuracy.
 7.  Spelling checking
 8.  User friendly script.
+9.  Hand writing text.

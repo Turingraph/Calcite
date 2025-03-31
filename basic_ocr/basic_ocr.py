@@ -26,7 +26,7 @@ def get_transform_img(
 def get_ocr(
     image:np.ndarray|str,
     save_path_ocr:list[str]|str|None = ["text", "text", "txt"],
-    save_path_img:list[str]|str|None = ["img", "img_mark", "jpg"],
+    save_path_img:list[str]|str|None = None,
     conf:int = 50,
     lang:str = "eng",
     psm:int = 3,
@@ -66,7 +66,7 @@ def get_ocr(
 def get_ocr_arr(
     image:box_edit,
     save_path_ocr:list[str]|str|None = ["text", "text", "txt"],
-    save_path_img:list[str]|str|None = ["img", "img_mark", "jpg"],
+    save_path_img:list[str]|str|None = None,
     conf:int = 50,
     lang:str = "eng",
     psm:int = 3,
@@ -119,8 +119,8 @@ def get_box_img(
         max_w:int|None = None,
         min_h:int = 0,
         max_h:int|None = None,
-        save_path_mark:list[str]|str|bool|None = ["img", "img_dilate", "jpg"],
-        save_path_dilate:list[str]|str|bool|None = ["img", "img_mark", "jpg"],
+        save_path_mark:list[str]|str|bool|None = None,
+        save_path_dilate:list[str]|str|bool|None = None,
         rgb: list[tuple[int]] | tuple[int] | int | None = [
             [255, 0, 0], 
             [0, 255, 0], 
