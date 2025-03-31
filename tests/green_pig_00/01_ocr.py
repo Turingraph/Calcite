@@ -12,7 +12,7 @@ sys.path.append(parent)
 
 from ocr_box.ocr_box_editor import ocr_box_editor
 
-path = "/tests/04_green_pig/img/"
+path = "/tests/green_pig_00/img/"
 name = "thresh"
 
 img = ocr_box_editor(img = (parent + path + name + ".jpg"))
@@ -22,6 +22,7 @@ print(len(img.get_box()))
 img.save_text()
 print(img.get_osd())
 """
+303
 Page number: 0
 Orientation in degrees: 0
 Rotate: 0
