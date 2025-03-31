@@ -150,7 +150,7 @@ class box_edit:
             box=self.__box, 
             is_odd=is_odd)
 
-    def add_x(self, area:int, index:int = 0)->None:
+    def add_x(self, area:int, index:int)->None:
         # time : O(n)
         # space: O(1)
         add_area(
@@ -160,7 +160,7 @@ class box_edit:
             mode = 0,
             index=index)
 
-    def add_y(self, area:int, index:int = 0)->None:
+    def add_y(self, area:int, index:int)->None:
         # time : O(n)
         # space: O(1)
         add_area(
@@ -170,7 +170,7 @@ class box_edit:
             mode = 1,
             index=index)
 
-    def add_width(self, area:int, index:int = 0)->None:
+    def add_width(self, area:int, index:int)->None:
         # time : O(n)
         # space: O(1)
         add_area(
@@ -180,7 +180,7 @@ class box_edit:
             mode = 2,
             index=index)
 
-    def add_height(self, area:int, index:int = 0)->None:
+    def add_height(self, area:int, index:int)->None:
         # time : O(n)
         # space: O(1)
         add_area(

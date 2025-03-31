@@ -9,3 +9,4 @@
 7.  Spelling checking
 8.  User friendly script.
 9.  Hand writing text.
+10. Allow user to save output in any directory inside user's computer automatically based on user input.
