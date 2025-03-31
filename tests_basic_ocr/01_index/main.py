@@ -19,7 +19,7 @@ from basic_ocr.basic_ocr import (
 from box.box_edit import box_edit
 from img_process_class.img_process_gray import img_process_gray
 
-path = parent + "/user_tutorial/01_index/img/img.jpeg"
+path = parent + "/tests_basic_ocr/01_index/img/img.jpeg"
 img:img_process_gray = get_transform_img(
     image=path,
     save_path="thresh"

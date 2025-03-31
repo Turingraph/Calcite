@@ -16,7 +16,7 @@ from basic_ocr.basic_ocr import (
 )
 from img_process_class.img_process_gray import img_process_gray
 
-path = parent + "/user_tutorial/00_page/img/img.jpg"
+path = parent + "/tests_basic_ocr/00_page/img/img.jpg"
 img:img_process_gray = get_transform_img(
     image=path,
     scale=1.23,
