@@ -1,9 +1,25 @@
 from collections import deque
+
 import numpy as np
+
 from box.box_edit import box_edit
+from box.ocr import get_valid_ocr_path
+from img_process.show import get_valid_img_path
 from img_process_class.img_process_gray import img_process_gray
-from img_process.show import get_valid_path
 from utility.utility import index_name
+
+"""
+It is recommended to use this function in the following order.
+
+For getting text from simple text format e.g. book etc. use this order.
+1.  get_transform_img()
+2.  get_ocr() 
+
+For getting text from complicated text format e.g. bills etc. use this order.
+1.  get_transform_img()
+2.  get_box_img()
+3.  get_ocr_arr()
+"""
 
 def get_transform_img(
         image:np.ndarray|str,
@@ -82,17 +98,23 @@ def get_ocr_arr(
             [0, 0, 255]
         ]
 ) -> deque[box_edit]:
-    # time : O(n) redarding to shape of image.get_img()
+    # time : O(n) regarding to shape of image.get_img()
     # space: O(n)
     count = 0
     output_arr = deque()
-    for img in image.get_box():
-        save_path_ocr = get_valid_path(save_path_ocr)
-        save_path_img = get_valid_path(save_path_img)
+    for img in image.get_box_read().get_imgarr():
+        path_ocr = None
+        path_img = None
+        if save_path_ocr != None:
+            save_path_ocr = get_valid_ocr_path(save_path_ocr)
+            path_ocr = [save_path_ocr[0], save_path_ocr[1]+"_"+index_name(count), save_path_ocr[2]]
+        if save_path_img != None:
+            save_path_img = get_valid_img_path(save_path_img)
+            path_img = [save_path_img[0], save_path_img[1]+"_"+index_name(count), save_path_img[2]]
         output = get_ocr(
             image=img,
-            save_path_img=[save_path_img[0], save_path_ocr[1]+"_"+index_name(count), save_path_ocr[2]],
-            save_path_ocr=[save_path_ocr[0], save_path_img[1]+"_"+index_name(count), save_path_img[2]],
+            save_path_img=path_img,
+            save_path_ocr=path_ocr,
             conf=conf,
             lang=lang,
             psm=psm,

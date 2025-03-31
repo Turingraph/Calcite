@@ -11,20 +11,19 @@ sys.path.append(parent)
 ###############################################################################################################
 
 from basic_ocr.basic_ocr import (
-    # get_box_img, 
-    get_ocr,
-    get_transform_img
+    get_transform_img,
+    get_ocr
 )
 
-path = parent + "/tests/00_page/img/img.jpg"
+path = parent + "/tests_basic_ocr/03_red_pig/img/img.jpg"
+
 img = get_transform_img(
     image=path,
-    scale=1.23,
     save_path="thresh"
 )
+
 get_ocr(
     image=img.img,
-    conf=50,
-    save_path_img=["img_text", "thresh"],
-    save_path_ocr="thresh"
+    lang="eng+tha",
+    save_path_img="mark"
 )

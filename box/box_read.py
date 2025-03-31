@@ -1,9 +1,10 @@
 from collections import deque
+
 import cv2
 import numpy as np
 
 from img_process.contour import sort_contours
-from img_process.show import get_valid_path
+from img_process.show import get_valid_img_path
 from img_process.utility import check_img, rgb_img
 from img_process_class.img_process_rgb import img_process_rgb
 from utility.utility import index_name
@@ -107,8 +108,8 @@ class box_read:
 #-----------------------------------------------------------------------------------------
     # PURPOSE : DISPLAY IMAGE DATA ARRAY BASED ON self.box
 
-    def get_imgarr(self) -> list[np.ndarray]:
-        out_img_arr = []
+    def get_imgarr(self) -> deque[np.ndarray]:
+        out_img_arr = deque()
         for i in self.__box:
             out_img = self.__img.img[i[1]:i[1]+i[3], i[0]:i[0]+i[2]]
             out_img_arr.append(out_img)
@@ -125,7 +126,7 @@ class box_read:
         # time : O(1) + O(n)
         # space: O(1)
         count = 0
-        path = get_valid_path(path)
+        path = get_valid_img_path(path)
         if rgb != None:
             self.color_img(rgb = rgb)
         for i in self.__box:

@@ -1,9 +1,12 @@
+import os
+
 import cv2
 import numpy as np
-import os
 from PIL import Image
+
 from img_process.warning import warn_save_img
 from utility.utility import get_options
+
 
 def show(img: np.ndarray, title: str = "img_out") -> None:
     # https://stackoverflow.com/questions/74546171/image-is-too-big-for-opencv-imshow-window-how-do-i-make-it-smaller
@@ -14,7 +17,7 @@ def show(img: np.ndarray, title: str = "img_out") -> None:
     cv2.waitKey(delay=0)
     cv2.destroyAllWindows()
 
-def get_valid_path(path: list[str] | str = ["img", "img_out", "jpg"]):
+def get_valid_img_path(path: list[str] | str = ["img", "img_out", "jpg"]):
     if isinstance(path, list):
         if len(path) == 0:
             return ["img", "img_out", "jpg"]
@@ -34,7 +37,7 @@ def save_img(
     path: list[str] | str = ["img", "img_out", "jpg"],
 ) -> None:
     # https://stackoverflow.com/questions/902761/saving-a-numpy-array-as-an-image
-    path = get_valid_path(path)
+    path = get_valid_img_path(path)
     format_options = (
         "jpg",
         "jpeg",

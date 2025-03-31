@@ -10,24 +10,22 @@ sys.path.append(parent)
 
 ###############################################################################################################
 
-import numpy as np
 from basic_ocr.basic_ocr import (
     get_box_img, 
     get_ocr,
     get_transform_img
 )
-from box.box_edit import box_edit
 from img_process_class.img_process_gray import img_process_gray
 
 path = parent + "/tests_basic_ocr/02_jojo_soba/img/img.jpeg"
 
-img:img_process_gray = get_transform_img(
+img = get_transform_img(
     image=path,
     scale=1.35,
     save_path="thresh"
 )
 
-img_box:box_edit = get_box_img(
+img_box = get_box_img(
     image=img.img,
     min_w=1000,
     max_h=50

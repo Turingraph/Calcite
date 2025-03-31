@@ -16,15 +16,13 @@ from basic_ocr.basic_ocr import (
     get_ocr_arr,
     get_transform_img
 )
-from box.box_edit import box_edit
-from img_process_class.img_process_gray import img_process_gray
 
 path = parent + "/tests_basic_ocr/01_index/img/img.jpeg"
-img:img_process_gray = get_transform_img(
+img = get_transform_img(
     image=path,
     save_path="thresh"
 )
-img_arr:box_edit = get_box_img(
+img_arr = get_box_img(
     image=img.img,
     kernel=np.ones((13, 3)),
     min_w=20,

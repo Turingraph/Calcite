@@ -62,15 +62,7 @@ def save_text(
 )-> None:
     # time : O(1)
     # space: O(1)
-    if isinstance(path, list):
-        if len(path) == 0:
-            path = ["text", "text", "txt"]
-        if len(path) == 1:
-            path = [path[0], "text", "txt"]
-        if len(path) == 2:
-            path = [path[0], path[1], "txt"]
-    if isinstance(path, str):
-        path = ["text", path, "txt"]
+    path = get_valid_ocr_path(path=path)
     # https://www.w3schools.com/python/python_file_write.asp
     # https://www.geeksforgeeks.org/python-check-if-a-file-or-directory-exists/
     if not os.path.exists(path=path[0]):
@@ -81,3 +73,18 @@ def save_text(
     file.close()
 
 #-----------------------------------------------------------------------------------------
+
+def get_valid_ocr_path(path: list[str] | str = ["text", "text", "txt"]):
+    if isinstance(path, list):
+        if len(path) == 0:
+            return ["text", "text", "txt"]
+        elif len(path) == 1:
+            return [path[0], "text", "txt"]
+        elif len(path) == 2:
+            return [path[0], path[1], "txt"]
+        else:
+            return [path[0], path[1], path[2]]
+    elif isinstance(path, str):
+        return ["text", path, "txt"]
+    else:
+        return ["text", "text", "txt"]
