@@ -15,7 +15,7 @@ from basic_ocr.basic_ocr import (
     get_ocr
 )
 
-path = parent + "/tests_basic_ocr/03_red_pig/img/img.jpg"
+path = parent + "/tests_basic_ocr/04_green_pig/img/img.jpg"
 
 img = get_transform_img(
     image=path,
