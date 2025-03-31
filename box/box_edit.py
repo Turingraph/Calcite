@@ -76,12 +76,12 @@ class box_edit:
         # space: O(1)
         return self.__img
     
-    def get_all_box(self)->deque:
+    def get_all_box(self)->deque[np.ndarray]:
         # time : O(1)
         # space: O(1)
         return self.__all_box
     
-    def get_box(self)->deque:
+    def get_box(self)->deque[np.ndarray]:
         # time : O(1)
         # space: O(1)
         return self.__box
