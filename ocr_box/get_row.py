@@ -13,7 +13,7 @@ def row_box(all_box:deque[tuple[int]]|list[tuple[int]], w:int, h:int, is_double:
         prev = arr[0]
         box.append((0, 0, w, arr[0][1]))
         arr.popleft()
-    while len(arr) > 1:
+    while len(arr) > 0:
         if is_double == True:
             box.append((0, prev[1], w, prev[3]))
             box.append((0, prev[1] + prev[3], w, arr[0][1] - (prev[1] + prev[3])))
@@ -21,13 +21,12 @@ def row_box(all_box:deque[tuple[int]]|list[tuple[int]], w:int, h:int, is_double:
             box.append((0, prev[1], w, arr[0][1]-prev[1]))
         prev = arr[0]
         arr.popleft()
-    if len(arr) > 0:
+    if prev != None:
         if is_double == True:
-            box.append((0, arr[0][1], w, arr[0][3]))
-            box.append((0, arr[0][1] + arr[0][3], w, h - (arr[0][1] + arr[0][3])))
+            box.append((0, prev[1], w, prev[3]))
+            box.append((0, prev[1] + prev[3], w, h - (prev[1] + prev[3])))
         else:
-            box.append((0, arr[0][1], w, h-arr[0][1]))
-        arr.popleft()
+            box.append((0, prev[1], w, h-prev[1]))
     return box
 
 def row_half(all_box:deque[tuple[int]]|list[tuple[int]], w:int, h:int, index:int = 0, is_double:bool = False, is_sort:bool = True)->deque:
@@ -57,7 +56,7 @@ def col_box(all_box:deque[tuple[int]]|list[tuple[int]], w:int, h:int, is_double:
         prev = arr[0]
         box.append((0, 0, arr[0][0], h))
         arr.popleft()
-    while len(arr) > 1:
+    while len(arr) > 0:
         if is_double == True:
             box.append((prev[0], 0, prev[2], h))
             box.append((prev[0] + prev[2], 0, arr[0][0] - (prev[0] + prev[2]), h))
@@ -65,13 +64,12 @@ def col_box(all_box:deque[tuple[int]]|list[tuple[int]], w:int, h:int, is_double:
             box.append((prev[0], 0, arr[0][0]-prev[0], h))
         prev = arr[0]
         arr.popleft()
-    if len(arr) > 0:
+    if prev != None:
         if is_double == True:
-            box.append((arr[0][0], 0, arr[0][2], h))
-            box.append((arr[0][0] + arr[0][2], 0, w - (arr[0][0] + arr[0][2]), h))
+            box.append((prev[0], 0, prev[2], h))
+            box.append((prev[0] + prev[2], 0, w - (prev[0] + prev[2]), h))
         else:
-            box.append((arr[0][0], 0, w-arr[0][0], h))
-        arr.popleft()
+            box.append((prev[0], 0, w - prev[0], h))
     return box
 
 def col_half(all_box:deque[tuple[int]]|list[tuple[int]], w:int, h:int, index:int = 0, is_double:bool = False, is_sort:bool = True)->deque:
@@ -92,7 +90,7 @@ def col_half(all_box:deque[tuple[int]]|list[tuple[int]], w:int, h:int, index:int
     return box
 
 def filter_half(box:deque[tuple[int]]|list[tuple[int]], is_odd:bool = False)->deque:
-    # time : O(n) for deque
+    # time : O(n)
     # space: O(n)
     update_box = deque()
     i = 0

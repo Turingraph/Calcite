@@ -16,7 +16,7 @@ from ocr_box.ocr_box_editor import ocr_box_editor
 
 ###############################################################################################################
 
-path = "/tests/02_jojo_soba/img/"
+path = "/tests/jojo_soba_00/img/"
 
 names= [
     "eroth",

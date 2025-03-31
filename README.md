@@ -105,5 +105,4 @@ Read this (https://github.com/Turingraph/open_close_rider_lib_tutorial.git) for 
 
 # Additional Information
 
--	Read `doc/README.md` and `doc/` to read additional information about our project and other related 
-useful technology.
+-	Read `doc/` for more additional information about our project.

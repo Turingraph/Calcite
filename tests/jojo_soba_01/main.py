@@ -13,7 +13,7 @@ sys.path.append(parent)
 from basic_ocr.basic_ocr import get_box_img, get_ocr, get_threshold_img
 from img_process_class.img_process_gray import img_process_gray
 
-path = parent + "/tests_basic_ocr/02_jojo_soba/img/img.jpeg"
+path = parent + "/tests/02_jojo_soba/img/img.jpeg"
 
 img = get_threshold_img(
     image=path,
