@@ -8,7 +8,7 @@ from img_process.warning import warn_save_img
 from utility.utility import get_options
 
 
-def show(img: np.ndarray, title: str = "img_out") -> None:
+def show_img(img: np.ndarray, title: str = "img_out") -> None:
     # https://stackoverflow.com/questions/74546171/image-is-too-big-for-opencv-imshow-window-how-do-i-make-it-smaller
     # https://www.geeksforgeeks.org/python-opencv-resizewindow-function/
     cv2.namedWindow(winname=title, flags=cv2.WINDOW_NORMAL)

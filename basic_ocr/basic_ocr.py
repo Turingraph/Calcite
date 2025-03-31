@@ -2,26 +2,14 @@ from collections import deque
 
 import numpy as np
 
-from box.box_edit import box_edit
-from box.ocr import get_valid_ocr_path
 from img_process.show import get_valid_img_path
 from img_process_class.img_process_gray import img_process_gray
+from ocr_box.ocr import get_valid_ocr_path
+from ocr_box.ocr_box_editor import ocr_box_editor
 from utility.utility import index_name
 
-"""
-It is recommended to use this function in the following order.
 
-For getting text from simple text format e.g. book etc. use this order.
-1.  get_transform_img()
-2.  get_ocr() 
-
-For getting text from complicated text format e.g. bills etc. use this order.
-1.  get_transform_img()
-2.  get_box_img()
-3.  get_ocr_arr()
-"""
-
-def get_transform_img(
+def get_threshold_img(
         image:np.ndarray|str,
         scale:int = 1,
         save_path:list[str]|str|None = ["img", "img_out", "jpg"],
@@ -57,10 +45,10 @@ def get_ocr(
             [0, 255, 0], 
             [0, 0, 255]
         ]
-) -> box_edit:
+) -> ocr_box_editor:
     # time : O(n)
     # space: O(n)
-    img = box_edit(img = image)
+    img = ocr_box_editor(img = image)
     img.get_ocr(
         conf=conf,
         lang=lang,
@@ -73,14 +61,14 @@ def get_ocr(
         timeout=timeout
         )
     if save_path_img != None:
-        img.get_box_read().save_img(rgb=rgb,path=save_path_img)
+        img.as_ocr_box_reader().save_img(rgb=rgb,path=save_path_img)
     if save_path_ocr != None:
         img.save_text(path=save_path_ocr)
-    img.get_box_read().color_img(rgb=rgb)
+    img.as_ocr_box_reader().color_img(rgb=rgb)
     return img
 
 def get_ocr_arr(
-    image:box_edit,
+    image:ocr_box_editor,
     save_path_ocr:list[str]|str|None = ["text", "text", "txt"],
     save_path_img:list[str]|str|None = None,
     conf:int = 50,
@@ -97,12 +85,12 @@ def get_ocr_arr(
             [0, 255, 0], 
             [0, 0, 255]
         ]
-) -> deque[box_edit]:
+) -> deque[ocr_box_editor]:
     # time : O(n) regarding to shape of image.get_img()
     # space: O(n)
     count = 0
     output_arr = deque()
-    for img in image.get_box_read().get_imgarr():
+    for img in image.as_ocr_box_reader().get_many_imgs():
         path_ocr = None
         path_img = None
         if save_path_ocr != None:
@@ -148,11 +136,11 @@ def get_box_img(
             [0, 255, 0], 
             [0, 0, 255]
         ]
-    ) -> box_edit:
+    ) -> ocr_box_editor:
     # time : O(n)
     # space: O(n)
-    img = box_edit(img = image)
-    dilate_img = img.update_area_box(kernel=kernel)
+    img = ocr_box_editor(img = image)
+    dilate_img = img.update_bbox(kernel=kernel)
     img.select_box(
         min_h=min_h,
         min_w=min_w,
@@ -167,5 +155,5 @@ def get_box_img(
         dilate_img.save_img(path=save_path_dilate)
     img.sort_box(method=0)
     if save_path_mark != None:
-        img.get_box_read().save_imgarr(rgb=rgb,path=save_path_mark)
+        img.as_ocr_box_reader().save_many_imgs(rgb=rgb,path=save_path_mark)
     return img

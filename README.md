@@ -28,75 +28,82 @@ Read this for more detail.
 # Status
 
 This project is in the MVP development process. For anyone who want to contribute our project in MVP version, you can
-1.  create additional OCR coding example in `tests/` using the class from `include/`
-2.  submit your UXUI design in `doc/` and user tutorial in `doc_user/`
-3.  help us develop `frontend/` and connect `frontend/` with `backend/`
-4.  write how to deploy our project as Desktop app in `doc/`
-5.  add the feature that allow user to submit OCR and NLP training data publicly or anonymously (if they want to) in `get_data`
+1.  create additional OCR coding example in `tests/` using the code from `img_process_class/`, `box/` and `basic_ocr/` 
+2.  write how to deploy our project as Desktop app in `doc/`
+3.  Add new feature in `Future Features` section of this `README.md`
+4.  Design UXUI for our Desktop based OCR App.
 
 Thank you for your contribution.
 
-# MVP (Minimum Viable Product)
+# Folder Structure
 
 Expected Feature
-1.  `backend/`
--	Purpose: Connect `include/` with `frontend/`
--   Status: Empty
-2.  `basic_ocr`
+1.  `basic_ocr/`
 -   Purpose: The purpose of this folder is to allow user to use our code easily.
-2.  `box/`
--   Purpose: get OCR output of the image with complicated 
-format e.g. bills, Table of contents etc by drawing the box around the group of 
-text.
--   Status: Finish
-3.  `doc_user/`
--	Purpose: user tutorial.
--   Status: Empty
-4.	`img_process/`
+2.  `doc/`
+-   Contains : Additional Documentation about our project.
+3.  `doc_tutorial/`
+-   Contains : Additional Documentation about how to use Pytesseract, Python virtual environment, 
+    Git and related useful technology.
+4.  `img_process/`
 -	Purpose: Processing Image e.g. Threshold, Blur, Convolution, Orientation etc.
--   Status: Finish
 5.  `img_process_class/`
 -	Purpose: The interface of `img_process/`
--   Status: Finish
-6.  `tests/`
--	Purpose: Check if Python files works as expected.
--   Status: In Development process. We will develop this folder after code `backend/`.
-7.  `trash/`
+6.  `ocr_box/`
+-   Purpose: get OCR output of the image with complicated format e.g. bills, Table of contents etc.
+7.  `tests/`
+-	Purpose: Check if `img_process_class/`, `box/` and `basic_ocr/` works as expected.
+8.  `trash/`
 -	Purpose: Contains useless file that might be useful later, it is ignored by `.gitignore`
-8.  `utility/`
+9.  `utility/`
 -	Purpose: Contains other Python utility files.
 
-Ignore Advanced Feature
-1.	`get_data/`
--	Purpose: Get and clean data for training AI model.
-2.	`spell/`
--	Purpose: Check and correct Tesseract OCR output automatically.
-3.	`language/`
--	Purpose: Check the language of the Tesseract OCR output.
-4.	`latex/`
--	Purpose: Convert image of mathematical notation e.g. ratio, integration, vector etc to Latex representation. (OCR mathematical notation)
+# Future Features
 
-Note that the `open_close_rider_app` (https://github.com/Turingraph/open_close_rider_app) 
-is used as the Electron-React based user friendly OCR Desktop app that based on this project.
+1.  Get only box that does not intersect with text with `get_ocr_table()` with sweep line algorithm.
+2.  Get OCR table data by set `get_ocr(column = [...])` automatically.
+3.  Deal with blur and dark image include `white_pig_00/` and `green_pig_00/`
+4.  Find more example.
+5.  User friendly Tutorial documentation and video.
+6.  Evaluating OCR accuracy.
+7.  Spelling checking
+8.  User friendly script.
+9.  Hand writing text.
+10. Allow user to save output in any directory inside user's computer automatically based on user input.
+11.	Check the language of the Tesseract OCR output.
+12.	Convert image of mathematical notation in Latex e.g. ratio, integration, vector etc to Latex representation.
 
-# How to use `open_close_rider` ? (Quick Tutorial)
+# How to use `open_close_rider/` ? (Quick Tutorial)
 
-The `frontend/` is not finished yet. However user can use our code by
-1.  Download our code, except `doc/` (which only contains Mark Down documentation) and `frontend/` (which only contains React Typescript frontend part). Watch this following URL to learn about Git.
--   https://youtu.be/hwP7WQkmECE?si=3dpwnxaAztigW7x-
--   https://colab.research.google.com/drive/1ERz9tNhId3gBNsxGpvRWnqfY6x0LJFs-?usp=sharing
--   https://youtu.be/tRZGeaHPoaw?si=qNfziX2r9p-XARow
-2.  Download Pip and Python3
--   https://www.python.org/downloads/
--   https://pip.pypa.io/en/stable/installation/
-3.  Use command line
-    1.  `python3 -m venv .venv`
-    2.  `source .venv/bin/activate` 
-    3.  `.venv/bin/pip3 install -r requirements.txt`
-    4.  If facing any issue, read `doc/python_virtual_environment.md`
-4.  See some example about how to use our code in `tests/`
-5.  Import our file from `include/` to apply with your image input.
+Read this (https://github.com/Turingraph/open_close_rider_lib_tutorial.git) for more details.
+
+# Other related Repository
+
+1.  `open_close_rider_app`
+-   URL : https://github.com/Turingraph/open_close_rider_app
+-   Purpose : Electron-React based user friendly OCR Desktop app that based on this project.
+2.  `open_close_rider_art`
+-   URL : https://github.com/Turingraph/open_close_rider_art.git
+-   Purpose : Concept Art design, soundtrack and story for entertainment purpose, UXUI based story telling,
+    and make the OCR related tutorial much more interesting, but this must be balance with OCR practical usefulness.
+3.  `open_close_rider_lib_tutorial`
+-   URL : https://github.com/Turingraph/open_close_rider_lib_tutorial.git
+-   Purpose : Teach user how to use our library in Python.
+4.  `open_close_rider_scp` (scp means Secure Contain Platform)
+-   URL : None (It is not created yet. Might be created in future)
+-   Purpose : Allow users to collect OCR training data to improve Tesseract OCR, both publically and anonymously.
+    We add anonymous feature because we want to learn how to create privacy focused data collection app.
+5.  `open_close_rider_ml` (ml means Machine Learning model)
+-   URL : None (It is not created yet. Might be created in future)
+-   Purpose : For educational purpose, analyzing the AI transparency and/or Tesseract OCR model replacement 
+    in some specific usecase.
+6.  `open_close_rider_dsa` (dsa means Data Structure and Algorithm)
+-   URL : None (It is not created yet. Might be created in future)
+-   Purpose : Collection of educational documentation and simulation about interesting Data structure and
+    algorithm that are used in `open_close_rider` or other related repositories directly e.g. LSTM neural networks, Sweep Line Algorithm, FFT, Canny Algorithm, Otsu Algorithm etc. We also use the art from 
+    `open_close_rider_art` as the story telling components of this tutorial.
 
 # Additional Information
 
--	Read `doc/README.md` and `doc/` to read additional information about our project.
+-	Read `doc/README.md` and `doc/` to read additional information about our project and other related 
+useful technology.
