@@ -61,21 +61,18 @@ text.
 3.  `doc_user/`
 -	Purpose: user tutorial.
 -   Status: Empty
-4.	`frontend/`
--	Purpose: User Friendly UI Frontend based on React and Typescript. This is the only coding folder that does not contains Python files.
--   Status: In Development process.
-5.	`img_process/`
+4.	`img_process/`
 -	Purpose: Processing Image e.g. Threshold, Blur, Convolution, Orientation etc.
 -   Status: Finish
-6.  `img_process_class/`
+5.  `img_process_class/`
 -	Purpose: The interface of `img_process/`
 -   Status: Finish
-7.  `tests/`
+6.  `tests/`
 -	Purpose: Check if Python files works as expected.
 -   Status: In Development process. We will develop this folder after code `backend/`.
-8.  `trash/`
+7.  `trash/`
 -	Purpose: Contains useless file that might be useful later, it is ignored by `.gitignore`
-9.  `utility/`
+8.  `utility/`
 -	Purpose: Contains other Python utility files.
 
 Ignore Advanced Feature
@@ -87,6 +84,9 @@ Ignore Advanced Feature
 -	Purpose: Check the language of the Tesseract OCR output.
 4.	`latex/`
 -	Purpose: Convert image of mathematical notation e.g. ratio, integration, vector etc to Latex representation. (OCR mathematical notation)
+
+Note that the `open_close_rider_app` (https://github.com/Turingraph/open_close_rider_app) 
+is used as the Electron-React based user friendly OCR Desktop app that based on this project.
 
 # How to use `open_close_rider` ? (Quick Tutorial)
 
