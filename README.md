@@ -67,6 +67,7 @@ For anyone who want to contribute our project, you can
     `open_close_rider_app` (https://github.com/Turingraph/open_close_rider_app).
 4.  Improve user tutorial documentation in `open_close_rider_lib_tutorial`
     (https://github.com/Turingraph/open_close_rider_lib_tutorial.git) or this `README.md`
+5.  Contribute other related Repositories (see `Other related Repository` section)
 
 Thank you for your contribution.
 
