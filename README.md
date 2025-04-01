@@ -60,7 +60,7 @@ Read this for more detail.
 
 # How to help developing this project
 
-For anyone who want to contribute our project in MVP version, you can
+For anyone who want to contribute our project, you can
 1.  create additional OCR coding example in `tests/` using the code from `img_process_class/`, `box/` and `basic_ocr/` 
 2.  Add new feature in `Future Features` section of this `README.md`
 3.  Design UXUI for our Desktop based OCR App, and submit in `doc/` directory of 
