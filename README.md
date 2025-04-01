@@ -58,7 +58,7 @@ Read this for more detail.
 -   https://colab.research.google.com/drive/1ERz9tNhId3gBNsxGpvRWnqfY6x0LJFs-?usp=sharing
 -   https://youtu.be/tRZGeaHPoaw?si=qNfziX2r9p-XARow
 
-# How to help developing this project
+# How to help developing this project ?
 
 For anyone who want to contribute our project, you can
 1.  create additional OCR coding example in `tests/` using the code from `img_process_class/`, `box/` and `basic_ocr/` 
