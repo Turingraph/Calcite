@@ -10,7 +10,7 @@ sys.path.append(parent)
 
 ###############################################################################################################
 
-from basic_ocr.basic_ocr import get_box_img, get_ocr, get_threshold_img
+from basic_ocr.basic_ocr import get_ocr, get_table_img, get_threshold_img
 
 path = parent + "/tests/powder_01/img/img.jpg"
 
@@ -19,7 +19,7 @@ img = get_threshold_img(
     # save_path="thresh"
 )
 
-img_box = get_box_img(
+img_box = get_table_img(
     image=img.img,
     min_x=300,
     min_h=500,

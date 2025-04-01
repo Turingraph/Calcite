@@ -1,9 +1,42 @@
 # Description
 
-The project name is `open_close_rider`. It is an OCR app based on Tesseract OCR model and Open CV.
+The project name is `open_close_rider`. It is an Python OCR library based on Tesseract OCR model and Open CV.
 
 It is intended for allow user to get text data from image of text e.g. book, bills etc based on 
 user customized format.
+
+This project can be used for
+1.  Transform image (`np.ndarray` or string path) input with `img_process_gray` and 
+    `img_process_rgb` Open CV based classes.
+2.  Transform image (`np.ndarray` or string path) input as `img_process_gray` with 
+    `get_threshold_img()`
+3.  Get OCR result with `get_ocr()` base on `np.ndarray` or string path input
+4.  Get multiple OCR results with `get_many_ocrs()` base on `ocr_box_editor` input
+5.  Get image type `ocr_box_editor` with `get_table_img()` and user customized text 
+    format.
+6.  Allow user to define the text format of the image (`np.ndarray` or string path) input
+    with `ocr_box_editor`
+7.  Allow user to get text and image output of `ocr_box_editor` with `ocr_box_reader`
+
+# How to use `open_close_rider/` ? (Quick Tutorial)
+
+Read this (https://github.com/Turingraph/open_close_rider_lib_tutorial.git) for more details.
+
+# Future Features
+
+This is the following expected useful feature that our library are currently lack
+1.  Get only box that does not intersect with text with `get_ocr_table()` with sweep line algorithm with `O(n * log(n))` time and `O(n)` space.
+2.  Get OCR table data by set `get_ocr(column = [...])` automatically.
+3.  Deal with blur and dark image include `white_pig_00/` and `green_pig_00/`
+4.  Find more example.
+5.  User friendly Tutorial documentation and video.
+6.  Evaluating OCR accuracy.
+7.  Spelling checking
+8.  More user friendly script.
+9.  Hand writing text.
+10. Allow user to save output in any directory inside user's computer automatically based on user input.
+11.	Check the language of the Tesseract OCR output.
+12.	Convert image of mathematical notation in Latex e.g. ratio, integration, vector etc to Latex representation.
 
 # How to Set up our project ?
 
@@ -25,13 +58,15 @@ Read this for more detail.
 -   https://colab.research.google.com/drive/1ERz9tNhId3gBNsxGpvRWnqfY6x0LJFs-?usp=sharing
 -   https://youtu.be/tRZGeaHPoaw?si=qNfziX2r9p-XARow
 
-# Status
+# How to help developing this project
 
-This project is in the MVP development process. For anyone who want to contribute our project in MVP version, you can
+For anyone who want to contribute our project in MVP version, you can
 1.  create additional OCR coding example in `tests/` using the code from `img_process_class/`, `box/` and `basic_ocr/` 
-2.  write how to deploy our project as Desktop app in `doc/`
-3.  Add new feature in `Future Features` section of this `README.md`
-4.  Design UXUI for our Desktop based OCR App.
+2.  Add new feature in `Future Features` section of this `README.md`
+3.  Design UXUI for our Desktop based OCR App, and submit in `doc/` directory of 
+    `open_close_rider_app` (https://github.com/Turingraph/open_close_rider_app).
+4.  Improve user tutorial documentation in `open_close_rider_lib_tutorial`
+    (https://github.com/Turingraph/open_close_rider_lib_tutorial.git) or this `README.md`
 
 Thank you for your contribution.
 
@@ -57,25 +92,6 @@ Expected Feature
 -	Purpose: Contains useless file that might be useful later, it is ignored by `.gitignore`
 9.  `utility/`
 -	Purpose: Contains other Python utility files.
-
-# Future Features
-
-1.  Get only box that does not intersect with text with `get_ocr_table()` with sweep line algorithm.
-2.  Get OCR table data by set `get_ocr(column = [...])` automatically.
-3.  Deal with blur and dark image include `white_pig_00/` and `green_pig_00/`
-4.  Find more example.
-5.  User friendly Tutorial documentation and video.
-6.  Evaluating OCR accuracy.
-7.  Spelling checking
-8.  User friendly script.
-9.  Hand writing text.
-10. Allow user to save output in any directory inside user's computer automatically based on user input.
-11.	Check the language of the Tesseract OCR output.
-12.	Convert image of mathematical notation in Latex e.g. ratio, integration, vector etc to Latex representation.
-
-# How to use `open_close_rider/` ? (Quick Tutorial)
-
-Read this (https://github.com/Turingraph/open_close_rider_lib_tutorial.git) for more details.
 
 # Other related Repository
 

@@ -67,7 +67,7 @@ def get_ocr(
     img.as_ocr_box_reader().color_img(rgb=rgb)
     return img
 
-def get_ocr_arr(
+def get_many_ocrs(
     image:ocr_box_editor,
     save_path_ocr:list[str]|str|None = ["text", "text", "txt"],
     save_path_img:list[str]|str|None = None,
@@ -118,7 +118,7 @@ def get_ocr_arr(
         count += 1
     return output_arr
 
-def get_box_img(
+def get_table_img(
         image:np.ndarray|str,
         kernel=np.ones((13, 23)),
         min_x:int = 0,

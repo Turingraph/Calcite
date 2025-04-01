@@ -12,14 +12,14 @@ sys.path.append(parent)
 
 import numpy as np
 
-from basic_ocr.basic_ocr import get_box_img, get_ocr_arr, get_threshold_img
+from basic_ocr.basic_ocr import get_many_ocrs, get_table_img, get_threshold_img
 
 path = parent + "/tests/index_01/img/img.jpeg"
 img = get_threshold_img(
     image=path,
     save_path="thresh"
 )
-img_arr = get_box_img(
+img_arr = get_table_img(
     image=img.img,
     kernel=np.ones((13, 3)),
     min_w=20,
@@ -27,7 +27,7 @@ img_arr = get_box_img(
     save_path_dilate="dilate",
     save_path_mark="mark_box"
 )
-get_ocr_arr(
+get_many_ocrs(
     image=img_arr,
     save_path_img="mark_text",
     save_path_ocr="text"
