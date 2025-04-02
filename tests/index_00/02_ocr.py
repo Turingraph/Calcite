@@ -19,6 +19,6 @@ file_format = ".jpg"
 for i in range(3):
     img = ocr_box_editor(img = (parent + path + index_name(i) + file_format))
     img.get_ocr(lang="eng")
-    img.save_text(path = "text_" + index_name(i))
+    img.save_text(path = "text/text_" + index_name(i)+".txt")
 
 ###############################################################################################################

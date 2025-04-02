@@ -18,7 +18,7 @@ path = parent + "/tests/jojo_soba_01/img/img.jpeg"
 img = get_threshold_img(
     image=path,
     scale=1.35,
-    save_path="thresh"
+    save_path="img/thresh.jpg"
 )
 
 img_box = get_table_img(
@@ -44,15 +44,15 @@ for i in img_arr:
 get_ocr(
     image=img_arr[2],
     lang="eng+tha",
-    save_path_img="date",
-    save_path_ocr="date",
+    save_path_img="img/date.jpg",
+    save_path_ocr="text/date.txt",
 )
 
 get_ocr(
     image=img_arr[3],
     lang="eng+tha",
-    save_path_img="table",
-    save_path_ocr="table",
+    save_path_img="img/table.jpg",
+    save_path_ocr="text/table.txt",
     psm=11,
     column=[1510,691]
 )

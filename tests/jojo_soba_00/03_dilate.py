@@ -17,13 +17,13 @@ from ocr_box.ocr_box_editor import ocr_box_editor
 path = parent + "/tests/jojo_soba_00/img/thinn.jpg"
 img = ocr_box_editor(img = path)
 dilate_img = img.update_bbox(kernel=np.ones((13, 23)))
-dilate_img.save_img(path=["img_03_dilate","dilate"])
+dilate_img.save_img(path="img_03_dilate/dilate.jpg")
 img.select_box(min_w=1000,max_h=50)
 img.sort_box(method=1)
 
 color_dilate_img = ocr_box_editor(img=dilate_img.img, box=img.get_box())
-color_dilate_img.as_ocr_box_reader().save_img(path=["img_03_dilate","box_dilate"])
+color_dilate_img.as_ocr_box_reader().save_img(path="img_03_dilate/box_dilate.jpg")
 img.row_box()
-img.as_ocr_box_reader().save_img(path=["img_03_dilate","row_origin"])
+img.as_ocr_box_reader().save_img(path="img_03_dilate/row_origin.jpg")
 color_dilate_img = ocr_box_editor(img=dilate_img.img, box=img.get_box())
-color_dilate_img.as_ocr_box_reader().save_img(path=["img_03_dilate","row_dilate"])
+color_dilate_img.as_ocr_box_reader().save_img(path="img_03_dilate/row_dilate.jpg")

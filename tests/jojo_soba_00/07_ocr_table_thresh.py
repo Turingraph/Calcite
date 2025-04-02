@@ -12,7 +12,6 @@ sys.path.append(parent)
 
 ###############################################################################################################
 
-from img_process_class.img_process_rgb import img_process_rgb
 from ocr_box.ocr_box_editor import ocr_box_editor
 
 path = "/tests/jojo_soba_00/img/"
@@ -35,4 +34,4 @@ ocr.get_ocr(
     psm=11,
     
 )
-ocr.save_text(path = ["table",name])
+ocr.save_text(path = "table/"+name+".txt")

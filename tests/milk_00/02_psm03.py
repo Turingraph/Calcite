@@ -24,7 +24,7 @@ img.get_ocr(
     psm=3,
     
 )
-img.as_ocr_box_reader().save_img(path="psm03")
-img.save_text(path = "psm03")
+img.as_ocr_box_reader().save_img(path="img/psm03.jpg")
+img.save_text(path = "text/psm03.txt")
 
 ###############################################################################################################

@@ -17,7 +17,7 @@ name = "thresh"
 
 img = ocr_box_editor(img = (parent + path + name + ".jpg"))
 img.get_ocr(conf=50, lang="eng+tha", psm=11)
-img.as_ocr_box_reader().save_img(path= "mark")
+img.as_ocr_box_reader().save_img(path= "img/mark.jpg")
 print(len(img.get_box())) 
 img.save_text()
 print(img.get_osd())

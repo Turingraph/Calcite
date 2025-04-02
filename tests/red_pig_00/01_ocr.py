@@ -16,8 +16,8 @@ path = "/tests/red_pig_00/img/"
 name = "thresh"
 
 img = ocr_box_editor(img = (parent + path + name + ".jpg"))
-img.get_ocr(conf=50, lang="eng+tha", )
-img.as_ocr_box_reader().save_img(path= "mark")
+img.get_ocr(conf=50, lang="eng+tha")
+img.as_ocr_box_reader().save_img(path= "img/mark.jpg")
 print(len(img.get_box())) 
 # 380
 img.save_text()

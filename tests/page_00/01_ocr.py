@@ -21,9 +21,9 @@ names = [
 for name in names:
     img = ocr_box_editor(img = (parent + path + name + ".jpg"))
     img.get_ocr(conf=50)
-    img.as_ocr_box_reader().save_img(path=["img_text", name])
+    img.as_ocr_box_reader().save_img(path="img_text/"+name+".jpg")
     print(len(img.get_box()))
-    img.save_text(path=name)
+    img.save_text(path="text/"+name+".txt")
 
 print(img.get_osd())
 

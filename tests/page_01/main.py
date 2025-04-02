@@ -16,10 +16,10 @@ path = parent + "/tests/page_01/img/img.jpg"
 img = get_threshold_img(
     image=path,
     scale=1.23,
-    save_path="thresh"
+    save_path="img/thresh.jpg"
 )
 get_ocr(
     image=img.img,
-    save_path_img="mark",
-    save_path_ocr="text"
+    save_path_img="img/mark.jpg",
+    save_path_ocr="text/text.txt"
 )

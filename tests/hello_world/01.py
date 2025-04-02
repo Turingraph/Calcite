@@ -13,7 +13,7 @@ sys.path.append(parent)
 # https://www.geeksforgeeks.org/python-import-from-parent-directory/
 # https://www.geeksforgeeks.org/python-sys-module/
 
-from include.hello_world import *
+from img_process_class.hello_world import *
 
 hello_world()
 print()

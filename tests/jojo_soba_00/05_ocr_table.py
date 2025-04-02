@@ -30,6 +30,6 @@ for name in names:
     select_img = ocr_box_editor(img = img.as_ocr_box_reader().get_many_imgs()[2])
     select_img.get_ocr(column=[1510,691], lang="eng+tha",psm=11,)
     select_img.as_ocr_box_reader().show_img()
-    select_img.save_text(path = ["table",name])
+    select_img.save_text(path = "table/"+name+".txt")
 
 ###############################################################################################################

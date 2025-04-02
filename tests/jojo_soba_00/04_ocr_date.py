@@ -14,8 +14,6 @@ sys.path.append(parent)
 
 from ocr_box.ocr_box_editor import ocr_box_editor
 
-###############################################################################################################
-
 path = "/tests/jojo_soba_00/img/"
 
 names= [
@@ -32,6 +30,6 @@ for name in names:
     select_img = ocr_box_editor(img = img.as_ocr_box_reader().get_many_imgs()[1])
     select_img.get_ocr(lang = 'eng+tha', )
     select_img.as_ocr_box_reader().show_img()
-    select_img.save_text(path = ["date",name])
+    select_img.save_text(path = "date/"+name+".txt")
 
 ###############################################################################################################

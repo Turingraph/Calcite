@@ -24,5 +24,5 @@ img.row_box(is_double=True)
 img.filter_half()
 img.as_ocr_box_reader().save_many_imgs(
     rgb=None,
-    path=["img_04_row_double", "row"]
+    path="img_04_row_double/row.jpg"
 )

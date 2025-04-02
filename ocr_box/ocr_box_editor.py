@@ -402,7 +402,9 @@ class ocr_box_editor:
     def get_osd(self, out_type:str = Output.STRING, timeout:int = 0) -> any:
         # time : O(1) regardless of how OCR model works.
         # space: O(1)
-        return get_osd(img=self.__img, out_type=out_type, timeout=timeout)
+        output = get_osd(img=self.__img, out_type=out_type, timeout=timeout)
+        self.__output = str(output)
+        return output
 
     def save_text(self, path="text/text.txt", absolute:bool=False)-> None:
         # time : O(1)

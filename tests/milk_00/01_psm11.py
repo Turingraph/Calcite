@@ -22,9 +22,8 @@ img = ocr_box_editor(img = parent+path+name+format)
 img.get_ocr(
     lang = 'eng+tha',
     psm=11,
-    
 )
-img.as_ocr_box_reader().save_img(path="psm11")
-img.save_text(path = "psm11")
+img.as_ocr_box_reader().save_img(path="img/psm11.jpg")
+img.save_text(path = "text/psm11.txt")
 
 ###############################################################################################################

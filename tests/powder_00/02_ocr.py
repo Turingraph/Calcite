@@ -21,4 +21,4 @@ format = ".jpg"
 img = ocr_box_editor(img = (parent + path + name + format))
 img.get_ocr(lang="eng+tha", psm=11)
 img.save_text()
-img.as_ocr_box_reader().save_img(path="mark")
+img.as_ocr_box_reader().save_img(path="img/mark.jpg")

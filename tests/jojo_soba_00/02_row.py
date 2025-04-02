@@ -24,4 +24,4 @@ e=0
 for i in img.as_ocr_box_reader().get_many_imgs():
     img_process_gray(img=i).show_img(title=str(e))
     e+=1
-img.as_ocr_box_reader().save_many_imgs(rgb=None,path=["img_02_row", "row"])
+img.as_ocr_box_reader().save_many_imgs(rgb=None,path="img_02_row/row.jpg")

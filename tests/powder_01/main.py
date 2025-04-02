@@ -16,7 +16,7 @@ path = parent + "/tests/powder_01/img/img.jpg"
 
 img = get_threshold_img(
     image=path,
-    # save_path="thresh"
+    # save_path="img/thresh.jpg"
 )
 
 img_box = get_table_img(
@@ -37,6 +37,6 @@ target = img_box.as_ocr_box_reader().get_many_imgs()[1]
 get_ocr(
     image=target,
     psm=11,
-    save_path_img = "mark",
+    save_path_img = "img/mark.jpg",
     lang="eng+tha",
 )

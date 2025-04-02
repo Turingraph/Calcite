@@ -16,12 +16,12 @@ path = parent + "/tests/green_pig_01/img/img.jpg"
 
 img = get_threshold_img(
     image=path,
-    save_path="thresh"
+    save_path="img/thresh.jpg"
 )
 
 get_ocr(
     image=img.img,
     lang="eng+tha",
-    save_path_img="mark",
+    save_path_img="img/mark.jpg",
     psm=11
 )

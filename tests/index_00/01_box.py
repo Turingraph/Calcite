@@ -19,6 +19,6 @@ path = parent + "/tests/index_00/img/img.jpeg"
 img = ocr_box_editor(img = path)
 dilate_img = img.update_bbox(kernel=np.ones((13, 3)))
 img.select_box(min_w=20,min_h=200)
-dilate_img.save_img(path="dilate_img13x3")
+dilate_img.save_img(path="img/dilate_img13x3.jpg")
 img.sort_box(method=0)
-img.as_ocr_box_reader().save_many_imgs(rgb=None,path = "box_img")
+img.as_ocr_box_reader().save_many_imgs(rgb=None,path = "img/box_img.jpg")
