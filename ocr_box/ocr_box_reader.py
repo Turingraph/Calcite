@@ -129,19 +129,20 @@ class ocr_box_reader:
                 [0,0,255]
             ],
             absolute:bool=False) -> None:
-        # time : O(1) + O(n)
+        # time : O(n)
         # space: O(1)
         index = 0
         self.color_img(rgb = rgb)
         for i in self.__box:
             out_img = self.__img.img[i[1]:i[1]+i[3], i[0]:i[0]+i[2]]
             out_img = img_process_rgb(img = out_img)
-            path = get_valid_ith_path(
+            sub_path = get_valid_ith_path(
                 path=path,
-                absolute=absolute,
                 index=index
             )
-            out_img.save_img(path=path)
+            out_img.save_img(
+                path=sub_path,
+                absolute=absolute)
             index += 1
 
     def save_ith_img(

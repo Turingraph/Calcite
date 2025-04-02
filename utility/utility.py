@@ -61,22 +61,14 @@ def get_valid_path(
 def get_valid_ith_path(
     path:str,
     index:int,
-    absolute:bool = False,
-    format_options:list[str]|None = None,
-    warn_save:str = ""
 ):
     name = path.split("/")[-1]
-    path = os.path.join(path.split("/")[:-1])
+    path = os.path.join(*path.split("/")[:-1])
     file_format = ""
     if len(name.split(".")) >= 2:
         file_format = "." + name.split(".")[1]
     name = name.split(".")[0] + "_" + index_name(index) + file_format
-    return get_valid_path(
-        path = os.path.join(path, name),
-        absolute=absolute,
-        format_options=format_options,
-        warn_save=warn_save
-    )
+    return os.path.join(path, name)
 
 def get_file():
     # return /home/pc/Desktop/open_close_rider/utility/utility.py
