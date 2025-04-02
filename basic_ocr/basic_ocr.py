@@ -12,7 +12,7 @@ def get_threshold_img(
         scale:int = 1,
         save_path:str|None = "img/img_out.jpg",
         absolute_path:bool = False,
-        thick_font:bool = None
+        thick_font:bool = False
     ) -> img_process_gray:
     # time : O(n) depending on the size of image regardless of how Open CV works
     # space: O(n)
