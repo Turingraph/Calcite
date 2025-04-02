@@ -4,6 +4,7 @@ import numpy as np
 
 from img_process_class.img_process_gray import img_process_gray
 from ocr_box.ocr_box_editor import ocr_box_editor
+from utility.utility import get_valid_ith_path
 
 
 def get_threshold_img(
@@ -98,13 +99,25 @@ def get_many_ocrs(
 ) -> deque[ocr_box_editor]:
     # time : O(n) regarding to shape of image.get_img()
     # space: O(n)
-    count = 0
+    index = 0
     output_arr = deque()
     for img in image.as_ocr_box_reader().get_many_imgs():
+        sub_save_path_img = None
+        if save_path_img != None:
+            sub_save_path_img = get_valid_ith_path(
+            path = save_path_img,
+            index = index
+        )
+        sub_save_path_ocr = None
+        if save_path_ocr != None:
+            sub_save_path_ocr = get_valid_ith_path(
+            path = save_path_ocr,
+            index = index
+        )
         output = get_ocr(
             image=img,
-            save_path_img=save_path_img,
-            save_path_ocr=save_path_ocr,
+            save_path_img=sub_save_path_img,
+            save_path_ocr=sub_save_path_ocr,
             absolute_path_img=absolute_path_img,
             absolute_path_ocr=absolute_path_ocr,
             conf=conf,
@@ -119,7 +132,7 @@ def get_many_ocrs(
             rgb=rgb
         )
         output_arr.append(output)
-        count += 1
+        index += 1
     return output_arr
 
 def get_table_img(
