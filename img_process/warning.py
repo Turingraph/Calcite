@@ -93,36 +93,6 @@ available `method` options
     """
 
 #------------------------------------------------------------------------
-# show.py
-
-def warn_save_img():
-    return """
--------------------------------------------------------------------------------------------
-img_process/show.py/def save
-
-def save(
-    img: np.ndarray,
-    path: list[str] | str = ["img", "img_out", "jpg"],
-) -> None:
-# This function save the image
-Note that
--   path[0] = folder_name
--   path[1] = file_name
--   path[2] = file_format
-
-available file_format options
--   jpeg
--   png
--   gif
--   bmp
--   tiff
--   ppm
--   ico
--   psd
--------------------------------------------------------------------------------------------
-"""
-
-#------------------------------------------------------------------------
 # threshold.py
 
 def warn_thresh():
@@ -211,3 +181,31 @@ Reference
 
 def warn_valid_img():
     return "Error: Invalid NumPy array. len(img.shape) must be 2 or 3."
+
+#------------------------------------------------------------------------
+# show.py
+
+def warn_save_img():
+    return """
+-------------------------------------------------------------------------------------------
+img_process/show.py/def save_img
+
+def save_img(
+    img: np.ndarray,
+    path:str|None = "img/",
+    name:str = "thresh.jpg",
+    absolute:bool = False
+) -> None:
+
+available output image file format options
+1.  jpg
+2.  jpeg
+3.  png
+4.  gif
+5.  bmp
+6.  tiff
+7.  ppm
+8.  ico
+9.  psd
+-------------------------------------------------------------------------------------------
+"""

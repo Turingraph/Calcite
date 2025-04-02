@@ -1,7 +1,7 @@
 def warn_get_psm():
     return """
 -------------------------------------------------------------------------------------------
-ocr/flag_options.py/def get_psm
+ocr_box/ocr.py/def get_psm
 
 def get_psm(psm:str)->str:
 # This function check if user Tesseract `psm` (Page Segmentation Method) input is available, if not it return the default input.
@@ -32,7 +32,7 @@ Reference
 def warn_get_oem():
     return """
 -------------------------------------------------------------------------------------------
-ocr/flag_options.py/def get_oem
+ocr_box/ocr.py/def get_oem
 
 def get_oem(oem:str|int)->str:
 # This function check if user Tesseract `oem` (Engine Mode) input is available, if not it return the default input.
@@ -51,7 +51,7 @@ Execute this line to see more details.
 def warn_get_osd():
     return """
 -------------------------------------------------------------------------------------------
-ocr/osd.py/def osd
+ocr_box/ocr.py/def osd
 
 def osd(img:np.ndarray, out_type:str,timeout:int = 0)->any:
 # This function return the Tesseract OCR's output that show the orientation and 
@@ -100,5 +100,21 @@ print(osd)
 Reference
 *   https://www.kaggle.com/code/dhorvay/pytesseract-orientation-script-detection-osd
 *   https://github.com/Turingraph/JOCR/blob/master/doc/ocr_psm_tutorial.md
+-------------------------------------------------------------------------------------------
+"""
+
+def warn_save_text():
+    return """
+-------------------------------------------------------------------------------------------
+ocr_box/ocr.py/def save_text
+
+def save_text(
+    text:str,
+    path: str = "text/text.txt",
+    absolute:bool = False
+)-> None:
+    ...
+
+Note that 
 -------------------------------------------------------------------------------------------
 """

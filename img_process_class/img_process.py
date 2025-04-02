@@ -1,3 +1,4 @@
+import numpy as np
 from img_process.rotate import rotate
 from img_process.show import save_img, show_img
 from img_process.zoom import create_borders, crop, remove_borders, zoom
@@ -15,12 +16,18 @@ class img_process:
 
     def save_img(
         self,
-        path: list[str] | str = ["img", "img_out", "jpg"]
+        path:str = "img/img_out.jpg",
+        absolute:bool = False
     ) -> None:
-        save_img(img=self.img, path=path)
+        save_img(
+            img=self.img, 
+            path=path,
+            absolute=absolute)
 
     def shape(self) -> tuple:
-        return self.img.shape
+        if isinstance(self.img, np.ndarray):
+            return self.img.shape
+        return (0, 0)
 
     ########################################################################################################################################################
     # edit img

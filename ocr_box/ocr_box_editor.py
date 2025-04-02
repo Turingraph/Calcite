@@ -404,9 +404,12 @@ class ocr_box_editor:
         # space: O(1)
         return get_osd(img=self.__img, out_type=out_type, timeout=timeout)
 
-    def save_text(self, path: list[str] | str = ["text", "text", "txt"])-> None:
+    def save_text(self, path="text/text.txt", absolute:bool=False)-> None:
         # time : O(1)
         # space: O(1)
-        save_text(self.__output, path)
+        save_text(
+            text = self.__output, 
+            path=path,
+            absolute=absolute)
 
 #-----------------------------------------------------------------------------------------

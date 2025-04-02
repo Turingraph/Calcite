@@ -2,17 +2,15 @@ from collections import deque
 
 import numpy as np
 
-from img_process.show import get_valid_img_path
 from img_process_class.img_process_gray import img_process_gray
-from ocr_box.ocr import get_valid_ocr_path
 from ocr_box.ocr_box_editor import ocr_box_editor
-from utility.utility import index_name
 
 
 def get_threshold_img(
         image:np.ndarray|str,
         scale:int = 1,
-        save_path:list[str]|str|None = ["img", "img_out", "jpg"],
+        save_path:str|None = "img/img_out.jpg",
+        absolute_path:bool = False,
         thick_font:bool = None
     ) -> img_process_gray:
     # time : O(n) depending on the size of image regardless of how Open CV works
@@ -24,13 +22,18 @@ def get_threshold_img(
     if thick_font == True:
         img.thick_font()
     if save_path != None:
-        img.save_img(path=save_path)
+        img.save_img(
+            path=save_path,
+            absolute=absolute_path
+        )
     return img
 
 def get_ocr(
     image:np.ndarray|str,
-    save_path_ocr:list[str]|str|None = ["text", "text", "txt"],
-    save_path_img:list[str]|str|None = None,
+    save_path_ocr:str|None = "text/text.txt",
+    save_path_img:str|None = None,
+    absolute_path_ocr:bool = False,
+    absolute_path_img:bool = False,
     conf:int = 50,
     lang:str = "eng",
     psm:int = 3,
@@ -60,17 +63,24 @@ def get_ocr(
         last_row=last_row,
         timeout=timeout
         )
-    if save_path_img != None:
-        img.as_ocr_box_reader().save_img(rgb=rgb,path=save_path_img)
-    if save_path_ocr != None:
-        img.save_text(path=save_path_ocr)
     img.as_ocr_box_reader().color_img(rgb=rgb)
+    if save_path_img != None:
+        img.as_ocr_box_reader().save_img(
+            rgb=rgb,
+            path=save_path_img,
+            absolute=absolute_path_img)
+    if save_path_ocr != None:
+        img.save_text(
+            path=save_path_ocr,
+            absolute=absolute_path_ocr)
     return img
 
 def get_many_ocrs(
     image:ocr_box_editor,
-    save_path_ocr:list[str]|str|None = ["text", "text", "txt"],
-    save_path_img:list[str]|str|None = None,
+    save_path_ocr:str|None = "text/text.txt",
+    save_path_img:str|None = None,
+    absolute_path_ocr:bool = False,
+    absolute_path_img:bool = False,
     conf:int = 50,
     lang:str = "eng",
     psm:int = 3,
@@ -91,18 +101,12 @@ def get_many_ocrs(
     count = 0
     output_arr = deque()
     for img in image.as_ocr_box_reader().get_many_imgs():
-        path_ocr = None
-        path_img = None
-        if save_path_ocr != None:
-            save_path_ocr = get_valid_ocr_path(save_path_ocr)
-            path_ocr = [save_path_ocr[0], save_path_ocr[1]+"_"+index_name(count), save_path_ocr[2]]
-        if save_path_img != None:
-            save_path_img = get_valid_img_path(save_path_img)
-            path_img = [save_path_img[0], save_path_img[1]+"_"+index_name(count), save_path_img[2]]
         output = get_ocr(
             image=img,
-            save_path_img=path_img,
-            save_path_ocr=path_ocr,
+            save_path_img=save_path_img,
+            save_path_ocr=save_path_ocr,
+            absolute_path_img=absolute_path_img,
+            absolute_path_ocr=absolute_path_ocr,
             conf=conf,
             lang=lang,
             psm=psm,
@@ -129,8 +133,10 @@ def get_table_img(
         max_w:int|None = None,
         min_h:int = 0,
         max_h:int|None = None,
-        save_path_mark:list[str]|str|bool|None = None,
-        save_path_dilate:list[str]|str|bool|None = None,
+        save_path_mark:str|None = None,
+        save_path_dilate:str|None = None,
+        absolute_path_mark:  bool=False,
+        absolute_path_dilate:bool=False,
         rgb: list[tuple[int]] | tuple[int] | int | None = [
             [255, 0, 0], 
             [0, 255, 0], 
@@ -152,8 +158,13 @@ def get_table_img(
         max_y=max_y,
     )
     if save_path_dilate != None:
-        dilate_img.save_img(path=save_path_dilate)
+        dilate_img.save_img(
+            path=save_path_dilate,
+            absolute=absolute_path_dilate)
     img.sort_box(method=0)
     if save_path_mark != None:
-        img.as_ocr_box_reader().save_many_imgs(rgb=rgb,path=save_path_mark)
+        img.as_ocr_box_reader().save_many_imgs(
+            rgb=rgb,
+            path=save_path_mark,
+            absolute=absolute_path_mark)
     return img

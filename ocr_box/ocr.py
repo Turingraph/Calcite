@@ -6,7 +6,7 @@ import pytesseract
 from pytesseract import Output
 
 from ocr_box.warning import warn_get_psm, warn_get_oem, warn_get_osd
-from utility.utility import get_options
+from utility.utility import get_options, get_valid_path
 
 #-----------------------------------------------------------------------------------------
 # PURPOSE : GET VALID OCR CONFIGURATION INPUT
@@ -58,33 +58,16 @@ def get_osd(img:np.ndarray, out_type:str = Output.STRING,timeout:int = 0)->any:
 
 def save_text(
     text:str,
-    path: list[str] | str = ["text", "text", "txt"],
+    path: str = "text/text.txt",
+    absolute:bool = False
 )-> None:
     # time : O(1)
     # space: O(1)
-    path = get_valid_ocr_path(path=path)
-    # https://www.w3schools.com/python/python_file_write.asp
-    # https://www.geeksforgeeks.org/python-check-if-a-file-or-directory-exists/
-    if not os.path.exists(path=path[0]):
-        os.makedirs(name=path[0])
-    path = os.path.join(path[0], path[1] + "." + path[2])
+    path = get_valid_path(
+        path=path,
+        format_options=None,
+        absolute=absolute,
+    )
     file = open(file=path, mode="w")
     file.write(text)
     file.close()
-
-#-----------------------------------------------------------------------------------------
-
-def get_valid_ocr_path(path: list[str] | str = ["text", "text", "txt"]):
-    if isinstance(path, list):
-        if len(path) == 0:
-            return ["text", "text", "txt"]
-        elif len(path) == 1:
-            return [path[0], "text", "txt"]
-        elif len(path) == 2:
-            return [path[0], path[1], "txt"]
-        else:
-            return [path[0], path[1], path[2]]
-    elif isinstance(path, str):
-        return ["text", path, "txt"]
-    else:
-        return ["text", "text", "txt"]

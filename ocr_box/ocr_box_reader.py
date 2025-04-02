@@ -1,14 +1,14 @@
 import copy
 from collections import deque
+import os
 
 import cv2
 import numpy as np
 
 from img_process.contour import sort_contours
-from img_process.show import get_valid_img_path
 from img_process.utility import check_img, rgb_img
 from img_process_class.img_process_rgb import img_process_rgb
-from utility.utility import index_name
+from utility.utility import get_valid_ith_path
 
 '''
 Purpose
@@ -98,16 +98,17 @@ class ocr_box_reader:
 
     def save_img(
             self,
-            path:str|list[str]|tuple[str] = ["img","img_out","jpg"],
+            path:str = "img/img_out.jpg",
             rgb:list[tuple[int]]|tuple[int]|int|None = [
                 [255,0,0],
                 [0,255,0],
                 [0,0,255]
-            ]) -> None:
+            ],
+            absolute:bool = False) -> None:
         # time : O(1) + O(n)
         # space: O(1)
         self.color_img(rgb = rgb)
-        self.__img.save_img(path=path)
+        self.__img.save_img(path=path, absolute=absolute)
 
 #-----------------------------------------------------------------------------------------
     # PURPOSE : DISPLAY IMAGE DATA ARRAY BASED ON self.box
@@ -121,37 +122,47 @@ class ocr_box_reader:
 
     def save_many_imgs(
             self,
-            path: list[str] | str | tuple[str] = ["img", "img_out", "jpg"],
-            rgb:list[tuple[int]]|tuple[int]|int|None = [
-                [255,0,0],
-                [0,255,0],
-                [0,0,255]
-            ]) -> None:
-        # time : O(1) + O(n)
-        # space: O(1)
-        count = 0
-        path = get_valid_img_path(path)
-        self.color_img(rgb = rgb)
-        for i in self.__box:
-            out_img = self.__img.img[i[1]:i[1]+i[3], i[0]:i[0]+i[2]]
-            out_img = img_process_rgb(img = out_img)
-            out_img.save_img(path=[path[0], path[1]+"_" + index_name(count), path[2]])
-            count += 1
-
-    def save_ith_img(
-            self,
-            path:str|list[str] = ["img","img_out","jpg"],
+            path:str = "img/img_out.jpg",
             rgb:list[tuple[int]]|tuple[int]|int|None = [
                 [255,0,0],
                 [0,255,0],
                 [0,0,255]
             ],
-            index:int = 0
+            absolute:bool=False) -> None:
+        # time : O(1) + O(n)
+        # space: O(1)
+        index = 0
+        self.color_img(rgb = rgb)
+        for i in self.__box:
+            out_img = self.__img.img[i[1]:i[1]+i[3], i[0]:i[0]+i[2]]
+            out_img = img_process_rgb(img = out_img)
+            path = get_valid_ith_path(
+                path=path,
+                absolute=absolute,
+                index=index
+            )
+            out_img.save_img(path=path)
+            index += 1
+
+    def save_ith_img(
+            self,
+            path:str = "img/img_out.jpg",
+            rgb:list[tuple[int]]|tuple[int]|int|None = [
+                [255,0,0],
+                [0,255,0],
+                [0,0,255]
+            ],
+            index:int = 0,
+            absolute:bool = False
             ) -> None:
         # time : O(n)
         # space: O(n)
         self.color_img(rgb = rgb)
         if abs(index) < len(self.__box):
-            img_process_rgb(img = self.get_many_imgs()[index]).save_img(path = path)
+            img_process_rgb(
+                img = self.get_many_imgs()[index]
+            ).save_img(
+                path = path,
+                absolute=absolute)
 
 #-----------------------------------------------------------------------------------------
