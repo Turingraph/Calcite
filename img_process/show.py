@@ -34,4 +34,5 @@ def save_img(
         absolute=absolute,
         warn_save=warn_save_img()
     )
+    print("Icr Cube :",path)
     cv2.imwrite(path, img)

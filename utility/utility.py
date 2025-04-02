@@ -22,6 +22,8 @@ def get_valid_path(
     # opencv-saving-images-to-a-particular-folder-of-choice
     # https://stackoverflow.com/questions/27844088/
     # python-get-directory-two-levels-up
+    # https://stackoverflow.com/questions/14826888/
+    # python-os-path-join-on-a-list
     name = path.split("/")[-1]
     second = ""
     if len(name.split(".")) >= 2:
@@ -35,22 +37,24 @@ def get_valid_path(
         name = name.split(".")[0] + "." + second
     path = path.split("/")[:-1]
     if absolute == True:
-        path = os.path.join(path)
+        path = os.path.join(*path)
         if not os.path.exists(path=path):
             os.makedirs(name=path)
         return os.path.join(path, name)
     else:
         i = 0
+        parent = []
         while path[i] in [".", "..", "..."]:
+            parent.append(os.pardir)
             i += 1
         if i < len(Path(__file__).parents):
             path = os.path.join(
-                Path(__file__).parents[i], 
-                os.path.join(path[i:])
+                os.path.abspath(os.path.join(os.getcwd(), *parent)),
+                os.path.join(*path[i:])
             )
             if not os.path.exists(path=path):
                 os.makedirs(name=path)
-            return path
+            return os.path.join(path, name)
         else:
             ValueError("Path is invalid.")
 
@@ -73,3 +77,15 @@ def get_valid_ith_path(
         format_options=format_options,
         warn_save=warn_save
     )
+
+def get_file():
+    # return /home/pc/Desktop/open_close_rider/utility/utility.py
+    return os.path.abspath(__file__ )
+
+def get_cwd():
+    # return local path that import get_cwd() instead.
+    return os.getcwd()
+
+def get_cwd_parent():
+    # https://www.kodeclik.com/get-parent-directory-python/
+    return os.path.abspath(os.path.join(os.getcwd(), os.pardir))
