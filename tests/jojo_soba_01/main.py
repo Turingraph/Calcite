@@ -56,3 +56,20 @@ get_ocr(
     psm=11,
     column=[1510,691]
 )
+
+ocr_data = get_ocr(
+    image=img_arr[3],
+    lang="eng+tha",
+    save_path_img="/home/pc/Desktop/open_close_rider/save_target/jojo_matrix.jpg",
+    absolute_path_img=True,
+    save_path_ocr="/home/pc/Desktop/open_close_rider/save_target/jacobian_matrix.txt",
+    absolute_path_ocr=True,
+    psm=11,
+    column=[1510,691]
+)
+
+ocr_data.get_osd()
+ocr_data.save_text(
+    path="../save_target/crazy_diamond.txt",
+    absolute=False
+)

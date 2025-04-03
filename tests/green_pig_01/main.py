@@ -19,9 +19,13 @@ img = get_threshold_img(
     save_path="img/thresh.jpg"
 )
 
-get_ocr(
+ocr_data = get_ocr(
     image=img.img,
     lang="eng+tha",
     save_path_img="img/mark.jpg",
     psm=11
 )
+
+ocr_data.save_text(path="../save_target/green_pig/text.txt")
+ocr_data.get_osd()
+ocr_data.save_text(path="../save_target/green_pig_osd.txt")
