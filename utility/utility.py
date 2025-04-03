@@ -71,10 +71,10 @@ def create_dir(path:str):
     if not os.path.exists(path=parent):
         os.makedirs(name=parent)
 
-# def os_path(path:str, folder:bool):
-#     if folder == True:
-#         return os.path.join("/",*path.split("/")[:-1])
-#     return os.path.join("/",*path.split("/"))
+def create_text_dir(path:str):
+    create_dir(path = path)
+    if os.path.isfile(os.path.join("/", *(path.split("/")))) == False:
+        open(file=path, mode="x")
 
 def get_file():
     # return /home/pc/Desktop/open_close_rider/utility/utility.py

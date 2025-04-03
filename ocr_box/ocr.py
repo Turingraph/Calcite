@@ -8,7 +8,7 @@ from pytesseract import Output
 
 from img_process_class.img_process_gray import img_process_gray
 from ocr_box.warning import warn_get_psm, warn_get_oem, warn_get_osd
-from utility.utility import create_dir, get_options, get_valid_path
+from utility.utility import create_text_dir, get_options, get_valid_path
 
 #-----------------------------------------------------------------------------------------
 # PURPOSE : GET VALID OCR CONFIGURATION INPUT
@@ -105,7 +105,7 @@ def save_text(
         format_options=None,
         absolute=absolute,
     )
-    create_dir(path=path)
+    create_text_dir(path=path)
     # if os.path.isfile(os.path.join("/", *(path.split("/")))) == False:
     #     open(file=path, mode="x")
     file = open(file=path, mode="w")
