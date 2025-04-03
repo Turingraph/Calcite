@@ -38,8 +38,8 @@ So it is worth using deque over list for faster append.
 
 img_arr = img_box.as_ocr_box_reader().get_many_imgs()
 
-for i in img_arr:
-    img_process_gray(img=i).show_img()
+# for i in img_arr:
+    # img_process_gray(img=i).show_img()
 
 get_ocr(
     image=img_arr[2],
@@ -60,14 +60,15 @@ get_ocr(
 ocr_data = get_ocr(
     image=img_arr[3],
     lang="eng+tha",
-    save_path_img="/home/pc/Desktop/open_close_rider/save_target/jojo_matrix.jpg",
-    absolute_path_img=True,
-    save_path_ocr="/home/pc/Desktop/open_close_rider/save_target/jacobian_matrix.txt",
+    save_path_img="../save_target/jojo_matrix.jpg",
+    absolute_path_img=False,
+    save_path_ocr="/home/pc/Desktop/open_close_rider/tests/save_target/jacobian_matrix.txt",
     absolute_path_ocr=True,
     psm=11,
     column=[1510,691]
 )
 
+ocr_data.as_ocr_box_reader().show_img()
 ocr_data.get_osd()
 ocr_data.save_text(
     path="../save_target/crazy_diamond.txt",
