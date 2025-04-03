@@ -4,6 +4,7 @@ import numpy as np
 
 from img_process_class.img_process_gray import img_process_gray
 from ocr_box.ocr_box_editor import ocr_box_editor
+from ocr_box.ocr_box_reader import ocr_box_reader
 from utility.utility import get_valid_ith_path
 
 
@@ -78,10 +79,10 @@ def get_ocr(
 
 def get_many_ocrs(
     image:ocr_box_editor,
-    save_path_ocr:str|None = "text/text.txt",
-    save_path_img:str|None = None,
-    absolute_path_ocr:bool = False,
-    absolute_path_img:bool = False,
+    save_path_many_ocrs:str|None = "text/text.txt",
+    save_path_many_imgs:str|None = None,
+    absolute_path_many_ocrs:bool = False,
+    absolute_path_many_imgs:bool = False,
     conf:int = 50,
     lang:str = "eng",
     psm:int = 3,
@@ -103,23 +104,23 @@ def get_many_ocrs(
     output_arr = deque()
     for img in image.as_ocr_box_reader().get_many_imgs():
         sub_save_path_img = None
-        if save_path_img != None:
+        if save_path_many_imgs != None:
             sub_save_path_img = get_valid_ith_path(
-            path = save_path_img,
+            path = save_path_many_imgs,
             index = index
         )
         sub_save_path_ocr = None
-        if save_path_ocr != None:
+        if save_path_many_ocrs != None:
             sub_save_path_ocr = get_valid_ith_path(
-            path = save_path_ocr,
+            path = save_path_many_ocrs,
             index = index
         )
         output = get_ocr(
             image=img,
             save_path_img=sub_save_path_img,
             save_path_ocr=sub_save_path_ocr,
-            absolute_path_img=absolute_path_img,
-            absolute_path_ocr=absolute_path_ocr,
+            absolute_path_img=absolute_path_many_imgs,
+            absolute_path_ocr=absolute_path_many_ocrs,
             conf=conf,
             lang=lang,
             psm=psm,
@@ -146,9 +147,9 @@ def get_table_img(
         max_w:int|None = None,
         min_h:int = 0,
         max_h:int|None = None,
-        save_path_mark:str|None = None,
+        save_path_many_imgs:str|None = None,
         save_path_dilate:str|None = None,
-        absolute_path_mark:  bool=False,
+        absolute_path_many_imgs:  bool=False,
         absolute_path_dilate:bool=False,
         rgb: list[tuple[int]] | tuple[int] | int | None = [
             [255, 0, 0], 
@@ -170,14 +171,19 @@ def get_table_img(
         max_x=max_x,
         max_y=max_y,
     )
+    dilate_img = ocr_box_reader(
+        img=dilate_img.img,
+        box=img.get_box()
+    )
     if save_path_dilate != None:
         dilate_img.save_img(
+            rgb=rgb,
             path=save_path_dilate,
             absolute=absolute_path_dilate)
     img.sort_box(method=0)
-    if save_path_mark != None:
+    if save_path_many_imgs != None:
         img.as_ocr_box_reader().save_many_imgs(
             rgb=rgb,
-            path=save_path_mark,
-            absolute=absolute_path_mark)
+            path=save_path_many_imgs,
+            absolute=absolute_path_many_imgs)
     return img

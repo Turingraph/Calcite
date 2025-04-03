@@ -38,9 +38,7 @@ def get_valid_path(
     path = path.split("/")[:-1]
     if absolute == True:
         path = os.path.join(*path)
-        if not os.path.exists(path=path):
-            os.makedirs(name=path)
-        return os.path.join(path, name)
+        return os.path.join("/",path, name)
     else:
         i = 0
         parent = []
@@ -52,8 +50,6 @@ def get_valid_path(
                 os.path.abspath(os.path.join(os.getcwd(), *parent)),
                 os.path.join(*path[i:])
             )
-            if not os.path.exists(path=path):
-                os.makedirs(name=path)
             return os.path.join(path, name)
         else:
             ValueError("Path is invalid.")
@@ -69,6 +65,16 @@ def get_valid_ith_path(
         file_format = "." + name.split(".")[1]
     name = name.split(".")[0] + "_" + index_name(index) + file_format
     return os.path.join(path, name)
+
+def create_dir(path:str):
+    parent = os.path.join("/",*path.split("/")[:-1])
+    if not os.path.exists(path=parent):
+        os.makedirs(name=parent)
+
+# def os_path(path:str, folder:bool):
+#     if folder == True:
+#         return os.path.join("/",*path.split("/")[:-1])
+#     return os.path.join("/",*path.split("/"))
 
 def get_file():
     # return /home/pc/Desktop/open_close_rider/utility/utility.py
