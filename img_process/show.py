@@ -6,7 +6,7 @@ from PIL import Image
 from pathlib import Path
 
 from img_process.warning import warn_save_img
-from utility.utility import get_valid_path
+from utility.utility import create_dir, get_valid_path
 
 
 def show_img(img: np.ndarray, title: str = "img_out") -> None:
@@ -34,6 +34,7 @@ def save_img(
         absolute=absolute,
         warn_save=warn_save_img()
     )
+    create_dir(path=path)
     img = cv2.cvtColor(img, cv2.COLOR_RGB2BGR)
     """
     We don't sure if Image.fromarray(img).save() or cv2.cvtColor() better.
