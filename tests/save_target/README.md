@@ -9,3 +9,7 @@ The purpose of this directory is to check if the following file save output corr
     -   `save_target/jojo_matrix.jpg` (image with text bounding box)
     -   `save_target/jacobian_matrix.txt` (ocr text file)
     -   `save_target/crazy_diamond.txt` (osd text file)
+4.  `milk_00/00_img.py` computes
+    -   `vegan_milk.jpg`        (processed image)
+    -   `vegan/vegan_milk.jpg`  (processed image)
+    -   `vegan/spoil_milk.jpg`  (colorful processed image)

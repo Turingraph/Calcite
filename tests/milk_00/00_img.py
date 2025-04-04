@@ -19,3 +19,7 @@ img.zoom(scale=1)
 img.rotate()
 img.threshold()
 img.save_img(path="img/thresh.jpg")
+img.save_img(path="../save_target/vegan_milk.jpg")
+img.save_img(
+    path="/home/pc/Desktop/open_close_rider/tests/save_target/vegan/vegan_milk.jpg", 
+    absolute=True)
