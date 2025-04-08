@@ -75,12 +75,12 @@ def sort_contours(
         message=warn_sort_contours()
     )
     if method in [0, 1, 2, 3]:
-        sorted(
+        return sorted(
             contour,
             key=lambda x: x[method],
             reverse=reverse,
         )
-    sorted(
+    return sorted(
         contour,
         key=lambda x: (x[2]-x[0])*(x[3]-x[1]),
         reverse=reverse,
