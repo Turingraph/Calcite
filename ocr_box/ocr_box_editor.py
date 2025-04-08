@@ -286,7 +286,7 @@ class ocr_box_editor:
             oem:str|int|None = 3,
             config:str = '',
             timeout:int = 0,
-            conf:int = 60, 
+            conf:int = 50, 
             search:str="", 
             column:list[int] = [],
             csv_separator:str = ", ",
