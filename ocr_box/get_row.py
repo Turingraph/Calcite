@@ -13,12 +13,12 @@ def row_box(all_box:list[tuple[int]], w:int, h:int, is_double:bool = False)->lis
     # time : O(n) + O(n * log(n))
     # space: O(n)
     box = []
-    sort_contours(contour=all_box, method=1)
-    for i in range(len(all_box)):
+    all_box = sort_contours(contour=all_box, method=1)
+    for i in range(len(all_box) + 1):
         if i == 0:
             box.append((0, 0, w, all_box[i][1]))
-        elif i == len(all_box) - 1:
-            last = all_box[i]
+        elif i == len(all_box):
+            last = all_box[i - 1]
             if is_double == True:
                 box.append((0, last[1], w, last[3]))
                 box.append((0, last[1] + last[3], w, h - (last[1] + last[3])))
@@ -31,7 +31,7 @@ def row_box(all_box:list[tuple[int]], w:int, h:int, is_double:bool = False)->lis
                 box.append((0, prev[1], w, prev[3]))
                 box.append((0, prev[1] + prev[3], w, item[1] - (prev[1] + prev[3])))
             else:
-                box.append((0, prev[1], w, item[1]-prev[1]))
+                box.append((0, prev[1], w, item[1] - prev[1]))
     return box
 
 def row_half(all_box:list[tuple[int]], w:int, h:int, index:int = 0, is_double:bool = False, is_sort:bool = True)->list:
@@ -40,7 +40,7 @@ def row_half(all_box:list[tuple[int]], w:int, h:int, index:int = 0, is_double:bo
     box = []
     if abs(index) < len(all_box):
         if is_sort == True:
-            sort_contours(contour=all_box, method=1)
+            all_box = sort_contours(contour=all_box, method=1)
         if is_double == True:
             box.append((0, 0, w, all_box[index][1]))
             box.append((0, all_box[index][1], w, all_box[index][3]))
@@ -56,12 +56,12 @@ def col_box(all_box:list[tuple[int]], w:int, h:int, is_double:bool = False)->lis
     # time : O(n) + O(n * log(n))
     # space: O(n)
     box = []
-    sort_contours(contour=all_box, method=1)
-    for i in range(len(all_box)):
+    all_box = sort_contours(contour=all_box, method=1)
+    for i in range(len(all_box) + 1):
         if i == 0:
             box.append((0, 0, all_box[i][0], h))
-        elif i == len(all_box) - 1:
-            last = all_box[i]
+        elif i == len(all_box):
+            last = all_box[i - 1]
             if is_double == True:
                 box.append((last[0], 0, last[2], h))
                 box.append((last[0] + last[2], 0, w - (last[0] + last[2]), h))
@@ -83,7 +83,7 @@ def col_half(all_box:list[tuple[int]], w:int, h:int, index:int = 0, is_double:bo
     box = []
     if abs(index) < len(all_box):
         if is_sort == True:
-            sort_contours(contour=all_box, method=0)
+            all_box = sort_contours(contour=all_box, method=0)
         if is_double == True:
             box.append((0, 0, all_box[index][0], h))
             box.append((all_box[index][0], 0, all_box[index][2], h))

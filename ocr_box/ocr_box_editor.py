@@ -1,6 +1,7 @@
 import cv2
 import numpy as np
 from pytesseract import Output
+import pytesseract
 
 from img_process.contour import get_contours, sort_contours
 from img_process.utility import check_img
@@ -66,7 +67,7 @@ class ocr_box_editor:
     def sort_box(self, reverse: bool = False, method: int = 4)->None:
         # time : O(n * log(n))
         # space: O(1)
-        sort_contours(contour=self.__box, reverse=reverse, method=method)
+        self.__box = sort_contours(contour=self.__box, reverse=reverse, method=method)
 
     def row_box(self, is_double:bool = False)->None:
         # time : O(n)
@@ -177,7 +178,7 @@ class ocr_box_editor:
             ksize = ksize,
             show_result=show_result
         )
-        self.__all_box = get_contours(output.img)
+        self.__all_box = get_contours(output.get_gray_img())
         self.__box = self.__all_box
         return output
 
@@ -298,6 +299,14 @@ class ocr_box_editor:
         self.__all_box = output[0]
         self.__box = self.__all_box
         self.__output = output[1]
+
+        # self.__output = pytesseract.image_to_string(
+            # image=self.__img,
+            # lang=lang,
+            # config = config + ' ' + get_oem(oem) + ' ' + get_psm(psm) + "-c preserve_interword_spaces=0",
+            # timeout=timeout
+        # )
+
 
     """
     We will apply Sweep Line Algorithm in order to get all box that don't intersect with text using

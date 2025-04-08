@@ -65,7 +65,7 @@ def update_bbox(
                 img_rgb.rectangle(rgb=show_result, x=b[0], y=b[1], w=b[2], h=b[3])
         if show_result not in [None, False]:
             img_rgb.show_img()
-        return img_rgb
+        return img
 
 def select_box(
             w:int,
@@ -190,7 +190,7 @@ def get_ocr(
             lang:str = "eng",
             config:str = '',
             timeout:int = 0,
-            conf:int = 60, 
+            conf:int = 50, 
             search:str="", 
             column:list[int] = [],
             csv_separator:str = ", ",
@@ -224,9 +224,9 @@ def get_ocr(
 
         for i in range(len(d['text'])):
             if (
-                int(d['conf'][i]) > conf and 
-                (search == "" or (search != "" and search in d['text'][i])) 
-                and (d['text'][i] != " ") # This line might be source of error
+                int(d['conf'][i]) > conf 
+                and (search == "" or (search != "" and search in d['text'][i])) 
+                and (d['text'][i] != " ") 
                 ):
                     if len(col) > col_index and d['top'][i] > first_row and d['top'][i] < last_row:
                         if d['left'][i] > col[col_index]:
