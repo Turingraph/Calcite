@@ -1,6 +1,5 @@
 
 import re
-from collections import deque
 
 import cv2
 import numpy as np
@@ -51,9 +50,10 @@ def update_bbox(
             kernel: np.ndarray = np.ones(shape=(2, 30)),
             ksize: int = 9,
             show_result:tuple[int]|int|None|bool = None
-            ) -> img_process_gray:
+            ) -> img_process_rgb:
         # time : O(n)
         # space: O(n)
+        img_rgb = img_process_rgb(img=img)
         img:img_process_gray = img_process_gray(img=img)
         img.contour_img(
             thresh_px=thresh_px,
@@ -62,15 +62,15 @@ def update_bbox(
         if isinstance(show_result, (list, int)):
             box = get_contours(img.img)
             for b in box:
-                img.rectangle(rgb=show_result, x=b[0], y=b[1], w=b[2], h=b[3])
+                img_rgb.rectangle(rgb=show_result, x=b[0], y=b[1], w=b[2], h=b[3])
         if show_result not in [None, False]:
-            img.show_img()
-        return img
+            img_rgb.show_img()
+        return img_rgb
 
 def select_box(
             w:int,
             h:int,
-            all_box:deque,
+            all_box:list[tuple[int]],
             min_x:int = 0,
             max_x:int|None = None,
             min_y:int = 0,
@@ -79,7 +79,7 @@ def select_box(
             max_w:int|None = None,
             min_h:int = 0,
             max_h:int|None = None,
-            )->deque:
+            )->list[tuple[int]]:
     # time : O(n)
     # space: O(n)
     min_x = get_size(size=min_x, maxval=w)
@@ -92,7 +92,7 @@ def select_box(
     max_w = get_size(size=max_w, maxval=w,default_size=w)
     max_h = get_size(size=max_h, maxval=h,default_size=h)
 
-    box = deque()
+    box = []
     for i in all_box:
         if (
             (i[0] > min_x and i[0] < max_x) and 
@@ -121,7 +121,7 @@ def update_line(
     img:img_process_gray = img_process_gray(img=img)
     img.gauss_blur(ksize_w=ksize_w,ksize_h=ksize_h)
     img.canny(low_thresh=low_thresh, high_thresh=high_thresh)
-    box = deque()
+    box = []
     lines = cv2.HoughLinesP(
          image=img.img, 
          rho=1, 
@@ -129,11 +129,11 @@ def update_line(
          threshold=thresh, 
          minLineLength=min_line_len, 
          maxLineGap=max_line_gap)
-    rgb_img = img_process_rgb(img = img.img)
+    img_rgb = img_process_rgb(img = img.img)
     for line in lines:
         x_00, y_00, x_01, y_01 = line[0]
         if isinstance(show_result, (list, tuple, int)):
-            rgb_img.line(rgb=show_result, x_00=x_00, y_00=y_00, x_01=x_01, y_01=y_01)
+            img_rgb.line(rgb=show_result, x_00=x_00, y_00=y_00, x_01=x_01, y_01=y_01)
         x = x_00
         y = y_00
         w = x_01 - x_00
@@ -146,13 +146,13 @@ def update_line(
             h = y_00 - y_01
         box.append((x, y, w, h))
     if show_result not in [None, False]:
-        rgb_img.show_img()
-    return (box, rgb_img)
+        img_rgb.show_img()
+    return (box, img_rgb)
 
 def select_line(
             w:int,
             h:int,
-            all_box:deque[tuple[int]],
+            all_box:list[tuple[int]],
             min_x:int = 0,
             max_x:int|None = None,
             min_y:int = 0,
@@ -161,7 +161,7 @@ def select_line(
             max_w:int|None = None,
             min_h:int = 0,
             max_h:int|None = None,
-            ) -> deque:
+            ) -> list[tuple[int]]:
     # time : O(n)
     # space: O(n)
     min_x = get_size(size=min_x, maxval=w)
@@ -174,7 +174,7 @@ def select_line(
     max_w = get_size(size=max_w, maxval=w,default_size=w)
     max_h = get_size(size=max_h, maxval=h,default_size=h)
 
-    box = deque()
+    box = []
     for i in all_box:
         if (
             (i[0] > min_x and i[0] < max_x) and 
@@ -210,7 +210,7 @@ def get_ocr(
         first_row = get_size(size=first_row, maxval=img.shape[1])
         last_row  = get_size(size=last_row, maxval=img.shape[1], default_size=img.shape[1])
 
-        output_box = deque()
+        output_box = []
 
         d = pytesseract.image_to_data(
             img, 
@@ -225,8 +225,8 @@ def get_ocr(
         for i in range(len(d['text'])):
             if (
                 int(d['conf'][i]) > conf and 
-                (search == "" or (search != "" and search in d['text'][i])) and 
-                (d['text'][i] != " ")
+                (search == "" or (search != "" and search in d['text'][i])) 
+                and (d['text'][i] != " ") # This line might be source of error
                 ):
                     if len(col) > col_index and d['top'][i] > first_row and d['top'][i] < last_row:
                         if d['left'][i] > col[col_index]:

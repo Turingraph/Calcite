@@ -1,5 +1,4 @@
 import copy
-from collections import deque
 import os
 
 import cv2
@@ -10,21 +9,10 @@ from img_process.utility import check_img, rgb_img
 from img_process_class.img_process_rgb import img_process_rgb
 from utility.utility import get_valid_ith_path
 
-'''
-Purpose
--	View and save image.
-
-Attribute
-
-NAME	TYPE				UPDATE_METHOD	DESCRIPTION
-img		np.ndarray			update_img()	image input
-box		list[tuple[int]]		-			box around the given region.
-'''
-
 class ocr_box_reader:
     def __init__(self, 
                 img: np.ndarray | str,
-                box: deque):
+                box: list[tuple[int]] = []):
         if type(img) == str:
             img:np.ndarray = cv2.imread(filename=img)
             if img is None:
@@ -37,12 +25,12 @@ class ocr_box_reader:
         # either remove self.__origin_img and/or try to optimize it in other ways.
         self.__origin_img:img_process_rgb = img_process_rgb(img = rgb_img(img))
         self.__img:img_process_rgb = copy.deepcopy(self.__origin_img)
-        self.__box = box
+        self.__box:list[tuple[int]] = box
 
 #-----------------------------------------------------------------------------------------
     # PURPOSE : GET PRIVATE ATTRIBUTE AS READ ONLY VARIABLE.
 
-    def get_box(self)->deque:
+    def get_box(self)->list[tuple[int]]:
         # time : O(1)
         # space: O(1)        
         return self.__box
@@ -58,7 +46,7 @@ class ocr_box_reader:
     def sort_box(self, reverse: bool = False, method: int = 4)->None:
         # time : O(n * log(n))
         # space: O(n)
-        self.__box = deque(sort_contours(contour=self.__box, reverse=reverse, method=method))
+        sort_contours(contour=self.__box, reverse=reverse, method=method)
 
 #-----------------------------------------------------------------------------------------
     # PURPOSE : DISPLAY IMAGE DATA
@@ -113,8 +101,8 @@ class ocr_box_reader:
 #-----------------------------------------------------------------------------------------
     # PURPOSE : DISPLAY IMAGE DATA ARRAY BASED ON self.box
 
-    def get_many_imgs(self) -> deque[np.ndarray]:
-        out_img_arr = deque()
+    def get_many_imgs(self) -> list[np.ndarray]:
+        out_img_arr = []
         for i in self.__box:
             out_img = self.__img.img[i[1]:i[1]+i[3], i[0]:i[0]+i[2]]
             out_img_arr.append(out_img)
@@ -130,7 +118,7 @@ class ocr_box_reader:
             ],
             absolute:bool=False) -> None:
         # time : O(n)
-        # space: O(1)
+        # space: O(n)
         index = 0
         self.color_img(rgb = rgb)
         for i in self.__box:

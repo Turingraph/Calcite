@@ -1,4 +1,3 @@
-import os
 import re
 
 import cv2
@@ -6,7 +5,6 @@ import numpy as np
 import pytesseract
 from pytesseract import Output
 
-from img_process_class.img_process_gray import img_process_gray
 from ocr_box.warning import warn_get_psm, warn_get_oem, warn_get_osd
 from utility.utility import create_text_dir, get_options, get_valid_path
 

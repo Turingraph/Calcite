@@ -1,5 +1,3 @@
-from collections import deque
-
 import cv2
 import numpy as np
 from pytesseract import Output
@@ -7,6 +5,7 @@ from pytesseract import Output
 from img_process.contour import get_contours, sort_contours
 from img_process.utility import check_img
 from img_process_class.img_process_gray import img_process_gray
+from img_process_class.img_process_rgb import img_process_rgb
 from ocr_box.get_row import (add_area, col_box, col_half, filter_half, row_box,
                              row_half)
 from ocr_box.ocr import get_oem, get_osd, get_psm, save_text
@@ -14,22 +13,11 @@ from ocr_box.ocr_box_reader import ocr_box_reader
 from ocr_box.update_box import (get_ocr, select_box,  # boundary_checking,
                                 select_line, update_bbox, update_line)
 
-'''
-Purpose
--	View and save image.
-
-Attribute
-
-NAME	TYPE				UPDATE_METHOD	DESCRIPTION
-img		np.ndarray			update_img()	image input
-box		list[tuple[int]]		-				box around the given region.
-'''
-
 class ocr_box_editor:
     def __init__(
             self, 
             img: np.ndarray | str,
-            box:list[tuple[int]]|deque = []
+            box:list[tuple[int]] = []
             ):
         if type(img) == str:
             img:np.ndarray = cv2.imread(filename=img)
@@ -40,9 +28,9 @@ class ocr_box_editor:
         else:
             raise TypeError("Error: Input img must be np.ndarray or str")
         self.__img:np.ndarray = img
-        self.__all_box = deque(box)
-        self.__box = deque(box)
-        self.__output = ""
+        self.__all_box:list[np.ndarray] = box
+        self.__box:list[np.ndarray] = box
+        self.__output:str = ""
 
 #-----------------------------------------------------------------------------------------
     # PURPOSE : GET PRIVATE ATTRIBUTE AS READ ONLY VARIABLE.
@@ -57,12 +45,12 @@ class ocr_box_editor:
         # space: O(1)
         return self.__img
     
-    def get_all_box(self)->deque[np.ndarray]:
+    def get_all_box(self)->list[np.ndarray]:
         # time : O(1)
         # space: O(1)
         return self.__all_box
     
-    def get_box(self)->deque[np.ndarray]:
+    def get_box(self)->list[np.ndarray]:
         # time : O(1)
         # space: O(1)
         return self.__box
@@ -77,8 +65,8 @@ class ocr_box_editor:
 
     def sort_box(self, reverse: bool = False, method: int = 4)->None:
         # time : O(n * log(n))
-        # space: O(n)
-        self.__box = deque(sort_contours(contour=self.__box, reverse=reverse, method=method))
+        # space: O(1)
+        sort_contours(contour=self.__box, reverse=reverse, method=method)
 
     def row_box(self, is_double:bool = False)->None:
         # time : O(n)
@@ -91,7 +79,7 @@ class ocr_box_editor:
         )
 
     def row_half(self, index:int = 0, is_double:bool = False, is_sort:bool = True)->None:
-        # time : O(n) for deque. O(1) for list
+        # time : O(1) + O(n * log(n))
         # space: O(1)
         self.__box = row_half(
             all_box=self.__box,
@@ -113,7 +101,7 @@ class ocr_box_editor:
         )
 
     def col_half(self, index:int = 0, is_double:bool = False, is_sort:bool = True)->None:
-        # time : O(n) for deque. O(1) for list
+        # time : O(1) + O(n * log(n))
         # space: O(1)
         self.__box = col_half(
             all_box=self.__box,
@@ -132,7 +120,7 @@ class ocr_box_editor:
             is_odd=is_odd)
 
     def add_x(self, area:int, index:int)->None:
-        # time : O(n)
+        # time : O(1)
         # space: O(1)
         add_area(
             self.__box, 
@@ -142,7 +130,7 @@ class ocr_box_editor:
             index=index)
 
     def add_y(self, area:int, index:int)->None:
-        # time : O(n)
+        # time : O(1)
         # space: O(1)
         add_area(
             self.__box, 
@@ -152,7 +140,7 @@ class ocr_box_editor:
             index=index)
 
     def add_width(self, area:int, index:int)->None:
-        # time : O(n)
+        # time : O(1)
         # space: O(1)
         add_area(
             self.__box, 
@@ -162,7 +150,7 @@ class ocr_box_editor:
             index=index)
 
     def add_height(self, area:int, index:int)->None:
-        # time : O(n)
+        # time : O(1)
         # space: O(1)
         add_area(
             self.__box, 
@@ -179,7 +167,7 @@ class ocr_box_editor:
             kernel: np.ndarray = np.ones(shape=(2, 30)),
             ksize: int = 9,
             show_result:tuple[int]|int|None|bool = None
-        ) -> img_process_gray:
+        ) -> img_process_rgb:
         # time : O(n)
         # space: O(n)
         output = update_bbox(
@@ -227,8 +215,8 @@ class ocr_box_editor:
     def update_line(self,
             ksize_w:int = 5,
             ksize_h:int = 5,
-            low_thresh = 50,
-            high_thresh= 150,
+            low_thresh:int = 50,
+            high_thresh:int = 150,
             thresh:int = 100,
             min_line_len:int = 100,
             max_line_gap:int = 20,
@@ -407,7 +395,7 @@ class ocr_box_editor:
         return output
 
     def save_text(self, path="text/text.txt", absolute:bool=False)-> None:
-        # time : O(1)
+        # time : O(n) base on how long the path is.
         # space: O(1)
         save_text(
             text = self.__output, 
