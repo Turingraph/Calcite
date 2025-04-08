@@ -1,4 +1,3 @@
-from collections import deque
 import cv2
 import numpy as np
 from img_process.utility import get_ksize
@@ -26,7 +25,7 @@ Reference
 
 # Get the array of rectangles that indicate the boundary of text in img image.
 # It is recommended to transform the input image using contour_img before use this function.
-def get_contours(img: np.ndarray) -> deque:
+def get_contours(img: np.ndarray) -> list:
     contours, hierarchy = cv2.findContours(
         image=img, 
         mode=cv2.RETR_LIST, 
@@ -35,7 +34,7 @@ def get_contours(img: np.ndarray) -> deque:
     output = []
     for i in contours:
         output.append(cv2.boundingRect(i))
-    return deque(output)
+    return output
 
 #-----------------------------------------------------------------------------------------
 
@@ -68,7 +67,7 @@ contours = get_contours(dilate_img)
 sort_by_area = sort_contour(contours, 4)
 '''
 def sort_contours(
-    contour: deque|list, reverse: bool = False, method: int = 4
+    contour: list, reverse: bool = False, method: int = 4
 ):
     method = get_options(
         input=method, 
@@ -76,12 +75,12 @@ def sort_contours(
         message=warn_sort_contours()
     )
     if method in [0, 1, 2, 3]:
-        return sorted(
+        sorted(
             contour,
             key=lambda x: x[method],
             reverse=reverse,
         )
-    return sorted(
+    sorted(
         contour,
         key=lambda x: (x[2]-x[0])*(x[3]-x[1]),
         reverse=reverse,
