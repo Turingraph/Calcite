@@ -13,7 +13,6 @@ sys.path.append(parent)
 import numpy as np
 
 from basic_ocr.basic_ocr import get_many_ocrs, get_table_img, get_threshold_img
-from ocr_box.ocr_box_editor import ocr_box_editor
 
 path = parent + "/tests/index_01/img/img.jpeg"
 img = get_threshold_img(
