@@ -271,23 +271,28 @@ class ocr_box_editor:
 
     def get_ocr(self,
             lang:str = "eng",
-            psm:str|int|None = 3,
+            # I might change the default psm as 11 or 13 because the ocr_box_editor and get_ocr already help 
+            # the OCR model deal with complicated user customized OCR text format and getting text as much as
+            # possible is better than getting less text.
+            psm:str|int|None = 3, 
             oem:str|int|None = 3,
-            config:str = '',
+            config:str = "-c preserve_interword_spaces=0",
             timeout:int = 0,
-            conf:int = 50, 
+            # The default should be 0, especially when the image is processed properly in order to prevent information lost.
+            conf:int = 0, 
             search:str="", 
             column:list[int] = [],
             csv_separator:str = ", ",
             first_row:int = 0,
             last_row:int|None = None
         )->None:
-        # time : O(n)
+        # time : O(n) when n is size of self.__img
         # space: O(n)
+     
         output = get_ocr(
             img=self.__img,
             lang=lang,
-            config=config + ' ' + get_oem(oem) + ' ' + get_psm(psm) + "-c preserve_interword_spaces=0",
+            config=config + ' ' + get_oem(oem) + ' ' + get_psm(psm),
             timeout=timeout,
             conf=conf,
             search=search,
@@ -296,9 +301,23 @@ class ocr_box_editor:
             first_row=first_row,
             last_row=last_row
         )
+        self.__output = output[1]
         self.__all_box = output[0]
         self.__box = self.__all_box
-        self.__output = output[1]
+
+        # THIS LINE IS USED FOR CHECK IF THE get_ocr() WORK AS EXPECTED OR NOT.
+        """
+        # print("lang         ",lang         )
+        # print("psm          ",psm          )
+        # print("oem          ",oem          )
+        # print("config       ",config       )
+        # print("timeout      ",timeout      )
+        # print("conf         ",conf         )
+        # print("search       ",search       )
+        # print("column       ",column       )
+        # print("csv_separator",csv_separator)
+        # print("first_row    ",first_row    )
+        # print("last_row     ",last_row     )
 
         # self.__output = pytesseract.image_to_string(
             # image=self.__img,
@@ -307,6 +326,10 @@ class ocr_box_editor:
             # timeout=timeout
         # )
 
+        # self.save_text(
+            # absolute=True,
+            # path="/home/pc/Desktop/open_close_rider/tests/save_target/index_absolute_02.txt"
+        # )"""
 
     """
     We will apply Sweep Line Algorithm in order to get all box that don't intersect with text using

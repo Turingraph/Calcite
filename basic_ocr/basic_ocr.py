@@ -1,5 +1,3 @@
-from collections import deque
-
 import numpy as np
 
 from img_process_class.img_process_gray import img_process_gray
@@ -36,7 +34,7 @@ def get_ocr(
     save_path_img:str|None = None,
     absolute_path_ocr:bool = False,
     absolute_path_img:bool = False,
-    conf:int = 50,
+    conf:int = 0,
     lang:str = "eng",
     psm:int = 3,
     search:str = "",
@@ -66,15 +64,15 @@ def get_ocr(
         timeout=timeout
         )
     img.as_ocr_box_reader().color_img(rgb=rgb)
-    if save_path_img != None:
-        img.as_ocr_box_reader().save_img(
-            rgb=rgb,
-            path=save_path_img,
-            absolute=absolute_path_img)
-    if save_path_ocr != None:
-        img.save_text(
-            path=save_path_ocr,
-            absolute=absolute_path_ocr)
+    # if save_path_img != None:
+    #     img.as_ocr_box_reader().save_img(
+    #         rgb=rgb,
+    #         path=save_path_img,
+    #         absolute=absolute_path_img)
+    # if save_path_ocr != None:
+    #     img.save_text(
+    #         path=save_path_ocr,
+    #         absolute=absolute_path_ocr)
     return img
 
 def get_many_ocrs(
@@ -83,7 +81,7 @@ def get_many_ocrs(
     save_path_many_imgs:str|None = None,
     absolute_path_many_ocrs:bool = False,
     absolute_path_many_imgs:bool = False,
-    conf:int = 50,
+    conf:int = 0,
     lang:str = "eng",
     psm:int = 3,
     search:str = "",
@@ -97,11 +95,11 @@ def get_many_ocrs(
             [0, 255, 0], 
             [0, 0, 255]
         ]
-) -> deque[ocr_box_editor]:
+) -> list[ocr_box_editor]:
     # time : O(n) regarding to shape of image.get_img()
     # space: O(n)
     index = 0
-    output_arr = deque()
+    output_arr = []
     for img in image.as_ocr_box_reader().get_many_imgs():
         sub_save_path_img = None
         if save_path_many_imgs != None:
