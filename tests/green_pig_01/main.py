@@ -23,6 +23,8 @@ ocr_data = get_ocr(
     image=img.img,
     lang="eng+tha",
     save_path_img="img/mark.jpg",
+    # Set conf = 50, when the image is not processed properly.
+    conf=50,
     psm=11
 )
 
