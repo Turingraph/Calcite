@@ -27,7 +27,3 @@ ocr_data = get_ocr(
     conf=50,
     psm=11
 )
-
-ocr_data.save_text(path="../save_target/green_pig/text.txt")
-ocr_data.get_osd()
-ocr_data.save_text(path="../save_target/green_pig_osd.txt")
