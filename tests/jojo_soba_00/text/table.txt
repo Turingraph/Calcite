@@ -1,0 +1,13 @@
+, 149.00 
+1 , SOBA ORIGINAL (001) 
+ไม, te u/Cold 
+1 , SOBA ORIGINAL (001) , 199.00 
+ไม, เพิ่มเส้น
+1x , iwu/Cold 
+1 , GENMAI CHA ชาข้าวคัว, 30.00 
+417 , 00 
+3 , GYUDON(BEEF) ข้าวหน้าเนื้อ(016) 
+1 , OYAKODON โอยาโกะตัง(015) , 119.00 
+1 , BEEF SOBA โซบะเนื้อ(008) , 179.00 
+2 , MINERAL WATER น้าแร่, 40.00 
+1 , GREEN TEA ซาเขียวจากสวนเราเอง, 30.00 
