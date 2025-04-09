@@ -37,6 +37,7 @@ def get_ocr(
     conf:int = 0,
     lang:str = "eng",
     psm:int = 3,
+    oem:int = 3,
     search:str = "",
     column:list[int] = [],
     csv_separator: str = ", ",
@@ -56,6 +57,7 @@ def get_ocr(
         conf=conf,
         lang=lang,
         psm=psm,
+        oem=oem,
         search=search,
         column=column,
         csv_separator=csv_separator,
@@ -64,15 +66,15 @@ def get_ocr(
         timeout=timeout
         )
     img.as_ocr_box_reader().color_img(rgb=rgb)
-    # if save_path_img != None:
-    #     img.as_ocr_box_reader().save_img(
-    #         rgb=rgb,
-    #         path=save_path_img,
-    #         absolute=absolute_path_img)
-    # if save_path_ocr != None:
-    #     img.save_text(
-    #         path=save_path_ocr,
-    #         absolute=absolute_path_ocr)
+    if save_path_img != None:
+        img.as_ocr_box_reader().save_img(
+            rgb=rgb,
+            path=save_path_img,
+            absolute=absolute_path_img)
+    if save_path_ocr != None:
+        img.save_text(
+            path=save_path_ocr,
+            absolute=absolute_path_ocr)
     return img
 
 def get_many_ocrs(
@@ -84,6 +86,7 @@ def get_many_ocrs(
     conf:int = 0,
     lang:str = "eng",
     psm:int = 3,
+    oem:int = 3,
     search:str = "",
     column:list[int] = [],
     csv_separator: str = ", ",
@@ -122,6 +125,7 @@ def get_many_ocrs(
             conf=conf,
             lang=lang,
             psm=psm,
+            oem=oem,
             search=search,
             column=column,
             csv_separator=csv_separator,
