@@ -14,24 +14,25 @@ def row_box(all_box:list[tuple[int]], w:int, h:int, is_double:bool = False)->lis
     # space: O(n)
     box = []
     all_box = sort_contours(contour=all_box, method=1)
-    for i in range(len(all_box) + 1):
-        if i == 0:
-            box.append((0, 0, w, all_box[i][1]))
-        elif i == len(all_box):
-            last = all_box[i - 1]
-            if is_double == True:
-                box.append((0, last[1], w, last[3]))
-                box.append((0, last[1] + last[3], w, h - (last[1] + last[3])))
+    if len(all_box) > 0:
+        for i in range(len(all_box) + 1):
+            if i == 0:
+                box.append((0, 0, w, all_box[i][1]))
+            elif i == len(all_box):
+                last = all_box[i - 1]
+                if is_double == True:
+                    box.append((0, last[1], w, last[3]))
+                    box.append((0, last[1] + last[3], w, h - (last[1] + last[3])))
+                else:
+                    box.append((0, last[1], w, h - last[1]))
             else:
-                box.append((0, last[1], w, h - last[1]))
-        else:
-            prev = all_box[i-1]
-            item = all_box[i]
-            if is_double == True:
-                box.append((0, prev[1], w, prev[3]))
-                box.append((0, prev[1] + prev[3], w, item[1] - (prev[1] + prev[3])))
-            else:
-                box.append((0, prev[1], w, item[1] - prev[1]))
+                prev = all_box[i-1]
+                item = all_box[i]
+                if is_double == True:
+                    box.append((0, prev[1], w, prev[3]))
+                    box.append((0, prev[1] + prev[3], w, item[1] - (prev[1] + prev[3])))
+                else:
+                    box.append((0, prev[1], w, item[1] - prev[1]))
     return box
 
 def row_half(all_box:list[tuple[int]], w:int, h:int, index:int = 0, is_double:bool = False, is_sort:bool = True)->list:
