@@ -11,8 +11,6 @@ sys.path.append(parent)
 ###############################################################################################################
 
 import numpy as np
-
-from img_process_class.img_process_gray import img_process_gray
 from ocr_box.ocr_box_editor import ocr_box_editor
 
 path = parent + "/tests/index_00/img/img.jpeg"
