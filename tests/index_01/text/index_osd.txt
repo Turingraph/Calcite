@@ -1,6 +1,6 @@
 Page number: 0
 Orientation in degrees: 0
 Rotate: 0
-Orientation confidence: 8.10
+Orientation confidence: 9.96
 Script: Cyrillic
-Script confidence: 0.56
+Script confidence: 2.74

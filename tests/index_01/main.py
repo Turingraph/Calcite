@@ -13,6 +13,7 @@ sys.path.append(parent)
 import numpy as np
 
 from basic_ocr.basic_ocr import get_many_ocrs, get_table_img, get_threshold_img
+from ocr_box.ocr_box_editor import ocr_box_editor
 
 path = parent + "/tests/index_01/img/img.jpeg"
 img = get_threshold_img(
@@ -25,20 +26,10 @@ img_arr = get_table_img(
     min_w=20,
     min_h=200,
     save_path_dilate="img/dilate.jpg",
-    save_path_many_imgs="img/many.jpg"
+    save_path_many_imgs="img/box_img.jpg"
 )
 ocr_data = get_many_ocrs(
     image=img_arr,
     save_path_many_imgs="img/many_text.jpg",
     save_path_many_ocrs="text/text.txt"
 )
-
-ocr_first = ocr_data[1]
-ocr_first.as_ocr_box_reader().save_img(path="../save_target/index_relative.jpg")
-ocr_first.get_osd()
-ocr_first.save_text(
-    path="/home/pc/Desktop/open_close_rider/tests/index_01/text/index_osd.txt", 
-    absolute=True)
-ocr_first.as_ocr_box_reader().save_img(
-    path="/home/pc/Desktop/open_close_rider/tests/save_target/index_absolute.jpg",
-    absolute=True)
