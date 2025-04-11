@@ -99,22 +99,18 @@ Expected Feature
 1.  `open_close_rider_app`
 -   URL : https://github.com/Turingraph/open_close_rider_app
 -   Purpose : Electron-React based user friendly OCR Desktop app that based on this project.
-2.  `open_close_rider_art`
--   URL : https://github.com/Turingraph/open_close_rider_art.git
--   Purpose : Concept Art design, soundtrack and story for entertainment purpose, UXUI based story telling,
-    and make the OCR related tutorial much more interesting, but this must be balance with OCR practical usefulness.
-3.  `open_close_rider_lib_tutorial`
+2.  `open_close_rider_lib_tutorial`
 -   URL : https://github.com/Turingraph/open_close_rider_lib_tutorial.git
 -   Purpose : Teach user how to use our library in Python.
-4.  `open_close_rider_scp` (scp means Secure Contain Platform)
+3.  `open_close_rider_scp` (scp means Secure Contain Platform)
 -   URL : None (It is not created yet. Might be created in future)
 -   Purpose : Allow users to collect OCR training data to improve Tesseract OCR, both publically and anonymously.
     We add anonymous feature because we want to learn how to create privacy focused data collection app.
-5.  `open_close_rider_ml` (ml means Machine Learning model)
+4.  `open_close_rider_ml` (ml means Machine Learning model)
 -   URL : None (It is not created yet. Might be created in future)
 -   Purpose : For educational purpose, analyzing the AI transparency and/or Tesseract OCR model replacement 
     in some specific usecase.
-6.  `open_close_rider_dsa` (dsa means Data Structure and Algorithm)
+5.  `open_close_rider_dsa` (dsa means Data Structure and Algorithm)
 -   URL : None (It is not created yet. Might be created in future)
 -   Purpose : Collection of educational documentation and simulation about interesting Data structure and
     algorithm that are used in `open_close_rider` or other related repositories directly e.g. LSTM neural networks, Sweep Line Algorithm, FFT, Canny Algorithm, Otsu Algorithm etc. We also use the art from 
