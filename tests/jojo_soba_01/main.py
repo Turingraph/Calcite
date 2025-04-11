@@ -20,26 +20,17 @@ img = get_threshold_img(
     scale=1.35,
     save_path="img/thresh.jpg"
 )
-
+img.thick_font()
 img_box = get_table_img(
     image=img.img,
     min_w=1000,
     max_h=50
 )
-img_box.row_box()
-
-"""
-Even if it takes O(n) time to access i-th item of deque.
-The deque output after row_box() is usually have less 
-than 15 item.
-
-So it is worth using deque over list for faster append.
-"""
-
+img_box.sort_box(method=1)
+img_box.row_box(is_double=True)
+img_box.filter_half()
 img_arr = img_box.as_ocr_box_reader().get_many_imgs()
-
-# for i in img_arr:
-    # img_process_gray(img=i).show_img()
+img_box.as_ocr_box_reader().save_many_imgs(rgb=None, path="row/row.jpg")
 
 get_ocr(
     image=img_arr[2],
@@ -55,22 +46,4 @@ get_ocr(
     save_path_ocr="text/table.txt",
     psm=11,
     column=[1510,691]
-)
-
-ocr_data = get_ocr(
-    image=img_arr[3],
-    lang="eng+tha",
-    save_path_img="../save_target/jojo_matrix.jpg",
-    absolute_path_img=False,
-    save_path_ocr="/home/pc/Desktop/open_close_rider/tests/save_target/jacobian_matrix.txt",
-    absolute_path_ocr=True,
-    psm=11,
-    column=[1510,691]
-)
-
-ocr_data.as_ocr_box_reader().show_img()
-ocr_data.get_osd()
-ocr_data.save_text(
-    path="../save_target/crazy_diamond.txt",
-    absolute=False
 )
