@@ -22,9 +22,9 @@ img_thresh.threshold()
 img = ocr_box_editor(img = img_thresh.img)
 img.get_ocr(
     lang = 'eng+tha',
-    psm=3,
+    psm=4,
 )
-img.as_ocr_box_reader().save_img(path="img/psm03.jpg")
-img.save_text(path = "text/psm03.txt")
+img.as_ocr_box_reader().save_img(path="img/psm04.jpg")
+img.save_text(path = "text/psm04.txt")
 
 ###############################################################################################################

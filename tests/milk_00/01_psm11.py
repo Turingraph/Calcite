@@ -13,12 +13,13 @@ sys.path.append(parent)
 ###############################################################################################################
 
 from ocr_box.ocr_box_editor import ocr_box_editor
+from img_process_class.img_process_gray import img_process_gray
 
-path = "/tests/milk_00/img/"
-name = "thresh"
-format = ".jpg"
+path = "/tests/milk_00/img/img.jpg"
 
-img = ocr_box_editor(img = parent+path+name+format)
+img_thresh = img_process_gray(img = parent+path)
+img_thresh.threshold()
+img = ocr_box_editor(img = img_thresh.img)
 img.get_ocr(
     lang = 'eng+tha',
     psm=11,
