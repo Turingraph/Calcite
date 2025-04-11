@@ -30,7 +30,6 @@ img_box.sort_box(method=1)
 img_box.row_box(is_double=True)
 img_box.filter_half()
 img_arr = img_box.as_ocr_box_reader().get_many_imgs()
-img_box.as_ocr_box_reader().save_many_imgs(rgb=None, path="row/row.jpg")
 
 get_ocr(
     image=img_arr[2],

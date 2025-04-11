@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 from img_process.utility import set_px, get_ksize, gray_img
 from img_process.warning import warn_thresh
-from utility.utility import get_options
+from utility.handle import get_options
 
 class threshold:
     def __init__(

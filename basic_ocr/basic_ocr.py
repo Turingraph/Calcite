@@ -3,7 +3,7 @@ import numpy as np
 from img_process_class.img_process_gray import img_process_gray
 from ocr_box.ocr_box_editor import ocr_box_editor
 from ocr_box.ocr_box_reader import ocr_box_reader
-from utility.utility import get_valid_ith_path
+from utility.save import get_valid_ith_path
 
 
 def get_threshold_img(

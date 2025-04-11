@@ -7,7 +7,7 @@ import numpy as np
 from img_process.contour import sort_contours
 from img_process.utility import check_img, rgb_img
 from img_process_class.img_process_rgb import img_process_rgb
-from utility.utility import get_valid_ith_path
+from utility.save import get_valid_ith_path
 
 class ocr_box_reader:
     def __init__(self, 

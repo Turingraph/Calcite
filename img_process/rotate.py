@@ -2,7 +2,7 @@ from img_process.contour import contour_img
 import numpy as np
 import cv2
 from img_process.warning import warn_sort_general_contours
-from utility.utility import get_options
+from utility.handle import get_options
 
 #-----------------------------------------------------------------------------------------
 

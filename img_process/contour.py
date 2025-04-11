@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 from img_process.utility import get_ksize
 from img_process.warning import warn_sort_contours
-from utility.utility import get_options
+from utility.handle import get_options
 from img_process.threshold import threshold
 from img_process.utility import get_rgb, check_img, set_px
 

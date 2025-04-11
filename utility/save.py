@@ -1,17 +1,6 @@
 import os
 from pathlib import Path
-
-def get_options(input: any, input_options: tuple, message: str) -> any:
-    if input not in input_options:
-        print(message)
-        return input_options[0]
-    else:
-        return input
-
-def index_name(input:int):
-    if input < 10:
-        return "0"+str(input)
-    return str(input)
+from utility.handle import get_options, index_name
 
 def get_valid_path(
     path:str,
@@ -75,15 +64,3 @@ def create_text_dir(path:str):
     create_dir(path = path)
     if os.path.isfile(os.path.join("/", *(path.split("/")))) == False:
         open(file=path, mode="x")
-
-def get_file():
-    # return /home/pc/Desktop/open_close_rider/utility/utility.py
-    return os.path.abspath(__file__ )
-
-def get_cwd():
-    # return local path that import get_cwd() instead.
-    return os.getcwd()
-
-def get_cwd_parent():
-    # https://www.kodeclik.com/get-parent-directory-python/
-    return os.path.abspath(os.path.join(os.getcwd(), os.pardir))

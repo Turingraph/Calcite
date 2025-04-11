@@ -6,7 +6,7 @@ from PIL import Image
 from pathlib import Path
 
 from img_process.warning import warn_save_img
-from utility.utility import create_dir, get_valid_path
+from utility.save import create_dir, get_valid_path
 
 
 def show_img(img: np.ndarray, title: str = "img_out") -> None:

@@ -10,7 +10,7 @@ sys.path.append(parent)
 
 ###############################################################################################################
 
-from utility.utility import get_cwd_parent, get_file, get_cwd
+from utility.debug_one_time import get_cwd_parent, get_file, get_cwd
 
 print(get_file())
 print(get_cwd())

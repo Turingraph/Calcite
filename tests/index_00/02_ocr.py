@@ -12,7 +12,7 @@ sys.path.append(parent)
 
 from ocr_box.ocr_box_editor import ocr_box_editor
 from img_process_class.img_process_gray import img_process_gray
-from utility.utility import index_name
+from utility.handle import index_name
 import numpy as np
 
 path = parent + "/tests/index_00/img/img.jpeg"

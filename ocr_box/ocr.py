@@ -6,7 +6,8 @@ import pytesseract
 from pytesseract import Output
 
 from ocr_box.warning import warn_get_psm, warn_get_oem, warn_get_osd
-from utility.utility import create_text_dir, get_options, get_valid_path
+from utility.save import create_text_dir, get_valid_path
+from utility.handle import get_options
 
 #-----------------------------------------------------------------------------------------
 # PURPOSE : GET VALID OCR CONFIGURATION INPUT
