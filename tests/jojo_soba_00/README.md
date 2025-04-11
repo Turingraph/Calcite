@@ -22,6 +22,7 @@
 10. `03_dilate.py`
 11. `04_row_double.py`
 12. `05_ocr.py`
+-   Note that : `get_ocr(lang="eng+tha")` produce differ output from `get_ocr(lang="tha+eng")` because it bias toward creating English over Thai output and vice versa
 
 # Additional Learning Resource
 

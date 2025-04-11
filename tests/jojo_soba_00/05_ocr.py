@@ -16,9 +16,9 @@ from ocr_box.ocr_box_editor import ocr_box_editor
 
 path = parent + "/tests/jojo_soba_00/img/img.jpeg"
 img_thresh = img_process_gray(img = path)
-img_thresh.zoom(scale=-1.35)
+img_thresh.zoom(scale=1.35)
 img_thresh.threshold()
-img_thresh.thin_font()
+img_thresh.thick_font()
 img = ocr_box_editor(img = img_thresh.img) 
 img.update_bbox(kernel=np.ones((13, 23)))   # 89
 # img.as_ocr_box_reader().show_img()
@@ -32,11 +32,13 @@ img_arr = img.as_ocr_box_reader().get_many_imgs() # 7
 # ###############################################################################################################
 
 date = ocr_box_editor(img=img_arr[2])
-date.get_ocr(lang="tha+eng", psm=3)
+# "eng+tha" produce differ output of "tha+eng" because 
+# Tesseract bias toward English over Thai output and vice versa.
+date.get_ocr(lang="eng+tha", psm=3)
 date.save_text(path="text/date.txt")
 
 # ###############################################################################################################
 
 table = ocr_box_editor(img=img_arr[3])
-table.get_ocr(lang="tha+eng", column=[1510,691], psm=11)
+table.get_ocr(lang="eng+tha", column=[1510,691], psm=11)
 table.save_text(path="text/table.txt")
