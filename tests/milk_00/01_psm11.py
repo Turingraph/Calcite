@@ -24,9 +24,6 @@ img.get_ocr(
     psm=11,
 )
 img.as_ocr_box_reader().save_img(path="img/psm11.jpg")
-img.as_ocr_box_reader().save_img(
-    path="/home/pc/Desktop/open_close_rider/tests/save_target/vegan/spoil_milk.jpg",
-    absolute=True)
 img.save_text(path = "text/psm11.txt")
 
 ###############################################################################################################
