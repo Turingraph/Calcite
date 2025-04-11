@@ -81,6 +81,8 @@ out = pytesseract.image_to_string(
 print(out)
 ```
 
+Note that, `pytesseract.image_to_data(lang="eng+tha")` produce differ output from `pytesseract.image_to_data(lang="tha+eng")` because it bias toward creating English over Thai output and vice versa. This Language bias is also same with `pytesseract.image_to_string` too.
+
 # Limitation of Tesseract OCR.
 
 1. Tesseract might create wrong or empty output if user use wrong PSM mode for the given circumstance.
