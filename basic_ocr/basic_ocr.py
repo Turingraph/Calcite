@@ -34,6 +34,7 @@ def get_ocr(
     save_path_img:str|None = None,
     absolute_path_ocr:bool = False,
     absolute_path_img:bool = False,
+    config: str = "-c preserve_interword_spaces=0",
     conf:int = 0,
     lang:str = "eng",
     psm:int = 3,
@@ -58,6 +59,7 @@ def get_ocr(
         lang=lang,
         psm=psm,
         oem=oem,
+        config=config,
         search=search,
         column=column,
         csv_separator=csv_separator,
@@ -159,7 +161,7 @@ def get_table_img(
             [0, 0, 255]
         ]
     ) -> ocr_box_editor:
-    # time : O(n)
+    # time : O(n) + O(n log(n))
     # space: O(n)
     img = ocr_box_editor(img = image)
     dilate_img = img.update_bbox(kernel=kernel)
