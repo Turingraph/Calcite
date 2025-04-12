@@ -11,3 +11,7 @@ def get_cwd():
 def get_file():
     # return /home/pc/Desktop/open_close_rider/utility/utility.py
     return os.path.abspath(__file__ )
+
+def type_open_img(img:str):
+    # <class '_io.BufferedReader'>
+    print(type(open(img, "rb")))
