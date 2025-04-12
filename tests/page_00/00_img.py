@@ -15,7 +15,7 @@ from img_process_class.img_process_gray import img_process_gray
 path = parent + "/tests/page_00/img/img.jpg"
 
 img = img_process_gray(img=path)
-img.zoom(scale=-1.23)
+img.zoom(scale=1.23)
 img.rotate()
 img.threshold()
 img.save_img(path="img/thresh.jpg")

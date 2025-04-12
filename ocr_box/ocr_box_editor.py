@@ -319,6 +319,12 @@ class ocr_box_editor:
         # print("first_row    ",first_row    )
         # print("last_row     ",last_row     )
 
+        # print("--------------------------------------------------")
+        # print("len(output[0])",len(output[0]))
+        # print("++++++++++++++++++++++++++++++++++++++++++++++++++")
+        # print(output[1])
+        # print("--------------------------------------------------")
+
         # self.__output = pytesseract.image_to_string(
             # image=self.__img,
             # lang=lang,

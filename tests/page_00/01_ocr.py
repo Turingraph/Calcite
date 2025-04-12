@@ -10,21 +10,23 @@ sys.path.append(parent)
 
 ###############################################################################################################
 
+from basic_ocr.basic_ocr import get_ocr, get_threshold_img
+from img_process_class.img_process_gray import img_process_gray
 from ocr_box.ocr_box_editor import ocr_box_editor
+from utility.debug import are_2_imgs_same
 
-path = "/tests/page_00/img/"
-names = [
-    "thick",    # len(img.get_box()) = 267
-    "thresh"    # len(img.get_box()) = 267
-]
+path = parent + "/tests/page_00/img/img.jpg"
+img_thresh = img_process_gray(img = path)
+img_thresh.zoom(scale=1.23)
+img_thresh.rotate()
+img_thresh.threshold()
+img_thresh.save_img(path="img/thresh.jpg")
 
-for name in names:
-    img = ocr_box_editor(img = (parent + path + name + ".jpg"))
-    img.get_ocr(conf=50)
-    img.as_ocr_box_reader().save_img(path="img_text/"+name+".jpg")
-    print(len(img.get_box()))
-    img.save_text(path="text/"+name+".txt")
-
+img_thresh.save_img(path="img/thresh.jpg")
+img = ocr_box_editor(img = img_thresh.img)
+img.get_ocr()
+img.as_ocr_box_reader().save_img(path="img/mark.jpg")
+img.save_text(path="text/text.txt")
 print(img.get_osd())
 
 """

@@ -20,6 +20,7 @@ img = get_threshold_img(
 )
 get_ocr(
     image=img.img,
+    # conf=50,
     save_path_img="img/mark.jpg",
     save_path_ocr="text/text.txt"
 )
