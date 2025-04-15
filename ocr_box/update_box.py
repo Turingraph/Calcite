@@ -95,10 +95,10 @@ def select_box(
     box = []
     for i in all_box:
         if (
-            (i[0] > min_x and i[0] < max_x) and 
-            (i[1] > min_y and i[1] < max_y) and 
-            (i[2] > min_w and i[2] < max_w) and 
-            (i[3] > min_h and i[3] < max_h)
+            (i[0] >= min_x and i[0] <= max_x) and 
+            (i[1] >= min_y and i[1] <= max_y) and 
+            (i[2] >= min_w and i[2] <= max_w) and 
+            (i[3] >= min_h and i[3] <= max_h)
             ):
             box.append(i)
     return box 
