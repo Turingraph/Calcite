@@ -165,7 +165,7 @@ class ocr_box_editor:
 
     def update_bbox(self,
             thresh_px: int = 0,
-            kernel: np.ndarray = np.ones(shape=(2, 30)),
+            kernel: np.ndarray = np.ones(shape=(13, 23)),
             ksize: int = 9,
             show_result:tuple[int]|int|None|bool = None
         ) -> img_process_rgb:
