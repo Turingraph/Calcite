@@ -11,12 +11,20 @@ sys.path.append(parent)
 ###############################################################################################################
 
 from ocr_box.ocr_box_editor import ocr_box_editor
+from img_process_class.img_process_gray import img_process_gray
 
-path = "/tests/white_pig_00/img/"
-name = "thresh"
+path = parent + "/tests/white_pig_00/img/img.jpg"
 
-img = ocr_box_editor(img = (parent + path + name + ".jpg"))
-img.get_ocr(conf=50, lang="eng+tha")
+img_thresh = img_process_gray(img=path)
+img_thresh.zoom(scale=1)
+img_thresh.rotate()
+img_thresh.threshold()
+img_thresh.save_img(path="img/thresh.jpg")
+
+###############################################################################################################
+
+img = ocr_box_editor(img = img_thresh.img)
+img.get_ocr(lang="eng+tha")
 img.as_ocr_box_reader().save_img(path= "img/mark.jpg")
 print(len(img.get_box())) 
 # 380
