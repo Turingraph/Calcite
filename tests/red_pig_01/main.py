@@ -20,6 +20,7 @@ img = get_threshold_img(
 )
 
 get_ocr(
+    conf=50,
     image=img.img,
     lang="eng+tha",
     save_path_img="img/mark.jpg"
