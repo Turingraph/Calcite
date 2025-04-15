@@ -11,9 +11,10 @@ sys.path.append(parent)
 
 from utility.debug import are_2_imgs_same
 
-img_00 = parent + "/tests/page_00/img/mark.jpg"
-img_01 = parent + "/tests/page_01/img/mark.jpg"
-if are_2_imgs_same(img_00=img_00, img_01=img_01):
-    print("Identity")
-else:
-    print("Inverse")
+for n in ["img", "mark", "middle", "thresh"]:
+    img_00 = parent + "/tests/powder_00/img/" + n + ".jpg"
+    img_01 = parent + "/tests/powder_01/img/" + n + ".jpg"
+    if are_2_imgs_same(img_00=img_00, img_01=img_01):
+        print("Identity")
+    else:
+        print("Inverse")
