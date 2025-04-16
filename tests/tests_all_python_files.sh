@@ -15,9 +15,4 @@
 # https://askubuntu.com/questions/785094/
 # find-all-python-files-in-linux-file-system
 
-# The purpose of this command is to run all Python files in tests/ subfolder to check if code works as expected.
-
-# cd ?
-# bash ../python3_tests_subfolder.sh
-
 for f in $(find $PWD -name '*.py' | xargs -n1 | sort | xargs ); do python3 "$f"; done
