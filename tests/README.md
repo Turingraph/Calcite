@@ -6,6 +6,8 @@ and `basic_ocr/` works as expected with various image inputs.
 -   Purpose : checking if we import file correctly and `bash ../tests_all_python_files.sh` works as expected.
 3.  `save/`
 -   Purpose : checking if our coding file save the image and text output as expected.
+4.  `usused_images/`
+-   Contains: unused image that will be used in the future to check and evaluating how well our code process OCR output.
 4.  `compared_imgs.py`
 -   Purpose : checking if pair of images a same image.
 5.  `main.sh`
