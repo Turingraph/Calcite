@@ -17,7 +17,7 @@ from basic_ocr.basic_ocr import get_ocr, get_table_img, get_threshold_img
 
 path = parent + "/tests/save/src/index_01/img.jpeg"
 path_rel = "../../"
-path_abs = parent + "/save/"
+path_abs = parent + "/tests/save/"
 path_target = "output/index_01/"
 
 ###############################################################################################################

@@ -18,7 +18,7 @@ import numpy as np
 
 path = parent + "/tests/save/src/index_00/img.jpeg"
 path_rel = "../../"
-path_abs = parent + "/save/"
+path_abs = parent + "/tests/save/"
 path_target = "output/index_00/"
 
 ###############################################################################################################

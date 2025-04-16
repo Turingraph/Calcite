@@ -18,7 +18,7 @@ from ocr_box.ocr_box_editor import ocr_box_editor
 
 path = parent + "/tests/save/src/jojo_soba_00/img.jpeg"
 path_rel = "../../"
-path_abs = parent + "/save/"
+path_abs = parent + "/tests/save/"
 path_target = "output/jojo_soba_00/"
 
 ###############################################################################################################
