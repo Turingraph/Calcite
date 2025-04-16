@@ -33,3 +33,8 @@ for item in img.as_ocr_box_reader().get_many_imgs():
     i += 1
 
 ###############################################################################################################
+
+item = img.as_ocr_box_reader().get_many_imgs()[0]
+img_item = ocr_box_editor(img=item)
+img_item.get_ocr(lang="eng")
+img_item.save_text(path = "text/text.txt")

@@ -27,5 +27,6 @@ img.get_ocr(
 )
 img.as_ocr_box_reader().save_img(path="img/psm11.jpg")
 img.save_text(path = "text/psm11.txt")
+img.save_text(path = "text/text.txt")
 
 ###############################################################################################################

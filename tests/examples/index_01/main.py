@@ -13,7 +13,7 @@ sys.path.append(parent)
 
 import numpy as np
 
-from basic_ocr.basic_ocr import get_many_ocrs, get_table_img, get_threshold_img
+from basic_ocr.basic_ocr import get_many_ocrs, get_ocr, get_table_img, get_threshold_img
 
 path = parent + "/tests/examples/index_01/img/img.jpeg"
 img = get_threshold_img(
@@ -32,4 +32,9 @@ ocr_data = get_many_ocrs(
     image=img_arr,
     save_path_many_imgs="img/many_text.jpg",
     save_path_many_ocrs="text/text.txt"
+)
+ocr_data = get_ocr(
+    image=img_arr.as_ocr_box_reader().get_many_imgs()[0],
+    save_path_img=None,
+    save_path_ocr="text/text.txt"
 )

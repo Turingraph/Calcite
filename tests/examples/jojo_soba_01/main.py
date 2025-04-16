@@ -46,3 +46,12 @@ get_ocr(
     psm=11,
     column=[1510,691]
 )
+
+get_ocr(
+    image=img_arr[3],
+    lang="eng+tha",
+    save_path_img=None,
+    save_path_ocr="text/text.txt",
+    psm=11,
+    column=[1510,691]
+)
