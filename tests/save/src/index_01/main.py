@@ -46,8 +46,8 @@ ocr_data = get_ocr(
 
 ocr_data = get_ocr(
     image=item,
-    save_path_img=path_abs+path_target+"img_rel.jpg",
-    save_path_ocr=path_abs+path_target+"text_rel.txt",
+    save_path_img=path_abs+path_target+"img_abs.jpg",
+    save_path_ocr=path_abs+path_target+"text_abs.txt",
     absolute_path_img=True,
     absolute_path_ocr=True
 )
