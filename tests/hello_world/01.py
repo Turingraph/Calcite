@@ -15,6 +15,11 @@ sys.path.append(parent)
 
 from img_process_class.hello_world import *
 
+print("-----------------------------------------------------------")
+
+print("01.py")
 hello_world()
 print()
 print_path()
+
+print("-----------------------------------------------------------")
