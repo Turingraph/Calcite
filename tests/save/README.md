@@ -10,7 +10,7 @@ This folder have 2 subfolders.
 5.  `delete_output.sh`
 -   Purpose : Delete `output/`
 6.  `main.sh`
--   Purpose : running all Python and Bash files in this directory. 
+-   Purpose : running all Python and Bash files in this directory to check if every files in current directory works as expected. 
 7.  `tests_src.sh`
 -   Purpose : Check if all Python files inside `src/` works as expected.
 

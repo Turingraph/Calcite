@@ -23,6 +23,7 @@ i = 0
 while i < len(all_folders):
     folder_pair.append(all_folders[i][:-3])
     i += 2
+print("-----------------------------------------------------------")
 
 text_file = "text/text.txt"
 print("len(folder_pair)",len(folder_pair))
@@ -35,3 +36,4 @@ for name in folder_pair:
     else:
         print(i,"Incorrect\t"+name)
     i += 1
+print("-----------------------------------------------------------")

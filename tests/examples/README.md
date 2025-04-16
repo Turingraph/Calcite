@@ -7,7 +7,7 @@ This folder has 2 bash scripts
 2.  `delete_text_output.sh`
 -   Purpose : Delete all `text/` (which contains OCR output files) recursively for testing.
 3.  `main.sh`
--   Purpose : running all Python and Bash files in this directory. 
+-   Purpose : running all Python and Bash files in this directory to check if every files in current directory works as expected. 
 4.  `tests_all_examples.sh`
 -   Purpose : running all Python files in this directory. 
 

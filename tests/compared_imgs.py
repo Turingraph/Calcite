@@ -10,6 +10,7 @@ sys.path.append(parent)
 ###############################################################################################################
 
 from utility.debug import are_2_imgs_same
+print("-----------------------------------------------------------")
 
 for n in ["img", "thresh"]:
     img_00 = parent + "/tests/white_pig_00/img/" + n + ".jpg"
@@ -18,3 +19,4 @@ for n in ["img", "thresh"]:
         print("Identity")
     else:
         print("Inverse")
+print("-----------------------------------------------------------")

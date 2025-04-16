@@ -24,6 +24,7 @@ text_abs = "text_abs.txt"
 text_rel = "text_rel.txt"
 
 with chdir(parent):
+    print("-----------------------------------------------------------")
     all_folders = [name for name in os.listdir(".") if os.path.isdir(name)]
     all_folders = sorted(all_folders)
     folder_pair = []
@@ -42,3 +43,4 @@ with chdir(parent):
         else:
             print(i,"Incorrect\t"+name)
         i += 1
+    print("-----------------------------------------------------------")
