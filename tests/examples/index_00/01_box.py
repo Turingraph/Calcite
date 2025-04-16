@@ -6,6 +6,7 @@ import sys
 current = os.path.dirname(os.path.realpath(__file__))
 parent = os.path.dirname(current)
 parent = os.path.dirname(parent)
+parent = os.path.dirname(parent)
 sys.path.append(parent)
 
 ###############################################################################################################
@@ -13,7 +14,7 @@ sys.path.append(parent)
 import numpy as np
 from ocr_box.ocr_box_editor import ocr_box_editor
 
-path = parent + "/examples/index_00/img/img.jpeg"
+path = parent + "/tests/examples/index_00/img/img.jpeg"
 img = ocr_box_editor(img = path)
 dilate_img = img.update_bbox(kernel=np.ones((13, 3)))
 img.select_box(min_w=20,min_h=200)

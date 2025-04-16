@@ -6,13 +6,14 @@ import sys
 current = os.path.dirname(os.path.realpath(__file__))
 parent = os.path.dirname(current)
 parent = os.path.dirname(parent)
+parent = os.path.dirname(parent)
 sys.path.append(parent)
 
 ###############################################################################################################
 
 from ocr_box.ocr_box_editor import ocr_box_editor
 
-path = "/examples/powder_00/img/"
+path = "/tests/examples/powder_00/img/"
 name = "thresh"
 format = ".jpg"
 

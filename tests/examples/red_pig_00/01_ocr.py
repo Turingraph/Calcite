@@ -6,6 +6,7 @@ import sys
 current = os.path.dirname(os.path.realpath(__file__))
 parent = os.path.dirname(current)
 parent = os.path.dirname(parent)
+parent = os.path.dirname(parent)
 sys.path.append(parent)
 
 ###############################################################################################################
@@ -13,7 +14,7 @@ sys.path.append(parent)
 from ocr_box.ocr_box_editor import ocr_box_editor
 from img_process_class.img_process_gray import img_process_gray
 
-path = parent + "/examples/red_pig_00/img/img.jpg"
+path = parent + "/tests/examples/red_pig_00/img/img.jpg"
 
 img = img_process_gray(img=path)
 img.zoom(scale=1)

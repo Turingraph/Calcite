@@ -6,6 +6,7 @@ import sys
 current = os.path.dirname(os.path.realpath(__file__))
 parent = os.path.dirname(current)
 parent = os.path.dirname(parent)
+parent = os.path.dirname(parent)
 sys.path.append(parent)
 
 ###############################################################################################################
@@ -14,7 +15,7 @@ import numpy as np
 
 from ocr_box.ocr_box_editor import ocr_box_editor
 
-path = parent + "/examples/jojo_soba_00/img/thinn.jpg"
+path = parent + "/tests/examples/jojo_soba_00/img/thinn.jpg"
 img = ocr_box_editor(img = path) 
 img.update_bbox(kernel=np.ones((13, 23)))
 

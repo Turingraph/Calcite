@@ -6,6 +6,7 @@ import sys
 current = os.path.dirname(os.path.realpath(__file__))
 parent = os.path.dirname(current)
 parent = os.path.dirname(parent)
+parent = os.path.dirname(parent)
 sys.path.append(parent)
 
 ###############################################################################################################
@@ -15,7 +16,7 @@ from img_process_class.img_process_gray import img_process_gray
 from utility.handle import index_name
 import numpy as np
 
-path = parent + "/examples/index_00/img/img.jpeg"
+path = parent + "/tests/examples/index_00/img/img.jpeg"
 # It is recommended to use .threshold() before use .get_ocr() in most case.
 img_thresh = img_process_gray(img = path)
 img_thresh.threshold()
