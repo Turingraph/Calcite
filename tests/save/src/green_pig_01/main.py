@@ -11,13 +11,12 @@ sys.path.append(parent)
 
 ###############################################################################################################
 
-import numpy as np
-from basic_ocr.basic_ocr import get_ocr, get_table_img, get_threshold_img
+from basic_ocr.basic_ocr import get_ocr, get_threshold_img
 
-path = parent + "/tests/save_src/index_01/img.jpeg"
+path = parent + "/save/src/green_pig_01/img.jpg"
 path_rel = "../../"
-path_abs = parent + "/tests/"
-path_target = "save_output/index_01/"
+path_abs = parent + "/save/"
+path_target = "output/green_pig_01/"
 
 ###############################################################################################################
 
@@ -26,27 +25,24 @@ img = get_threshold_img(
     save_path=None
 )
 
-img_arr = get_table_img(
+ocr_data = get_ocr(
     image=img.img,
-    kernel=np.ones((13, 3)),
-    min_w=20,
-    min_h=200,
-    save_path_dilate=None,
-    save_path_many_imgs=None
-)
-
-item = img_arr.as_ocr_box_reader().get_many_imgs()[0]
-
-ocr_data = get_ocr(
-    image=item,
+    lang="eng+tha",
     save_path_img=path_rel+path_target+"img_rel.jpg",
-    save_path_ocr=path_rel+path_target+"text_rel.txt"
+    save_path_ocr=path_rel+path_target+"text_rel.txt",
+    # Set conf = 50, when the image is not processed properly.
+    conf=50,
+    psm=11
 )
 
 ocr_data = get_ocr(
-    image=item,
-    save_path_img=path_abs+path_target+"img_rel.jpg",
-    save_path_ocr=path_abs+path_target+"text_rel.txt",
+    image=img.img,
+    lang="eng+tha",
+    save_path_img=path_abs+path_target+"img_abs.jpg",
+    save_path_ocr=path_abs+path_target+"text_abs.txt",
     absolute_path_img=True,
-    absolute_path_ocr=True
+    absolute_path_ocr=True,
+    # Set conf = 50, when the image is not processed properly.
+    conf=50,
+    psm=11
 )

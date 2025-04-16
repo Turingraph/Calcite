@@ -15,10 +15,10 @@ import numpy as np
 from img_process_class.img_process_gray import img_process_gray
 from ocr_box.ocr_box_editor import ocr_box_editor
 
-path = parent + "/tests/save_src/jojo_soba_00/img.jpeg"
+path = parent + "/save/src/jojo_soba_00/img.jpeg"
 path_rel = "../../"
-path_abs = parent + "/tests/"
-path_target = "save_output/jojo_soba_00/"
+path_abs = parent + "/save/"
+path_target = "output/jojo_soba_00/"
 
 ###############################################################################################################
 

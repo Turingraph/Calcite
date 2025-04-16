@@ -14,10 +14,10 @@ sys.path.append(parent)
 from img_process_class.img_process_gray import img_process_gray
 from ocr_box.ocr_box_editor import ocr_box_editor
 
-path = parent + "/tests/save_src/green_pig_00/img.jpg"
+path = parent + "/save/src/green_pig_00/img.jpg"
 path_rel = "../../"
-path_abs = parent +"/tests/"
-path_target = "save_output/green_pig_00/"
+path_abs = parent +"/save/"
+path_target = "output/green_pig_00/"
 
 ###############################################################################################################
 
