@@ -9,7 +9,9 @@ This folder have 2 subfolders.
 -   Purpose : Check if the same code from `examples/` and `save/src/` produce the same output as expected.
 5.  `delete_output.sh`
 -   Purpose : Delete `output/`
-6.  `tests_src.sh`
+6.  `main.sh`
+-   Purpose : running all Python and Bash files in this directory. 
+7.  `tests_src.sh`
 -   Purpose : Check if all Python files inside `src/` works as expected.
 
 Warning : Don't use `bash ../python3_tests_subfolder.sh` because the Python files will produce output in wrong folders.
