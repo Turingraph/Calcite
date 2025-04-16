@@ -13,7 +13,7 @@ sys.path.append(parent)
 from ocr_box.ocr_box_editor import ocr_box_editor
 from img_process_class.img_process_gray import img_process_gray
 
-path = parent + "/tests/white_pig_00/img/img.jpg"
+path = parent + "/examples/white_pig_00/img/img.jpg"
 
 img_thresh = img_process_gray(img=path)
 img_thresh.zoom(scale=1)
