@@ -9,8 +9,13 @@ This folder contains
 1.  `hello_world/`
 -   Purpose : checking if we import file correctly.
 2.  `check_run_all/` 
--   Purpose : checking if `run_all.sh` works as expected.
-3.  `compared_img.py`
+-   Purpose : checking if `python3_tests_subfolder.sh` works as expected.
+3.  `compared_imgs.py`
 -   Purpose : checking if pair of images a same image.
-4.  `run_all.sh`
--   Purpose : run all Python files in alphabet order in the current directory.
+4.  `python3_tests_subfolder.sh`
+-   Purpose : run all Python files in alphabet order in the sub directory of `tests/` folder.
+-   Note : use `cd <selected_folder>` then `bash ../python3_tests_subfolder.sh`
+5.  `python3_tests.sh`
+-   Purpose : run all Python files in alphabet order in the `tests/` folder.
+6.  `trash_py_to_txt.sh`
+-   Purpose : convert all Python files as Txt file in `trash` folder recursively.
