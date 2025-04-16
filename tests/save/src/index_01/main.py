@@ -7,6 +7,7 @@ current = os.path.dirname(os.path.realpath(__file__))
 parent = os.path.dirname(current)
 parent = os.path.dirname(parent)
 parent = os.path.dirname(parent)
+parent = os.path.dirname(parent)
 sys.path.append(parent)
 
 ###############################################################################################################
@@ -14,7 +15,7 @@ sys.path.append(parent)
 import numpy as np
 from basic_ocr.basic_ocr import get_ocr, get_table_img, get_threshold_img
 
-path = parent + "/save/src/index_01/img.jpeg"
+path = parent + "/tests/save/src/index_01/img.jpeg"
 path_rel = "../../"
 path_abs = parent + "/save/"
 path_target = "output/index_01/"

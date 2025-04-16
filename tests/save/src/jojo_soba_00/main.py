@@ -7,6 +7,7 @@ current = os.path.dirname(os.path.realpath(__file__))
 parent = os.path.dirname(current)
 parent = os.path.dirname(parent)
 parent = os.path.dirname(parent)
+parent = os.path.dirname(parent)
 sys.path.append(parent)
 
 ###############################################################################################################
@@ -15,7 +16,7 @@ import numpy as np
 from img_process_class.img_process_gray import img_process_gray
 from ocr_box.ocr_box_editor import ocr_box_editor
 
-path = parent + "/save/src/jojo_soba_00/img.jpeg"
+path = parent + "/tests/save/src/jojo_soba_00/img.jpeg"
 path_rel = "../../"
 path_abs = parent + "/save/"
 path_target = "output/jojo_soba_00/"

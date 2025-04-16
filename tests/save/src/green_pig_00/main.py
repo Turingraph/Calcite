@@ -7,6 +7,7 @@ current = os.path.dirname(os.path.realpath(__file__))
 parent = os.path.dirname(current)
 parent = os.path.dirname(parent)
 parent = os.path.dirname(parent)
+parent = os.path.dirname(parent)
 sys.path.append(parent)
 
 ###############################################################################################################
@@ -14,7 +15,7 @@ sys.path.append(parent)
 from img_process_class.img_process_gray import img_process_gray
 from ocr_box.ocr_box_editor import ocr_box_editor
 
-path = parent + "/save/src/green_pig_00/img.jpg"
+path = parent + "/tests/save/src/green_pig_00/img.jpg"
 path_rel = "../../"
 path_abs = parent +"/save/"
 path_target = "output/green_pig_00/"
