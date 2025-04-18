@@ -16,7 +16,7 @@ from ocr_box.ocr_box_editor import ocr_box_editor
 from img_process_class.img_process_gray import img_process_gray
 import numpy as np
 
-path = parent + "/tests/save/src/index_00/img.jpeg"
+path = "../../img/index_00.jpeg"
 path_rel = "../../"
 path_abs = parent + "/tests/save/"
 path_target = "output/index_00/"
@@ -24,7 +24,9 @@ path_target = "output/index_00/"
 ###############################################################################################################
 
 # It is recommended to use .threshold() before use .get_ocr() in most case.
-img_thresh = img_process_gray(img = path)
+img_thresh = img_process_gray(
+    img = path,
+    abs_path=False)
 img_thresh.threshold()
 img = ocr_box_editor(img = img_thresh.img)
 img.update_bbox(kernel=np.ones((13, 3)))

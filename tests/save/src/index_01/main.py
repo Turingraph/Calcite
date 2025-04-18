@@ -13,9 +13,10 @@ sys.path.append(parent)
 ###############################################################################################################
 
 import numpy as np
+
 from basic_ocr.basic_ocr import get_ocr, get_table_img, get_threshold_img
 
-path = parent + "/tests/save/src/index_01/img.jpeg"
+path = "img/img/img.jpeg"
 path_rel = "../../"
 path_abs = parent + "/tests/save/"
 path_target = "output/index_01/"
@@ -24,7 +25,8 @@ path_target = "output/index_01/"
 
 img = get_threshold_img(
     image=path,
-    save_path=None
+    save_path=None,
+    abs_path_input=False
 )
 
 img_arr = get_table_img(
@@ -48,6 +50,6 @@ ocr_data = get_ocr(
     image=item,
     save_path_img=path_abs+path_target+"img_abs.jpg",
     save_path_ocr=path_abs+path_target+"text_abs.txt",
-    absolute_path_img=True,
-    absolute_path_ocr=True
+    abs_path_output_img=True,
+    abs_path_output_ocr=True
 )

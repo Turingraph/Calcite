@@ -14,7 +14,7 @@ sys.path.append(parent)
 
 from basic_ocr.basic_ocr import get_ocr, get_table_img, get_threshold_img
 
-path = parent + "/tests/save/src/jojo_soba_01/img.jpeg"
+path = "../../jojo_soba_01/jojo_soba_01.jpeg"
 path_rel = "../../"
 path_abs = parent + "/tests/save/"
 path_target = "output/jojo_soba_01/"
@@ -24,7 +24,8 @@ path_target = "output/jojo_soba_01/"
 img = get_threshold_img(
     image=path,
     scale=1.35,
-    save_path=None
+    save_path=None,
+    abs_path_input=False
 )
 img.thick_font()
 img_box = get_table_img(
@@ -51,8 +52,8 @@ get_ocr(
     lang="eng+tha",
     save_path_img=path_abs+path_target+ "img_abs.jpg",
     save_path_ocr=path_abs+path_target+"text_abs.txt",
-    absolute_path_img=True,
-    absolute_path_ocr=True,
+    abs_path_output_img=True,
+    abs_path_output_ocr=True,
     psm=11,
     column=[1510,691]
 )

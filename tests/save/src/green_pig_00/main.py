@@ -15,7 +15,7 @@ sys.path.append(parent)
 from img_process_class.img_process_gray import img_process_gray
 from ocr_box.ocr_box_editor import ocr_box_editor
 
-path = parent + "/tests/save/src/green_pig_00/img.jpg"
+path = "img.jpg"
 path_rel = "../../"
 path_abs = parent + "/tests/save/"
 path_target = "output/green_pig_00/"
@@ -29,19 +29,22 @@ img.threshold()
 
 # It is not recommended to save jpeg and compute the OCR result, because jpeg file is compressed which make the
 # OCR result less reliable.
-img = ocr_box_editor(img = img.img)
+img = ocr_box_editor(
+    img = img.img,
+    abs_path=False
+)
 img.get_ocr(conf=50, lang="eng+tha", psm=11)
 img.as_ocr_box_reader().save_img(
     path= path_rel + path_target + "img_rel.jpg"
 )
 img.as_ocr_box_reader().save_img(
     path= path_abs + path_target + "img_abs.jpg",
-    absolute=True
+    abs_path=True
 )
 img.save_text(
     path= path_rel + path_target + "text_rel.txt"
 )
 img.save_text(
     path= path_abs + path_target + "text_abs.txt",
-    absolute=True
+    abs_path=True
 )

@@ -23,7 +23,9 @@ path_target = "output/jojo_soba_00/"
 
 ###############################################################################################################
 
-img_thresh = img_process_gray(img = path)
+img_thresh = img_process_gray(
+    img = path,
+    abs_path=True)
 img_thresh.zoom(scale=1.35)
 img_thresh.threshold()
 img_thresh.thick_font()
