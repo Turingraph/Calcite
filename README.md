@@ -11,6 +11,7 @@ This project can be used for
 3.  Get multiple images based on the group of multiple texts in one image and user customized text 
     format.
 4.  Allow user to get text and image output from the original image input in both absolute and relative path.
+5.  Get image input from both relative or absolute path based on user input.
 
 # How to use `open_close_rider/` ? (Quick Tutorial)
 
@@ -26,7 +27,6 @@ This project is in MVP (Minimal Variable Product) development process and not re
 
 The order from most to least important features. We might release the first version before finish all of this features based on user demand.
 
-1.  Get image input from both relative or absolute path based on user input.
 2.  Thai Open source Spelling checking AI model
 3.  English Open source Spelling checking AI model
 4.  Deal with blur and dark image include `white_pig_00/` and `green_pig_00/`

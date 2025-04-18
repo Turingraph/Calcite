@@ -24,7 +24,7 @@ img = ocr_box_editor(img = img_thresh.img)
 img.update_bbox(kernel=np.ones((13, 3)))
 img.select_box(min_w=20,min_h=200)
 img.sort_box(method=0)
-img.as_ocr_box_reader().show_img()
+# img.as_ocr_box_reader().show_img()
 i = 0
 for item in img.as_ocr_box_reader().get_many_imgs():
     img_item = ocr_box_editor(img=item)

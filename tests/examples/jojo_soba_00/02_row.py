@@ -21,8 +21,8 @@ img.update_bbox(kernel=np.ones((13, 23)))
 img.select_box(min_w=1000,max_h=50)
 img.sort_box(1)
 img.row_box()
-e=0
-for i in img.as_ocr_box_reader().get_many_imgs():
-    img_process_gray(img=i).show_img(title=str(e))
-    e+=1
+# e=0
+# for i in img.as_ocr_box_reader().get_many_imgs():
+    # img_process_gray(img=i).show_img(title=str(e))
+    # e+=1
 img.as_ocr_box_reader().save_many_imgs(rgb=None,path="img_02_row/row.jpg")

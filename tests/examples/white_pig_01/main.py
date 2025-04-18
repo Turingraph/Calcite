@@ -26,5 +26,3 @@ get_ocr(
     # save_path_img = "img/mark.jpg",
     lang="eng+tha",
 )
-
-print("CONGRATULATIONS ! CODING FILES WORKS AS EXPECTED !")

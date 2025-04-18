@@ -33,7 +33,7 @@ img_box.add_width(area=75, index=0)
 img_box.add_x(area=-10, index=0)
 img_box.col_half(index=0, is_double=True)
 img_middle = img_box.as_ocr_box_reader().get_many_imgs()[1]
-img_box.as_ocr_box_reader().show_img()
+# img_box.as_ocr_box_reader().show_img()
 img_box.as_ocr_box_reader().save_ith_img(rgb=None, index = 1, path = "img/middle.jpg")
 
 ###############################################################################################################

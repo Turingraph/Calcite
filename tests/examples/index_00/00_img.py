@@ -22,9 +22,9 @@ img = img_process_rgb(
     img = path,
     abs_path=True)
 img.zoom(1)
-img.show_img()
+# img.show_img()
 
 dilate_img = tour.contour_img(img=img.img, kernel=np.ones((13, 3)))
 dilate_img = img_process_gray(img = dilate_img)
-dilate_img.show_img()
+# dilate_img.show_img()
 dilate_img.save_img(path="img/dilate_img13x3.jpg")
