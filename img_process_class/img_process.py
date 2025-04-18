@@ -1,4 +1,5 @@
 import numpy as np
+
 from img_process.rotate import rotate
 from img_process.show import save_img, show_img
 from img_process.zoom import create_borders, crop, remove_borders, zoom
@@ -17,12 +18,12 @@ class img_process:
     def save_img(
         self,
         path:str = "img/img_out.jpg",
-        absolute:bool = False
+        abs_path:bool = False
     ) -> None:
         save_img(
             img=self.img, 
             path=path,
-            absolute=absolute)
+            abs_path=abs_path)
 
     def shape(self) -> tuple:
         if isinstance(self.img, np.ndarray):

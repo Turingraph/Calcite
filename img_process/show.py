@@ -1,6 +1,7 @@
 import cv2
 import numpy as np
 from PIL import Image
+
 from utility.save import create_dir, get_valid_path
 
 
@@ -16,7 +17,7 @@ def show_img(img: np.ndarray, title: str = "img_out") -> None:
 def save_img(
     img: np.ndarray,
     path:str|None,
-    absolute:bool = False
+    abs_path:bool = False
 ) -> None:
     # We don't sure what files that PIL library support.
     # format_options = ( 
@@ -26,7 +27,7 @@ def save_img(
     # )
     path = get_valid_path(
         path=path,
-        absolute=absolute,
+        abs_path=abs_path,
         # format_options=format_options,
         # warn_save=warn_save_img()
     )

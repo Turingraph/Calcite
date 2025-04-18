@@ -111,7 +111,7 @@ ocr_box/ocr.py/def save_text
 def save_text(
     text:str,
     path: str = "text/text.txt",
-    absolute:bool = False
+    abs_path:bool = False
 )-> None:
     ...
 

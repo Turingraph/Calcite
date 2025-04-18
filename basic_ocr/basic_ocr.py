@@ -10,12 +10,13 @@ def get_threshold_img(
         image:np.ndarray|str,
         scale:int = 1,
         save_path:str|None = "img/img_out.jpg",
-        absolute_path:bool = False,
+        abs_path_input:bool = False,
+        abs_path_output:bool = False,
         thick_font:bool = False
     ) -> img_process_gray:
     # time : O(n) depending on the size of image regardless of how Open CV works
     # space: O(n)
-    img = img_process_gray(img=image)
+    img = img_process_gray(img=image, abs_path=abs_path_input)
     img.zoom(scale=scale)
     img.rotate()
     img.threshold()
@@ -24,7 +25,7 @@ def get_threshold_img(
     if save_path != None:
         img.save_img(
             path=save_path,
-            absolute=absolute_path
+            abs_path=abs_path_output
         )
     return img
 
@@ -32,8 +33,9 @@ def get_ocr(
     image:np.ndarray|str,
     save_path_ocr:str|None = "text/text.txt",
     save_path_img:str|None = None,
-    absolute_path_ocr:bool = False,
-    absolute_path_img:bool = False,
+    abs_path_output_ocr:bool = False,
+    abs_path_output_img:bool = False,
+    abs_path_input:bool = False,
     config: str = "-c preserve_interword_spaces=0",
     conf:int = 0,
     lang:str = "eng",
@@ -53,7 +55,7 @@ def get_ocr(
 ) -> ocr_box_editor:
     # time : O(n)
     # space: O(n)
-    img = ocr_box_editor(img = image)
+    img = ocr_box_editor(img = image, abs_path=abs_path_input)
     img.get_ocr(
         conf=conf,
         lang=lang,
@@ -72,19 +74,20 @@ def get_ocr(
         img.as_ocr_box_reader().save_img(
             rgb=rgb,
             path=save_path_img,
-            absolute=absolute_path_img)
+            abs_path=abs_path_output_img)
     if save_path_ocr != None:
         img.save_text(
             path=save_path_ocr,
-            absolute=absolute_path_ocr)
+            abs_path=abs_path_output_ocr)
     return img
 
 def get_many_ocrs(
     image:ocr_box_editor,
     save_path_many_ocrs:str|None = "text/text.txt",
     save_path_many_imgs:str|None = None,
-    absolute_path_many_ocrs:bool = False,
-    absolute_path_many_imgs:bool = False,
+    abs_path_output_ocrs:bool = False,
+    abs_path_output_imgs:bool = False,
+    abs_path_input:bool = False,
     conf:int = 0,
     lang:str = "eng",
     psm:int = 3,
@@ -122,8 +125,9 @@ def get_many_ocrs(
             image=img,
             save_path_img=sub_save_path_img,
             save_path_ocr=sub_save_path_ocr,
-            absolute_path_img=absolute_path_many_imgs,
-            absolute_path_ocr=absolute_path_many_ocrs,
+            abs_path_output_img=abs_path_output_imgs,
+            abs_path_output_ocr=abs_path_output_ocrs,
+            abs_path_input=abs_path_input,
             conf=conf,
             lang=lang,
             psm=psm,
@@ -153,8 +157,9 @@ def get_table_img(
         max_h:int|None = None,
         save_path_many_imgs:str|None = None,
         save_path_dilate:str|None = None,
-        absolute_path_many_imgs:  bool=False,
-        absolute_path_dilate:bool=False,
+        abs_path_output_imgs:  bool=False,
+        abs_path_output_dilate:bool=False,
+        abs_path_input:bool = False,
         rgb: list[tuple[int]] | tuple[int] | int | None = [
             [255, 0, 0], 
             [0, 255, 0], 
@@ -163,7 +168,7 @@ def get_table_img(
     ) -> ocr_box_editor:
     # time : O(n) + O(n log(n))
     # space: O(n)
-    img = ocr_box_editor(img = image)
+    img = ocr_box_editor(img = image, abs_path=abs_path_input)
     dilate_img = img.update_bbox(kernel=kernel)
     img.select_box(
         min_h=min_h,
@@ -183,11 +188,11 @@ def get_table_img(
         dilate_img.save_img(
             rgb=rgb,
             path=save_path_dilate,
-            absolute=absolute_path_dilate)
+            abs_path=abs_path_output_dilate)
     img.sort_box(method=0)
     if save_path_many_imgs != None:
         img.as_ocr_box_reader().save_many_imgs(
             rgb=rgb,
             path=save_path_many_imgs,
-            absolute=absolute_path_many_imgs)
+            abs_path=abs_path_output_imgs)
     return img

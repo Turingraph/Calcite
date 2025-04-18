@@ -1,19 +1,22 @@
 import copy
+
 import cv2
 import numpy as np
+
 from img_process.contour import sort_contours
 from img_process.utility import check_img, rgb_img
 from img_process_class.img_process_rgb import img_process_rgb
 from utility.save import get_valid_ith_path, get_valid_path
 
+
 class ocr_box_reader:
     def __init__(self, 
                 img: np.ndarray | str,
                 box: list[tuple[int]] = [],
-                absolute_path:bool = False):
+                abs_path:bool = False):
         if type(img) == str:
             img:np.ndarray = cv2.imread(
-                filename=get_valid_path(path=img, absolute=absolute_path)
+                filename=get_valid_path(path=img, abs_path=abs_path)
             )
             if img is None:
                 raise ValueError(f"Error: The file at path '{img}' could not be loaded.")
@@ -92,11 +95,11 @@ class ocr_box_reader:
                 [0,255,0],
                 [0,0,255]
             ],
-            absolute:bool = False) -> None:
+            abs_path:bool = False) -> None:
         # time : O(1) + O(n)
         # space: O(1)
         self.color_img(rgb = rgb)
-        self.__img.save_img(path=path, absolute=absolute)
+        self.__img.save_img(path=path, abs_path=abs_path)
 
 #-----------------------------------------------------------------------------------------
     # PURPOSE : DISPLAY IMAGE DATA ARRAY BASED ON self.box
@@ -116,7 +119,7 @@ class ocr_box_reader:
                 [0,255,0],
                 [0,0,255]
             ],
-            absolute:bool=False) -> None:
+            abs_path:bool=False) -> None:
         # time : O(n)
         # space: O(n)
         index = 0
@@ -130,7 +133,7 @@ class ocr_box_reader:
             )
             out_img.save_img(
                 path=sub_path,
-                absolute=absolute)
+                abs_path=abs_path)
             index += 1
 
     def save_ith_img(
@@ -142,7 +145,7 @@ class ocr_box_reader:
                 [0,0,255]
             ],
             index:int = 0,
-            absolute:bool = False
+            abs_path:bool = False
             ) -> None:
         # time : O(n)
         # space: O(n)
@@ -152,6 +155,6 @@ class ocr_box_reader:
                 img = self.get_many_imgs()[index]
             ).save_img(
                 path = path,
-                absolute=absolute)
+                abs_path=abs_path)
 
 #-----------------------------------------------------------------------------------------

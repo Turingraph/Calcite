@@ -1,22 +1,22 @@
-import cv2
-import numpy as np
-from img_process.contour import rectangle, line
-from img_process_class.img_process import img_process
-from img_process.utility import rgb_img, gray_img
 # https://www.reddit.com/r/vscode/comments/19eqplp/python_typing_issue_unsupported_operand_types_for/?rdt=43767
 from typing import Self
+import cv2
+import numpy as np
+from img_process.contour import line, rectangle
+from img_process.utility import gray_img, rgb_img
+from img_process_class.img_process import img_process
 from utility.save import get_valid_path
 
 class img_process_rgb(img_process):
     def __init__(
             self, 
             img: Self | np.ndarray | str, 
-            absolute_path:bool = False):
+            abs_path:bool = False):
         if type(img) == Self:
             self.img:np.ndarray = np.copy(img.img)
         elif type(img) == str:
             self.img:np.ndarray = cv2.imread(
-                filename=get_valid_path(path=img, absolute=absolute_path))
+                filename=get_valid_path(path=img, abs_path=abs_path))
             if self.img is None:
                 raise ValueError(f"Error: The file at path '{img}' could not be loaded.")
         elif type(img) == np.ndarray:

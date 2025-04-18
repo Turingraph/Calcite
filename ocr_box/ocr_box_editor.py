@@ -1,6 +1,7 @@
 import cv2
 import numpy as np
 from pytesseract import Output
+
 from img_process.contour import get_contours, sort_contours
 from img_process.utility import check_img
 from img_process_class.img_process_rgb import img_process_rgb
@@ -8,24 +9,20 @@ from ocr_box.get_row import (add_area, col_box, col_half, filter_half, row_box,
                              row_half)
 from ocr_box.ocr import get_oem, get_osd, get_psm, save_text
 from ocr_box.ocr_box_reader import ocr_box_reader
-from ocr_box.update_box import (
-    get_ocr, 
-    select_box,
-    select_line, 
-    update_bbox, 
-    update_line
-)
+from ocr_box.update_box import (get_ocr, select_box, select_line, update_bbox,
+                                update_line)
 from utility.save import get_valid_path
+
 
 class ocr_box_editor:
     def __init__(
             self, 
             img: np.ndarray | str,
             box:list[tuple[int]] = [],
-            absolute_path:bool = False):
+            abs_path:bool = False):
         if type(img) == str:
             img:np.ndarray = cv2.imread(
-                filename=get_valid_path(path=img, absolute=absolute_path)
+                filename=get_valid_path(path=img, abs_path=abs_path)
             )
             if img is None:
                 raise ValueError(f"Error: The file at path '{img}' could not be loaded.")
@@ -338,8 +335,8 @@ class ocr_box_editor:
         # )
 
         # self.save_text(
-            # absolute=True,
-            # path="/home/pc/Desktop/open_close_rider/tests/save_target/index_absolute_02.txt"
+            # abs_path=True,
+            # path="/home/pc/Desktop/open_close_rider/tests/save_target/index_abs_path_02.txt"
         # )"""
 
     """
@@ -437,12 +434,12 @@ class ocr_box_editor:
         self.__output = str(output)
         return output
 
-    def save_text(self, path="text/text.txt", absolute:bool=False)-> None:
+    def save_text(self, path="text/text.txt", abs_path:bool=False)-> None:
         # time : O(n) base on how long the path is.
         # space: O(1)
         save_text(
             text = self.__output, 
             path=path,
-            absolute=absolute)
+            abs_path=abs_path)
 
 #-----------------------------------------------------------------------------------------

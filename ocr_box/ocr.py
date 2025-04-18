@@ -5,9 +5,9 @@ import numpy as np
 import pytesseract
 from pytesseract import Output
 
-from ocr_box.warning import warn_get_psm, warn_get_oem, warn_get_osd
-from utility.save import create_text_dir, get_valid_path
+from ocr_box.warning import warn_get_oem, warn_get_osd, warn_get_psm
 from utility.handle import get_options
+from utility.save import create_text_dir, get_valid_path
 
 #-----------------------------------------------------------------------------------------
 # PURPOSE : GET VALID OCR CONFIGURATION INPUT
@@ -91,7 +91,7 @@ pytesseract.image_to_osd(
 def save_text(
     text:str,
     path: str = "text/text.txt",
-    absolute:bool = False
+    abs_path:bool = False
 )-> None:
     # https://stackoverflow.com/questions/2967194/
     # open-in-python-does-not-create-a-file-if-it-doesnt-exist
@@ -102,7 +102,7 @@ def save_text(
     path = get_valid_path(
         path=path,
         format_options=None,
-        absolute=absolute,
+        abs_path=abs_path,
     )
     create_text_dir(path=path)
     # if os.path.isfile(os.path.join("/", *(path.split("/")))) == False:

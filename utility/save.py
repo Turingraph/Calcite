@@ -1,6 +1,8 @@
 import os
 from pathlib import Path
+
 from utility.handle import get_options, index_name
+
 
 def get_relative_folder(path:str):
     i = 0
@@ -39,7 +41,7 @@ def handle_valid_file_format(
 
 def get_valid_path(
     path:str,
-    absolute:bool = False,
+    abs_path:bool = False,
     # format_options and warn_save are used for forcing user to open and save image file 
     # in valid format but we don't sure what files that PIL library support.
     format_options:list[str]|None = None,
@@ -55,7 +57,7 @@ def get_valid_path(
         format_options=format_options,
         warn_save=warn_save)
     path = path.split("/")[:-1]
-    if absolute == True:
+    if abs_path == True:
         path = os.path.join(*path)
         return os.path.join("/",path, name)
     else:

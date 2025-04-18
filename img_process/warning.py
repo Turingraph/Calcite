@@ -194,7 +194,7 @@ def save_img(
     img: np.ndarray,
     path:str|None = "img/",
     name:str = "thresh.jpg",
-    absolute:bool = False
+    abs_path:bool = False
 ) -> None:
 
 available output image file format options

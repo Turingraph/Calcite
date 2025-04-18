@@ -1,34 +1,34 @@
+from typing import Self
 import cv2
 import numpy as np
-from img_process_class.img_process import img_process
-from img_process.blur import mean_blur, gauss_blur, bilateral_blur
-from img_process.morphology import (
-    thin_font,
-    thick_font,
-    remove_noise,
-    dilate,
-    erode,
-    opening,
-    canny,
-)
-from img_process.utility import rgb_img, gray_img
+from img_process.blur import bilateral_blur, gauss_blur, mean_blur
 from img_process.contour import contour_img
-from img_process.threshold import threshold, threshold_adapt
 from img_process.kernel_2d import sharp_kernel_2d
-from img_process.utility import invert_img
-from typing import Self
+from img_process.morphology import (
+    canny, 
+    dilate, 
+    erode, 
+    opening,
+    remove_noise, 
+    thick_font, 
+    thin_font
+)
+from img_process.threshold import threshold, threshold_adapt
+from img_process.utility import gray_img, invert_img, rgb_img
+from img_process_class.img_process import img_process
 from utility.save import get_valid_path
+
 
 class img_process_gray(img_process):
     def __init__(
             self, 
             img: Self | np.ndarray | str,
-            absolute_path:bool = False):
+            abs_path:bool = False):
         if type(img) == Self:
             self.img:np.ndarray = img.img
         elif type(img) == str:
             self.img:np.ndarray = cv2.imread(
-                filename=get_valid_path(path=img, absolute=absolute_path)
+                filename=get_valid_path(path=img, abs_path=abs_path)
             )
             if self.img is None:
                 raise ValueError(f"Error: The file at path '{img}' could not be loaded.")
