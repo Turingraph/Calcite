@@ -6,19 +6,21 @@ from utility.handle import get_options, index_name
 
 def get_relative_folder(path:str):
     i = 0
+    while_loop = True
     parent = []
-    while i < len(path):
+    while i < len(path) and while_loop == True:
         if path[i] not in [".", "..", "..."]:
-            i = len(path)
+            while_loop = False
         else:
             parent.append(os.pardir)
             i += 1
     if i < len(Path(__file__).parents):
-        path = os.path.join(
-            os.path.abspath(os.path.join(os.getcwd(), *parent)),
-            os.path.join(*path[i:])
-        )
-        return path
+        if len(path) >= 1:
+            return os.path.join(
+                os.path.abspath(os.path.join(os.getcwd(), *parent)),
+                os.path.join(*path[i:])
+            )
+        return None
     else:
         ValueError("Path is invalid.")
 
@@ -61,10 +63,13 @@ def get_valid_path(
         path = os.path.join(*path)
         return os.path.join("/",path, name)
     else:
-        return os.path.join(
-            get_relative_folder(path), 
-            name
-        )
+        path = get_relative_folder(path)
+        if path != None:
+            return os.path.join(
+                path, 
+                name
+            )
+        return name
 
 def get_valid_ith_path(
     path:str,

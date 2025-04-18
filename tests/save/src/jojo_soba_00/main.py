@@ -47,12 +47,12 @@ table.save_text(
 )
 table.save_text(
     path=path_abs+path_target+"text_abs.txt",
-    absolute=True
+    abs_path=True
 )
 table.as_ocr_box_reader().save_img(
     path=path_rel+path_target+"img_rel.jpg"
 )
 table.as_ocr_box_reader().save_img(
     path=path_abs+path_target+"img_abs.jpg",
-    absolute=True
+    abs_path=True
 )

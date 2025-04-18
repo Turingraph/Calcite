@@ -43,14 +43,14 @@ img_item.as_ocr_box_reader().save_img(
 )
 img_item.as_ocr_box_reader().save_img(
     path= path_abs + path_target + "img_abs.jpg",
-    absolute=True
+    abs_path=True
 )
 img_item.save_text(
     path= path_rel + path_target + "text_rel.txt"
 )
 img_item.save_text(
     path= path_abs + path_target + "text_abs.txt",
-    absolute=True
+    abs_path=True
 )
 
 ###############################################################################################################
