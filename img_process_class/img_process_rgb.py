@@ -5,13 +5,18 @@ from img_process_class.img_process import img_process
 from img_process.utility import rgb_img, gray_img
 # https://www.reddit.com/r/vscode/comments/19eqplp/python_typing_issue_unsupported_operand_types_for/?rdt=43767
 from typing import Self
+from utility.save import get_valid_path
 
 class img_process_rgb(img_process):
-    def __init__(self, img: Self | np.ndarray | str):
+    def __init__(
+            self, 
+            img: Self | np.ndarray | str, 
+            absolute_path:bool = False):
         if type(img) == Self:
             self.img:np.ndarray = np.copy(img.img)
         elif type(img) == str:
-            self.img:np.ndarray = cv2.imread(filename=img)
+            self.img:np.ndarray = cv2.imread(
+                filename=get_valid_path(path=img, absolute=absolute_path))
             if self.img is None:
                 raise ValueError(f"Error: The file at path '{img}' could not be loaded.")
         elif type(img) == np.ndarray:

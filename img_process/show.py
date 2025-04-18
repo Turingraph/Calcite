@@ -1,11 +1,6 @@
-import os
-
 import cv2
 import numpy as np
 from PIL import Image
-from pathlib import Path
-
-from img_process.warning import warn_save_img
 from utility.save import create_dir, get_valid_path
 
 
@@ -23,16 +18,17 @@ def save_img(
     path:str|None,
     absolute:bool = False
 ) -> None:
-    format_options = ( 
-        "jpg", "jpeg", "png",
-        "gif", "bmp", "tiff",
-        "ppm", "ico", "psd"
-    )
+    # We don't sure what files that PIL library support.
+    # format_options = ( 
+        # "jpg", "jpeg", "png",
+        # "gif", "bmp", "tiff",
+        # "ppm", "ico", "psd"
+    # )
     path = get_valid_path(
         path=path,
-        format_options=format_options,
         absolute=absolute,
-        warn_save=warn_save_img()
+        # format_options=format_options,
+        # warn_save=warn_save_img()
     )
     create_dir(path=path)
     img = cv2.cvtColor(img, cv2.COLOR_RGB2BGR)

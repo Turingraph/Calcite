@@ -1,20 +1,20 @@
 import copy
-import os
-
 import cv2
 import numpy as np
-
 from img_process.contour import sort_contours
 from img_process.utility import check_img, rgb_img
 from img_process_class.img_process_rgb import img_process_rgb
-from utility.save import get_valid_ith_path
+from utility.save import get_valid_ith_path, get_valid_path
 
 class ocr_box_reader:
     def __init__(self, 
                 img: np.ndarray | str,
-                box: list[tuple[int]] = []):
+                box: list[tuple[int]] = [],
+                absolute_path:bool = False):
         if type(img) == str:
-            img:np.ndarray = cv2.imread(filename=img)
+            img:np.ndarray = cv2.imread(
+                filename=get_valid_path(path=img, absolute=absolute_path)
+            )
             if img is None:
                 raise ValueError(f"Error: The file at path '{img}' could not be loaded.")
         elif type(img) == np.ndarray:

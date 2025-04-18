@@ -17,13 +17,19 @@ from img_process.threshold import threshold, threshold_adapt
 from img_process.kernel_2d import sharp_kernel_2d
 from img_process.utility import invert_img
 from typing import Self
+from utility.save import get_valid_path
 
 class img_process_gray(img_process):
-    def __init__(self, img: Self | np.ndarray | str):
+    def __init__(
+            self, 
+            img: Self | np.ndarray | str,
+            absolute_path:bool = False):
         if type(img) == Self:
             self.img:np.ndarray = img.img
         elif type(img) == str:
-            self.img:np.ndarray = cv2.imread(filename=img)
+            self.img:np.ndarray = cv2.imread(
+                filename=get_valid_path(path=img, absolute=absolute_path)
+            )
             if self.img is None:
                 raise ValueError(f"Error: The file at path '{img}' could not be loaded.")
             self.img:np.ndarray = cv2.cvtColor(src=self.img, code=cv2.COLOR_RGB2GRAY)
