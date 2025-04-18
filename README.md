@@ -13,7 +13,7 @@ This project can be used for
 4.  Allow user to get text and image output from the original image input in both absolute and relative path.
 5.  Get image input from both relative or absolute path based on user input.
 
-# How to use `open_close_rider/` ? (Quick Tutorial)
+# How to use `open_close_rider` ? (Quick Tutorial)
 
 This repository https://github.com/Turingraph/open_close_rider_tutorial.git is about the user tutorial for this project. However it is not developed because we have to finish making the stable version of MVP first.
 
@@ -27,13 +27,13 @@ This project is in MVP (Minimal Variable Product) development process and not re
 
 The order from most to least important features. We might release the first version before finish all of this features based on user demand.
 
-2.  Thai Open source Spelling checking AI model
-3.  English Open source Spelling checking AI model
-4.  Deal with blur and dark image include `white_pig_00/` and `green_pig_00/`
-5.  Deal with image of text with watermark.
-6.  Evaluating OCR accuracy.
-7.  Get OCR table data by set `get_ocr(column = [...])` automatically.
-8.  Get only box that does not intersect with text with `get_ocr_table()` with sweep line algorithm with `O(n * log(n))` time and `O(n)` space.
+1.  Thai Open source Spelling checking AI model
+2.  English Open source Spelling checking AI model
+3.  Deal with blur and dark image include `white_pig_00/` and `green_pig_00/`
+4.  Deal with image of text with watermark.
+5.  Evaluating OCR accuracy.
+6.  Get OCR table data by set `get_ocr(column = [...])` automatically.
+7.  Get only box that does not intersect with text with `get_ocr_table()` with sweep line algorithm with `O(n * log(n))` time and `O(n)` space.
 
 ## Other advanced features beyond the scope of MVP
 
@@ -75,7 +75,7 @@ For anyone who want to contribute our project, you can
 2.  Add new feature in `Development plan` section of this `README.md`
 3.  Design UXUI for our Desktop based OCR App, and submit in `doc/` directory of 
     `open_close_rider_app` (https://github.com/Turingraph/open_close_rider_app).
-5.  Contribute other related Repositories (see `Other related Repository` section)
+4.  Contribute other related Repositories (see `Other related Repository` section)
 
 Thank you for your contribution.
 
