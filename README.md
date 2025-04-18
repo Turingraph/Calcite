@@ -116,8 +116,13 @@ Expected Feature
     We add anonymous feature because we want to learn how to create privacy focused data collection app.
 4.  `open_close_rider_ml` (ml means Machine Learning model)
 -   URL : None (It is not created yet. Might be created in future)
--   Purpose : For educational purpose, analyzing the AI transparency and/or Tesseract OCR model replacement 
-    in some specific usecase.
+-   Purpose : For educational purpose, analyzing the AI transparency and/or Tesseract OCR model replacement in some specific usecase.
+5.  `the_uxui_with_a_thousand_faces`
+-   URL : https://github.com/Turingraph/the_uxui_with_a_thousand_faces
+-   Purpose : Contains fictional plot, soundtrack, story board, and other forms of artworks as the part of UXUI and software documentation based story telling for artistic purpose balance with practical utility.
+6.  `open_close_rider` fictional plot in `the_uxui_with_a_thousand_faces`
+-   URL : https://github.com/Turingraph/the_uxui_with_a_thousand_faces/blob/main/cheche/open_close_rider/plot.md
+-   Purpose : My own fictional plot and artworks as the part of UXUI and software documentation based story telling for this project (`open_close_rider`).
 
 # Additional Information
 
