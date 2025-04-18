@@ -13,12 +13,13 @@ sys.path.append(parent)
 
 from basic_ocr.basic_ocr import get_ocr, get_table_img, get_threshold_img
 
-path = parent + "/tests/examples/jojo_soba_01/img/img.jpeg"
+path = "img/img.jpeg"
 
 img = get_threshold_img(
     image=path,
     scale=1.35,
-    save_path="img/thresh.jpg"
+    save_path="img/thresh.jpg",
+    abs_path_input=False
 )
 img.thick_font()
 img_box = get_table_img(

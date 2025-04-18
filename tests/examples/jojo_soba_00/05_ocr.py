@@ -15,8 +15,8 @@ import numpy as np
 from img_process_class.img_process_gray import img_process_gray
 from ocr_box.ocr_box_editor import ocr_box_editor
 
-path = parent + "/tests/examples/jojo_soba_00/img/img.jpeg"
-img_thresh = img_process_gray(img = path)
+path = "img/img.jpeg"
+img_thresh = img_process_gray(img = path, abs_path=False)
 img_thresh.zoom(scale=1.35)
 img_thresh.threshold()
 img_thresh.thick_font()

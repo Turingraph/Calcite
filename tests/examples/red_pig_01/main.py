@@ -13,11 +13,12 @@ sys.path.append(parent)
 
 from basic_ocr.basic_ocr import get_ocr, get_threshold_img
 
-path = parent + "/tests/examples/red_pig_01/img/img.jpg"
+path = "img/img.jpg"
 
 img = get_threshold_img(
     image=path,
-    save_path="img/thresh.jpg"
+    save_path="img/thresh.jpg",
+    abs_path_input=False
 )
 
 get_ocr(

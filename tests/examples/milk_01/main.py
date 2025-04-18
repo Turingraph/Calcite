@@ -17,7 +17,8 @@ path = parent + "/tests/examples/milk_01/img/img.jpg"
 
 img = get_threshold_img(
     image=path,
-    save_path="img/thresh.jpg"
+    save_path="img/thresh.jpg",
+    abs_path_input=True
 )
 
 get_ocr(

@@ -16,7 +16,7 @@ from img_process_class.img_process_gray import img_process_gray
 
 path = parent + "/tests/examples/red_pig_00/img/img.jpg"
 
-img = img_process_gray(img=path)
+img = img_process_gray(img=path,abs_path=True)
 img.zoom(scale=1)
 img.rotate()
 img.threshold()

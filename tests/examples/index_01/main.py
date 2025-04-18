@@ -12,13 +12,13 @@ sys.path.append(parent)
 ###############################################################################################################
 
 import numpy as np
-
 from basic_ocr.basic_ocr import get_many_ocrs, get_ocr, get_table_img, get_threshold_img
 
-path = parent + "/tests/examples/index_01/img/img.jpeg"
+path = "img/img.jpeg"
 img = get_threshold_img(
     image=path,
-    save_path="img/thresh.jpg"
+    save_path="img/thresh.jpg",
+    abs_path_input=False
 )
 img_arr = get_table_img(
     image=img.img,

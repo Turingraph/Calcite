@@ -13,11 +13,9 @@ sys.path.append(parent)
 
 from ocr_box.ocr_box_editor import ocr_box_editor
 
-path = "/tests/examples/powder_00/img/"
-name = "thresh"
-format = ".jpg"
+path = "/tests/examples/powder_00/img/thresh.jpg"
 
-img = ocr_box_editor(img = (parent + path + name + format))
+img = ocr_box_editor(img = path,abs_path=False)
 img.update_bbox()
 img.select_box(min_x=300, min_h=500, max_h=1000)
 img.add_width(area=75, index=0)

@@ -15,8 +15,8 @@ import numpy as np
 
 from ocr_box.ocr_box_editor import ocr_box_editor
 
-path = parent + "/tests/examples/jojo_soba_00/img/thinn.jpg"
-img = ocr_box_editor(img = path)
+path = "img/thinn.jpg"
+img = ocr_box_editor(img = path, abs_path=False)
 img.update_bbox(kernel=np.ones((13,23)))
 img.select_box(min_w = 1000, max_h=50)
 img.as_ocr_box_reader().show_img(rgb=[255,0,0], title="origin")

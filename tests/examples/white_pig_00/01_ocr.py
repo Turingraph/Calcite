@@ -14,9 +14,9 @@ sys.path.append(parent)
 from ocr_box.ocr_box_editor import ocr_box_editor
 from img_process_class.img_process_gray import img_process_gray
 
-path = parent + "/tests/examples/white_pig_00/img/img.jpg"
+path = "img/img.jpg"
 
-img_thresh = img_process_gray(img=path)
+img_thresh = img_process_gray(img=path,abs_path=False)
 img_thresh.zoom(scale=1)
 img_thresh.rotate()
 img_thresh.threshold()

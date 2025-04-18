@@ -17,7 +17,8 @@ path = parent + "/tests/examples/powder_01/img/img.jpg"
 
 img = get_threshold_img(
     image=path,
-    save_path="img/thresh.jpg"
+    save_path="img/thresh.jpg",
+    abs_path_input=True
 )
 
 img_box = get_table_img(

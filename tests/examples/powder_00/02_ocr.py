@@ -18,7 +18,7 @@ from ocr_box.ocr_box_editor import ocr_box_editor
 
 path = parent + "/tests/examples/powder_00/img/img.jpg"
 
-img_thresh = img_process_gray(img=path)
+img_thresh = img_process_gray(img=path,abs_path=True)
 img_thresh.zoom(scale=1)
 img_thresh.rotate()
 img_thresh.threshold()

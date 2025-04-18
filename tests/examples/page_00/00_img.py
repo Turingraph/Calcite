@@ -13,9 +13,9 @@ sys.path.append(parent)
 
 from img_process_class.img_process_gray import img_process_gray
 
-path = parent + "/tests/examples/page_00/img/img.jpg"
+path = "img/img.jpg"
 
-img = img_process_gray(img=path)
+img = img_process_gray(img=path,abs_path=False)
 img.zoom(scale=1.23)
 img.rotate()
 img.threshold()

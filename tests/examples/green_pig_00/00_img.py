@@ -16,7 +16,10 @@ from ocr_box.ocr_box_editor import ocr_box_editor
 
 path = parent + "/tests/examples/green_pig_00/img/img.jpg"
 
-img = img_process_gray(img=path)
+img = img_process_gray(
+    img=path,
+    abs_path=True
+)
 img.zoom(scale=1)
 img.rotate()
 img.threshold()

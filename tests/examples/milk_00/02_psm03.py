@@ -18,7 +18,7 @@ from img_process_class.img_process_gray import img_process_gray
 
 path = "/tests/examples/milk_00/img/img.jpg"
 
-img_thresh = img_process_gray(img = parent+path)
+img_thresh = img_process_gray(img = parent+path,abs_path=True)
 img_thresh.threshold()
 img = ocr_box_editor(img = img_thresh.img)
 img.get_ocr(

@@ -15,7 +15,7 @@ from img_process_class.img_process_gray import img_process_gray
 
 path = parent + "/tests/examples/jojo_soba_00/img/img.jpeg"
 
-img = img_process_gray(img=path)
+img = img_process_gray(img=path, abs_path=True)
 img.zoom(scale=-1.35)
 img.rotate()
 img.threshold()
