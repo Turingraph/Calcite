@@ -1,5 +1,12 @@
+certifi==2025.1.31
+charset-normalizer==3.4.1
+idna==3.10
 numpy==2.2.4
-opencv_python==4.11.0.86
-opencv_python_headless==4.11.0.86
-Pillow==11.1.0
+opencv-python==4.11.0.86
+opencv-python-headless==4.11.0.86
+packaging==24.2
+pillow==11.1.0
 pytesseract==0.3.13
+pythainlp==5.1.1
+requests==2.32.3
+urllib3==2.4.0

@@ -92,13 +92,15 @@ Expected Feature
 -	Purpose: Processing Image e.g. Threshold, Blur, Convolution, Orientation etc.
 5.  `img_process_class/`
 -	Purpose: The interface of `img_process/`
-6.  `ocr_box/`
+6.  `nlp/`
+-   Purpose: Apply NLP model to improve OCR result e.g. spelling correction, language detection, separate text with valid spacing etc.
+7.  `ocr_box/`
 -   Purpose: get OCR output of the image with complicated format e.g. bills, Table of contents etc.
-7.  `tests/`
+8.  `tests/`
 -	Purpose: Check if `img_process_class/`, `box/` and `basic_ocr/` works as expected.
-8.  `trash/`
+9.  `trash/`
 -	Purpose: Contains useless file that might be useful later, it is ignored by `.gitignore`
-9.  `utility/`
+10. `utility/`
 -	Purpose: Contains other Python utility files.
 
 # Other related Repository
