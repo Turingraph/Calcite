@@ -17,6 +17,14 @@ PyThaiNLP Features that will be applied in our OCR library.
 Reference
 -   https://pythainlp.org/about/
 
+## How to install PyThai NLP ?
+
+Read this https://pythainlp.org/dev-docs/notes/installation.html
+
+## PyThai NLP Q and A
+
+Read this https://pythainlp.org/FAQ
+
 # PyThai NLP Basic Command.
 
 Reference
