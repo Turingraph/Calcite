@@ -27,8 +27,8 @@ This project is in MVP (Minimal Variable Product) development process and not re
 
 The order from most to least important features. We might release the first version before finish all of this features based on user demand.
 
-1.  Thai Open source Spelling checking AI model
-2.  English Open source Spelling checking AI model
+1.  Spelling checking in Thai language using PyThai NLP (https://github.com/PyThaiNLP/pythainlp)
+2.  Spelling checking in English language
 3.  Deal with blur and dark image include `white_pig_00/` and `green_pig_00/`
 4.  Deal with image of text with watermark.
 5.  Evaluating OCR accuracy.
