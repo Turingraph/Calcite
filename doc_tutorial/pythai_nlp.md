@@ -4,11 +4,11 @@ PyThaiNLP is a Python package for text processing and linguistic analysis, simil
 
 PyThaiNLP Features that will be applied in our OCR library.
 
-1.  Thai spelling suggestion and correction (spell and correct)
-2.  Thai linguistic unit segmentation/tokenization, including sentence (sent_tokenize), word (word_tokenize), and subword segmentations based on Thai Character Cluster (subword_tokenize)
-3.  Convenient character and word classes, like Thai consonants (pythainlp.thai_consonants), vowels (pythainlp.thai_vowels), digits (pythainlp.thai_digits), and stop words (pythainlp.corpus.thai_stopwords) – comparable to constants like string.letters, string.digits, and string.punctuation
+1.  Thai linguistic unit segmentation/tokenization, including sentence (sent_tokenize), word (word_tokenize), and subword segmentations based on Thai Character Cluster (subword_tokenize)
+2.  Thai spelling suggestion and correction (spell and correct), and filter some incorrect spelled word
 
 <!-- 
+3.  Convenient character and word classes, like Thai consonants (pythainlp.thai_consonants), vowels (pythainlp.thai_vowels), digits (pythainlp.thai_digits), and stop words (pythainlp.corpus.thai_stopwords) – comparable to constants like string.letters, string.digits, and string.punctuation
 1.  Thai datetime formatting (thai_strftime)
 1.  Thai-English keyboard misswitched fix (eng_to_thai, thai_to_eng)
 1.  Command-line interface for basic functions, like tokenization and pos tagging (run thainlp in your shell)
@@ -65,7 +65,7 @@ correct("แอพพริเคชัน")
 # แอปพลิเคชัน
 ```
 
-# How to separate sentence as multiple tokens ?
+# Thai linguistic unit segmentation/tokenization
 
 We will use `pythainlp.tokenize` module to 
 1.  separate Thai sentence into multiple words, such that we can check if each words spelled correctly.
@@ -82,7 +82,7 @@ Parameters
 -   We only use `engine = 'wangchanberta'` in our OCR library because we only care about separating Thai sentence into multiple words.
 3.  keep_whitespace (bool) – keep whitespace
 Returns
--   list of subwords as List[ str ] 
+-   list of subwords as `List[ str ] `
 
 ```
 text_1 = "ยุคเริ่มแรกของ ราชวงศ์หมิง"
@@ -107,7 +107,7 @@ Parameters
 5.  join_broken_num (bool) – True to rejoin formatted numeric that could be wrongly separated. Otherwise, formatted numeric could be wrongly separated.
 
 Returns
--   list of words as List[ str ]
+-   list of words as `List[ str ]`
 
 Options for engine
 1.  attacut - wrapper for AttaCut., learning-based approach
@@ -250,4 +250,132 @@ _tokenizer.word_tokenize(text)
 # output:
 # ['อะเฟเซีย', ' ', '(', 'Aphasia', ')', ' ', 'เป็นอาการ', 'ผิด',
 #   'ปกติ', 'ของการพูด']
+```
+
+# Thai spelling suggestion and correction
+
+The `pythainlp.spell` module is a powerful tool for finding the closest correctly spelled word to a given text in the Thai language.
+
+Reference
+-   https://pythainlp.org/dev-docs/api/spell.html
+
+## pythainlp.spell.correct(word: str, engine: str = 'pn') → str
+
+Parameters
+1.  word (str) – word to correct spelling of
+2.  engine (str) –
+    1.  pn - Peter Norvig’s algorithm 1 (default)
+    2.  phunspell - A spell checker utilizing spylls, a port of Hunspell.
+    3.  symspellpy - symspellpy is a Python port of SymSpell v6.5.
+    4.  wanchanberta_thai_grammarly - WanchanBERTa Thai Grammarly
+
+Returns
+-   the corrected word as `str`
+
+The correct function is designed to correct the spelling of a single Thai word. Given an input word, this function returns the closest correctly spelled word from the dictionary, making it valuable for spell-checking and text correction tasks.
+
+```
+from pythainlp.spell import correct
+
+correct("เส้นตรบ")
+# output: 'เส้นตรง'
+
+correct("ครัช")
+# output: 'ครับ'
+
+correct("สังเกตุ")
+# output: 'สังเกต'
+
+correct("กระปิ")
+# output: 'กะปิ'
+
+correct("เหตการณ")
+# output: 'เหตุการณ์'
+```
+
+## pythainlp.spell.correct_sent(list_words: List[ str ], engine: str = 'pn') → List[ str ]
+
+Parameters
+1.  list_words (List[str]) – list of words in sentence
+2.  engine (str) –
+    1.  pn - Peter Norvig’s algorithm 1 (default)
+    2.  phunspell - A spell checker utilizing spylls, a port of Hunspell.
+    3.  symspellpy - symspellpy is a Python port of SymSpell v6.5.
+    4.  wanchanberta_thai_grammarly - WanchanBERTa Thai Grammarly
+
+Returns
+-   the corrected list of words in sentence as `List[ str ]`
+
+The correct_sent function is an extension of the correct function and is used to correct an entire sentence. It tokenizes the input sentence, corrects each word, and returns the corrected sentence. 
+
+```
+from pythainlp.spell import correct_sent
+
+correct_sent(["เด็","อินอร์เน็ต","แรง"],engine='symspellpy')
+# output: ['เด็ก', 'อินเทอร์เน็ต', 'แรง']
+```
+
+## pythainlp.spell.spell(word: str, engine: str = 'pn') → List[ str ]
+
+Provides a list of possible correct spellings of the given word. The list of words are from the words in the dictionary that incurs an edit distance value of 1 or 2. The result is a list of words sorted by their occurrences in the spelling dictionary in descending order.
+
+Parameters
+1.  word (str) – Word to check spell of
+2.  engine (str) –
+    1.  pn - Peter Norvig’s algorithm 1 (default)
+    2.  phunspell - A spell checker utilizing spylls, a port of Hunspell.
+    3.  symspellpy - symspellpy is a Python port of SymSpell v6.5.
+    4.  tltk - wrapper for TLTK.
+
+Returns
+-   list of possible correct words within 1 or 2 edit distance and sorted by frequency of word occurrences in the spelling dictionary in descending order as `List [ str ]`
+
+```
+from pythainlp.spell import spell
+
+spell("เส้นตรบ",  engine="pn")
+# output: ['เส้นตรง']
+
+spell("เส้นตรบ")
+# output: ['เส้นตรง']
+
+spell("เส้นตรบ",  engine="tltk")
+# output: ['เส้นตรง']
+
+spell("ครัช")
+# output: ['ครับ', 'ครัว', 'รัช', 'ครัม', 'ครัน', 'วรัช', 'ครัส',
+# 'ปรัช', 'บรัช', 'ครัง', 'คัช', 'คลัช', 'ครัย', 'ครัด']
+
+spell("กระปิ")
+# output: ['กะปิ', 'กระบิ']
+
+spell("สังเกตุ")
+# output:  ['สังเกต']
+
+spell("เหตการณ")
+# output:  ['เหตุการณ์']
+```
+
+Note that `spell_sent` extends the spell-checking functionality to entire sentences. However we won't use `spell_sent` in version no.1 of our OCR app because it out of the project scope.
+
+## NorvigSpellChecker, known(words: Iterable[ str ]) → List[ str ]
+
+Parameters
+1.  words (list[str]) – A list of words to check if they exist in the spelling dictionary
+Returns
+-   intersection of the given word list and words in the spelling dictionary AS `List[ str ]`
+
+```
+from pythainlp.spell import NorvigSpellChecker
+
+checker = NorvigSpellChecker()
+
+checker.known(["เพยน", "เพล", "เพลง"])
+# output: ['เพล', 'เพลง']
+
+checker.known(['ยกไ', 'ไฟล์ม'])
+# output: []
+
+checker.known([])
+# output: []
 ```

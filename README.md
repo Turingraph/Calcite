@@ -87,8 +87,7 @@ Expected Feature
 2.  `doc/`
 -   Contains : Additional Documentation about our project.
 3.  `doc_tutorial/`
--   Contains : Additional Documentation about how to use Pytesseract, Python virtual environment, 
-    Git and related useful technology.
+-   Contains : Additional Documentation about how to use Pytesseract, Python virtual environment, Git, PyThai NLP and related useful technology.
 4.  `img_process/`
 -	Purpose: Processing Image e.g. Threshold, Blur, Convolution, Orientation etc.
 5.  `img_process_class/`
