@@ -92,3 +92,26 @@ def create_text_dir(path:str):
     create_dir(path = path)
     if os.path.isfile(os.path.join("/", *(path.split("/")))) == False:
         open(file=path, mode="x")
+
+def path_status(path:str, print_text:bool=False):
+    """
+    -1== not exists
+    0 == folder
+    1 == file
+    """
+    text = ""
+    status = 0
+    if os.path.exists(path=path):
+        text = path + "IS EXISTS"
+        if os.path.isfile(path) == True:
+            text += " AS A FILE."
+            status = 1
+        else:
+            text += " AS A FOLDER."
+            status = 0
+    else:
+        text = path + "IS NOT EXISTS."
+        status = -1
+    if print_text == True:
+        print(status,text)
+    return status
