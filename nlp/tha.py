@@ -7,8 +7,7 @@ from pythainlp.spell import spell
 def sentence_to_list(
         text:str,
         custom_words:list[str] = [],
-        custom_words_path:str|None = None,
-        keep_whitespace:bool = True)->list[str]:
+        custom_words_path:str|None = None)->list[str]:
     ls = []
     if custom_words_path != None:
         ls = file_to_liststr(custom_words_path)
@@ -21,7 +20,7 @@ def sentence_to_list(
                 list(set(custom_words))+
                 list(set(ls))
                 ))),
-        keep_whitespace=keep_whitespace,
+        keep_whitespace=True,
         join_broken_num=True)
 
 def thai_to_arabic_digit(number:str):
@@ -52,28 +51,30 @@ def thai_to_arabic_digit(number:str):
 def thai_to_arabic_number_text(text:str):
     output = ""
     for i in text:
-        output = thai_to_arabic_digit(i)
+        output += thai_to_arabic_digit(i)
     return output
 
-def spell_texts(
+def correct_texts(
         text:str,
         custom_words:list[str] = [],
         custom_words_path:str|None = None,
-        keep_whitespace:bool = True,
-        no_thai_number:bool = True)->list[str]:
+        no_thai_number:bool = False)->list[str]:
     ls = sentence_to_list(
         text=text,
         custom_words=custom_words,
-        custom_words_path=custom_words_path,
-        keep_whitespace=keep_whitespace
+        custom_words_path=custom_words_path
     )
     output = []
     for i in ls:
-        if re.match('[A-Za-z0-9]', i) or i in "\n,.!@#$%^&*()_-+=[]:;\"\'<>?~` ":
-            output.append(i)
-        else:
+        # https://stackoverflow.com/questions/56285589/
+        # how-can-i-check-string-is-thai-language-that-return-boolean-like-isalpha
+        # https://stackoverflow.com/questions/9012008/
+        # pythons-re-return-true-if-string-contains-regex-pattern
+        if bool(re.search("[\u0E00-\u0E7F]+", i)):
             if no_thai_number == True:
                 output.append(thai_to_arabic_number_text(spell(i)))
             else:
                 output.append(spell(i))
-    return output
+        else:
+            output.append(i)
+    return "".join(output)
