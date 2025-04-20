@@ -104,7 +104,8 @@ def save_text(
         format_options=None,
         abs_path=abs_path,
     )
-    create_text_dir(path=path)
+    if len(path.split("/")) > 1:
+        create_text_dir(path=path)
     # if os.path.isfile(os.path.join("/", *(path.split("/")))) == False:
     #     open(file=path, mode="x")
     file = open(file=path, mode="w")
